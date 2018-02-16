@@ -42,7 +42,7 @@ if block4 ? block4 : block4 = []
 			mixin block4Item(item)
 				+e.item
 					+e.item-icon
-						+e.IMG(src=`/static/img/icon-${item.icon}.svg` alt='image')
+						+e.IMG(src=`static/img/icon-${item.icon}.svg` alt='image')
 					+e.H5= item.title
 					p= item.descr
 			each item in block4List

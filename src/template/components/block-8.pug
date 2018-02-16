@@ -50,7 +50,7 @@ if block8.title ? block8.title : block8.title = ''
 			mixin block8Item(item)
 				+e.item
 					+e.item-icon
-						+e.IMG(src=`/static/img/icon-${item.icon}.svg` alt='image')
+						+e.IMG(src=`static/img/icon-${item.icon}.svg` alt='image')
 					+e.item-title.h5
 						+e.H5= item.title
 					p= item.descr
