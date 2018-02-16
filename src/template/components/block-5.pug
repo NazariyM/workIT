@@ -1,0 +1,35 @@
+if block5 ? block5 : block5 = []
+
+//begin block-5
++b.SECTION.block-5.black-bg(class= block5.classMod ? block5.classMod : '')
+	+e.container.container
+		+e.top.block-top
+			+e.label.block-label
+				+e.P locations
+			+e.title.h2
+				+e.H2 Локации
+
+		+e.list
+			+e.item
+				+e.item-img-wrap.img-hover
+					+e.item-img.img-hover__item(style='background-image: url(/static/img/block-5_1.jpg)')
+				+e.item-text
+					+e.item-title.h4
+						+e.H4 Нивки
+					+e.P Это креативное рабочее пространство, идеально обустроенно для работы, получения новых знаний и отдыха в кругу интересных людей. Расположен в
+							b парке возле метро Нивки
+
+					+e.A.item-more.btn._line(href='#!') узнать больше
+
+			+e.item
+				+e.item-img-wrap.img-hover
+					+e.item-img.img-hover__item(style='background-image: url(/static/img/block-5_2.jpg)')
+				+e.item-text
+					+e.item-title.h4
+						+e.H4 Центр
+					+e.P Rреативное рабочее пространство, идеально обустроенно для работы, получения новых знаний и отдыха в кругу интересных людей.
+						b Расположен в самом центре.
+
+					+e.A.item-more.btn._line(href='#!') узнать больше
+
+//end block-5

@@ -1,0 +1,40 @@
+.block-5
+  padding: 120px 0 117px
+  &__container
+    max-width: 1220px
+    padding: 0 30px
+  &__label
+    margin-bottom: 22px
+    color: $white
+  &__title
+    color: $color1
+  &__list
+    margin: 0 -30px
+    +clr
+  &__item
+    float: left
+    width: 50%
+    padding: 0 30px
+    &-img
+      +ratio(550, 300)
+      +cover
+    &-text
+      pointer-events: none
+      position: relative
+      z-index: 1
+      margin-top: -42px
+      padding-left: 60px
+      color: #fff
+      p
+        margin-bottom: 22px
+    &-title
+      pointer-events: auto
+      display: inline-block
+      vertical-align: top
+      padding: 8px 54px 10px
+      margin-bottom: 34px
+      color: $black
+      text-align: center
+      background: #fff
+    &-more
+      pointer-events: auto

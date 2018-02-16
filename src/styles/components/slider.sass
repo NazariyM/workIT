@@ -1,0 +1,80 @@
+.slider
+  $parent: &
+  position: relative
+  &__body
+    display: none
+    &.slick-initialized
+      display: block
+  &__item
+    h4
+      margin-bottom: 20px
+      +h4
+    h5
+      margin-bottom: 12px
+      +h5
+      text-transform: none
+    #{$parent}_full &
+      padding-left: 60px
+  &__text
+    #{$parent}_full &
+      float: left
+      width: 50%
+      margin-top: -7px
+      padding-right: 60px
+      p
+        max-width: 440px
+        padding-left: 62px
+        letter-spacing: 0
+  &__media
+    +ratio(611, 339)
+    #{$parent}_full &
+      float: left
+      width: 50%
+      +ratio(610, 400)
+    
+    &-img
+      +coverdiv
+      +cover
+  &__controls
+    position: absolute
+    right: calc(100% + 58px)
+    bottom: -5px
+    display: flex
+    align-items: flex-end
+    #{$parent}_full &
+      right: 50%
+      margin-right: 60px
+  &__buttons
+    display: flex
+    align-items: flex-end
+    margin-right: 22px
+    margin-bottom: 5px
+    font-size: 0
+  &__btn
+    padding: 0
+    border: 0
+    &:not(:last-child)
+      margin-right: 24px
+  &__count
+    display: flex
+    align-items: center
+    position: relative
+    line-height: 1
+    &-decor
+      position: absolute
+      top: 12px
+      left: 53px
+      width: 30px
+      height: 9px
+      transform: rotate(-30deg)
+      background: $color1
+    &-current
+      width: 44px
+      margin-right: 47px
+      +f('gil-800', 36)
+      letter-spacing: 3.6px
+    &-all
+      width: 15px
+      +f('gil-800', 12)
+      letter-spacing: 1.2px
+      color: $color3

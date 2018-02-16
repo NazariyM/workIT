@@ -1,0 +1,446 @@
+// basic styles
+body
+  min-width: 320px
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  +f('rob-300', 16, 28)
+  //letter-spacing: 0.03em
+  letter-spacing: 0.023em
+  color: $color2
+  +xs
+    letter-spacing: 0.015em
+//&.is-locked
+//	position: fixed
+//	top: 0
+//	left: 0
+//	right: 0
+//	height: 0
+//	overflow: hidden
+
+.out
+  overflow: hidden
+
+.container
+  max-width: 1190px
+  margin: 0 auto
+  padding: 0 15px
+
+.has-selection
+  &_green b::after
+    background: $color1
+  &_black
+    b
+      color: $white
+    b::after
+      background: $black
+  b
+    position: relative
+    z-index: 1
+    &::after
+      position: absolute
+      left: -11px
+      top: 8px
+      bottom: 1px
+      right: 0
+      width: 0
+      content: ''
+      z-index: -1
+      transition: width 1.3s 1s ease
+      +xs
+        top: 6px
+        left: -5px
+  &.is-selected b::after
+    width: calc(100% + 17px)
+    +xs
+      width: calc(100% + 9px)
+//box-shadow: -10px -1px 0 1px $color1, 6px -1px 0 1px $color1, inset 0 0 0 100px $color1
+    
+// other
+.block-top
+  margin: 0 auto 62px
+  //overflow: hidden
+
+.block-label
+  display: inline-block
+  //transform: translateX(-100%)
+  margin-bottom: 25px
+  padding-left: 2px
+  +f('rob-700', 16, 30)
+  text-transform: uppercase
+  +xs
+    margin-bottom: 5px
+    font-size: 12px
+
+h1, h2, h3, h4, h5, h6
+  b
+    +f('gil-800')
+    //+f('rob-700')
+
+p b
+  +f('rob-700')
+
+// buttons
+.btn
+  position: relative
+  min-width: 210px
+  height: 60px
+  padding: 0 30px
+  line-height: 60px
+  border: 0
+  +f('gil-800', 12)
+  letter-spacing: 1.2px
+  text-transform: uppercase
+  text-decoration: none
+  text-align: center
+  color: inherit
+  cursor: pointer
+  .no-touch &:hover::after
+    transform: scale(1)
+  span
+    position: relative
+    z-index: 1
+  &::after
+    pointer-events: none
+    position: absolute
+    z-index: 0
+    transition: transform .3s ease-in-out
+    content: ''
+  
+  &_green
+    background: $color1
+    &::after
+      top: -5px
+      left: -15px
+      right: -15px
+      bottom: -5px
+      transform: scale(.8)
+      background: $color1
+  
+  &_black
+    background: $black
+    color: $white
+    &::after
+      top: -5px
+      left: -25px
+      right: -25px
+      bottom: -5px
+      transform: scale(0.7)
+      background: $black
+  
+  &_white
+    background: $white
+    color: $color2
+    &::after
+      top: -5px
+      left: -16px
+      right: -16px
+      bottom: -5px
+      transform: scale(0.82)
+      background-color: $white
+  
+  &_line
+    height: auto
+    line-height: 1
+    padding: 0
+    margin-right: 85px
+    min-width: 0
+    background: transparent
+    .no-touch &:hover::after
+      transform: translateX(17px)
+    &::after
+      pointer-events: none
+      top: 50%
+      left: calc(100% + 16px)
+      right: auto
+      bottom: auto
+      z-index: 0
+      margin-top: -4px
+      width: 65px
+      height: 8px
+      background: $color1
+
+label.btn
+  input
+    display: inline-block
+    position: relative
+    z-index: 1
+    height: auto
+    line-height: 59px
+    background: transparent
+    padding: 0
+    min-width: 0
+    text-align: center
+
+.tel-block
+  a
+    +f('rob-700')
+    +trs
+    color: $color2
+    //.no-touch &:hover
+    //  color: $color1
+//.no-touch &:hover path
+//  fill: $color1!important
+//.icon
+//  +trs
+//path
+//  fill: currentColor!important
+//  +trs
+
+.dev-link
+  display: flex
+  align-items: center
+  color: $color4
+  +f('rob-400')
+  .no-touch &:hover .icon
+    fill: $color1
+  .icon
+    margin-left: 11px
+    +trs
+
+.link-green
+  +f('rob-700')
+  color: $color1
+  +trs
+  .no-touch &:hover
+    color: $color3
+
+.form-field
+  $parent: &
+  position: relative
+  overflow: hidden
+  &__input
+    width: 100%
+    height: 57px
+    padding-left: 3px
+    +f('rob-400', 16)
+    letter-spacing: 0.03em
+    color: $color2
+    background: transparent
+    border: 0
+    border-bottom: 2px solid $white
+    +placeholder-color($color2)
+    &:focus + #{$parent}__decor
+      transform: translateX(0)
+  &__decor
+    pointer-events: none
+    position: absolute
+    left: 0
+    bottom: 0
+    height: 2px
+    width: 100%
+    transform: translateX(-101%)
+    transition: transform .5s ease
+    background: $color1
+    &_black
+      background: $color2
+
+//.check-box
+//	position: relative
+//	label
+//		display: flex
+//		align-items: center
+//		+f('geo-500')
+//		font-size: 14px
+//		color: $black
+//		cursor: pointer
+//	&__square
+//		position: relative
+//		width: 20px
+//		height: 20px
+//		flex: 0 0 20px
+//		margin-right: 8px
+//		border: 2px solid #d7d7d7
+//		background: $white
+//		font-size: 0
+//		.icon
+//			opacity: 0
+//			transform: scale(.6)
+//			position: absolute
+//			top: -4px
+//			right: -8px
+//			font-size: 19px
+//			transition: .15s ease-in
+//	span
+//		user-select: none
+//
+//	input
+//		display: none
+//		&:checked + label .icon-check
+//			opacity: 1
+//			transform: scale(1)
+//	&_more
+//		text-align: left
+//		label
+//			align-items: flex-start
+//		span
+//			margin-top: 0
+//			line-height: 17px
+//	&_more &__square
+//		margin-top: 5px
+//		margin-right: 15px
+		
+//.textarea
+//	display: block
+//	width: 100%
+//	height: 100px
+//	min-height: 167px
+//	padding: 20px
+//	border: 0
+//	resize: none
+//	+f('geo-400', 17)
+//	+placeholder-color(#8d8d8d)
+//	+xs
+//		padding: 15px
+
+//.slider-btn
+//	position: absolute
+//	top: 50%
+//	font-size: 0
+//	z-index: 1
+//	.no-touch &:hover .icon
+//		fill: $white
+//	.no-touch &:active .icon
+//		transform: scale(.8)
+//	.icon
+//		font-size: 75px
+//		fill: rgba($white, .7)
+//		+trs
+//		+lg
+//			font-size: 55px
+//	&_prev
+//		left: 4%
+//	&_next
+//		right: 4%
+//
+//.slider-dots
+//	position: absolute
+//	left: 0
+//	right: 0
+//	bottom: 55px
+//	z-index: 1
+//	text-align: center
+//	font-size: 0
+//	li
+//		display: inline-block
+//		width: 20px
+//		height: 20px
+//		background: rgba($white, .5)
+//		border-radius: 50%
+//		cursor: pointer
+//		transition: transform .3s ease
+//		&:not(:first-child)
+//			margin-left: 15px
+//		&.slick-active
+//			background: #207bd2
+//			transform: scale(1.5)
+//		button
+//			+hide-text
+
+//h1, h2, h3, h4, h5, h6, p, a, span, div, img, mark, ul, li
+//	&::selection
+//		color: $white
+//		background-color: #f16eaa
+//
+//+selection
+//	color: $white
+//	background-color: #f16eaa
+
+.lang
+  flex: 0 0 50px
+  width: 50px
+  text-align: center
+  cursor: pointer
+  > ul
+    position: relative
+    transition: .45s ease
+    &::before
+      position: absolute
+      top: 50%
+      right: 0
+      width: 5px
+      height: 5px
+      margin-top: -2px
+      background-color: $white
+      transition: .4s ease
+      content: ''
+    &:hover ul
+      pointer-events: auto
+      transform: scaleY(1)
+      opacity: 1
+    > li > a
+      position: relative
+      z-index: 1
+      pointer-events: none
+    li
+      a
+        display: block
+        height: 37px
+        line-height: 37px
+        +f('gil-800', 12)
+        color: $color2
+        text-transform: uppercase
+    ul
+      pointer-events: none
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      transform-origin: 0 0
+      transform: scaleY(0)
+      opacity: 0
+      padding-top: 37px
+      background-color: $white
+      transition: opacity .65s ease, transform .4s ease
+      a
+        +trs
+        .no-touch &:hover
+          color: $color3
+
+.logo
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-shrink: 0
+  &__img
+    width: 80px
+    height: 20px
+    
+.gray-bg
+  background: url("../img/gray-bg.jpg")
+  
+.black-bg
+  background: url("../img/bg.png")
+
+.img-hover
+  display: block
+  overflow: hidden
+  +gpu
+  .no-touch &:hover .img-hover__item,
+  .no-touch &:hover img
+    transform: scale(1.1)
+  &__item
+    transition: .3s ease-in-out
+  img
+    transition: .3s ease-in-out
+
+.block-sub-title
+  +f('gil-300')
+  letter-spacing: 0.025em
+  font-size: 18px
+  line-height: 30px
+  
+.preloader
+  position: fixed
+  z-index: 100
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  opacity: 1
+  background: $color1
+  &__img
+    width: 296px
+    height: 75px

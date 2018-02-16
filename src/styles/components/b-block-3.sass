@@ -1,0 +1,272 @@
+.block-3
+  position: relative
+  padding: 113px 0 135px
+  counter-reset: block-3-counter
+  +sm
+    padding: 112px 0 120px
+  +xs
+    padding: 48px 0 135px
+  &__container
+    max-width: 1310px
+  &__top
+    max-width: 1160px
+    margin: 0 auto 63px
+    +md
+      margin: 0 30px 64px
+    +sm
+      margin: 0 10px 64px
+    +xs
+      margin: 0 0 20px
+  &__label
+    margin-left: 3px
+    margin-bottom: 30px
+  &__title
+    max-width: 640px
+    transform: translateX(-100%)
+    +xs
+      font-size: 30px
+      line-height: 32px
+  &__item
+    $parent: &
+    position: relative
+    counter-increment: block-3-counter
+    & + &
+      margin-top: 78px
+    &:nth-child(1) h3
+      margin-bottom: 30px
+      +xs
+        margin-bottom: 27px
+    //&:nth-child(2)
+    //  margin-top: 72px
+    //  +sm
+    //    margin-top: 78px
+    //&:nth-child(3)
+    //  margin-top: 117px
+    //  +sm
+    //    margin-top: 78px
+    &:nth-child(2) h3
+      margin-bottom: 30px
+    &:nth-child(4)
+      margin-top: 70px
+      .block-3__item-text
+        margin: 81px 0 0 30px
+      .block-3__item-count
+        margin-left: 430px
+    &:nth-child(5)
+      margin-top: 118px
+    //&:nth-child(3) &-text
+    //  margin-top: 80px
+    //  +xs
+    //    margin-top: 0
+    //&:nth-child(3) &-count
+    //  +xs
+    //    top: -62px
+    &_left
+      margin-right: 60px
+      +md
+        margin-right: 30px
+      +sm
+        margin-right: 0
+    &_right
+      margin-left: 60px
+      +md
+        margin-left: 30px
+      +sm
+        margin-left: 0
+    &-inner
+      display: flex
+      align-items: flex-start
+      justify-content: space-between
+      transform: translateY(50px)
+      opacity: 0
+      +sm
+        flex-wrap: wrap
+      #{$parent}_left &
+        +sm
+          justify-content: flex-end
+      #{$parent}_right &
+        +sm
+          justify-content: flex-start
+    &-media
+      #{$parent}_left &
+        flex: 0 1 percentage(611/1220)
+        +ratio(611, 395)
+        +sm
+          flex: 0 1 percentage(618/738)
+          margin-right: auto
+          margin-left: -15px
+          +ratio(618, 395)
+        +xs
+          flex: 1 0 auto
+          margin: 0 auto
+          +ratio(290, 165)
+      #{$parent}_right &
+        flex: 0 1 percentage(490/1220)
+        +ratio(490, 390)
+        +sm
+          flex: 0 1 percentage(494/738)
+          +ratio(494, 390)
+          margin-left: auto
+          margin-right: -15px
+        +xs
+          flex: 1 0 auto
+          margin: 0 auto
+          +ratio(290, 165)
+        
+    &-img
+      +coverdiv
+      +cover
+    &-video
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+    &-text
+      flex: 0 1 552px
+      +sm
+        order: -1
+      +xs
+        flex: 0 1 auto
+      #{$parent}_left &
+        margin: 85px 0 0 30px
+        +sm
+          margin: 85px 15px 53px 0
+        +xs
+          margin: 55px 0 20px 0
+      #{$parent}_right &
+        margin: 82px 30px 0 0
+        padding-right: 5px
+        +sm
+          margin: 82px 0 54px 10px
+        +xs
+          margin: 0 0 24px 0
+    h3
+      margin-bottom: 20px
+      +h1
+      text-transform: none
+      +xs
+        margin-bottom: 17px
+        font-size: 42px
+        line-height: 42px
+    p
+      padding-left: 60px
+      +xs
+        padding-left: 0
+        font-size: 12px
+        line-height: 20px
+    &-count
+      position: absolute
+      left: 50%
+      opacity: 0
+      transform: translateY(-30px)
+      &::before
+        display: block
+        +f('gil-800', 90, 80)
+        color: $color4
+        content: counter(block-3-counter, decimal-leading-zero)
+        +sm
+          font-size: 80px
+        +xs
+          font-size: 42px
+      #{$parent}_left &
+        top: -10px
+        margin-left: 435px
+        +md
+          margin-left: 317px
+        +sm
+          margin-left: 185px
+        +xs
+          top: -13px
+          margin-left: -145px
+      #{$parent}_right &
+        top: -7px
+        margin-left: -545px
+        +md
+          margin-left: -420px
+        +sm
+          margin-left: -288px
+        +xs
+          top: -62px
+          margin-left: -148px
+      &-el
+        position: absolute
+        top: 38px
+        left: 35px
+        width: 35px
+        height: 9px
+        background: #00d88e
+        background: $color1
+        &_1
+          transform: rotate(15deg)
+          +sm
+            top: 34px
+            left: 30px
+          +xs
+            transform: rotate(30deg)
+            top: 38px
+            left: 14px
+            width: 18px
+            height: 5px
+        &_2
+          width: 46px
+          height: 13px
+          top: 34px
+          left: 27px
+          +xs
+            top: 37px
+            left: 16px
+            width: 20px
+            height: 7px
+        &_3
+          transform: rotate(-20deg)
+          left: 37px
+          width: 36px
+          +sm
+            left: 30px
+            top: 37px
+          +xs
+            transform: rotate(-15deg)
+            left: 14px
+            width: 19px
+            height: 6px
+        &_4
+          transform: rotate(31deg)
+          top: 33px
+          left: 29px
+          width: 44px
+          height: 11px
+          +sm
+            top: 37px
+          +xs
+            transform: rotate(18deg)
+            top: 37px
+            left: 19px
+            width: 18px
+            height: 6px
+  &__lines
+    +coverdiv
+    z-index: -2
+  &__line
+    position: absolute
+    top: 0
+    left: 50%
+    width: 1px
+    height: 0
+    background: rgba(#89a29e, .2)
+    &_left
+      margin-left: -464px
+      +md
+        margin-left: -354px
+      +sm
+        margin-left: -237px
+      +xs
+        margin-left: -122px
+    &_right
+      margin-left: 456px
+      +md
+        margin-left: 354px
+      +sm
+        margin-left: 233px
+      +xs
+        margin-left: 124px

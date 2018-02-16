@@ -1,0 +1,17 @@
+if block7 ? block7 : block7 = []
+if block7.title ? block7.title : block7.title = 'Хочешь увидеть всё своими глазами? Приходи в гости!'
+
+//begin block-7
++b.SECTION.block-7(class= block7.classMod ? block7.classMod : '')
+	+e.container.container
+		+e.top.block-top
+			+e.title.h3
+				+e.H3= block7.title
+
+			+e.BUTTON.btn.btn._green(type='button')
+				span записаться
+
+		+e.img(style='background-image: url(/static/img/block-7_1.jpg)')
+
+
+//end block-7

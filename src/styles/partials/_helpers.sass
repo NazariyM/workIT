@@ -1,0 +1,70 @@
+=lg
+  +r(1900)
+    @content
+
+=md
+  +r(1279)
+    @content
+
+=sm
+  +r(1023)
+    @content
+
+=xs
+  +r(767)
+    @content
+
+=mob-fix
+  @media only screen and (max-width: 767px) and (orientation: landscape)
+    @content
+
+=trs
+  transition: all 0.25s ease-out
+
+// titles
+h1, h2, h3, h4, h5, h6
+  font-size: inherit
+  font-weight: inherit
+  -webkit-margin-before: 0
+  -webkit-margin-after: 0
+
+=h1
+  +f('gil-800', 80, 80, 0)
+  text-transform: uppercase
+
+=h2
+  +f('gil-800', 60, 63, 0)
+
+=h3
+  +f('gil-800', 48, 52, 0)
+  text-transform: uppercase
+
+=h4
+  +f('gil-800', 36, 42, 0)
+
+=h5
+  +f('gil-800', 18, 30, 25)
+  text-transform: uppercase
+
+=h6
+  +f('gil-800', 12, 20, 100)
+  text-transform: uppercase
+
+.h1
+  margin-bottom: 37px
+  +h1
+
+.h2
+  +h2
+
+.h3
+  +h3
+
+.h4
+  +h4
+
+.h5
+  +h5
+
+.h6
+  +h6

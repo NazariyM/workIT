@@ -1,0 +1,35 @@
+.block-4
+  padding: 111px 0 113px
+  background-color: $color1
+  &__container
+  &__top
+    margin: 0 0 72px
+    max-width: 880px
+  &__label
+    margin-bottom: 29px
+  &__title
+    margin-bottom: 58px
+  &__list
+    display: flex
+    margin: 0 -30px 22px
+    &-more
+      text-align: center
+      &-btn::after
+        background: $white
+        
+  &__item
+    flex: 1 0 25%
+    padding: 0 30px
+    &-icon
+      margin-bottom: 20px
+      height: 80px
+      img
+        transition: transform .3s ease
+        &:hover
+          transform: scale(1.15)
+      
+    h5
+      margin-bottom: 20px
+      +f('gil-800', 18, 24)
+      color: $white
+    &-descr

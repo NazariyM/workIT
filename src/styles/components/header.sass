@@ -1,0 +1,74 @@
+.header
+  $parent: &
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: 99
+  background-color: $color1
+  transition: background-color .4s ease
+  &.is-fixed
+    background-color: $white
+    .nav a
+      color: $color3
+      .no-touch &:hover .icon-user__top
+        stroke: $color1
+    .icon-user__top
+      stroke: $color2
+    .icon-user__bot
+      stroke: $color1
+    .lang > ul::before
+      background-color: $color1
+    .lang > ul ul
+      background: $color1
+    .lang a
+      .no-touch &:hover
+        color: $white
+    .header__btn,
+    .header__btn::after
+      background: $color1
+      
+  &__container
+    display: flex
+    align-items: center
+    justify-content: space-between
+    max-width: 1310px
+    height: 60px
+  &__logo
+    flex: 0 0 204px
+    height: 100%
+    background: $color2
+  &__btn
+    flex: 0 0 192px
+    min-width: 0
+    transition: .4s ease
+    &::after
+      transition: .4s ease
+  &__lang
+    margin: 0 62px 0 6px
+
+.nav
+  ul
+    display: flex
+    li
+      padding: 0 27px
+      a
+        +f('gil-800', 12)
+        text-transform: uppercase
+        color: $white
+        transition: color .4s ease
+        .no-touch &:hover
+          color: $color2
+        .no-touch &:hover .icon-user__top
+          stroke: $white
+        .no-touch &:hover .icon-user__bot
+          stroke: $color2
+      .icon-user
+        margin-right: 9px
+        vertical-align: -3px
+        &__top
+          stroke: $color2
+        &__bot
+          stroke: $white
+        use
+          +trs

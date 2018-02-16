@@ -1,0 +1,54 @@
+if block4 ? block4 : block4 = []
+
+//begin block-4
++b.SECTION.block-4(class= block4.classMod ? block4.classMod : '')
+	+e.container.container
+		+e.top.block-top
+			+e.label.block-label
+				+e.P what we have
+			+e.title.h2.has-selection._black.is-selected
+				+e.H2 У нас
+					b есть все
+					= ' '
+					| и даже больше
+			+b.block-sub-title
+				+e.H5 Мы с большим вниманием относимся к организации рабочего пространства и понимаем потребности наших резидентов. Мы не хвастаемся быстрым интернетом и принтерами, потому что это есть во всех коворкингах. Мы гордимся тем, что у нас есть все и даже больше —
+					b собственный массажист
+					= ' '
+					| и
+					= ' '
+					b бариста, HR менеджеры и неповторимая атмосфера.
+
+		+e.list
+			-
+				block4List = [{
+					icon: 'hex-square',
+					title: 'Эргономика и продуктивность',
+					descr: 'Мы создадим пространство для вашей команды - оборудуем, перекрасим, передвинем, купим нужную мебель и забрендируем.'
+				}, {
+					icon: 'square-circle',
+					title: 'Креативность',
+					descr: 'Уютное, тихое место для работы.  Много пространства и воздуха.'
+				}, {
+					icon: 'double-circles',
+					title: 'Отельные комнаты',
+					descr: 'Комнаты для переговоров, собраний, обустроены большими экранами и проэкторами.'
+				}, {
+					icon: 'cocktail',
+					title: 'Отдых и здоровье',
+					descr: 'Очень щепетилен в выборе зерен и технологии приготовления, настоящий фанат кофе.'
+				}]
+
+			mixin block4Item(item)
+				+e.item
+					+e.item-icon
+						+e.IMG(src=`/static/img/icon-${item.icon}.svg` alt='image')
+					+e.H5= item.title
+					p= item.descr
+			each item in block4List
+				+block4Item(item)
+
+		+e.list-more
+			+e.BUTTON.list-more-btn.btn._line(type='button') хочу еще
+
+//end block-4

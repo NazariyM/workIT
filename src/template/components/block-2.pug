@@ -1,0 +1,47 @@
+if block2 ? block2 : block2 = []
+if block2.title ? block2.title : block2.title = ''
+
+//begin block-2
++b.SECTION.block-2.gray-bg(class= block2.classMod ? block2.classMod : '')
+	+e.container.container
+		+e.top.block-top
+			+b.block-label
+				+e.P ABOUT US
+			+e.title.h2.has-selection._green.is-selected
+				+e.H2 Спроектирован на основе
+					b human-centered
+					= ' '
+					| design от Google
+
+		+e.content
+			+e.text
+				+e.P Когда мы устали искать место, в котором нам было бы комфортно работать, мы решили создать его сами. Нас восхищали коворкинги
+					b Амстердама
+					= ' '
+					| и
+					b Бостона,
+					= ' '
+					| но особенно впечатлил офис Google в
+					= ' '
+					b Майнтин Вью.
+					= ' '
+					| Именно тогда родилась идея создать что-то подобное и в Украине - так появился
+					b Work IT
+
+			+b.slider.block-2__slider
+				+e.body.js-slider
+					-i = 0
+					while i < 3
+						+e.item
+							+e.media.img-hover
+								+e.media-img.img-hover__item(style='background-image: url(/static/img/block-2_1.jpg)')
+						-i++
+
+				+e.controls
+					+e.buttons
+					+e.count
+						+e.SPAN.count-current
+						+e.count-decor
+						+e.SPAN.count-all
+
+//end block-2

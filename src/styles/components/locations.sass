@@ -1,0 +1,48 @@
+.locations
+  padding: 110px 0 0
+  &__container
+    max-width: 1310px
+    padding: 0 15px
+  &__top
+    max-width: 1160px
+    margin: 0 auto 57px
+  &__label
+    margin-bottom: 28px
+  &__inner
+    display: flex
+    align-items: flex-start
+  &__map
+    flex: 0 1 percentage(914/1280)
+    height: 367px
+    margin-bottom: -38px
+  &__text
+    flex: 1 0 auto
+    padding: 50px 0 0 64px
+    h6
+      margin-bottom: 25px
+      +f('rob-700', 16, 30)
+      text-transform: uppercase
+  &__socials
+    margin-top: 22px
+    font-size: 0
+    p
+      margin-bottom: 17px
+      font-size: 16px
+    a
+      display: inline-block
+      vertical-align: middle
+      line-height: 1
+      &:not(:last-child)
+        margin-right: 31px
+      .no-touch &:hover .icon
+        fill: $color1
+      .icon
+        +trs
+    &-mail
+      width: 41px
+      height: 9px
+      margin: -2px 0 0 -8px
+      background-color: $color1
+      +trs
+      .no-touch &:hover
+        background-color: $color2

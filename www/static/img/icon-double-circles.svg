@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="79" height="55"
+     viewBox="0 0 81 58">
+    <defs>
+        <path id="l8kra"
+              d="M721.88 4472c14.98 0 27.12 12.31 27.12 27.5s-12.14 27.5-27.12 27.5c-14.99 0-27.13-12.31-27.13-27.5s12.14-27.5 27.13-27.5z"/>
+        <path id="l8krb"
+              d="M697.12 4472c14.99 0 27.13 12.31 27.13 27.5s-12.14 27.5-27.13 27.5c-14.98 0-27.12-12.31-27.12-27.5s12.14-27.5 27.12-27.5z"/>
+        <clipPath id="l8krc">
+            <use fill="#fff" xlink:href="#l8kra"/>
+        </clipPath>
+        <clipPath id="l8krd">
+            <use fill="#fff" xlink:href="#l8krb"/>
+        </clipPath>
+    </defs>
+    <g>
+        <g transform="translate(-669 -4470)">
+            <use fill="#fff" fill-opacity="0" stroke="#001011" stroke-miterlimit="50" stroke-width="4"
+                 clip-path="url(&quot;#l8krc&quot;)" xlink:href="#l8kra"/>
+        </g>
+        <g transform="translate(-669 -4470)">
+            <use fill="#fff" fill-opacity="0" stroke="#fff" stroke-miterlimit="50" stroke-width="4"
+                 clip-path="url(&quot;#l8krd&quot;)" xlink:href="#l8krb"/>
+        </g>
+    </g>
+</svg>

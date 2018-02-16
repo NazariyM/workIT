@@ -1,0 +1,65 @@
+if block8 ? block8 : block8 = []
+if block8.title ? block8.title : block8.title = ''
+
+//begin block-8
++b.SECTION.block-8(class= block8.classMod ? block8.classMod : '')
+	+e.container.container
+		+e.top.block-top
+			+e.label.block-label
+				+e.P services
+
+			+e.title.h2.has-selection._green.is-selected
+				+e.H2 Дополнительные
+					b возможности
+
+			+b.block-sub-title
+				+e.H5 Бывают ситуации, когда вам срочно нужна помощь
+					b юриста
+					= ' '
+					| или
+					b бухгалтера.
+					= ' '
+					| Мы это понимаем и поэтому
+					b даем возможность
+					= ' '
+					| нашим резидентам
+					b нанять
+					= ' '
+					| любого специалиста на несколько часов.
+
+		+e.list
+			-
+				block8List = [{
+				icon: 'man',
+				title: 'Услуги HR',
+				descr: 'Наши HR специалисты помогут подобрать идельных сотрудников'
+				}, {
+				icon: 'hammer',
+				title: 'Услуги юриста',
+				descr: 'Решайте  все юредические вопросы на месте'
+				}, {
+				icon: 'dialogue',
+				title: 'Услуги Consulting',
+				descr: 'Команда бизнес-консультантов дадут советы по развитию бизнеса'
+				}, {
+				icon: 'percent',
+				title: 'Услуги бухгалтера',
+				descr: 'Помогут вести счета,  документацию и налоговою отчетность'
+				}]
+
+			mixin block8Item(item)
+				+e.item
+					+e.item-icon
+						+e.IMG(src=`/static/img/icon-${item.icon}.svg` alt='image')
+					+e.item-title.h5
+						+e.H5= item.title
+					p= item.descr
+			each item in block8List
+				+block8Item(item)
+
+		+e.list-more
+			+e.BUTTON.list-more-btn.btn._line(type='button') еще услуги
+
+
+
+//end block-8

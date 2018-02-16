@@ -1,0 +1,42 @@
+.footer
+  padding: 60px 0 47px
+  &__container
+    display: flex
+    align-items: flex-start
+    margin: 0 auto 20px
+    
+  &__nav-list
+    padding-left: 100px
+    margin-top: -5px
+    //column-gap: 90px
+    ul
+      column-count: 2
+      column-width: 220px
+      li
+        padding-right: 50px
+        a
+          +f('gil-800', 12, 30)
+          text-transform: uppercase
+          text-decoration: none
+          letter-spacing: 0.1em
+          color: $color3
+          +trs
+          .no-touch &:hover
+            color: $color1
+  &__contact
+    margin-left: -15px
+    margin-top: -3px
+    p
+      +f('rob-400')
+      color: $color3
+      
+  &__socials
+    margin-top: 5px
+    margin-left: auto
+  &__addition
+    display: flex
+    justify-content: space-between
+  
+    p
+      +f('rob-400')
+      color: $color4

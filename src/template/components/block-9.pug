@@ -1,0 +1,36 @@
+if block9 ? block9 : block9 = []
+if block9.title ? block9.title : block9.title = 'Хочешь увидеть всё своими глазами? Приходи в гости!'
+
+//begin block-9
++b.SECTION.block-9.gray-bg(class= block9.classMod ? block9.classMod : '')
+	+e.container.container
+		+e.top.block-top
+			+e.label.block-label
+				+e.P reviews
+			+e.title.h2.has-selection._green.is-selected
+				+e.H2
+					b Отзывы
+					= ' '
+					| о workit
+
+		+b.slider._full.block-9__slider
+			+e.body.js-slider
+				-i = 0
+				while i < 3
+					+e.item
+						+e.text
+							+e.H4 Макс Фрай
+							+e.H5 CEO Koin
+							+e.P Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере. Кроме того, можно расширить пространство по мере роста вашей команды.
+						+e.media.img-hover
+							+e.media-img.img-hover__item(style='background-image: url(/static/img/block-9_1.jpg)')
+					-i++
+
+			+e.controls
+				+e.buttons
+				+e.count
+					+e.SPAN.count-current
+					+e.count-decor
+					+e.SPAN.count-all
+
+//end block-9

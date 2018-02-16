@@ -1,0 +1,19 @@
+if socials ? socials : socials = []
+if socials.title ? socials.title : socials.title = 'Подписаться'
+
++b.socials(class= socials.classMod ? socials.classMod : '')
+  +e.P Подписаться
+  +e.links
+    +e.A(href='#!' target='_blank')
+      svg.icon.icon-fb(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 8 16', style='enable-background:new 0 0 8 16;', xml:space='preserve')
+        path(d='M1.9,3.3C1.9,3.7,2,5,2,5H0v3h2v8h3l0-8h2l1-3H5c0,0,0-1.1,0-1.4C5,3.4,5.3,3,5.6,3c0.3,0,1,0,1.7,0c0-0.4,0-1.6,0-2.8\
+        c-0.9,0-1.8,0-2.3,0C1.8,0.2,1.9,2.9,1.9,3.3z')
+
+    +e.A(href='#!' target='_blank')
+      svg.icon.icon-inst(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 81 81')
+        path(d='M0,11V70A11,11,0,0,0,11,81H70A11,11,0,0,0,81,70V11A11,11,0,0,0,70,0H11A11,11,0,0,0,0,11ZM55.22,57.24c-23,15.38-47.84-9.43-32.46-32.46a10.93,10.93,0,0,1,3-3c23-15.38,47.84,9.43,32.46,32.46A10.93,10.93,0,0,1,55.22,57.24Z')
+
+    +e.A(href='#!' target='_blank')
+      svg.icon.icon-yt(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 15 11', style='enable-background:new 0 0 15 11;', xml:space='preserve')
+        path(d='M15,2.3C15,1.1,14,0,12.8,0H2.2C1,0,0,1.1,0,2.3v6.3C0,9.9,1,11,2.2,11h10.5C14,11,15,9.9,15,8.7V2.3z M6,8.2V2.2l4.3,3\
+        L6,8.2z')

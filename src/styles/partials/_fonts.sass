@@ -1,0 +1,36 @@
+//fonts
+=font($alias, $name)
+	@font-face
+		font-family: $alias
+		src: url("../fonts/" + $name + ".eot")
+		src: url("../fonts/" + $name + ".eot?#iefix") format("embedded-opentype"), url("../fonts/" + $name + ".woff") format("woff"), url("../fonts/" + $name + ".woff2") format("woff2"), url("../fonts/" + $name + ".ttf") format("truetype")
+		font-weight: normal
+		font-style: normal
+
++font('Gilroy-Light', 'Gilroy-Light')
++font('Gilroy-ExtraBold', 'Gilroy-ExtraBold')
++font('Roboto-Light', 'Roboto-Light')
++font('Roboto-Regular', 'Roboto-Regular')
++font('Roboto-Bold', 'Roboto-Bold')
+
+=f($name, $font-size: null, $line-height: null, $letter-spacing: null)
+	$font-family: null
+	@if $name == "gil-300"
+		$font-family: "Gilroy-Light"
+	@if $name == "gil-800"
+		$font-family: "Gilroy-ExtraBold"
+	@if $name == "rob-300"
+		$font-family: "Roboto-Light"
+	@if $name == "rob-400"
+		$font-family: "Roboto-Regular"
+	@if $name == "rob-700"
+		$font-family: "Roboto-Bold"
+	font-family: $font-family, Arial, sans-serif
+	@if $font-family != null
+		font-weight: normal
+	@if $font-size != null
+		font-size: $font-size * 1px
+	@if $line-height != null
+		line-height: $line-height * 1px
+	@if $letter-spacing != null
+		letter-spacing: ($letter-spacing / 1000) * 1em

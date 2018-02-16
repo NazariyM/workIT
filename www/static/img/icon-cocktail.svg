@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="65" height="59"
+     viewBox="0 0 65 59">
+    <defs>
+        <path id="27lsa" d="M1007.5 4506l-30.5-35h61z"/>
+        <path id="27lsb" d="M1007 4525v-20h2v20z"/>
+        <path id="27lsc" d="M998 4527v-2h20v2z"/>
+        <clipPath id="27lsd">
+            <use fill="#fff" xlink:href="#27lsa"/>
+        </clipPath>
+        <clipPath id="27lse">
+            <use fill="#fff" xlink:href="#27lsb"/>
+        </clipPath>
+        <clipPath id="27lsf">
+            <use fill="#fff" xlink:href="#27lsc"/>
+        </clipPath>
+    </defs>
+    <g>
+        <g transform="translate(-975 -4469)">
+            <use fill="none" xlink:href="#27lsa"/>
+            <use fill="#fff" fill-opacity="0" stroke="#000" stroke-miterlimit="50" stroke-width="4"
+                 clip-path="url(&quot;#27lsd&quot;)" xlink:href="#27lsa"/>
+        </g>
+        <g transform="translate(-975 -4469)">
+            <use fill="#fff" fill-opacity="0" stroke="#fff" stroke-miterlimit="50" stroke-width="4"
+                 clip-path="url(&quot;#27lse&quot;)" xlink:href="#27lsb"/>
+        </g>
+        <g transform="translate(-975 -4469)">
+            <use fill="#fff" fill-opacity="0" stroke="#fff" stroke-miterlimit="50" stroke-width="4"
+                 clip-path="url(&quot;#27lsf&quot;)" xlink:href="#27lsc"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link href="static/css/index.css" rel="stylesheet">
+    <link rel="icon" href="static/favicon.png">
+  </head>
+  <body>
+    <!-- SVG-->
+    <div class="svg-container" style="position: absolute; width: 0; height: 0; overflow: hidden;">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+          <path id="a" d="M1007.5 4506l-30.5-35h61z" />
+          <path id="b" d="M1007 4525v-20h2v20z" />
+          <path id="c" d="M998 4527v-2h20v2z" />
+          <clipPath id="d">
+            <use xlink:href="#a" />
+          </clipPath>
+          <clipPath id="e">
+            <use xlink:href="#b" />
+          </clipPath>
+          <clipPath id="f">
+            <use xlink:href="#c" />
+          </clipPath>
+          <path id="a" d="M721.88 4472c14.98 0 27.12 12.31 27.12 27.5s-12.14 27.5-27.12 27.5c-14.99 0-27.13-12.31-27.13-27.5s12.14-27.5 27.13-27.5z" />
+          <path id="b" d="M697.12 4472c14.99 0 27.13 12.31 27.13 27.5s-12.14 27.5-27.13 27.5c-14.98 0-27.12-12.31-27.12-27.5s12.14-27.5 27.12-27.5z" />
+          <clipPath id="c">
+            <use xlink:href="#a" />
+          </clipPath>
+          <clipPath id="d">
+            <use xlink:href="#b" />
+          </clipPath>
+          <path id="a" d="M135 4492.5l-19 33.5H78l-19-33.5 19-33.5h38z" />
+          <path id="b" d="M80 4509v-34h34v34z" />
+          <clipPath id="c">
+            <use xlink:href="#a" />
+          </clipPath>
+          <clipPath id="d">
+            <use xlink:href="#b" />
+          </clipPath>
+          <path id="a" d="M364 4527v-65h65v65z" />
+          <path id="b" d="M397 4477a18 18 0 1 1 0 36 18 18 0 0 1 0-36z" />
+          <clipPath id="c">
+            <use xlink:href="#a" />
+          </clipPath>
+          <clipPath id="d">
+            <use xlink:href="#b" />
+          </clipPath>
+        </defs>
+        <symbol id="icon-aviation" viewBox="0 0 41.29 40.61">
+          <title>Aviation</title>
+          <g data-name="Layer 2">
+            <g data-name="Layer 5">
+              <path d="M41.29 37.95L29.58 30.7V19.04l11.71 7.25v11.66z" />
+              <path d="M0 36.97l11.71-6.27V19.04L0 25.3v11.67z" />
+              <path d="M26.56 8.24C26.36 3.64 23.79 0 20.65 0s-5.71 3.64-5.92 8.24v32.37h11.85V8.26z" />
+            </g>
+          </g>
+        </symbol>
+        <symbol id="icon-cocktail" viewBox="0 0 65 59">
+          <g transform="translate(-975 -4469)">
+            <use xlink:href="#a" />
+            <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#d&quot;)" xlink:href="#a" />
+          </g>
+          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#e&quot;)" xlink:href="#b" transform="translate(-975 -4469)" />
+          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#f&quot;)" xlink:href="#c" transform="translate(-975 -4469)" />
+        </symbol>
+        <symbol id="icon-double-circles" viewBox="0 0 81 58">
+          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#c&quot;)" xlink:href="#a" transform="translate(-669 -4470)" />
+          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#d&quot;)" xlink:href="#b" transform="translate(-669 -4470)" />
+        </symbol>
+        <symbol id="icon-hex-square" viewBox="0 0 78 71">
+          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#c&quot;)" xlink:href="#a" transform="translate(-58 -4457)" />
+          <g transform="translate(-58 -4457)">
+            <use xlink:href="#b" />
+            <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#d&quot;)" xlink:href="#b" />
+          </g>
+        </symbol>
+        <symbol id="icon-square-circle" viewBox="0 0 68 68">
+          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#c&quot;)" xlink:href="#a" transform="translate(-362 -4460)" />
+          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#d&quot;)" xlink:href="#b" transform="translate(-362 -4460)" />
+        </symbol>
+      </svg>
+    </div>
+    <!--begin preloader-->
+    <div class="preloader">
+      <svg class="preloader__img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 807.02 205.05">
+        <path fill="#041718" d="M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z"></path>
+        <path fill="#041718" d="M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z"></path>
+        <path fill="#041718" d="M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z"></path>
+        <polygon fill="#041718" points="583.05 130.46 625.1 72 570.95 72 535.53 128.16 535.53 0 492.33 0 492.33 201.6 535.53 201.6 535.53 139.68 575.85 201.6 631.15 201.6 583.05 130.46"></polygon>
+        <path fill="#fff" d="M671.78,2.88c-14.11,0-26.21,9.22-26.21,24.48,0,17,12.1,26.21,26.21,26.21,12.38,0,24.48-9.22,24.48-26.21C696.26,12.1,684.16,2.88,671.78,2.88Z"></path>
+        <rect fill="#fff" x="649.32" y="72" width="43.2" height="129.6"></rect>
+        <path fill="#fff" d="M794.06,157.25c-4.61,3.46-10.08,7.49-19.3,7.49-5.76,0-8.35-6.62-8.35-14.4v-38h36V72h-36V36h-43.2V152.35c0,33.12,10.94,52.7,40.32,52.7,19.29,0,34.85-7.2,43.49-14.69Z"></path>
+      </svg>
+    </div>
+    <!--end preloader-->
+    <!-- picture element HTML5 shiv-->
+    <script>
+      document.createElement('picture');
+    </script>
+    <!-- Header-->
+    <!--begin header-->
+    <header class="header">
+      <div class="header__container container">
+        <a class="header__logo logo" href="#!">
+          <svg class="logo__img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 807.02 205.05">
+            <path fill="#00d88e" d="M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z"></path>
+            <path fill="#00d88e" d="M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z"></path>
+            <path fill="#00d88e" d="M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z"></path>
+            <polygon fill="#00d88e" points="583.05 130.46 625.1 72 570.95 72 535.53 128.16 535.53 0 492.33 0 492.33 201.6 535.53 201.6 535.53 139.68 575.85 201.6 631.15 201.6 583.05 130.46"></polygon>
+            <path fill="#fff" d="M671.78,2.88c-14.11,0-26.21,9.22-26.21,24.48,0,17,12.1,26.21,26.21,26.21,12.38,0,24.48-9.22,24.48-26.21C696.26,12.1,684.16,2.88,671.78,2.88Z"></path>
+            <rect fill="#fff" x="649.32" y="72" width="43.2" height="129.6"></rect>
+            <path fill="#fff" d="M794.06,157.25c-4.61,3.46-10.08,7.49-19.3,7.49-5.76,0-8.35-6.62-8.35-14.4v-38h36V72h-36V36h-43.2V152.35c0,33.12,10.94,52.7,40.32,52.7,19.29,0,34.85-7.2,43.49-14.69Z"></path>
+          </svg>
+        </a>
+        <div class="header__nav nav">
+          <ul>
+            <li>
+              <a href="#!">о нас</a>
+            </li>
+            <li>
+              <a href="#!">локации</a>
+            </li>
+            <li>
+              <a href="#!">Тарифы</a>
+            </li>
+            <li>
+              <a href="#!">мероприятия</a>
+            </li>
+            <li>
+              <a href="#!">контакты</a>
+            </li>
+            <li>
+              <a href="#!">
+                <svg class="icon-user" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="13" height="19" viewbox="0 0 13 19">
+                  <defs>
+                    <path id="myi1a" d="M835 3780a5 5 0 0 1 5-5h1a5 5 0 0 1 5 5v6h-11z"></path>
+                    <path id="myi1b" d="M840.52 3769a4.93 4.93 0 0 1 4.85 5c0 2.76-2.17 5-4.85 5a4.93 4.93 0 0 1-4.86-5c0-2.76 2.17-5 4.86-5z"></path>
+                    <clippath id="myi1c">
+                      <use fill="#fff" xlink:href="#myi1a"></use>
+                    </clippath>
+                    <clippath id="myi1d">
+                      <use fill="#fff" xlink:href="#myi1b"></use>
+                    </clippath>
+                  </defs>
+                  <g>
+                    <g transform="translate(-834 -3768)">
+                      <g>
+                        <use class="icon-user__bot" fill="#fff" fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#myi1c&quot;)" xlink:href="#myi1a"></use>
+                      </g>
+                      <g>
+                        <use class="icon-user__top" fill="#fff" fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#myi1d&quot;)" xlink:href="#myi1b"></use>
+                      </g>
+                    </g>
+                  </g>
+                </svg>войти</a>
+            </li>
+          </ul>
+        </div>
+        <button class="header__btn btn btn_white" type="button">
+          <span>ПРИЙТИ В ГОСТИ</span>
+        </button>
+        <div class="header__lang lang">
+          <ul>
+            <li>
+              <a href="#!">ru</a>
+              <ul>
+                <li>
+                  <a href="#!">ukr</a>
+                </li>
+                <li>
+                  <a href="#!">en</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!--end header-->
+    <!-- Main content-->
+    <main class="content" data-page="home">
+      <!--begin screen-->
+      <section class="screen">
+        <div class="screen__container container">
+          <h1>Намного больше, чем пространство</h1>
+          <h5>Место, где рождаются идеи</h5>
+          <button class="screen__btn btn btn_green" type="button">
+            <span>хочу в гости</span>
+          </button>
+        </div>
+        <!--svg.img-blur(version='1.1', xmlns='http://www.w3.org/2000/svg')-->
+        <!--  filter#img-blur-->
+        <!--    fegaussianblur(in='SourceGraphic', stddeviation='3')-->
+        <!--  image(xlink:href='/static/img/blured.jpeg', x='0', y='0' filter='url(#img-blur)')-->
+        <div class="screen__img" style="background-image: url(static/img/screen.jpg);"></div>
+        <!--+e.VIDEO-->
+        <div class="screen__more">
+          <span class="screen__more-text h6">узнать больше</span>
+          <svg class="screen__more-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 93.06 42.5">
+            <polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"></polygon>
+          </svg>
+        </div>
+      </section>
+      <!--end screen-->
+      <!--begin block-2-->
+      <section class="block-2 gray-bg">
+        <div class="block-2__container container">
+          <div class="block-2__top block-top">
+            <div class="block-label">
+              <p>ABOUT US</p>
+            </div>
+            <div class="block-2__title h2 has-selection has-selection_green is-selected">
+              <h2>Спроектирован на основе
+                <b>human-centered</b> design от Google</h2>
+            </div>
+          </div>
+          <div class="block-2__content">
+            <div class="block-2__text">
+              <p>Когда мы устали искать место, в котором нам было бы комфортно работать, мы решили создать его сами. Нас восхищали коворкинги
+                <b>Амстердама</b> и
+                <b>Бостона,</b> но особенно впечатлил офис Google в
+                <b>Майнтин Вью.</b> Именно тогда родилась идея создать что-то подобное и в Украине - так появился
+                <b>Work IT</b>
+              </p>
+            </div>
+            <div class="slider block-2__slider">
+              <div class="slider__body js-slider">
+                <div class="slider__item">
+                  <div class="slider__media img-hover">
+                    <div class="slider__media-img img-hover__item" style="background-image: url(/static/img/block-2_1.jpg);"></div>
+                  </div>
+                </div>
+                <div class="slider__item">
+                  <div class="slider__media img-hover">
+                    <div class="slider__media-img img-hover__item" style="background-image: url(/static/img/block-2_1.jpg);"></div>
+                  </div>
+                </div>
+                <div class="slider__item">
+                  <div class="slider__media img-hover">
+                    <div class="slider__media-img img-hover__item" style="background-image: url(/static/img/block-2_1.jpg);"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="slider__controls">
+                <div class="slider__buttons"></div>
+                <div class="slider__count">
+                  <span class="slider__count-current"></span>
+                  <div class="slider__count-decor"></div>
+                  <span class="slider__count-all"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--end block-2-->
+      <!--begin block-3-->
+      <section class="block-3">
+        <div class="block-3__container container">
+          <div class="block-3__top block-top">
+            <div class="block-3__label block-label">
+              <p>who we are</p>
+            </div>
+            <div class="block-3__title h2 has-selection has-selection_green">
+              <h2>В
+                <b>workit</b> есть все для продуктивной работы</h2>
+            </div>
+          </div>
+          <div class="block-3__item block-3__item_left">
+            <div class="block-3__item-inner">
+              <div class="block-3__item-media img-hover">
+                <div class="block-3__item-img img-hover__item" style="background-image: url(/static/img/block-3_1.jpg);"></div>
+                <!--+e.VIDEO.item-video(autoplay loop muted)-->
+                <!--	source(src="static/video/block-3_sample.mp4" type='video/mp4')-->
+              </div>
+              <div class="block-3__item-text">
+                <h3>фонд workit</h3>
+                <p>Расти и развивайся вместе с нами. Посещай вдохновляющие
+                  <b>лекции, тренинги, семинары,</b> знакомься с лучшими и находи
+                  <b>единомышленников.</b> Записывайся на курсы английского языка. Читай книги и журналы в
+                  <b>библиотеке</b> Work IT.</p>
+              </div>
+            </div>
+            <div class="block-3__item-count">
+              <div class="block-3__item-count-el block-3__item-count-el_1"></div>
+            </div>
+          </div>
+          <div class="block-3__item block-3__item_right">
+            <div class="block-3__item-inner">
+              <div class="block-3__item-text">
+                <h3>поддержка бизнеса</h3>
+                <p>
+                  <b>Размер рабочего пространства</b> имеет значение. Поэтому мы позаботились о том, чтобы каждое рабочее место занимало как
+                  <b>минимум 7 кв м.</b> Поставили большие столы и удобные стулья, спроектировали высокие потолки. Уделили особое внимание освещению и
+                  <b>“умному” зонированию</b> пространства.</p>
+              </div>
+              <div class="block-3__item-media img-hover">
+                <div class="block-3__item-img img-hover__item" style="background-image: url(/static/img/block-3_2.jpg);"></div>
+              </div>
+            </div>
+            <div class="block-3__item-count">
+              <div class="block-3__item-count-el block-3__item-count-el_2"></div>
+            </div>
+          </div>
+          <div class="block-3__item block-3__item_left">
+            <div class="block-3__item-inner">
+              <div class="block-3__item-media img-hover">
+                <div class="block-3__item-img img-hover__item" style="background-image: url(/static/img/block-3_3.jpg);"></div>
+                <!--+e.VIDEO.item-video(autoplay loop muted)-->
+                <!--	source(src="static/video/block-3_sample.mp4" type='video/mp4')-->
+              </div>
+              <div class="block-3__item-text">
+                <h3>комьюнити</h3>
+                <p>У нас есть running club,
+                  <b>комната для йоги</b> и медитации,
+                  <b>массажист,</b> душевые кабинки. Установлены SAD лампы, стимулирующие выработку витамина D. На кухне орудует
+                  <b>бариста</b> и всегда ждут полезные снеки. Есть PlayStation, мастерская, кинотеатр, библиотека, велосипеды и сегвеи,
+                  <b>комнаты для сна</b> и ночевки, BBQ терраса. А еще мы любим животных и очень им рады.</p>
+              </div>
+            </div>
+            <div class="block-3__item-count">
+              <div class="block-3__item-count-el block-3__item-count-el_3"></div>
+            </div>
+          </div>
+          <div class="block-3__item block-3__item_right">
+            <div class="block-3__item-inner">
+              <div class="block-3__item-text">
+                <h3>пространство</h3>
+                <p>
+                  <b>Размер рабочего пространства</b> имеет значение. Поэтому мы позаботились о том, чтобы каждое рабочее место занимало как
+                  <b>минимум 7 кв м.</b> Поставили большие столы и удобные стулья, спроектировали высокие потолки. Уделили особое внимание освещению и
+                  <b>“умному” зонированию</b> пространства.</p>
+              </div>
+              <div class="block-3__item-media img-hover">
+                <div class="block-3__item-img img-hover__item" style="background-image: url(/static/img/block-3_4.jpg);"></div>
+              </div>
+            </div>
+            <div class="block-3__item-count">
+              <div class="block-3__item-count-el block-3__item-count-el_4"></div>
+            </div>
+          </div>
+          <div class="block-3__lines">
+            <div class="block-3__line block-3__line_left"></div>
+            <div class="block-3__line block-3__line_right"></div>
+          </div>
+        </div>
+      </section>
+      <!--end block-3-->
+      <!--begin block-4-->
+      <section class="block-4">
+        <div class="block-4__container container">
+          <div class="block-4__top block-top">
+            <div class="block-4__label block-label">
+              <p>what we have</p>
+            </div>
+            <div class="block-4__title h2 has-selection has-selection_black is-selected">
+              <h2>У нас
+                <b>есть все</b> и даже больше</h2>
+            </div>
+            <div class="block-sub-title">
+              <h5>Мы с большим вниманием относимся к организации рабочего пространства и понимаем потребности наших резидентов. Мы не хвастаемся быстрым интернетом и принтерами, потому что это есть во всех коворкингах. Мы гордимся тем, что у нас есть все
+                и даже больше —
+                <b>собственный массажист</b> и
+                <b>бариста, HR менеджеры и неповторимая атмосфера.</b>
+              </h5>
+            </div>
+          </div>
+          <div class="block-4__list">
+            <div class="block-4__item">
+              <div class="block-4__item-icon">
+                <img src="/static/img/icon-hex-square.svg" alt="image" title="" />
+              </div>
+              <h5>Эргономика и продуктивность</h5>
+              <p>Мы создадим пространство для вашей команды - оборудуем, перекрасим, передвинем, купим нужную мебель и забрендируем.</p>
+            </div>
+            <div class="block-4__item">
+              <div class="block-4__item-icon">
+                <img src="/static/img/icon-square-circle.svg" alt="image" title="" />
+              </div>
+              <h5>Креативность</h5>
+              <p>Уютное, тихое место для работы. Много пространства и воздуха.</p>
+            </div>
+            <div class="block-4__item">
+              <div class="block-4__item-icon">
+                <img src="/static/img/icon-double-circles.svg" alt="image" title="" />
+              </div>
+              <h5>Отельные комнаты</h5>
+              <p>Комнаты для переговоров, собраний, обустроены большими экранами и проэкторами.</p>
+            </div>
+            <div class="block-4__item">
+              <div class="block-4__item-icon">
+                <img src="/static/img/icon-cocktail.svg" alt="image" title="" />
+              </div>
+              <h5>Отдых и здоровье</h5>
+              <p>Очень щепетилен в выборе зерен и технологии приготовления, настоящий фанат кофе.</p>
+            </div>
+          </div>
+          <div class="block-4__list-more">
+            <button class="block-4__list-more-btn btn btn_line" type="button">хочу еще</button>
+          </div>
+        </div>
+      </section>
+      <!--end block-4-->
+      <!--begin block-5-->
+      <section class="block-5 black-bg">
+        <div class="block-5__container container">
+          <div class="block-5__top block-top">
+            <div class="block-5__label block-label">
+              <p>locations</p>
+            </div>
+            <div class="block-5__title h2">
+              <h2>Локации</h2>
+            </div>
+          </div>
+          <div class="block-5__list">
+            <div class="block-5__item">
+              <div class="block-5__item-img-wrap img-hover">
+                <div class="block-5__item-img img-hover__item" style="background-image: url(/static/img/block-5_1.jpg);"></div>
+              </div>
+              <div class="block-5__item-text">
+                <div class="block-5__item-title h4">
+                  <h4>Нивки</h4>
+                </div>
+                <p>Это креативное рабочее пространство, идеально обустроенно для работы, получения новых знаний и отдыха в кругу интересных людей. Расположен в
+                  <b>парке возле метро Нивки</b>
+                </p>
+                <a class="block-5__item-more btn btn_line" href="#!">узнать больше</a>
+              </div>
+            </div>
+            <div class="block-5__item">
+              <div class="block-5__item-img-wrap img-hover">
+                <div class="block-5__item-img img-hover__item" style="background-image: url(/static/img/block-5_2.jpg);"></div>
+              </div>
+              <div class="block-5__item-text">
+                <div class="block-5__item-title h4">
+                  <h4>Центр</h4>
+                </div>
+                <p>Rреативное рабочее пространство, идеально обустроенно для работы, получения новых знаний и отдыха в кругу интересных людей.
+                  <b>Расположен в самом центре.</b>
+                </p>
+                <a class="block-5__item-more btn btn_line" href="#!">узнать больше</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--end block-5-->
+      <!--begin block-6-->
+      <section class="block-6">
+        <div class="block-6__container container">
+          <div class="block-6__top block-top">
+            <div class="block-6__label block-label">
+              <p>prices</p>
+            </div>
+            <div class="block-6__title h2 has-selection has-selection_green is-selected">
+              <h2>
+                <b>Тарифы</b> для early birds</h2>
+            </div>
+            <div class="block-6__sub-title block-sub-title">
+              <h5>Нужен рабочий стол, небольшой офис или целая штаб-квартира?
+                <b>Организация рабочего пространства</b> — это зона нашей ответственности. Мы
+                <b>точно найдем</b> что вам предложить.</h5>
+            </div>
+            <svg class="block-6__lamps" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 188.65 330.56">
+              <path class="block-6__lamps-wire" fill="#c4d0ce" d="M177.48,0h1V217.28h-1Z"></path>
+              <path class="block-6__lamps-wire" fill="#c4d0ce" d="M82,0h1V325H82Z"></path>
+              <path class="block-6__lamps-wire" fill="#c4d0ce" d="M10.33,0h1V265.56h-1Z"></path>
+              <path fill="#001011" d="M176.55,205.78h2.88v5h-2.87Z"></path>
+              <path fill="#00d88e" d="M188.65,218.87a11.07,11.07,0,0,0-21.53,0Z"></path>
+              <path fill="#001011" d="M9.39,253.66h2.88v5H9.39Z"></path>
+              <path fill="#00d88e" d="M21.53,266.75a11.07,11.07,0,0,0-21.53,0Z"></path>
+              <path fill="#001011" d="M81,317.5h2.84v5H81Z"></path>
+              <path fill="#00d88e" d="M93.15,330.56a11.06,11.06,0,0,0-21.52,0Z"></path>
+            </svg>
+          </div>
+          <div class="block-6__offer">
+            <div class="block-6__offer-text">
+              <h4>Офис мечты</h4>
+              <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере. Кроме
+                того, можно расширить пространство по мере роста вашей команды.</p>
+              <p>Идеально подойдет для небольших компаний. Если вы хотите иметь крутой, стильный офис, просто приходи к нам. А мы поможем организовать ваш переезд.</p>
+              <div class="block-6__price">
+                <h5>Cтоимость от:
+                  <span>200$</span>
+                </h5>
+              </div>
+              <button class="block-6__offer-btn btn btn_green" type="button" data-popup-target="">
+                <span>забронировать</span>
+              </button>
+            </div>
+            <div class="block-6__offer-pic img-hover">
+              <div class="block-6__offer-img img-hover__item" style="background-image: url(/static/img/block-6_offer.jpg);"></div>
+            </div>
+          </div>
+          <div class="block-6__list">
+            <div class="block-6__item">
+              <div class="block-6__item-img img-hover">
+                <img src="static/img/block-6_1.jpg" alt="image" title="" />
+              </div>
+              <div class="block-6__item-text">
+                <div class="block-6__item-title block-6__item-title block-6__item-title_margin h4">
+                  <h4>Место в лаунж зоне</h4>
+                </div>
+                <p>Свободное место в зоне общего пользования. Идеально подойдет для тех, кто любит работать не за столом, а в более расслабленной обстановке.</p>
+                <div class="block-6__price block-6__price_item">
+                  <h5>Cтоимость от:
+                    <span>200$</span>
+                  </h5>
+                </div>
+                <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="">
+                  <span>забронировать</span>
+                </button>
+              </div>
+            </div>
+            <div class="block-6__item">
+              <div class="block-6__item-img img-hover">
+                <img src="static/img/block-6_2.jpg" alt="image" title="" />
+              </div>
+              <div class="block-6__item-text">
+                <div class="block-6__item-title h4">
+                  <h4>Hot desk</h4>
+                </div>
+                <p>Свободное рабочее место в open space. Идеально подойдет для тех, кто не любит сидеть на одном месте. Работать и при желании общаться с окружающими.</p>
+                <div class="block-6__price block-6__price_item">
+                  <h5>Cтоимость от:
+                    <span>200$</span>
+                  </h5>
+                </div>
+                <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="">
+                  <span>забронировать</span>
+                </button>
+              </div>
+            </div>
+            <div class="block-6__item">
+              <div class="block-6__item-img img-hover">
+                <img src="static/img/block-6_3.jpg" alt="image" title="" />
+              </div>
+              <div class="block-6__item-text">
+                <div class="block-6__item-title h4">
+                  <h4>Desk priority</h4>
+                </div>
+                <p>Персональное рабочее место в open space. Для тех, кто любит создавать свое рабочее место. Кто ценит свое личное пространство и совбоду в его организации.</p>
+                <div class="block-6__price block-6__price_item">
+                  <h5>Cтоимость от:
+                    <span>200$</span>
+                  </h5>
+                </div>
+                <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="">
+                  <span>забронировать</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--end block-6-->
+      <!--begin block-7-->
+      <section class="block-7">
+        <div class="block-7__container container">
+          <div class="block-7__top block-top">
+            <div class="block-7__title h3">
+              <h3>Хочешь увидеть всё своими глазами? Приходи в гости!</h3>
+            </div>
+            <button class="block-7__btn btn btn_green" type="button">
+              <span>записаться</span>
+            </button>
+          </div>
+          <div class="block-7__img" style="background-image: url(/static/img/block-7_1.jpg);"></div>
+        </div>
+      </section>
+      <!--end block-7-->
+      <!--begin block-8-->
+      <section class="block-8">
+        <div class="block-8__container container">
+          <div class="block-8__top block-top">
+            <div class="block-8__label block-label">
+              <p>services</p>
+            </div>
+            <div class="block-8__title h2 has-selection has-selection_green is-selected">
+              <h2>Дополнительные
+                <b>возможности</b>
+              </h2>
+            </div>
+            <div class="block-sub-title">
+              <h5>Бывают ситуации, когда вам срочно нужна помощь
+                <b>юриста</b> или
+                <b>бухгалтера.</b> Мы это понимаем и поэтому
+                <b>даем возможность</b> нашим резидентам
+                <b>нанять</b> любого специалиста на несколько часов.</h5>
+            </div>
+          </div>
+          <div class="block-8__list">
+            <div class="block-8__item">
+              <div class="block-8__item-icon">
+                <img src="/static/img/icon-man.svg" alt="image" title="" />
+              </div>
+              <div class="block-8__item-title h5">
+                <h5>Услуги HR</h5>
+              </div>
+              <p>Наши HR специалисты помогут подобрать идельных сотрудников</p>
+            </div>
+            <div class="block-8__item">
+              <div class="block-8__item-icon">
+                <img src="/static/img/icon-hammer.svg" alt="image" title="" />
+              </div>
+              <div class="block-8__item-title h5">
+                <h5>Услуги юриста</h5>
+              </div>
+              <p>Решайте все юредические вопросы на месте</p>
+            </div>
+            <div class="block-8__item">
+              <div class="block-8__item-icon">
+                <img src="/static/img/icon-dialogue.svg" alt="image" title="" />
+              </div>
+              <div class="block-8__item-title h5">
+                <h5>Услуги Consulting</h5>
+              </div>
+              <p>Команда бизнес-консультантов дадут советы по развитию бизнеса</p>
+            </div>
+            <div class="block-8__item">
+              <div class="block-8__item-icon">
+                <img src="/static/img/icon-percent.svg" alt="image" title="" />
+              </div>
+              <div class="block-8__item-title h5">
+                <h5>Услуги бухгалтера</h5>
+              </div>
+              <p>Помогут вести счета, документацию и налоговою отчетность</p>
+            </div>
+          </div>
+          <div class="block-8__list-more">
+            <button class="block-8__list-more-btn btn btn_line" type="button">еще услуги</button>
+          </div>
+        </div>
+      </section>
+      <!--end block-8-->
+      <!--begin block-9-->
+      <section class="block-9 gray-bg">
+        <div class="block-9__container container">
+          <div class="block-9__top block-top">
+            <div class="block-9__label block-label">
+              <p>reviews</p>
+            </div>
+            <div class="block-9__title h2 has-selection has-selection_green is-selected">
+              <h2>
+                <b>Отзывы</b> о workit</h2>
+            </div>
+          </div>
+          <div class="slider slider_full block-9__slider">
+            <div class="slider__body js-slider">
+              <div class="slider__item">
+                <div class="slider__text">
+                  <h4>Макс Фрай</h4>
+                  <h5>CEO Koin</h5>
+                  <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере.
+                    Кроме того, можно расширить пространство по мере роста вашей команды.</p>
+                </div>
+                <div class="slider__media img-hover">
+                  <div class="slider__media-img img-hover__item" style="background-image: url(/static/img/block-9_1.jpg);"></div>
+                </div>
+              </div>
+              <div class="slider__item">
+                <div class="slider__text">
+                  <h4>Макс Фрай</h4>
+                  <h5>CEO Koin</h5>
+                  <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере.
+                    Кроме того, можно расширить пространство по мере роста вашей команды.</p>
+                </div>
+                <div class="slider__media img-hover">
+                  <div class="slider__media-img img-hover__item" style="background-image: url(/static/img/block-9_1.jpg);"></div>
+                </div>
+              </div>
+              <div class="slider__item">
+                <div class="slider__text">
+                  <h4>Макс Фрай</h4>
+                  <h5>CEO Koin</h5>
+                  <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере.
+                    Кроме того, можно расширить пространство по мере роста вашей команды.</p>
+                </div>
+                <div class="slider__media img-hover">
+                  <div class="slider__media-img img-hover__item" style="background-image: url(/static/img/block-9_1.jpg);"></div>
+                </div>
+              </div>
+            </div>
+            <div class="slider__controls">
+              <div class="slider__buttons"></div>
+              <div class="slider__count">
+                <span class="slider__count-current"></span>
+                <div class="slider__count-decor"></div>
+                <span class="slider__count-all"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--end block-9-->
+      <!--begin block-10-->
+      <section class="block-10">
+        <div class="block-10__container container">
+          <div class="block-10__top block-top">
+            <div class="block-10__label block-label">
+              <p>our residents</p>
+            </div>
+            <div class="block-10__title h2 has-selection has-selection_green is-selected">
+              <h2>Наши
+                <b>резиденты</b>
+              </h2>
+            </div>
+          </div>
+          <div class="block-10__list">
+            <div class="block-10__item">
+              <div class="block-10__item-icon">
+                <a href="#!" target="_blank">
+                  <img src="/static/img/ingenico.png" alt="image" title="" />
+                </a>
+              </div>
+              <div class="block-10__item-title h5">
+                <h5></h5>
+              </div>
+              <p>Стартап &quot;Бери и делай&quot; в сфере криптовалют, команда из 14 человек</p>
+            </div>
+            <div class="block-10__item">
+              <div class="block-10__item-icon">
+                <a href="#!" target="_blank">
+                  <img src="/static/img/circle-media.png" alt="image" title="" />
+                </a>
+              </div>
+              <div class="block-10__item-title h5">
+                <h5></h5>
+              </div>
+              <p>Компания &quot;Валютники&quot; в сфере финтех. Команда из 9 человек</p>
+            </div>
+            <div class="block-10__item">
+              <div class="block-10__item-icon">
+                <a href="#!" target="_blank">
+                  <img src="/static/img/bmc.png" alt="image" title="" />
+                </a>
+              </div>
+              <div class="block-10__item-title h5">
+                <h5></h5>
+              </div>
+              <p>Стартап &quot;Бери и делай&quot; в сфере криптовалют, команда из 14 человек</p>
+            </div>
+            <div class="block-10__item">
+              <div class="block-10__item-icon">
+                <a href="#!" target="_blank">
+                  <img src="/static/img/bike-roar.png" alt="image" title="" />
+                </a>
+              </div>
+              <div class="block-10__item-title h5">
+                <h5></h5>
+              </div>
+              <p>Компания &quot;Валютники&quot; в сфере финтех. Команда из 9 человек</p>
+            </div>
+          </div>
+        </div>
+        <div class="block-10__decor-line"></div>
+      </section>
+      <!--end block-10-->
+      <!--begin block-11-->
+      <section class="block-11">
+        <div class="block-11__container container">
+          <div class="block-11__top block-top">
+            <div class="block-11__label block-label">
+              <p>events</p>
+            </div>
+            <div class="block-11__title h2 has-selection has-selection_black is-selected">
+              <h2>
+                <b>Мероприятия</b>
+              </h2>
+            </div>
+          </div>
+          <div class="block-11__inner">
+            <div class="block-11__item">
+              <a class="block-11__item-pic img-hover" href="#!">
+                <img class="img-hover__item" src="/static/img/block-11_1.jpg" alt="image" title="" />
+              </a>
+              <div class="block-11__item-date">
+                <p>07.12.2017</p>
+              </div>
+              <div class="block-11__item-title h4">
+                <a href="#!">
+                  <h4>How To: Make a Good Presentation For Investors</h4>
+                </a>
+              </div>
+            </div>
+            <div class="block-11__item">
+              <a class="block-11__item-pic img-hover" href="#!">
+                <img class="img-hover__item" src="/static/img/block-11_2.jpg" alt="image" title="" />
+              </a>
+              <div class="block-11__item-date">
+                <p>07.12.2017</p>
+              </div>
+              <div class="block-11__item-title h4">
+                <a href="#!">
+                  <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+          <a class="block-11__more-btn btn btn_line" href="#!">смотреть все</a>
+        </div>
+      </section>
+      <!--end block-11-->
+      <!--begin locations-->
+      <section class="locations">
+        <div class="locations__container container">
+          <div class="locations__top block-top">
+            <div class="locations__label block-label">
+              <p>locations</p>
+            </div>
+            <div class="locations__title h2 has-selection has-selection_green is-selected">
+              <h2>Мы
+                <b>находимся</b> здесь</h2>
+            </div>
+          </div>
+          <div class="locations__inner">
+            <div class="locations__map">
+              <img src="/static/img/map.png" alt="image" title="" />
+            </div>
+            <div class="locations__text">
+              <h6>центр</h6>
+              <p>ул. Владимирская 85</p>
+              <p class="tel-block">тел:
+                <a href="tel:0975678900">097 567 89 00
+                  <svg class="icon icon-tel" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 301.001 301.001" style="enable-background:new 0 0 301.001 301.001;" xml:space="preserve">
+                    <g>
+                      <path style="fill:#010002;" d="M182.784,151.696c-7.794,9.143-14.811,15.833-14.745,15.773c0.065-0.054-6.086,7.435-14.637,15.877                          c-6.875,6.783-14.517,13.478-22.985,19.836c-9.605,7.218-24.623,8.153-32.776,3.176c-8.159-4.971-23.845-15.055-35.582-12.483                          c-9.861,2.159-22.953,9.393-38.704,27.984c-37.138,43.85-3.867,57.54,19.189,75.222c23.078,17.672,99.209-26.102,168.932-97.419                          c69.729-71.312,95.989-145.087,76.685-166.805c-19.309-21.718-35.403-53.901-76.43-13.679                          c-17.394,17.057-23.654,30.644-25.09,40.635c-1.713,11.895,9.48,26.809,15.034,34.582c5.553,7.778,5.711,22.822-0.789,32.928                          C195.163,136.238,189.05,144.348,182.784,151.696z"></path>
+                    </g>
+                  </svg>
+                </a>
+              </p>
+              <div class="locations__socials">
+                <p>Связаться с нами:</p>
+                <a href="#!">
+                  <svg class="icon icon-messenger" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                    <g>
+                      <g>
+                        <path d="M256,0C114.624,0,0,106.112,0,237.024c0,74.592,37.216,141.12,95.392,184.576V512l87.168-47.84                  c23.264,6.432,47.904,9.92,73.44,9.92c141.376,0,256-106.112,256-237.024S397.376,0,256,0z M281.44,319.2l-65.184-69.536                  L89.056,319.2l139.936-148.544l66.784,69.536l125.6-69.536L281.44,319.2z"></path>
+                      </g>
+                    </g>
+                  </svg>
+                </a>
+                <a href="#!">
+                  <svg class="icon icon-telegram" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
+                    <g>
+                      <path d="M5.299,144.645l69.126,25.8l26.756,86.047c1.712,5.511,8.451,7.548,12.924,3.891l38.532-31.412                            c4.039-3.291,9.792-3.455,14.013-0.391l69.498,50.457c4.785,3.478,11.564,0.856,12.764-4.926L299.823,29.22                            c1.31-6.316-4.896-11.585-10.91-9.259L5.218,129.402C-1.783,132.102-1.722,142.014,5.299,144.645z M96.869,156.711l135.098-83.207                            c2.428-1.491,4.926,1.792,2.841,3.726L123.313,180.87c-3.919,3.648-6.447,8.53-7.163,13.829l-3.798,28.146                            c-0.503,3.758-5.782,4.131-6.819,0.494l-14.607-51.325C89.253,166.16,91.691,159.907,96.869,156.711z"></path>
+                    </g>
+                  </svg>
+                </a>
+                <a class="locations__socials-mail" href="mailto:info@workit.space"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--end locations-->
+      <!--begin subscr-->
+      <section class="subscr">
+        <div class="subscr__container container">
+          <div class="subscr__top block-top">
+            <h3>Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!</h3>
+          </div>
+          <form class="subscr__form" action="#!" method="POST">
+            <div class="subscr__form-field form-field">
+              <input class="form-field__input" type="email" placeholder="Ваш email" name="" autocomplete="off" required="required" />
+              <label class="form-field__decor form-field__decor_black"></label>
+            </div>
+            <label class="subscr__form-btn btn btn_black">
+              <input class="btn" type="submit" value="подписаться" />
+            </label>
+          </form>
+        </div>
+      </section>
+      <!--end subscr-->
+    </main>
+    <!-- Footer-->
+    <!--begin footer-->
+    <footer class="footer">
+      <div class="footer__container container">
+        <a class="footer__logo logo" href="#!">
+          <svg class="logo__img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 807.02 205.05">
+            <path fill="#041718" d="M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z"></path>
+            <path fill="#041718" d="M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z"></path>
+            <path fill="#041718" d="M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z"></path>
+            <polygon fill="#041718" points="583.05 130.46 625.1 72 570.95 72 535.53 128.16 535.53 0 492.33 0 492.33 201.6 535.53 201.6 535.53 139.68 575.85 201.6 631.15 201.6 583.05 130.46"></polygon>
+            <path fill="#00d88e" d="M671.78,2.88c-14.11,0-26.21,9.22-26.21,24.48,0,17,12.1,26.21,26.21,26.21,12.38,0,24.48-9.22,24.48-26.21C696.26,12.1,684.16,2.88,671.78,2.88Z"></path>
+            <rect fill="#00d88e" x="649.32" y="72" width="43.2" height="129.6"></rect>
+            <path fill="#00d88e" d="M794.06,157.25c-4.61,3.46-10.08,7.49-19.3,7.49-5.76,0-8.35-6.62-8.35-14.4v-38h36V72h-36V36h-43.2V152.35c0,33.12,10.94,52.7,40.32,52.7,19.29,0,34.85-7.2,43.49-14.69Z"></path>
+          </svg>
+        </a>
+        <div class="footer__nav-list">
+          <ul>
+            <li>
+              <a href="#!">о нас</a>
+            </li>
+            <li>
+              <a href="#!">локации</a>
+            </li>
+            <li>
+              <a href="#!">Тарифы и услуги</a>
+            </li>
+            <li>
+              <a href="#!">мероприятия</a>
+            </li>
+            <li>
+              <a href="#!">резиденты</a>
+            </li>
+            <li>
+              <a href="#!">контакты</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <p>Партнерство:</p>
+          <a class="link-green" href="mailto:info@workit.space">info@workit.space</a>
+          <p class="tel-block">тел:
+            <a href="tel:0975678900">097 567 89 00
+              <svg class="icon icon-tel" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 301.001 301.001" style="enable-background:new 0 0 301.001 301.001;" xml:space="preserve">
+                <g>
+                  <path style="fill:#010002;" d="M182.784,151.696c-7.794,9.143-14.811,15.833-14.745,15.773c0.065-0.054-6.086,7.435-14.637,15.877              c-6.875,6.783-14.517,13.478-22.985,19.836c-9.605,7.218-24.623,8.153-32.776,3.176c-8.159-4.971-23.845-15.055-35.582-12.483              c-9.861,2.159-22.953,9.393-38.704,27.984c-37.138,43.85-3.867,57.54,19.189,75.222c23.078,17.672,99.209-26.102,168.932-97.419              c69.729-71.312,95.989-145.087,76.685-166.805c-19.309-21.718-35.403-53.901-76.43-13.679              c-17.394,17.057-23.654,30.644-25.09,40.635c-1.713,11.895,9.48,26.809,15.034,34.582c5.553,7.778,5.711,22.822-0.789,32.928              C195.163,136.238,189.05,144.348,182.784,151.696z"></path>
+                </g>
+              </svg>
+            </a>
+          </p>
+        </div>
+        <div class="socials footer__socials">
+          <p>Подписаться</p>
+          <div class="socials__links">
+            <a href="#!" target="_blank">
+              <svg class="icon icon-fb" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 8 16" style="enable-background:new 0 0 8 16;" xml:space="preserve">
+                <path d="M1.9,3.3C1.9,3.7,2,5,2,5H0v3h2v8h3l0-8h2l1-3H5c0,0,0-1.1,0-1.4C5,3.4,5.3,3,5.6,3c0.3,0,1,0,1.7,0c0-0.4,0-1.6,0-2.8        c-0.9,0-1.8,0-2.3,0C1.8,0.2,1.9,2.9,1.9,3.3z"></path>
+              </svg>
+            </a>
+            <a href="#!" target="_blank">
+              <svg class="icon icon-inst" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 81 81">
+                <path d="M0,11V70A11,11,0,0,0,11,81H70A11,11,0,0,0,81,70V11A11,11,0,0,0,70,0H11A11,11,0,0,0,0,11ZM55.22,57.24c-23,15.38-47.84-9.43-32.46-32.46a10.93,10.93,0,0,1,3-3c23-15.38,47.84,9.43,32.46,32.46A10.93,10.93,0,0,1,55.22,57.24Z"></path>
+              </svg>
+            </a>
+            <a href="#!" target="_blank">
+              <svg class="icon icon-yt" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 15 11" style="enable-background:new 0 0 15 11;" xml:space="preserve">
+                <path d="M15,2.3C15,1.1,14,0,12.8,0H2.2C1,0,0,1.1,0,2.3v6.3C0,9.9,1,11,2.2,11h10.5C14,11,15,9.9,15,8.7V2.3z M6,8.2V2.2l4.3,3        L6,8.2z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__addition container">
+        <p>Copyright@2017</p>
+        <a class="dev-link" href="#!">made by
+          <svg class="icon icon-vintage" viewbox="0 0 26.8 36.7" width="100%" height="100%">
+            <path d="M20.1 0l-9.4 36.7h6.7L26.8 0zM6.9 0H0l1.6 6.3h6.9z"></path>
+          </svg>
+        </a>
+      </div>
+    </footer>
+    <!--end footer-->
+    <!-- Scripts-->
+    <script src="static/js/index.jquery.js"></script>
+    <script src="static/js/index.js"></script>
+  </body>
+</html>

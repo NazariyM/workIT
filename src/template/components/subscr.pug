@@ -1,0 +1,16 @@
+if subscr ? subscr : subscr = []
+
+//begin subscr
++b.SECTION.subscr(class= subscr.classMod ? subscr.classMod : '')
+	+e.container.container
+		+e.top.block-top
+			+e.H3 Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!
+
+		+e.FORM.form(action='#!' method='POST')
+			+e.form-field.form-field
+				+b.INPUT.form-field__input(type='email' placeholder='Ваш email' name='' autocomplete='off' required)
+				+b.LABEL.form-field__decor._black
+			+e.LABEL.form-btn.btn._black
+				+b.INPUT.btn(type='submit' value='подписаться')
+
+//end subscr

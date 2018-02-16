@@ -1,0 +1,26 @@
+.socials
+  display: flex
+  align-items: center
+  flex: 0 0 306px
+  width: 306px
+  padding: 26px 32px 26px 39px
+  background: $color1
+  line-height: 1
+  p
+    margin-right: 30px
+    +f('rob-400')
+  &__links
+    display: flex
+    align-items: center
+    font-size: 0
+    a
+      display: block
+      line-height: 1
+      &:nth-child(1)
+        margin-right: 33px
+      &:nth-child(2)
+        margin-right: 28px
+      .no-touch &:hover .icon
+        fill: $white
+    .icon
+      transition: .5s ease

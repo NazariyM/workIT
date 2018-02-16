@@ -1,0 +1,44 @@
+if block10 ? block10 : block10 = []
+if block10.title ? block10.title : block10.title = ''
+
+//begin block-10
++b.SECTION.block-10(class= block10.classMod ? block10.classMod : '')
+	+e.container.container
+		+e.top.block-top
+			+e.label.block-label
+				+e.P our residents
+
+			+e.title.h2.has-selection._green.is-selected
+				+e.H2 Наши
+					b резиденты
+
+		+e.list
+			-
+				block10List = [{
+				img: 'ingenico',
+				descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
+				}, {
+				img: 'circle-media',
+				descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
+				}, {
+				img: 'bmc',
+				descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
+				}, {
+				img: 'bike-roar',
+				descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
+				}]
+
+			mixin block10Item(item)
+				+e.item
+					+e.item-icon
+						+e.A(href='#!' target='_blank')
+							+e.IMG(src=`/static/img/${item.img}.png` alt='image')
+					+e.item-title.h5
+						+e.H5= item.title
+					p= item.descr
+			each item in block10List
+				+block10Item(item)
+
+	+e.decor-line
+
+//end block-10
