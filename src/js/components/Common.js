@@ -1,9 +1,13 @@
 import 'babel-polyfill';
+import 'element-closest';
 import objectFitImages from 'object-fit-images';
 // import objectFitVideos from 'object-fit-videos';
 import './header';
 import './slider';
 import './b-screen';
+// import './b-block-3';
+import './b-block-5';
+import './b-block-10';
 import './homeAnims';
 import './expandList';
 import './preloader';

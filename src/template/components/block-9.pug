@@ -7,13 +7,13 @@ if block9.title ? block9.title : block9.title = 'Хочешь увидеть в�
 		+e.top.block-top
 			+e.label.block-label
 				+e.P reviews
-			+e.title.h2.has-selection._green
+			+e.title.block-title.has-selection._green
 				+e.H2
 					b Отзывы
 					= ' '
 					| о workit
 
-		+b.slider._full.block-9__slider
+		+b.slider._full.block-9__slider(data-anim='group')
 			+e.body.js-slider
 				-i = 0
 				while i < 3
@@ -26,7 +26,7 @@ if block9.title ? block9.title : block9.title = 'Хочешь увидеть в�
 							+e.media-img.img-hover__item(style='background-image: url(static/img/block-9_1.jpg)')
 					-i++
 
-			+e.controls
+			+e.controls.has-anim
 				+e.buttons
 				+e.count
 					+e.SPAN.count-current

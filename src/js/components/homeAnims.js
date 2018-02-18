@@ -23,9 +23,6 @@ export default class HomeAnims {
     for (const container of this.containers) {
       const section = container.closest('section');
 
-      // let section = container.parentElement;
-      // section = section.matches('section') ? section : null;
-
       new ScrollAnim({
         el: section,
         onStart() {
@@ -43,7 +40,6 @@ export default class HomeAnims {
         }
       });
     }
-
   }
 
   blockTopAnim(...container) {
@@ -51,11 +47,11 @@ export default class HomeAnims {
 
     for (const el of container) {
       const item = el.children;
-      const titleSelection = el.querySelector('.has-selection');
+      const title = el.querySelector('.block-title');
 
       tl
         .staggerFromTo(item, .7, { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0 }, 0.6)
-        .to(titleSelection, 2, { className: `+=${css.selected}` }, '-=1.3');
+        .to(title, 2, { className: `+=${css.selected}` }, '-=1.3');
     }
   }
 
@@ -66,8 +62,6 @@ export default class HomeAnims {
       const item = el.children;
 
       tl.staggerTo(item, .7, { autoAlpha: 1, x: 0 }, 0.6);
-
-      // const img = group.
     }
   }
 }

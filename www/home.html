@@ -452,7 +452,7 @@
             <div class="block-5__label block-label">
               <p>locations</p>
             </div>
-            <div class="block-5__title h2">
+            <div class="block-5__title block-title">
               <h2>Локации</h2>
             </div>
           </div>
@@ -496,7 +496,7 @@
             <div class="block-6__label block-label">
               <p>prices</p>
             </div>
-            <div class="block-6__title h2 has-selection has-selection_green">
+            <div class="block-6__title block-title has-selection has-selection_green">
               <h2>
                 <b>Тарифы</b> для early birds</h2>
             </div>
@@ -602,7 +602,7 @@
       <section class="block-7">
         <div class="block-7__container container">
           <div class="block-7__top block-top">
-            <div class="block-7__title h3">
+            <div class="block-7__title block-title h3">
               <h3>Хочешь увидеть всё своими глазами? Приходи в гости!</h3>
             </div>
             <button class="block-7__btn btn btn_green" type="button">
@@ -620,7 +620,7 @@
             <div class="block-8__label block-label">
               <p>services</p>
             </div>
-            <div class="block-8__title h2 has-selection has-selection_green">
+            <div class="block-8__title block-title has-selection has-selection_green">
               <h2>Дополнительные
                 <b>возможности</b>
               </h2>
@@ -704,12 +704,12 @@
             <div class="block-9__label block-label">
               <p>reviews</p>
             </div>
-            <div class="block-9__title h2 has-selection has-selection_green">
+            <div class="block-9__title block-title has-selection has-selection_green">
               <h2>
                 <b>Отзывы</b> о workit</h2>
             </div>
           </div>
-          <div class="slider slider_full block-9__slider">
+          <div class="slider slider_full block-9__slider" data-anim="group">
             <div class="slider__body js-slider">
               <div class="slider__item" data-anim="group">
                 <div class="slider__text">
@@ -745,7 +745,7 @@
                 </div>
               </div>
             </div>
-            <div class="slider__controls">
+            <div class="slider__controls has-anim">
               <div class="slider__buttons"></div>
               <div class="slider__count">
                 <span class="slider__count-current"></span>
@@ -764,7 +764,7 @@
             <div class="block-10__label block-label">
               <p>our residents</p>
             </div>
-            <div class="block-10__title h2 has-selection has-selection_green">
+            <div class="block-10__title block-title has-selection has-selection_green">
               <h2>Наши
                 <b>резиденты</b>
               </h2>
@@ -827,14 +827,14 @@
             <div class="block-11__label block-label">
               <p>events</p>
             </div>
-            <div class="block-11__title h2 has-selection has-selection_black">
+            <div class="block-11__title block-title has-selection has-selection_black is-selected">
               <h2>
                 <b>Мероприятия</b>
               </h2>
             </div>
           </div>
-          <div class="block-11__inner">
-            <div class="block-11__item">
+          <div class="block-11__inner" data-anim="group">
+            <div class="block-11__item" data-anim="group">
               <a class="block-11__item-pic img-hover" href="#!">
                 <img class="img-hover__item" src="static/img/block-11_1.jpg" alt="image" title="" />
               </a>
@@ -847,7 +847,7 @@
                 </a>
               </div>
             </div>
-            <div class="block-11__item">
+            <div class="block-11__item" data-anim="group">
               <a class="block-11__item-pic img-hover" href="#!">
                 <img class="img-hover__item" src="static/img/block-11_2.jpg" alt="image" title="" />
               </a>
@@ -860,8 +860,10 @@
                 </a>
               </div>
             </div>
+            <div class="block-11__more">
+              <a class="block-11__more-btn btn btn_line" href="#!">смотреть все</a>
+            </div>
           </div>
-          <a class="block-11__more-btn btn btn_line" href="#!">смотреть все</a>
         </div>
       </section>
       <!--end block-11-->
@@ -872,7 +874,7 @@
             <div class="locations__label block-label">
               <p>locations</p>
             </div>
-            <div class="locations__title h2 has-selection has-selection_green is-selected">
+            <div class="locations__title block-title has-selection has-selection_green">
               <h2>Мы
                 <b>находимся</b> здесь</h2>
             </div>
@@ -922,17 +924,19 @@
       <section class="subscr">
         <div class="subscr__container container">
           <div class="subscr__top block-top">
-            <h3>Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!</h3>
-          </div>
-          <form class="subscr__form" action="#!" method="POST">
-            <div class="subscr__form-field form-field">
-              <input class="form-field__input" type="email" placeholder="Ваш email" name="" autocomplete="off" required="required" />
-              <label class="form-field__decor form-field__decor_black"></label>
+            <div class="subscr__title block-title">
+              <h3>Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!</h3>
             </div>
-            <label class="subscr__form-btn btn btn_black">
-              <input class="btn" type="submit" value="подписаться" />
-            </label>
-          </form>
+            <form class="subscr__form" action="#!" method="POST">
+              <div class="subscr__form-field form-field">
+                <input class="form-field__input" type="email" placeholder="Ваш email" name="" autocomplete="off" required="required" />
+                <label class="form-field__decor form-field__decor_black"></label>
+              </div>
+              <label class="subscr__form-btn btn btn_black">
+                <input class="btn" type="submit" value="подписаться" />
+              </label>
+            </form>
+          </div>
         </div>
       </section>
       <!--end subscr-->

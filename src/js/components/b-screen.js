@@ -1,5 +1,4 @@
 import {TimelineMax, TweenMax, CSSRulePlugin} from 'gsap';
-import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import {preloader} from './preloader';
 import {css} from '../modules/dev/_helpers';
 

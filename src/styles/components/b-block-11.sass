@@ -10,16 +10,21 @@
     margin-bottom: 32px
   &__inner
     display: flex
-    margin: 0 -30px 20px
+    flex-wrap: wrap
+    margin: 0 -30px
     text-align: left
   &__item
     flex: 0 1 50%
     padding: 0 30px
     &-pic
+      opacity: 0
+      transform: translateX(-50px)
       height: 300px
       margin-bottom: 30px
       +cover-img
     &-date
+      opacity: 0
+      transform: translateX(-50px)
       position: relative
       padding-right: 60px
       margin-bottom: 13px
@@ -33,12 +38,20 @@
         background: #fff
         content: ''
     &-title
+      opacity: 0
+      transform: translateX(-50px)
       a
         display: inline
         text-decoration: none
         color: inherit
       h4
         display: inline
+  &__more
+    flex: 1 0 auto
+    margin-top: 20px
+    text-align: center
+    opacity: 0
+    transform: translateX(-50px)
   &__more-btn
     &::after
       left: calc(100% + 22px)
