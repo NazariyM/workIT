@@ -1,26 +1,35 @@
 .screen
   display: flex
   position: relative
-  height: calc(100vh - 60px)
+  height: 100vh
   align-items: center
-  margin-top: 60px
-  h1
+  overflow: hidden
+  &__container
+  &__title
+    opacity: 0
+    transform: translateY(-30px)
     margin-bottom: 35px
     color: #fff
     +h1
     text-transform: none
-  h5
+  &__sub-title
+    opacity: 0
+    transform: translateY(-30px)
     margin-bottom: 35px
     +f('gil-300', 18)
     color: #fff
     text-transform: none
   &__btn
+    opacity: 0
+    transform: translateY(-30px)
     min-width: 180px
   &__more
     position: absolute
     right: 60px
     bottom: 100px
-    animation: moving 2s ease-in-out infinite
+    transform: translateY(200%)
+    &.has-anim
+      animation: moving 2s ease-in-out infinite
     &-text
       writing-mode: vertical-lr
       color: #fff
@@ -34,13 +43,7 @@
       fill: $white
       transform: rotate(90deg)
   &__img
-    +coverdiv
-    +cover
-    z-index: -1
-    
-//.img-blur
-//  +coverdiv
-//  width: 100%
-//  height: 100%
-//  z-index: -1
-//  image
+    //
+    //+coverdiv
+    //+cover
+    //z-index: -1

@@ -7,13 +7,13 @@ if block2.title ? block2.title : block2.title = ''
 		+e.top.block-top
 			+b.block-label
 				+e.P ABOUT US
-			+e.title.h2.has-selection._green.is-selected
+			+e.title.block-title.has-selection._green
 				+e.H2 Спроектирован на основе
 					b human-centered
 					= ' '
 					| design от Google
 
-		+e.content
+		+e.content(data-anim='group')
 			+e.text
 				+e.P Когда мы устали искать место, в котором нам было бы комфортно работать, мы решили создать его сами. Нас восхищали коворкинги
 					b Амстердама

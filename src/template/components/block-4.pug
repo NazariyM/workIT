@@ -6,7 +6,7 @@ if block4 ? block4 : block4 = []
 		+e.top.block-top
 			+e.label.block-label
 				+e.P what we have
-			+e.title.h2.has-selection._black.is-selected
+			+e.title.block-title.has-selection._black
 				+e.H2 У нас
 					b есть все
 					= ' '
@@ -19,36 +19,57 @@ if block4 ? block4 : block4 = []
 					= ' '
 					b бариста, HR менеджеры и неповторимая атмосфера.
 
-		+e.list
-			-
-				block4List = [{
-					icon: 'hex-square',
-					title: 'Эргономика и продуктивность',
-					descr: 'Мы создадим пространство для вашей команды - оборудуем, перекрасим, передвинем, купим нужную мебель и забрендируем.'
-				}, {
-					icon: 'square-circle',
-					title: 'Креативность',
-					descr: 'Уютное, тихое место для работы.  Много пространства и воздуха.'
-				}, {
-					icon: 'double-circles',
-					title: 'Отельные комнаты',
-					descr: 'Комнаты для переговоров, собраний, обустроены большими экранами и проэкторами.'
-				}, {
-					icon: 'cocktail',
-					title: 'Отдых и здоровье',
-					descr: 'Очень щепетилен в выборе зерен и технологии приготовления, настоящий фанат кофе.'
-				}]
+		+b.expand-list.block-4__expand-list.js-expand-list
+			+e.inner
 
-			mixin block4Item(item)
-				+e.item
-					+e.item-icon
-						+e.IMG(src=`static/img/icon-${item.icon}.svg` alt='image')
-					+e.H5= item.title
-					p= item.descr
-			each item in block4List
-				+block4Item(item)
+				.block-4__item.expand-list__item
+					.block-4__item-icon
+						img(src=`static/img/icon-hex-square.svg` alt='image')
+					h5 Эргономика и продуктивность
+					p Мы создадим пространство для вашей команды - оборудуем, перекрасим, передвинем, купим нужную мебель и забрендируем.
 
-		+e.list-more
-			+e.BUTTON.list-more-btn.btn._line(type='button') хочу еще
+				.block-4__item.expand-list__item
+					.block-4__item-icon
+						img(src=`static/img/icon-square-circle.svg` alt='image')
+					h5 Креативность
+					p Уютное, тихое место для работы.  Много пространства и воздуха.
+
+				.block-4__item.expand-list__item
+					.block-4__item-icon
+						img(src=`static/img/icon-double-circles.svg` alt='image')
+					h5 Отельные комнаты
+					p Комнаты для переговоров, собраний, обустроены большими экранами и проэкторами.
+
+				.block-4__item.expand-list__item
+					.block-4__item-icon
+						img(src=`static/img/icon-cocktail.svg` alt='image')
+					h5 Отдых и здоровье
+					p Очень щепетилен в выборе зерен и технологии приготовления, настоящий фанат кофе.
+
+				.block-4__item.expand-list__item.is-hidden
+					.block-4__item-icon
+						img(src=`static/img/icon-hex-square.svg` alt='image')
+					h5 Эргономика и продуктивность
+					p Мы создадим пространство для вашей команды - оборудуем, перекрасим, передвинем, купим нужную мебель и забрендируем.
+
+				.block-4__item.expand-list__item.is-hidden
+					.block-4__item-icon
+						img(src=`static/img/icon-square-circle.svg` alt='image')
+					h5 Креативность
+					p Уютное, тихое место для работы.  Много пространства и воздуха.
+
+				.block-4__item.expand-list__item.is-hidden
+					.block-4__item-icon
+						img(src=`static/img/icon-double-circles.svg` alt='image')
+					h5 Отельные комнаты
+					p Комнаты для переговоров, собраний, обустроены большими экранами и проэкторами.
+
+				.block-4__item.expand-list__item.is-hidden
+					.block-4__item-icon
+						img(src=`static/img/icon-cocktail.svg` alt='image')
+					h5 Отдых и здоровье
+					p Очень щепетилен в выборе зерен и технологии приготовления, настоящий фанат кофе.
+
+			+e.BUTTON.btn.btn._line._line-white(type='button') хочу еще
 
 //end block-4

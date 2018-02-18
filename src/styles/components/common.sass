@@ -5,20 +5,9 @@ body
   -moz-osx-font-smoothing: grayscale
   +f('rob-300', 16, 28)
   //letter-spacing: 0.03em
-  letter-spacing: 0.023em
   color: $color2
   +xs
     letter-spacing: 0.015em
-//&.is-locked
-//	position: fixed
-//	top: 0
-//	left: 0
-//	right: 0
-//	height: 0
-//	overflow: hidden
-
-.out
-  overflow: hidden
 
 .container
   max-width: 1190px
@@ -58,11 +47,18 @@ body
 // other
 .block-top
   margin: 0 auto 62px
-  //overflow: hidden
+  
+.block-title
+  +h2
+  
+.block-sub-title
+  +f('gil-300')
+  letter-spacing: 0.025em
+  font-size: 18px
+  line-height: 30px
 
 .block-label
   display: inline-block
-  //transform: translateX(-100%)
   margin-bottom: 25px
   padding-left: 2px
   +f('rob-700', 16, 30)
@@ -74,7 +70,6 @@ body
 h1, h2, h3, h4, h5, h6
   b
     +f('gil-800')
-    //+f('rob-700')
 
 p b
   +f('rob-700')
@@ -158,6 +153,8 @@ p b
       width: 65px
       height: 8px
       background: $color1
+  &_line-white::after
+    background: $white
 
 label.btn
   input
@@ -411,6 +408,7 @@ label.btn
 .black-bg
   background: url("../img/bg.png")
 
+// images effects
 .img-hover
   display: block
   overflow: hidden
@@ -422,14 +420,31 @@ label.btn
     transition: .3s ease-in-out
   img
     transition: .3s ease-in-out
+    
+//.img-blur
+//  +coverdiv
+//  z-index: -1
+//  width: 100%
+//  height: 100%
+//  image
+//    width: calc(100% + 10px)
+//    height: calc(100% + 10px)
+//    transform: translate(-5px, -5px)
 
-.block-sub-title
-  +f('gil-300')
-  letter-spacing: 0.025em
-  font-size: 18px
-  line-height: 30px
+.img-blur
+  +coverdiv
+  z-index: -1
+  width: 100%
+  height: 100%
+  image
+    width: calc(100% + 20px)
+    height: calc(100% + 20px)
+    transform: translate(-10px, -10px)
+  polygon
+    transform: scale(1.51) translateX(20%)
   
 .preloader
+  display: none!important
   position: fixed
   z-index: 100
   top: 0
@@ -444,3 +459,30 @@ label.btn
   &__img
     width: 296px
     height: 75px
+    &-letter
+      opacity: 0
+      &-dot
+        opacity: 0
+        
+.expand-list
+  text-align: center
+  &__inner
+    margin: 0 -30px
+    text-align: left
+    font-size: 0
+  &__item
+    display: inline-block
+    vertical-align: top
+    width: 25%
+    padding: 20px 30px
+    transform: translateX(-50px)
+    opacity: 0
+    &.is-hidden
+      display: none
+    p
+      font-size: 16px
+  &__more
+    text-align: center
+  &__btn
+    transform: translateX(-50px)
+    opacity: 0

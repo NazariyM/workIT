@@ -59,26 +59,12 @@ class Block3 {
       const tl = new TimelineMax({ onComplete() { resolve(); } });
 
       tl
-        .to(this.$lines, 5, { height: '100%' })
-        // .to(this.$count, 1, { y: 0, autoAlpha: 1, ease: Power0.easeIn }, '-=4.5')
-        // .fromTo(this.$countEl, 1.3, { y: 0 }, { y: -30 }, '-=3.6')
-        // .to(this.$countEl, 1.3, { y: 0, clearProps: 'transform' }, '-=2.7')
+        .to(this.$lines, 15, { height: '100%' })
         .to(this.$label, .5, { x: 0, ease: Power0.easeIn }, '-=4.5')
         .to(this.$title, 1, { x: 0, ease: Power0.easeIn, className: `+=${css.selected}` }, '-=4.5')
         .to(this.$titleSel, 2, { ease: Power4.easeIn });
     });
   }
-
-  // startItemsAnim() {
-  //
-  //   return new Promise(resolve => {
-  //     const tl = new TimelineMax({ onComplete() { resolve(); } });
-  //
-  //     tl
-  //       .staggerTo(this.$itemInner, 1, { y: 0, autoAlpha: 1, ease: Power0.easeIn, clearProps: 'visibility' }, 0.3, '-=5.2');
-  //   });
-  // }
-
 }
 
 export const Block3API = new Block3();

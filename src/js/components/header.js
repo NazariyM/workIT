@@ -1,12 +1,27 @@
-import { TimelineMax, TweenMax } from 'gsap';
+import {TimelineMax, TweenMax} from 'gsap';
+import {preloader} from './preloader';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
-import { $body, $scrolledElements, $window, $header, throttle, Resp, css } from '../modules/dev/_helpers';
+import {
+  $body,
+  $scrolledElements,
+  $window,
+  $header,
+  throttle,
+  Resp,
+  css
+} from '../modules/dev/_helpers';
 
 class Header {
   constructor() {
     this.$header = $header;
 
     this.init();
+  }
+
+  async init() {
+    await preloader.wait();
+    await this.startAnim();
+    this.initFix();
   }
 
   initFix() {
@@ -25,8 +40,10 @@ class Header {
     $window.on('scroll', toggleHeaderScroll);
   }
 
-  init() {
-    this.initFix();
+  startAnim() {
+    const tl = new TimelineMax();
+
+    tl.to(this.$header, .3, {y: 0});
   }
 
 }

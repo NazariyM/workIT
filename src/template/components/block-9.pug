@@ -7,7 +7,7 @@ if block9.title ? block9.title : block9.title = 'Хочешь увидеть в�
 		+e.top.block-top
 			+e.label.block-label
 				+e.P reviews
-			+e.title.h2.has-selection._green.is-selected
+			+e.title.h2.has-selection._green
 				+e.H2
 					b Отзывы
 					= ' '
@@ -17,7 +17,7 @@ if block9.title ? block9.title : block9.title = 'Хочешь увидеть в�
 			+e.body.js-slider
 				-i = 0
 				while i < 3
-					+e.item
+					+e.item(data-anim='group')
 						+e.text
 							+e.H4 Макс Фрай
 							+e.H5 CEO Koin

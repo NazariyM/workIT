@@ -8,7 +8,7 @@ if block8.title ? block8.title : block8.title = ''
 			+e.label.block-label
 				+e.P services
 
-			+e.title.h2.has-selection._green.is-selected
+			+e.title.h2.has-selection._green
 				+e.H2 Дополнительные
 					b возможности
 
@@ -27,38 +27,58 @@ if block8.title ? block8.title : block8.title = ''
 					= ' '
 					| любого специалиста на несколько часов.
 
-		+e.list
-			-
-				block8List = [{
-				icon: 'man',
-				title: 'Услуги HR',
-				descr: 'Наши HR специалисты помогут подобрать идельных сотрудников'
-				}, {
-				icon: 'hammer',
-				title: 'Услуги юриста',
-				descr: 'Решайте  все юредические вопросы на месте'
-				}, {
-				icon: 'dialogue',
-				title: 'Услуги Consulting',
-				descr: 'Команда бизнес-консультантов дадут советы по развитию бизнеса'
-				}, {
-				icon: 'percent',
-				title: 'Услуги бухгалтера',
-				descr: 'Помогут вести счета,  документацию и налоговою отчетность'
-				}]
+		+b.expand-list.block-8__expand-list.js-expand-list
+			+e.inner
 
-			mixin block8Item(item)
-				+e.item
-					+e.item-icon
-						+e.IMG(src=`static/img/icon-${item.icon}.svg` alt='image')
-					+e.item-title.h5
-						+e.H5= item.title
-					p= item.descr
-			each item in block8List
-				+block8Item(item)
+				.block-8__item.expand-list__item
+					.block-8__item-icon
+						img(src=`static/img/icon-man.svg` alt='image')
+					h5 Услуги HR
+					p Наши HR специалисты помогут подобрать идельных сотрудников
 
-		+e.list-more
-			+e.BUTTON.list-more-btn.btn._line(type='button') еще услуги
+				.block-8__item.expand-list__item
+					.block-8__item-icon
+						img(src=`static/img/icon-hammer.svg` alt='image')
+					h5 Услуги юриста
+					p Решайте  все юредические вопросы на месте
+
+				.block-8__item.expand-list__item
+					.block-8__item-icon
+						img(src=`static/img/icon-dialogue.svg` alt='image')
+					h5 Услуги Consulting
+					p Команда бизнес-консультантов дадут советы по развитию бизнеса
+
+				.block-8__item.expand-list__item
+					.block-8__item-icon
+						img(src=`static/img/icon-percent.svg` alt='image')
+					h5 Услуги HR
+					p Наши HR специалисты помогут подобрать идельных сотрудников
+
+				.block-8__item.expand-list__item.is-hidden
+					.block-8__item-icon
+						img(src=`static/img/icon-man.svg` alt='image')
+					h5 Услуги HR
+					p Наши HR специалисты помогут подобрать идельных сотрудников
+
+				.block-8__item.expand-list__item.is-hidden
+					.block-8__item-icon
+						img(src=`static/img/icon-hammer.svg` alt='image')
+					h5 Услуги юриста
+					p Решайте  все юредические вопросы на месте
+
+				.block-8__item.expand-list__item.is-hidden
+					.block-8__item-icon
+						img(src=`static/img/icon-dialogue.svg` alt='image')
+					h5 Услуги Consulting
+					p Команда бизнес-консультантов дадут советы по развитию бизнеса
+
+				.block-8__item.expand-list__item.is-hidden
+					.block-8__item-icon
+						img(src=`static/img/icon-percent.svg` alt='image')
+					h5 Услуги HR
+					p Наши HR специалисты помогут подобрать идельных сотрудников
+
+			+e.BUTTON.btn.btn._line(type='button') еще услуги
 
 
 

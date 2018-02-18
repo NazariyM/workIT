@@ -17,6 +17,8 @@
       padding-left: 60px
   &__text
     #{$parent}_full &
+      opacity: 0
+      transform: translateX(-50px)
       float: left
       width: 50%
       margin-top: -7px
@@ -28,6 +30,8 @@
   &__media
     +ratio(611, 339)
     #{$parent}_full &
+      opacity: 0
+      transform: translateX(-50px)
       float: left
       width: 50%
       +ratio(610, 400)
@@ -58,7 +62,7 @@
     .no-touch &:hover .icon
       fill: $color1
     .icon
-      +trs
+      transition: .4s ease
   &__count
     display: flex
     align-items: center
