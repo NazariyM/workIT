@@ -21143,8 +21143,6 @@ var Slider = function () {
           nextArrow: '<button type="button" class="slider__btn slider-btn_next">' + arrRight + '</button>',
           appendArrows: $('.slider__buttons', this),
           onInit: countSlides()
-
-          // beforeChange: swingAnim()
         });
 
         function countSlides() {
