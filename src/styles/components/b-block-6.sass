@@ -1,16 +1,10 @@
 .block-6
-  position: relative
   padding: 102px 0 132px
+  &__container
+    position: relative
   &__top
     max-width: 820px
     margin: 0 0 70px
-  &__lamps
-    position: absolute
-    top: 0
-    left: 50%
-    margin-left: 372px
-    width: 189px
-    height: 331px
   &__title
     margin-bottom: 60px
   &__sub-title
@@ -22,15 +16,18 @@
     align-items: flex-start
     margin-bottom: 80px
     padding: 57px 0 0 61px
+    &.is-visible::after
+      width: 89.3%
     &::after
       position: absolute
       top: 0
       left: 0
-      right: 10.7%
+      width: 0
       bottom: 5%
       z-index: -1
       background: $color5
       content: ''
+      transition: width 1s ease
     &-text
       flex: 0 1 percentage(549/1099)
       margin-top: -6px
@@ -60,6 +57,7 @@
     margin: 0 -20px
     +clr
   &__item
+    position: relative
     float: left
     width: 33.333333%
     padding: 0 20px
@@ -75,3 +73,30 @@
       +cover-img
     &-btn
       margin-bottom: -25px
+    &-mask
+      position: absolute
+      top: 0
+      left: auto
+      right: 0
+      bottom: -20px
+      z-index: 2
+      background-color: #fff
+      width: 100%
+      
+  &__lamps
+    position: absolute
+    top: -102px
+    left: 50%
+    margin-left: 372px
+    width: 189px
+    height: 331px
+    &-wire
+      transition: transform 2s ease
+      &_1
+        transform: translateY(-254px)
+      &_2
+        transform: translateY(-317px)
+      &_3
+        transform: translateY(-206px)
+      &.is-visible
+        transform: translateY(0)

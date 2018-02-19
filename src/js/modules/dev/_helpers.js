@@ -196,6 +196,7 @@ export const css = {
 	noTouch: 'no-touch',
 	reload: 'is-reload',
 	active: 'is-active',
+	visible: 'is-visible',
 	hidden: 'is-hidden',
 	cursor: 'is-cursor',
 	hasAnim: 'has-anim',

@@ -1276,6 +1276,7 @@ var css = exports.css = {
 	noTouch: 'no-touch',
 	reload: 'is-reload',
 	active: 'is-active',
+	visible: 'is-visible',
 	hidden: 'is-hidden',
 	cursor: 'is-cursor',
 	hasAnim: 'has-anim',
@@ -12492,6 +12493,8 @@ __webpack_require__(338);
 __webpack_require__(342);
 
 __webpack_require__(350);
+
+__webpack_require__(352);
 
 __webpack_require__(351);
 
@@ -24804,6 +24807,109 @@ var Block10 = function () {
 }();
 
 var Block10API = exports.Block10API = new Block10();
+
+/***/ }),
+/* 352 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Block6API = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+// import '../modules/dep/DrawSVGPlugin';
+
+
+var _gsap = __webpack_require__(51);
+
+var _scrollAnim = __webpack_require__(67);
+
+var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
+
+var _preloader = __webpack_require__(52);
+
+var _helpers = __webpack_require__(29);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Block6 = function () {
+  function Block6() {
+    _classCallCheck(this, Block6);
+
+    this.$container = $('.block-6');
+    this.$lampsWire = this.$container.find('.block-6__lamps-wire');
+    this.$offer = this.$container.find('.block-6__offer');
+    this.$offerText = this.$offer.find('.block-6__offer-text').children();
+    this.$offerPic = this.$offer.find('.block-6__offer-pic');
+    this.$item = this.$container.find('.block-6__item');
+    this.$itemMask = this.$item.find('.block-6__item-mask');
+
+    if (this.$container.length) this.init();
+  }
+
+  _createClass(Block6, [{
+    key: 'init',
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _preloader.preloader.wait();
+
+              case 2:
+                _context.next = 4;
+                return this.scrollAnim();
+
+              case 4:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function init() {
+        return _ref.apply(this, arguments);
+      }
+
+      return init;
+    }()
+  }, {
+    key: 'scrollAnim',
+    value: function scrollAnim() {
+      var _this = this;
+
+      new _scrollAnim2.default({
+        el: _this.$container.get(0),
+        hook: .9,
+        onStart: function onStart() {
+          _this.startAnim();
+        }
+      });
+    }
+  }, {
+    key: 'startAnim',
+    value: function startAnim() {
+      var tl = new _gsap.TimelineMax();
+
+      tl.to(this.$lampsWire, 2, { className: '+=' + _helpers.css.visible }).to(this.$offer, 1, { className: '+=' + _helpers.css.visible }, '-=1').staggerFromTo(this.$offerText, 1, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, ease: Power2.easeOut, clearProps: 'transform, visibility, opacity' }, 0.2).fromTo(this.$offerPic, 1, { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, ease: Power2.easeOut, clearProps: 'transform, visibility, opacity' }, '-=.8').staggerTo(this.$itemMask, 1, { width: '0' }, .5, '-=.6');
+    }
+  }]);
+
+  return Block6;
+}();
+
+var Block6API = exports.Block6API = new Block6();
 
 /***/ })
 ],[131]);

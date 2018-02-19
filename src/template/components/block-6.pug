@@ -20,17 +20,6 @@ if block6 ? block6 : block6 = []
 					= ' '
 					| что вам предложить.
 
-			+e.SVG.lamps(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 188.65 330.56')
-				path(class='block-6__lamps-wire' fill='#c4d0ce', d='M177.48,0h1V217.28h-1Z')
-				path(class='block-6__lamps-wire' fill='#c4d0ce', d='M82,0h1V325H82Z')
-				path(class='block-6__lamps-wire' fill='#c4d0ce', d='M10.33,0h1V265.56h-1Z')
-				path(fill='#001011', d='M176.55,205.78h2.88v5h-2.87Z')
-				path(fill='#00d88e', d='M188.65,218.87a11.07,11.07,0,0,0-21.53,0Z')
-				path(fill='#001011', d='M9.39,253.66h2.88v5H9.39Z')
-				path(fill='#00d88e', d='M21.53,266.75a11.07,11.07,0,0,0-21.53,0Z')
-				path(fill='#001011', d='M81,317.5h2.84v5H81Z')
-				path(fill='#00d88e', d='M93.15,330.56a11.06,11.06,0,0,0-21.52,0Z')
-
 		+e.offer
 			+e.offer-text
 				+e.H4 Офис мечты
@@ -63,6 +52,7 @@ if block6 ? block6 : block6 = []
 				}]
 			mixin block6Item(item)
 				+e.item
+					+e.item-mask
 					+e.item-img.img-hover
 						+e.IMG(src=`static/img/block-6_${item.img}.jpg` alt='image')
 					+e.item-text
@@ -76,4 +66,21 @@ if block6 ? block6 : block6 = []
 							span забронировать
 			each item in block6List
 				+block6Item(item)
+
+		+e.SVG.lamps(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 188.65 330.56')
+			g(class='block-6__lamps-wire block-6__lamps-wire_1')
+				path(fill='#c4d0ce', d='M10.33,0h1V265.56h-1Z')
+				path(fill='#001011', d='M9.39,253.66h2.88v5H9.39Z')
+				path(fill='#00d88e', d='M21.53,266.75a11.07,11.07,0,0,0-21.53,0Z')
+
+			g(class='block-6__lamps-wire block-6__lamps-wire_3')
+				path(fill='#c4d0ce', d='M177.48,0h1V217.28h-1Z')
+				path(fill='#001011', d='M176.55,205.78h2.88v5h-2.87Z')
+				path(fill='#00d88e', d='M188.65,218.87a11.07,11.07,0,0,0-21.53,0Z')
+
+			g(class='block-6__lamps-wire block-6__lamps-wire_2')
+				path(fill='#c4d0ce', d='M82,0h1V325H82Z')
+				path(fill='#001011', d='M81,317.5h2.84v5H81Z')
+				path(fill='#00d88e', d='M93.15,330.56a11.06,11.06,0,0,0-21.52,0Z')
+
 //end block-6
