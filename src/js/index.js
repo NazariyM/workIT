@@ -7,8 +7,9 @@
  */
 
 /** Import initialized-by-default modules/libs */
+import 'babel-polyfill';
+import 'element-closest';
 import './components/Common';
-import './components/PublicAPI';
 
 /** Import page controllers */
 import Home from './pages/Home';

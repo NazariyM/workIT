@@ -12434,9 +12434,11 @@ exports.default = HomeAnims;
 
 /** Import initialized-by-default modules/libs */
 
-__webpack_require__(132);
+__webpack_require__(133);
 
-__webpack_require__(349);
+__webpack_require__(335);
+
+__webpack_require__(132);
 
 var _Home = __webpack_require__(351);
 
@@ -12477,10 +12479,6 @@ exports.Common = undefined;
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 // import objectFitVideos from 'object-fit-videos';
 
-
-__webpack_require__(133);
-
-__webpack_require__(335);
 
 var _objectFitImages = __webpack_require__(336);
 
@@ -24746,145 +24744,8 @@ var NoTouch = function () {
 exports.default = new NoTouch();
 
 /***/ }),
-/* 349 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PublicAPI = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Website's public API (example).
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Make some functions and methods accessible in global scope.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module PublicAPI
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
-
-var _Timer = __webpack_require__(350);
-
-var _Timer2 = _interopRequireDefault(_Timer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var PublicAPI = exports.PublicAPI = function () {
-  function PublicAPI() {
-    _classCallCheck(this, PublicAPI);
-  }
-
-  _createClass(PublicAPI, null, [{
-    key: 'Timer',
-
-    /**
-     * Some of 'Timer' module public methods.
-     *
-     * PublicAPI.timer.init() - initialize timer
-     * PublicAPI.timer.stop() - stop timer
-     *
-     * @return {{init: Function, stop: Function}}
-     */
-    get: function get() {
-      return {
-        init: _Timer2.default.startTimer.bind(_Timer2.default),
-        stop: _Timer2.default.stopTimer.bind(_Timer2.default)
-      };
-    }
-  }]);
-
-  return PublicAPI;
-}();
-
-/** Expose Public API */
-
-
-exports.default = window.PublicAPI = PublicAPI;
-
-/***/ }),
-/* 350 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * Example component (delete on prod)
- *
- * @module Timer
- */
-
-var Timer = exports.Timer = function Timer() {
-  var _this = this;
-
-  _classCallCheck(this, Timer);
-
-  this._counter = 1;
-  this._timerInterval = null;
-
-  this.setTimer = function (time) {
-    _this._counter = time;
-  };
-
-  this.startTimer = function () {
-    _this._timerInterval = setInterval(function () {
-      return console.log("Timer: " + _this._counter++);
-    }, 1000);
-  };
-
-  this.stopTimer = function () {
-    clearInterval(_this._timerInterval);
-  };
-}
-/**
- * @private
- * @type {Number}
- */
-
-
-/**
- * @private
- * @type {Null|Number}
- */
-
-
-/**
- * Set current time
- *
- * @public
- * @this Timer
- * @param {Number} time
- */
-
-
-/**
- * Start countdown
- *
- * @public
- * @this Timer
- */
-
-
-/**
- * Stop countdown
- *
- * @public
- * @this Timer
- */
-;
-
-exports.default = new Timer();
-
-/***/ }),
+/* 349 */,
+/* 350 */,
 /* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-import 'element-closest';
 import objectFitImages from 'object-fit-images';
 // import objectFitVideos from 'object-fit-videos';
 import './header';
