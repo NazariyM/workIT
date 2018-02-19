@@ -17,6 +17,13 @@
       align-items: center
       height: 50px
       margin-bottom: 37px
+      a
+        .no-touch &:hover img
+          opacity: .7
+      img
+        transition: opacity .3s ease
+        +gpu
+        
   &__decor-line
     position: absolute
     top: 50%

@@ -24,7 +24,6 @@ class Block3 {
     this.$items.each(function (i, $el) {
       new ScrollAnim({
         el: $el,
-        hook: .7,
         onStart() {
           _this.startAnim($el);
         }
@@ -45,8 +44,8 @@ class Block3 {
       // .to($count, 1, { y: 0, autoAlpha: 1, ease: Power0.easeIn })
       // .fromTo($countEl, 1, { y: 0 }, { y: -30 })
       .staggerTo($elements, 1.5, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, .3)
-      .to($count, 1, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, '-=1')
-      .to($countEl, 1, { className: `+=${css.hasAnim}` });
+      .to($count, 1, { autoAlpha: 1.3, y: 0, ease: Power2.easeOut }, '-=1')
+      .to($countEl, 1, { className: `+=${css.hasAnim}` }, '-=1.1');
   }
 
   startLinesAnim() {

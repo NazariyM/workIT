@@ -1,6 +1,7 @@
 include ../bemto/index
 include ../partials/_variables
 include ../partials/_mixins
+include ../components/popup
 
 - var suffix = production ? '.min' : '';
 
@@ -41,6 +42,10 @@ html(lang='ru')
       // Main content
       block main
         main
+
+      block modals
+        +popup({name: 'comePopup'})
+        +popup({name: 'enrollPopup'})
 
       // Footer
       block footer

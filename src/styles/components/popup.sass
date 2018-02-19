@@ -1,0 +1,90 @@
+.popup
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  opacity: 0
+  visibility: hidden
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+  z-index: 1300
+  overflow: auto
+  outline: 0
+  text-align: center
+  font-size: 0
+  transform: translate3d(0, 0, 0)
+  background-color: rgba(#fff, .85)
+  transition: opacity .3s ease, transform .5s ease, visibility .5s
+  will-change: opacity, transform
+  $parent: &
+  &:after
+    content: ''
+    display: inline-block
+    vertical-align: middle
+    width: 0
+    height: 100%
+  &.opened
+    opacity: 1
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
+    visibility: visible
+  &__close
+    position: absolute
+    top: 40px
+    right: 38px
+    width: 25px
+    height: 25px
+    cursor: pointer
+    padding: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    border: 0
+    .no-touch &:hover svg
+      fill: $color2
+    svg
+      fill: $white
+      +trs
+      
+  &__container
+    display: inline-block
+    vertical-align: middle
+    max-width: 1280px
+    width: 100%
+    position: relative
+    padding: 100px 60px 120px
+    margin: 30px auto
+    transition: opacity .5s ease, transform .5s ease
+    transform: translate3d(0, -100px, 0)
+    will-change: transform, opacity
+    background: $color1
+    text-align: left
+  &__title
+    max-width: 710px
+    margin-bottom: 50px
+    +h3
+    text-transform: none
+    b
+      &::after
+        top: 0
+        bottom: -5px
+    &_md
+      max-width: 780px
+  &__form
+    display: flex
+    align-items: flex-end
+    &-col
+      flex: 0 1 378px
+      &:not(:last-child)
+        padding-right: 38px
+    &-btn
+      min-width: 221px
+      height: 63px
+      line-height: 66px
+
+body.popup-opened
+  overflow: hidden
+
+.popup.opened .popup__container
+  -webkit-transform: translate3d(0, 0, 0)
+  -moz-transform: translate3d(0, 0, 0)
+  transform: translate3d(0, 0, 0)

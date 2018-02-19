@@ -9,9 +9,11 @@ import './b-block-3';
 import './b-block-5';
 import './b-block-6';
 import './b-block-10';
+import './footer';
 import './homeAnims';
 import './expandList';
 import './preloader';
+import './popup';
 import './noTouch';
 
 export class Common {

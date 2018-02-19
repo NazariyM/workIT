@@ -182,10 +182,8 @@
         width: 35px
         height: 9px
         background: $color1
-        //&.has-anim
-        //  animation: swingEl-1 1s
-        //  transform-origin: top center
-        //  animation-fill-mode: forwards
+        transform-origin: top center
+        animation-fill-mode: forwards
         &_1
           transform: rotate3d(0, 0, 1, 15deg)
           +sm
@@ -197,11 +195,15 @@
             left: 14px
             width: 18px
             height: 5px
+          &.has-anim
+            animation: swingEl-1 1.2s
         &_2
           width: 46px
           height: 13px
           top: 34px
           left: 27px
+          &.has-anim
+            animation: swingEl-2 1.2s
           +xs
             top: 37px
             left: 16px
@@ -211,6 +213,8 @@
           transform: rotate3d(0, 0, 1, -20deg)
           left: 37px
           width: 36px
+          &.has-anim
+            animation: swingEl-3 1.2s
           +sm
             left: 30px
             top: 37px
@@ -225,6 +229,8 @@
           left: 29px
           width: 44px
           height: 11px
+          &.has-anim
+            animation: swingEl-4 1.2s
           +sm
             top: 37px
           +xs

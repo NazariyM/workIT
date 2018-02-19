@@ -28,7 +28,7 @@ if block6 ? block6 : block6 = []
 				+e.price._offer
 					+e.H5 Cтоимость от:
 						span 200$
-				+e.BUTTON.offer-btn.btn._green(type='button' data-popup-target='')
+				+e.BUTTON.offer-btn.btn._green(type='button' data-popup-target='enrollPopup')
 					span забронировать
 
 			+e.offer-pic.img-hover
@@ -62,7 +62,7 @@ if block6 ? block6 : block6 = []
 						+e.price._item
 							+e.H5 Cтоимость от:
 								span 200$
-						+e.BUTTON.item-btn.btn._green(type='button' data-popup-target='')
+						+e.BUTTON.item-btn.btn._green(type='button' data-popup-target='enrollPopup')
 							span забронировать
 			each item in block6List
 				+block6Item(item)

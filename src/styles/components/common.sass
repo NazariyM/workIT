@@ -47,12 +47,12 @@ body
 // other
 .block-top
   margin: 0 auto 62px
-  
+
 .block-title
   +h2
   transform: translateX(-70px)
   opacity: 0
-  
+
 .block-sub-title
   +f('gil-300')
   letter-spacing: 0.025em
@@ -180,8 +180,8 @@ label.btn
     +f('rob-700')
     +trs
     color: $color2
-    //.no-touch &:hover
-    //  color: $color1
+//.no-touch &:hover
+//  color: $color1
 //.no-touch &:hover path
 //  fill: $color1!important
 //.icon
@@ -238,6 +238,18 @@ label.btn
     &_black
       background: $color2
 
+.textarea
+  display: block
+  width: 100%
+  height: 157px
+  min-height: 167px
+  padding: 15px 0
+  resize: none
+  +f('rob-400', 16)
+  +placeholder-color($color2)
+  +xs
+    padding: 15px
+
 //.check-box
 //	position: relative
 //	label
@@ -283,19 +295,6 @@ label.btn
 //		margin-top: 5px
 //		margin-right: 15px
 		
-//.textarea
-//	display: block
-//	width: 100%
-//	height: 100px
-//	min-height: 167px
-//	padding: 20px
-//	border: 0
-//	resize: none
-//	+f('geo-400', 17)
-//	+placeholder-color(#8d8d8d)
-//	+xs
-//		padding: 15px
-
 //.slider-btn
 //	position: absolute
 //	top: 50%
@@ -408,10 +407,10 @@ label.btn
   &__img
     width: 80px
     height: 20px
-    
+
 .gray-bg
   background: url("../img/gray-bg.jpg")
-  
+
 .black-bg
   background: url("../img/bg.png")
 
@@ -427,7 +426,7 @@ label.btn
     transition: .3s ease-in-out
   img
     transition: .3s ease-in-out
-    
+
 //.img-blur
 //  +coverdiv
 //  z-index: -1
@@ -449,9 +448,9 @@ label.btn
     transform: translate(-10px, -10px)
   polygon
     transform: scale(1.51) translateX(20%)
-  
+
 .preloader
-  //display: none!important
+  display: none !important
   position: fixed
   z-index: 100
   top: 0
@@ -470,7 +469,7 @@ label.btn
       opacity: 0
       &-dot
         opacity: 0
-        
+
 .expand-list
   text-align: center
   &__inner

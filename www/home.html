@@ -162,7 +162,7 @@
             </li>
           </ul>
         </div>
-        <button class="header__btn btn btn_white" type="button">
+        <button class="header__btn btn btn_white" type="button" data-popup-target="comePopup">
           <span>ПРИЙТИ В ГОСТИ</span>
         </button>
         <div class="header__lang lang">
@@ -194,7 +194,7 @@
           <div class="screen__sub-title">
             <h5>Место, где рождаются идеи</h5>
           </div>
-          <button class="screen__btn btn btn_green" type="button">
+          <button class="screen__btn btn btn_green" data-popup-target="comePopup" type="button">
             <span>хочу в гости</span>
           </button>
         </div>
@@ -517,7 +517,7 @@
                   <span>200$</span>
                 </h5>
               </div>
-              <button class="block-6__offer-btn btn btn_green" type="button" data-popup-target="">
+              <button class="block-6__offer-btn btn btn_green" type="button" data-popup-target="enrollPopup">
                 <span>забронировать</span>
               </button>
             </div>
@@ -541,7 +541,7 @@
                     <span>200$</span>
                   </h5>
                 </div>
-                <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="">
+                <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="enrollPopup">
                   <span>забронировать</span>
                 </button>
               </div>
@@ -561,7 +561,7 @@
                     <span>200$</span>
                   </h5>
                 </div>
-                <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="">
+                <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="enrollPopup">
                   <span>забронировать</span>
                 </button>
               </div>
@@ -581,7 +581,7 @@
                     <span>200$</span>
                   </h5>
                 </div>
-                <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="">
+                <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="enrollPopup">
                   <span>забронировать</span>
                 </button>
               </div>
@@ -614,7 +614,7 @@
             <div class="block-7__title block-title h3">
               <h3>Хочешь увидеть всё своими глазами? Приходи в гости!</h3>
             </div>
-            <button class="block-7__btn btn btn_green" type="button">
+            <button class="block-7__btn btn btn_green" data-popup-target="comePopup" type="button">
               <span>записаться</span>
             </button>
           </div>
@@ -950,6 +950,123 @@
       </section>
       <!--end subscr-->
     </main>
+    <div class="popup" data-popup-id="comePopup" tabindex="-1" role="dialog">
+      <div class="popup__container">
+        <button class="popup__close js-popup-close" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 25 25">
+            <defs>
+              <path id="bpq2a" d="M1220.63 158l-1.38-1.4 10.38-10.5 1.38 1.4z"></path>
+              <path id="bpq2b" d="M1230.72 147.49l-1.37 1.39-10.35-10.5 1.37-1.4z"></path>
+              <path id="bpq2c" d="M1238.37 137l1.38 1.4-10.38 10.5-1.38-1.4z"></path>
+              <path id="bpq2d" d="M1228.28 147.51l1.37-1.4 10.35 10.5-1.37 1.4z"></path>
+            </defs>
+            <g>
+              <g transform="translate(-1217 -135)">
+                <g>
+                  <use xlink:href="#bpq2a"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2b"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2c"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2d"></use>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <div class="popup__title">
+          <h2>Оставьте ваши контакты, и мы обязательно перезвоним!</h2>
+        </div>
+        <form class="popup__form" action="#!" method="POST">
+          <div class="popup__form-col">
+            <div class="popup__form-field form-field">
+              <input class="form-field__input" type="email" placeholder="Имя*" name="" autocomplete="off" required="required" />
+              <label class="form-field__decor form-field__decor_black"></label>
+            </div>
+            <div class="popup__form-field form-field">
+              <input class="form-field__input" type="email" placeholder="Номер мобильного*" name="" autocomplete="off" required="required" />
+              <label class="form-field__decor form-field__decor_black"></label>
+            </div>
+            <div class="popup__form-field form-field">
+              <input class="form-field__input" type="email" placeholder="Email*" name="" autocomplete="off" required="required" />
+              <label class="form-field__decor form-field__decor_black"></label>
+            </div>
+          </div>
+          <div class="popup__form-col">
+            <div class="popup__form-field form-field">
+              <textarea class="form-field__input form-field__input_textarea textarea" placeholder="Комментарий" name="" autocomplete="off"></textarea>
+              <label class="form-field__decor form-field__decor_black"></label>
+            </div>
+          </div>
+          <label class="popup__form-btn btn btn_black">
+            <input class="btn" type="submit" value="отправить запрос" />
+          </label>
+        </form>
+      </div>
+    </div>
+    <div class="popup" data-popup-id="enrollPopup" tabindex="-1" role="dialog">
+      <div class="popup__container">
+        <button class="popup__close js-popup-close" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 25 25">
+            <defs>
+              <path id="bpq2a" d="M1220.63 158l-1.38-1.4 10.38-10.5 1.38 1.4z"></path>
+              <path id="bpq2b" d="M1230.72 147.49l-1.37 1.39-10.35-10.5 1.37-1.4z"></path>
+              <path id="bpq2c" d="M1238.37 137l1.38 1.4-10.38 10.5-1.38-1.4z"></path>
+              <path id="bpq2d" d="M1228.28 147.51l1.37-1.4 10.35 10.5-1.37 1.4z"></path>
+            </defs>
+            <g>
+              <g transform="translate(-1217 -135)">
+                <g>
+                  <use xlink:href="#bpq2a"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2b"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2c"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2d"></use>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <div class="popup__title popup__title_md has-selection has-selection_black is-selected">
+          <h2>Для бронирования
+            <b>"Офис мечты"</b> оставьте свои контакты и мы обязательно перезвоним!</h2>
+        </div>
+        <form class="popup__form" action="#!" method="POST">
+          <div class="popup__form-col">
+            <div class="popup__form-field form-field">
+              <input class="form-field__input" type="email" placeholder="Имя*" name="" autocomplete="off" required="required" />
+              <label class="form-field__decor form-field__decor_black"></label>
+            </div>
+            <div class="popup__form-field form-field">
+              <input class="form-field__input" type="email" placeholder="Номер мобильного*" name="" autocomplete="off" required="required" />
+              <label class="form-field__decor form-field__decor_black"></label>
+            </div>
+            <div class="popup__form-field form-field">
+              <input class="form-field__input" type="email" placeholder="Email*" name="" autocomplete="off" required="required" />
+              <label class="form-field__decor form-field__decor_black"></label>
+            </div>
+          </div>
+          <div class="popup__form-col">
+            <div class="popup__form-field form-field">
+              <textarea class="form-field__input form-field__input_textarea textarea" placeholder="Комментарий" name="" autocomplete="off"></textarea>
+              <label class="form-field__decor form-field__decor_black"></label>
+            </div>
+          </div>
+          <label class="popup__form-btn btn btn_black">
+            <input class="btn" type="submit" value="отправить запрос" />
+          </label>
+        </form>
+      </div>
+    </div>
     <!-- Footer-->
     <!--begin footer-->
     <footer class="footer">

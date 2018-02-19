@@ -4,11 +4,14 @@
     display: flex
     align-items: flex-start
     margin: 0 auto 20px
-    
+  &__logo
+    transform: translateY(50px)
+    opacity: 0
   &__nav-list
     padding-left: 100px
     margin-top: -5px
-    //column-gap: 90px
+    transform: translateY(50px)
+    opacity: 0
     ul
       column-count: 2
       column-width: 220px
@@ -26,6 +29,8 @@
   &__contact
     margin-left: -15px
     margin-top: -3px
+    transform: translateY(50px)
+    opacity: 0
     p
       +f('rob-400')
       color: $color3
@@ -33,10 +38,13 @@
   &__socials
     margin-top: 5px
     margin-left: auto
+    transform: translateY(50px)
+    opacity: 0
   &__addition
     display: flex
     justify-content: space-between
-  
+    transform: translateY(-50px)
+    opacity: 0
     p
       +f('rob-400')
       color: $color4
