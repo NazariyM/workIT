@@ -1,4 +1,5 @@
 import slick from 'slick-carousel';
+import { css } from '../modules/dev/_helpers';
 
 class Slider {
 
@@ -84,6 +85,8 @@ class Slider {
         nextArrow: `<button type="button" class="slider__btn slider-btn_next">${arrRight}</button>`,
         appendArrows: $('.slider__buttons', this),
         onInit: countSlides()
+
+        // beforeChange: swingAnim()
       });
 
       function countSlides() {
@@ -96,6 +99,15 @@ class Slider {
           $allCount.text(`0${slick.slideCount}`);
         });
       }
+
+      $slider.on('beforeChange', () => {
+        const $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
+        const animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
+
+        $countDecor.addClass(css.hasAnim).one(animEnd, function () {
+          $(this).removeClass(css.hasAnim);
+        });
+      });
     });
   }
 

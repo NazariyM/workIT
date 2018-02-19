@@ -21054,6 +21054,8 @@ var _slickCarousel = __webpack_require__(340);
 
 var _slickCarousel2 = _interopRequireDefault(_slickCarousel);
 
+var _helpers = __webpack_require__(18);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21141,6 +21143,8 @@ var Slider = function () {
           nextArrow: '<button type="button" class="slider__btn slider-btn_next">' + arrRight + '</button>',
           appendArrows: $('.slider__buttons', this),
           onInit: countSlides()
+
+          // beforeChange: swingAnim()
         });
 
         function countSlides() {
@@ -21153,6 +21157,15 @@ var Slider = function () {
             $allCount.text('0' + slick.slideCount);
           });
         }
+
+        $slider.on('beforeChange', function () {
+          var $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
+          var animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
+
+          $countDecor.addClass(_helpers.css.hasAnim).one(animEnd, function () {
+            $(this).removeClass(_helpers.css.hasAnim);
+          });
+        });
       });
     }
   }]);
