@@ -50,7 +50,7 @@ export default class HomeAnims {
       const title = el.querySelector('.block-title');
 
       tl
-        .staggerFromTo(item, .7, { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0 }, 0.6)
+        .staggerTo(item, .7, { autoAlpha: 1, x: 0 }, 0.6)
         .to(title, 2, { className: `+=${css.selected}` }, '-=1.3');
     }
   }

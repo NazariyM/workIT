@@ -27,6 +27,13 @@ class Block6 {
 
     new ScrollAnim({
       el: _this.$container.get(0),
+      onStart() {
+        _this.startLampsAnim();
+      }
+    });
+
+    new ScrollAnim({
+      el: _this.$offer.get(0),
       hook: .9,
       onStart() {
         _this.startAnim();
@@ -38,12 +45,17 @@ class Block6 {
     const tl = new TimelineMax();
 
     tl
-    .to(this.$lampsWire, 2, { className: `+=${css.visible}` })
     .to(this.$offer, 1, { className: `+=${css.visible}` }, '-=1')
-    .staggerFromTo(this.$offerText, 1, { x: -50, autoAlpha: 0 }, { x: 0,  autoAlpha: 1, ease: Power2.easeOut, clearProps: 'transform, visibility, opacity' }, 0.2)
-    .fromTo(this.$offerPic, 1, { x: -50, autoAlpha: 0 }, { x: 0,  autoAlpha: 1, ease: Power2.easeOut, clearProps: 'transform, visibility, opacity' }, '-=.8')
-    .staggerTo(this.$itemMask, 1, { width: '0' }, .5, '-=.6');
+    .staggerTo(this.$offerText, 1, { x: 0,  autoAlpha: 1, ease: Power2.easeOut }, 0.2, '+=.5')
+    .to(this.$offerPic, 1, { x: 0,  autoAlpha: 1, ease: Power2.easeOut }, '-=.7')
+    .staggerTo(this.$itemMask, 1, { width: '0' }, .5, '-=.3');
 
+  }
+
+  startLampsAnim() {
+
+    TweenMax
+      .to(this.$lampsWire, 2, { className: `+=${css.visible}` });
   }
 }
 

@@ -50,12 +50,16 @@ body
   
 .block-title
   +h2
+  transform: translateX(-70px)
+  opacity: 0
   
 .block-sub-title
   +f('gil-300')
   letter-spacing: 0.025em
   font-size: 18px
   line-height: 30px
+  transform: translateX(-70px)
+  opacity: 0
 
 .block-label
   display: inline-block
@@ -63,6 +67,8 @@ body
   padding-left: 2px
   +f('rob-700', 16, 30)
   text-transform: uppercase
+  transform: translateX(-70px)
+  opacity: 0
   +xs
     margin-bottom: 5px
     font-size: 12px
@@ -445,7 +451,7 @@ label.btn
     transform: scale(1.51) translateX(20%)
   
 .preloader
-  display: none!important
+  //display: none!important
   position: fixed
   z-index: 100
   top: 0

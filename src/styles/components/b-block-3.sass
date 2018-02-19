@@ -61,8 +61,6 @@
       display: flex
       align-items: flex-start
       justify-content: space-between
-      transform: translateY(50px)
-      opacity: 0
       +sm
         flex-wrap: wrap
       #{$parent}_left &
@@ -72,6 +70,8 @@
         +sm
           justify-content: flex-start
     &-media
+      transform: translateY(50px)
+      opacity: 0
       #{$parent}_left &
         flex: 0 1 percentage(611/1220)
         +ratio(611, 395)
@@ -107,6 +107,8 @@
       width: 100%
       height: 100%
     &-text
+      transform: translateY(50px)
+      opacity: 0
       flex: 0 1 552px
       +sm
         order: -1
@@ -143,7 +145,7 @@
       position: absolute
       left: 50%
       opacity: 0
-      transform: translateY(-30px)
+      transform: translateY(30px)
       &::before
         display: block
         +f('gil-800', 90, 80)
@@ -179,10 +181,13 @@
         left: 35px
         width: 35px
         height: 9px
-        background: #00d88e
         background: $color1
+        //&.has-anim
+        //  animation: swingEl-1 1s
+        //  transform-origin: top center
+        //  animation-fill-mode: forwards
         &_1
-          transform: rotate(15deg)
+          transform: rotate3d(0, 0, 1, 15deg)
           +sm
             top: 34px
             left: 30px
@@ -203,19 +208,19 @@
             width: 20px
             height: 7px
         &_3
-          transform: rotate(-20deg)
+          transform: rotate3d(0, 0, 1, -20deg)
           left: 37px
           width: 36px
           +sm
             left: 30px
             top: 37px
           +xs
-            transform: rotate(-15deg)
+            transform: rotate3d(0, 0, 1, -15deg)
             left: 14px
             width: 19px
             height: 6px
         &_4
-          transform: rotate(31deg)
+          transform: rotate3d(0, 0, 1, 31deg)
           top: 33px
           left: 29px
           width: 44px

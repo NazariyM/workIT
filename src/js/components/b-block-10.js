@@ -6,6 +6,7 @@ import { css } from '../modules/dev/_helpers';
 class Block10 {
   constructor() {
     this.$container = $('.block-10');
+    this.$list = this.$container.find('.block-10__list');
     this.$item = this.$container.find('.block-10__item');
     this.$line = this.$container.find('.block-10__decor-line');
 
@@ -21,8 +22,8 @@ class Block10 {
     const _this = this;
 
     new ScrollAnim({
-      el: _this.$container.get(0),
-      hook: .7,
+      el: _this.$list.get(0),
+      hook: .9,
       onStart() {
         _this.startAnim();
       }
@@ -33,8 +34,8 @@ class Block10 {
     const tl = new TimelineMax();
 
     tl
-      .to(this.$line, 1.5, { width: '100%' })
-      .staggerTo(this.$item, .7, { autoAlpha: 1, x: 0 }, 0.2);
+      .to(this.$line, 2, { width: '100%' })
+      .staggerTo(this.$item, .7, { autoAlpha: 1, x: 0 }, 0.2, '-=1');
   }
 }
 

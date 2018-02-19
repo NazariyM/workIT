@@ -2,7 +2,7 @@ import ScrollMagic from 'Scrollmagic';
 // import '../animation/debug.addIndicators';
 // import '../../../../../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 // import '../../../../../node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min';
-// import { preloader } from '../../../components/preloader';
+import { preloader } from '../../../components/preloader';
 import { $window } from '../_helpers';
 
 const scrollController = new ScrollMagic.Controller();
@@ -47,7 +47,7 @@ export default class ScrollAnim {
 	async createScene() {
 		const _this = this;
 		
-		// await preloader.wait();
+		await preloader.wait();
 
 		const scene = new ScrollMagic.Scene({
 			triggerElement: _this.triggerElement,
