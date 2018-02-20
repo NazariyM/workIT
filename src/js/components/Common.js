@@ -7,6 +7,7 @@ import './b-block-3';
 import './b-block-5';
 import './b-block-6';
 import './b-block-10';
+import './locations-map';
 import './footer';
 import './homeAnims';
 import './expandList';

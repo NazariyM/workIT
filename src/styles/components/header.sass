@@ -5,7 +5,6 @@
   left: 0
   right: 0
   z-index: 99
-  //opacity: 0
   transform: translateY(-100%)
   background-color: $color1
   transition: background-color .4s ease
@@ -42,6 +41,7 @@
     background: $color2
   &__btn
     flex: 0 0 192px
+    max-width: 192px
     min-width: 0
     transition: .4s ease
     &::after
@@ -66,6 +66,7 @@
         .no-touch &:hover .icon-user__bot
           stroke: $color2
       .icon-user
+        pointer-events: none
         margin-right: 9px
         vertical-align: -3px
         &__top

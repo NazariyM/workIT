@@ -19,8 +19,8 @@ if screen.subTitle ? screen.subTitle : screen.subTitle = 'Место, где р�
       filter#img-blur
         fegaussianblur(in='SourceGraphic', stddeviation='10')
 
-    image(xlink:href='static/img/screen.jpg', x='0', y='0' filter='url(#img-blur)' preserveAspectRatio='xMidYMid slice' width="1920" height="1080")
-    image(xlink:href='static/img/screen.jpg', x='0', y='0' clip-path='url(#img-blur-mask)' preserveAspectRatio='xMidYMid slice' width="1920" height="1080")
+    image(xlink:href='static/img/screen.jpg', x='0', y='0' filter='url(#img-blur)' preserveAspectRatio='xMidYMid slice' width='1920' height='1080')
+    image(xlink:href='static/img/screen.jpg', x='0', y='0' clip-path='url(#img-blur-mask)' preserveAspectRatio='xMidYMid slice' width='1920' height='1080')
 
   +e.more
     +e.SPAN.more-text.h6 узнать больше

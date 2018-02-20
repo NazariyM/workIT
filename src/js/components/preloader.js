@@ -21,19 +21,18 @@ class Preloader {
 
   animPreloader() {
     this.resolve = new Promise(resolve => {
-      resolve();
-      // const tl = new TimelineMax({ onComplete() { resolve(); } });
-      //
-      // tl
-      //   .staggerTo(this.$letter, 0.15, { autoAlpha: 1 }, 0.2)
-      //   .fromTo(this.$letterDot, 0.2, {
-      //     autoAlpha: 1,
-      //     scale: 0,
-      //     transformOrigin: '50% 50%'
-      //   }, { scale: 1 }, '+=.1')
-      //   .to(this.$preloader, .3, {
-      //     autoAlpha: 0
-      //   }, '+=.25');
+      const tl = new TimelineMax({ onComplete() { resolve(); } });
+
+      tl
+        .staggerTo(this.$letter, 0.15, { autoAlpha: 1 }, 0.2)
+        .fromTo(this.$letterDot, 0.2, {
+          autoAlpha: 1,
+          scale: 0,
+          transformOrigin: '50% 50%'
+        }, { scale: 1 }, '+=.1')
+        .to(this.$preloader, .3, {
+          autoAlpha: 0
+        }, '+=.25');
     });
   }
 }
