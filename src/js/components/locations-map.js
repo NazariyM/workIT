@@ -1,13 +1,15 @@
+import { TweenMax } from 'gsap';
+
 class LocationsMap {
   constructor() {
     this.$map = $('#locations-map');
     this.$markerImg = this.$map.data('marker-img');
-    this.$mapCenter = this.$map.data('map-center').split(',').map(parseFloat);
     this.$mapZoom = this.$map.data('map-zoom');
-    this.$marker1Coords = this.$map.data('marker-1').split(',');
-    this.$marker2Coords = this.$map.data('marker-2').split(',');
+    this.$mapCenter = this.$map.data('map-center').split(';').map(parseFloat);
+    this.$activeMarker = this.$map.data('marker-active') - 1;
     this.$title = $('.locations__text-title');
     this.$street = $('.locations__text-street');
+    this.markersCount = 10;
 
     if (this.$map.length) this.init();
   }
@@ -25,43 +27,61 @@ class LocationsMap {
       disableDefaultUI: true
     });
 
-    const markers = [
-      this.$marker1Coords,
-      this.$marker2Coords
-    ];
+    let markersData = [];
+    let markers = [];
+    let formattedMarkerData;
 
-    let marker, i;
+    for (let k = 1; k < this.markersCount; k++) {
+      const markerData = _this.$map.data(`marker-${k}`);
 
-    for (i = 0; i < markers.length; i++) {
-      const lat = parseFloat(markers[i][2]);
-      const lng = parseFloat(markers[i][3]);
-      const title = markers[i][0];
-      const street = markers[i][1];
+      if (!markerData) continue;
+
+      formattedMarkerData = markerData.split(';');
+      markersData.push(formattedMarkerData);
+    }
+
+    for (const i of markersData.keys()) {
+      const lat = parseFloat(markersData[i][2]);
+      const lng = parseFloat(markersData[i][3]);
+      const title = markersData[i][0];
+      const street = markersData[i][1];
       const position = new google.maps.LatLng(lat, lng);
+      const iconZoomed = { url: `${_this.$markerImg}`, scaledSize: new google.maps.Size(75, 79) };
 
-      marker = new google.maps.Marker({
+      const marker = new google.maps.Marker({
         position: position,
-        icon: `${this.$markerImg}`,
+        icon: `${_this.$markerImg}`,
         map: locationMap
       });
 
-      google.maps.event.addListener(marker, 'click', ((i) => {
-        return () => {
+      markers.push(marker);
+
+      google.maps.event.addListener(marker, 'click', ((marker, i) => {
+        return function () {
+
+          for (const j of markers.keys()) {
+            markers[j].setIcon(`${_this.$markerImg}`);
+          }
+
+          TweenMax.fromTo(_this.$title, .7, { y: -25, autoAlpha: 0 }, { ease: Elastic.easeOut.config(1, 0.3), y: 0, autoAlpha: 1 });
+          TweenMax.fromTo(_this.$street, .7, { y: -25, autoAlpha: 0 }, { ease: Elastic.easeOut.config(1, 0.3), y: 0, autoAlpha: 1 });
 
           _this.$title.text(title);
           _this.$street.text(street);
 
-          // locationMap.setCenter(marker.getPosition());
-          // locationMap.setZoom(16);
+          this.setIcon(iconZoomed);
+          this.setAnimation(google.maps.Animation.BOUNCE);
 
-          // marker.setIcon('static/img/map-marker-zoom.png');
+          setTimeout(() => {
+            marker.setAnimation(null);
+          }, 500);
+
         };
-      })(i));
+      })(marker, i));
     }
 
     google.maps.event.addDomListener(window, 'load', () => {
-      _this.$title.text(this.$marker1Coords[0]);
-      _this.$street.text(this.$marker1Coords[1]);
+      google.maps.event.trigger(markers[_this.$activeMarker], 'click');
     });
   }
 }

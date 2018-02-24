@@ -1,7 +1,4 @@
 import ScrollMagic from 'Scrollmagic';
-// import '../animation/debug.addIndicators';
-// import '../../../../../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
-// import '../../../../../node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min';
 import { preloader } from '../../../components/preloader';
 import { $window } from '../_helpers';
 

@@ -24,24 +24,26 @@ mixin popup(el)
 					+e.title
 						+e.H2 Оставьте ваши контакты, и мы обязательно перезвоним!
 
-					+e.FORM.form(action='#!' method='POST')
-						+e.form-col
-							+e.form-field.form-field
-								+b.INPUT.form-field__input(type='email' placeholder='Имя*' name='' autocomplete='off' required)
-								+b.LABEL.form-field__decor._black
+					form.form(action='#!')
+						.form-group._popup
+							.form-group
+								.form-group
+									input.form-control(type='email' name='' autocomplete='off' data-validation='email required')
+									label.control-label
+										span Имя*
+									.help-block Введите ваш Email
 
-							+e.form-field.form-field
-								+b.INPUT.form-field__input(type='email' placeholder='Номер мобильного*' name='' autocomplete='off' required)
-								+b.LABEL.form-field__decor._black
+								.form-group
+									input.form-control(type='email' name='' autocomplete='off' data-validation='email required')
+									label.control-label
+										span Номер мобильного*
+									.help-block Введите ваш Email
 
-							+e.form-field.form-field
-								+b.INPUT.form-field__input(type='email' placeholder='Email*' name='' autocomplete='off' required)
-								+b.LABEL.form-field__decor._black
-
-						+e.form-col
-							+e.form-field.form-field
-								+b.TEXTAREA.form-field__input._textarea.textarea(placeholder='Комментарий' name='' autocomplete='off')
-								+b.LABEL.form-field__decor._black
+								.form-group
+									input.form-control(type='email' name='' autocomplete='off' data-validation='email required')
+									label.control-label
+										span Email*
+									.help-block Введите ваш Email
 
 						+e.LABEL.form-btn.btn._black
 							+b.INPUT.btn(type='submit' value='отправить запрос')

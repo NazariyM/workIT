@@ -207,48 +207,6 @@ label.btn
   .no-touch &:hover
     color: $color3
 
-.form-field
-  $parent: &
-  position: relative
-  overflow: hidden
-  &__input
-    width: 100%
-    height: 57px
-    padding-left: 3px
-    +f('rob-400', 16)
-    letter-spacing: 0.03em
-    color: $color2
-    background: transparent
-    border: 0
-    border-bottom: 2px solid $white
-    +placeholder-color($color2)
-    &:focus + #{$parent}__decor
-      transform: translateX(0)
-  &__decor
-    pointer-events: none
-    position: absolute
-    left: 0
-    bottom: 0
-    height: 2px
-    width: 100%
-    transform: translateX(-101%)
-    transition: transform .5s ease
-    background: $color1
-    &_black
-      background: $color2
-
-.textarea
-  display: block
-  width: 100%
-  height: 157px
-  min-height: 167px
-  padding: 15px 0
-  resize: none
-  +f('rob-400', 16)
-  +placeholder-color($color2)
-  +xs
-    padding: 15px
-
 .gray-bg
   background: url("../img/gray-bg.jpg")
 

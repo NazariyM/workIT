@@ -213,8 +213,10 @@ export const css = {
 	hide: 'is-hide',
 	bg: 'is-bg',
 	playing: 'is-playing',
+	fill: 'is-fill',
   selected: 'is-selected',
-	fixed: 'is-fixed'
+	fixed: 'is-fixed',
+	error: 'has-error'
 };
 
 /**

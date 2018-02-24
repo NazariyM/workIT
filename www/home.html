@@ -909,7 +909,8 @@
           </div>
           <div class="locations__inner" data-anim="group">
             <div class="locations__map-wrap">
-              <div class="locations__map" id="locations-map" data-marker-1="Центр, ул. Владимирская 85, 50.436518, 30.509678" data-marker-2="Нивки, площа Перемоги 3, 50.446179, 30.491991" data-map-center="50.448434, 30.513833" data-map-zoom="13" data-marker-img="static/img/map-marker.png"></div>
+              <div class="locations__map" id="locations-map" data-marker-1="Центр; ул. Владимирская 85; 50.436518; 30.509678" data-marker-2="Нивки; площа Перемоги, 3; 50.446179; 30.491991" data-marker-active="1" data-map-center="50.448434; 30.513833" data-map-zoom="13"
+                data-marker-img="static/img/map-marker.png"></div>
             </div>
             <div class="locations__text">
               <h6 class="locations__text-title"></h6>
@@ -948,26 +949,33 @@
         </div>
       </section>
       <!--end locations-->
-      <!--begin subscr-->
+      <!--begin subscription-->
       <section class="subscr">
         <div class="subscr__container container">
           <div class="subscr__top block-top">
             <div class="subscr__title block-title">
               <h3>Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!</h3>
             </div>
-            <form class="subscr__form" action="#!" method="POST">
-              <div class="subscr__form-field form-field">
-                <input class="form-field__input" type="email" placeholder="Ваш email" name="" autocomplete="off" required="required" />
-                <label class="form-field__decor form-field__decor_black"></label>
-              </div>
-              <label class="subscr__form-btn btn btn_black">
-                <input class="btn" type="submit" value="подписаться" />
-              </label>
-            </form>
+            <div class="subscr__form-wrap">
+              <form class="form" action="#!">
+                <div class="form-group form-group_has-btn">
+                  <div class="form-group">
+                    <input class="form-control" type="email" name="" autocomplete="off">
+                    <label class="control-label">
+                      <span>Ваш email</span>
+                    </label>
+                    <div class="help-block">Введите ваш Email</div>
+                  </div>
+                  <label class="form-btn btn btn_black">
+                    <input class="btn" type="submit" value="подписаться" />
+                  </label>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </section>
-      <!--end subscr-->
+      <!--end subscription-->
     </main>
     <div class="popup" data-popup-id="comePopup" tabindex="-1" role="dialog">
       <div class="popup__container">
@@ -1000,25 +1008,30 @@
         <div class="popup__title">
           <h2>Оставьте ваши контакты, и мы обязательно перезвоним!</h2>
         </div>
-        <form class="popup__form" action="#!" method="POST">
-          <div class="popup__form-col">
-            <div class="popup__form-field form-field">
-              <input class="form-field__input" type="email" placeholder="Имя*" name="" autocomplete="off" required="required" />
-              <label class="form-field__decor form-field__decor_black"></label>
-            </div>
-            <div class="popup__form-field form-field">
-              <input class="form-field__input" type="email" placeholder="Номер мобильного*" name="" autocomplete="off" required="required" />
-              <label class="form-field__decor form-field__decor_black"></label>
-            </div>
-            <div class="popup__form-field form-field">
-              <input class="form-field__input" type="email" placeholder="Email*" name="" autocomplete="off" required="required" />
-              <label class="form-field__decor form-field__decor_black"></label>
-            </div>
-          </div>
-          <div class="popup__form-col">
-            <div class="popup__form-field form-field">
-              <textarea class="form-field__input form-field__input_textarea textarea" placeholder="Комментарий" name="" autocomplete="off"></textarea>
-              <label class="form-field__decor form-field__decor_black"></label>
+        <form class="form" action="#!">
+          <div class="form-group _popup">
+            <div class="form-group">
+              <div class="form-group">
+                <input class="form-control" type="email" name="" autocomplete="off" data-validation="email required" />
+                <label class="control-label">
+                  <span>Имя*</span>
+                </label>
+                <div class="help-block">Введите ваш Email</div>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="email" name="" autocomplete="off" data-validation="email required" />
+                <label class="control-label">
+                  <span>Номер мобильного*</span>
+                </label>
+                <div class="help-block">Введите ваш Email</div>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="email" name="" autocomplete="off" data-validation="email required" />
+                <label class="control-label">
+                  <span>Email*</span>
+                </label>
+                <div class="help-block">Введите ваш Email</div>
+              </div>
             </div>
           </div>
           <label class="popup__form-btn btn btn_black">
