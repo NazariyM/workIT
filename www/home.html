@@ -187,21 +187,18 @@
     <main class="content" data-page="home">
       <!--begin screen-->
       <section class="screen">
-        <div class="screen__container container">
-          <div class="screen__title">
-            <h1>Намного больше, чем пространство</h1>
-          </div>
-          <div class="screen__sub-title">
-            <h5>Место, где рождаются идеи</h5>
-          </div>
-          <button class="screen__btn btn btn_green" data-popup-target="comePopup" type="button">
-            <span>хочу в гости</span>
-          </button>
-        </div>
-        <svg class="img-blur screen__img" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <!--+e.container.container+e.title
+  +e.H1= screen.title
++e.sub-title
+  +e.H5= screen.subTitle
++e.BUTTON.btn.btn._green(data-popup-target='comePopup' type='button')
+  span хочу в гости
+-->
+        <svg class="img-blur screen__img" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <clipPath id="img-blur-mask">
-              <polygon points="846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89"></polygon>
+            <clipPath id="img-blur-mask" clipPathUnits="objectBoundingBox">
+              <path d="M0.6942131147540984,0.6914684287812041L0.5947786885245901 0 0.4049590163934426 0 0.3055245901639344 0.6914684287812041 0.19344262295081968 0 0 0 0.1961639344262295 1 0.41505737704918033 1 0.4998688524590164 0.4080763582966226 0.584688524590164 1 0.8035737704918033 1 0.9997377049180328 0 0.8063032786885246 0 0.6942131147540984 0.6914684287812041z"></path>
+              <!--polygon(poits='846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89')-->
             </clipPath>
             <filter id="img-blur">
               <fegaussianblur in="SourceGraphic" stddeviation="10"></fegaussianblur>
@@ -283,7 +280,7 @@
             </div>
           </div>
           <div class="block-3__item block-3__item_left">
-            <div class="block-3__item-inner">
+            <article class="block-3__item-inner">
               <div class="block-3__item-media img-hover">
                 <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_1.jpg);"></div>
                 <!--+e.VIDEO.item-video(autoplay loop muted)-->
@@ -296,13 +293,13 @@
                   <b>единомышленников.</b> Записывайся на курсы английского языка. Читай книги и журналы в
                   <b>библиотеке</b> Work IT.</p>
               </div>
-            </div>
+            </article>
             <div class="block-3__item-count">
               <div class="block-3__item-count-el block-3__item-count-el_1"></div>
             </div>
           </div>
           <div class="block-3__item block-3__item_right">
-            <div class="block-3__item-inner">
+            <article class="block-3__item-inner">
               <div class="block-3__item-text">
                 <h3>поддержка бизнеса</h3>
                 <p>
@@ -313,13 +310,13 @@
               <div class="block-3__item-media img-hover">
                 <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_2.jpg);"></div>
               </div>
-            </div>
+            </article>
             <div class="block-3__item-count">
               <div class="block-3__item-count-el block-3__item-count-el_2"></div>
             </div>
           </div>
           <div class="block-3__item block-3__item_left">
-            <div class="block-3__item-inner">
+            <article class="block-3__item-inner">
               <div class="block-3__item-media img-hover">
                 <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_3.jpg);"></div>
                 <!--+e.VIDEO.item-video(autoplay loop muted)-->
@@ -333,13 +330,13 @@
                   <b>бариста</b> и всегда ждут полезные снеки. Есть PlayStation, мастерская, кинотеатр, библиотека, велосипеды и сегвеи,
                   <b>комнаты для сна</b> и ночевки, BBQ терраса. А еще мы любим животных и очень им рады.</p>
               </div>
-            </div>
+            </article>
             <div class="block-3__item-count">
               <div class="block-3__item-count-el block-3__item-count-el_3"></div>
             </div>
           </div>
           <div class="block-3__item block-3__item_right">
-            <div class="block-3__item-inner">
+            <article class="block-3__item-inner">
               <div class="block-3__item-text">
                 <h3>пространство</h3>
                 <p>
@@ -350,7 +347,7 @@
               <div class="block-3__item-media img-hover">
                 <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_4.jpg);"></div>
               </div>
-            </div>
+            </article>
             <div class="block-3__item-count">
               <div class="block-3__item-count-el block-3__item-count-el_4"></div>
             </div>
