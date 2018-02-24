@@ -97,16 +97,16 @@ p b
   cursor: pointer
   .no-touch &:hover::after
     transform: scale(1)
-  span
-    position: relative
-    z-index: 1
   &::after
     pointer-events: none
     position: absolute
     z-index: 0
     transition: transform .3s ease-in-out
     content: ''
-  
+  &__text
+    position: relative
+    z-index: 1
+    
   &_green
     background: $color1
     &::after
@@ -174,45 +174,6 @@ label.btn
     min-width: 0
     text-align: center
 
-.tel-block
-  a
-    +f('rob-700')
-    +trs
-    color: $color2
-//.no-touch &:hover
-//  color: $color1
-//.no-touch &:hover path
-//  fill: $color1!important
-//.icon
-//  +trs
-//path
-//  fill: currentColor!important
-//  +trs
-
-.dev-link
-  display: flex
-  align-items: center
-  color: $color4
-  +f('rob-400')
-  .no-touch &:hover .icon
-    fill: $color1
-  .icon
-    margin-left: 11px
-    +trs
-
-.link-green
-  +f('rob-700')
-  color: $color1
-  +trs
-  .no-touch &:hover
-    color: $color3
-
-.gray-bg
-  background: url("../img/gray-bg.jpg")
-
-.black-bg
-  background: url("../img/bg.png")
-
 // images effects
 .img-hover
   display: block
@@ -237,10 +198,10 @@ label.btn
     transform: translate(-10px, -10px)
   path
     transform: scale(1) translateX(40%)
-  &_sm
-    image
-      width: calc(100% + 10px)
-      height: calc(100% + 10px)
-      transform: translate(-5px, -5px)
-    polygon
-      transform: none
+  //&_sm
+  //  image
+  //    width: calc(100% + 10px)
+  //    height: calc(100% + 10px)
+  //    transform: translate(-5px, -5px)
+  //  polygon
+  //    transform: none

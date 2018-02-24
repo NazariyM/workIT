@@ -43,6 +43,7 @@
     opacity: 0
     
 .logo
+  $parent: &
   display: flex
   align-items: center
   justify-content: center
@@ -50,7 +51,18 @@
   &__img
     width: 80px
     height: 20px
-    
+    &-first
+      fill: $color1
+      +trs
+    &-last
+      fill: $white
+      +trs
+  &_header
+    .no-touch &:hover #{$parent}__img-first
+      fill: $white
+    .no-touch &:hover #{$parent}__img-last
+      fill: $color1
+      
 .lang
   flex: 0 0 50px
   width: 50px
@@ -101,3 +113,38 @@
         +trs
         .no-touch &:hover
           color: $color3
+
+.tel-block
+  a
+    +f('rob-700')
+    +trs
+    color: $color2
+    .no-touch &:hover
+      color: $color1
+      fill: $color1
+    svg
+      fill: currentColor
+
+.dev-link
+  display: flex
+  align-items: center
+  color: $color4
+  +f('rob-400')
+  .no-touch &:hover .icon
+    fill: $color1
+  .icon
+    margin-left: 11px
+    +trs
+
+.link-green
+  +f('rob-700')
+  color: $color1
+  +trs
+  .no-touch &:hover
+    color: $color2
+
+.gray-bg
+  background: url("../img/gray-bg.jpg")
+
+.black-bg
+  background: url("../img/bg.png")
