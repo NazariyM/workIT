@@ -33,7 +33,7 @@ class Preloader {
         .staggerTo(this.$letter, 0.3, { visibility: 'visible' }, 0.25)
         .to(this.$letterDot, duration / 4, { y: -30, ease: Power2.easeOut }, '=-.3')
         .to(this.$letterDot, duration / 2, { y: 0, ease: Bounce.easeOut, delay: duration / 12 })
-        .to(this.$preloader, .3, { autoAlpha: 0 }, '+=0');
+        .to(this.$preloader, .3, { autoAlpha: 0 });
     });
   }
 }
