@@ -58,12 +58,14 @@ export class Validate {
     this.$input.add(this.$textarea).each(function () {
       checkInput($(this));
     });
+
     this.$input.add(this.$textarea).blur(function () {
       checkInput($(this));
     });
-    // this.$input.add(this.$textarea).on('keyup keydown', function() {
-    //   checkInput($(this));
-    // });
+
+    this.$input.add(this.$textarea).on('keyup keydown keypress', function() {
+      checkInput($(this));
+    });
 
     function checkInput(el) {
       if (el.val() !== '') {
@@ -79,12 +81,12 @@ export class Validate {
       $(ev.currentTarget).parent().removeClass(css.error);
     });
 
-    this.$input.add(this.$textarea).on('keyup keydown', (ev) => {
-    	if (!ev.currentTarget.val()) {
-        console.log('false');
-      }
-      $(ev.currentTarget).parent().removeClass(css.error);
-    });
+    // this.$input.add(this.$textarea).on('keyup keydown', (ev) => {
+    // 	if (!ev.currentTarget.val()) {
+    //     console.log('false');
+    //   }
+    //   $(ev.currentTarget).parent().removeClass(css.error);
+    // });
   }
 
 	static initValidator() {
@@ -95,8 +97,9 @@ export class Validate {
 			scrollToTopOnError: false,
 			borderColorOnError: false,
 			validateOnEvent: true,
-			modules: 'security'
+			modules: 'security html5'
 		});
+
 	}
 }
 

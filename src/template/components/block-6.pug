@@ -26,10 +26,10 @@ if block6 ? block6 : block6 = []
 				+e.P Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере. Кроме того, можно расширить пространство по мере роста вашей команды.
 				+e.P Идеально подойдет для небольших компаний. Если вы хотите иметь крутой, стильный офис, просто приходи к нам. А мы поможем организовать ваш переезд.
 				+e.price._offer
-					+e.H5 Cтоимость от:
+					+e.H5 Стоимость от:
 						span 200$
 				+e.BUTTON.offer-btn.btn._green(type='button' data-popup-target='enrollPopup')
-					span забронировать
+					span.btn__text забронировать
 
 			+e.offer-pic.img-hover
 				+e.offer-img.img-hover__item(style='background-image: url(static/img/block-6_offer.jpg)')
@@ -60,10 +60,10 @@ if block6 ? block6 : block6 = []
 							+e.H4= item.title
 						+e.P= item.descr
 						+e.price._item
-							+e.H5 Cтоимость от:
+							+e.H5 Стоимость от:
 								span 200$
 						+e.BUTTON.item-btn.btn._green(type='button' data-popup-target='enrollPopup')
-							span забронировать
+							span.btn__text забронировать
 			each item in block6List
 				+block6Item(item)
 

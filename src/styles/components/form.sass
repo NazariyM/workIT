@@ -42,6 +42,13 @@
         flex: 0 1 211px
         height: 57px
         line-height: 57px
+    &_popup
+      display: flex
+    &_popup > &
+      flex: 0 1 377px
+      &:not(:last-child)
+        margin-right: 38px
+      
   &-control
     display: block
     width: 100%
@@ -86,10 +93,10 @@
     left: 0
     bottom: 0
     display: block
-    padding: 14px 20px
+    padding: 15px 0
     width: 100%
     color: $color2
-    line-height: 22px
+    +f('rob-400', 16)
     span
       display: block
       +trs
@@ -100,8 +107,8 @@
       left: 0
       right: 0
       bottom: 0
-      height: 1px
-      background-color: $color2
+      height: 2px
+      background-color: $white
       transition: transform 0.6s ease 0.25s
     &:after
       content: ''
@@ -110,8 +117,8 @@
       left: 0
       right: 0
       bottom: 0
-      height: 1px
-      background-color: $color1
+      height: 2px
+      background-color: $color2
       transform: translateX(-101%)
       transition: transform 0.6s ease, background-color 0.3s ease
   &-textarea.is-fill + &-textarea-label,
@@ -121,9 +128,6 @@
       transform: translateY(20px)
     &:after
       transform: translateX(0)
-  &-textarea:hover + &-textarea-label
-    span
-      color: $color2
   .has-error &-textarea-label
     &:after
       background-color: $color6

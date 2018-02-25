@@ -539,12 +539,12 @@
                 того, можно расширить пространство по мере роста вашей команды.</p>
               <p>Идеально подойдет для небольших компаний. Если вы хотите иметь крутой, стильный офис, просто приходи к нам. А мы поможем организовать ваш переезд.</p>
               <div class="block-6__price block-6__price_offer">
-                <h5>Cтоимость от:
+                <h5>Стоимость от:
                   <span>200$</span>
                 </h5>
               </div>
               <button class="block-6__offer-btn btn btn_green" type="button" data-popup-target="enrollPopup">
-                <span>забронировать</span>
+                <span class="btn__text">забронировать</span>
               </button>
             </div>
             <div class="block-6__offer-pic img-hover">
@@ -563,12 +563,12 @@
                 </div>
                 <p>Свободное место в зоне общего пользования. Идеально подойдет для тех, кто любит работать не за столом, а в более расслабленной обстановке.</p>
                 <div class="block-6__price block-6__price_item">
-                  <h5>Cтоимость от:
+                  <h5>Стоимость от:
                     <span>200$</span>
                   </h5>
                 </div>
                 <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="enrollPopup">
-                  <span>забронировать</span>
+                  <span class="btn__text">забронировать</span>
                 </button>
               </div>
             </div>
@@ -583,12 +583,12 @@
                 </div>
                 <p>Свободное рабочее место в open space. Идеально подойдет для тех, кто не любит сидеть на одном месте. Работать и при желании общаться с окружающими.</p>
                 <div class="block-6__price block-6__price_item">
-                  <h5>Cтоимость от:
+                  <h5>Стоимость от:
                     <span>200$</span>
                   </h5>
                 </div>
                 <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="enrollPopup">
-                  <span>забронировать</span>
+                  <span class="btn__text">забронировать</span>
                 </button>
               </div>
             </div>
@@ -603,12 +603,12 @@
                 </div>
                 <p>Персональное рабочее место в open space. Для тех, кто любит создавать свое рабочее место. Кто ценит свое личное пространство и совбоду в его организации.</p>
                 <div class="block-6__price block-6__price_item">
-                  <h5>Cтоимость от:
+                  <h5>Стоимость от:
                     <span>200$</span>
                   </h5>
                 </div>
                 <button class="block-6__item-btn btn btn_green" type="button" data-popup-target="enrollPopup">
-                  <span>забронировать</span>
+                  <span class="btn__text">забронировать</span>
                 </button>
               </div>
             </div>
@@ -641,7 +641,7 @@
               <h3>Хочешь увидеть всё своими глазами? Приходи в гости!</h3>
             </div>
             <button class="block-7__btn btn btn_green" data-popup-target="comePopup" type="button">
-              <span>записаться</span>
+              <span class="btn__text">записаться</span>
             </button>
           </div>
         </div>
@@ -986,7 +986,7 @@
               <form class="form" action="#!">
                 <div class="form-group form-group_has-btn">
                   <div class="form-group">
-                    <input class="form-control" type="email" name="" autocomplete="off">
+                    <input class="form-control" type="email" name="" autocomplete="off" data-validation="email" required>
                     <label class="control-label">
                       <span>Ваш email</span>
                     </label>
@@ -1035,34 +1035,42 @@
           <h2>Оставьте ваши контакты, и мы обязательно перезвоним!</h2>
         </div>
         <form class="form" action="#!">
-          <div class="form-group _popup">
+          <div class="form-group form-group_popup">
             <div class="form-group">
               <div class="form-group">
-                <input class="form-control" type="email" name="" autocomplete="off" data-validation="email required" />
+                <input class="form-control" type="text" name="" autocomplete="off" data-validation="custom" data-validation-regexp="^([A-z]+)$" />
                 <label class="control-label">
                   <span>Имя*</span>
                 </label>
-                <div class="help-block">Введите ваш Email</div>
+                <div class="help-block">Введите Имя</div>
               </div>
               <div class="form-group">
-                <input class="form-control" type="email" name="" autocomplete="off" data-validation="email required" />
+                <input class="form-control" type="text" name="" autocomplete="off" data-validation="custom" data-validation-regexp="^([A-z]+)$" />
                 <label class="control-label">
                   <span>Номер мобильного*</span>
                 </label>
-                <div class="help-block">Введите ваш Email</div>
+                <div class="help-block">Введите номер телефона: +380(ХХ) ХХХ ХХ ХХ</div>
               </div>
               <div class="form-group">
-                <input class="form-control" type="email" name="" autocomplete="off" data-validation="email required" />
+                <input class="form-control" type="text" name="" autocomplete="off" data-validation="email" />
                 <label class="control-label">
                   <span>Email*</span>
                 </label>
                 <div class="help-block">Введите ваш Email</div>
               </div>
             </div>
+            <div class="form-group">
+              <textarea class="form-textarea" name="" autocomplete="off"></textarea>
+              <label class="form-textarea-label">
+                <span>Комментарий</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="popup__form-btn btn btn_black">
+                <input class="btn" type="submit" value="отправить запрос" />
+              </label>
+            </div>
           </div>
-          <label class="popup__form-btn btn btn_black">
-            <input class="btn" type="submit" value="отправить запрос" />
-          </label>
         </form>
       </div>
     </div>
