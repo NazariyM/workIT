@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <!-- - var locationMap = true;-->
   <head>
     <meta name="format-detection" content="telephone=no">
     <meta charset="utf-8">
@@ -94,8 +93,10 @@
         <path class="preloader__img-letter" fill="#041718" d="M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z"></path>
         <path class="preloader__img-letter" fill="#041718" d="M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z"></path>
         <polygon class="preloader__img-letter" fill="#041718" points="583.05 130.46 625.1 72 570.95 72 535.53 128.16 535.53 0 492.33 0 492.33 201.6 535.53 201.6 535.53 139.68 575.85 201.6 631.15 201.6 583.05 130.46"></polygon>
-        <path class="preloader__img-letter-dot" fill="#fff" d="M671.78,2.88c-14.11,0-26.21,9.22-26.21,24.48,0,17,12.1,26.21,26.21,26.21,12.38,0,24.48-9.22,24.48-26.21C696.26,12.1,684.16,2.88,671.78,2.88Z"></path>
-        <rect class="preloader__img-letter" fill="#fff" x="649.32" y="72" width="43.2" height="129.6"></rect>
+        <g class="preloader__img-letter">
+          <path class="preloader__img-letter-dot" fill="#fff" d="M671.78,2.88c-14.11,0-26.21,9.22-26.21,24.48,0,17,12.1,26.21,26.21,26.21,12.38,0,24.48-9.22,24.48-26.21C696.26,12.1,684.16,2.88,671.78,2.88Z"></path>
+          <rect fill="#fff" x="649.32" y="72" width="43.2" height="129.6"></rect>
+        </g>
         <path class="preloader__img-letter" fill="#fff" d="M794.06,157.25c-4.61,3.46-10.08,7.49-19.3,7.49-5.76,0-8.35-6.62-8.35-14.4v-38h36V72h-36V36h-43.2V152.35c0,33.12,10.94,52.7,40.32,52.7,19.29,0,34.85-7.2,43.49-14.69Z"></path>
       </svg>
     </div>
@@ -282,11 +283,8 @@
                   </div>
                 </div>
                 <div class="slider__item">
-                  <div class="slider__media">
-                    <video muted="muted" autoplay="autoplay" loop="loop">
-                      <source src="static/video/video-sample.mp4" type="video/mp4" />
-                    </video>
-                    <div class="slider__media-img slider__media-img_video" style="background-image: url(static/img/block-2_1.jpg);"></div>
+                  <div class="slider__media img-hover">
+                    <div class="slider__media-img img-hover__item" style="background-image: url(static/img/block-2_1.jpg);"></div>
                   </div>
                 </div>
               </div>
@@ -779,11 +777,8 @@
                   <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере.
                     Кроме того, можно расширить пространство по мере роста вашей команды.</p>
                 </div>
-                <div class="slider__media">
-                  <video loop="loop">
-                    <source src="static/video/video-sample.mp4" type="video/mp4" />
-                  </video>
-                  <div class="slider__media-img slider__media-img_video" style="background-image: url(static/img/block-2_1.jpg);"></div>
+                <div class="slider__media img-hover">
+                  <div class="slider__media-img img-hover__item" style="background-image: url(static/img/block-9_1.jpg);"></div>
                 </div>
               </div>
               <div class="slider__item" data-anim="group">
@@ -794,6 +789,18 @@
                     Кроме того, можно расширить пространство по мере роста вашей команды.</p>
                 </div>
                 <div class="slider__media">
+                  <button class="slider__media-play-btn js-play-btn" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="65" height="67" viewbox="0 0 65 67">
+                      <defs>
+                        <path id="7621a" d="M194.5 2778a31.5 31.5 0 1 1 0 63 31.5 31.5 0 0 1 0-63zm-5.6 21.7v19.35l16.76-9.68z"></path>
+                      </defs>
+                      <g>
+                        <g transform="translate(-162 -2776)">
+                          <use fill="#fff" xlink:href="#7621a"></use>
+                        </g>
+                      </g>
+                    </svg>
+                  </button>
                   <video loop="loop">
                     <source src="static/video/video-sample.mp4" type="video/mp4" />
                   </video>
@@ -934,7 +941,60 @@
         </div>
       </section>
       <!--end block-11-->
-      <!--include ../components/locations-->
+      <!--begin locations-->
+      <section class="locations">
+        <div class="locations__container container">
+          <div class="locations__top block-top">
+            <div class="locations__label block-label">
+              <p>locations</p>
+            </div>
+            <div class="locations__title block-title has-selection has-selection_green">
+              <h2>Мы
+                <b>находимся</b> здесь</h2>
+            </div>
+          </div>
+          <div class="locations__inner" data-anim="group">
+            <div class="locations__map-wrap">
+              <div class="locations__map" id="locations-map" data-marker-1="Центр; ул. Владимирская 85; 50.436518; 30.509678" data-marker-2="Нивки; площа Перемоги, 3; 50.446179; 30.491991" data-marker-active="1" data-map-center="50.448434; 30.513833" data-map-zoom="13"
+                data-marker-img="static/img/map-marker.png"></div>
+            </div>
+            <div class="locations__text">
+              <h6 class="locations__text-title"></h6>
+              <p class="locations__text-street"></p>
+              <p class="tel-block">тел:
+                <a href="tel:0975678900">097 567 89 00
+                  <svg class="icon icon-tel" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 301.001 301.001" style="enable-background:new 0 0 301.001 301.001;" xml:space="preserve">
+                    <g>
+                      <path d="M182.784,151.696c-7.794,9.143-14.811,15.833-14.745,15.773c0.065-0.054-6.086,7.435-14.637,15.877                          c-6.875,6.783-14.517,13.478-22.985,19.836c-9.605,7.218-24.623,8.153-32.776,3.176c-8.159-4.971-23.845-15.055-35.582-12.483                          c-9.861,2.159-22.953,9.393-38.704,27.984c-37.138,43.85-3.867,57.54,19.189,75.222c23.078,17.672,99.209-26.102,168.932-97.419                          c69.729-71.312,95.989-145.087,76.685-166.805c-19.309-21.718-35.403-53.901-76.43-13.679                          c-17.394,17.057-23.654,30.644-25.09,40.635c-1.713,11.895,9.48,26.809,15.034,34.582c5.553,7.778,5.711,22.822-0.789,32.928                          C195.163,136.238,189.05,144.348,182.784,151.696z"></path>
+                    </g>
+                  </svg>
+                </a>
+              </p>
+              <div class="locations__socials">
+                <p>Связаться с нами:</p>
+                <a href="#!">
+                  <svg class="icon icon-messenger" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                    <g>
+                      <g>
+                        <path d="M256,0C114.624,0,0,106.112,0,237.024c0,74.592,37.216,141.12,95.392,184.576V512l87.168-47.84                  c23.264,6.432,47.904,9.92,73.44,9.92c141.376,0,256-106.112,256-237.024S397.376,0,256,0z M281.44,319.2l-65.184-69.536                  L89.056,319.2l139.936-148.544l66.784,69.536l125.6-69.536L281.44,319.2z"></path>
+                      </g>
+                    </g>
+                  </svg>
+                </a>
+                <a href="#!">
+                  <svg class="icon icon-telegram" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
+                    <g>
+                      <path d="M5.299,144.645l69.126,25.8l26.756,86.047c1.712,5.511,8.451,7.548,12.924,3.891l38.532-31.412                            c4.039-3.291,9.792-3.455,14.013-0.391l69.498,50.457c4.785,3.478,11.564,0.856,12.764-4.926L299.823,29.22                            c1.31-6.316-4.896-11.585-10.91-9.259L5.218,129.402C-1.783,132.102-1.722,142.014,5.299,144.645z M96.869,156.711l135.098-83.207                            c2.428-1.491,4.926,1.792,2.841,3.726L123.313,180.87c-3.919,3.648-6.447,8.53-7.163,13.829l-3.798,28.146                            c-0.503,3.758-5.782,4.131-6.819,0.494l-14.607-51.325C89.253,166.16,91.691,159.907,96.869,156.711z"></path>
+                    </g>
+                  </svg>
+                </a>
+                <a class="locations__socials-mail" href="mailto:info@workit.space"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--end locations-->
       <!--begin subscription-->
       <section class="subscr">
         <div class="subscr__container container">
@@ -1188,6 +1248,7 @@
     </footer>
     <!--end footer-->
     <!-- Scripts-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIOpQ4aGs5lMqw0kWRFDTw07_m8jgHt04"></script>
     <script src="static/js/index.jquery.js"></script>
     <script src="static/js/index.js"></script>
   </body>

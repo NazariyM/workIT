@@ -41,10 +41,8 @@ if block2.title ? block2.title : block2.title = ''
 							+e.media-img.img-hover__item(style='background-image: url(static/img/block-2_1.jpg)')
 
 					+e.item
-						+e.media
-							+e.VIDEO(muted autoplay loop)
-								+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
-							+e.media-img._video(style='background-image: url(static/img/block-2_1.jpg)')
+						+e.media.img-hover
+							+e.media-img.img-hover__item(style='background-image: url(static/img/block-2_1.jpg)')
 
 				+e.controls
 					+e.buttons

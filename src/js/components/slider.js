@@ -1,5 +1,5 @@
 import slick from 'slick-carousel';
-import {css, Resp} from '../modules/dev/_helpers';
+import { css, Resp } from '../modules/dev/_helpers';
 
 class Slider {
 
@@ -91,73 +91,63 @@ class Slider {
         $slider.on('init afterChange reInit', (event, slick, currentSlide) => {
           const $currentCount = $slider.siblings('.slider__controls').find('.slider__count-current');
           const $allCount = $slider.siblings('.slider__controls').find('.slider__count-all');
-          const $item = $slider.find('.slider__item').not('.slick-cloned');
-          const $video = $item.find('video');
           let i = (currentSlide ? currentSlide : 0) + 1;
 
           // count slides
           $currentCount.text(`0${i}`);
           $allCount.text(`0${slick.slideCount}`);
 
-          // init video
-          if ($video.length) {
+          _this.playVideo($slider);
 
-            $video.each(function () {
-              const $this = $(this);
-              const $autoplay = $this.is('[autoplay]');
-              const $video = $this[0];
-
-              if ($autoplay) {
-                $video.play();
-              } else {
-                $this.on('click', () => {
-                  $video[$video.paused ? 'play' : 'pause']();
-                });
-              }
-
-            });
-
-            // if (Resp.isMobile) {
-            // }
-          }
         });
       }
 
       $slider.on('beforeChange', () => {
         const $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
         const animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
-        const $video = $slider.find('video');
 
         $countDecor.addClass(css.hasAnim).one(animEnd, function () {
           $(this).removeClass(css.hasAnim);
         });
 
-        if (!$video.is('[autoplay]')) {
-          $video[0].pause();
-        }
+        _this.playVideo($slider, true);
 
-        // pause video
-        if ($video.length) {
-
-          $video.each(function () {
-            const $this = $(this);
-            const $autoplay = $this.is('[autoplay]');
-            const $video = $this[0];
-
-            if (!$autoplay) {
-              $video.pause();
-              $this.on('click', () => {
-                $video[$video.paused ? 'play' : 'pause']();
-              });
-            }
-
-          });
-
-          // if (Resp.isMobile) {
-          // }
-        }
       });
     });
+  }
+
+  playVideo($slider, pauseOnChange = false) {
+    const $item = $slider.find('.slider__item').not('.slick-cloned');
+    const $btn = $item.find('.js-play-btn');
+    const $video = $item.find('video');
+
+    $video.each(function () {
+      const $this = $(this);
+      const $autoplay = $this.is('[autoplay]');
+      const $video = $this[0];
+
+      if ($autoplay) {
+        $video.play();
+      }
+      if (pauseOnChange && !$autoplay) {
+        $video.pause();
+        $btn.removeClass(css.hide);
+      }
+    });
+
+    $btn.on('click', function () {
+      const $this = $(this);
+      const $video = $this.next()[0];
+
+      $this.addClass(css.hide);
+      $video.play();
+
+      $this.next().on('click', () => {
+        $video.pause();
+        $btn.removeClass(css.hide);
+      });
+    });
+
   }
 
 }

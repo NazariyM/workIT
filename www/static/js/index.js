@@ -9402,8 +9402,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.preloader = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-// import '../modules/dep/DrawSVGPlugin';
-
 
 var _gsap = __webpack_require__(22);
 
@@ -9435,6 +9433,8 @@ var Preloader = function () {
   }, {
     key: 'animPreloader',
     value: function animPreloader() {
+      var _this = this;
+
       this.resolve = new Promise(function (resolve) {
         var tl = new _gsap.TimelineMax({
           onComplete: function onComplete() {
@@ -9442,17 +9442,10 @@ var Preloader = function () {
           }
         });
 
-        resolve();
-        // tl
-        //   .staggerTo(this.$letter, 0.15, { autoAlpha: 1 }, 0.2)
-        //   .fromTo(this.$letterDot, 0.2, {
-        //     autoAlpha: 1,
-        //     scale: 0,
-        //     transformOrigin: '50% 50%'
-        //   }, { scale: 1 }, '+=.1')
-        //   .to(this.$preloader, .3, {
-        //     autoAlpha: 0
-        //   }, '+=.25');
+        // resolve();
+        var duration = 1;
+
+        tl.staggerTo(_this.$letter, 0.3, { visibility: 'visible' }, 0.25).to(_this.$letterDot, duration / 4, { y: -30, ease: Power2.easeOut }, '=-.3').to(_this.$letterDot, duration / 2, { y: 0, ease: Bounce.easeOut, delay: duration / 12 }).to(_this.$preloader, .3, { autoAlpha: 0 }, '+=0');
       });
     }
   }]);
@@ -21230,69 +21223,61 @@ var Slider = function () {
           $slider.on('init afterChange reInit', function (event, slick, currentSlide) {
             var $currentCount = $slider.siblings('.slider__controls').find('.slider__count-current');
             var $allCount = $slider.siblings('.slider__controls').find('.slider__count-all');
-            var $item = $slider.find('.slider__item').not('.slick-cloned');
-            var $video = $item.find('video');
             var i = (currentSlide ? currentSlide : 0) + 1;
 
             // count slides
             $currentCount.text('0' + i);
             $allCount.text('0' + slick.slideCount);
 
-            // init video
-            if ($video.length) {
-
-              $video.each(function () {
-                var $this = $(this);
-                var $autoplay = $this.is('[autoplay]');
-                var $video = $this[0];
-
-                if ($autoplay) {
-                  $video.play();
-                } else {
-                  $this.on('click', function () {
-                    $video[$video.paused ? 'play' : 'pause']();
-                  });
-                }
-              });
-
-              // if (Resp.isMobile) {
-              // }
-            }
+            _this.playVideo($slider);
           });
         }
 
         $slider.on('beforeChange', function () {
           var $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
           var animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
-          var $video = $slider.find('video');
 
           $countDecor.addClass(_helpers.css.hasAnim).one(animEnd, function () {
             $(this).removeClass(_helpers.css.hasAnim);
           });
 
-          if (!$video.is('[autoplay]')) {
-            $video[0].pause();
-          }
+          _this.playVideo($slider, true);
+        });
+      });
+    }
+  }, {
+    key: 'playVideo',
+    value: function playVideo($slider) {
+      var pauseOnChange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-          // pause video
-          if ($video.length) {
+      var $item = $slider.find('.slider__item').not('.slick-cloned');
+      var $btn = $item.find('.js-play-btn');
+      var $video = $item.find('video');
 
-            $video.each(function () {
-              var $this = $(this);
-              var $autoplay = $this.is('[autoplay]');
-              var $video = $this[0];
+      $video.each(function () {
+        var $this = $(this);
+        var $autoplay = $this.is('[autoplay]');
+        var $video = $this[0];
 
-              if (!$autoplay) {
-                $video.pause();
-                $this.on('click', function () {
-                  $video[$video.paused ? 'play' : 'pause']();
-                });
-              }
-            });
+        if ($autoplay) {
+          $video.play();
+        }
+        if (pauseOnChange && !$autoplay) {
+          $video.pause();
+          $btn.removeClass(_helpers.css.hide);
+        }
+      });
 
-            // if (Resp.isMobile) {
-            // }
-          }
+      $btn.on('click', function () {
+        var $this = $(this);
+        var $video = $this.next()[0];
+
+        $this.addClass(_helpers.css.hide);
+        $video.play();
+
+        $this.next().on('click', function () {
+          $video.pause();
+          $btn.removeClass(_helpers.css.hide);
         });
       });
     }

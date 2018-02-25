@@ -1,5 +1,4 @@
 import { TimelineMax } from 'gsap';
-// import '../modules/dep/DrawSVGPlugin';
 import { $scrolledElements, css } from '../modules/dev/_helpers';
 
 class Preloader {
@@ -21,19 +20,20 @@ class Preloader {
 
   animPreloader() {
     this.resolve = new Promise(resolve => {
-      const tl = new TimelineMax({ onComplete() { resolve(); } });
+      const tl = new TimelineMax({
+        onComplete() {
+          resolve();
+        }
+      });
 
-      resolve();
-      // tl
-      //   .staggerTo(this.$letter, 0.15, { autoAlpha: 1 }, 0.2)
-      //   .fromTo(this.$letterDot, 0.2, {
-      //     autoAlpha: 1,
-      //     scale: 0,
-      //     transformOrigin: '50% 50%'
-      //   }, { scale: 1 }, '+=.1')
-      //   .to(this.$preloader, .3, {
-      //     autoAlpha: 0
-      //   }, '+=.25');
+      // resolve();
+      const duration = 1;
+
+      tl
+        .staggerTo(this.$letter, 0.3, { visibility: 'visible' }, 0.25)
+        .to(this.$letterDot, duration / 4, { y: -30, ease: Power2.easeOut }, '=-.3')
+        .to(this.$letterDot, duration / 2, { y: 0, ease: Bounce.easeOut, delay: duration / 12 })
+        .to(this.$preloader, .3, { autoAlpha: 0 }, '+=0');
     });
   }
 }
