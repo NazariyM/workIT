@@ -1,5 +1,5 @@
 import slick from 'slick-carousel';
-import { css } from '../modules/dev/_helpers';
+import {css, Resp} from '../modules/dev/_helpers';
 
 class Slider {
 
@@ -84,27 +84,78 @@ class Slider {
         prevArrow: `<button type="button" class="slider__btn slider-btn_prev">${arrLeft}</button>`,
         nextArrow: `<button type="button" class="slider__btn slider-btn_next">${arrRight}</button>`,
         appendArrows: $('.slider__buttons', this),
-        onInit: countSlides()
+        onInit: bindEvents()
       });
 
-      function countSlides() {
+      function bindEvents() {
         $slider.on('init afterChange reInit', (event, slick, currentSlide) => {
           const $currentCount = $slider.siblings('.slider__controls').find('.slider__count-current');
           const $allCount = $slider.siblings('.slider__controls').find('.slider__count-all');
+          const $item = $slider.find('.slider__item').not('.slick-cloned');
+          const $video = $item.find('video');
           let i = (currentSlide ? currentSlide : 0) + 1;
 
+          // count slides
           $currentCount.text(`0${i}`);
           $allCount.text(`0${slick.slideCount}`);
+
+          // init video
+          if ($video.length) {
+
+            $video.each(function () {
+              const $this = $(this);
+              const $autoplay = $this.is('[autoplay]');
+              const $video = $this[0];
+
+              if ($autoplay) {
+                $video.play();
+              } else {
+                $this.on('click', () => {
+                  $video[$video.paused ? 'play' : 'pause']();
+                });
+              }
+
+            });
+
+            // if (Resp.isMobile) {
+            // }
+          }
         });
       }
 
       $slider.on('beforeChange', () => {
         const $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
         const animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
+        const $video = $slider.find('video');
 
         $countDecor.addClass(css.hasAnim).one(animEnd, function () {
           $(this).removeClass(css.hasAnim);
         });
+
+        if (!$video.is('[autoplay]')) {
+          $video[0].pause();
+        }
+
+        // pause video
+        if ($video.length) {
+
+          $video.each(function () {
+            const $this = $(this);
+            const $autoplay = $this.is('[autoplay]');
+            const $video = $this[0];
+
+            if (!$autoplay) {
+              $video.pause();
+              $this.on('click', () => {
+                $video[$video.paused ? 'play' : 'pause']();
+              });
+            }
+
+          });
+
+          // if (Resp.isMobile) {
+          // }
+        }
       });
     });
   }

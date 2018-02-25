@@ -40,7 +40,7 @@ mixin popup(el)
 									.help-block Введите номер телефона: +380(ХХ) ХХХ ХХ ХХ
 
 								.form-group
-									input.form-control(type='text' name='' autocomplete='off' data-validation='email')
+									input.form-control(type='text' name='' autocomplete='off' data-validation='email required')
 									label.control-label
 										span Email*
 									.help-block Введите ваш Email
@@ -81,24 +81,32 @@ mixin popup(el)
 							= ' '
 							| оставьте свои контакты и мы обязательно перезвоним!
 
-					+e.FORM.form(action='#!' method='POST')
-						+e.form-col
-							+e.form-field.form-field
-								+b.INPUT.form-field__input(type='email' placeholder='Имя*' name='' autocomplete='off' required)
-								+b.LABEL.form-field__decor._black
+					form.form(action='#!')
+						.form-group.form-group_popup
+							.form-group
+								.form-group
+									input.form-control(type='text' name='' autocomplete='off' data-validation='custom' data-validation-regexp="^([A-z]+)$")
+									label.control-label
+										span Имя*
+									.help-block Введите Имя
 
-							+e.form-field.form-field
-								+b.INPUT.form-field__input(type='email' placeholder='Номер мобильного*' name='' autocomplete='off' required)
-								+b.LABEL.form-field__decor._black
+								.form-group
+									input.form-control(type='text' name='' autocomplete='off' data-validation='custom' data-validation-regexp="^([A-z]+)$")
+									label.control-label
+										span Номер мобильного*
+									.help-block Введите номер телефона: +380(ХХ) ХХХ ХХ ХХ
 
-							+e.form-field.form-field
-								+b.INPUT.form-field__input(type='email' placeholder='Email*' name='' autocomplete='off' required)
-								+b.LABEL.form-field__decor._black
+								.form-group
+									input.form-control(type='text' name='' autocomplete='off' data-validation='email required')
+									label.control-label
+										span Email*
+									.help-block Введите ваш Email
 
-						+e.form-col
-							+e.form-field.form-field
-								+b.TEXTAREA.form-field__input._textarea.textarea(placeholder='Комментарий' name='' autocomplete='off')
-								+b.LABEL.form-field__decor._black
+							.form-group
+								textarea.form-textarea(name='' autocomplete='off')
+								label.form-textarea-label
+									span Комментарий
 
-						+e.LABEL.form-btn.btn._black
-							+b.INPUT.btn(type='submit' value='отправить запрос')
+							.form-group
+								+e.LABEL.form-btn.btn._black
+									+b.INPUT.btn(type='submit' value='отправить запрос')

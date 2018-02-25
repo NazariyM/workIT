@@ -3,13 +3,6 @@ import { TweenMax } from 'gsap';
 class LocationsMap {
   constructor() {
     this.$map = $('#locations-map');
-    this.$markerImg = this.$map.data('marker-img');
-    this.$mapZoom = this.$map.data('map-zoom');
-    this.$mapCenter = this.$map.data('map-center').split(';').map(parseFloat);
-    this.$activeMarker = this.$map.data('marker-active') - 1;
-    this.$title = $('.locations__text-title');
-    this.$street = $('.locations__text-street');
-    this.markersCount = 10;
 
     if (this.$map.length) this.init();
   }
@@ -19,6 +12,13 @@ class LocationsMap {
   }
 
   initMap() {
+    this.$markerImg = this.$map.data('marker-img');
+    this.$mapZoom = this.$map.data('map-zoom');
+    this.$mapCenter = this.$map.data('map-center').split(';').map(parseFloat);
+    this.$activeMarker = this.$map.data('marker-active') - 1;
+    this.$title = $('.locations__text-title');
+    this.$street = $('.locations__text-street');
+    this.markersCount = 10;
     const _this = this;
 
     const locationMap = new google.maps.Map(document.getElementById('locations-map'), {
@@ -27,8 +27,8 @@ class LocationsMap {
       disableDefaultUI: true
     });
 
-    let markersData = [];
-    let markers = [];
+    const markersData = [];
+    const markers = [];
     let formattedMarkerData;
 
     for (let k = 1; k < this.markersCount; k++) {

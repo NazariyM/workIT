@@ -13,24 +13,24 @@ export class Validate {
 
 	init() {
 		Validate.initValidator();
-		this.initPopupThanks();
+		// this.initPopupThanks();
 		this.onFocusOut();
 		this.checkFill();
 		this.removeError();
 	}
 
-	initPopupThanks() {
-		if ($(this.thanks).length) {
-			let speed = 200;
-			$(this.thanks).on('submit', function (e) {
-				e.preventDefault();
-				$(this).parent().siblings().andSelf().not(':last-child').fadeOut(speed);
-				setTimeout(() => {
-					$(this).parent().siblings().last().fadeIn(speed);
-				}, speed);
-			});
-		}
-	}
+	// initPopupThanks() {
+	// 	if ($(this.thanks).length) {
+	// 		let speed = 200;
+	// 		$(this.thanks).on('submit', function (e) {
+	// 			e.preventDefault();
+	// 			$(this).parent().siblings().andSelf().not(':last-child').fadeOut(speed);
+	// 			setTimeout(() => {
+	// 				$(this).parent().siblings().last().fadeIn(speed);
+	// 			}, speed);
+	// 		});
+	// 	}
+	// }
 
 	onFocusOut() {
 		$(this.$input).each(function () {

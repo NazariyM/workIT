@@ -21223,27 +21223,76 @@ var Slider = function () {
           prevArrow: '<button type="button" class="slider__btn slider-btn_prev">' + arrLeft + '</button>',
           nextArrow: '<button type="button" class="slider__btn slider-btn_next">' + arrRight + '</button>',
           appendArrows: $('.slider__buttons', this),
-          onInit: countSlides()
+          onInit: bindEvents()
         });
 
-        function countSlides() {
+        function bindEvents() {
           $slider.on('init afterChange reInit', function (event, slick, currentSlide) {
             var $currentCount = $slider.siblings('.slider__controls').find('.slider__count-current');
             var $allCount = $slider.siblings('.slider__controls').find('.slider__count-all');
+            var $item = $slider.find('.slider__item').not('.slick-cloned');
+            var $video = $item.find('video');
             var i = (currentSlide ? currentSlide : 0) + 1;
 
+            // count slides
             $currentCount.text('0' + i);
             $allCount.text('0' + slick.slideCount);
+
+            // init video
+            if ($video.length) {
+
+              $video.each(function () {
+                var $this = $(this);
+                var $autoplay = $this.is('[autoplay]');
+                var $video = $this[0];
+
+                if ($autoplay) {
+                  $video.play();
+                } else {
+                  $this.on('click', function () {
+                    $video[$video.paused ? 'play' : 'pause']();
+                  });
+                }
+              });
+
+              // if (Resp.isMobile) {
+              // }
+            }
           });
         }
 
         $slider.on('beforeChange', function () {
           var $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
           var animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
+          var $video = $slider.find('video');
 
           $countDecor.addClass(_helpers.css.hasAnim).one(animEnd, function () {
             $(this).removeClass(_helpers.css.hasAnim);
           });
+
+          if (!$video.is('[autoplay]')) {
+            $video[0].pause();
+          }
+
+          // pause video
+          if ($video.length) {
+
+            $video.each(function () {
+              var $this = $(this);
+              var $autoplay = $this.is('[autoplay]');
+              var $video = $this[0];
+
+              if (!$autoplay) {
+                $video.pause();
+                $this.on('click', function () {
+                  $video[$video.paused ? 'play' : 'pause']();
+                });
+              }
+            });
+
+            // if (Resp.isMobile) {
+            // }
+          }
         });
       });
     }
@@ -24826,13 +24875,6 @@ var LocationsMap = function () {
     _classCallCheck(this, LocationsMap);
 
     this.$map = $('#locations-map');
-    this.$markerImg = this.$map.data('marker-img');
-    this.$mapZoom = this.$map.data('map-zoom');
-    this.$mapCenter = this.$map.data('map-center').split(';').map(parseFloat);
-    this.$activeMarker = this.$map.data('marker-active') - 1;
-    this.$title = $('.locations__text-title');
-    this.$street = $('.locations__text-street');
-    this.markersCount = 10;
 
     if (this.$map.length) this.init();
   }
@@ -24845,6 +24887,13 @@ var LocationsMap = function () {
   }, {
     key: 'initMap',
     value: function initMap() {
+      this.$markerImg = this.$map.data('marker-img');
+      this.$mapZoom = this.$map.data('map-zoom');
+      this.$mapCenter = this.$map.data('map-center').split(';').map(parseFloat);
+      this.$activeMarker = this.$map.data('marker-active') - 1;
+      this.$title = $('.locations__text-title');
+      this.$street = $('.locations__text-street');
+      this.markersCount = 10;
       var _this = this;
 
       var locationMap = new google.maps.Map(document.getElementById('locations-map'), {
@@ -25273,27 +25322,25 @@ var Validate = exports.Validate = function () {
 		key: 'init',
 		value: function init() {
 			Validate.initValidator();
-			this.initPopupThanks();
+			// this.initPopupThanks();
 			this.onFocusOut();
 			this.checkFill();
 			this.removeError();
 		}
-	}, {
-		key: 'initPopupThanks',
-		value: function initPopupThanks() {
-			if ($(this.thanks).length) {
-				var speed = 200;
-				$(this.thanks).on('submit', function (e) {
-					var _this = this;
 
-					e.preventDefault();
-					$(this).parent().siblings().andSelf().not(':last-child').fadeOut(speed);
-					setTimeout(function () {
-						$(_this).parent().siblings().last().fadeIn(speed);
-					}, speed);
-				});
-			}
-		}
+		// initPopupThanks() {
+		// 	if ($(this.thanks).length) {
+		// 		let speed = 200;
+		// 		$(this.thanks).on('submit', function (e) {
+		// 			e.preventDefault();
+		// 			$(this).parent().siblings().andSelf().not(':last-child').fadeOut(speed);
+		// 			setTimeout(() => {
+		// 				$(this).parent().siblings().last().fadeIn(speed);
+		// 			}, speed);
+		// 		});
+		// 	}
+		// }
+
 	}, {
 		key: 'onFocusOut',
 		value: function onFocusOut() {
