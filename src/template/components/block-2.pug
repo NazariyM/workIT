@@ -32,7 +32,7 @@ if block2.title ? block2.title : block2.title = ''
 				+e.body.js-slider
 					+e.item
 						+e.media
-							+e.VIDEO(muted autoplay loop)
+							+e.VIDEO(preload="true" autoplay="autoplay" loop="loop" muted)
 								+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
 							+e.media-img._video(style='background-image: url(static/img/block-2_1.jpg)')
 
