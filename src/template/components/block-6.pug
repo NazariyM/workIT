@@ -38,7 +38,6 @@ if block6 ? block6 : block6 = []
 			-
 				block6List = [{
 					title: 'Место в лаунж зоне',
-					titleMargin: true,
 					img: 1,
 					descr: 'Свободное место в зоне общего пользования. Идеально подойдет для тех, кто любит работать не за столом, а в более расслабленной обстановке.'
 				}, {
@@ -56,7 +55,7 @@ if block6 ? block6 : block6 = []
 					+e.item-img.img-hover
 						+e.IMG(src=`static/img/block-6_${item.img}.jpg` alt='image')
 					+e.item-text
-						+e.item-title(class= item.titleMargin ? `block-6__item-title_margin` : '').h4
+						+e.item-title.h4
 							+e.H4= item.title
 						+e.P= item.descr
 						+e.price._item

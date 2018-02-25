@@ -18,16 +18,17 @@ if block11.title ? block11.title : block11.title = ''
 					pic: 'block-11_1',
 					title: 'How To: Make a Good Presentation For Investors'
 				}, {
-				pic: 'block-11_2',
-				title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+					pic: 'block-11_2',
+					title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
 				}]
 
 			mixin block11Item(item)
 				+e.item(data-anim='group')
-					+e.A.item-pic.img-hover(href='#!')
+					+e.item-pic.img-hover
 						+b.IMG.img-hover__item(src=`static/img/${item.pic}.jpg` alt='image')
 					+e.item-date
 						+e.P 07.12.2017
+						+e.A(href='#!')
 					+e.item-title.h4
 						+e.A(href='#!')
 							+e.H4= item.title
