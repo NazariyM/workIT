@@ -1,5 +1,5 @@
 import slick from 'slick-carousel';
-import { css, Resp } from '../modules/dev/_helpers';
+import { $window, css, Resp } from '../modules/dev/_helpers';
 
 class Slider {
 
@@ -12,7 +12,7 @@ class Slider {
 
   init() {
     this.createSlider();
-    this.createMobileSlider();
+    // this.createMobileSlider();
   }
 
   createMobileSlider() {
@@ -46,24 +46,6 @@ class Slider {
     const arrRight = `<svg class="icon icon-arr-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">
     <polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"/>
 </svg>`;
-
-    // this.$slider.slick({
-    //   slidesToShow: 1,
-    //   slidesToScroll: 1,
-    //   dots: false,
-    //   infinite: true,
-    //   arrows: true,
-    //   speed: 800,
-    //   cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-    //   useTransform: true,
-    //   adaptiveHeight: true,
-    //   accessibility: false,
-    //   rows: 0,
-    //   prevArrow: `<button type="button" class="slider__btn slider-btn_prev">${arrLeft}</button>`,
-    //   nextArrow: `<button type="button" class="slider__btn slider-btn_next">${arrRight}</button>`
-    //   // appendArrows: '.slider__buttons',
-    //   // onInit: _this.countSlides()
-    // });
 
     this.$sliderBlock.each(function () {
       const $slider = $(this).find('.js-slider');
