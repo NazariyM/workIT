@@ -14,7 +14,7 @@ export default class HomeAnims {
 
   async init() {
     await preloader.wait();
-    this.scrollAnim();
+    await this.scrollAnim();
   }
 
   scrollAnim() {

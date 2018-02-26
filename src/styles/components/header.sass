@@ -67,6 +67,8 @@
       position: relative
       padding: 0 27px
       &:nth-child(1) a
+        position: relative
+        z-index: 2
         .no-touch &:hover
           color: $color3
       > ul
@@ -92,8 +94,6 @@
       .no-touch &:hover a
         color: $color2
       a
-        position: relative
-        z-index: 2
         display: block
         +f('gil-800', 12)
         text-transform: uppercase
