@@ -9414,6 +9414,7 @@ var Preloader = function () {
     _classCallCheck(this, Preloader);
 
     this.$preloader = $('.preloader');
+    this.$img = this.$preloader.find('.preloader__img');
     this.$letter = this.$preloader.find('.preloader__img-letter');
     this.$letterDot = this.$preloader.find('.preloader__img-letter-dot');
 
@@ -9445,7 +9446,8 @@ var Preloader = function () {
         // resolve();
         // const duration = 1;
 
-        tl.staggerTo(_this.$letter, 0.4, { autoAlpha: 1 }, 0.3)
+        tl.to(_this.$img, 1, { autoAlpha: 1 })
+        // .staggerTo(this.$letter, 0.4, { autoAlpha: 1 }, 0.3)
         // .to(this.$letterDot, duration / 4, { y: -30, ease: Power2.easeOut }, '=-.3')
         // .to(this.$letterDot, duration / 2, { y: 0, ease: Bounce.easeOut, delay: duration / 12 })
         .to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
