@@ -24960,7 +24960,7 @@ var Block3 = function () {
       var $itemInner = $($el).find('.block-3__item-inner');
       var $elements = $itemInner.children();
 
-      tl.staggerTo($elements, 1.5, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, .3).to($count, 1, { autoAlpha: 1.3, y: 0, ease: Power2.easeOut }, '-=1').to($countEl, 1, { className: '+=' + _helpers.css.hasAnim }, '-=1.1');
+      tl.staggerTo($elements, 1.5, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, .3).to($count, 1, { autoAlpha: 1.3, y: 0, ease: Power2.easeOut }, '-=1').set($countEl, { className: '+=' + _helpers.css.hasAnim }, '-=1.1');
     }
   }, {
     key: 'startLinesAnim',
@@ -25115,7 +25115,7 @@ var Block6 = function () {
 		_classCallCheck(this, Block6);
 
 		this.$container = $('.block-6');
-		this.$lampsWire = this.$container.find('.block-6__lamps-wire');
+		this.$lampsWires = this.$container.find('.block-6__lamps-wire');
 		this.$offer = this.$container.find('.block-6__offer');
 		this.$offerText = this.$offer.find('.block-6__offer-text').children();
 		this.$offerPic = this.$offer.find('.block-6__offer-pic');
@@ -25185,7 +25185,7 @@ var Block6 = function () {
 	}, {
 		key: 'startLampsAnim',
 		value: function startLampsAnim() {
-			_gsap.TweenMax.to(this.$lampsWire, 2, { className: '+=' + _helpers.css.visible });
+			_gsap.TweenMax.to(this.$lampsWires, 2, { y: 0 });
 		}
 
 		// dot() {

@@ -7,7 +7,7 @@ import { css } from '../modules/dev/_helpers';
 class Block6 {
 	constructor() {
 		this.$container = $('.block-6');
-		this.$lampsWire = this.$container.find('.block-6__lamps-wire');
+		this.$lampsWires = this.$container.find('.block-6__lamps-wire');
 		this.$offer = this.$container.find('.block-6__offer');
 		this.$offerText = this.$offer.find('.block-6__offer-text').children();
 		this.$offerPic = this.$offer.find('.block-6__offer-pic');
@@ -56,7 +56,7 @@ class Block6 {
 
 	startLampsAnim() {
 		TweenMax
-			.to(this.$lampsWire, 2, { className: `+=${css.visible}` });
+			.to(this.$lampsWires, 2, { y: 0 });
 	}
 
 	// dot() {

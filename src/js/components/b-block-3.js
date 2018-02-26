@@ -43,7 +43,7 @@ class Block3 {
     tl
       .staggerTo($elements, 1.5, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, .3)
       .to($count, 1, { autoAlpha: 1.3, y: 0, ease: Power2.easeOut }, '-=1')
-      .to($countEl, 1, { className: `+=${css.hasAnim}` }, '-=1.1');
+      .set($countEl, { className: `+=${css.hasAnim}` }, '-=1.1');
   }
 
   startLinesAnim() {

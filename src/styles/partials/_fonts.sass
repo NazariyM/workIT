@@ -12,6 +12,7 @@
 +font('Roboto-Light', 'Roboto-Light')
 +font('Roboto-Regular', 'Roboto-Regular')
 +font('Roboto-Bold', 'Roboto-Bold')
++font('Circe-ExtraBold', 'Circe-ExtraBold')
 
 =f($name, $font-size: null, $line-height: null, $letter-spacing: null)
 	$font-family: null
@@ -25,6 +26,8 @@
 		$font-family: "Roboto-Regular"
 	@if $name == "rob-700"
 		$font-family: "Roboto-Bold"
+	@if $name == "cir-800"
+		$font-family: "Circe-ExtraBold"
 	font-family: $font-family, Arial, sans-serif
 	@if $font-family != null
 		font-weight: normal
