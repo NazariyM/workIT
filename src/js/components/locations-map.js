@@ -21,10 +21,329 @@ class LocationsMap {
     this.markersCount = 10;
     const _this = this;
 
+    const mapStyle = [
+      {
+        "featureType": "all",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "hue": "#00ffa8"
+          },
+          {
+            "saturation": "5"
+          },
+          {
+            "gamma": "6.86"
+          },
+          {
+            "lightness": "-35"
+          },
+          {
+            "weight": "0.75"
+          },
+          {
+            "visibility": "on"
+          }
+        ]
+      },
+      {
+        "featureType": "all",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#52957e"
+          }
+        ]
+      },
+      {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "visibility": "on"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "saturation": "62"
+          },
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "hue": "#00ffcd"
+          },
+          {
+            "saturation": "-4"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.land_parcel",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "hue": "#00ff80"
+          },
+          {
+            "visibility": "on"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "saturation": "30"
+          },
+          {
+            "hue": "#00ffa8"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "off"
+          },
+          {
+            "color": "#84dabd"
+          },
+          {
+            "lightness": "16"
+          },
+          {
+            "weight": "1.88"
+          },
+          {
+            "saturation": "21"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "saturation": "21"
+          },
+          {
+            "color": "#00c996"
+          },
+          {
+            "lightness": "-43"
+          },
+          {
+            "gamma": "1.72"
+          },
+          {
+            "weight": "1.98"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "saturation": "-29"
+          },
+          {
+            "lightness": "2"
+          },
+          {
+            "color": "#d9faef"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.natural",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "off"
+          },
+          {
+            "saturation": "67"
+          },
+          {
+            "hue": "#00ffa8"
+          },
+          {
+            "lightness": "4"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#2b5d4c"
+          },
+          {
+            "saturation": "-8"
+          },
+          {
+            "lightness": "0"
+          },
+          {
+            "gamma": "4.77"
+          },
+          {
+            "weight": "6.22"
+          },
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#00583a"
+          },
+          {
+            "saturation": "19"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#90edbb"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway.controlled_access",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "off"
+          },
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#b1f3ee"
+          }
+        ]
+      }
+    ];
+
     const locationMap = new google.maps.Map(document.getElementById('locations-map'), {
       center: new google.maps.LatLng(this.$mapCenter[0], this.$mapCenter[1]),
       zoom: this.$mapZoom,
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      styles: mapStyle
     });
 
     const markersData = [];
