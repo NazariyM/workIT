@@ -11,12 +11,20 @@
   &.is-fixed
     background-color: $white
     .nav
+      li
+        &:nth-child(1) a
+          .no-touch &:hover
+            color: $white
       a
         color: $color3
         .no-touch &:hover .icon-user__top
           stroke: $color1
       > ul > li ul
-        background: $white
+        background: $color1
+      > ul > li ul a
+        color: $color2
+        .no-touch &:hover
+          color: $white
     .icon-user__top
       stroke: $color2
     .icon-user__bot
@@ -58,24 +66,37 @@
     li
       position: relative
       padding: 0 27px
+      &:nth-child(1) a
+        .no-touch &:hover
+          color: $color3
       > ul
         position: absolute
+        top: -6px
         left: 0
-        top: 24px
-        z-index: 1
-        padding: 20px 0 5px
-        background: $color1
         opacity: 0
-        transform: translateY(20px)
-        visibility: hidden
+        z-index: 1
+        transform-origin: 0 0
+        transform: scaleY(0)
+        width: 105px
+        padding: 34px 0 5px
+        background: $white
         pointer-events: none
-        +trs
+        transition: opacity .65s ease, transform .4s ease
+        li
+          padding: 0 5px 0 27px
+        a
+          color: $color2
+          .no-touch &:hover
+            color: $color3
       &:hover ul
-        opacity: 1
-        transform: translateY(0)
-        visibility: visible
         pointer-events: auto
+        transform: scaleY(1)
+        opacity: 1
+      .no-touch &:hover a
+        color: $color2
       a
+        position: relative
+        z-index: 2
         display: block
         +f('gil-800', 12)
         text-transform: uppercase

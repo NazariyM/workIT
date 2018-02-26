@@ -1,6 +1,6 @@
 import {TimelineMax, TweenMax, CSSRulePlugin} from 'gsap';
 import {preloader} from './preloader';
-import {css} from '../modules/dev/_helpers';
+import {$scrolledElements, css} from '../modules/dev/_helpers';
 
 class Screen {
   constructor() {
@@ -15,6 +15,7 @@ class Screen {
   async init() {
     await preloader.wait();
     await this.startAnim();
+    this.scrollNext();
   }
 
   startAnim() {
@@ -28,6 +29,14 @@ class Screen {
           _this.$more.addClass(css.hasAnim);
         }
       }, '+=.2');
+  }
+
+  scrollNext() {
+    this.$more.on('click', function () {
+      const $section = $(this).closest('section').next().offset().top;
+
+      $scrolledElements.animate({ scrollTop: $section }, 700);
+    });
   }
 }
 

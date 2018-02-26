@@ -9443,9 +9443,12 @@ var Preloader = function () {
         });
 
         // resolve();
-        var duration = 1;
+        // const duration = 1;
 
-        tl.staggerTo(_this.$letter, 0.3, { visibility: 'visible' }, 0.25).to(_this.$letterDot, duration / 4, { y: -30, ease: Power2.easeOut }, '=-.3').to(_this.$letterDot, duration / 2, { y: 0, ease: Bounce.easeOut, delay: duration / 12 }).to(_this.$preloader, .3, { autoAlpha: 0 });
+        tl.staggerTo(_this.$letter, 0.4, { autoAlpha: 1 }, 0.3)
+        // .to(this.$letterDot, duration / 4, { y: -30, ease: Power2.easeOut }, '=-.3')
+        // .to(this.$letterDot, duration / 2, { y: 0, ease: Bounce.easeOut, delay: duration / 12 })
+        .to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
       });
     }
   }]);
@@ -24344,6 +24347,9 @@ var Screen = function () {
                 return this.startAnim();
 
               case 4:
+                this.scrollNext();
+
+              case 5:
               case 'end':
                 return _context.stop();
             }
@@ -24368,6 +24374,15 @@ var Screen = function () {
           _this.$more.addClass(_helpers.css.hasAnim);
         }
       }, '+=.2');
+    }
+  }, {
+    key: 'scrollNext',
+    value: function scrollNext() {
+      this.$more.on('click', function () {
+        var $section = $(this).closest('section').next().offset().top;
+
+        _helpers.$scrolledElements.animate({ scrollTop: $section }, 700);
+      });
     }
   }]);
 
