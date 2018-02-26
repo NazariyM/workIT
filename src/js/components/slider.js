@@ -12,6 +12,7 @@ class Slider {
 
   init() {
     this.createSlider();
+    this.disableVideoLoad();
     // this.createMobileSlider();
   }
 
@@ -130,6 +131,10 @@ class Slider {
       });
     });
 
+  }
+
+  disableVideoLoad() {
+    // const
   }
 
 }

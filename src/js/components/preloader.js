@@ -1,12 +1,11 @@
 import { TimelineMax } from 'gsap';
-import { $scrolledElements, css } from '../modules/dev/_helpers';
 
 class Preloader {
   constructor() {
     this.$preloader = $('.preloader');
     this.$img = this.$preloader.find('.preloader__img');
-    this.$letter = this.$preloader.find('.preloader__img-letter');
-    this.$letterDot = this.$preloader.find('.preloader__img-letter-dot');
+    // this.$letter = this.$preloader.find('.preloader__img-letter');
+    // this.$letterDot = this.$preloader.find('.preloader__img-letter-dot');
 
     this.init();
   }

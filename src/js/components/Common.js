@@ -1,5 +1,6 @@
 import objectFitImages from 'object-fit-images';
-// import objectFitVideos from 'object-fit-videos';
+import objectFitVideos from 'object-fit-videos';
+import Validate from './validate';
 import './noTouch';
 import './header';
 import './slider';
@@ -14,7 +15,7 @@ import './homeAnims';
 import './expandList';
 import './preloader';
 import './popup';
-import Validate from './validate';
+// import './dot';
 
 export class Common {
   /**
@@ -28,6 +29,7 @@ export class Common {
    */
   init() {
     objectFitImages();
+    objectFitVideos();
     Validate.init();
   }
 }
