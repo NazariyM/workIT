@@ -31,7 +31,7 @@ class Preloader {
       // const duration = 1;
 
       tl
-        .to(this.$img, 1, { autoAlpha: 1 })
+        .to(this.$img, .5, { autoAlpha: 1 })
         // .staggerTo(this.$letter, 0.4, { autoAlpha: 1 }, 0.3)
         // .to(this.$letterDot, duration / 4, { y: -30, ease: Power2.easeOut }, '=-.3')
         // .to(this.$letterDot, duration / 2, { y: 0, ease: Bounce.easeOut, delay: duration / 12 })
