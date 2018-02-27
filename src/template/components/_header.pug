@@ -3,7 +3,7 @@ if header ? header : header = []
 //begin header
 +b.HEADER.header(class= header.classMod ? header.classMod : '')
   +e.container.container
-    +e.A.logo.logo.logo_header(href='#!')
+    +e.A.logo.logo(href='#!')
       svg.logo__img(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 807.02 205.05')
         path.logo__img-first(d='M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z')
         path.logo__img-first(d='M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z')
@@ -69,5 +69,77 @@ if header ? header : header = []
           ul
             li: a(href='#!') ukr
             li: a(href='#!') en
+
+    +e.BUTTON.menu-btn(type='button')
+      +e.SPAN.menu-btn-text menu
+      +e.menu-burger
+        +e.menu-burger-line
+        +e.menu-burger-line
+        +e.menu-burger-line
+
+    +e.mob
+      +b.lang._mob
+        ul
+          li.is-active: a(href='#!') ru
+          li: a(href='#!') ukr
+          li: a(href='#!') en
+      +e.mob-row
+        +e.mob-col
+          +b.nav._mob
+            ul
+              li
+                a(href='#!')
+                  h6 о нас
+              li
+                a(href='#!')
+                  h6 локации
+              li
+                a(href='#!')
+                  h6 Тарифы
+              li
+                a(href='#!')
+                  h6 мероприятия
+              li
+                a(href='#!')
+                  h6 резиденты
+              li
+                a(href='#!')
+                  h6 блог
+              li
+                a(href='#!')
+                  h6 фонд
+              li
+                a(href='#!')
+                  h6 контакты
+
+
+        +e.mob-col
+          +b.contact-block._mob
+            +e.P Связаться с нами:
+            +e.A(href='#!')
+              svg.icon.icon-messenger(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 512 512', style='enable-background:new 0 0 512 512;', xml:space='preserve')
+                g
+                  g
+                    path(d='M256,0C114.624,0,0,106.112,0,237.024c0,74.592,37.216,141.12,95.392,184.576V512l87.168-47.84\
+                            c23.264,6.432,47.904,9.92,73.44,9.92c141.376,0,256-106.112,256-237.024S397.376,0,256,0z M281.44,319.2l-65.184-69.536\
+                            L89.056,319.2l139.936-148.544l66.784,69.536l125.6-69.536L281.44,319.2z')
+
+            +e.A(href='#!')
+              svg.icon.icon-telegram(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 300 300', style='enable-background:new 0 0 300 300;', xml:space='preserve')
+                g
+                  path(d='M5.299,144.645l69.126,25.8l26.756,86.047c1.712,5.511,8.451,7.548,12.924,3.891l38.532-31.412\
+                                      c4.039-3.291,9.792-3.455,14.013-0.391l69.498,50.457c4.785,3.478,11.564,0.856,12.764-4.926L299.823,29.22\
+                                      c1.31-6.316-4.896-11.585-10.91-9.259L5.218,129.402C-1.783,132.102-1.722,142.014,5.299,144.645z M96.869,156.711l135.098-83.207\
+                                      c2.428-1.491,4.926,1.792,2.841,3.726L123.313,180.87c-3.919,3.648-6.447,8.53-7.163,13.829l-3.798,28.146\
+                                      c-0.503,3.758-5.782,4.131-6.819,0.494l-14.607-51.325C89.253,166.16,91.691,159.907,96.869,156.711z')
+
+            +e.A.mail(href='mailto:info@workit.space')
+
+          -socials = {classMod: '_mob'}
+          include ../components/socials
+
+          +e.BUTTON.mob-btn.btn._white(type='button' data-popup-target='comePopup')
+            h6.btn__text ПРИЙТИ В ГОСТИ
+
 
 //end header

@@ -46,21 +46,114 @@
     justify-content: space-between
     max-width: 1310px
     height: 60px
+    +md
+      padding: 0 32px 0 0
   &__logo
     flex: 0 0 204px
     height: 100%
     background: $color2
+    +md
+      flex: 0 0 160px
+  &__nav
+    +md
+      display: none
   &__btn
     flex: 0 0 192px
     max-width: 192px
     min-width: 0
     transition: .4s ease
+    +md
+      margin-left: auto
+      margin-right: 31px
     &::after
       transition: .4s ease
   &__lang
     margin: 0 62px 0 6px
-
+    +md
+      display: none
+      
+  &__menu-btn
+    display: none
+    align-items: center
+    padding: 0 5px
+    border: 0
+    outline: 0
+    +md
+      display: flex
+    .is-fixed &.is-active .header__menu-burger-line
+      background-color: $color3
+    &-text
+      margin-right: 17px
+      +f('gil-800', 12)
+      text-transform: uppercase
+      color: $white
+      .is-fixed &
+        color: $color3
+        
+  &__menu-btn.is-active &__menu-burger-line
+    background-color: $white
+  &__menu-burger
+    position: relative
+    z-index: 4
+    width: 31px
+    height: 24px
+    margin-right: -5px
+    +md
+      display: block
+    &-line
+      position: absolute
+      height: 2px
+      left: 5px
+      width: calc(100% - 10px)
+      background-color: $color2
+      transition: background-color .7s ease
+      &:nth-child(1)
+        top: 5px
+      &:nth-child(2)
+        top: calc(50% - 1px)
+        background-color: $white
+        .is-fixed &
+          background-color: $color1
+      &:nth-child(3)
+        bottom: 5px
+      
+  &__mob
+    transform: matrix(1, 0, 0, 1, 0, -458)
+    //transform: translateY(-100%)
+    display: none
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    z-index: 3
+    padding: 47px 74px 60px 120px
+    background: $color1
+    +trs
+    .is-fixed &
+      background: $white
+    +md
+      display: block
+    &-row
+      display: flex
+      margin: 0 -15px
+    &-col
+      flex: 1 0 auto
+      padding: 0 15px
+      &:nth-child(1)
+        flex-grow: 2
+    &-btn
+      opacity: 0
+      transform: translateY(-20px)
+      width: 100%
+      max-width: 192px
+      min-width: 0
+      .is-fixed &
+        background-color: $color1
+        &::after
+          background-color: $color1
+      
 .nav
+  $parent: &
   > ul
     display: flex
     li
@@ -97,6 +190,7 @@
         display: block
         +f('gil-800', 12)
         text-transform: uppercase
+        letter-spacing: 0.09em
         color: $white
         transition: color .4s ease
         .no-touch &:hover
@@ -115,3 +209,86 @@
           stroke: $white
         use
           +trs
+          
+  &_mob
+    > ul
+      display: block
+      column-count: 2
+      column-width: 124px
+      li
+        opacity: 0
+        transform: translateY(-20px)
+        padding: 0 0 31px
+        
+.lang
+  flex: 0 0 50px
+  width: 50px
+  text-align: center
+  cursor: pointer
+  > ul
+    position: relative
+    &::before
+      position: absolute
+      top: 50%
+      right: 0
+      width: 5px
+      height: 5px
+      margin-top: -2px
+      background-color: $white
+      transition: .4s ease
+      content: ''
+    &:hover ul
+      pointer-events: auto
+      transform: scaleY(1)
+      opacity: 1
+    > li > a
+      position: relative
+      z-index: 1
+      pointer-events: none
+    li
+      a
+        display: block
+        height: 37px
+        line-height: 37px
+        +f('gil-800', 12)
+        color: $color2
+        text-transform: uppercase
+    ul
+      pointer-events: none
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      transform-origin: 0 0
+      transform: scaleY(0)
+      opacity: 0
+      padding-top: 37px
+      background-color: $white
+      transition: opacity .65s ease, transform .4s ease
+      a
+        +trs
+        .no-touch &:hover
+          color: $color3
+  
+  &_mob
+    flex: 0 1 auto
+    width: auto
+    margin-bottom: 78px
+    ul
+      display: flex
+      &::before
+        display: none
+      li
+        opacity: 0
+        transform: translateY(-20px)
+        &:not(:last-child)
+          margin-right: 49px
+        &.is-active a
+          color: $color2
+        .is-fixed &.is-active a
+          color: $color2
+        a
+          color: $white
+          letter-spacing: 0.09em
+          .is-fixed &
+            color: $color3

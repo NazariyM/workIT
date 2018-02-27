@@ -9413,8 +9413,6 @@ var Preloader = function () {
 
     this.$preloader = $('.preloader');
     this.$img = this.$preloader.find('.preloader__img');
-    // this.$letter = this.$preloader.find('.preloader__img-letter');
-    // this.$letterDot = this.$preloader.find('.preloader__img-letter-dot');
 
     this.init();
   }
@@ -9441,14 +9439,9 @@ var Preloader = function () {
           }
         });
 
-        // resolve();
-        // const duration = 1;
+        resolve();
 
-        tl.to(_this.$img, 1, { autoAlpha: 1 })
-        // .staggerTo(this.$letter, 0.4, { autoAlpha: 1 }, 0.3)
-        // .to(this.$letterDot, duration / 4, { y: -30, ease: Power2.easeOut }, '=-.3')
-        // .to(this.$letterDot, duration / 2, { y: 0, ease: Bounce.easeOut, delay: duration / 12 })
-        .to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
+        tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
       });
     }
   }]);
@@ -18665,7 +18658,7 @@ exports.default = new NoTouch();
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 exports.HeaderAPI = undefined;
 
@@ -18685,96 +18678,189 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Header = function () {
-  function Header() {
-    _classCallCheck(this, Header);
+	function Header() {
+		_classCallCheck(this, Header);
 
-    this.$header = _helpers.$header;
+		this.header = document.querySelector('.header');
+		this.menuBtn = this.header.querySelector('.header__menu-btn');
+		this.burger = this.menuBtn.querySelector('.header__menu-burger');
+		this.burgerLines = [].concat(_toConsumableArray(this.burger.children));
+		this.headerMob = this.header.querySelector('.header__mob');
+		this.headerMobCol2 = this.headerMob.querySelectorAll('.header__mob-col')[1].children;
+		this.navMob = this.headerMob.querySelector('.nav_mob ul');
+		this.langMob = this.headerMob.querySelector('.lang_mob ul');
+		this.navMobLinks = [].concat(_toConsumableArray(this.navMob.children));
+		this.langMobLinks = [].concat(_toConsumableArray(this.langMob.children));
 
-    this.init();
-  }
+		this.init();
+	}
 
-  _createClass(Header, [{
-    key: 'init',
-    value: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _preloader.preloader.wait();
+	_createClass(Header, [{
+		key: 'init',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_context.next = 2;
+								return _preloader.preloader.wait();
 
-              case 2:
-                _context.next = 4;
-                return this.startAnim();
+							case 2:
+								_context.next = 4;
+								return this.startAnim();
 
-              case 4:
-                this.initFix();
+							case 4:
+								this.initFix();
+								this.prepareBurgerAnim();
+								this.prepareHeaderAnim();
+								this.bindEvents();
+								this.clearResize();
 
-              case 5:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
+							case 9:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
 
-      function init() {
-        return _ref.apply(this, arguments);
-      }
+			function init() {
+				return _ref.apply(this, arguments);
+			}
 
-      return init;
-    }()
-  }, {
-    key: 'initFix',
-    value: function initFix() {
-      var toggleHeaderScroll = (0, _helpers.throttle)(function () {
-        toggleHeader();
-      }, 0, this);
+			return init;
+		}()
+	}, {
+		key: 'bindEvents',
+		value: function bindEvents() {
+			var _this2 = this;
 
-      function toggleHeader() {
-        if (_helpers.$window.scrollTop() > 0) {
-          _helpers.$header.addClass(_helpers.css.fixed);
-        } else {
-          _helpers.$header.removeClass(_helpers.css.fixed);
-        }
-      }
+			this.menuBtn.addEventListener('click', function () {
+				_this2.toggleMenu();
+			});
+		}
+	}, {
+		key: 'toggleMenu',
+		value: function toggleMenu() {
+			var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
-      _helpers.$window.on('scroll', toggleHeaderScroll);
-    }
-  }, {
-    key: 'startAnim',
-    value: function startAnim() {
-      var tl = new _gsap.TimelineMax();
+			switch (state) {
+				case 'open':
+					this.menuBtn.classList.add(_helpers.css.active);
+					break;
+				case 'close':
+					this.menuBtn.classList.remove(_helpers.css.active);
+					break;
+				default:
+					this.burgerActiveState = _helpers.css.active;
+			}
+			this.toggleBurger();
+			this.toggleNav();
 
-      tl.to(this.$header, .3, { y: 0 });
-    }
-  }]);
+			return HeaderAPI;
+		}
+	}, {
+		key: 'prepareBurgerAnim',
+		value: function prepareBurgerAnim() {
+			this.burgerTl = new _gsap.TimelineMax({ paused: true });
 
-  return Header;
+			this.burgerTl.to(this.burgerLines[0], 0.6, {
+				rotation: 45,
+				y: 6
+			}, 0).to(this.burgerLines[1], 0.4, {
+				alpha: 0,
+				width: 0
+			}, 0).to(this.burgerLines[2], 0.6, {
+				rotation: -45,
+				y: -6
+			}, 0);
+		}
+	}, {
+		key: 'prepareHeaderAnim',
+		value: function prepareHeaderAnim() {
+			this.headerMobTl = new _gsap.TimelineMax({ paused: true });
+
+			this.headerMobTl.to(this.headerMob, .5, {
+				y: 0
+			}).staggerTo(this.langMobLinks, 0.3, {
+				autoAlpha: 1,
+				y: 0
+			}, 0.125, 'animAll').staggerTo(this.navMobLinks, 0.3, {
+				autoAlpha: 1,
+				y: 0
+			}, 0.125, 'animAll').staggerTo(this.headerMobCol2, 0.3, {
+				autoAlpha: 1,
+				y: 0
+			}, 0.125, '=-0.125');
+		}
+	}, {
+		key: 'toggleBurger',
+		value: function toggleBurger() {
+			this.burgerActiveState ? this.burgerTl.play() : this.burgerTl.reverse();
+		}
+	}, {
+		key: 'toggleNav',
+		value: function toggleNav() {
+			this.burgerActiveState ? this.headerMobTl.timeScale(1).play() : this.headerMobTl.timeScale(2).reverse();
+		}
+	}, {
+		key: 'clearResize',
+		value: function clearResize() {
+			window.addEventListener('resize', (0, _helpers.debounce)(clear, this, 250));
+
+			function clear() {
+				this.menuBtn.classList.remove(_helpers.css.active);
+				_gsap.TweenMax.set(this.headerMob, { clearProps: 'all' });
+				_gsap.TweenMax.set(this.burgerLines, { clearProps: 'all' });
+				this.prepareBurgerAnim();
+				this.prepareHeaderAnim();
+			}
+		}
+	}, {
+		key: 'initFix',
+		value: function initFix() {
+			var _this = this;
+			var toggleHeaderScroll = (0, _helpers.throttle)(function () {
+				toggleHeader();
+			}, 0, this);
+
+			function toggleHeader() {
+				if (window.scrollY > 0) {
+					_this.header.classList.add(_helpers.css.fixed);
+				} else {
+					_this.header.classList.remove(_helpers.css.fixed);
+				}
+			}
+
+			window.addEventListener('scroll', toggleHeaderScroll);
+		}
+	}, {
+		key: 'startAnim',
+		value: function startAnim() {
+			var tl = new _gsap.TimelineMax();
+
+			tl.to(this.header, .3, { y: 0 });
+		}
+	}, {
+		key: 'burgerActiveState',
+		set: function set(className) {
+			this.menuBtn.classList.toggle(className);
+		},
+		get: function get() {
+			return this.menuBtn.classList.contains(_helpers.css.active);
+		}
+	}]);
+
+	return Header;
 }();
 
 var HeaderAPI = exports.HeaderAPI = new Header();
-
-// toggleNav() {
-//   this.$btn.on('click', function () {
-//     const $that = $(this);
-//
-//     $that.toggleClass(css.active);
-//     $that.prev(this.$nav).toggleClass(css.active);
-//   });
-// }
-//
-// onResize() {
-//   $window.on('resize', () => {
-//     this.$nav.removeClass(css.active);
-//     this.$btn.removeClass(css.active);
-//     $body.removeClass(css.locked);
-//   });
-// }
 
 /***/ }),
 /* 345 */

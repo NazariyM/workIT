@@ -1,5 +1,5 @@
 .preloader
-  //display: none!important
+  display: none!important
   position: fixed
   z-index: 100
   top: 0
@@ -66,56 +66,6 @@
     .no-touch &:hover #{$parent}__img-last
       fill: $color1
       
-.lang
-  flex: 0 0 50px
-  width: 50px
-  text-align: center
-  cursor: pointer
-  > ul
-    position: relative
-    &::before
-      position: absolute
-      top: 50%
-      right: 0
-      width: 5px
-      height: 5px
-      margin-top: -2px
-      background-color: $white
-      transition: .4s ease
-      content: ''
-    &:hover ul
-      pointer-events: auto
-      transform: scaleY(1)
-      opacity: 1
-    > li > a
-      position: relative
-      z-index: 1
-      pointer-events: none
-    li
-      a
-        display: block
-        height: 37px
-        line-height: 37px
-        +f('gil-800', 12)
-        color: $color2
-        text-transform: uppercase
-    ul
-      pointer-events: none
-      position: absolute
-      top: 0
-      left: 0
-      right: 0
-      transform-origin: 0 0
-      transform: scaleY(0)
-      opacity: 0
-      padding-top: 37px
-      background-color: $white
-      transition: opacity .65s ease, transform .4s ease
-      a
-        +trs
-        .no-touch &:hover
-          color: $color3
-
 .tel-block
   a
     +f('rob-700')
@@ -126,6 +76,42 @@
       fill: $color1
     svg
       fill: currentColor
+      
+.contact-block
+  font-size: 0
+  p
+    margin-bottom: 17px
+    font-size: 16px
+  a
+    display: inline-block
+    vertical-align: middle
+    line-height: 1
+    &:not(:last-child)
+      margin-right: 31px
+    .no-touch &:hover .icon
+      fill: $color1
+    .icon
+      +trs
+  &__mail
+    width: 41px
+    height: 9px
+    margin: -2px 0 0 -8px
+    background-color: $color1
+    +trs
+    .no-touch &:hover
+      background-color: $color2
+  &_mob
+    opacity: 0
+    transform: translateY(-20px)
+    margin: 2px 0 20px
+    .is-fixed & p
+      color: $color3
+    p
+      color: $white
+  &_mob &__mail
+    background: $white
+    .is-fixed &
+      background-color: $color1
 
 .dev-link
   display: flex
