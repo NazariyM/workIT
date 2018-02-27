@@ -128,23 +128,24 @@
         //bottom: 5px
       
   &__mob
-    transform: matrix(1, 0, 0, 1, 0, -500)
     display: none
     position: absolute
     top: 0
     left: 0
-    width: 100%
     z-index: 3
+    transform: translateY(-100%)
+    width: 100%
     padding: 47px 74px 90px 120px
     background: $color1
-    +trs
     .is-fixed &
       background: $white
     +md
       display: block
     +xs
-      transform: matrix(1, 0, 0, 1, 0, -700)
+      position: fixed
+      height: 100vh
       padding: 47px 59px 58px
+      overflow: auto
     &-row
       display: flex
       margin: 0 -15px
@@ -161,10 +162,6 @@
         +xs
           margin-bottom: 49px
           flex-grow: 0
-      &:nth-child(2)
-        //+xs
-          display: flex
-          flex-direction: column
     &-btn
       opacity: 0
       transform: translateY(-20px)
