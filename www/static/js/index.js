@@ -435,6 +435,7 @@ var css = exports.css = {
 	fill: 'is-fill',
 	selected: 'is-selected',
 	fixed: 'is-fixed',
+	locked: 'is-locked',
 	error: 'has-error'
 };
 
@@ -18658,11 +18659,13 @@ exports.default = new NoTouch();
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.HeaderAPI = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+__webpack_require__(363);
 
 var _gsap = __webpack_require__(22);
 
@@ -18683,186 +18686,183 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Header = function () {
-	function Header() {
-		_classCallCheck(this, Header);
+  function Header() {
+    _classCallCheck(this, Header);
 
-		this.body = document.querySelector('body');
-		this.header = document.querySelector('.header');
-		this.inner = document.querySelector('.header__inner');
-		this.menuBtn = this.header.querySelector('.header__menu-btn');
-		this.burger = this.menuBtn.querySelector('.header__menu-burger');
-		this.burgerLines = [].concat(_toConsumableArray(this.burger.children));
-		this.mob = this.header.querySelector('.header__mob');
-		this.mobCol2 = this.mob.querySelectorAll('.header__mob-col')[1].children;
-		this.navMob = this.mob.querySelector('.nav_mob ul');
-		this.langMob = this.mob.querySelector('.lang_mob ul');
-		this.navMobLinks = [].concat(_toConsumableArray(this.navMob.children));
-		this.langMobLinks = [].concat(_toConsumableArray(this.langMob.children));
+    this.header = document.querySelector('.header');
+    this.inner = document.querySelector('.header__inner');
+    this.menuBtn = this.header.querySelector('.header__menu-btn');
+    this.burger = this.menuBtn.querySelector('.header__menu-burger');
+    this.burgerLines = [].concat(_toConsumableArray(this.burger.children));
+    this.mob = this.header.querySelector('.header__mob');
+    this.mobCol2 = this.mob.querySelectorAll('.header__mob-col')[1].children;
+    this.navMob = this.mob.querySelector('.nav_mob ul');
+    this.langMob = this.mob.querySelector('.lang_mob ul');
+    this.navMobLinks = [].concat(_toConsumableArray(this.navMob.children));
+    this.langMobLinks = [].concat(_toConsumableArray(this.langMob.children));
 
-		this.init();
-	}
+    this.init();
+  }
 
-	_createClass(Header, [{
-		key: 'init',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _preloader.preloader.wait();
+  _createClass(Header, [{
+    key: 'init',
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _preloader.preloader.wait();
 
-							case 2:
-								_context.next = 4;
-								return this.startAnim();
+              case 2:
+                _context.next = 4;
+                return this.startAnim();
 
-							case 4:
-								this.initFix();
-								this.prepareBurgerAnim();
-								this.prepareHeaderAnim();
-								this.bindEvents();
-								this.clearResize();
+              case 4:
+                this.initFix();
+                this.prepareBurgerAnim();
+                this.prepareHeaderAnim();
+                this.bindEvents();
+                this.clearResize();
 
-							case 9:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
+              case 9:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
 
-			function init() {
-				return _ref.apply(this, arguments);
-			}
+      function init() {
+        return _ref.apply(this, arguments);
+      }
 
-			return init;
-		}()
-	}, {
-		key: 'bindEvents',
-		value: function bindEvents() {
-			var _this2 = this;
+      return init;
+    }()
+  }, {
+    key: 'bindEvents',
+    value: function bindEvents() {
+      var _this2 = this;
 
-			this.menuBtn.addEventListener('click', function () {
-				_this2.toggleMenu();
-			});
-		}
-	}, {
-		key: 'toggleMenu',
-		value: function toggleMenu() {
-			var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      this.menuBtn.addEventListener('click', function () {
+        _this2.toggleMenu();
+        $.scrollLock();
+      });
+    }
+  }, {
+    key: 'toggleMenu',
+    value: function toggleMenu() {
+      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
-			switch (state) {
-				case 'open':
-					this.menuBtn.classList.add(_helpers.css.active);
-					this.body.classList.add(_helpers.css.active);
-					break;
-				case 'close':
-					this.menuBtn.classList.remove(_helpers.css.active);
-					this.body.classList.remove(_helpers.css.active);
-					break;
-				default:
-					this.burgerActiveState = _helpers.css.active;
-			}
-			this.toggleBurger();
-			this.toggleNav();
+      switch (state) {
+        case 'open':
+          this.menuBtn.classList.add(_helpers.css.active);
+          break;
+        case 'close':
+          this.menuBtn.classList.remove(_helpers.css.active);
+          break;
+        default:
+          this.burgerActiveState = _helpers.css.active;
+      }
+      this.toggleBurger();
+      this.toggleNav();
 
-			return HeaderAPI;
-		}
-	}, {
-		key: 'prepareBurgerAnim',
-		value: function prepareBurgerAnim() {
-			this.burgerTl = new _gsap.TimelineMax({ paused: true });
+      return HeaderAPI;
+    }
+  }, {
+    key: 'prepareBurgerAnim',
+    value: function prepareBurgerAnim() {
+      this.burgerTl = new _gsap.TimelineMax({ paused: true });
 
-			this.burgerTl.to(this.burgerLines[0], 0.6, {
-				rotation: 45,
-				y: 7
-			}, 0).to(this.burgerLines[1], 0.4, {
-				alpha: 0,
-				width: 0
-			}, 0).to(this.burgerLines[2], 0.6, {
-				rotation: -45,
-				y: -7
-			}, 0);
-		}
-	}, {
-		key: 'prepareHeaderAnim',
-		value: function prepareHeaderAnim() {
-			this.mobTl = new _gsap.TimelineMax({ paused: true });
+      this.burgerTl.to(this.burgerLines[0], 0.6, {
+        rotation: 45,
+        y: 7
+      }, 0).to(this.burgerLines[1], 0.4, {
+        alpha: 0,
+        width: 0
+      }, 0).to(this.burgerLines[2], 0.6, {
+        rotation: -45,
+        y: -7
+      }, 0);
+    }
+  }, {
+    key: 'prepareHeaderAnim',
+    value: function prepareHeaderAnim() {
+      this.mobTl = new _gsap.TimelineMax({ paused: true });
 
-			this.mobTl.to(this.mob, .5, {
-				y: 0
-			}).staggerTo(this.langMobLinks, 0.3, {
-				autoAlpha: 1,
-				y: 0
-			}, 0.125, 'animAll').staggerTo(this.navMobLinks, 0.3, {
-				autoAlpha: 1,
-				y: 0
-			}, 0.125, 'animAll').staggerTo(this.mobCol2, 0.3, {
-				autoAlpha: 1,
-				y: 0
-			}, 0.125, '=-0.125');
-		}
-	}, {
-		key: 'toggleBurger',
-		value: function toggleBurger() {
-			this.burgerActiveState ? this.burgerTl.play() : this.burgerTl.reverse();
-		}
-	}, {
-		key: 'toggleNav',
-		value: function toggleNav() {
-			this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(4).reverse();
-		}
-	}, {
-		key: 'clearResize',
-		value: function clearResize() {
-			window.addEventListener('resize', (0, _helpers.debounce)(clear, this, 250));
+      this.mobTl.to(this.mob, .5, {
+        y: 0
+      }).staggerTo(this.langMobLinks, 0.3, {
+        autoAlpha: 1,
+        y: 0
+      }, 0.125, 'animAll').staggerTo(this.navMobLinks, 0.3, {
+        autoAlpha: 1,
+        y: 0
+      }, 0.125, 'animAll').staggerTo(this.mobCol2, 0.3, {
+        autoAlpha: 1,
+        y: 0
+      }, 0.125, '=-0.125');
+    }
+  }, {
+    key: 'toggleBurger',
+    value: function toggleBurger() {
+      this.burgerActiveState ? this.burgerTl.play() : this.burgerTl.reverse();
+    }
+  }, {
+    key: 'toggleNav',
+    value: function toggleNav() {
+      this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(4).reverse();
+    }
+  }, {
+    key: 'clearResize',
+    value: function clearResize() {
+      window.addEventListener('resize', (0, _helpers.debounce)(clear, this, 250));
 
-			function clear() {
-				this.menuBtn.classList.remove(_helpers.css.active);
-				_gsap.TweenMax.set(this.mob, { clearProps: 'all' });
-				_gsap.TweenMax.set(this.burgerLines, { clearProps: 'all' });
-				this.prepareBurgerAnim();
-				this.prepareHeaderAnim();
-			}
-		}
-	}, {
-		key: 'initFix',
-		value: function initFix() {
-			var _this = this;
-			var toggleHeaderScroll = (0, _helpers.throttle)(function () {
-				toggleHeader();
-			}, 0, this);
+      function clear() {
+        this.menuBtn.classList.remove(_helpers.css.active);
+        _gsap.TweenMax.set(this.mob, { clearProps: 'all' });
+        _gsap.TweenMax.set(this.burgerLines, { clearProps: 'all' });
+        this.prepareBurgerAnim();
+        this.prepareHeaderAnim();
+      }
+    }
+  }, {
+    key: 'initFix',
+    value: function initFix() {
+      var _this = this;
+      var toggleHeaderScroll = (0, _helpers.throttle)(function () {
+        toggleHeader();
+      }, 0, this);
 
-			function toggleHeader() {
-				if (window.scrollY > 0) {
-					_this.header.classList.add(_helpers.css.fixed);
-				} else {
-					_this.header.classList.remove(_helpers.css.fixed);
-				}
-			}
+      function toggleHeader() {
+        if (window.scrollY > 0) {
+          _this.header.classList.add(_helpers.css.fixed);
+        } else {
+          _this.header.classList.remove(_helpers.css.fixed);
+        }
+      }
 
-			window.addEventListener('scroll', toggleHeaderScroll);
-		}
-	}, {
-		key: 'startAnim',
-		value: function startAnim() {
-			var tl = new _gsap.TimelineMax();
+      window.addEventListener('scroll', toggleHeaderScroll);
+    }
+  }, {
+    key: 'startAnim',
+    value: function startAnim() {
+      var tl = new _gsap.TimelineMax();
 
-			tl.to(this.inner, .3, { y: 0 }, 'animAll').to(this.menuBtn, .3, { y: 0, autoAlpha: 1 }, 'animAll');
-		}
-	}, {
-		key: 'burgerActiveState',
-		set: function set(className) {
-			this.menuBtn.classList.toggle(className);
-			this.body.classList.toggle(className);
-		},
-		get: function get() {
-			return this.menuBtn.classList.contains(_helpers.css.active);
-		}
-	}]);
+      tl.to(this.inner, .3, { y: 0 }, 'animAll').to(this.menuBtn, .3, { y: 0, autoAlpha: 1 }, 'animAll');
+    }
+  }, {
+    key: 'burgerActiveState',
+    set: function set(className) {
+      this.menuBtn.classList.toggle(className);
+    },
+    get: function get() {
+      return this.menuBtn.classList.contains(_helpers.css.active);
+    }
+  }]);
 
-	return Header;
+  return Header;
 }();
 
 var HeaderAPI = exports.HeaderAPI = new Header();
@@ -26192,6 +26192,138 @@ var Home = function () {
 }();
 
 exports.default = Home;
+
+/***/ }),
+/* 361 */,
+/* 362 */,
+/* 363 */
+/***/ (function(module, exports) {
+
+$.scrollLock = ( function scrollLockClosure() {
+    'use strict';
+
+    var $html      = $( 'html' ),
+        // State: unlocked by default
+        locked     = false,
+        // State: scroll to revert to
+        prevScroll = {
+            scrollLeft : $( window ).scrollLeft(),
+            scrollTop  : $( window ).scrollTop()
+        },
+        // State: styles to revert to
+        prevStyles = {},
+        lockStyles = {
+            'overflow-y' : 'scroll',
+            'position'   : 'fixed',
+            'width'      : '100%'
+        };
+
+    // Instantiate cache in case someone tries to unlock before locking
+    saveStyles();
+
+    // Save context's inline styles in cache
+    function saveStyles() {
+        var styleAttr = $html.attr( 'style' ),
+            styleStrs = [],
+            styleHash = {};
+
+        if( !styleAttr ){
+            return;
+        }
+
+        styleStrs = styleAttr.split( /;\s/ );
+
+        $.each( styleStrs, function serializeStyleProp( styleString ){
+            if( !styleString ) {
+                return;
+            }
+
+            var keyValue = styleString.split( /\s:\s/ );
+
+            if( keyValue.length < 2 ) {
+                return;
+            }
+
+            styleHash[ keyValue[ 0 ] ] = keyValue[ 1 ];
+        } );
+
+        $.extend( prevStyles, styleHash );
+    }
+
+    function lock() {
+        var appliedLock = {};
+
+        // Duplicate execution will break DOM statefulness
+        if( locked ) {
+            return;
+        }
+
+        // Save scroll state...
+        prevScroll = {
+            scrollLeft : $( window ).scrollLeft(),
+            scrollTop  : $( window ).scrollTop()
+        };
+
+        // ...and styles
+        saveStyles();
+
+        // Compose our applied CSS
+        $.extend( appliedLock, lockStyles, {
+            // And apply scroll state as styles
+            'left' : - prevScroll.scrollLeft + 'px',
+            'top'  : - prevScroll.scrollTop  + 'px'
+        } );
+
+        // Then lock styles...
+        $html.css( appliedLock );
+
+        // ...and scroll state
+        $( window )
+            .scrollLeft( 0 )
+            .scrollTop( 0 );
+
+        locked = true;
+    }
+
+    function unlock() {
+        // Duplicate execution will break DOM statefulness
+        if( !locked ) {
+            return;
+        }
+
+        // Revert styles
+        $html.attr( 'style', $( '<x>' ).css( prevStyles ).attr( 'style' ) || '' );
+
+        // Revert scroll values
+        $( window )
+            .scrollLeft( prevScroll.scrollLeft )
+            .scrollTop(  prevScroll.scrollTop );
+
+        locked = false;
+    }
+
+    return function scrollLock( on ) {
+        // If an argument is passed, lock or unlock depending on truthiness
+        if( arguments.length ) {
+            if( on ) {
+                lock();
+            }
+            else {
+                unlock();
+            }
+        }
+        // Otherwise, toggle
+        else {
+            if( locked ){
+                unlock();
+            }
+            else {
+                lock();
+            }
+        }
+    };
+}() );
+
 
 /***/ })
 ],[131]);

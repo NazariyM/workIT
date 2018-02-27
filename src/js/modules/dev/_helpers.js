@@ -216,6 +216,7 @@ export const css = {
 	fill: 'is-fill',
   selected: 'is-selected',
 	fixed: 'is-fixed',
+	locked: 'is-locked',
 	error: 'has-error'
 };
 
