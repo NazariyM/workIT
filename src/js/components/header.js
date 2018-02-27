@@ -10,13 +10,14 @@ import {
 class Header {
   constructor() {
     this.header = document.querySelector('.header');
+    this.inner = document.querySelector('.header__inner');
 	  this.menuBtn = this.header.querySelector('.header__menu-btn');
 	  this.burger = this.menuBtn.querySelector('.header__menu-burger');
 	  this.burgerLines = [...this.burger.children];
-	  this.headerMob = this.header.querySelector('.header__mob');
-	  this.headerMobCol2 = this.headerMob.querySelectorAll('.header__mob-col')[1].children;
-	  this.navMob = this.headerMob.querySelector('.nav_mob ul');
-	  this.langMob = this.headerMob.querySelector('.lang_mob ul');
+	  this.mob = this.header.querySelector('.header__mob');
+	  this.mobCol2 = this.mob.querySelectorAll('.header__mob-col')[1].children;
+	  this.navMob = this.mob.querySelector('.nav_mob ul');
+	  this.langMob = this.mob.querySelector('.lang_mob ul');
 	  this.navMobLinks = [...this.navMob.children];
 	  this.langMobLinks = [...this.langMob.children];
 
@@ -83,10 +84,10 @@ class Header {
 	}
 
 	prepareHeaderAnim() {
-		this.headerMobTl = new TimelineMax({ paused: true });
+		this.mobTl = new TimelineMax({ paused: true });
 
-		this.headerMobTl
-			.to(this.headerMob, .5, {
+		this.mobTl
+			.to(this.mob, .5, {
 				y: 0
 			})
 			.staggerTo(this.langMobLinks, 0.3, {
@@ -97,7 +98,7 @@ class Header {
 				autoAlpha: 1,
 				y: 0
 			}, 0.125, 'animAll')
-			.staggerTo(this.headerMobCol2, 0.3, {
+			.staggerTo(this.mobCol2, 0.3, {
 				autoAlpha: 1,
 				y: 0
 			}, 0.125, '=-0.125');
@@ -108,7 +109,7 @@ class Header {
 	}
 
 	toggleNav() {
-		this.burgerActiveState ? this.headerMobTl.timeScale(1).play() : this.headerMobTl.timeScale(2).reverse();
+		this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(2).reverse();
 	}
 
 	clearResize() {
@@ -116,7 +117,7 @@ class Header {
 
 		function clear() {
 			this.menuBtn.classList.remove(css.active);
-			TweenMax.set(this.headerMob, { clearProps: 'all' });
+			TweenMax.set(this.mob, { clearProps: 'all' });
 			TweenMax.set(this.burgerLines, { clearProps: 'all' });
 			this.prepareBurgerAnim();
 			this.prepareHeaderAnim();
@@ -143,7 +144,7 @@ class Header {
   startAnim() {
     const tl = new TimelineMax();
 
-    tl.to(this.header, .3, { y: 0 });
+    tl.to(this.inner, .3, { y: 0 });
   }
 
 }

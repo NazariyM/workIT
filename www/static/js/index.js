@@ -18687,13 +18687,14 @@ var Header = function () {
 		_classCallCheck(this, Header);
 
 		this.header = document.querySelector('.header');
+		this.inner = document.querySelector('.header__inner');
 		this.menuBtn = this.header.querySelector('.header__menu-btn');
 		this.burger = this.menuBtn.querySelector('.header__menu-burger');
 		this.burgerLines = [].concat(_toConsumableArray(this.burger.children));
-		this.headerMob = this.header.querySelector('.header__mob');
-		this.headerMobCol2 = this.headerMob.querySelectorAll('.header__mob-col')[1].children;
-		this.navMob = this.headerMob.querySelector('.nav_mob ul');
-		this.langMob = this.headerMob.querySelector('.lang_mob ul');
+		this.mob = this.header.querySelector('.header__mob');
+		this.mobCol2 = this.mob.querySelectorAll('.header__mob-col')[1].children;
+		this.navMob = this.mob.querySelector('.nav_mob ul');
+		this.langMob = this.mob.querySelector('.lang_mob ul');
 		this.navMobLinks = [].concat(_toConsumableArray(this.navMob.children));
 		this.langMobLinks = [].concat(_toConsumableArray(this.langMob.children));
 
@@ -18784,9 +18785,9 @@ var Header = function () {
 	}, {
 		key: 'prepareHeaderAnim',
 		value: function prepareHeaderAnim() {
-			this.headerMobTl = new _gsap.TimelineMax({ paused: true });
+			this.mobTl = new _gsap.TimelineMax({ paused: true });
 
-			this.headerMobTl.to(this.headerMob, .5, {
+			this.mobTl.to(this.mob, .5, {
 				y: 0
 			}).staggerTo(this.langMobLinks, 0.3, {
 				autoAlpha: 1,
@@ -18794,7 +18795,7 @@ var Header = function () {
 			}, 0.125, 'animAll').staggerTo(this.navMobLinks, 0.3, {
 				autoAlpha: 1,
 				y: 0
-			}, 0.125, 'animAll').staggerTo(this.headerMobCol2, 0.3, {
+			}, 0.125, 'animAll').staggerTo(this.mobCol2, 0.3, {
 				autoAlpha: 1,
 				y: 0
 			}, 0.125, '=-0.125');
@@ -18807,7 +18808,7 @@ var Header = function () {
 	}, {
 		key: 'toggleNav',
 		value: function toggleNav() {
-			this.burgerActiveState ? this.headerMobTl.timeScale(1).play() : this.headerMobTl.timeScale(2).reverse();
+			this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(2).reverse();
 		}
 	}, {
 		key: 'clearResize',
@@ -18816,7 +18817,7 @@ var Header = function () {
 
 			function clear() {
 				this.menuBtn.classList.remove(_helpers.css.active);
-				_gsap.TweenMax.set(this.headerMob, { clearProps: 'all' });
+				_gsap.TweenMax.set(this.mob, { clearProps: 'all' });
 				_gsap.TweenMax.set(this.burgerLines, { clearProps: 'all' });
 				this.prepareBurgerAnim();
 				this.prepareHeaderAnim();
@@ -18845,7 +18846,7 @@ var Header = function () {
 		value: function startAnim() {
 			var tl = new _gsap.TimelineMax();
 
-			tl.to(this.header, .3, { y: 0 });
+			tl.to(this.inner, .3, { y: 0 });
 		}
 	}, {
 		key: 'burgerActiveState',
