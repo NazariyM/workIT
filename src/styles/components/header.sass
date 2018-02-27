@@ -37,6 +37,7 @@
     .header__btn::after
       background: $color1
   &__inner
+    position: relative
     background-color: $color1
     transition: background-color .4s ease
     transform: translateY(-100%)
@@ -47,8 +48,8 @@
     align-items: center
     justify-content: space-between
     height: 60px
-    //+md
-    //  padding: 0 27px 0 0
+    +md
+      padding: 0 100px 0 0
   &__logo
     flex: 0 0 204px
     height: 100%
@@ -82,6 +83,8 @@
       
   &__menu-btn
     display: none
+    opacity: 0
+    transform: translateY(-60px)
     position: absolute
     top: 50%
     margin-top: -12px
@@ -90,10 +93,13 @@
     padding: 0 5px
     border: 0
     outline: 0
+    z-index: 4
     +md
       display: flex
     .is-fixed &.is-active .header__menu-burger-line
       background-color: $color3
+    &.is-active &-text
+      opacity: 0
     &-text
       align-self: center
       margin-right: 10px
@@ -101,6 +107,7 @@
       letter-spacing: 0.09em
       text-transform: uppercase
       color: $white
+      transition: opacity .4s ease
       .is-fixed &
         color: $color3
         

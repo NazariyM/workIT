@@ -18808,7 +18808,7 @@ var Header = function () {
 	}, {
 		key: 'toggleNav',
 		value: function toggleNav() {
-			this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(2).reverse();
+			this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(4).reverse();
 		}
 	}, {
 		key: 'clearResize',
@@ -18846,7 +18846,7 @@ var Header = function () {
 		value: function startAnim() {
 			var tl = new _gsap.TimelineMax();
 
-			tl.to(this.inner, .3, { y: 0 });
+			tl.to(this.inner, .3, { y: 0 }, 'animAll').to(this.menuBtn, .3, { y: 0, autoAlpha: 1 }, 'animAll');
 		}
 	}, {
 		key: 'burgerActiveState',
