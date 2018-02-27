@@ -7,8 +7,16 @@ body
   letter-spacing: 0.035em
   height: 10000px
   color: $color2
+  background: crimson
   +xs
     letter-spacing: 0.015em
+  &.is-locked
+    overflow: hidden !important
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    height: 100%
 
 .container
   max-width: 1280px
