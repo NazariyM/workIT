@@ -18749,7 +18749,9 @@ var Header = function () {
 			this.menuBtn.addEventListener('click', function () {
 				_this2.scrollTop = _helpers.$window.scrollTop();
 				_this2.toggleMenu();
+				_this2.body.classList.add(_helpers.css.locked);
 			});
+
 			this.mobClose.addEventListener('click', function () {
 				_helpers.$body.scrollTop(_this2.scrollTop);
 				_this2.toggleMenu();
@@ -18800,9 +18802,7 @@ var Header = function () {
 
 		value: function prepareHeaderAnim() {
 			var _this = this;
-			this.mobTl = new _gsap.TimelineMax({ paused: true, onComplete: function onComplete() {
-					_this.body.classList.add(_helpers.css.locked);
-				} });
+			this.mobTl = new _gsap.TimelineMax({ paused: true });
 
 			this.mobTl.to(this.mob, .5, {
 				y: 0

@@ -43,7 +43,9 @@ class Header {
 		this.menuBtn.addEventListener('click', () => {
 			this.scrollTop = $window.scrollTop();
 			this.toggleMenu();
+			this.body.classList.add(css.locked);
 		});
+
 		this.mobClose.addEventListener('click', () => {
 			$body.scrollTop(this.scrollTop);
 			this.toggleMenu();
@@ -97,9 +99,7 @@ class Header {
 
 	prepareHeaderAnim() {
 		const _this = this;
-		this.mobTl = new TimelineMax({ paused: true, onComplete: () => {
-				_this.body.classList.add(css.locked);
-			} });
+		this.mobTl = new TimelineMax({ paused: true });
 
 		this.mobTl
 		 .to(this.mob, .5, {
