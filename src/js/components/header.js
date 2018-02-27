@@ -9,6 +9,7 @@ import {
 
 class Header {
   constructor() {
+  	this.body = document.querySelector('body');
     this.header = document.querySelector('.header');
     this.inner = document.querySelector('.header__inner');
 	  this.menuBtn = this.header.querySelector('.header__menu-btn');
@@ -44,9 +45,11 @@ class Header {
 		switch (state) {
 			case 'open':
 				this.menuBtn.classList.add(css.active);
+				this.body.classList.add(css.active);
 				break;
 			case 'close':
 				this.menuBtn.classList.remove(css.active);
+				this.body.classList.remove(css.active);
 				break;
 			default:
 				this.burgerActiveState = css.active;
@@ -59,6 +62,7 @@ class Header {
 
 	set burgerActiveState(className) {
 		this.menuBtn.classList.toggle(className);
+		this.body.classList.toggle(className);
 	}
 
 	get burgerActiveState() {

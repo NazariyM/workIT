@@ -18686,6 +18686,7 @@ var Header = function () {
 	function Header() {
 		_classCallCheck(this, Header);
 
+		this.body = document.querySelector('body');
 		this.header = document.querySelector('.header');
 		this.inner = document.querySelector('.header__inner');
 		this.menuBtn = this.header.querySelector('.header__menu-btn');
@@ -18754,9 +18755,11 @@ var Header = function () {
 			switch (state) {
 				case 'open':
 					this.menuBtn.classList.add(_helpers.css.active);
+					this.body.classList.add(_helpers.css.active);
 					break;
 				case 'close':
 					this.menuBtn.classList.remove(_helpers.css.active);
+					this.body.classList.remove(_helpers.css.active);
 					break;
 				default:
 					this.burgerActiveState = _helpers.css.active;
@@ -18852,6 +18855,7 @@ var Header = function () {
 		key: 'burgerActiveState',
 		set: function set(className) {
 			this.menuBtn.classList.toggle(className);
+			this.body.classList.toggle(className);
 		},
 		get: function get() {
 			return this.menuBtn.classList.contains(_helpers.css.active);
