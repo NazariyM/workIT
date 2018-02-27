@@ -18772,13 +18772,13 @@ var Header = function () {
 
 			this.burgerTl.to(this.burgerLines[0], 0.6, {
 				rotation: 45,
-				y: 6
+				y: 7
 			}, 0).to(this.burgerLines[1], 0.4, {
 				alpha: 0,
 				width: 0
 			}, 0).to(this.burgerLines[2], 0.6, {
 				rotation: -45,
-				y: -6
+				y: -7
 			}, 0);
 		}
 	}, {

@@ -44,16 +44,20 @@
     display: flex
     align-items: center
     justify-content: space-between
-    max-width: 1310px
     height: 60px
     +md
-      padding: 0 32px 0 0
+      padding: 0 27px 0 0
   &__logo
     flex: 0 0 204px
     height: 100%
     background: $color2
     +md
-      flex: 0 0 160px
+      flex: 0 0 150px
+      .logo__img
+        position: relative
+        left: -7px
+    +xs
+      flex: 0 0 112px
   &__nav
     +md
       display: none
@@ -64,7 +68,9 @@
     transition: .4s ease
     +md
       margin-left: auto
-      margin-right: 31px
+      margin-right: 26px
+    +xs
+      display: none
     &::after
       transition: .4s ease
   &__lang
@@ -83,8 +89,10 @@
     .is-fixed &.is-active .header__menu-burger-line
       background-color: $color3
     &-text
-      margin-right: 17px
+      align-self: center
+      margin-right: 10px
       +f('gil-800', 12)
+      letter-spacing: 0.09em
       text-transform: uppercase
       color: $white
       .is-fixed &
@@ -108,45 +116,64 @@
       background-color: $color2
       transition: background-color .7s ease
       &:nth-child(1)
-        top: 5px
+        //top: 5px
+        top: 4px
       &:nth-child(2)
         top: calc(50% - 1px)
         background-color: $white
         .is-fixed &
           background-color: $color1
       &:nth-child(3)
-        bottom: 5px
+        bottom: 4px
+        //bottom: 5px
       
   &__mob
-    transform: matrix(1, 0, 0, 1, 0, -458)
-    //transform: translateY(-100%)
+    transform: matrix(1, 0, 0, 1, 0, -500)
     display: none
     position: absolute
     top: 0
     left: 0
     width: 100%
     z-index: 3
-    padding: 47px 74px 60px 120px
+    padding: 47px 74px 90px 120px
     background: $color1
     +trs
     .is-fixed &
       background: $white
     +md
       display: block
+    +xs
+      transform: matrix(1, 0, 0, 1, 0, -700)
+      padding: 47px 59px 58px
     &-row
       display: flex
       margin: 0 -15px
+      +xs
+        flex-direction: column
+        margin: 0
     &-col
       flex: 1 0 auto
       padding: 0 15px
+      +xs
+        padding: 0
       &:nth-child(1)
         flex-grow: 2
+        +xs
+          margin-bottom: 49px
+          flex-grow: 0
+      &:nth-child(2)
+        //+xs
+          display: flex
+          flex-direction: column
     &-btn
       opacity: 0
       transform: translateY(-20px)
       width: 100%
       max-width: 192px
       min-width: 0
+      margin-bottom: 25px
+      +xs
+        margin-bottom: 58px
       .is-fixed &
         background-color: $color1
         &::after
@@ -215,11 +242,20 @@
       display: block
       column-count: 2
       column-width: 124px
+      +xs
+        column-count: unset
+        column-width: unset
       li
         opacity: 0
         transform: translateY(-20px)
         padding: 0 0 31px
-        
+        +xs
+          padding: 0 0 11px
+        &:nth-child(4n)
+          padding: 0
+          +xs
+            padding: 0 0 11px
+
 .lang
   flex: 0 0 50px
   width: 50px
@@ -274,6 +310,8 @@
     flex: 0 1 auto
     width: auto
     margin-bottom: 78px
+    +xs
+      margin-bottom: 35px
     ul
       display: flex
       &::before
@@ -283,6 +321,8 @@
         transform: translateY(-20px)
         &:not(:last-child)
           margin-right: 49px
+          +xs
+            margin-right: 30px
         &.is-active a
           color: $color2
         .is-fixed &.is-active a
