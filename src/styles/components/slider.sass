@@ -148,3 +148,41 @@
       +f('gil-800', 12)
       letter-spacing: 1.2px
       color: $color3
+      
+.mobile-slider
+  +md
+    display: none
+    &.slick-initialized
+      display: block
+    &.is-active
+      &::after
+        opacity: 1
+    &.is-last-slide
+      &::after
+        opacity: 0
+    &::before, &::after
+      pointer-events: none
+      position: absolute
+      top: 0
+      bottom: 0
+      width: 190px
+      z-index: 1
+      content: ''
+      transition: .35s ease-in-out
+    &::before
+      opacity: 0
+      left: 0
+      background-image: linear-gradient(to right, #001011 0%, rgba(0, 16, 17, 0) 100%)
+    &::after
+      opacity: 0
+      right: 0
+      display: block
+      clear: none
+      background-image: linear-gradient(to left, #001011 0%, rgba(0, 16, 17, 0) 100%)
+  +xs
+    &::after, &::before
+      width: 53px
+    &::after
+      right: -5px
+    &::before
+      left: -5px

@@ -149,7 +149,7 @@ export class Resp {
 	 * @return {Boolean}
 	 */
 	static get isDesk() {
-		return window.matchMedia(`(min-width: 1200px)`).matches;
+		return window.matchMedia(`(min-width: 1250px)`).matches;
 	}
 	
 	/**

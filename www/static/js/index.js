@@ -354,7 +354,7 @@ var Resp = exports.Resp = function () {
 	}, {
 		key: 'isDesk',
 		get: function get() {
-			return window.matchMedia('(min-width: 1200px)').matches;
+			return window.matchMedia('(min-width: 1250px)').matches;
 		}
 
 		/**
@@ -21676,7 +21676,7 @@ var Slider = function () {
 		_classCallCheck(this, Slider);
 
 		this.$sliderBlock = $('.slider');
-		this.$mobileSlider = $('.js-mobile-slider');
+		this.$mobileSlider = $('.mobile-slider');
 
 		this.init();
 	}
@@ -21686,28 +21686,41 @@ var Slider = function () {
 		value: function init() {
 			this.createSlider();
 			this.disableVideoLoad();
-			// this.createMobileSlider();
+			this.createMobileSlider();
 		}
 	}, {
 		key: 'createMobileSlider',
 		value: function createMobileSlider() {
+			var _this2 = this;
+
 			this.$mobileSlider.slick({
-				slidesToShow: 1,
+				slidesToShow: 1.14,
 				slidesToScroll: 1,
-				dots: true,
-				infinite: true,
+				dots: false,
+				infinite: false,
 				arrows: false,
 				speed: 400,
 				cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
 				useTransform: true,
 				adaptiveHeight: true,
+				// variableWidth: true,
 				mobileFirst: true,
 				accessibility: false,
 				rows: 0,
 				responsive: [{
-					breakpoint: 767,
+					breakpoint: 1250,
 					settings: 'unslick'
+				}, {
+					breakpoint: 767,
+					settings: {
+						slidesToShow: 1.26
+					}
 				}]
+			});
+
+			this.$mobileSlider.on('afterChange', function () {
+				var $lastSlide = $('.slick-slide').last();
+				$lastSlide.is('.slick-current') ? _this2.$mobileSlider.addClass('is-last-slide') : _this2.$mobileSlider.removeClass('is-last-slide');
 			});
 		}
 	}, {
@@ -25076,9 +25089,9 @@ var _scrollAnim = __webpack_require__(34);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
-var _preloader = __webpack_require__(31);
-
 var _helpers = __webpack_require__(10);
+
+var _preloader = __webpack_require__(31);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25092,6 +25105,7 @@ var Block5 = function () {
 
     this.$container = $('.block-5');
     this.$item = this.$container.find('.block-5__item');
+    this.$list = this.$container.find('.block-5__list');
 
     if (this.$container.length) this.init();
   }
@@ -25141,15 +25155,24 @@ var Block5 = function () {
   }, {
     key: 'startAnim',
     value: function startAnim() {
+      var _this = this;
+
       var tl = new _gsap.TimelineMax();
 
-      this.$item.each(function () {
-        var $this = $(this);
-        var $img = $this.find('.block-5__item-img-wrap');
-        var $items = $this.find('.block-5__item-text').children();
+      if (_helpers.Resp.isDesk) {
+        this.$item.each(function () {
+          var $this = $(this);
+          var $img = $this.find('.block-5__item-img-wrap');
+          var $items = $this.find('.block-5__item-text').children();
 
-        tl.staggerTo($img, .5, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, 0.2).staggerTo($items, .5, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, 0.2, '-=.2');
-      });
+          tl.staggerTo($img, .5, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, 0.2).staggerTo($items, .5, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, 0.2, '-=.2');
+        });
+      } else {
+        var $img = _this.$item.find('.block-5__item-img-wrap');
+        var $items = _this.$item.find('.block-5__item-text').children();
+
+        tl.staggerTo($img, .5, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, 0.25).staggerTo($items, .5, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, 0.25, '-=.2').set(_this.$list, { className: '+=' + _helpers.css.active }, '-=.2');
+      }
     }
   }]);
 
@@ -25971,7 +25994,7 @@ var FooterAPI = exports.FooterAPI = new Footer();
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.ExpandListAPI = undefined;
 
@@ -25994,87 +26017,88 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ExpandList = function () {
-	function ExpandList() {
-		_classCallCheck(this, ExpandList);
+  function ExpandList() {
+    _classCallCheck(this, ExpandList);
 
-		this.$list = $('.js-expand-list');
+    this.$list = $('.js-expand-list');
 
-		if (this.$list.length) this.init();
-	}
+    if (this.$list.length) this.init();
+  }
 
-	_createClass(ExpandList, [{
-		key: 'init',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _preloader.preloader.wait();
+  _createClass(ExpandList, [{
+    key: 'init',
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _preloader.preloader.wait();
 
-							case 2:
-								this.scrollAnim();
+              case 2:
+                this.scrollAnim();
 
-							case 3:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
+              case 3:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
 
-			function init() {
-				return _ref.apply(this, arguments);
-			}
+      function init() {
+        return _ref.apply(this, arguments);
+      }
 
-			return init;
-		}()
-	}, {
-		key: 'scrollAnim',
-		value: function scrollAnim() {
-			var _this = this;
+      return init;
+    }()
+  }, {
+    key: 'scrollAnim',
+    value: function scrollAnim() {
+      var _this = this;
 
-			this.$list.each(function (i, $el) {
-				new _scrollAnim2.default({
-					el: $el,
-					onStart: function onStart() {
-						_this.startAnim($el);
-					}
-				});
-			});
-		}
-	}, {
-		key: 'startAnim',
-		value: function startAnim($el) {
-			var tl = new _gsap.TimelineMax();
+      this.$list.each(function (i, $el) {
+        new _scrollAnim2.default({
+          el: $el,
+          onStart: function onStart() {
+            _this.startAnim($el);
+          }
+        });
+      });
+    }
+  }, {
+    key: 'startAnim',
+    value: function startAnim($el) {
+      var tl = new _gsap.TimelineMax();
 
-			var $listInner = $($el).find('.expand-list__inner');
-			var $visibleItem = $listInner.children().not('.is-hidden');
-			var $btn = $($el).find('.expand-list__btn');
+      var $listInner = $($el).find('.expand-list__inner');
+      var $visibleItem = $listInner.children().not('.is-hidden');
+      var $btn = $($el).find('.expand-list__btn');
+      var innerHeight = $listInner.innerHeight() * 2;
 
-			if (!_helpers.Resp.isMobile) {
-				tl.staggerTo($visibleItem, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
-			} else {
-				var $mobHiddenItems = $listInner.children().eq(1).nextAll();
+      if (!_helpers.Resp.isMobile) {
+        tl.staggerTo($visibleItem, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+      } else {
+        var $mobHiddenItems = $listInner.children().eq(1).nextAll();
 
-				$mobHiddenItems.addClass(_helpers.css.hidden);
+        $mobHiddenItems.addClass(_helpers.css.hidden);
 
-				var $mobVisibleItems = $listInner.children().not('.is-hidden');
+        var $mobVisibleItems = $listInner.children().not('.is-hidden');
 
-				tl.staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
-			}
+        tl.staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+      }
 
-			var $hiddenItem = $listInner.children('.is-hidden');
+      var $hiddenItem = $listInner.children('.is-hidden');
 
-			$btn.on('click tap', function () {
+      $btn.on('click tap', function () {
 
-				tl.to($btn, .4, { autoAlpha: 0, x: -50 }).set($hiddenItem, { className: '-=' + _helpers.css.hidden }).staggerTo($hiddenItem, .5, { x: 0, autoAlpha: 1 }, .2);
-			});
-		}
-	}]);
+        tl.to($listInner, .4, { height: innerHeight }, 'start').to($btn, .4, { autoAlpha: 0, x: -50 }).set($hiddenItem, { className: '-=' + _helpers.css.hidden }, 'start -=.4').staggerTo($hiddenItem, .5, { x: 0, autoAlpha: 1 }, .2, 'start -=.4');
+      });
+    }
+  }]);
 
-	return ExpandList;
+  return ExpandList;
 }();
 
 var ExpandListAPI = exports.ExpandListAPI = new ExpandList();

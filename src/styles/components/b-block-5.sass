@@ -1,26 +1,48 @@
 .block-5
   padding: 120px 0 117px
+  +md
+    padding: 110px 0 118px
+    background-size: 1310px
+  +xs
+    padding: 60px 0
   &__container
     max-width: 1220px
     padding: 0 30px
+  &__top
+    +xs
+      margin-bottom: 30px
   &__label
     margin-bottom: 22px
     color: $white
+    +md
+      margin-bottom: 31px
   &__title
     color: $color1
   &__list
     margin: 0 -30px
     +clr
+    +xs
+      margin: 0 -10px
+    &.is-last-slide::before
+      opacity: 1
+    &.is-last-slide::after
+      opacity: 0
   &__item
     float: left
     width: 50%
     padding: 0 30px
+    +xs
+      padding: 0 10px
     &-img-wrap
       opacity: 0
       transform: translateY(-50px)
+      +md
+        transform: translateX(-50px)
     &-img
       +ratio(550, 300)
       +cover
+      +xs
+        +ratio(252, 165)
     &-text
       pointer-events: none
       position: relative
@@ -28,10 +50,15 @@
       margin-top: -42px
       padding-left: 60px
       color: #fff
+      +xs
+        padding-left: 0
+        margin-top: -20px
       p
         opacity: 0
         transform: translateY(-50px)
         margin-bottom: 22px
+        +md
+          transform: translateX(-50px)
     &-title
       opacity: 0
       transform: translateY(-50px)
@@ -43,7 +70,17 @@
       color: $black
       text-align: center
       background: #fff
+      +md
+        transform: translateX(-50px)
+      +xs
+        margin-bottom: 30px
+        font-size: 24px
+        height: 30px
+        line-height: 30px
+        padding: 0 18px
     &-more
       opacity: 0
       transform: translateY(-50px)
       pointer-events: auto
+      +md
+        transform: translateX(-50px)
