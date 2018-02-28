@@ -1,21 +1,61 @@
 .block-4
   padding: 111px 0 113px
   background-color: $color1
+  +xs
+    padding: 52px 0 57px
   &__container
+    +md
+      padding: 0 28px 0 30px
   &__top
-    margin: 0 0 52px
-    max-width: 880px
+    margin: 0 auto 56px
+    +md
+      margin: 0 auto 75px
+    +xs
+      margin: 0 auto 13px
   &__label
     margin-bottom: 29px
   &__title
-    margin-bottom: 58px
-  &__list
+    margin-bottom: 55px
+    +md
+      margin-bottom: 41px
+    +xs
+      margin: 0 70px 19px 0
+  &__sub-title
+    max-width: 870px
+  &__expand-list
+    padding: 0 60px
+    +md
+      padding: 0
+      .expand-list__inner
+        margin: 0 -20px -15px
+    +xs
+      .expand-list__inner
+        margin: 0 0 -10px
   &__item
+    width: 304px
+    +md
+      //width: 48.5%
+      width: 374px
+      padding: 0 20px 40px
+      text-align: left
+    +xs
+      padding: 0 0 30px
+      width: 100%
+    &:nth-child(3) img
+      top: 10px
+    &:nth-child(4) img
+      top: 10px
     &-icon
       margin-bottom: 20px
       height: 80px
+      +xs
+        margin-bottom: 24px
+        height: 39px
       img
+        position: relative
         transition: transform .3s ease
+        +xs
+          width: 40px
         &:hover
           transform: scale(1.15)
       
@@ -23,3 +63,7 @@
       margin-bottom: 20px
       +f('gil-800', 18, 24)
       color: $white
+      +xs
+        margin-bottom: 9px
+        font-size: 14px
+        line-height: 22px

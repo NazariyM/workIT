@@ -25971,7 +25971,7 @@ var FooterAPI = exports.FooterAPI = new Footer();
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 exports.ExpandListAPI = undefined;
 
@@ -25994,76 +25994,87 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ExpandList = function () {
-  function ExpandList() {
-    _classCallCheck(this, ExpandList);
+	function ExpandList() {
+		_classCallCheck(this, ExpandList);
 
-    this.$list = $('.js-expand-list');
+		this.$list = $('.js-expand-list');
 
-    if (this.$list.length) this.init();
-  }
+		if (this.$list.length) this.init();
+	}
 
-  _createClass(ExpandList, [{
-    key: 'init',
-    value: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _preloader.preloader.wait();
+	_createClass(ExpandList, [{
+		key: 'init',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_context.next = 2;
+								return _preloader.preloader.wait();
 
-              case 2:
-                this.scrollAnim();
+							case 2:
+								this.scrollAnim();
 
-              case 3:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
+							case 3:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
 
-      function init() {
-        return _ref.apply(this, arguments);
-      }
+			function init() {
+				return _ref.apply(this, arguments);
+			}
 
-      return init;
-    }()
-  }, {
-    key: 'scrollAnim',
-    value: function scrollAnim() {
-      var _this = this;
+			return init;
+		}()
+	}, {
+		key: 'scrollAnim',
+		value: function scrollAnim() {
+			var _this = this;
 
-      this.$list.each(function (i, $el) {
-        new _scrollAnim2.default({
-          el: $el,
-          onStart: function onStart() {
-            _this.startAnim($el);
-          }
-        });
-      });
-    }
-  }, {
-    key: 'startAnim',
-    value: function startAnim($el) {
-      var tl = new _gsap.TimelineMax();
+			this.$list.each(function (i, $el) {
+				new _scrollAnim2.default({
+					el: $el,
+					onStart: function onStart() {
+						_this.startAnim($el);
+					}
+				});
+			});
+		}
+	}, {
+		key: 'startAnim',
+		value: function startAnim($el) {
+			var tl = new _gsap.TimelineMax();
 
-      var $listInner = $($el).find('.expand-list__inner');
-      var $visibleItem = $listInner.children().not('.is-hidden');
-      var $hiddenItem = $listInner.children('.is-hidden');
-      var $btn = $($el).find('.expand-list__btn');
-      var innerHeight = $listInner.outerHeight() * 2;
+			var $listInner = $($el).find('.expand-list__inner');
+			var $visibleItem = $listInner.children().not('.is-hidden');
+			var $btn = $($el).find('.expand-list__btn');
 
-      tl.staggerTo($visibleItem, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+			if (!_helpers.Resp.isMobile) {
+				tl.staggerTo($visibleItem, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+			} else {
+				var $mobHiddenItems = $listInner.children().eq(1).nextAll();
 
-      $btn.on('click tap', function () {
-        tl.to($listInner, .4, { height: innerHeight }).to($btn, .4, { autoAlpha: 0, x: -50 }).set($hiddenItem, { className: '-=' + _helpers.css.hidden }).staggerTo($hiddenItem, .5, { x: 0, autoAlpha: 1 }, .2);
-      });
-    }
-  }]);
+				$mobHiddenItems.addClass(_helpers.css.hidden);
 
-  return ExpandList;
+				var $mobVisibleItems = $listInner.children().not('.is-hidden');
+
+				tl.staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+			}
+
+			var $hiddenItem = $listInner.children('.is-hidden');
+
+			$btn.on('click tap', function () {
+
+				tl.to($btn, .4, { autoAlpha: 0, x: -50 }).set($hiddenItem, { className: '-=' + _helpers.css.hidden }).staggerTo($hiddenItem, .5, { x: 0, autoAlpha: 1 }, .2);
+			});
+		}
+	}]);
+
+	return ExpandList;
 }();
 
 var ExpandListAPI = exports.ExpandListAPI = new ExpandList();
