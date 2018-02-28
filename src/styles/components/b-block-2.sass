@@ -1,19 +1,27 @@
 .block-2
   padding: 107px 0 117px
+  +xs
+    padding: 60px 0
   &__container
-    max-width: 1310px
     +clr
   &__title
     max-width: 770px
     line-height: 60px
+    +md
+      max-width: 710px
+    +xs
+      padding-right: 30px
   &__top
     max-width: 1160px
     margin: 0 auto 51px
     padding-bottom: 10px
+    +xs
+      margin: 0 auto 15px
   &__content
-    float: right
-    max-width: 1160px
+    padding-left: 120px
     +clr
+    +md
+      padding-left: 0
   &__text
     opacity: 0
     transform: translateX(-50px)
@@ -21,8 +29,24 @@
     width: percentage(548 / 1160)
     padding-right: 75px
     margin-top: -9px
+    +md
+      margin: 0 58px 60px
+      padding: 0
+      width: 470px
+    +xs
+      width: auto
+      margin: 0 0 25px
   &__slider
     opacity: 0
     transform: translateX(-50px)
     float: left
     width: percentage(611 / 1160)
+    +md
+      position: relative
+      left: 30px
+      float: right
+      width: 619px
+    +xs
+      width: 100%
+      position: static
+      left: auto

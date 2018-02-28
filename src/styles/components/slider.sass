@@ -30,6 +30,10 @@
   &__media
     overflow: hidden
     +ratio(611, 339)
+    +md
+      +ratio(619, 339)
+    +xs
+      +ratio(290, 165)
     #{$parent}_full &
       opacity: 0
       transform: translateX(-50px)
@@ -72,10 +76,13 @@
       
   &__controls
     position: absolute
-    left: -300px
-    bottom: -5px
+    left: -309px
+    bottom: -3px
     display: flex
     align-items: flex-end
+    +md
+      position: static
+      margin-top: 26px
     #{$parent}_full &
       right: 50%
       left: auto
@@ -89,15 +96,23 @@
     margin-right: 22px
     margin-bottom: 5px
     font-size: 0
+    +xs
+      margin: 0 17px 0 0
   &__btn
     padding: 0
     border: 0
     &:not(:last-child)
       margin-right: 24px
+      +xs
+        margin-right: 15px
     .no-touch &:hover .icon
       fill: $color1
     .icon
       transition: .4s ease
+      +xs
+        width: 27px
+        stroke-width: 2px
+        stroke: $color2
   &__count
     display: flex
     align-items: center
@@ -111,6 +126,11 @@
       height: 9px
       transform: rotate(-30deg)
       background: $color1
+      +xs
+        top: 5px
+        left: 32px
+        width: 20px
+        height: 6px
       &.has-anim
         animation: sliderSwing .8s cubic-bezier(0.74, 0.1, 0.32, 0.98)
       
@@ -119,6 +139,10 @@
       margin-right: 47px
       +f('gil-800', 36)
       letter-spacing: 3.6px
+      +xs
+        width: 30px
+        margin-right: 30px
+        font-size: 18px
     &-all
       width: 15px
       +f('gil-800', 12)

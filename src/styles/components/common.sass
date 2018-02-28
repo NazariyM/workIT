@@ -4,12 +4,12 @@ body
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   +f('rob-300', 16, 28)
-  letter-spacing: 0.035em
+  letter-spacing: 0.025em
   height: 10000px
   color: $color2
-  background: crimson
   +xs
-    letter-spacing: 0.015em
+    font-size: 12px
+    line-height: 20px
   &.is-locked
     overflow: hidden !important
     position: fixed
@@ -21,6 +21,10 @@ body
 .container
   max-width: 1280px
   margin: 0 auto
+  +md
+    padding: 0 30px
+  +xs
+    padding: 0 15px
 
 .has-selection
   &_green b::after
@@ -33,6 +37,7 @@ body
   b
     position: relative
     z-index: 1
+    white-space: nowrap
     &::after
       position: absolute
       left: -11px
@@ -59,6 +64,9 @@ body
   +h2
   transform: translateX(-70px)
   opacity: 0
+  +xs
+    font-size: 30px
+    line-height: 32px
 
 .block-sub-title
   +f('gil-300')

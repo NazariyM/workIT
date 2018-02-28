@@ -18692,8 +18692,6 @@ var Header = function () {
 		this.inner = document.querySelector('.header__inner');
 		this.menuBtn = this.header.querySelector('.header__menu-btn');
 		this.mobClose = this.header.querySelector('.header__mob-close-btn');
-		// this.burger = this.menuBtn.querySelector('.header__menu-burger');
-		// this.burgerLines = [...this.burger.children];
 		this.mob = this.header.querySelector('.header__mob');
 		this.mobCol2 = this.mob.querySelectorAll('.header__mob-col')[1].children;
 		this.navMob = this.mob.querySelector('.nav_mob ul');
@@ -18722,7 +18720,6 @@ var Header = function () {
 
 							case 4:
 								this.initFix();
-								// this.prepareBurgerAnim();
 								this.prepareHeaderAnim();
 								this.bindEvents();
 								// this.clearResize();
@@ -18749,13 +18746,13 @@ var Header = function () {
 			this.menuBtn.addEventListener('click', function () {
 				_this2.scrollTop = _helpers.$window.scrollTop();
 				_this2.toggleMenu();
-				_this2.body.classList.add(_helpers.css.locked);
+				_this2.lockBody();
 			});
 
 			this.mobClose.addEventListener('click', function () {
 				_helpers.$body.scrollTop(_this2.scrollTop);
 				_this2.toggleMenu();
-				_this2.body.classList.remove(_helpers.css.locked);
+				_this2.lockBody();
 			});
 		}
 	}, {
@@ -18779,69 +18776,47 @@ var Header = function () {
 			return HeaderAPI;
 		}
 	}, {
+		key: 'lockBody',
+		value: function lockBody() {
+			_helpers.Resp.isMobile ? this.body.classList.toggle(_helpers.css.locked) : false;
+		}
+	}, {
 		key: 'prepareHeaderAnim',
-
-
-		// prepareBurgerAnim() {
-		// 	this.burgerTl = new TimelineMax({ paused: true });
-		//
-		// 	this.burgerTl
-		// 		.to(this.burgerLines[0], 0.6, {
-		// 			rotation: 45,
-		// 			y: 7
-		// 		}, 0)
-		// 		.to(this.burgerLines[1], 0.4, {
-		// 			alpha: 0,
-		// 			width: 0
-		// 		}, 0)
-		// 		.to(this.burgerLines[2], 0.6, {
-		// 			rotation: -45,
-		// 			y: -7
-		// 		}, 0);
-		// }
-
 		value: function prepareHeaderAnim() {
 			var _this = this;
 			this.mobTl = new _gsap.TimelineMax({ paused: true });
 
-			this.mobTl.to(this.mob, .5, {
+			this.mobTl.to(this.mob, .35, {
 				y: 0
-			}).staggerTo(this.langMobLinks, 0.3, {
+			}).staggerTo(this.langMobLinks, 0.25, {
 				autoAlpha: 1,
 				y: 0
-			}, 0.125, 'animAll').staggerTo(this.navMobLinks, 0.3, {
+			}, 0.125, 'animAll').staggerTo(this.navMobLinks, 0.25, {
 				autoAlpha: 1,
 				y: 0
-			}, 0.125, 'animAll').staggerTo(this.mobCol2, 0.3, {
+			}, 0.125, 'animAll').staggerTo(this.mobCol2, 0.25, {
 				autoAlpha: 1,
 				y: 0
 			}, 0.125, '=-0.125');
 		}
-
-		// toggleBurger() {
-		// 	this.burgerActiveState ? this.burgerTl.play() : this.burgerTl.reverse();
-		// }
-
 	}, {
 		key: 'toggleNav',
 		value: function toggleNav() {
-			this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(4).reverse();
+			this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(3).reverse();
 		}
-	}, {
-		key: 'clearResize',
-		value: function clearResize() {
-			window.addEventListener('resize', (0, _helpers.debounce)(clear, this, 250));
 
-			function clear() {
-				this.menuBtn.classList.remove(_helpers.css.active);
-				this.body.classList.remove(_helpers.css.locked);
-				_gsap.TweenMax.set(this.mob, { clearProps: 'all' });
+		// clearResize() {
+		// 	window.addEventListener('resize', debounce(clear, this, 250));
+		//
+		// 	function clear() {
+		// 		this.menuBtn.classList.remove(css.active);
+		// 		this.body.classList.remove(css.locked);
+		// 		TweenMax.set(this.mob, { clearProps: 'all' });
+		//
+		// 		this.prepareHeaderAnim();
+		// 	}
+		// }
 
-				// TweenMax.set(this.burgerLines, { clearProps: 'all' });
-				// this.prepareBurgerAnim();
-				this.prepareHeaderAnim();
-			}
-		}
 	}, {
 		key: 'initFix',
 		value: function initFix() {

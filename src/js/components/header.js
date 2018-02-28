@@ -6,7 +6,8 @@ import {
 	$window,
 	throttle,
 	debounce,
-	css
+	css,
+	Resp
 } from '../modules/dev/_helpers';
 
 class Header {
@@ -16,8 +17,6 @@ class Header {
 		this.inner = document.querySelector('.header__inner');
 		this.menuBtn = this.header.querySelector('.header__menu-btn');
 		this.mobClose = this.header.querySelector('.header__mob-close-btn');
-		// this.burger = this.menuBtn.querySelector('.header__menu-burger');
-		// this.burgerLines = [...this.burger.children];
 		this.mob = this.header.querySelector('.header__mob');
 		this.mobCol2 = this.mob.querySelectorAll('.header__mob-col')[1].children;
 		this.navMob = this.mob.querySelector('.nav_mob ul');
@@ -33,7 +32,6 @@ class Header {
 		await preloader.wait();
 		await this.startAnim();
 		this.initFix();
-		// this.prepareBurgerAnim();
 		this.prepareHeaderAnim();
 		this.bindEvents();
 		// this.clearResize();
@@ -43,13 +41,13 @@ class Header {
 		this.menuBtn.addEventListener('click', () => {
 			this.scrollTop = $window.scrollTop();
 			this.toggleMenu();
-			this.body.classList.add(css.locked);
+			this.lockBody();
 		});
 
 		this.mobClose.addEventListener('click', () => {
 			$body.scrollTop(this.scrollTop);
 			this.toggleMenu();
-			this.body.classList.remove(css.locked);
+			this.lockBody();
 		});
 	}
 
@@ -70,6 +68,10 @@ class Header {
 		return HeaderAPI;
 	}
 
+	lockBody() {
+		Resp.isMobile ? this.body.classList.toggle(css.locked) : false;
+	}
+
 	set burgerActiveState(className) {
 		this.menuBtn.classList.toggle(className);
 		this.mobClose.classList.toggle(className);
@@ -79,68 +81,44 @@ class Header {
 		return this.menuBtn.classList.contains(css.active);
 	}
 
-	// prepareBurgerAnim() {
-	// 	this.burgerTl = new TimelineMax({ paused: true });
-	//
-	// 	this.burgerTl
-	// 		.to(this.burgerLines[0], 0.6, {
-	// 			rotation: 45,
-	// 			y: 7
-	// 		}, 0)
-	// 		.to(this.burgerLines[1], 0.4, {
-	// 			alpha: 0,
-	// 			width: 0
-	// 		}, 0)
-	// 		.to(this.burgerLines[2], 0.6, {
-	// 			rotation: -45,
-	// 			y: -7
-	// 		}, 0);
-	// }
-
 	prepareHeaderAnim() {
 		const _this = this;
 		this.mobTl = new TimelineMax({ paused: true });
 
 		this.mobTl
-		 .to(this.mob, .5, {
+		 .to(this.mob, .35, {
 			y: 0
 		})
-		 .staggerTo(this.langMobLinks, 0.3, {
+		 .staggerTo(this.langMobLinks, 0.25, {
 			autoAlpha: 1,
 			y: 0
 		}, 0.125, 'animAll')
-		 .staggerTo(this.navMobLinks, 0.3, {
+		 .staggerTo(this.navMobLinks, 0.25, {
 			autoAlpha: 1,
 			y: 0
 		}, 0.125, 'animAll')
-		 .staggerTo(this.mobCol2, 0.3, {
+		 .staggerTo(this.mobCol2, 0.25, {
 			autoAlpha: 1,
 			y: 0
 		}, 0.125, '=-0.125');
 
 	}
 
-	// toggleBurger() {
-	// 	this.burgerActiveState ? this.burgerTl.play() : this.burgerTl.reverse();
-	// }
-
 	toggleNav() {
-		this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(4).reverse();
+		this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(3).reverse();
 	}
 
-	clearResize() {
-		window.addEventListener('resize', debounce(clear, this, 250));
-
-		function clear() {
-			this.menuBtn.classList.remove(css.active);
-			this.body.classList.remove(css.locked);
-			TweenMax.set(this.mob, { clearProps: 'all' });
-
-			// TweenMax.set(this.burgerLines, { clearProps: 'all' });
-			// this.prepareBurgerAnim();
-			this.prepareHeaderAnim();
-		}
-	}
+	// clearResize() {
+	// 	window.addEventListener('resize', debounce(clear, this, 250));
+	//
+	// 	function clear() {
+	// 		this.menuBtn.classList.remove(css.active);
+	// 		this.body.classList.remove(css.locked);
+	// 		TweenMax.set(this.mob, { clearProps: 'all' });
+	//
+	// 		this.prepareHeaderAnim();
+	// 	}
+	// }
 
 	initFix() {
 		const _this = this;
