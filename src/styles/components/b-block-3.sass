@@ -2,19 +2,14 @@
   position: relative
   padding: 113px 0 135px
   counter-reset: block-3-counter
-  +sm
+  +md
     padding: 112px 0 120px
   +xs
     padding: 48px 0 135px
   &__container
-    max-width: 1310px
   &__top
     max-width: 1160px
     margin: 0 auto 63px
-    +md
-      margin: 0 30px 64px
-    +sm
-      margin: 0 10px 64px
     +xs
       margin: 0 0 20px
   &__label
@@ -43,31 +38,31 @@
         margin: 81px 0 0 30px
       .block-3__item-count
         margin-left: 430px
+        +md
+          margin-left: 0
     &:nth-child(5)
       margin-top: 118px
     &_left
       margin-right: 60px
       +md
-        margin-right: 30px
-      +sm
         margin-right: 0
     &_right
       margin-left: 60px
       +md
         margin-left: 30px
-      +sm
+      +md
         margin-left: 0
     &-inner
       display: flex
       align-items: flex-start
       justify-content: space-between
-      +sm
+      +md
         flex-wrap: wrap
       #{$parent}_left &
-        +sm
+        +md
           justify-content: flex-end
       #{$parent}_right &
-        +sm
+        +md
           justify-content: flex-start
     &-media
       transform: translateY(50px)
@@ -75,10 +70,10 @@
       #{$parent}_left &
         flex: 0 1 percentage(611/1220)
         +ratio(611, 395)
-        +sm
+        +md
           flex: 0 1 percentage(618/738)
           margin-right: auto
-          margin-left: -15px
+          margin-left: -30px
           +ratio(618, 395)
         +xs
           flex: 1 0 auto
@@ -87,11 +82,11 @@
       #{$parent}_right &
         flex: 0 1 percentage(490/1220)
         +ratio(490, 390)
-        +sm
+        +md
           flex: 0 1 percentage(494/738)
           +ratio(494, 390)
           margin-left: auto
-          margin-right: -15px
+          margin-right: -30px
         +xs
           flex: 1 0 auto
           margin: 0 auto
@@ -110,20 +105,20 @@
       transform: translateY(50px)
       opacity: 0
       flex: 0 1 552px
-      +sm
+      +md
         order: -1
       +xs
         flex: 0 1 auto
       #{$parent}_left &
         margin: 85px 0 0 30px
-        +sm
-          margin: 85px 15px 53px 0
+        +md
+          margin: 85px 0 53px 0
         +xs
           margin: 55px 0 20px 0
       #{$parent}_right &
         margin: 82px 30px 0 0
         padding-right: 5px
-        +sm
+        +md
           margin: 82px 0 54px 10px
         +xs
           margin: 0 0 24px 0
@@ -151,7 +146,7 @@
         +f('gil-800', 90, 80)
         color: $color4
         content: counter(block-3-counter, decimal-leading-zero)
-        +sm
+        +md
           font-size: 80px
         +xs
           font-size: 42px
@@ -159,8 +154,6 @@
         top: -10px
         margin-left: 435px
         +md
-          margin-left: 317px
-        +sm
           margin-left: 185px
         +xs
           top: -13px
@@ -169,8 +162,6 @@
         top: -7px
         margin-left: -545px
         +md
-          margin-left: -420px
-        +sm
           margin-left: -288px
         +xs
           top: -62px
@@ -186,7 +177,7 @@
         animation-fill-mode: forwards
         &_1
           transform: rotate3d(0, 0, 1, 15deg)
-          +sm
+          +md
             top: 34px
             left: 30px
           +xs
@@ -215,7 +206,7 @@
           width: 36px
           &.has-anim
             animation: swingEl-3 1.2s
-          +sm
+          +md
             left: 30px
             top: 37px
           +xs
@@ -231,7 +222,7 @@
           height: 11px
           &.has-anim
             animation: swingEl-4 1.2s
-          +sm
+          +md
             top: 37px
           +xs
             transform: rotate(18deg)
@@ -252,16 +243,12 @@
     &_left
       margin-left: -464px
       +md
-        margin-left: -354px
-      +sm
         margin-left: -237px
       +xs
         margin-left: -122px
     &_right
       margin-left: 456px
       +md
-        margin-left: 354px
-      +sm
         margin-left: 233px
       +xs
         margin-left: 124px
