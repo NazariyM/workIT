@@ -26,36 +26,6 @@ body
   +xs
     padding: 0 15px
 
-.has-selection
-  &_green b::after
-    background: $color1
-  &_black
-    b
-      color: $white
-    b::after
-      background: $black
-  b
-    position: relative
-    z-index: 1
-    white-space: nowrap
-    &::after
-      position: absolute
-      left: -11px
-      top: 8px
-      bottom: 1px
-      right: 0
-      width: 0
-      content: ''
-      z-index: -1
-      transition: width 1.3s 1s ease
-      +xs
-        top: 6px
-        left: -5px
-  &.is-selected b::after
-    width: calc(100% + 20px)
-    +xs
-      width: calc(100% + 9px)
-    
 // other
 .block-top
   max-width: 1160px

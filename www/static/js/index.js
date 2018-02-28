@@ -12221,10 +12221,10 @@ var HomeAnims = function () {
     _classCallCheck(this, HomeAnims);
 
     this.containers = [].concat(_toConsumableArray(document.querySelectorAll('.block-top')));
-    this.group = [].concat(_toConsumableArray(document.querySelectorAll('[data-anim="group"]')));
+    this.groups = [].concat(_toConsumableArray(document.querySelectorAll('[data-anim="group"]')));
+    this.titles = [].concat(_toConsumableArray(document.querySelectorAll('.block-title')));
 
     this.init();
-    // if (this.containers.length) this.init();
   }
 
   _createClass(HomeAnims, [{
@@ -12314,7 +12314,7 @@ var HomeAnims = function () {
           });
         };
 
-        for (var _iterator2 = this.group[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        for (var _iterator2 = this.groups[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
           _loop2();
         }
       } catch (err) {
@@ -12335,6 +12335,7 @@ var HomeAnims = function () {
   }, {
     key: 'blockTopAnim',
     value: function blockTopAnim() {
+      var _this = this;
       var tl = new _gsap.TimelineMax();
 
       for (var _len = arguments.length, container = Array(_len), _key = 0; _key < _len; _key++) {
@@ -12350,9 +12351,10 @@ var HomeAnims = function () {
           var el = _step3.value;
 
           var item = el.children;
+          var label = el.querySelector('.block-label');
           var title = el.querySelector('.block-title');
 
-          tl.staggerTo(item, .7, { autoAlpha: 1, x: 0 }, 0.6).to(title, 2, { className: '+=' + _helpers.css.selected }, '-=1.3');
+          tl.to(label, .5, { autoAlpha: 1, x: 0 }).to(title, .5, { autoAlpha: 1, x: 0 }).set(title, { className: '+=' + _helpers.css.selected }, '-=1').staggerTo(item, .5, { autoAlpha: 1, x: 0 });
         }
       } catch (err) {
         _didIteratorError3 = true;

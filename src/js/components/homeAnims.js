@@ -1,15 +1,15 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import { preloader } from './preloader';
-import { css } from '../modules/dev/_helpers';
+import { css, Resp } from '../modules/dev/_helpers';
 
 export default class HomeAnims {
   constructor() {
     this.containers = [...document.querySelectorAll('.block-top')];
-    this.group = [...document.querySelectorAll('[data-anim="group"]')];
+    this.groups = [...document.querySelectorAll('[data-anim="group"]')];
+    this.titles = [...document.querySelectorAll('.block-title')];
 
     this.init();
-    // if (this.containers.length) this.init();
   }
 
   async init() {
@@ -31,7 +31,7 @@ export default class HomeAnims {
       });
     }
 
-    for (const group of this.group) {
+    for (const group of this.groups) {
       new ScrollAnim({
         el: group,
         hook: .8,
@@ -43,15 +43,19 @@ export default class HomeAnims {
   }
 
   blockTopAnim(...container) {
+    const _this = this;
     const tl = new TimelineMax();
 
     for (const el of container) {
       const item = el.children;
+      const label = el.querySelector('.block-label');
       const title = el.querySelector('.block-title');
 
       tl
-        .staggerTo(item, .7, { autoAlpha: 1, x: 0 }, 0.6)
-        .to(title, 2, { className: `+=${css.selected}` }, '-=1.3');
+       .to(label, .5, { autoAlpha: 1, x: 0 })
+       .to(title, .5, { autoAlpha: 1, x: 0 })
+       .set(title, { className: `+=${css.selected}` }, '-=1')
+       .staggerTo(item, .5, { autoAlpha: 1, x: 0 });
     }
   }
 
