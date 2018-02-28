@@ -5,7 +5,7 @@
   +md
     padding: 112px 0 120px
   +xs
-    padding: 48px 0 135px
+    padding: 48px 0 60px
   &__container
   &__top
     max-width: 1160px
@@ -26,26 +26,43 @@
     counter-increment: block-3-counter
     & + &
       margin-top: 78px
-    &:nth-child(1) h3
-      margin-bottom: 30px
-      +xs
-        margin-bottom: 27px
     &:nth-child(2) h3
       margin-bottom: 30px
+      +xs
+        margin-bottom: 26px
     &:nth-child(4)
       margin-top: 70px
+      +xs
+        margin-top: 78px
       .block-3__item-text
         margin: 81px 0 0 30px
+        +md
+          margin: 88px 0 50px 30px
+        +xs
+          margin: 0 0 26px 0
       .block-3__item-count
         margin-left: 430px
         +md
-          margin-left: 0
+          margin-left: 185px
+          top: 0
+        +xs
+          margin-left: -148px
+          top: -62px
     &:nth-child(5)
       margin-top: 118px
+      +md
+        margin-top: 82px
+        h3
+          margin-bottom: 35px
+      +xs
+        margin-top: 75px
+        h3
+          margin-bottom: 27px
     &_left
       margin-right: 60px
       +md
         margin-right: 0
+        
     &_right
       margin-left: 60px
       +md
@@ -71,19 +88,22 @@
         flex: 0 1 percentage(611/1220)
         +ratio(611, 395)
         +md
-          flex: 0 1 percentage(618/738)
+          flex: 0 1 percentage(618/708)
           margin-right: auto
           margin-left: -30px
+          max-width: 660px
           +ratio(618, 395)
         +xs
           flex: 1 0 auto
           margin: 0 auto
           +ratio(290, 165)
+          max-width: none
       #{$parent}_right &
         flex: 0 1 percentage(490/1220)
         +ratio(490, 390)
         +md
-          flex: 0 1 percentage(494/738)
+          flex: 0 1 percentage(494/708)
+          max-width: 600px
           +ratio(494, 390)
           margin-left: auto
           margin-right: -30px
@@ -91,6 +111,7 @@
           flex: 1 0 auto
           margin: 0 auto
           +ratio(290, 165)
+          max-width: none
         
     &-img
       +coverdiv
@@ -112,16 +133,24 @@
       #{$parent}_left &
         margin: 85px 0 0 30px
         +md
-          margin: 85px 0 53px 0
+          margin: 85px 15px 53px 0
         +xs
-          margin: 55px 0 20px 0
+          margin: 55px 0 24px 0
       #{$parent}_right &
         margin: 82px 30px 0 0
         padding-right: 5px
         +md
-          margin: 82px 0 54px 10px
+          margin: 82px 80px 54px 0
         +xs
+          padding: 0
           margin: 0 0 24px 0
+      &-desk
+        +xs
+          display: none
+      &-mob
+        display: none
+        +xs
+          display: inline
     h3
       margin-bottom: 20px
       +h1
@@ -155,6 +184,7 @@
         margin-left: 435px
         +md
           margin-left: 185px
+          top: -10px
         +xs
           top: -13px
           margin-left: -145px
