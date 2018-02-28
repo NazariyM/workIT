@@ -5,7 +5,8 @@ class Slider {
 
 	constructor() {
 		this.$sliderBlock = $('.slider');
-		this.$mobileSlider = $('.mobile-slider');
+		this.$block5Sld = $('.block-5__list');
+		this.$block6Sld = $('.block-6__list');
 
 		this.init();
 	}
@@ -17,9 +18,7 @@ class Slider {
 	}
 
 	createMobileSlider() {
-		this.$mobileSlider.slick({
-			slidesToShow: 1.14,
-			slidesToScroll: 1,
+		let defaultOptions = {
 			dots: false,
 			infinite: false,
 			arrows: false,
@@ -27,7 +26,6 @@ class Slider {
 			cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
 			useTransform: true,
 			adaptiveHeight: true,
-			// variableWidth: true,
 			mobileFirst: true,
 			accessibility: false,
 			rows: 0,
@@ -35,20 +33,41 @@ class Slider {
 				{
 					breakpoint: 1250,
 					settings: 'unslick'
-				}, {
+				}
+			]
+		};
+
+		this.$block5Sld.slick($.extend({}, defaultOptions, {
+			slidesToShow: 1.14,
+			slidesToScroll: 1,
+			responsive: [
+				{
 					breakpoint: 767,
 					settings: {
 						slidesToShow: 1.26,
 					}
 				}
 			]
-		});
+		}));
 
-		this.$mobileSlider.on('afterChange', () => {
-			const $lastSlide = $('.slick-slide').last();
-			$lastSlide.is('.slick-current') ? this.$mobileSlider.addClass('is-last-slide') : this.$mobileSlider.removeClass('is-last-slide');
+		this.$block6Sld.slick($.extend({}, defaultOptions, {
+			slidesToShow: 1.2,
+			slidesToScroll: 1,
+			responsive: [
+				{
+					breakpoint: 767,
+					settings: {
+						slidesToScroll: 1.13,
+						slidesToShow: 1.87,
+					}
+				}
+			]
+		}));
 
-		});
+		// this.$mobileSlider.on('afterChange', () => {
+		// 	const $lastSlide = $('.slick-slide').last();
+		// 	$lastSlide.is('.slick-current') ? this.$mobileSlider.addClass('is-last-slide') : this.$mobileSlider.removeClass('is-last-slide');
+		// });
 	}
 
 	createSlider() {

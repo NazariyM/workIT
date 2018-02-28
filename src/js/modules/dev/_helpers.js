@@ -160,7 +160,7 @@ export class Resp {
 	 * @return {Boolean}
 	 */
 	static get isTablet() {
-		return window.matchMedia(`(min-width: 768px) and (max-width: 1199px)`).matches;
+		return window.matchMedia(`(min-width: 768px) and (max-width: 1250px)`).matches;
 	}
 	
 	/**

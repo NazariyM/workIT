@@ -368,7 +368,7 @@ var Resp = exports.Resp = function () {
 	}, {
 		key: 'isTablet',
 		get: function get() {
-			return window.matchMedia('(min-width: 768px) and (max-width: 1199px)').matches;
+			return window.matchMedia('(min-width: 768px) and (max-width: 1250px)').matches;
 		}
 
 		/**
@@ -21678,7 +21678,8 @@ var Slider = function () {
 		_classCallCheck(this, Slider);
 
 		this.$sliderBlock = $('.slider');
-		this.$mobileSlider = $('.mobile-slider');
+		this.$block5Sld = $('.block-5__list');
+		this.$block6Sld = $('.block-6__list');
 
 		this.init();
 	}
@@ -21693,11 +21694,7 @@ var Slider = function () {
 	}, {
 		key: 'createMobileSlider',
 		value: function createMobileSlider() {
-			var _this2 = this;
-
-			this.$mobileSlider.slick({
-				slidesToShow: 1.14,
-				slidesToScroll: 1,
+			var defaultOptions = {
 				dots: false,
 				infinite: false,
 				arrows: false,
@@ -21705,25 +21702,42 @@ var Slider = function () {
 				cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
 				useTransform: true,
 				adaptiveHeight: true,
-				// variableWidth: true,
 				mobileFirst: true,
 				accessibility: false,
 				rows: 0,
 				responsive: [{
 					breakpoint: 1250,
 					settings: 'unslick'
-				}, {
+				}]
+			};
+
+			this.$block5Sld.slick($.extend({}, defaultOptions, {
+				slidesToShow: 1.14,
+				slidesToScroll: 1,
+				responsive: [{
 					breakpoint: 767,
 					settings: {
 						slidesToShow: 1.26
 					}
 				}]
-			});
+			}));
 
-			this.$mobileSlider.on('afterChange', function () {
-				var $lastSlide = $('.slick-slide').last();
-				$lastSlide.is('.slick-current') ? _this2.$mobileSlider.addClass('is-last-slide') : _this2.$mobileSlider.removeClass('is-last-slide');
-			});
+			this.$block6Sld.slick($.extend({}, defaultOptions, {
+				slidesToShow: 1.2,
+				slidesToScroll: 1,
+				responsive: [{
+					breakpoint: 767,
+					settings: {
+						slidesToScroll: 1.13,
+						slidesToShow: 1.87
+					}
+				}]
+			}));
+
+			// this.$mobileSlider.on('afterChange', () => {
+			// 	const $lastSlide = $('.slick-slide').last();
+			// 	$lastSlide.is('.slick-current') ? this.$mobileSlider.addClass('is-last-slide') : this.$mobileSlider.removeClass('is-last-slide');
+			// });
 		}
 	}, {
 		key: 'createSlider',
@@ -25292,7 +25306,20 @@ var Block6 = function () {
 	}, {
 		key: 'startLampsAnim',
 		value: function startLampsAnim() {
-			_gsap.TweenMax.to(this.$lampsWires, 2, { y: 0 });
+			var _this = this;
+
+			if (_helpers.Resp.isDesk) {
+				_gsap.TweenMax.to(this.$lampsWires, 2, { y: 0 });
+			} else if (_helpers.Resp.isTablet) {
+
+				var tl = new _gsap.TimelineMax();
+				var $wire1 = _this.$lampsWires[0];
+				var $wire2 = _this.$lampsWires[2];
+				var $wire3 = _this.$lampsWires[1];
+
+				tl.to($wire1, 2, { y: -217 }, 'all').to($wire2, 2, { y: -218 }, 'all').to($wire3, 2, { y: -158 }, 'all');
+				// .to(this.$lampsWires, 2, { y: 0 });
+			}
 		}
 
 		// dot() {

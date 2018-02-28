@@ -2,7 +2,7 @@ import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import Dot from './dot';
 import { preloader } from './preloader';
-import { css } from '../modules/dev/_helpers';
+import { css, Resp } from '../modules/dev/_helpers';
 
 class Block6 {
 	constructor() {
@@ -55,8 +55,25 @@ class Block6 {
 	}
 
 	startLampsAnim() {
-		TweenMax
-			.to(this.$lampsWires, 2, { y: 0 });
+		const _this = this;
+
+		if (Resp.isDesk) {
+			TweenMax
+				.to(this.$lampsWires, 2, { y: 0 });
+
+		} else if (Resp.isTablet) {
+
+			const tl = new TimelineMax();
+			const $wire1 = _this.$lampsWires[0];
+			const $wire2 = _this.$lampsWires[2];
+			const $wire3 = _this.$lampsWires[1];
+
+			tl
+				.to($wire1, 2, { y: -217 }, 'all')
+				.to($wire2, 2, { y: -218 }, 'all')
+				.to($wire3, 2, { y: -158 }, 'all');
+				// .to(this.$lampsWires, 2, { y: 0 });
+		}
 	}
 
 	// dot() {
