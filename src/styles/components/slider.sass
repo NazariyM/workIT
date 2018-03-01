@@ -7,14 +7,23 @@
       display: block
   &__item
     h4
-      margin-bottom: 20px
+      margin-bottom: 18px
       +h4
+      +xs
+        margin-bottom: 11px
+        font-size: 24px
+        line-height: 26px
     h5
-      margin-bottom: 12px
+      margin-bottom: 14px
       +h5
+      letter-spacing: 0.1em
       text-transform: none
+      +xs
+        font-size: 14px
     #{$parent}_full &
       padding-left: 60px
+      +md
+        padding-left: 0
   &__text
     #{$parent}_full &
       opacity: 0
@@ -23,10 +32,22 @@
       width: 50%
       margin-top: -7px
       padding-right: 60px
+      +md
+        float: none
+        width: auto
+        padding-right: 0
+        margin-bottom: 55px
+      +xs
+        margin-bottom: 23px
       p
         max-width: 440px
         padding-left: 62px
         letter-spacing: 0
+        +md
+          max-width: 550px
+        +xs
+          padding-left: 0
+          max-width: none
   &__media
     overflow: hidden
     +ratio(611, 339)
@@ -40,6 +61,14 @@
       float: left
       width: 50%
       +ratio(610, 400)
+      +md
+        float: right
+        width: percentage(618/738)
+        +ratio(618, 339)
+      +xs
+        float: none
+        width: auto
+        +ratio(290, 165)
     &-img
       +coverdiv
       +cover
@@ -86,7 +115,14 @@
     #{$parent}_full &
       right: 50%
       left: auto
-      margin-right: 60px
+      bottom: -6px
+      margin-right: 30px
+      +md
+        right: auto
+        bottom: auto
+        margin: 34px 0 0 120px
+      +xs
+        margin: -7px 0 0
     &.has-anim
       opacity: 0
       transform: translateX(-50px)
