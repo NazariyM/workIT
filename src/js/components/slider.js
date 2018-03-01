@@ -9,6 +9,7 @@ class Slider {
   constructor() {
     this.$sliderBlock = $('.slider');
     this.$mobileSlider = $('.mobile-slider');
+    this.$block3Sld = $('.block-3__items-list');
     this.$block5Sld = $('.block-5__list');
     this.$block6Sld = $('.block-6__list');
 
@@ -38,11 +39,19 @@ class Slider {
       rows: 0
     };
 
+    this.$block3Sld.slick($.extend({}, defaultOptions, {
+      slidesToShow: 1.14,
+      slidesToScroll: 1,
+      responsive: [{
+        breakpoint: 767,
+        settings: 'unslick'
+      }]
+    }));
+
     this.$block5Sld.slick($.extend({}, defaultOptions, {
       slidesToShow: 1.14,
       slidesToScroll: 1,
-      responsive: [
-       {
+      responsive: [{
         breakpoint: 1250,
         settings: 'unslick'
       },
@@ -51,15 +60,13 @@ class Slider {
         settings: {
           slidesToShow: 1.26,
         }
-      }
-      ]
+      }]
     }));
 
     this.$block6Sld.slick($.extend({}, defaultOptions, {
       slidesToShow: 1.14,
       slidesToScroll: 1,
-      responsive: [
-       {
+      responsive: [{
         breakpoint: 1250,
         settings: 'unslick'
       },
@@ -69,15 +76,14 @@ class Slider {
           slidesToScroll: 1.13,
           slidesToShow: 1.87,
         }
-      }
-      ]
+      }]
     }));
 
     this.$mobileSlider.each(function (i, slider) {
       const $slider = $(slider);
 
-      _this.detectScroll($slider);
-      
+      if (!Resp.isDesk) _this.detectScroll($slider);
+
       $slider.on('afterChange', function () {
         const $lastSlide = $(this).find('.slick-slide').last();
         $lastSlide.is('.slick-active') ? $slider.addClass('is-last-slide') : $slider.removeClass('is-last-slide');

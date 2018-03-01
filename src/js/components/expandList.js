@@ -35,24 +35,23 @@ class ExpandList {
     const $visibleItem = $listInner.children().not('.is-hidden');
     const $btn = $($el).find('.expand-list__btn');
     const innerHeight = $listInner.innerHeight() * 2;
-
-    if (!Resp.isMobile) {
-      tl
-       .staggerTo($visibleItem, 1, { x: 0, autoAlpha: 1 }, .3)
-       .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
-    } else {
-      const $mobHiddenItems = $listInner.children().eq(1).nextAll();
-
-      $mobHiddenItems.addClass(css.hidden);
-
-      const $mobVisibleItems = $listInner.children().not('.is-hidden');
-
-      tl
-       .staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3)
-       .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
-    }
-
     const $hiddenItem = $listInner.children('.is-hidden');
+
+    tl
+     .staggerTo($visibleItem, 1, { x: 0, autoAlpha: 1 }, .3)
+     .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+
+    // else {
+    //   const $mobHiddenItems = $listInner.children().eq(1).nextAll();
+    //
+    //   $mobHiddenItems.addClass(css.hidden);
+    //
+    //   const $mobVisibleItems = $listInner.children().not('.is-hidden');
+    //
+    //   tl
+    //    .staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3)
+    //    .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+    // }
 
     $btn.on('click tap', () => {
 

@@ -21689,6 +21689,7 @@ var Slider = function () {
 
     this.$sliderBlock = $('.slider');
     this.$mobileSlider = $('.mobile-slider');
+    this.$block3Sld = $('.block-3__items-list');
     this.$block5Sld = $('.block-5__list');
     this.$block6Sld = $('.block-6__list');
 
@@ -21740,6 +21741,15 @@ var Slider = function () {
         rows: 0
       };
 
+      this.$block3Sld.slick($.extend({}, defaultOptions, {
+        slidesToShow: 1.14,
+        slidesToScroll: 1,
+        responsive: [{
+          breakpoint: 767,
+          settings: 'unslick'
+        }]
+      }));
+
       this.$block5Sld.slick($.extend({}, defaultOptions, {
         slidesToShow: 1.14,
         slidesToScroll: 1,
@@ -21772,7 +21782,7 @@ var Slider = function () {
       this.$mobileSlider.each(function (i, slider) {
         var $slider = $(slider);
 
-        _this.detectScroll($slider);
+        if (!_helpers.Resp.isDesk) _this.detectScroll($slider);
 
         $slider.on('afterChange', function () {
           var $lastSlide = $(this).find('.slick-slide').last();
@@ -26171,20 +26181,21 @@ var ExpandList = function () {
       var $visibleItem = $listInner.children().not('.is-hidden');
       var $btn = $($el).find('.expand-list__btn');
       var innerHeight = $listInner.innerHeight() * 2;
-
-      if (!_helpers.Resp.isMobile) {
-        tl.staggerTo($visibleItem, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
-      } else {
-        var $mobHiddenItems = $listInner.children().eq(1).nextAll();
-
-        $mobHiddenItems.addClass(_helpers.css.hidden);
-
-        var $mobVisibleItems = $listInner.children().not('.is-hidden');
-
-        tl.staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
-      }
-
       var $hiddenItem = $listInner.children('.is-hidden');
+
+      tl.staggerTo($visibleItem, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+
+      // else {
+      //   const $mobHiddenItems = $listInner.children().eq(1).nextAll();
+      //
+      //   $mobHiddenItems.addClass(css.hidden);
+      //
+      //   const $mobVisibleItems = $listInner.children().not('.is-hidden');
+      //
+      //   tl
+      //    .staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3)
+      //    .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+      // }
 
       $btn.on('click tap', function () {
 
