@@ -12,7 +12,7 @@ if block11.title ? block11.title : block11.title = ''
 				+e.H2
 					b Мероприятия
 
-		+e.inner(data-anim='group')
+		+e.list.mobile-slider._green-large(data-anim='group')
 			-
 				block11List = [{
 					pic: 'block-11_1',
@@ -23,7 +23,7 @@ if block11.title ? block11.title : block11.title = ''
 				}]
 
 			mixin block11Item(item)
-				+e.item(data-anim='group')
+				+e.item
 					+e.item-pic
 						+b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
 					+e.item-date
@@ -35,6 +35,6 @@ if block11.title ? block11.title : block11.title = ''
 			each item in block11List
 				+block11Item(item)
 
-			+e.more
-				+e.A.more-btn.btn._line(href='#!') смотреть все
+		+e.more
+			+e.A.more-btn.btn._line(href='#!') смотреть все
 //end block-11

@@ -1,28 +1,48 @@
 .block-10
   position: relative
   padding: 111px 0 113px
+  +xs
+    padding: 50px 0 70px
+  &__container
+    padding: 0 60px
   &__top
     margin-bottom: 100px
+    +xs
+      margin-bottom: 40px
   &__list
     margin: 0 -30px
     +clr
+    +md
+      margin: 0 -20px
   &__item
     float: left
     width: 25%
     padding: 0 30px
     opacity: 0
     transform: translateX(-50px)
+    +md
+      padding: 0 20px
+    &.slick-cloned
+      opacity: 1
+      transform: none
+      
     &-icon
       display: flex
       align-items: center
       height: 50px
       margin-bottom: 37px
+      +xs
+        height: 30px
+        margin-bottom: 22px
       a
         .no-touch &:hover img
           opacity: .7
       img
         transition: opacity .3s ease
+        cursor: pointer
         +gpu
+        +xs
+          height: 23px
         
   &__decor-line
     position: absolute
@@ -30,7 +50,11 @@
     left: 0
     right: 0
     width: 0
-    margin-top: 50px
+    margin-top: 48px
     z-index: -1
     height: 1px
     background: rgba(#89a29e, .2)
+    +md
+      margin-top: 64px
+    +xs
+      margin-top: 11px

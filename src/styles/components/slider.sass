@@ -252,3 +252,24 @@
     +xs
       padding-left: 10px
       padding-right: 10px
+      
+  &_white-large
+    &::after, &::before
+      +md
+        width: 377px
+      +xs
+        width: 164px
+    &::before
+      background-image: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%)
+    &::after
+      background-image: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%)
+  &_green-large
+    &::after, &::before
+      +md
+        width: 189px
+      +xs
+        width: 54px
+    &::before
+      background-image: linear-gradient(to right, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
+    &::after
+      background-image: linear-gradient(to left, #00d88e 0%, rgba(0, 216, 142, 0) 100%)

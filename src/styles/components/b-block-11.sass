@@ -1,14 +1,19 @@
 .block-11
   padding: 110px 0 113px
   background: $color1
+  +xs
+    padding: 52px 0 53px
   &__container
     text-align: center
+    padding: 0 60px
   &__top
     margin-bottom: 63px
     text-align: left
+    +xs
+      margin-bottom: 30px
   &__label
     margin-bottom: 32px
-  &__inner
+  &__list
     display: flex
     flex-wrap: wrap
     margin: 0 -30px
@@ -23,12 +28,17 @@
       height: 300px
       margin-bottom: 30px
       +cover-img
+      +xs
+        height: 166px
+        margin-bottom: 23px
     &-date
       opacity: 0
       transform: translateX(-50px)
       position: relative
       padding-right: 60px
       margin-bottom: 13px
+      +xs
+        margin-bottom: 9px
       > a
         position: absolute
         top: 50%
@@ -36,6 +46,9 @@
         width: 41px
         height: 9px
         margin-top: - 4px
+        +xs
+          height: 7px
+          right: -3px
         .no-touch &:hover::after
           transform: translateX(17px)
         &::after
@@ -58,7 +71,11 @@
     text-align: center
     opacity: 0
     transform: translateX(-50px)
+    +xs
+      margin-top: -2px
   &__more-btn
     &::after
       left: calc(100% + 22px)
       background: #fff
+    +md
+      margin-left: -11px

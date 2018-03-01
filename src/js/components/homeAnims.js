@@ -43,7 +43,6 @@ export default class HomeAnims {
   }
 
   blockTopAnim(...container) {
-    const _this = this;
     const tl = new TimelineMax();
 
     for (const el of container) {
