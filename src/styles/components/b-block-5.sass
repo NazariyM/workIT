@@ -4,7 +4,7 @@
     padding: 110px 0 118px
     background-size: 1310px
   +xs
-    padding: 60px 0
+    padding: 51px 0 52px
     background-size: auto
   &__container
     max-width: 1220px
@@ -45,13 +45,15 @@
       color: #fff
       +xs
         padding-left: 0
-        margin-top: -20px
+        margin-top: -24px
       p
         opacity: 0
         transform: translateY(-50px)
         margin-bottom: 22px
         +md
           transform: translateX(-50px)
+        +xs
+          margin-bottom: 19px
     &-title
       opacity: 0
       transform: translateY(-50px)
@@ -66,10 +68,10 @@
       +md
         transform: translateX(-50px)
       +xs
-        margin-bottom: 30px
+        margin-bottom: 27px
         font-size: 24px
         height: 30px
-        line-height: 30px
+        line-height: 32px
         padding: 0 18px
     &-more
       opacity: 0
@@ -77,3 +79,5 @@
       pointer-events: auto
       +md
         transform: translateX(-50px)
+      +xs
+        letter-spacing: 0.07em

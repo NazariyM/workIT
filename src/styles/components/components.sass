@@ -142,13 +142,14 @@
   background: url("../img/bg.png")
   
 .has-selection
+  &.is-selected b::after
+    +xs
+      width: calc(100% + 9px)
   &_green
     b::after
       background: $color1
     &.is-selected b::after
       width: calc(100% + 17px)
-      +xs
-        width: calc(100% + 9px)
   &_black
     b
       color: $white
