@@ -50,8 +50,7 @@ class Block5 {
 
       tl
        .staggerTo($img, .5, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, 0.25)
-       .staggerTo($items, .5, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, 0.25, '-=.2')
-       .set(_this.$list, { className: `+=${css.active}` }, '-=.2');
+       .staggerTo($items, .5, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, 0.25, '-=.2');
     }
 
   }

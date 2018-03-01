@@ -1,15 +1,31 @@
 .block-6
   padding: 102px 0 132px
+  +md
+    padding: 111px 0 140px
+  +xs
+    padding: 50px 0 70px
   &__container
     position: relative
     max-width: 1160px
   &__top
     max-width: 820px
     margin: 0 0 70px
+    +md
+      margin: 0 0 76px
+    +xs
+      margin: 0 0 33px
   &__title
     margin-bottom: 60px
+    +md
+      margin-bottom: 57px
+    +xs
+      margin-bottom: 19px
   &__sub-title
     letter-spacing: 0.027em
+  &__label
+    +md
+      margin-bottom: 18px
+      padding-left: 0
   &__offer
     position: relative
     display: flex
@@ -21,7 +37,6 @@
     &.is-visible::after
       width: 89.3%
       +md
-        height: 100%
         width: 100%
     &::after
       position: absolute
@@ -34,9 +49,7 @@
       content: ''
       transition: width 1s ease
       +md
-        height: 0
-        transition: height 1s ease
-        bottom: 0
+        height: 99%
     &-text
       flex: 0 1 percentage(549/1099)
       margin-top: -6px
@@ -44,21 +57,30 @@
       +md
         flex: 1 1 auto
         order: 1
-        padding: 55px 60px 0
+        padding: 54px 70px 0 60px
+      +xs
+        padding: 25px 10px 0
+        margin-top: 0
     h4
       margin-bottom: 25px
       +h4
       transform: translateX(-50px)
       opacity: 0
+      +xs
+        margin-bottom: 14px
+        font-size: 24px
+        line-height: 1.2
     &-pic
       flex: 1 1 auto
-      transform: translateX(-50px)
+      transform: translateX(-100px)
       opacity: 0
     &-img
       +cover
       +ratio(549, 395)
       +md
         +ratio(709, 509)
+      +xs
+        +ratio(290, 215)
       
     &-btn
       transform: translateX(-50px)
@@ -70,22 +92,31 @@
       opacity: 0
       &:not(:last-of-type)
         margin-bottom: 14px
+        +xs
+          margin-bottom: 12px
   &__price
-    margin: 27px 0 32px
     &_offer
+      margin: 27px 0 32px
       transform: translateX(-50px)
       opacity: 0
+      +xs
+        margin: 15px 0 20px
     &_item
       margin: 22px 0 32px
+      +xs
+        margin: 15px 0 19px
     h5
       +h5
       text-transform: none
+      +xs
+        font-size: 14px
       span
         +f('gil-300')
   &__list
-    padding-top: 80px
-    margin: 0 -20px
+    margin: 80px -20px 0
     +clr
+    +xs
+      margin-top: 60px
     .slick-track
       +md
         padding-bottom: 20px
@@ -97,16 +128,27 @@
     &-text
       padding: 33px 30px 0
       background: $color5
+      +xs
+        padding: 24px 14px 24px 9px
       p
         height: 140px
+        +xs
+          height: 82px
     &-title
       height: 84px
       margin-bottom: 15px
+      +xs
+        height: auto
+        margin-bottom: 10px
     &-img
       height: 275px
       +cover-img
+      +xs
+        height: 200px
     &-btn
       margin-bottom: -25px
+      +xs
+        margin-left: 1px
     &-mask
       position: absolute
       top: 0
@@ -123,4 +165,7 @@
     left: 50%
     margin-left: 372px
     +md
-      margin-left: 210px
+      top: -110px
+      margin-left: 162px
+    +xs
+      display: none

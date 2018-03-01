@@ -21657,11 +21657,19 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.slider = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _scrollAnim = __webpack_require__(34);
+
+var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
+
+var _preloader = __webpack_require__(31);
+
+var _gsap = __webpack_require__(22);
 
 var _slickCarousel = __webpack_require__(347);
 
@@ -21671,173 +21679,218 @@ var _helpers = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Slider = function () {
-	function Slider() {
-		_classCallCheck(this, Slider);
+  function Slider() {
+    _classCallCheck(this, Slider);
 
-		this.$sliderBlock = $('.slider');
-		this.$block5Sld = $('.block-5__list');
-		this.$block6Sld = $('.block-6__list');
+    this.$sliderBlock = $('.slider');
+    this.$mobileSlider = $('.mobile-slider');
+    this.$block5Sld = $('.block-5__list');
+    this.$block6Sld = $('.block-6__list');
 
-		this.init();
-	}
+    this.init();
+  }
 
-	_createClass(Slider, [{
-		key: 'init',
-		value: function init() {
-			this.createSlider();
-			this.disableVideoLoad();
-			this.createMobileSlider();
-		}
-	}, {
-		key: 'createMobileSlider',
-		value: function createMobileSlider() {
-			var defaultOptions = {
-				dots: false,
-				infinite: false,
-				arrows: false,
-				speed: 400,
-				cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-				useTransform: true,
-				adaptiveHeight: true,
-				mobileFirst: true,
-				accessibility: false,
-				rows: 0,
-				responsive: [{
-					breakpoint: 1250,
-					settings: 'unslick'
-				}]
-			};
+  _createClass(Slider, [{
+    key: 'init',
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.createSlider();
+                this.createMobileSlider();
+                // await preloader.wait();
+                // // await this.detectScroll();
 
-			this.$block5Sld.slick($.extend({}, defaultOptions, {
-				slidesToShow: 1.14,
-				slidesToScroll: 1,
-				responsive: [{
-					breakpoint: 767,
-					settings: {
-						slidesToShow: 1.26
-					}
-				}]
-			}));
+              case 2:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
 
-			this.$block6Sld.slick($.extend({}, defaultOptions, {
-				slidesToShow: 1.2,
-				slidesToScroll: 1,
-				responsive: [{
-					breakpoint: 767,
-					settings: {
-						slidesToScroll: 1.13,
-						slidesToShow: 1.87
-					}
-				}]
-			}));
+      function init() {
+        return _ref.apply(this, arguments);
+      }
 
-			// this.$mobileSlider.on('afterChange', () => {
-			// 	const $lastSlide = $('.slick-slide').last();
-			// 	$lastSlide.is('.slick-current') ? this.$mobileSlider.addClass('is-last-slide') : this.$mobileSlider.removeClass('is-last-slide');
-			// });
-		}
-	}, {
-		key: 'createSlider',
-		value: function createSlider() {
-			var _this = this;
-			var arrLeft = '<svg class="icon icon-arr-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="1.14 22.38 20.98 42.5 23.75 39.69 7.56 23.26 93.06 23.26 93.06 19.21 7.57 19.21 23.79 2.82 21 0 0 21.23 1.14 22.38"/>\n</svg>';
-			var arrRight = '<svg class="icon icon-arr-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"/>\n</svg>';
+      return init;
+    }()
+  }, {
+    key: 'createMobileSlider',
+    value: function createMobileSlider() {
+      var _this = this;
 
-			this.$sliderBlock.each(function () {
-				var $slider = $(this).find('.js-slider');
+      var defaultOptions = {
+        dots: false,
+        infinite: false,
+        arrows: false,
+        speed: 400,
+        cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+        useTransform: true,
+        adaptiveHeight: true,
+        mobileFirst: true,
+        accessibility: false,
+        rows: 0
+      };
 
-				$slider.slick({
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					dots: false,
-					infinite: true,
-					arrows: true,
-					speed: 800,
-					cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-					useTransform: true,
-					adaptiveHeight: true,
-					accessibility: false,
-					swipe: true,
-					rows: 0,
-					prevArrow: '<button type="button" class="slider__btn slider-btn_prev">' + arrLeft + '</button>',
-					nextArrow: '<button type="button" class="slider__btn slider-btn_next">' + arrRight + '</button>',
-					appendArrows: $('.slider__buttons', this),
-					onInit: bindEvents()
-				});
+      this.$block5Sld.slick($.extend({}, defaultOptions, {
+        slidesToShow: 1.14,
+        slidesToScroll: 1,
+        responsive: [{
+          breakpoint: 1250,
+          settings: 'unslick'
+        }, {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1.26
+          }
+        }]
+      }));
 
-				function bindEvents() {
-					$slider.on('init afterChange reInit', function (event, slick, currentSlide) {
-						var $currentCount = $slider.siblings('.slider__controls').find('.slider__count-current');
-						var $allCount = $slider.siblings('.slider__controls').find('.slider__count-all');
-						var i = (currentSlide ? currentSlide : 0) + 1;
+      this.$block6Sld.slick($.extend({}, defaultOptions, {
+        slidesToShow: 1.14,
+        slidesToScroll: 1,
+        responsive: [{
+          breakpoint: 1250,
+          settings: 'unslick'
+        }, {
+          breakpoint: 767,
+          settings: {
+            slidesToScroll: 1.13,
+            slidesToShow: 1.87
+          }
+        }]
+      }));
 
-						// count slides
-						$currentCount.text('0' + i);
-						$allCount.text('0' + slick.slideCount);
+      this.$mobileSlider.each(function (i, slider) {
+        var $slider = $(slider);
 
-						_this.playVideo($slider);
-					});
-				}
+        _this.detectScroll($slider);
 
-				$slider.on('beforeChange', function () {
-					var $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
-					var animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
+        $slider.on('afterChange', function () {
+          var $lastSlide = $(this).find('.slick-slide').last();
+          $lastSlide.is('.slick-active') ? $slider.addClass('is-last-slide') : $slider.removeClass('is-last-slide');
+        });
+      });
+    }
+  }, {
+    key: 'createSlider',
+    value: function createSlider() {
+      var _this = this;
+      var arrLeft = '<svg class="icon icon-arr-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="1.14 22.38 20.98 42.5 23.75 39.69 7.56 23.26 93.06 23.26 93.06 19.21 7.57 19.21 23.79 2.82 21 0 0 21.23 1.14 22.38"/>\n</svg>';
+      var arrRight = '<svg class="icon icon-arr-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"/>\n</svg>';
 
-					$countDecor.addClass(_helpers.css.hasAnim).one(animEnd, function () {
-						$(this).removeClass(_helpers.css.hasAnim);
-					});
+      this.$sliderBlock.each(function () {
+        var $slider = $(this).find('.js-slider');
 
-					_this.playVideo($slider, true);
-				});
-			});
-		}
-	}, {
-		key: 'playVideo',
-		value: function playVideo($slider) {
-			var pauseOnChange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+        $slider.slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          infinite: true,
+          arrows: true,
+          speed: 800,
+          cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+          useTransform: true,
+          adaptiveHeight: true,
+          accessibility: false,
+          swipe: true,
+          rows: 0,
+          prevArrow: '<button type="button" class="slider__btn slider-btn_prev">' + arrLeft + '</button>',
+          nextArrow: '<button type="button" class="slider__btn slider-btn_next">' + arrRight + '</button>',
+          appendArrows: $('.slider__buttons', this),
+          onInit: bindEvents()
+        });
 
-			var $item = $slider.find('.slider__item').not('.slick-cloned');
-			var $btn = $item.find('.js-play-btn');
-			var $video = $item.find('video');
+        function bindEvents() {
+          $slider.on('init afterChange reInit', function (event, slick, currentSlide) {
+            var $currentCount = $slider.siblings('.slider__controls').find('.slider__count-current');
+            var $allCount = $slider.siblings('.slider__controls').find('.slider__count-all');
+            var i = (currentSlide ? currentSlide : 0) + 1;
 
-			$video.each(function () {
-				var $this = $(this);
-				var $autoplay = $this.is('[autoplay]');
-				var $video = $this[0];
+            // count slides
+            $currentCount.text('0' + i);
+            $allCount.text('0' + slick.slideCount);
 
-				if ($autoplay) {
-					$video.play();
-				}
-				if (pauseOnChange && !$autoplay) {
-					$video.pause();
-					$btn.removeClass(_helpers.css.hide);
-				}
-			});
+            _this.playVideo($slider);
+          });
+        }
 
-			$btn.on('click', function () {
-				var $this = $(this);
-				var $video = (0, _helpers.detectIE)() ? $this.next().find('video')[0] : $this.next()[0];
+        $slider.on('beforeChange', function () {
+          var $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
+          var animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
 
-				$this.addClass(_helpers.css.hide);
-				$video.play();
+          $countDecor.addClass(_helpers.css.hasAnim).one(animEnd, function () {
+            $(this).removeClass(_helpers.css.hasAnim);
+          });
 
-				$this.next().on('click', function () {
-					$video.pause();
-					$btn.removeClass(_helpers.css.hide);
-				});
-			});
-		}
-	}, {
-		key: 'disableVideoLoad',
-		value: function disableVideoLoad() {
-			// const
-		}
-	}]);
+          _this.playVideo($slider, true);
+        });
+      });
+    }
+  }, {
+    key: 'playVideo',
+    value: function playVideo($slider) {
+      var pauseOnChange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-	return Slider;
+      var $item = $slider.find('.slider__item').not('.slick-cloned');
+      var $btn = $item.find('.js-play-btn');
+      var $video = $item.find('video');
+
+      $video.each(function () {
+        var $this = $(this);
+        var $autoplay = $this.is('[autoplay]');
+        var $video = $this[0];
+
+        if ($autoplay) {
+          $video.play();
+        }
+        if (pauseOnChange && !$autoplay) {
+          $video.pause();
+          $btn.removeClass(_helpers.css.hide);
+        }
+      });
+
+      $btn.on('click', function () {
+        var $this = $(this);
+        var $video = (0, _helpers.detectIE)() ? $this.next().find('video')[0] : $this.next()[0];
+
+        $this.addClass(_helpers.css.hide);
+        $video.play();
+
+        $this.next().on('click', function () {
+          $video.pause();
+          $btn.removeClass(_helpers.css.hide);
+        });
+      });
+    }
+  }, {
+    key: 'detectScroll',
+    value: function detectScroll($slider) {
+      var _this = this;
+
+      new _scrollAnim2.default({
+        el: $slider[0],
+        onEnter: function onEnter() {
+          _this.addShadowOnScroll($slider);
+        }
+      });
+    }
+  }, {
+    key: 'addShadowOnScroll',
+    value: function addShadowOnScroll($slider) {
+      _gsap.TweenMax.set($slider, { delay: 1, className: '+=' + 'is-shadowed' });
+    }
+  }]);
+
+  return Slider;
 }();
 
 var slider = exports.slider = new Slider();
@@ -25187,7 +25240,7 @@ var Block5 = function () {
         var $img = _this.$item.find('.block-5__item-img-wrap');
         var $items = _this.$item.find('.block-5__item-text').children();
 
-        tl.staggerTo($img, .5, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, 0.25).staggerTo($items, .5, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, 0.25, '-=.2').set(_this.$list, { className: '+=' + _helpers.css.active }, '-=.2');
+        tl.staggerTo($img, .5, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, 0.25).staggerTo($items, .5, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, 0.25, '-=.2');
       }
     }
   }]);
@@ -25205,7 +25258,7 @@ var Block5API = exports.Block5API = new Block5();
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.Block6API = undefined;
 
@@ -25232,103 +25285,116 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Block6 = function () {
-	function Block6() {
-		_classCallCheck(this, Block6);
+  function Block6() {
+    _classCallCheck(this, Block6);
 
-		this.$container = $('.block-6');
-		this.$lampsWires = this.$container.find('.block-6__lamps-wire');
-		this.$offer = this.$container.find('.block-6__offer');
-		this.$offerText = this.$offer.find('.block-6__offer-text').children();
-		this.$offerPic = this.$offer.find('.block-6__offer-pic');
-		this.$item = this.$container.find('.block-6__item');
-		this.$itemMask = this.$item.find('.block-6__item-mask');
-		// this.$descr = $('.block-6__description');
+    this.$container = $('.block-6');
+    this.$lampsWires = this.$container.find('.block-6__lamps-wire');
+    this.$offer = this.$container.find('.block-6__offer');
+    this.$offerText = this.$offer.find('.block-6__offer-text').children();
+    this.$offerPic = this.$offer.find('.block-6__offer-pic');
+    this.$list = this.$container.find('.block-6__list');
+    this.$itemMask = this.$list.find('.block-6__item-mask');
 
-		if (this.$container.length) this.init();
-	}
+    if (this.$container.length) this.init();
+  }
 
-	_createClass(Block6, [{
-		key: 'init',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _preloader.preloader.wait();
+  _createClass(Block6, [{
+    key: 'init',
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _preloader.preloader.wait();
 
-							case 2:
-								_context.next = 4;
-								return this.scrollAnim();
+              case 2:
+                _context.next = 4;
+                return this.scrollAnim();
 
-							case 4:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
+              case 4:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
 
-			function init() {
-				return _ref.apply(this, arguments);
-			}
+      function init() {
+        return _ref.apply(this, arguments);
+      }
 
-			return init;
-		}()
-	}, {
-		key: 'scrollAnim',
-		value: function scrollAnim() {
-			var _this = this;
+      return init;
+    }()
+  }, {
+    key: 'scrollAnim',
+    value: function scrollAnim() {
+      var _this = this;
 
-			new _scrollAnim2.default({
-				el: _this.$container.get(0),
-				onStart: function onStart() {
-					_this.startLampsAnim();
-				}
-			});
+      new _scrollAnim2.default({
+        el: _this.$container.get(0),
+        onStart: function onStart() {
+          _this.lampsAnim();
+        }
+      });
 
-			new _scrollAnim2.default({
-				el: _this.$offer.get(0),
-				hook: .9,
-				onStart: function onStart() {
-					_this.startAnim();
-				}
-			});
-		}
-	}, {
-		key: 'startAnim',
-		value: function startAnim() {
-			var tl = new _gsap.TimelineMax();
+      new _scrollAnim2.default({
+        el: _this.$offer.get(0),
+        hook: .9,
+        onStart: function onStart() {
+          _this.offerAnim();
+        }
+      });
 
-			tl.to(this.$offer, 1, { className: '+=' + _helpers.css.visible }, '-=1').staggerTo(this.$offerText, 1, { x: 0, autoAlpha: 1, ease: Power2.easeOut }, 0.2, '+=.5').to(this.$offerPic, 1, { x: 0, autoAlpha: 1, ease: Power2.easeOut }, '-=.7').staggerTo(this.$itemMask, 1, { width: '0' }, .5, '-=.3');
-		}
-	}, {
-		key: 'startLampsAnim',
-		value: function startLampsAnim() {
-			var _this = this;
+      new _scrollAnim2.default({
+        el: _this.$list.get(0),
+        hook: .9,
+        onStart: function onStart() {
+          _this.listAnim();
+        }
+      });
+    }
+  }, {
+    key: 'lampsAnim',
+    value: function lampsAnim() {
+      var _this = this;
 
-			if (_helpers.Resp.isDesk) {
-				_gsap.TweenMax.to(this.$lampsWires, 2, { y: 0 });
-			} else if (_helpers.Resp.isTablet) {
+      if (_helpers.Resp.isDesk) {
+        _gsap.TweenMax.to(this.$lampsWires, 2, { y: 0 });
+      } else if (_helpers.Resp.isTablet) {
 
-				var tl = new _gsap.TimelineMax();
-				var $wire1 = _this.$lampsWires[0];
-				var $wire2 = _this.$lampsWires[2];
-				var $wire3 = _this.$lampsWires[1];
+        var tl = new _gsap.TimelineMax();
+        var $wire1 = _this.$lampsWires[0];
+        var $wire2 = _this.$lampsWires[2];
+        var $wire3 = _this.$lampsWires[1];
 
-				tl.to($wire1, 2, { y: -217 }, 'all').to($wire2, 2, { y: -218 }, 'all').to($wire3, 2, { y: -158 }, 'all');
-				// .to(this.$lampsWires, 2, { y: 0 });
-			}
-		}
+        tl.to($wire1, 2, { y: -217 }, 'all').to($wire2, 2, { y: -218 }, 'all').to($wire3, 2, { y: -158 }, 'all');
+      }
+    }
+  }, {
+    key: 'offerAnim',
+    value: function offerAnim() {
+      var tl = new _gsap.TimelineMax();
 
-		// dot() {
-		// 	new Dot(this.$descr);
-		// }
+      tl.to(this.$offer, 1, { className: '+=' + _helpers.css.visible }, '-=1').to(this.$offerPic, 1, { x: 0, autoAlpha: 1, ease: Power2.easeOut }, '+=.2').staggerTo(this.$offerText, 1, { x: 0, autoAlpha: 1, ease: Power2.easeOut }, 0.2, '-=.5');
+    }
+  }, {
+    key: 'listAnim',
+    value: function listAnim() {
+      var tl = new _gsap.TimelineMax();
 
-	}]);
+      tl.staggerTo(this.$itemMask, 1, { width: '0' }, .5, '-=.3');
+    }
 
-	return Block6;
+    // dot() {
+    // 	new Dot(this.$descr);
+    // }
+
+  }]);
+
+  return Block6;
 }();
 
 var Block6API = exports.Block6API = new Block6();

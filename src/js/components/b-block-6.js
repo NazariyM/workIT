@@ -5,80 +5,91 @@ import { preloader } from './preloader';
 import { css, Resp } from '../modules/dev/_helpers';
 
 class Block6 {
-	constructor() {
-		this.$container = $('.block-6');
-		this.$lampsWires = this.$container.find('.block-6__lamps-wire');
-		this.$offer = this.$container.find('.block-6__offer');
-		this.$offerText = this.$offer.find('.block-6__offer-text').children();
-		this.$offerPic = this.$offer.find('.block-6__offer-pic');
-		this.$item = this.$container.find('.block-6__item');
-		this.$itemMask = this.$item.find('.block-6__item-mask');
-		// this.$descr = $('.block-6__description');
+  constructor() {
+    this.$container = $('.block-6');
+    this.$lampsWires = this.$container.find('.block-6__lamps-wire');
+    this.$offer = this.$container.find('.block-6__offer');
+    this.$offerText = this.$offer.find('.block-6__offer-text').children();
+    this.$offerPic = this.$offer.find('.block-6__offer-pic');
+    this.$list = this.$container.find('.block-6__list');
+    this.$itemMask = this.$list.find('.block-6__item-mask');
 
-		if (this.$container.length) this.init();
-	}
+    if (this.$container.length) this.init();
+  }
 
-	async init() {
-		await preloader.wait();
-		await this.scrollAnim();
-		// await this.dot();
-	}
+  async init() {
+    await preloader.wait();
+    await this.scrollAnim();
+    // await this.dot();
+  }
 
-	scrollAnim() {
-		const _this = this;
+  scrollAnim() {
+    const _this = this;
 
-		new ScrollAnim({
-			el: _this.$container.get(0),
-			onStart() {
-				_this.startLampsAnim();
-			}
-		});
+    new ScrollAnim({
+      el: _this.$container.get(0),
+      onStart() {
+        _this.lampsAnim();
+      }
+    });
 
-		new ScrollAnim({
-			el: _this.$offer.get(0),
-			hook: .9,
-			onStart() {
-				_this.startAnim();
-			}
-		});
-	}
+    new ScrollAnim({
+      el: _this.$offer.get(0),
+      hook: .9,
+      onStart() {
+        _this.offerAnim();
+      }
+    });
 
-	startAnim() {
-		const tl = new TimelineMax();
+    new ScrollAnim({
+      el: _this.$list.get(0),
+      hook: .9,
+      onStart() {
+        _this.listAnim();
+      }
+    });
+  }
 
-		tl
-		.to(this.$offer, 1, { className: `+=${css.visible}` }, '-=1')
-		.staggerTo(this.$offerText, 1, { x: 0,  autoAlpha: 1, ease: Power2.easeOut }, 0.2, '+=.5')
-		.to(this.$offerPic, 1, { x: 0,  autoAlpha: 1, ease: Power2.easeOut }, '-=.7')
-		.staggerTo(this.$itemMask, 1, { width: '0' }, .5, '-=.3');
+  lampsAnim() {
+    const _this = this;
 
-	}
+    if (Resp.isDesk) {
+      TweenMax
+       .to(this.$lampsWires, 2, { y: 0 });
 
-	startLampsAnim() {
-		const _this = this;
+    } else if (Resp.isTablet) {
 
-		if (Resp.isDesk) {
-			TweenMax
-				.to(this.$lampsWires, 2, { y: 0 });
+      const tl = new TimelineMax();
+      const $wire1 = _this.$lampsWires[0];
+      const $wire2 = _this.$lampsWires[2];
+      const $wire3 = _this.$lampsWires[1];
 
-		} else if (Resp.isTablet) {
+      tl
+       .to($wire1, 2, { y: -217 }, 'all')
+       .to($wire2, 2, { y: -218 }, 'all')
+       .to($wire3, 2, { y: -158 }, 'all');
+    }
+  }
 
-			const tl = new TimelineMax();
-			const $wire1 = _this.$lampsWires[0];
-			const $wire2 = _this.$lampsWires[2];
-			const $wire3 = _this.$lampsWires[1];
+  offerAnim() {
+    const tl = new TimelineMax();
 
-			tl
-				.to($wire1, 2, { y: -217 }, 'all')
-				.to($wire2, 2, { y: -218 }, 'all')
-				.to($wire3, 2, { y: -158 }, 'all');
-				// .to(this.$lampsWires, 2, { y: 0 });
-		}
-	}
+    tl
+    .to(this.$offer, 1, { className: `+=${css.visible}` }, '-=1')
+    .to(this.$offerPic, 1, { x: 0,  autoAlpha: 1, ease: Power2.easeOut }, '+=.2')
+    .staggerTo(this.$offerText, 1, { x: 0,  autoAlpha: 1, ease: Power2.easeOut }, 0.2, '-=.5');
+  }
 
-	// dot() {
-	// 	new Dot(this.$descr);
-	// }
+  listAnim() {
+    const tl = new TimelineMax();
+
+    tl
+    .staggerTo(this.$itemMask, 1, { width: '0' }, .5, '-=.3');
+  }
+
+  // dot() {
+  // 	new Dot(this.$descr);
+  // }
 }
 
 export const Block6API = new Block6();
