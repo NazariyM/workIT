@@ -38,8 +38,8 @@
         padding-right: 0
         margin-bottom: 55px
       +xs
-        margin-bottom: 23px
-      p
+        margin: 0 0 23px
+    p
         max-width: 440px
         padding-left: 62px
         letter-spacing: 0
@@ -96,12 +96,21 @@
       cursor: pointer
       +gpu
       transition: .5s ease
+      +xs
+        width: 60px
+        height: 60px
+        margin-top: -30px
+        margin-left: -30px
       &:hover
         transform: scale(1.14)
       &.is-hide
         transform: scale(.5)
         opacity: 0
         visibility: hidden
+      svg
+        +xs
+          width: 42px
+          height: 42px
       
   &__controls
     position: absolute
@@ -122,7 +131,7 @@
         bottom: auto
         margin: 34px 0 0 120px
       +xs
-        margin: -7px 0 0
+        margin: 26px 0 0
     &.has-anim
       opacity: 0
       transform: translateX(-50px)
