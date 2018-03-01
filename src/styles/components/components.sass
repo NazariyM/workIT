@@ -25,9 +25,17 @@
 .expand-list
   text-align: center
   &__inner
-    margin: 0 -30px
+    margin-left: -30px
+    margin-right: -30px
     text-align: left
     font-size: 0
+    letter-spacing: 0
+    +md
+      margin-left: -20px
+      margin-right: -20px
+    +xs
+      margin-left: -10px
+      margin-right: -10px
   &__item
     display: inline-block
     vertical-align: top
@@ -35,12 +43,20 @@
     padding: 20px 30px
     transform: translateX(-50px)
     opacity: 0
+    +md
+      width: 50%
     &.is-hidden
       display: none
     p
       font-size: 16px
+      letter-spacing: 0.025em
       +xs
         font-size: 12px
+    h5
+      +f('gil-800', 18, 24)
+      +xs
+        font-size: 14px
+        line-height: 22px
   &__more
     text-align: center
   &__btn

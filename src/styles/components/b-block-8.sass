@@ -1,23 +1,60 @@
 .block-8
   padding: 112px 0
+  +xs
+    padding: 60px 0
   &__top
     max-width: 860px
     margin: 0 0 50px
+    +md
+      margin: 0 0 72px
+    +xs
+      margin: 0 0 33px
+  &__container
+    padding: 0 60px
   &__label
     margin-bottom: 21px
+    +md
+      padding-left: 0
   &__title
     max-width: 500px
-    margin-bottom: 58px
+    margin-bottom: 56px
+    +xs
+      margin-bottom: 23px
+  &__sub-title
+    +md
+      padding-left: 8px
+    +xs
+      padding-left: 0
+  &__expand-list
+    .expand-list__inner
+      +md
+        margin-bottom: -33px
+      +xs
+        margin-bottom: -14px
   &__item
-    width: 305px
+    +md
+      padding: 0 20px 55px
+    +xs
+      padding: 0 10px 35px
     &-icon
       height: 70px
       margin-bottom: 29px
+      +xs
+        height: 45px
+        margin-bottom: 15px
       img
         transition: transform .3s ease
+        +xs
+          width: 32px
         &:hover
           transform: scale(1.15)
+        
     h5
       margin-bottom: 15px
-      +h5
       text-transform: none
+      +xs
+        margin-bottom: 0
+
+    p
+      +xs
+        display: none

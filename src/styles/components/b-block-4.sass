@@ -28,16 +28,13 @@
     padding: 0 60px
     +md
       padding: 0
-      .expand-list__inner
-        margin: 0 -20px -15px
-    +xs
-      .expand-list__inner
-        margin: 0 -10px -3px
+    .expand-list__inner
+      +md
+        margin-bottom: -15px
+      +xs
+        margin-bottom: -3px
   &__item
-    width: 304px
     +md
-      //width: 48.5%
-      width: 374px
       padding: 0 20px 40px
       text-align: left
     +xs
@@ -62,9 +59,6 @@
       
     h5
       margin-bottom: 18px
-      +f('gil-800', 18, 24)
       color: $white
       +xs
         margin-bottom: 13px
-        font-size: 14px
-        line-height: 22px
