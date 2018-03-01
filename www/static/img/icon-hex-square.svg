@@ -1,25 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="78" height="71"
      viewBox="0 0 78 71">
     <defs>
-        <path id="q1fga" d="M135 4492.5l-19 33.5H78l-19-33.5 19-33.5h38z"/>
-        <path id="q1fgb" d="M80 4509v-34h34v34z"/>
-        <clipPath id="q1fgc">
-            <use fill="#fff" xlink:href="#q1fga"/>
+        <path id="sbjva" d="M135 4492.5l-19 33.5H78l-19-33.5 19-33.5h38z"/>
+        <path id="sbjvb" d="M80 4509v-34h34v34z"/>
+        <clipPath id="sbjvc">
+            <use fill="#fff" xlink:href="#sbjva"/>
         </clipPath>
-        <clipPath id="q1fgd">
-            <use fill="#fff" xlink:href="#q1fgb"/>
+        <clipPath id="sbjvd">
+            <use fill="#fff" xlink:href="#sbjvb"/>
         </clipPath>
     </defs>
     <g>
         <g transform="translate(-58 -4457)">
             <g>
                 <use fill="#fff" fill-opacity="0" stroke="#fff" stroke-miterlimit="50" stroke-width="4"
-                     clip-path="url(&quot;#q1fgc&quot;)" xlink:href="#q1fga"/>
+                     clip-path="url(&quot;#sbjvc&quot;)" xlink:href="#sbjva"/>
             </g>
             <g>
-                <use fill="none" xlink:href="#q1fgb"/>
+                <use fill="none" xlink:href="#sbjvb"/>
                 <use fill="#fff" fill-opacity="0" stroke="#001011" stroke-miterlimit="50" stroke-width="4"
-                     clip-path="url(&quot;#q1fgd&quot;)" xlink:href="#q1fgb"/>
+                     clip-path="url(&quot;#sbjvd&quot;)" xlink:href="#sbjvb"/>
             </g>
         </g>
     </g>

@@ -10,12 +10,16 @@
   &__top
     max-width: 1160px
     margin: 0 auto 63px
+    +md
+      margin-left: -4px
     +xs
       margin: 0 0 20px
   &__label
-    margin-left: 3px
     margin-bottom: 30px
+    +md
+      padding-left: 4px
     +xs
+      padding-left: 0
       margin-left: 0
   &__title
     max-width: 640px
@@ -26,6 +30,11 @@
     &.mobile-slider
       +md
         display: block
+        overflow: visible!important
+    &::after
+      display: none!important
+      +xs
+        display: block!important
   &__item
     $parent: &
     position: relative
@@ -36,32 +45,62 @@
       margin-top: 78px
       +xs
         margin-top: 0
-    &:nth-child(2) h3
-      margin-bottom: 30px
-      +xs
-        margin-bottom: 20px
-    &:nth-child(4)
+    &:nth-child(1)
+      h3
+        margin-bottom: 30px
+        +xs
+          margin-bottom: 20px
+    &:nth-child(3)
       margin-top: 70px
+      +md
+        margin-top: 78px
+      .block-3__item-count
+        top: -8px
+        margin-left: 431px
+        +md
+          top: -10px
+          margin-left: 182px
+        +xs
+          margin-left: 0
+      .block-3__item-text
+        +md
+          margin: 78px 0 53px 0
+        +xs
+          margin: 0 0 15px
+    &:nth-child(4)
+      margin-top: 120px
+      +md
+        margin-top: 70px
       +xs
         margin-top: 0
       .block-3__item-text
-        margin: 81px 0 0 30px
+        margin: 79px 0 0 0
         +md
-          margin: 88px 0 50px 30px
+          margin: 88px 0 50px -7px
         +xs
           margin: 0 0 15px
-      .block-3__item-count
-        margin-left: 430px
+      h3
+        margin-bottom: 20px
         +md
-          margin-left: 185px
-          top: 0
+          margin-bottom: 40px
+        +xs
+          margin-bottom: 20px
+      p
+        +md
+          padding-left: 65px
+        +xs
+          padding-left: 0
+      .block-3__item-count
+        +md
+          top: 1px
+          margin-left: -288px
         +xs
           margin-left: 0
           top: -12px
           left: 8px
       &.slick-active .block-3__item-count
         +xs
-          left: -30px
+          left: -12%
           
     &:nth-child(5)
       margin-top: 118px
@@ -78,12 +117,21 @@
       +md
         margin-right: 0
         
+      p
+        +md
+          padding-left: 62px
+        
     &_right
       margin-left: 60px
       +md
         margin-left: 30px
       +md
         margin-left: 0
+      p
+        +md
+          padding-left: 58px
+        +xs
+          padding-left: 0
     &-inner
       display: flex
       align-items: flex-start
@@ -106,7 +154,6 @@
           flex: 0 1 percentage(618/708)
           margin-right: auto
           margin-left: -30px
-          max-width: 660px
           +ratio(618, 395)
         +xs
           flex: 1 0 auto
@@ -118,7 +165,6 @@
         +ratio(490, 390)
         +md
           flex: 0 1 percentage(494/708)
-          max-width: 600px
           +ratio(494, 390)
           margin-left: auto
           margin-right: -30px
@@ -146,26 +192,19 @@
       +xs
         flex: 0 1 auto
       #{$parent}_left &
-        margin: 85px 0 0 30px
+        margin: 82px 0 0 30px
         +md
-          margin: 85px 15px 53px 0
+          margin: 85px 0 53px 0
         +xs
           margin: 0 0 15px
       #{$parent}_right &
         margin: 82px 30px 0 0
         padding-right: 5px
         +md
-          margin: 82px 80px 54px 0
+          margin: 85px 80px 53px 0
         +xs
           padding: 0
           margin: 0 0 15px
-      &-desk
-        +xs
-          display: none
-      &-mob
-        display: none
-        +xs
-          display: inline
     h3
       margin-bottom: 20px
       +h1
@@ -216,7 +255,8 @@
         top: -7px
         margin-left: -545px
         +md
-          margin-left: -288px
+          top: -5px
+          margin-left: -284px
         +xs
           top: -12px
           left: 8px

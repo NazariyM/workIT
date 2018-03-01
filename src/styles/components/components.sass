@@ -142,20 +142,27 @@
   background: url("../img/bg.png")
   
 .has-selection
-  &_green b::after
-    background: $color1
+  &_green
+    b::after
+      background: $color1
+    &.is-selected b::after
+      width: calc(100% + 17px)
+      +xs
+        width: calc(100% + 9px)
   &_black
     b
       color: $white
     b::after
       background: $black
+    &.is-selected b::after
+      width: calc(100% + 20px)
   b
     position: relative
     z-index: 1
     white-space: nowrap
     &::after
       position: absolute
-      left: -11px
+      left: -10px
       top: 8px
       bottom: 1px
       right: 0
@@ -168,7 +175,3 @@
         left: -5px
         width: calc(100% + 9px)
         transition: none
-  &.is-selected b::after
-    width: calc(100% + 20px)
-    +xs
-      width: calc(100% + 9px)
