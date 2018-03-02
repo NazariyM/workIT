@@ -1,4 +1,5 @@
 import { TweenMax } from 'gsap';
+import { Resp } from '../modules/dev/_helpers';
 
 class LocationsMap {
   constructor() {
@@ -341,7 +342,7 @@ class LocationsMap {
 
     const locationMap = new google.maps.Map(document.getElementById('locations-map'), {
       center: new google.maps.LatLng(this.$mapCenter[0], this.$mapCenter[1]),
-      zoom: this.$mapZoom,
+      zoom: Resp.isMobile ? this.$mapZoom - 1 : this.$mapZoom,
       disableDefaultUI: true,
       styles: mapStyle
     });
@@ -365,11 +366,12 @@ class LocationsMap {
       const title = markersData[i][0];
       const street = markersData[i][1];
       const position = new google.maps.LatLng(lat, lng);
-      const iconZoomed = { url: `${_this.$markerImg}`, scaledSize: new google.maps.Size(75, 79) };
+      const icon = Resp.isMobile ? { url: _this.$markerImg, scaledSize: new google.maps.Size(32, 36) } : { url: _this.$markerImg, scaledSize: new google.maps.Size(42, 46) };
+      const iconZoomed = Resp.isMobile ? { url: _this.$markerImg, scaledSize: new google.maps.Size(36, 40) } : { url: _this.$markerImg, scaledSize: new google.maps.Size(60, 64) };
 
       const marker = new google.maps.Marker({
         position: position,
-        icon: `${_this.$markerImg}`,
+        icon: icon,
         map: locationMap
       });
 
@@ -379,7 +381,7 @@ class LocationsMap {
         return function () {
 
           for (const j of markers.keys()) {
-            markers[j].setIcon(`${_this.$markerImg}`);
+            markers[j].setIcon(icon);
           }
 
           TweenMax.fromTo(_this.$title, .7, { y: -25, autoAlpha: 0 }, { ease: Elastic.easeOut.config(1, 0.3), y: 0, autoAlpha: 1 });
