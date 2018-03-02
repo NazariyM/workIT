@@ -50,7 +50,7 @@ class Slider {
 			slidesToShow: 1.14,
 			slidesToScroll: 1,
 			responsive: [{
-				breakpoint: 1250,
+				breakpoint: 1199,
 				settings: 'unslick'
 			},
 			 {
@@ -65,7 +65,7 @@ class Slider {
 			slidesToShow: 1.14,
 			slidesToScroll: 1,
 			responsive: [{
-				breakpoint: 1250,
+				breakpoint: 1199,
 				settings: 'unslick'
 			},
 			 {
@@ -81,7 +81,7 @@ class Slider {
 			slidesToShow: 1.14,
 			slidesToScroll: 1,
 			responsive: [{
-				breakpoint: 1250,
+				breakpoint: 1199,
 				settings: 'unslick'
 			},
 				{

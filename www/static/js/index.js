@@ -354,7 +354,7 @@ var Resp = exports.Resp = function () {
 	}, {
 		key: 'isDesk',
 		get: function get() {
-			return window.matchMedia('(min-width: 1250px)').matches;
+			return window.matchMedia('(min-width: 1199px)').matches;
 		}
 
 		/**
@@ -368,7 +368,7 @@ var Resp = exports.Resp = function () {
 	}, {
 		key: 'isTablet',
 		get: function get() {
-			return window.matchMedia('(min-width: 768px) and (max-width: 1250px)').matches;
+			return window.matchMedia('(min-width: 768px) and (max-width: 1199px)').matches;
 		}
 
 		/**
@@ -24772,7 +24772,7 @@ var Slider = function () {
 				slidesToShow: 1.14,
 				slidesToScroll: 1,
 				responsive: [{
-					breakpoint: 1250,
+					breakpoint: 1199,
 					settings: 'unslick'
 				}, {
 					breakpoint: 767,
@@ -24786,7 +24786,7 @@ var Slider = function () {
 				slidesToShow: 1.14,
 				slidesToScroll: 1,
 				responsive: [{
-					breakpoint: 1250,
+					breakpoint: 1199,
 					settings: 'unslick'
 				}, {
 					breakpoint: 767,
@@ -24801,7 +24801,7 @@ var Slider = function () {
 				slidesToShow: 1.14,
 				slidesToScroll: 1,
 				responsive: [{
-					breakpoint: 1250,
+					breakpoint: 1199,
 					settings: 'unslick'
 				}, {
 					breakpoint: 767,
@@ -25647,7 +25647,7 @@ var Block10 = function () {
 					slidesToShow: 4,
 					slidesToScroll: 1,
 					responsive: [{
-						breakpoint: 1250,
+						breakpoint: 1199,
 						settings: 'unslick'
 					}]
 				}));

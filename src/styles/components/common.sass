@@ -18,19 +18,27 @@ body
     height: 100%
 
 .container
+  position: relative
   max-width: 1280px
   margin: 0 auto
   +md
     max-width: 768px
-    padding: 0 30px
   +xs
     padding: 0 15px
+  &_md
+    padding: 0 60px
+    +md
+      padding: 0 30px
 
 // other
 .block-top
-  max-width: 1160px
   margin: 0 auto 62px
-
+  &_md
+    padding-left: 60px
+    padding-right: 60px
+    +md
+      padding-left: 30px
+      padding-right: 30px
 .block-title
   +h2
   transform: translateX(-70px)
@@ -103,6 +111,7 @@ p b
     
   &_green
     background: $color1
+    letter-spacing: 0.1em
     &::after
       top: -5px
       left: -15px
