@@ -9582,7 +9582,7 @@ var Preloader = function () {
           }
         });
 
-        resolve();
+        // resolve();
 
         tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
       });
@@ -20849,6 +20849,10 @@ var _validate = __webpack_require__(339);
 
 var _validate2 = _interopRequireDefault(_validate);
 
+var _pageResize = __webpack_require__(364);
+
+var _pageResize2 = _interopRequireDefault(_pageResize);
+
 __webpack_require__(344);
 
 __webpack_require__(345);
@@ -20905,6 +20909,7 @@ var Common = exports.Common = function () {
       (0, _objectFitImages2.default)();
       (0, _objectFitVideos2.default)();
       _validate2.default.init();
+      _pageResize2.default.init();
     }
   }]);
 
@@ -26500,6 +26505,77 @@ var Home = function () {
 }();
 
 exports.default = Home;
+
+/***/ }),
+/* 362 */,
+/* 363 */,
+/* 364 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.PageResize = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _helpers = __webpack_require__(10);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var PageResize = exports.PageResize = function () {
+	function PageResize() {
+		_classCallCheck(this, PageResize);
+	}
+
+	_createClass(PageResize, [{
+		key: 'getResp',
+		value: function getResp() {
+			if (_helpers.Resp.isDesk) {
+				this.resp = 'desk';
+			} else if (_helpers.Resp.isTablet) {
+				this.resp = 'tablet';
+			} else if (_helpers.Resp.isMobile) {
+				this.resp = 'mobile';
+			}
+		}
+	}, {
+		key: 'init',
+		value: function init() {
+			var _this = this;
+
+			this.getResp();
+
+			//refresh page
+			var refreshPage = (0, _helpers.throttle)(function () {
+				//check current Resp
+				if (_helpers.Resp.isDesk) {
+					_this.currentResp = 'desk';
+				} else if (_helpers.Resp.isTablet) {
+					_this.currentResp = 'tablet';
+				} else if (_helpers.Resp.isMobile) {
+					_this.currentResp = 'mobile';
+				}
+
+				//compare Resp
+				if (_this.resp !== _this.currentResp) {
+					_this.resp = _this.currentResp;
+					location.reload();
+				}
+			}, 250, this);
+
+			//refresh page on resize
+			_helpers.$window.on('resize', refreshPage);
+		}
+	}]);
+
+	return PageResize;
+}();
+
+exports.default = new PageResize();
 
 /***/ })
 ],[132]);

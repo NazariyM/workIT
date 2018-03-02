@@ -1,6 +1,7 @@
 import objectFitImages from 'object-fit-images';
 import objectFitVideos from 'object-fit-videos';
 import Validate from './validate';
+import PageResize from './pageResize';
 import './noTouch';
 import './header';
 import './slider';
@@ -32,6 +33,7 @@ export class Common {
     objectFitImages();
     objectFitVideos();
     Validate.init();
+	  PageResize.init();
   }
 }
 
