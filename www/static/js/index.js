@@ -15289,7 +15289,7 @@ var HomeAnims = function () {
         var _loop = function _loop() {
           var container = _step.value;
 
-          var section = container.closest('section:not([data-no-anim="true"]');
+          var section = container.closest('section');
 
           new _scrollAnim2.default({
             el: section,

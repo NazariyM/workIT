@@ -21,7 +21,7 @@ export default class HomeAnims {
     const _this = this;
 
     for (const container of this.containers) {
-      const section = container.closest('section:not([data-no-anim="true"]');
+      const section = container.closest('section');
 
       new ScrollAnim({
         el: section,
