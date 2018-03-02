@@ -27,7 +27,6 @@
       padding: 0 27px
       margin: -8px -37px 0 51px
     +xs
-      max-width: 290px
       padding: 0
       margin: 30px 0 25px
     ul
@@ -40,7 +39,12 @@
       li
         padding-right: 50px
         +xs
-          padding-right: 20px
+          padding-right: 0
+        &:nth-child(4) ~ li
+          +md
+            padding-right: 0
+          +xs
+            padding-left: 10px
         a
           +f('gil-800', 12, 30)
           text-transform: uppercase
