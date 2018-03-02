@@ -6,6 +6,7 @@
     &.slick-initialized
       display: block
   &__item
+    //+gpu
     h4
       margin-bottom: 18px
       +h4
@@ -26,8 +27,8 @@
         padding-left: 0
   &__text
     #{$parent}_full &
-      opacity: 0
-      transform: translateX(-50px)
+      //opacity: 0
+      //transform: translateX(-50px)
       float: left
       width: 50%
       margin-top: -7px
@@ -56,8 +57,8 @@
     +xs
       +ratio(290, 165)
     #{$parent}_full &
-      opacity: 0
-      transform: translateX(-50px)
+      //opacity: 0
+      //transform: translateX(-50px)
       float: left
       width: 50%
       +ratio(610, 400)
@@ -135,8 +136,8 @@
       +xs
         margin: 26px 0 0
     &.has-anim
-      opacity: 0
-      transform: translateX(-50px)
+      //opacity: 0
+      //transform: translateX(-50px)
   &__buttons
     display: flex
     align-items: flex-end
@@ -275,3 +276,44 @@
       background-image: linear-gradient(to right, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
     &::after
       background-image: linear-gradient(to left, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
+      
+//.slick-slide
+//  -webkit-transform: translate3d(0, 0, 0)
+//  -moz-transform: translate3d(0, 0, 0)
+//  -ms-transform: translate3d(0, 0, 0)
+//  -o-transform: translate3d(0, 0, 0)
+//  transform: translate3d(0, 0, 0)
+//  -webkit-transform: translateZ(0)
+//  -moz-transform: translateZ(0)
+//  -ms-transform: translateZ(0)
+//  -o-transform: translateZ(0)
+//  transform: translateZ(0)
+//  -webkit-perspective: 1000
+//  -moz-perspective: 1000
+//  -ms-perspective: 1000
+//  perspective: 1000
+//  -webkit-backface-visibility: hidden
+//  -moz-backface-visibility: hidden
+//  -ms-backface-visibility: hidden
+//  backface-visibility: hidden
+//
+//.slick-slider
+//  .slick-track, .slick-list
+//    -webkit-transform: translate3d(0, 0, 0)
+//    -moz-transform: translate3d(0, 0, 0)
+//    -ms-transform: translate3d(0, 0, 0)
+//    -o-transform: translate3d(0, 0, 0)
+//    transform: translate3d(0, 0, 0)
+//    -webkit-transform: translateZ(0)
+//    -moz-transform: translateZ(0)
+//    -ms-transform: translateZ(0)
+//    -o-transform: translateZ(0)
+//    transform: translateZ(0)
+//    -webkit-perspective: 1000
+//    -moz-perspective: 1000
+//    -ms-perspective: 1000
+//    perspective: 1000
+//    -webkit-backface-visibility: hidden
+//    -moz-backface-visibility: hidden
+//    -ms-backface-visibility: hidden
+//    backface-visibility: hidden

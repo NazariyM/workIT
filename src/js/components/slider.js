@@ -125,7 +125,7 @@ class Slider {
 				speed: 800,
 				cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
 				useTransform: true,
-				adaptiveHeight: true,
+				adaptiveHeight: false,
 				accessibility: false,
 				swipe: true,
 				rows: 0,
