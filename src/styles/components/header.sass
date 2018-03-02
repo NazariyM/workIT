@@ -54,20 +54,6 @@
       padding: 0 27px 0 0
     +xs
       padding: 0 10px 0 0
-  &__logo
-    flex: 0 0 204px
-    height: 100%
-    background: $color2
-    +md
-      flex: 0 0 150px
-    .logo__img
-      +md
-        position: relative
-        left: -7px
-      +xs
-        left: -2px
-    +xs
-      flex: 0 0 112px
   &__nav
     padding: 4px 0 0
     +md
@@ -362,3 +348,37 @@
           letter-spacing: 0.09em
           .is-fixed &
             color: $color3
+    
+.logo
+  $parent: &
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-shrink: 0
+  &__img
+    width: 80px
+    height: 20px
+    #{$parent}_header &
+      +md
+        position: relative
+        left: -7px
+      +xs
+        left: -2px
+    &-first
+      fill: $color1
+      +trs
+    &-last
+      fill: $white
+      +trs
+  &_header
+    flex: 0 0 204px
+    height: 100%
+    background: $color2
+    +md
+      flex: 0 0 150px
+    +xs
+      flex: 0 0 112px
+    .no-touch &:hover #{$parent}__img-first
+      fill: $white
+    .no-touch &:hover #{$parent}__img-last
+      fill: $color1

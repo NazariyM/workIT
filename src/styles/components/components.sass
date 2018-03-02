@@ -65,27 +65,6 @@
     transform: translateX(-50px)
     opacity: 0
     
-.logo
-  $parent: &
-  display: flex
-  align-items: center
-  justify-content: center
-  flex-shrink: 0
-  &__img
-    width: 80px
-    height: 20px
-    &-first
-      fill: $color1
-      +trs
-    &-last
-      fill: $white
-      +trs
-  &_header
-    .no-touch &:hover #{$parent}__img-first
-      fill: $white
-    .no-touch &:hover #{$parent}__img-last
-      fill: $color1
-      
 .tel-block
   a
     +f('rob-700')
