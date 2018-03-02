@@ -2,20 +2,19 @@ if subscr ? subscr : subscr = []
 
 //begin subscription
 +b.SECTION.subscr(class= subscr.classMod ? subscr.classMod : '' data-no-anim='true')
-	+e.container.container
-		+e.top.block-top(data-anim='group')
-			+e.title
-				+e.H3 Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!
+	+e.top.block-top(data-anim='group')
+		+e.title
+			+e.H3 Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!
 
-			+e.form-wrap
-				form.form(action='#!')
-					.form-group.form-group_has-btn
-						.form-group
-							input.form-control(type='text' name='' autocomplete='off' data-validation='email required')
-							label.control-label
-								span Ваш email
-							.help-block Введите ваш Email
+		+e.form-wrap
+			form.form(action='#!')
+				.form-group.form-group_has-btn
+					.form-group
+						input.form-control(type='text' name='' autocomplete='off' data-validation='email required')
+						label.control-label
+							span Ваш email
+						.help-block Введите ваш Email
 
-						label.form-btn.btn.btn_black
-							+b.INPUT.btn(type='submit' value='подписаться')
+					label.form-btn.btn.btn_black
+						+b.INPUT.btn(type='submit' value='подписаться')
 //end subscription
