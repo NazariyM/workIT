@@ -6,12 +6,13 @@ import slick from 'slick-carousel';
 
 class Block10 {
 	constructor() {
-		this.$container = $('.block-10');
-		this.$list = this.$container.find('.block-10__list');
-		this.$item = this.$container.find('.block-10__item').not('.slick-cloned');
-		this.$line = this.$container.find('.block-10__decor-line');
+		this.$block = $('.block-10');
+		this.$container = this.$block.find('.container');
+		this.$list = this.$block.find('.block-10__list');
+		this.$item = this.$block.find('.block-10__item').not('.slick-cloned');
+		this.$line = this.$block.find('.block-10__decor-line');
 
-		if (this.$container.length) this.init();
+		if (this.$block.length) this.init();
 	}
 
 	async init() {
@@ -24,9 +25,9 @@ class Block10 {
 		const _this = this;
 
 		new ScrollAnim({
-			el: _this.$list.get(0),
+			el: _this.$container.get(0),
 			hook: .9,
-			onStart() {
+			onEnter() {
 				_this.startAnim();
 			}
 		});

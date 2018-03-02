@@ -25563,12 +25563,13 @@ var Block10 = function () {
 	function Block10() {
 		_classCallCheck(this, Block10);
 
-		this.$container = $('.block-10');
-		this.$list = this.$container.find('.block-10__list');
-		this.$item = this.$container.find('.block-10__item').not('.slick-cloned');
-		this.$line = this.$container.find('.block-10__decor-line');
+		this.$block = $('.block-10');
+		this.$container = this.$block.find('.container');
+		this.$list = this.$block.find('.block-10__list');
+		this.$item = this.$block.find('.block-10__item').not('.slick-cloned');
+		this.$line = this.$block.find('.block-10__decor-line');
 
-		if (this.$container.length) this.init();
+		if (this.$block.length) this.init();
 	}
 
 	_createClass(Block10, [{
@@ -25609,9 +25610,9 @@ var Block10 = function () {
 			var _this = this;
 
 			new _scrollAnim2.default({
-				el: _this.$list.get(0),
+				el: _this.$container.get(0),
 				hook: .9,
-				onStart: function onStart() {
+				onEnter: function onEnter() {
 					_this.startAnim();
 				}
 			});
