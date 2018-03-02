@@ -1,16 +1,23 @@
 .locations
   padding: 110px 0 0
+  +xs
+    padding: 50px 0 57px
   &__container
     max-width: 1310px
     padding: 0 15px
   &__top
     max-width: 1160px
     margin: 0 auto 57px
+    +xs
+      margin: 0 auto 30px
   &__label
     margin-bottom: 28px
   &__inner
     display: flex
     align-items: flex-start
+    +xs
+      flex-direction: column
+      align-items: stretch
   &__map
     height: 100%
     &-wrap
@@ -19,14 +26,42 @@
       margin-bottom: -38px
       transform: translateX(-50px)
       opacity: 0
-  &__text
+      +md
+        flex: 0 1 percentage(546/708)
+        margin-left: -30px
+      +xs
+        height: 214px
+        margin: 0 -15px 24px
+        flex: 1 0 auto
+  &__info-wrap
     flex: 1 0 auto
     padding: 50px 0 0 64px
     transform: translateX(-50px)
     opacity: 0
+    +md
+      padding: 52px 0 0 29px
+    +xs
+      display: flex
+      //justify-content: space-between
+      flex: 1 0 auto
+      padding: 0
     h6
       margin-bottom: 25px
       +f('rob-700', 16, 30)
       text-transform: uppercase
+      +xs
+        font-size: 12px
+        line-height: 15px
+  &__info-street
+    +xs
+      margin-bottom: -2px
   &__contact-block
     margin-top: 22px
+    +xs
+      margin-top: 0
+      margin-left: auto
+      margin-right: 3px
+    p
+      +xs
+        font-size: 12px
+        margin-bottom: 20px

@@ -23,6 +23,10 @@
     transform: translateY(20px)
     +f('rob-400', 16)
     +trs
+    +md
+      padding: 0
+    +xs
+      font-size: 12px
   .has-error .help-block
     opacity: 1
     transform: translateY(0)
@@ -35,14 +39,20 @@
     &_has-btn
       display: flex
       max-width: 628px
+      +xs
+        flex-direction: column
       .form-group
         flex: 1 0 auto
         margin-right: 42px
+        +xs
+          margin: 0 0 28px
       .form-btn
         flex: 0 1 211px
         max-width: 211px
         height: 57px
         line-height: 57px
+        +xs
+          flex: 0 1 auto
     &_popup
       display: flex
     &_popup > &
@@ -60,6 +70,10 @@
     color: $color2
     background: transparent
     border: 0
+    +md
+      padding: 0
+    +xs
+      font-size: 12px
   &-control.is-fill + .control-label,
   &-control:focus + .control-label
     span
@@ -148,6 +162,10 @@
   width: 100%
   color: $color2
   +f('rob-400', 16)
+  +md
+    padding: 0
+  +xs
+    font-size: 12px
   span
     display: block
     +trs

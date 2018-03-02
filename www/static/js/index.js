@@ -15289,7 +15289,7 @@ var HomeAnims = function () {
         var _loop = function _loop() {
           var container = _step.value;
 
-          var section = container.closest('section');
+          var section = container.closest('section:not([data-no-anim="true"]');
 
           new _scrollAnim2.default({
             el: section,
@@ -24806,7 +24806,7 @@ var Slider = function () {
 				}, {
 					breakpoint: 767,
 					settings: {
-						slidesToShow: 1.13
+						slidesToShow: 1.26
 					}
 				}]
 			}));
@@ -25714,8 +25714,8 @@ var LocationsMap = function () {
       this.$mapZoom = this.$map.data('map-zoom');
       this.$mapCenter = this.$map.data('map-center').split(';').map(parseFloat);
       this.$activeMarker = this.$map.data('marker-active') - 1;
-      this.$title = $('.locations__text-title');
-      this.$street = $('.locations__text-street');
+      this.$title = $('.locations__info-title');
+      this.$street = $('.locations__info-street');
       this.markersCount = 10;
       var _this = this;
 

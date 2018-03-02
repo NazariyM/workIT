@@ -16,8 +16,8 @@ class LocationsMap {
     this.$mapZoom = this.$map.data('map-zoom');
     this.$mapCenter = this.$map.data('map-center').split(';').map(parseFloat);
     this.$activeMarker = this.$map.data('marker-active') - 1;
-    this.$title = $('.locations__text-title');
-    this.$street = $('.locations__text-street');
+    this.$title = $('.locations__info-title');
+    this.$street = $('.locations__info-street');
     this.markersCount = 10;
     const _this = this;
 

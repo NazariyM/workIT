@@ -56,7 +56,7 @@ class Slider {
 			 {
 				breakpoint: 767,
 				settings: {
-					slidesToShow: 1.26,
+					slidesToShow: 1.26
 				}
 			}]
 		}));
@@ -72,7 +72,7 @@ class Slider {
 				breakpoint: 767,
 				settings: {
 					slidesToScroll: 1.13,
-					slidesToShow: 1.87,
+					slidesToShow: 1.87
 				}
 			}]
 		}));
@@ -87,7 +87,7 @@ class Slider {
 				{
 					breakpoint: 767,
 					settings: {
-						slidesToShow: 1.13,
+						slidesToShow: 1.26
 					}
 				}]
 		}));
