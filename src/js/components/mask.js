@@ -9,13 +9,21 @@ class Mask {
     this.blurSize = 10;
     this.maskPosX = 240;
     this.maskPosY = 0;
+    this.maskEl = new PIXI.SVG(document.querySelector('.mask__el'));
+    this.blurFilter = new PIXI.filters.BlurFilter(this.blurSize);
+    this.maskEl.width = this.width;
+    this.maskEl.height = this.height;
+    this.maskEl.position.x = this.maskPosX;
+    this.maskEl.position.y = this.maskPosY;
 
     if (this.block) this.init();
   }
 
   init() {
-    this.createMask();
+    this.createApp();
     this.bindEvents();
+    // this.video();
+    this.image();
   }
 
   bindEvents() {
@@ -24,58 +32,52 @@ class Mask {
     });
   }
 
-  createMask() {
-    const blurSize = this.blurSize;
-    const width = this.width;
-    const height = this.height;
-    const maskPosX = this.maskPosX;
-    const maskPosY = this.maskPosY;
-
-    this.app = new PIXI.Application(width, height, { transparent: true, autoResize: true });
+  createApp() {
+    this.app = new PIXI.Application(this.width, this.height, { transparent: true, autoResize: true });
     this.block.appendChild(this.app.view);
-    this.maskImgContainer = new PIXI.Container();
-    this.app.stage.addChild(this.maskImgContainer);
+    this.container = new PIXI.Container();
+    this.app.stage.addChild(this.container);
+  }
 
+  image() {
     const imgBlured = PIXI.Sprite.fromImage('static/img/screen_bg.jpg');
     const img = PIXI.Sprite.fromImage('static/img/screen_bg.jpg');
-    const blurFilter = new PIXI.filters.BlurFilter(blurSize);
-    const imgMask = new PIXI.SVG(document.querySelector('.mask__img'));
+
+    img.mask = this.maskEl;
+
+    img.x = -this.blurSize;
+    img.y = -this.blurSize;
+    imgBlured.x = -this.blurSize;
+    imgBlured.y = -this.blurSize;
+    imgBlured.filters = [this.blurFilter];
+
+    img.width = this.width + this.blurSize * 2;
+    img.height = this.height + this.blurSize * 2;
+    imgBlured.width = this.width + this.blurSize * 2;
+    imgBlured.height = this.height + this.blurSize * 2;
+
+    this.container.addChild(imgBlured, img, this.maskEl);
+  }
+
+  video() {
     const video = new PIXI.Texture.fromVideo('static/video/video-sample.mp4');
     const videoSprite = new PIXI.Sprite(video);
     const videoSpriteBlur = new PIXI.Sprite(video);
 
-    // set blur
-    img.x = -blurSize;
-    img.y = -blurSize;
-    imgBlured.x = -blurSize;
-    imgBlured.y = -blurSize;
-    imgBlured.filters = [blurFilter];
+    videoSprite.x = -16;
+    videoSprite.y = +16;
+    videoSpriteBlur.x = -16;
+    videoSpriteBlur.y = +16;
 
-    img.width = width + blurSize * 2;
-    img.height = height + blurSize * 2;
-    imgBlured.width = width + blurSize * 2;
-    imgBlured.height = height + blurSize * 2;
+    videoSprite.width = this.width + 8;
+    videoSprite.height = this.height + 8;
+    videoSpriteBlur.width = this.width + 8;
+    videoSpriteBlur.height = this.height + 8;
 
-    // add mask
-    imgMask.width = width;
-    imgMask.height = height;
-    imgMask.position.x = maskPosX;
-    imgMask.position.y = maskPosY;
-    img.mask = imgMask;
+    videoSpriteBlur.filters = [this.blurFilter];
+    videoSprite.mask = this.maskEl;
 
-    // video
-    videoSprite.width = width;
-    videoSprite.height = height;
-    videoSpriteBlur.width = width;
-    videoSpriteBlur.height = height;
-
-    videoSpriteBlur.filters = [blurFilter];
-    videoSprite.mask = imgMask;
-
-    // append to stage
-    // this.maskImgContainer.addChild(imgBlured, img, imgMask);
-    this.maskImgContainer.addChild(videoSpriteBlur, videoSprite, video);
-
+    this.container.addChild(videoSpriteBlur, videoSprite, this.maskEl);
   }
 
   onResize() {
