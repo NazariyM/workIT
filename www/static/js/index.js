@@ -8896,7 +8896,7 @@ var Preloader = function () {
           }
         });
 
-        resolve();
+        // resolve();
 
         tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
       });
@@ -21642,7 +21642,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/** File generat
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 exports.PageResize = undefined;
 
@@ -21655,52 +21655,54 @@ var _helpers = __webpack_require__(10);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var PageResize = exports.PageResize = function () {
-  function PageResize() {
-    _classCallCheck(this, PageResize);
-  }
+	function PageResize() {
+		_classCallCheck(this, PageResize);
+	}
 
-  _createClass(PageResize, [{
-    key: 'getResp',
-    value: function getResp() {
-      if (_helpers.Resp.isDesk) {
-        this.resp = 'desk';
-      } else if (_helpers.Resp.isTablet) {
-        this.resp = 'tablet';
-      } else if (_helpers.Resp.isMobile) {
-        this.resp = 'mobile';
-      }
-    }
-  }, {
-    key: 'init',
-    value: function init() {
-      var _this = this;
+	_createClass(PageResize, [{
+		key: 'getResp',
+		value: function getResp() {
+			if (_helpers.Resp.isDesk) {
+				this.resp = 'desk';
+			} else if (_helpers.Resp.isTablet) {
+				this.resp = 'tablet';
+			} else if (_helpers.Resp.isMobile) {
+				this.resp = 'mobile';
+			}
+		}
+	}, {
+		key: 'init',
+		value: function init() {
+			var _this = this;
 
-      this.getResp();
+			this.getResp();
 
-      //refresh page
-      var refreshPage = (0, _helpers.throttle)(function () {
-        //check current Resp
-        if (_helpers.Resp.isDesk) {
-          _this.currentResp = 'desk';
-        } else if (_helpers.Resp.isTablet) {
-          _this.currentResp = 'tablet';
-        } else if (_helpers.Resp.isMobile) {
-          _this.currentResp = 'mobile';
-        }
+			//refresh page
+			var refreshPage = (0, _helpers.throttle)(function () {
+				//check current Resp
+				if (_helpers.Resp.isDesk) {
+					_this.currentResp = 'desk';
+				} else if (_helpers.Resp.isTablet) {
+					_this.currentResp = 'tablet';
+				} else if (_helpers.Resp.isMobile) {
+					_this.currentResp = 'mobile';
+				}
 
-        //compare Resp
-        if (_this.resp !== _this.currentResp) {
-          _this.resp = _this.currentResp;
-          location.reload();
-        }
-      }, 250, this);
+				//compare Resp
+				if (_this.resp !== _this.currentResp) {
+					_this.resp = _this.currentResp;
 
-      //refresh page on resize
-      _helpers.$window.on('resize', refreshPage);
-    }
-  }]);
+					location.reload();
+					// preloader.wait();
+				}
+			}, 250, this);
 
-  return PageResize;
+			//refresh page on resize
+			_helpers.$window.on('resize', refreshPage);
+		}
+	}]);
+
+	return PageResize;
 }();
 
 exports.default = new PageResize();
@@ -25731,6 +25733,7 @@ var Block10 = function () {
 	}, {
 		key: 'initSlider',
 		value: function initSlider() {
+			var _this = this;
 			var $itemCount = this.$list.children().length;
 			var defaultOptions = {
 				slidesToShow: 4,

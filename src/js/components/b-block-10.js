@@ -1,7 +1,7 @@
 import {TimelineMax, TweenMax} from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import {preloader} from './preloader';
-import { Resp } from '../modules/dev/_helpers';
+import {$window, Resp} from '../modules/dev/_helpers';
 import slick from 'slick-carousel';
 
 class Block10 {
@@ -42,6 +42,7 @@ class Block10 {
 	}
 
 	initSlider() {
+		const _this = this;
 		const $itemCount = this.$list.children().length;
 		const defaultOptions = {
 			slidesToShow: 4,
