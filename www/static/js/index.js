@@ -47197,15 +47197,15 @@ var Mask = function () {
         video.baseTexture.source.pause();
       });
 
-      videoSprite.x = -15;
-      videoSprite.y = +15;
-      videoSpriteBlur.x = -15;
-      videoSpriteBlur.y = +15;
+      videoSprite.x = -20;
+      videoSprite.y = -20;
+      videoSpriteBlur.x = -20;
+      videoSpriteBlur.y = -20;
 
-      videoSprite.width = _this.width + 30;
-      videoSprite.height = _this.height + 30;
-      videoSpriteBlur.width = _this.width + 30;
-      videoSpriteBlur.height = _this.height + 30;
+      videoSprite.width = _this.width + 40;
+      videoSprite.height = _this.height + 40;
+      videoSpriteBlur.width = _this.width + 40;
+      videoSpriteBlur.height = _this.height + 40;
 
       videoSpriteBlur.filters = [_this.blurFilter];
       videoSprite.mask = this.maskEl;
