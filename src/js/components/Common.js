@@ -17,6 +17,8 @@ import './homeAnims';
 import './expandList';
 import './preloader';
 import './popup';
+import './mask';
+
 // import './dot';
 
 export class Common {
@@ -33,7 +35,7 @@ export class Common {
     objectFitImages();
     objectFitVideos();
     Validate.init();
-	  PageResize.init();
+    PageResize.init();
   }
 }
 

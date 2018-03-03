@@ -17,6 +17,9 @@
     "jquery.dotdotdot": "^3.2.2",
     "object-fit-images": "^3.2.3",
     "object-fit-videos": "^1.0.4",
+    "pixi-svg": "^1.0.1",
+    "pixi.js": "^4.7.0",
+    "scale-to-window-pixi": "^1.2.0",
     "scrollmagic": "^2.0.5",
     "slick-carousel": "^1.8.1",
     "vintage-popup": "^0.1.8"
