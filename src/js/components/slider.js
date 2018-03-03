@@ -6,12 +6,12 @@ import { css, Resp, detectIE } from '../modules/dev/_helpers';
 class Slider {
 
 	constructor() {
-		this.$sliderBlock = $('.slider');
+		this.$slider = $('.slider');
 		this.$mobileSlider = $('.mobile-slider');
+		this.$mobSliderDouble = $('.mobile-slider_double');
 		this.$block3Sld = $('.block-3__items-list');
-		this.$block5Sld = $('.block-5__list');
 		this.$block6Sld = $('.block-6__list');
-		this.$block11Sld = $('.block-11__list');
+		this.$sliderAnimBlock = $('[data-anim="slider"]');
 
 		this.init();
 	}
@@ -19,6 +19,12 @@ class Slider {
 	async init() {
 		this.createSlider();
 		this.createMobileSlider();
+		this.bindEvents();
+	}
+
+	bindEvents() {
+		this.prepareSliderAnim(this.$sliderAnimBlock);
+		this.animOnScroll(this.$sliderAnimBlock);
 	}
 
 	createMobileSlider() {
@@ -37,27 +43,27 @@ class Slider {
 			rows: 0
 		};
 
-		this.$block3Sld.slick($.extend({}, defaultOptions, {
-			slidesToShow: 1.14,
-			slidesToScroll: 1,
-			responsive: [{
-				breakpoint: 767,
-				settings: 'unslick'
-			}]
-		}));
-
-		this.$block5Sld.slick($.extend({}, defaultOptions, {
+		this.$mobSliderDouble.slick($.extend({}, defaultOptions, {
 			slidesToShow: 1.14,
 			slidesToScroll: 1,
 			responsive: [{
 				breakpoint: 1199,
 				settings: 'unslick'
 			},
-			 {
+				{
+					breakpoint: 767,
+					settings: {
+						slidesToShow: 1.26
+					}
+				}]
+		}));
+
+		this.$block3Sld.slick($.extend({}, defaultOptions, {
+			slidesToShow: 1.14,
+			slidesToScroll: 1,
+			responsive: [{
 				breakpoint: 767,
-				settings: {
-					slidesToShow: 1.26
-				}
+				settings: 'unslick'
 			}]
 		}));
 
@@ -77,25 +83,10 @@ class Slider {
 			}]
 		}));
 
-		this.$block11Sld.slick($.extend({}, defaultOptions, {
-			slidesToShow: 1.14,
-			slidesToScroll: 1,
-			responsive: [{
-				breakpoint: 1199,
-				settings: 'unslick'
-			},
-				{
-					breakpoint: 767,
-					settings: {
-						slidesToShow: 1.26
-					}
-				}]
-		}));
-
 		this.$mobileSlider.each(function (i, slider) {
 			const $slider = $(slider);
 
-			if (!Resp.isDesk) _this.detectScroll($slider);
+			if (!Resp.isDesk) _this.detectShadowedSld($slider);
 
 			$slider.on('afterChange', function () {
 				const $lastSlide = $(this).find('.slick-slide').last();
@@ -113,8 +104,8 @@ class Slider {
 		<polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"/>
 </svg>`;
 
-		this.$sliderBlock.each(function () {
-			const $slider = $(this).find('.js-slider');
+		this.$slider.each(function () {
+			const $slider = $(this).find('.slider__body');
 
 			$slider.slick({
 				slidesToShow: 1,
@@ -198,9 +189,8 @@ class Slider {
 
 	}
 
-	detectScroll($slider) {
+	detectShadowedSld($slider) {
 		const _this = this;
-
 		new ScrollAnim({
 			el: $slider[0],
 			onEnter() {
@@ -211,6 +201,45 @@ class Slider {
 
 	addShadowOnScroll($slider) {
 		TweenMax.set($slider, { delay: 1, className: `+=${'is-shadowed'}` });
+	}
+
+	animOnScroll($animBlock) {
+		const _this = this;
+
+		$animBlock.each((i, el) => {
+			new ScrollAnim({
+				el: $(el)[0],
+				onEnter() {
+					_this.startSliderAnim($animBlock);
+				}
+			});
+		});
+
+	}
+
+	prepareSliderAnim($animBlock) {
+		const tl = new TimelineMax();
+		const $item = $animBlock.find('.slider__item.slick-active');
+		const $controls = $animBlock.next('.slider__controls');
+		const $text = $item.find('.slider__text').children();
+		const $media = $item.find('.slider__media');
+
+		tl.set($text, { autoAlpha: 0, x: -80 })
+			.set($media, { autoAlpha: 0, x: -80 })
+			.set($controls, { autoAlpha: 0, x: -80 });
+	}
+
+	startSliderAnim($animBlock) {
+		const tl = new TimelineMax();
+		const $item = $animBlock.find('.slider__item.slick-active');
+		const $controls = $animBlock.next('.slider__controls');
+		const $text = $item.find('.slider__text').children();
+		const $media = $item.find('.slider__media');
+
+		tl
+			.staggerTo($text, .7, { autoAlpha: 1, x: 0 }, 0.3)
+			.to($media, .7, { autoAlpha: 1, x: 0 }, 'all-=0.3')
+			.to($controls, .7, { autoAlpha: 1, x: 0 }, 'all-=0.3');
 	}
 
 }

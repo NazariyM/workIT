@@ -24782,12 +24782,12 @@ var Slider = function () {
 	function Slider() {
 		_classCallCheck(this, Slider);
 
-		this.$sliderBlock = $('.slider');
+		this.$slider = $('.slider');
 		this.$mobileSlider = $('.mobile-slider');
+		this.$mobSliderDouble = $('.mobile-slider_double');
 		this.$block3Sld = $('.block-3__items-list');
-		this.$block5Sld = $('.block-5__list');
 		this.$block6Sld = $('.block-6__list');
-		this.$block11Sld = $('.block-11__list');
+		this.$sliderAnimBlock = $('[data-anim="slider"]');
 
 		this.init();
 	}
@@ -24802,8 +24802,9 @@ var Slider = function () {
 							case 0:
 								this.createSlider();
 								this.createMobileSlider();
+								this.bindEvents();
 
-							case 2:
+							case 3:
 							case 'end':
 								return _context.stop();
 						}
@@ -24817,6 +24818,12 @@ var Slider = function () {
 
 			return init;
 		}()
+	}, {
+		key: 'bindEvents',
+		value: function bindEvents() {
+			this.prepareSliderAnim(this.$sliderAnimBlock);
+			this.animOnScroll(this.$sliderAnimBlock);
+		}
 	}, {
 		key: 'createMobileSlider',
 		value: function createMobileSlider() {
@@ -24835,16 +24842,7 @@ var Slider = function () {
 				rows: 0
 			};
 
-			this.$block3Sld.slick($.extend({}, defaultOptions, {
-				slidesToShow: 1.14,
-				slidesToScroll: 1,
-				responsive: [{
-					breakpoint: 767,
-					settings: 'unslick'
-				}]
-			}));
-
-			this.$block5Sld.slick($.extend({}, defaultOptions, {
+			this.$mobSliderDouble.slick($.extend({}, defaultOptions, {
 				slidesToShow: 1.14,
 				slidesToScroll: 1,
 				responsive: [{
@@ -24855,6 +24853,15 @@ var Slider = function () {
 					settings: {
 						slidesToShow: 1.26
 					}
+				}]
+			}));
+
+			this.$block3Sld.slick($.extend({}, defaultOptions, {
+				slidesToShow: 1.14,
+				slidesToScroll: 1,
+				responsive: [{
+					breakpoint: 767,
+					settings: 'unslick'
 				}]
 			}));
 
@@ -24873,24 +24880,10 @@ var Slider = function () {
 				}]
 			}));
 
-			this.$block11Sld.slick($.extend({}, defaultOptions, {
-				slidesToShow: 1.14,
-				slidesToScroll: 1,
-				responsive: [{
-					breakpoint: 1199,
-					settings: 'unslick'
-				}, {
-					breakpoint: 767,
-					settings: {
-						slidesToShow: 1.26
-					}
-				}]
-			}));
-
 			this.$mobileSlider.each(function (i, slider) {
 				var $slider = $(slider);
 
-				if (!_helpers.Resp.isDesk) _this.detectScroll($slider);
+				if (!_helpers.Resp.isDesk) _this.detectShadowedSld($slider);
 
 				$slider.on('afterChange', function () {
 					var $lastSlide = $(this).find('.slick-slide').last();
@@ -24905,8 +24898,8 @@ var Slider = function () {
 			var arrLeft = '<svg class="icon icon-arr-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="1.14 22.38 20.98 42.5 23.75 39.69 7.56 23.26 93.06 23.26 93.06 19.21 7.57 19.21 23.79 2.82 21 0 0 21.23 1.14 22.38"/>\n</svg>';
 			var arrRight = '<svg class="icon icon-arr-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"/>\n</svg>';
 
-			this.$sliderBlock.each(function () {
-				var $slider = $(this).find('.js-slider');
+			this.$slider.each(function () {
+				var $slider = $(this).find('.slider__body');
 
 				$slider.slick({
 					slidesToShow: 1,
@@ -24990,10 +24983,9 @@ var Slider = function () {
 			});
 		}
 	}, {
-		key: 'detectScroll',
-		value: function detectScroll($slider) {
+		key: 'detectShadowedSld',
+		value: function detectShadowedSld($slider) {
 			var _this = this;
-
 			new _scrollAnim2.default({
 				el: $slider[0],
 				onEnter: function onEnter() {
@@ -25005,6 +24997,42 @@ var Slider = function () {
 		key: 'addShadowOnScroll',
 		value: function addShadowOnScroll($slider) {
 			_gsap.TweenMax.set($slider, { delay: 1, className: '+=' + 'is-shadowed' });
+		}
+	}, {
+		key: 'animOnScroll',
+		value: function animOnScroll($animBlock) {
+			var _this = this;
+
+			$animBlock.each(function (i, el) {
+				new _scrollAnim2.default({
+					el: $(el)[0],
+					onEnter: function onEnter() {
+						_this.startSliderAnim($animBlock);
+					}
+				});
+			});
+		}
+	}, {
+		key: 'prepareSliderAnim',
+		value: function prepareSliderAnim($animBlock) {
+			var tl = new _gsap.TimelineMax();
+			var $item = $animBlock.find('.slider__item.slick-active');
+			var $controls = $animBlock.next('.slider__controls');
+			var $text = $item.find('.slider__text').children();
+			var $media = $item.find('.slider__media');
+
+			tl.set($text, { autoAlpha: 0, x: -80 }).set($media, { autoAlpha: 0, x: -80 }).set($controls, { autoAlpha: 0, x: -80 });
+		}
+	}, {
+		key: 'startSliderAnim',
+		value: function startSliderAnim($animBlock) {
+			var tl = new _gsap.TimelineMax();
+			var $item = $animBlock.find('.slider__item.slick-active');
+			var $controls = $animBlock.next('.slider__controls');
+			var $text = $item.find('.slider__text').children();
+			var $media = $item.find('.slider__media');
+
+			tl.staggerTo($text, .7, { autoAlpha: 1, x: 0 }, 0.3).to($media, .7, { autoAlpha: 1, x: 0 }, 'all-=0.3').to($controls, .7, { autoAlpha: 1, x: 0 }, 'all-=0.3');
 		}
 	}]);
 
