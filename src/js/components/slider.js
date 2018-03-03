@@ -157,7 +157,7 @@ class Slider {
 
 	playVideo($slider, pauseOnChange = false) {
 		const $item = $slider.find('.slider__item').not('.slick-cloned');
-		const $btn = $item.find('.js-play-btn');
+		const $btn = $item.find('.play-btn');
 		const $video = $item.find('video');
 
 		$video.each(function () {

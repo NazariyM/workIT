@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js';
 import 'pixi-svg';
+import { detectSafari } from '../modules/dev/_helpers';
 
 class Mask {
   constructor() {
@@ -9,7 +10,7 @@ class Mask {
     this.blurSize = 10;
     this.maskPosX = 240;
     this.maskPosY = 0;
-    this.maskEl = new PIXI.SVG(document.querySelector('.mask__el'));
+    this.maskEl = new PIXI.SVG(this.block.querySelector('.mask__el'));
     this.blurFilter = new PIXI.filters.BlurFilter(this.blurSize);
     this.maskEl.width = this.width;
     this.maskEl.height = this.height;
@@ -22,8 +23,8 @@ class Mask {
   init() {
     this.createApp();
     this.bindEvents();
-    // this.video();
-    this.image();
+    this.video();
+    // this.image();
   }
 
   bindEvents() {
@@ -51,33 +52,76 @@ class Mask {
     imgBlured.y = -this.blurSize;
     imgBlured.filters = [this.blurFilter];
 
-    img.width = this.width + this.blurSize * 2;
-    img.height = this.height + this.blurSize * 2;
-    imgBlured.width = this.width + this.blurSize * 2;
-    imgBlured.height = this.height + this.blurSize * 2;
+    img.width = this.width + this.blurSize * 3;
+    img.height = this.height + this.blurSize * 3;
+    imgBlured.width = this.width + this.blurSize * 3;
+    imgBlured.height = this.height + this.blurSize * 3;
 
     this.container.addChild(imgBlured, img, this.maskEl);
+
   }
 
   video() {
+    const _this = this;
+
     const video = new PIXI.Texture.fromVideo('static/video/video-sample.mp4');
     const videoSprite = new PIXI.Sprite(video);
     const videoSpriteBlur = new PIXI.Sprite(video);
 
-    videoSprite.x = -16;
-    videoSprite.y = +16;
-    videoSpriteBlur.x = -16;
-    videoSpriteBlur.y = +16;
+    video.baseTexture.source.loop = true;
+    video.baseTexture.source.muted = true;
 
-    videoSprite.width = this.width + 8;
-    videoSprite.height = this.height + 8;
-    videoSpriteBlur.width = this.width + 8;
-    videoSpriteBlur.height = this.height + 8;
+    const videoLoaded = new Promise((resolve) => {
+      resolve(video.baseTexture.hasLoaded);
+    });
 
-    videoSpriteBlur.filters = [this.blurFilter];
+    videoLoaded.then(() => {
+      video.baseTexture.source.pause();
+    });
+
+    videoSprite.x = -15;
+    videoSprite.y = +15;
+    videoSpriteBlur.x = -15;
+    videoSpriteBlur.y = +15;
+
+    videoSprite.width = _this.width + 30;
+    videoSprite.height = _this.height + 30;
+    videoSpriteBlur.width = _this.width + 30;
+    videoSpriteBlur.height = _this.height + 30;
+
+    videoSpriteBlur.filters = [_this.blurFilter];
     videoSprite.mask = this.maskEl;
 
-    this.container.addChild(videoSpriteBlur, videoSprite, this.maskEl);
+    _this.app.stage.addChild(videoSpriteBlur, videoSprite, _this.maskEl);
+
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+      const button = new PIXI.Graphics()
+        .beginFill(0x0, 0.5)
+        .drawRoundedRect(0, 0, 100, 100, 10)
+        .endFill()
+        .beginFill(0xffffff)
+        .moveTo(36, 30)
+        .lineTo(36, 70)
+        .lineTo(70, 50);
+
+      button.x = (this.app.screen.width - button.width) / 2;
+      button.y = (this.app.screen.height - button.height) / 2;
+
+      button.interactive = true;
+      button.buttonMode = true;
+
+      button.on('pointertap', onPlayVideo);
+
+      function onPlayVideo() {
+
+        button.destroy();
+
+        video.baseTexture.source.play();
+      }
+
+      _this.app.stage.addChild(button);
+    }
+
   }
 
   onResize() {

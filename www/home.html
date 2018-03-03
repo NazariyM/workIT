@@ -363,16 +363,18 @@
     <main class="content" data-page="home">
       <!--begin screen-->
       <section class="screen">
-        <div class="screen__container container">
-          <div class="screen__title">
-            <h1>Намного больше, чем пространство</h1>
+        <div class="screen__inner">
+          <div class="screen__container container">
+            <div class="screen__title">
+              <h1>Намного больше, чем пространство</h1>
+            </div>
+            <div class="screen__sub-title">
+              <h5>Место, где рождаются идеи</h5>
+            </div>
+            <button class="screen__btn btn btn_green" data-popup-target="comePopup" type="button">
+              <span class="btn__text">хочу в гости</span>
+            </button>
           </div>
-          <div class="screen__sub-title">
-            <h5>Место, где рождаются идеи</h5>
-          </div>
-          <button class="screen__btn btn btn_green" data-popup-target="comePopup" type="button">
-            <span class="btn__text">хочу в гости</span>
-          </button>
         </div>
         <div class="mask">
           <svg class="mask__el" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1219.68 681">
@@ -399,11 +401,12 @@
         <!---->
         <!--  image(xlink:href='static/img/screen.jpg', x='0', y='0' filter='url(#blur-w)' preserveAspectRatio='xMidYMid slice' width='1920' height='1080')-->
         <!--  image(xlink:href='static/img/screen.jpg', x='0', y='0' clip-path='url(#blur-mask-w)' preserveAspectRatio='xMidYMid slice' width='1920' height='1080')-->
-        <!---->
-        <!--+e.more-->
-        <!--  +e.SPAN.more-text.h6 узнать больше-->
-        <!--  +e.SVG.more-icon(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 93.06 42.5')-->
-        <!--    polygon(points='91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12')-->
+        <div class="screen__more">
+          <span class="screen__more-text h6">узнать больше</span>
+          <svg class="screen__more-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 93.06 42.5">
+            <polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"></polygon>
+          </svg>
+        </div>
       </section>
       <!--end screen-->
       <!--begin block-2-->
@@ -918,7 +921,7 @@
                     Кроме того, можно расширить пространство по мере роста вашей команды.</p>
                 </div>
                 <div class="slider__media">
-                  <button class="slider__media-play-btn js-play-btn" type="button">
+                  <button class="slider__media-play-btn play-btn" type="button">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="65" height="67" viewbox="0 0 65 67">
                       <defs>
                         <path id="7621a" d="M194.5 2778a31.5 31.5 0 1 1 0 63 31.5 31.5 0 0 1 0-63zm-5.6 21.7v19.35l16.76-9.68z"></path>
