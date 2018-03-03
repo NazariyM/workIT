@@ -47136,8 +47136,8 @@ var Mask = function () {
     value: function init() {
       this.createApp();
       this.bindEvents();
-      this.video();
-      // this.image();
+      // this.video();
+      this.image();
     }
   }, {
     key: 'bindEvents',
@@ -47197,15 +47197,15 @@ var Mask = function () {
         video.baseTexture.source.pause();
       });
 
-      videoSprite.x = -20;
-      videoSprite.y = -20;
-      videoSpriteBlur.x = -20;
-      videoSpriteBlur.y = -20;
+      videoSprite.x = -this.blurSize * 2;
+      videoSprite.y = -this.blurSize * 2;
+      videoSpriteBlur.x = -this.blurSize * 2;
+      videoSpriteBlur.y = -this.blurSize * 2;
 
-      videoSprite.width = _this.width + 40;
-      videoSprite.height = _this.height + 40;
-      videoSpriteBlur.width = _this.width + 40;
-      videoSpriteBlur.height = _this.height + 40;
+      videoSprite.width = _this.width + this.blurSize * 4;
+      videoSprite.height = _this.height + this.blurSize * 4;
+      videoSpriteBlur.width = _this.width + this.blurSize * 4;
+      videoSpriteBlur.height = _this.height + this.blurSize * 4;
 
       videoSpriteBlur.filters = [_this.blurFilter];
       videoSprite.mask = this.maskEl;
