@@ -122,7 +122,7 @@ class Header {
 		}, 0, this);
 
 		function toggleHeader() {
-			if (window.scrollY > 0) {
+			if (window.scrollY > 0 && !this.header.classList.contains(css.menuActive)) {
 				_this.header.classList.add(css.fixed);
 			} else {
 				_this.header.classList.remove(css.fixed);
