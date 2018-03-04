@@ -1646,7 +1646,9 @@ var css = exports.css = {
 	selected: 'is-selected',
 	fixed: 'is-fixed',
 	locked: 'is-locked',
-	error: 'has-error'
+	error: 'has-error',
+	noTransition: 'no-transition',
+	menuActive: 'menu-active'
 };
 
 /**
@@ -42367,27 +42369,28 @@ var Header = function () {
 			var _this2 = this;
 
 			this.menuBtn.addEventListener('click', function () {
-				_this2.scrollTop = _helpers.$window.scrollTop();
+				if (_helpers.Resp.isMobile) _this2.beforeOpen();
 				_this2.toggleMenu();
-				// this.lockBody();
 			});
 
 			this.mobClose.addEventListener('click', function () {
-				// this.body.classList.remove(css.locked);
-				_helpers.$body.scrollTop(_this2.scrollTop);
+				if (_helpers.Resp.isMobile) _this2.beforeClose();
 				_this2.toggleMenu();
-				// this.lockBody();
 			});
 		}
-
-		// beforeOpen() {
-		//   this.scrollTop = $window.scrollTop();
-		// }
-		//
-		// beforeClose() {
-		//   $body.scrollTop(this.scrollTop);
-		// }
-
+	}, {
+		key: 'beforeOpen',
+		value: function beforeOpen() {
+			this.scrollTop = _helpers.$window.scrollTop();
+			this.scrollTop > 0 ? this.header.classList.add(_helpers.css.menuActive) : false;
+		}
+	}, {
+		key: 'beforeClose',
+		value: function beforeClose() {
+			this.body.classList.remove(_helpers.css.locked);
+			_helpers.$body.scrollTop(this.scrollTop);
+			this.header.classList.remove(_helpers.css.menuActive);
+		}
 	}, {
 		key: 'toggleMenu',
 		value: function toggleMenu() {
@@ -42407,15 +42410,18 @@ var Header = function () {
 
 			return HeaderAPI;
 		}
-
-		// lockBody() {
-		// 	Resp.isMobile ? this.body.classList.toggle(css.locked) : false;
-		// }
-
+	}, {
+		key: 'lockBody',
+		value: function lockBody() {
+			_helpers.Resp.isMobile ? this.body.classList.toggle(_helpers.css.locked) : false;
+		}
 	}, {
 		key: 'prepareHeaderAnim',
 		value: function prepareHeaderAnim() {
+			var _this3 = this;
+
 			this.mobTl = new _gsap.TimelineMax({ paused: true, onComplete: function onComplete() {
+					_this3.lockBody();
 					// if (Resp.isMobile) this.body.classList.add(css.locked);
 				} });
 

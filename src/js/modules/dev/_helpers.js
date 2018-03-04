@@ -217,7 +217,9 @@ export const css = {
   selected: 'is-selected',
 	fixed: 'is-fixed',
 	locked: 'is-locked',
-	error: 'has-error'
+	error: 'has-error',
+	noTransition: 'no-transition',
+	menuActive: 'menu-active'
 };
 
 /**

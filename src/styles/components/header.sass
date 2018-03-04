@@ -5,7 +5,7 @@
   left: 0
   right: 0
   z-index: 99
-  &.is-fixed
+  &.is-fixed, &.menu-active
     background-color: $white
     .nav
       li
@@ -41,7 +41,8 @@
     background-color: $color1
     transition: background-color .4s ease
     transform: translateY(-100%)
-    .is-fixed &
+    .is-fixed &,
+    .menu-active &
       background-color: $white
   &__container
     display: flex
@@ -78,7 +79,7 @@
     margin: 0 62px 0 30px
     +md
       display: none
-      
+  
   &__menu-btn
     display: none
     align-items: center
@@ -87,10 +88,11 @@
     outline: 0
     +md
       display: flex
-    .is-fixed &.is-active .header__menu-burger-line
-      background-color: $color3
-    &.is-active &-text
-      opacity: 0
+    //.is-fixed &.is-active .header__menu-burger-line,
+    //.menu-active &.is-active .header__menu-burger-line
+    //  background-color: $color3
+    //&.is-active &-text
+    //  opacity: 0
     &-text
       align-self: center
       margin-right: 10px
@@ -99,9 +101,10 @@
       text-transform: uppercase
       color: $white
       transition: opacity .4s ease
-      .is-fixed &
+      .is-fixed &,
+      .menu-active &
         color: $color3
-        
+  
   &__menu-burger
     position: relative
     width: 31px
@@ -122,12 +125,13 @@
       &:nth-child(2)
         top: calc(50% - 1px)
         background-color: $white
-        .is-fixed &
+        .is-fixed &,
+        .menu-active &
           background-color: $color1
       &:nth-child(3)
         bottom: 4px
-        //bottom: 5px
-      
+  //bottom: 5px
+  
   &__mob
     display: none
     position: absolute
@@ -138,7 +142,8 @@
     right: 0
     background: $color1
     transition: background-color .3s ease
-    .is-fixed &
+    .is-fixed &,
+    .menu-active &
       background: $white
     +md
       display: block
@@ -159,7 +164,8 @@
       svg
         fill: $white
         transition: fill .3s ease
-        .is-fixed &
+        .is-fixed &,
+        .menu-active &
           fill: $color3
     &-inner
       overflow: auto
@@ -194,11 +200,12 @@
       margin-bottom: 25px
       +xs
         margin-bottom: 58px
-      .is-fixed &
+      .is-fixed &,
+      .menu-active &
         background-color: $color1
         &::after
           background-color: $color1
-      
+
 .nav
   $parent: &
   > ul
@@ -258,7 +265,7 @@
           stroke: $white
         use
           +trs
-          
+  
   &_mob
     > ul
       display: block
@@ -347,14 +354,16 @@
             margin-right: 30px
         &.is-active a
           color: $color2
-        .is-fixed &.is-active a
+        .is-fixed &.is-active a,
+        .menu-active &.is-active a
           color: $color2
         a
           color: $white
           letter-spacing: 0.09em
-          .is-fixed &
+          .is-fixed &,
+          .menu-active &
             color: $color3
-    
+
 .logo
   $parent: &
   display: flex

@@ -36,26 +36,26 @@ class Header {
 
 	bindEvents() {
 		this.menuBtn.addEventListener('click', () => {
-			this.scrollTop = $window.scrollTop();
+      if (Resp.isMobile) this.beforeOpen();
 			this.toggleMenu();
-			// this.lockBody();
 		});
 
 		this.mobClose.addEventListener('click', () => {
-      // this.body.classList.remove(css.locked);
-			$body.scrollTop(this.scrollTop);
+      if (Resp.isMobile) this.beforeClose();
 			this.toggleMenu();
-			// this.lockBody();
 		});
 	}
 
-  // beforeOpen() {
-  //   this.scrollTop = $window.scrollTop();
-  // }
-  //
-  // beforeClose() {
-  //   $body.scrollTop(this.scrollTop);
-  // }
+  beforeOpen() {
+    this.scrollTop = $window.scrollTop();
+    this.scrollTop > 0 ? this.header.classList.add(css.menuActive) : false;
+  }
+
+  beforeClose() {
+    this.body.classList.remove(css.locked);
+    $body.scrollTop(this.scrollTop);
+    this.header.classList.remove(css.menuActive);
+  }
 
 	toggleMenu(state = false) {
 		switch (state) {
@@ -73,9 +73,9 @@ class Header {
 		return HeaderAPI;
 	}
 
-	// lockBody() {
-	// 	Resp.isMobile ? this.body.classList.toggle(css.locked) : false;
-	// }
+	lockBody() {
+		Resp.isMobile ? this.body.classList.toggle(css.locked) : false;
+	}
 
 	set burgerActiveState(className) {
 		this.menuBtn.classList.toggle(className);
@@ -88,6 +88,7 @@ class Header {
 
 	prepareHeaderAnim() {
 		this.mobTl = new TimelineMax({ paused: true , onComplete: () => {
+				this.lockBody();
 				// if (Resp.isMobile) this.body.classList.add(css.locked);
       }});
 
