@@ -89,7 +89,6 @@ class Header {
 	prepareHeaderAnim() {
 		this.mobTl = new TimelineMax({ paused: true , onComplete: () => {
 				this.lockBody();
-				// if (Resp.isMobile) this.body.classList.add(css.locked);
       }});
 
 		this.mobTl

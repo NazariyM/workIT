@@ -42422,7 +42422,6 @@ var Header = function () {
 
 			this.mobTl = new _gsap.TimelineMax({ paused: true, onComplete: function onComplete() {
 					_this3.lockBody();
-					// if (Resp.isMobile) this.body.classList.add(css.locked);
 				} });
 
 			this.mobTl.to(this.mob, .35, {
