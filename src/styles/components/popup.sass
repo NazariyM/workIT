@@ -17,12 +17,19 @@
   transition: opacity .3s ease, transform .5s ease, visibility .5s
   will-change: opacity, transform
   $parent: &
+  +xs
+    background: $color1
+  //  display: flex
+  //  align-items: center
+  //  background: $color1
   &:after
     content: ''
     display: inline-block
     vertical-align: middle
     width: 0
     height: 100%
+    +md
+      display: none
   &.opened
     opacity: 1
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
@@ -39,6 +46,12 @@
     align-items: center
     justify-content: center
     border: 0
+    +md
+      top: 46px
+      right: 26px
+    +xs
+      top: 21px
+      right: 21px
     .no-touch &:hover svg
       fill: $color2
     svg
@@ -51,24 +64,46 @@
     max-width: 1280px
     width: 100%
     position: relative
-    padding: 100px 60px 120px
+    padding: 95px 59px 130px
     margin: 30px auto
     transition: opacity .5s ease, transform .5s ease
     transform: translate3d(0, -100px, 0)
     will-change: transform, opacity
     background: $color1
     text-align: left
+    +md
+      max-width: 768px
+      padding: 99px 30px
+    +xs
+      //height: 100%
+      margin: 0
+      padding: 55px 4px 60px 14px
+    //+mob-fix
+    //  padding: 200px 4px 60px 14px
+  
   &__title
-    max-width: 710px
-    margin-bottom: 50px
+    max-width: 720px
+    margin-bottom: 40px
+    padding: 0 3px
     +h3
     text-transform: none
+    +md
+      margin-bottom: 50px
+    +xs
+      margin-bottom: 10px
+      padding: 0 50px 0 3px
+      font-size: 28px
+      line-height: 30px
     b
+      +md
+        margin-left: 10px
       &::after
         top: 0
         bottom: -5px
-    &_md
-      max-width: 780px
+    &_lg
+      max-width: 800px
+      +md
+        margin-bottom: 40px
   &__form
     display: flex
     align-items: flex-end

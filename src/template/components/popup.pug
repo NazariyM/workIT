@@ -46,9 +46,16 @@ mixin popup(el)
 									.help-block Введите ваш Email
 
 							.form-group
-								textarea.form-textarea(name='' autocomplete='off')
-								label.form-textarea-label
-									span Комментарий
+								.form-group
+									input.form-control(type='text' name='' autocomplete='off' data-validation='email required')
+									label.control-label
+										span Компания
+									.help-block Введите название компании
+
+								.form-group
+									textarea.form-textarea(name='' autocomplete='off')
+									label.form-textarea-label
+										span Комментарий
 
 							.form-group
 								+e.LABEL.form-btn.btn._black
@@ -75,14 +82,14 @@ mixin popup(el)
 									g
 										use(xlink:href='#bpq2d')
 
-					+e.title._md.has-selection._black.is-selected
+					+e.title._lg.has-selection._black.is-selected
 						+e.H2 Для бронирования
-							b "Офис мечты"
+							b &laquo;Офис мечты&raquo;
 							= ' '
-							| оставьте свои контакты и мы обязательно перезвоним!
+							| оставьте свои контакты&nbsp; и мы обязательно перезвоним!
 
 					form.form(action='#!')
-						.form-group.form-group_popup
+						.form-group.form-group_popup.form-group_double
 							.form-group
 								.form-group
 									input.form-control(type='text' name='' autocomplete='off' data-validation='custom' data-validation-regexp="^([A-z]+)$")
@@ -103,7 +110,7 @@ mixin popup(el)
 									.help-block Введите ваш Email
 
 							.form-group
-								textarea.form-textarea(name='' autocomplete='off')
+								textarea.form-textarea.form-textarea_lg(name='' autocomplete='off')
 								label.form-textarea-label
 									span Комментарий
 

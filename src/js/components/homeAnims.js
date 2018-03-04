@@ -54,7 +54,7 @@ export default class HomeAnims {
        .to(label, .5, { autoAlpha: 1, x: 0 })
        .to(title, .5, { autoAlpha: 1, x: 0 })
        .set(title, { className: `+=${css.selected}` }, '-=1')
-       .staggerTo(item, .5, { autoAlpha: 1, x: 0 });
+       .staggerTo(item, .5, { autoAlpha: 1, x: 0 }, '-=1');
     }
   }
 

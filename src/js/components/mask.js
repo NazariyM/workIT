@@ -17,7 +17,7 @@ class Mask {
     this.maskEl.position.x = this.maskPosX;
     this.maskEl.position.y = this.maskPosY;
 
-    if (this.block) this.init();
+    this.init();
   }
 
   init() {

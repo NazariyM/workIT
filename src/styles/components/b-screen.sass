@@ -2,13 +2,16 @@
   display: flex
   position: relative
   align-items: center
+  display: none
   &__inner
     position: absolute
     left: 0
     right: 0
+    z-index: 1
   &__title
     opacity: 0
     transform: translateY(-30px)
+    max-width: 830px
     margin-bottom: 35px
     color: #fff
     +h1
@@ -16,6 +19,7 @@
   &__sub-title
     opacity: 0
     transform: translateY(-30px)
+    max-width: 830px
     margin-bottom: 35px
     +f('gil-300', 18)
     color: #fff

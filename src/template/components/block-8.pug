@@ -3,80 +3,84 @@ if block8.title ? block8.title : block8.title = ''
 
 //begin block-8
 +b.SECTION.block-8(class= block8.classMod ? block8.classMod : '')
-	.container.container_md
-		+e.top.block-top
-			+e.label.block-label
-				+e.P services
+  .container.container_md
+    +e.top.block-top
+      +e.label.block-label
+        +e.P services
 
-			+e.title.block-title.has-selection._green
-				+e.H2 Дополнительные
-					b возможности
+      +e.title.block-title.has-selection._green
+        +e.H2 Дополнительные
+          b возможности
 
-			+e.sub-title.block-sub-title
-				+e.H5 Бывают ситуации, когда вам срочно нужна помощь
-					b юриста
-					= ' '
-					| или
-					b бухгалтера.
-					= ' '
-					| Мы это понимаем и поэтому
-					b даем возможность
-					= ' '
-					| нашим резидентам
-					b нанять
-					= ' '
-					| любого специалиста на несколько часов.
+      +e.sub-title.block-sub-title
+        +e.H5 Бывают ситуации, когда вам срочно нужна помощь
+          b юриста
+          = ' '
+          | или
+          b бухгалтера.
+          = ' '
+          | Мы это понимаем и поэтому
+          b даем возможность
+          = ' '
+          | нашим резидентам
+          b нанять
+          = ' '
+          | любого специалиста на несколько часов.
 
-		+b.expand-list.block-8__expand-list.js-expand-list
-			+e.inner
+    +b.expand-list.block-8__expand-list.js-expand-list
+      +e.inner
 
-				.block-8__item.expand-list__item
-					.block-8__item-icon
-						img(src=`static/img/icon-man.svg` alt='image')
-					h5 Услуги HR
-					p Наши HR специалисты помогут подобрать идельных сотрудников
+        .block-8__item.expand-list__item
+          .block-8__item-icon
+            img(src=`static/img/icon-man.svg` alt='image')
+          h5 Услуги HR
+          p Наши HR специалисты
+            br
+            | помогут подобрать идельных сотрудников
 
-				.block-8__item.expand-list__item
-					.block-8__item-icon
-						img(src=`static/img/icon-hammer.svg` alt='image')
-					h5 Услуги юриста
-					p Решайте  все юредические вопросы на месте
+        .block-8__item.expand-list__item
+          .block-8__item-icon
+            img(src=`static/img/icon-hammer.svg` alt='image')
+          h5 Услуги юриста
+          p Решайте все юредические вопросы на месте
 
-				.block-8__item.expand-list__item
-					.block-8__item-icon
-						img(src=`static/img/icon-dialogue.svg` alt='image')
-					h5 Услуги Consulting
-					p Команда бизнес-консультантов дадут советы по развитию бизнеса
+        .block-8__item.expand-list__item
+          .block-8__item-icon
+            img(src=`static/img/icon-dialogue.svg` alt='image')
+          h5 Услуги Consulting
+          p Команда
+           br
+           | бизнес-консультантов дадут советы по развитию бизнеса
 
-				.block-8__item.expand-list__item
-					.block-8__item-icon
-						img(src=`static/img/icon-percent.svg` alt='image')
-					h5 Услуги бухгалтера
-					p Помогут вести счета,  документацию и налоговою отчетность
+        .block-8__item.expand-list__item
+          .block-8__item-icon
+            img(src=`static/img/icon-percent.svg` alt='image')
+          h5 Услуги бухгалтера
+          p Помогут вести счета,  документацию и налоговою отчетность
 
-				.block-8__item.expand-list__item.is-hidden
-					.block-8__item-icon
-						img(src=`static/img/icon-man.svg` alt='image')
-					h5 Услуги HR
-					p Наши HR специалисты помогут подобрать идельных сотрудников
+        .block-8__item.expand-list__item.is-hidden
+          .block-8__item-icon
+            img(src=`static/img/icon-man.svg` alt='image')
+          h5 Услуги HR
+          p Наши HR специалисты помогут подобрать идельных сотрудников
 
-				.block-8__item.expand-list__item.is-hidden
-					.block-8__item-icon
-						img(src=`static/img/icon-hammer.svg` alt='image')
-					h5 Услуги юриста
-					p Решайте  все юредические вопросы на месте
+        .block-8__item.expand-list__item.is-hidden
+          .block-8__item-icon
+            img(src=`static/img/icon-hammer.svg` alt='image')
+          h5 Услуги юриста
+          p Решайте  все юредические вопросы на месте
 
-				.block-8__item.expand-list__item.is-hidden
-					.block-8__item-icon
-						img(src=`static/img/icon-dialogue.svg` alt='image')
-					h5 Услуги Consulting
-					p Команда бизнес-консультантов дадут советы по развитию бизнеса
+        .block-8__item.expand-list__item.is-hidden
+          .block-8__item-icon
+            img(src=`static/img/icon-dialogue.svg` alt='image')
+          h5 Услуги Consulting
+          p Команда бизнес-консультантов дадут советы по развитию бизнеса
 
-				.block-8__item.expand-list__item.is-hidden
-					.block-8__item-icon
-						img(src=`static/img/icon-percent.svg` alt='image')
-					h5 Услуги бухгалтера
-					p Помогут вести счета,  документацию и налоговою отчетность
+        .block-8__item.expand-list__item.is-hidden
+          .block-8__item-icon
+            img(src=`static/img/icon-percent.svg` alt='image')
+          h5 Услуги бухгалтера
+          p Помогут вести счета,  документацию и налоговою отчетность
 
-			+e.BUTTON.btn.btn._line(type='button') еще услуги
+      +e.BUTTON.btn.btn._line(type='button') еще услуги
 //end block-8
