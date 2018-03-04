@@ -145,31 +145,33 @@
     display: block
     width: 100%
     height: 115px
-    padding: 15px 3px
+    padding: 22px 10px 20px 3px
     +f('rob-400', 16)
     color: $color2
     background-color: transparent
     border: 0
     resize: none
     +md
-      padding: 15px 0
+      padding: 15px 5px 15px 0
     +xs
       height: 70px
-      padding: 10px 0
+      padding: 10px 5px 10px 0
       font-size: 12px
     &_lg
       height: 167px
+      padding: 11px 10px 11px 3px
       +md
         height: 185px
-        padding: 23px 0
+        padding: 23px 5px 23px 0
       +xs
         height: 70px
-        padding: 10px 0
-      .form-textarea-label
+        padding: 10px 5px 10px 0
+      + .form-textarea-label
+        padding: 7px 3px
         +md
-          padding: 23px 0
+          padding: 23px 5px 23px 0
         +xs
-          padding: 10px 0
+          padding: 10px 5px 10px 0
   &-textarea-label
     overflow: hidden
     pointer-events: none
@@ -183,9 +185,9 @@
     color: $color2
     +f('rob-400', 16)
     +md
-      padding: 15px 0
+      padding: 15px 5px 15px 0
     +xs
-      padding: 10px 0
+      padding: 10px 5px 10px 0
       font-size: 12px
     span
       display: block
