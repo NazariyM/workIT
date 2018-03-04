@@ -10491,7 +10491,7 @@ var Preloader = function () {
           }
         });
 
-        // resolve();
+        resolve();
 
         tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
       });
@@ -42178,7 +42178,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.PageResize = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // import WaitPreloader from '../../components/waitPreloader';
+
 
 var _preloader = __webpack_require__(35);
 
@@ -42224,8 +42225,11 @@ var PageResize = exports.PageResize = function () {
 				if (_this.resp !== _this.currentResp) {
 					_this.resp = _this.currentResp;
 
-					location.reload();
-					// preloader.wait();
+					_preloader.preloader.wait().then(function () {
+
+						console.log('heelo');
+						// location.reload();
+					});
 				}
 			}, 250, this);
 

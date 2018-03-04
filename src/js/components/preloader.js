@@ -24,7 +24,7 @@ class Preloader {
         }
       });
 
-      // resolve();
+      resolve();
 
       tl
         .to(this.$img, 1, { autoAlpha: 1 })

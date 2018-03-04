@@ -19,17 +19,14 @@
   $parent: &
   +xs
     background: $color1
-  //  display: flex
-  //  align-items: center
-  //  background: $color1
   &:after
     content: ''
     display: inline-block
     vertical-align: middle
     width: 0
     height: 100%
-    +md
-      display: none
+    //+xs
+    //  display: none
   &.opened
     opacity: 1
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"

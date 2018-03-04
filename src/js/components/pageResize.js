@@ -1,3 +1,4 @@
+// import WaitPreloader from '../../components/waitPreloader';
 import { preloader } from './preloader';
 import {
 	$window,
@@ -35,8 +36,11 @@ export class PageResize {
 			if (this.resp !== this.currentResp) {
 				this.resp = this.currentResp;
 
-				location.reload();
-				// preloader.wait();
+				preloader.wait().then(() => {
+
+          console.log('heelo');
+          // location.reload();
+        });
 			}
 		}, 250, this);
 
