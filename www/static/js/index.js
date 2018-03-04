@@ -10459,6 +10459,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Preloader = function () {
@@ -10473,9 +10475,31 @@ var Preloader = function () {
 
   _createClass(Preloader, [{
     key: 'init',
-    value: function init() {
-      this.animPreloader();
-    }
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (sessionStorage.getItem('resized') === 'false') {
+                  this.animPreloader();
+                }
+                sessionStorage.setItem('resized', false);
+
+              case 2:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function init() {
+        return _ref.apply(this, arguments);
+      }
+
+      return init;
+    }()
   }, {
     key: 'wait',
     value: function wait() {
@@ -10495,7 +10519,7 @@ var Preloader = function () {
 
         resolve();
 
-        tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3').set(_this.$preloader, { css: { display: 'none' } });
+        tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
       });
     }
   }]);
@@ -41415,7 +41439,7 @@ __webpack_require__(35);
 
 __webpack_require__(447);
 
-__webpack_require__(449);
+__webpack_require__(558);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42176,64 +42200,72 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/** File generat
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.PageResize = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // import WaitPreloader from './waitPreloader';
-
-
-var _preloader = __webpack_require__(35);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _helpers = __webpack_require__(12);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var PageResize = exports.PageResize = function () {
-	function PageResize() {
-		_classCallCheck(this, PageResize);
-	}
+  function PageResize() {
+    _classCallCheck(this, PageResize);
 
-	_createClass(PageResize, [{
-		key: 'getResp',
-		value: function getResp() {
-			if (_helpers.Resp.isDesk) {
-				this.resp = 'desk';
-			} else if (_helpers.Resp.isTablet) {
-				this.resp = 'tablet';
-			} else if (_helpers.Resp.isMobile) {
-				this.resp = 'mobile';
-			}
-		}
-	}, {
-		key: 'init',
-		value: function init() {
-			var _this = this;
+    this.init();
+  }
 
-			this.getResp();
+  _createClass(PageResize, [{
+    key: 'getResp',
+    value: function getResp() {
+      if (_helpers.Resp.isDesk) {
+        this.resp = 'desk';
+      } else if (_helpers.Resp.isTablet) {
+        this.resp = 'tablet';
+      } else if (_helpers.Resp.isMobile) {
+        this.resp = 'mobile';
+      }
+    }
+  }, {
+    key: 'wait',
+    value: function wait() {
+      return this.resolve;
+    }
+  }, {
+    key: 'init',
+    value: function init() {
+      var _this = this;
 
-			var refreshPage = (0, _helpers.throttle)(function () {
+      this.resolve = new Promise(function (resolve) {
+        sessionStorage.getItem('resized');
+        _this.getResp();
 
-				if (_helpers.Resp.isDesk) {
-					_this.currentResp = 'desk';
-				} else if (_helpers.Resp.isTablet) {
-					_this.currentResp = 'tablet';
-				} else if (_helpers.Resp.isMobile) {
-					_this.currentResp = 'mobile';
-				}
+        var refreshPage = (0, _helpers.throttle)(function () {
+          if (_helpers.Resp.isDesk) {
+            _this.currentResp = 'desk';
+          } else if (_helpers.Resp.isTablet) {
+            _this.currentResp = 'tablet';
+          } else if (_helpers.Resp.isMobile) {
+            _this.currentResp = 'mobile';
+          }
 
-				if (_this.resp !== _this.currentResp) {
-					_this.resp = _this.currentResp;
+          if (_this.resp !== _this.currentResp) {
+            _this.resp = _this.currentResp;
 
-					location.reload();
-				}
-			}, 250, this);
+            sessionStorage.setItem('resized', true);
+            location.reload();
+          }
+        }, 250, _this);
 
-			_helpers.$window.on('resize', refreshPage);
-		}
-	}]);
+        _helpers.$window.on('resize', refreshPage);
+        resolve();
+      });
+    }
+  }]);
 
-	return PageResize;
+  return PageResize;
 }();
 
 exports.default = new PageResize();
@@ -47078,170 +47110,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!function(){function t(p,i){return void 0===th
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):window.Popup=t,r($)}();
 
 /***/ }),
-/* 449 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.maskAPI = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _pixi = __webpack_require__(450);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-__webpack_require__(552);
-
-var _helpers = __webpack_require__(12);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Mask = function () {
-  function Mask() {
-    _classCallCheck(this, Mask);
-
-    this.block = document.querySelector('.mask');
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-    this.blurSize = 10;
-    this.maskPosX = 240;
-    this.maskPosY = 0;
-    this.maskEl = new PIXI.SVG(this.block.querySelector('.mask__el'));
-    this.blurFilter = new PIXI.filters.BlurFilter(this.blurSize);
-    this.maskEl.width = this.width;
-    this.maskEl.height = this.height;
-    this.maskEl.position.x = this.maskPosX;
-    this.maskEl.position.y = this.maskPosY;
-
-    this.init();
-  }
-
-  _createClass(Mask, [{
-    key: 'init',
-    value: function init() {
-      this.createApp();
-      this.bindEvents();
-      // this.video();
-      this.image();
-    }
-  }, {
-    key: 'bindEvents',
-    value: function bindEvents() {
-      var _this2 = this;
-
-      window.addEventListener('resize', function () {
-        _this2.onResize();
-      });
-    }
-  }, {
-    key: 'createApp',
-    value: function createApp() {
-      this.app = new PIXI.Application(this.width, this.height, { transparent: true, autoResize: true });
-      this.block.appendChild(this.app.view);
-      this.container = new PIXI.Container();
-      this.app.stage.addChild(this.container);
-    }
-  }, {
-    key: 'image',
-    value: function image() {
-      var imgBlured = PIXI.Sprite.fromImage('static/img/screen_bg.jpg');
-      var img = PIXI.Sprite.fromImage('static/img/screen_bg.jpg');
-
-      img.mask = this.maskEl;
-
-      img.x = -this.blurSize;
-      img.y = -this.blurSize;
-      imgBlured.x = -this.blurSize;
-      imgBlured.y = -this.blurSize;
-      imgBlured.filters = [this.blurFilter];
-
-      img.width = this.width + this.blurSize * 3;
-      img.height = this.height + this.blurSize * 3;
-      imgBlured.width = this.width + this.blurSize * 3;
-      imgBlured.height = this.height + this.blurSize * 3;
-
-      this.container.addChild(imgBlured, img, this.maskEl);
-    }
-  }, {
-    key: 'video',
-    value: function video() {
-      var _this = this;
-
-      var video = new PIXI.Texture.fromVideo('static/video/video-sample.mp4');
-      var videoSprite = new PIXI.Sprite(video);
-      var videoSpriteBlur = new PIXI.Sprite(video);
-
-      video.baseTexture.source.loop = true;
-      video.baseTexture.source.muted = true;
-
-      var videoLoaded = new Promise(function (resolve) {
-        resolve(video.baseTexture.hasLoaded);
-      });
-
-      videoLoaded.then(function () {
-        video.baseTexture.source.pause();
-      });
-
-      videoSprite.x = -this.blurSize * 2;
-      videoSprite.y = -this.blurSize * 2;
-      videoSpriteBlur.x = -this.blurSize * 2;
-      videoSpriteBlur.y = -this.blurSize * 2;
-
-      videoSprite.width = _this.width + this.blurSize * 4;
-      videoSprite.height = _this.height + this.blurSize * 4;
-      videoSpriteBlur.width = _this.width + this.blurSize * 4;
-      videoSpriteBlur.height = _this.height + this.blurSize * 4;
-
-      videoSpriteBlur.filters = [_this.blurFilter];
-      videoSprite.mask = this.maskEl;
-
-      _this.app.stage.addChild(videoSpriteBlur, videoSprite, _this.maskEl);
-
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        var onPlayVideo = function onPlayVideo() {
-
-          button.destroy();
-
-          video.baseTexture.source.play();
-        };
-
-        var button = new PIXI.Graphics().beginFill(0x0, 0.5).drawRoundedRect(0, 0, 100, 100, 10).endFill().beginFill(0xffffff).moveTo(36, 30).lineTo(36, 70).lineTo(70, 50);
-
-        button.x = (this.app.screen.width - button.width) / 2;
-        button.y = (this.app.screen.height - button.height) / 2;
-
-        button.interactive = true;
-        button.buttonMode = true;
-
-        button.on('pointertap', onPlayVideo);
-
-        _this.app.stage.addChild(button);
-      }
-    }
-  }, {
-    key: 'onResize',
-    value: function onResize() {
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-
-      this.app.renderer.view.style.width = w + 'px';
-      this.app.renderer.view.style.height = h + 'px';
-    }
-  }]);
-
-  return Mask;
-}();
-
-var maskAPI = exports.maskAPI = new Mask();
-
-/***/ }),
+/* 449 */,
 /* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -69008,6 +68877,197 @@ var Home = function () {
 }();
 
 exports.default = Home;
+
+/***/ }),
+/* 556 */,
+/* 557 */,
+/* 558 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.screenMaskAPI = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _pixi = __webpack_require__(450);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+__webpack_require__(552);
+
+var _helpers = __webpack_require__(12);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ScreenMask = function () {
+  function ScreenMask() {
+    _classCallCheck(this, ScreenMask);
+
+    this.block = document.querySelector('.screen-mask');
+    this.imgSrc = this.block.getAttribute('data-img-src');
+    this.videoSrc = this.block.getAttribute('data-video-src');
+    this.blurSize = 10;
+    this.blurFilter = new PIXI.filters.BlurFilter(this.blurSize);
+    this.maskEl = new PIXI.SVG(this.block.querySelector('.screen-mask__el'));
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+
+    this.maskEl.width = this.width;
+    this.maskEl.height = this.height;
+    this.maskEl.position.x = 260;
+    this.maskEl.position.y = 0;
+
+    this.init();
+  }
+
+  _createClass(ScreenMask, [{
+    key: 'init',
+    value: function init() {
+      this.createApp();
+      this.bindEvents();
+      // this.video();
+      this.image();
+    }
+  }, {
+    key: 'bindEvents',
+    value: function bindEvents() {
+      var _this2 = this;
+
+      window.addEventListener('resize', function () {
+        _this2.onResize();
+      });
+    }
+  }, {
+    key: 'createApp',
+    value: function createApp() {
+      this.app = new PIXI.Application(this.width, this.height, { transparent: true, autoResize: true });
+      this.block.appendChild(this.app.view);
+    }
+  }, {
+    key: 'image',
+    value: function image() {
+      var imgBlured = PIXI.Sprite.fromImage(this.imgSrc);
+      var img = PIXI.Sprite.fromImage(this.imgSrc);
+
+      img.mask = this.maskEl;
+
+      if (_helpers.Resp.isDesk) {
+        img.x = -this.blurSize;
+        img.y = -this.blurSize;
+        imgBlured.x = -this.blurSize;
+        imgBlured.y = -this.blurSize;
+        imgBlured.filters = [this.blurFilter];
+
+        img.width = this.width + this.blurSize * 3;
+        img.height = this.height + this.blurSize * 3;
+        imgBlured.width = this.width + this.blurSize * 3;
+        imgBlured.height = this.height + this.blurSize * 3;
+      }
+
+      if (_helpers.Resp.isTablet) {
+        this.maskEl.width = this.width + 1080;
+        this.maskEl.position.x = 30;
+
+        img.x = -this.blurSize - 450;
+        img.y = -this.blurSize;
+        imgBlured.x = -this.blurSize - 450;
+        imgBlured.y = -this.blurSize;
+        imgBlured.filters = [this.blurFilter];
+
+        img.width = this.width + 1000;
+        img.height = this.height + this.blurSize * 3;
+        imgBlured.width = this.width + 1000;
+        imgBlured.height = this.height + this.blurSize * 3;
+      }
+
+      if (_helpers.Resp.isMobile) {
+        this.maskEl.width = this.width + 750;
+        this.maskEl.position.x = -50;
+
+        img.x = -this.blurSize - 300;
+        img.y = -this.blurSize;
+        imgBlured.x = -this.blurSize - 300;
+        imgBlured.y = -this.blurSize;
+        imgBlured.filters = [this.blurFilter];
+
+        img.width = this.width + 800;
+        img.height = this.height + this.blurSize * 3;
+        imgBlured.width = this.width + 800;
+        imgBlured.height = this.height + this.blurSize * 3;
+      }
+
+      this.app.stage.addChild(imgBlured, img, this.maskEl);
+    }
+  }, {
+    key: 'video',
+    value: function video() {
+      var _this = this;
+
+      var video = new PIXI.Texture.fromVideo(this.videoSrc);
+      var videoSprite = new PIXI.Sprite(video);
+      var videoSpriteBlur = new PIXI.Sprite(video);
+
+      video.baseTexture.source.loop = true;
+      video.baseTexture.source.muted = true;
+
+      videoSprite.x = -this.blurSize * 2;
+      videoSprite.y = -this.blurSize * 2;
+      videoSpriteBlur.x = -this.blurSize * 2;
+      videoSpriteBlur.y = -this.blurSize * 2;
+
+      videoSprite.width = _this.width + this.blurSize * 4;
+      videoSprite.height = _this.height + this.blurSize * 4;
+      videoSpriteBlur.width = _this.width + this.blurSize * 4;
+      videoSpriteBlur.height = _this.height + this.blurSize * 4;
+
+      videoSpriteBlur.filters = [_this.blurFilter];
+      videoSprite.mask = this.maskEl;
+
+      _this.app.stage.addChild(videoSpriteBlur, videoSprite, _this.maskEl);
+
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        var onPlayVideo = function onPlayVideo() {
+
+          button.destroy();
+
+          video.baseTexture.source.play();
+        };
+
+        var button = new PIXI.Graphics().beginFill(0x0, 0.5).drawRoundedRect(0, 0, 100, 100, 10).endFill().beginFill(0xffffff).moveTo(36, 30).lineTo(36, 70).lineTo(70, 50);
+
+        button.x = (this.app.screen.width - button.width) / 2;
+        button.y = (this.app.screen.height - button.height) / 2;
+
+        button.interactive = true;
+        button.buttonMode = true;
+
+        button.on('pointertap', onPlayVideo);
+
+        _this.app.stage.addChild(button);
+      }
+    }
+  }, {
+    key: 'onResize',
+    value: function onResize() {
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+
+      this.app.renderer.view.style.width = w + 'px';
+      this.app.renderer.view.style.height = h + 'px';
+    }
+  }]);
+
+  return ScreenMask;
+}();
+
+var screenMaskAPI = exports.screenMaskAPI = new ScreenMask();
 
 /***/ })
 ],[219]);

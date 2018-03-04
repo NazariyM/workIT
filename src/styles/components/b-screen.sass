@@ -2,12 +2,20 @@
   display: flex
   position: relative
   align-items: center
-  display: none
+  +md
+    align-items: flex-start
   &__inner
     position: absolute
     left: 0
     right: 0
     z-index: 1
+    +md
+      padding: 170px 0 0
+    +xs
+      padding: 115px 0 0
+  &__container
+    +xs
+      padding: 0 13px
   &__title
     opacity: 0
     transform: translateY(-30px)
@@ -16,6 +24,13 @@
     color: #fff
     +h1
     text-transform: none
+    +md
+      max-width: 600px
+    +xs
+      max-width: 320px
+      margin-bottom: 30px
+      font-size: 40px
+      line-height: 40px
   &__sub-title
     opacity: 0
     transform: translateY(-30px)
@@ -24,6 +39,10 @@
     +f('gil-300', 18)
     color: #fff
     text-transform: none
+    +xs
+      max-width: 320px
+      margin-bottom: 27px
+      font-size: 14px
   &__btn
     opacity: 0
     transform: translateY(-30px)
@@ -35,11 +54,19 @@
     transform: translateY(200%)
     cursor: pointer
     padding-bottom: 20px
+    +md
+      right: 30px
+      bottom: 155px
+    +xs
+      right: 36px
+      bottom: 145px
     &.has-anim
       animation: moving 2s ease-in-out infinite
     &-text
       writing-mode: vertical-lr
       color: #fff
+      +xs
+        display: none
     &-icon
       position: absolute
       bottom: -30px
@@ -91,4 +118,10 @@
   //  height: auto
   //  z-index: -1
   //  overflow: hidden
-  
+
+.screen-mask
+  overflow: hidden
+  &__el
+    display: none
+  &__play-btn
+    display: none

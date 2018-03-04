@@ -1,4 +1,4 @@
-import { TimelineMax } from 'gsap';
+import { TimelineMax, TweenMax } from 'gsap';
 
 class Preloader {
   constructor() {
@@ -8,8 +8,11 @@ class Preloader {
     this.init();
   }
 
-  init() {
-    this.animPreloader();
+  async init() {
+    if (sessionStorage.getItem('resized') === 'false') {
+      this.animPreloader();
+    }
+    sessionStorage.setItem('resized', false);
   }
 
   wait() {
@@ -28,8 +31,7 @@ class Preloader {
 
       tl
         .to(this.$img, 1, { autoAlpha: 1 })
-        .to(this.$preloader, .5, { autoAlpha: 0 }, '+=.3')
-        .set(this.$preloader, { css: { display: 'none' } });
+        .to(this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
     });
   }
 }

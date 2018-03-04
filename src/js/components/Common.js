@@ -17,7 +17,7 @@ import './homeAnims';
 import './expandList';
 import './preloader';
 import './popup';
-import './mask';
+import './screenMask';
 
 // import './dot';
 

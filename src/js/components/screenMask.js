@@ -1,21 +1,22 @@
 import * as PIXI from 'pixi.js';
 import 'pixi-svg';
-import { detectSafari } from '../modules/dev/_helpers';
+import { Resp } from '../modules/dev/_helpers';
 
-class Mask {
+class ScreenMask {
   constructor() {
-    this.block = document.querySelector('.mask');
+    this.block = document.querySelector('.screen-mask');
+    this.imgSrc = this.block.getAttribute('data-img-src');
+    this.videoSrc = this.block.getAttribute('data-video-src');
+    this.blurSize = 10;
+    this.blurFilter = new PIXI.filters.BlurFilter(this.blurSize);
+    this.maskEl = new PIXI.SVG(this.block.querySelector('.screen-mask__el'));
     this.width = window.innerWidth;
     this.height = window.innerHeight;
-    this.blurSize = 10;
-    this.maskPosX = 240;
-    this.maskPosY = 0;
-    this.maskEl = new PIXI.SVG(this.block.querySelector('.mask__el'));
-    this.blurFilter = new PIXI.filters.BlurFilter(this.blurSize);
+
     this.maskEl.width = this.width;
     this.maskEl.height = this.height;
-    this.maskEl.position.x = this.maskPosX;
-    this.maskEl.position.y = this.maskPosY;
+    this.maskEl.position.x = 260;
+    this.maskEl.position.y = 0;
 
     this.init();
   }
@@ -36,48 +37,72 @@ class Mask {
   createApp() {
     this.app = new PIXI.Application(this.width, this.height, { transparent: true, autoResize: true });
     this.block.appendChild(this.app.view);
-    this.container = new PIXI.Container();
-    this.app.stage.addChild(this.container);
   }
 
   image() {
-    const imgBlured = PIXI.Sprite.fromImage('static/img/screen_bg.jpg');
-    const img = PIXI.Sprite.fromImage('static/img/screen_bg.jpg');
+    const imgBlured = PIXI.Sprite.fromImage(this.imgSrc);
+    const img = PIXI.Sprite.fromImage(this.imgSrc);
 
     img.mask = this.maskEl;
 
-    img.x = -this.blurSize;
-    img.y = -this.blurSize;
-    imgBlured.x = -this.blurSize;
-    imgBlured.y = -this.blurSize;
-    imgBlured.filters = [this.blurFilter];
+    if (Resp.isDesk) {
+      img.x = -this.blurSize;
+      img.y = -this.blurSize;
+      imgBlured.x = -this.blurSize;
+      imgBlured.y = -this.blurSize;
+      imgBlured.filters = [this.blurFilter];
 
-    img.width = this.width + this.blurSize * 3;
-    img.height = this.height + this.blurSize * 3;
-    imgBlured.width = this.width + this.blurSize * 3;
-    imgBlured.height = this.height + this.blurSize * 3;
+      img.width = this.width + this.blurSize * 3;
+      img.height = this.height + this.blurSize * 3;
+      imgBlured.width = this.width + this.blurSize * 3;
+      imgBlured.height = this.height + this.blurSize * 3;
+    }
 
-    this.container.addChild(imgBlured, img, this.maskEl);
+    if (Resp.isTablet) {
+      this.maskEl.width = this.width + 1080;
+      this.maskEl.position.x = 30;
+
+      img.x = -this.blurSize - 450;
+      img.y = -this.blurSize;
+      imgBlured.x = -this.blurSize - 450;
+      imgBlured.y = -this.blurSize;
+      imgBlured.filters = [this.blurFilter];
+
+      img.width = this.width + 1000;
+      img.height = this.height + this.blurSize * 3;
+      imgBlured.width = this.width + 1000;
+      imgBlured.height = this.height + this.blurSize * 3;
+    }
+
+    if (Resp.isMobile) {
+      this.maskEl.width = this.width + 750;
+      this.maskEl.position.x = -50;
+
+      img.x = -this.blurSize - 300;
+      img.y = -this.blurSize;
+      imgBlured.x = -this.blurSize - 300;
+      imgBlured.y = -this.blurSize;
+      imgBlured.filters = [this.blurFilter];
+
+      img.width = this.width + 800;
+      img.height = this.height + this.blurSize * 3;
+      imgBlured.width = this.width + 800;
+      imgBlured.height = this.height + this.blurSize * 3;
+    }
+
+    this.app.stage.addChild(imgBlured, img, this.maskEl);
 
   }
 
   video() {
     const _this = this;
 
-    const video = new PIXI.Texture.fromVideo('static/video/video-sample.mp4');
+    const video = new PIXI.Texture.fromVideo(this.videoSrc);
     const videoSprite = new PIXI.Sprite(video);
     const videoSpriteBlur = new PIXI.Sprite(video);
 
     video.baseTexture.source.loop = true;
     video.baseTexture.source.muted = true;
-
-    const videoLoaded = new Promise((resolve) => {
-      resolve(video.baseTexture.hasLoaded);
-    });
-
-    videoLoaded.then(() => {
-      video.baseTexture.source.pause();
-    });
 
     videoSprite.x = -this.blurSize * 2;
     videoSprite.y = -this.blurSize * 2;
@@ -130,8 +155,7 @@ class Mask {
 
     this.app.renderer.view.style.width = `${w}px`;
     this.app.renderer.view.style.height = `${h}px`;
-
   }
 }
 
-export const maskAPI = new Mask();
+export const screenMaskAPI = new ScreenMask();

@@ -13,3 +13,8 @@ if preloader ? preloader : preloader = []
       rect(fill='#fff' x='649.32', y='72', width='43.2', height='129.6')
     path.preloader__img-letter(fill='#fff' d='M794.06,157.25c-4.61,3.46-10.08,7.49-19.3,7.49-5.76,0-8.35-6.62-8.35-14.4v-38h36V72h-36V36h-43.2V152.35c0,33.12,10.94,52.7,40.32,52.7,19.29,0,34.85-7.2,43.49-14.69Z')
 //end preloader
+
+script(type='text/javascript').
+  if (sessionStorage.getItem('resized') === 'true') {
+    document.querySelector('.preloader').style.display = 'none';
+  }

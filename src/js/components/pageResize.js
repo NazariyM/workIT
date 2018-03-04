@@ -1,45 +1,51 @@
-// import WaitPreloader from './waitPreloader';
-import { preloader } from './preloader';
-import {
-	$window,
-	throttle,
-	Resp
-} from '../modules/dev/_helpers';
+import { $window, Resp, throttle } from '../modules/dev/_helpers';
 
 export class PageResize {
+  constructor() {
+    this.init();
+  }
 
-	getResp() {
-		if (Resp.isDesk) {
-			this.resp = 'desk';
-		} else if (Resp.isTablet) {
-			this.resp = 'tablet';
-		} else if (Resp.isMobile) {
-			this.resp = 'mobile';
-		}
-	}
+  getResp() {
+    if (Resp.isDesk) {
+      this.resp = 'desk';
+    } else if (Resp.isTablet) {
+      this.resp = 'tablet';
+    } else if (Resp.isMobile) {
+      this.resp = 'mobile';
+    }
+  }
 
-	init() {
-		this.getResp();
+  wait() {
+    return this.resolve;
+  }
 
-		const refreshPage = throttle(() => {
+  init() {
 
-			if (Resp.isDesk) {
-				this.currentResp = 'desk';
-			} else if (Resp.isTablet) {
-				this.currentResp = 'tablet';
-			} else if (Resp.isMobile) {
-				this.currentResp = 'mobile';
-			}
+    this.resolve = new Promise(resolve => {
+      sessionStorage.getItem('resized');
+      this.getResp();
 
-			if (this.resp !== this.currentResp) {
-				this.resp = this.currentResp;
+      const refreshPage = throttle(() => {
+        if (Resp.isDesk) {
+          this.currentResp = 'desk';
+        } else if (Resp.isTablet) {
+          this.currentResp = 'tablet';
+        } else if (Resp.isMobile) {
+          this.currentResp = 'mobile';
+        }
 
-				location.reload();
-			}
-		}, 250, this);
+        if (this.resp !== this.currentResp) {
+          this.resp = this.currentResp;
 
-		$window.on('resize', refreshPage);
-	}
+          sessionStorage.setItem('resized', true);
+          location.reload();
+        }
+      }, 250, this);
+
+      $window.on('resize', refreshPage);
+      resolve();
+    });
+  }
 
 }
 

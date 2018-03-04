@@ -1,6 +1,6 @@
-import {TimelineMax, TweenMax, CSSRulePlugin} from 'gsap';
-import {preloader} from './preloader';
-import {$scrolledElements, css} from '../modules/dev/_helpers';
+import { TimelineMax, TweenMax } from 'gsap';
+import { preloader } from './preloader';
+import { $scrolledElements, css } from '../modules/dev/_helpers';
 
 class Screen {
   constructor() {
@@ -23,7 +23,7 @@ class Screen {
     const tl = new TimelineMax();
 
     tl
-      .staggerTo(_this.$item, .5, {autoAlpha: 1, y: 0}, 0.3)
+      .staggerTo(_this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3)
       .to(_this.$more, .7, {
         y: 0, onComplete: function () {
           _this.$more.addClass(css.hasAnim);
