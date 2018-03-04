@@ -42452,7 +42452,7 @@ var Header = function () {
 			}, 0, this);
 
 			function toggleHeader() {
-				if (window.scrollY > 0) {
+				if (window.scrollY > 0 && !_this.header.classList.contains(_helpers.css.menuActive)) {
 					_this.header.classList.add(_helpers.css.fixed);
 				} else {
 					_this.header.classList.remove(_helpers.css.fixed);
