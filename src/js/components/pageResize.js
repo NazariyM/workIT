@@ -1,4 +1,4 @@
-// import WaitPreloader from '../../components/waitPreloader';
+// import WaitPreloader from './waitPreloader';
 import { preloader } from './preloader';
 import {
 	$window,
@@ -21,9 +21,8 @@ export class PageResize {
 	init() {
 		this.getResp();
 
-		//refresh page
 		const refreshPage = throttle(() => {
-			//check current Resp
+
 			if (Resp.isDesk) {
 				this.currentResp = 'desk';
 			} else if (Resp.isTablet) {
@@ -32,19 +31,13 @@ export class PageResize {
 				this.currentResp = 'mobile';
 			}
 
-			//compare Resp
 			if (this.resp !== this.currentResp) {
 				this.resp = this.currentResp;
 
-				preloader.wait().then(() => {
-
-          console.log('heelo');
-          // location.reload();
-        });
+				location.reload();
 			}
 		}, 250, this);
 
-		//refresh page on resize
 		$window.on('resize', refreshPage);
 	}
 

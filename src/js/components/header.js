@@ -1,11 +1,9 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import { preloader } from './preloader';
-import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import {
 	$body,
 	$window,
 	throttle,
-	debounce,
 	css,
 	Resp
 } from '../modules/dev/_helpers';
@@ -34,22 +32,30 @@ class Header {
 		this.initFix();
 		this.prepareHeaderAnim();
 		this.bindEvents();
-		// this.clearResize();
 	}
 
 	bindEvents() {
 		this.menuBtn.addEventListener('click', () => {
 			this.scrollTop = $window.scrollTop();
 			this.toggleMenu();
-			this.lockBody();
+			// this.lockBody();
 		});
 
 		this.mobClose.addEventListener('click', () => {
+      // this.body.classList.remove(css.locked);
 			$body.scrollTop(this.scrollTop);
 			this.toggleMenu();
-			this.lockBody();
+			// this.lockBody();
 		});
 	}
+
+  // beforeOpen() {
+  //   this.scrollTop = $window.scrollTop();
+  // }
+  //
+  // beforeClose() {
+  //   $body.scrollTop(this.scrollTop);
+  // }
 
 	toggleMenu(state = false) {
 		switch (state) {
@@ -62,15 +68,14 @@ class Header {
 		default:
 			this.burgerActiveState = css.active;
 	}
-		// this.toggleBurger();
 		this.toggleNav();
 
 		return HeaderAPI;
 	}
 
-	lockBody() {
-		Resp.isMobile ? this.body.classList.toggle(css.locked) : false;
-	}
+	// lockBody() {
+	// 	Resp.isMobile ? this.body.classList.toggle(css.locked) : false;
+	// }
 
 	set burgerActiveState(className) {
 		this.menuBtn.classList.toggle(className);
@@ -82,8 +87,9 @@ class Header {
 	}
 
 	prepareHeaderAnim() {
-		const _this = this;
-		this.mobTl = new TimelineMax({ paused: true });
+		this.mobTl = new TimelineMax({ paused: true , onComplete: () => {
+				// if (Resp.isMobile) this.body.classList.add(css.locked);
+      }});
 
 		this.mobTl
 		 .to(this.mob, .35, {
@@ -107,18 +113,6 @@ class Header {
 	toggleNav() {
 		this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(3).reverse();
 	}
-
-	// clearResize() {
-	// 	window.addEventListener('resize', debounce(clear, this, 250));
-	//
-	// 	function clear() {
-	// 		this.menuBtn.classList.remove(css.active);
-	// 		this.body.classList.remove(css.locked);
-	// 		TweenMax.set(this.mob, { clearProps: 'all' });
-	//
-	// 		this.prepareHeaderAnim();
-	// 	}
-	// }
 
 	initFix() {
 		const _this = this;

@@ -10493,7 +10493,7 @@ var Preloader = function () {
 
         resolve();
 
-        tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
+        tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3').set(_this.$preloader, { css: { display: 'none' } });
       });
     }
   }]);
@@ -10505,148 +10505,6 @@ var preloader = exports.preloader = new Preloader();
 
 /***/ }),
 /* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Scrollmagic = __webpack_require__(434);
-
-var _Scrollmagic2 = _interopRequireDefault(_Scrollmagic);
-
-var _preloader = __webpack_require__(35);
-
-var _helpers = __webpack_require__(12);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var scrollController = new _Scrollmagic2.default.Controller();
-
-var ScrollAnim = function () {
-	function ScrollAnim() {
-		var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-		var el = _ref.el,
-		    _ref$hook = _ref.hook,
-		    hook = _ref$hook === undefined ? 0.9 : _ref$hook,
-		    _ref$reverse = _ref.reverse,
-		    reverse = _ref$reverse === undefined ? false : _ref$reverse,
-		    opts = _objectWithoutProperties(_ref, ['el', 'hook', 'reverse']);
-
-		_classCallCheck(this, ScrollAnim);
-
-		this.triggerElement = el;
-		this.triggerHook = hook;
-		this.reverse = reverse;
-		this.duration = opts.duration || 0;
-		this.onStart = opts.onStart;
-		this.onEnd = opts.onEnd;
-		this.onEnter = opts.onEnter;
-		this.onLeave = opts.onLeave;
-		this.inView = opts.inView || false;
-		this.secondEnter = opts.secondEnter || false;
-		this.indicators = opts.indicators || false;
-
-		if (!this.triggerElement) return;
-		this.options();
-		this.createScene();
-	}
-
-	_createClass(ScrollAnim, [{
-		key: 'options',
-		value: function options() {
-			this.secondEnterVal = 0;
-
-			if (this.inView) {
-				this.reverse = true;
-				this.duration = _helpers.$window.height() + $(this.triggerElement).height();
-				this.triggerHook = 1;
-			}
-		}
-	}, {
-		key: 'createScene',
-		value: function () {
-			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				var _this, scene;
-
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_this = this;
-								_context.next = 3;
-								return _preloader.preloader.wait();
-
-							case 3:
-								scene = new _Scrollmagic2.default.Scene({
-									triggerElement: _this.triggerElement,
-									triggerHook: _this.triggerHook,
-									duration: _this.duration,
-									reverse: _this.reverse
-								}).on('start', function () {
-									if (typeof _this.onStart !== 'function') return;
-									_this.onStart();
-								}).on('end', function () {
-									if (typeof _this.onEnd !== 'function') return;
-									_this.onEnd();
-								}).on('enter', function () {
-									if (_this.secondEnterHandler) {
-										_this.secondEnterHandler = false;
-										return;
-									}
-									if (typeof _this.onEnter !== 'function') return;
-									_this.onEnter();
-								}).on('leave', function () {
-									if (typeof _this.onLeave !== 'function') return;
-									_this.onLeave();
-								}).addTo(scrollController);
-
-
-								if (this.indicators) scene.addIndicators();
-
-							case 5:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function createScene() {
-				return _ref2.apply(this, arguments);
-			}
-
-			return createScene;
-		}()
-	}, {
-		key: 'secondEnterHandler',
-		set: function set(val) {
-			return this.secondEnter = val;
-		},
-		get: function get() {
-			return this.secondEnter;
-		}
-	}]);
-
-	return ScrollAnim;
-}();
-
-exports.default = ScrollAnim;
-
-/***/ }),
-/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -10877,7 +10735,7 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(486)))
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11364,7 +11222,7 @@ if (__webpack_require__(9)) {
 
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Map = __webpack_require__(152);
@@ -11419,6 +11277,148 @@ module.exports = {
   exp: exp
 };
 
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Scrollmagic = __webpack_require__(435);
+
+var _Scrollmagic2 = _interopRequireDefault(_Scrollmagic);
+
+var _preloader = __webpack_require__(35);
+
+var _helpers = __webpack_require__(12);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var scrollController = new _Scrollmagic2.default.Controller();
+
+var ScrollAnim = function () {
+	function ScrollAnim() {
+		var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+		var el = _ref.el,
+		    _ref$hook = _ref.hook,
+		    hook = _ref$hook === undefined ? 0.9 : _ref$hook,
+		    _ref$reverse = _ref.reverse,
+		    reverse = _ref$reverse === undefined ? false : _ref$reverse,
+		    opts = _objectWithoutProperties(_ref, ['el', 'hook', 'reverse']);
+
+		_classCallCheck(this, ScrollAnim);
+
+		this.triggerElement = el;
+		this.triggerHook = hook;
+		this.reverse = reverse;
+		this.duration = opts.duration || 0;
+		this.onStart = opts.onStart;
+		this.onEnd = opts.onEnd;
+		this.onEnter = opts.onEnter;
+		this.onLeave = opts.onLeave;
+		this.inView = opts.inView || false;
+		this.secondEnter = opts.secondEnter || false;
+		this.indicators = opts.indicators || false;
+
+		if (!this.triggerElement) return;
+		this.options();
+		this.createScene();
+	}
+
+	_createClass(ScrollAnim, [{
+		key: 'options',
+		value: function options() {
+			this.secondEnterVal = 0;
+
+			if (this.inView) {
+				this.reverse = true;
+				this.duration = _helpers.$window.height() + $(this.triggerElement).height();
+				this.triggerHook = 1;
+			}
+		}
+	}, {
+		key: 'createScene',
+		value: function () {
+			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+				var _this, scene;
+
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_this = this;
+								_context.next = 3;
+								return _preloader.preloader.wait();
+
+							case 3:
+								scene = new _Scrollmagic2.default.Scene({
+									triggerElement: _this.triggerElement,
+									triggerHook: _this.triggerHook,
+									duration: _this.duration,
+									reverse: _this.reverse
+								}).on('start', function () {
+									if (typeof _this.onStart !== 'function') return;
+									_this.onStart();
+								}).on('end', function () {
+									if (typeof _this.onEnd !== 'function') return;
+									_this.onEnd();
+								}).on('enter', function () {
+									if (_this.secondEnterHandler) {
+										_this.secondEnterHandler = false;
+										return;
+									}
+									if (typeof _this.onEnter !== 'function') return;
+									_this.onEnter();
+								}).on('leave', function () {
+									if (typeof _this.onLeave !== 'function') return;
+									_this.onLeave();
+								}).addTo(scrollController);
+
+
+								if (this.indicators) scene.addIndicators();
+
+							case 5:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function createScene() {
+				return _ref2.apply(this, arguments);
+			}
+
+			return createScene;
+		}()
+	}, {
+		key: 'secondEnterHandler',
+		set: function set(val) {
+			return this.secondEnter = val;
+		},
+		get: function get() {
+			return this.secondEnter;
+		}
+	}]);
+
+	return ScrollAnim;
+}();
+
+exports.default = ScrollAnim;
 
 /***/ }),
 /* 40 */,
@@ -26522,7 +26522,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
-var _scrollAnim = __webpack_require__(36);
+var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -31010,7 +31010,7 @@ var _Filter3 = _interopRequireDefault(_Filter2);
 
 var _math = __webpack_require__(15);
 
-var _path = __webpack_require__(37);
+var _path = __webpack_require__(36);
 
 var _TextureMatrix = __webpack_require__(191);
 
@@ -35136,7 +35136,7 @@ exports.default = function () {
     };
 };
 
-var _path = __webpack_require__(37);
+var _path = __webpack_require__(36);
 
 var path = _interopRequireWildcard(_path);
 
@@ -38911,7 +38911,7 @@ $export($export.G + $export.W + $export.F * !__webpack_require__(81).ABV, {
 /* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(38)('Int8', 1, function (init) {
+__webpack_require__(37)('Int8', 1, function (init) {
   return function Int8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38922,7 +38922,7 @@ __webpack_require__(38)('Int8', 1, function (init) {
 /* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(38)('Uint8', 1, function (init) {
+__webpack_require__(37)('Uint8', 1, function (init) {
   return function Uint8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38933,7 +38933,7 @@ __webpack_require__(38)('Uint8', 1, function (init) {
 /* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(38)('Uint8', 1, function (init) {
+__webpack_require__(37)('Uint8', 1, function (init) {
   return function Uint8ClampedArray(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38944,7 +38944,7 @@ __webpack_require__(38)('Uint8', 1, function (init) {
 /* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(38)('Int16', 2, function (init) {
+__webpack_require__(37)('Int16', 2, function (init) {
   return function Int16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38955,7 +38955,7 @@ __webpack_require__(38)('Int16', 2, function (init) {
 /* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(38)('Uint16', 2, function (init) {
+__webpack_require__(37)('Uint16', 2, function (init) {
   return function Uint16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38966,7 +38966,7 @@ __webpack_require__(38)('Uint16', 2, function (init) {
 /* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(38)('Int32', 4, function (init) {
+__webpack_require__(37)('Int32', 4, function (init) {
   return function Int32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38977,7 +38977,7 @@ __webpack_require__(38)('Int32', 4, function (init) {
 /* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(38)('Uint32', 4, function (init) {
+__webpack_require__(37)('Uint32', 4, function (init) {
   return function Uint32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38988,7 +38988,7 @@ __webpack_require__(38)('Uint32', 4, function (init) {
 /* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(38)('Float32', 4, function (init) {
+__webpack_require__(37)('Float32', 4, function (init) {
   return function Float32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38999,7 +38999,7 @@ __webpack_require__(38)('Float32', 4, function (init) {
 /* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(38)('Float64', 8, function (init) {
+__webpack_require__(37)('Float64', 8, function (init) {
   return function Float64Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -40046,7 +40046,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 /* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(39);
+var metadata = __webpack_require__(38);
 var anObject = __webpack_require__(1);
 var toMetaKey = metadata.key;
 var ordinaryDefineOwnMetadata = metadata.set;
@@ -40060,7 +40060,7 @@ metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValu
 /* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(39);
+var metadata = __webpack_require__(38);
 var anObject = __webpack_require__(1);
 var toMetaKey = metadata.key;
 var getOrCreateMetadataMap = metadata.map;
@@ -40081,7 +40081,7 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /* , 
 /* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(39);
+var metadata = __webpack_require__(38);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(24);
 var ordinaryHasOwnMetadata = metadata.has;
@@ -40106,7 +40106,7 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , target
 
 var Set = __webpack_require__(154);
 var from = __webpack_require__(163);
-var metadata = __webpack_require__(39);
+var metadata = __webpack_require__(38);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(24);
 var ordinaryOwnMetadataKeys = metadata.keys;
@@ -40129,7 +40129,7 @@ metadata.exp({ getMetadataKeys: function getMetadataKeys(target /* , targetKey *
 /* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(39);
+var metadata = __webpack_require__(38);
 var anObject = __webpack_require__(1);
 var ordinaryGetOwnMetadata = metadata.get;
 var toMetaKey = metadata.key;
@@ -40144,7 +40144,7 @@ metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /* , 
 /* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(39);
+var metadata = __webpack_require__(38);
 var anObject = __webpack_require__(1);
 var ordinaryOwnMetadataKeys = metadata.keys;
 var toMetaKey = metadata.key;
@@ -40158,7 +40158,7 @@ metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targe
 /* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(39);
+var metadata = __webpack_require__(38);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(24);
 var ordinaryHasOwnMetadata = metadata.has;
@@ -40180,7 +40180,7 @@ metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /* , target
 /* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(39);
+var metadata = __webpack_require__(38);
 var anObject = __webpack_require__(1);
 var ordinaryHasOwnMetadata = metadata.has;
 var toMetaKey = metadata.key;
@@ -40195,7 +40195,7 @@ metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , 
 /* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $metadata = __webpack_require__(39);
+var $metadata = __webpack_require__(38);
 var anObject = __webpack_require__(1);
 var aFunction = __webpack_require__(16);
 var toMetaKey = $metadata.key;
@@ -41387,7 +41387,7 @@ __webpack_require__(432);
 
 __webpack_require__(433);
 
-__webpack_require__(435);
+__webpack_require__(434);
 
 __webpack_require__(436);
 
@@ -42178,7 +42178,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.PageResize = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // import WaitPreloader from '../../components/waitPreloader';
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // import WaitPreloader from './waitPreloader';
 
 
 var _preloader = __webpack_require__(35);
@@ -42210,9 +42210,8 @@ var PageResize = exports.PageResize = function () {
 
 			this.getResp();
 
-			//refresh page
 			var refreshPage = (0, _helpers.throttle)(function () {
-				//check current Resp
+
 				if (_helpers.Resp.isDesk) {
 					_this.currentResp = 'desk';
 				} else if (_helpers.Resp.isTablet) {
@@ -42221,19 +42220,13 @@ var PageResize = exports.PageResize = function () {
 					_this.currentResp = 'mobile';
 				}
 
-				//compare Resp
 				if (_this.resp !== _this.currentResp) {
 					_this.resp = _this.currentResp;
 
-					_preloader.preloader.wait().then(function () {
-
-						console.log('heelo');
-						// location.reload();
-					});
+					location.reload();
 				}
 			}, 250, this);
 
-			//refresh page on resize
 			_helpers.$window.on('resize', refreshPage);
 		}
 	}]);
@@ -42306,13 +42299,7 @@ var _gsap = __webpack_require__(21);
 
 var _preloader = __webpack_require__(35);
 
-var _scrollAnim = __webpack_require__(36);
-
-var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
-
 var _helpers = __webpack_require__(12);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
@@ -42359,7 +42346,6 @@ var Header = function () {
 								this.initFix();
 								this.prepareHeaderAnim();
 								this.bindEvents();
-								// this.clearResize();
 
 							case 7:
 							case 'end':
@@ -42383,15 +42369,25 @@ var Header = function () {
 			this.menuBtn.addEventListener('click', function () {
 				_this2.scrollTop = _helpers.$window.scrollTop();
 				_this2.toggleMenu();
-				_this2.lockBody();
+				// this.lockBody();
 			});
 
 			this.mobClose.addEventListener('click', function () {
+				// this.body.classList.remove(css.locked);
 				_helpers.$body.scrollTop(_this2.scrollTop);
 				_this2.toggleMenu();
-				_this2.lockBody();
+				// this.lockBody();
 			});
 		}
+
+		// beforeOpen() {
+		//   this.scrollTop = $window.scrollTop();
+		// }
+		//
+		// beforeClose() {
+		//   $body.scrollTop(this.scrollTop);
+		// }
+
 	}, {
 		key: 'toggleMenu',
 		value: function toggleMenu() {
@@ -42407,21 +42403,21 @@ var Header = function () {
 				default:
 					this.burgerActiveState = _helpers.css.active;
 			}
-			// this.toggleBurger();
 			this.toggleNav();
 
 			return HeaderAPI;
 		}
-	}, {
-		key: 'lockBody',
-		value: function lockBody() {
-			_helpers.Resp.isMobile ? this.body.classList.toggle(_helpers.css.locked) : false;
-		}
+
+		// lockBody() {
+		// 	Resp.isMobile ? this.body.classList.toggle(css.locked) : false;
+		// }
+
 	}, {
 		key: 'prepareHeaderAnim',
 		value: function prepareHeaderAnim() {
-			var _this = this;
-			this.mobTl = new _gsap.TimelineMax({ paused: true });
+			this.mobTl = new _gsap.TimelineMax({ paused: true, onComplete: function onComplete() {
+					// if (Resp.isMobile) this.body.classList.add(css.locked);
+				} });
 
 			this.mobTl.to(this.mob, .35, {
 				y: 0
@@ -42441,19 +42437,6 @@ var Header = function () {
 		value: function toggleNav() {
 			this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(3).reverse();
 		}
-
-		// clearResize() {
-		// 	window.addEventListener('resize', debounce(clear, this, 250));
-		//
-		// 	function clear() {
-		// 		this.menuBtn.classList.remove(css.active);
-		// 		this.body.classList.remove(css.locked);
-		// 		TweenMax.set(this.mob, { clearProps: 'all' });
-		//
-		// 		this.prepareHeaderAnim();
-		// 	}
-		// }
-
 	}, {
 		key: 'initFix',
 		value: function initFix() {
@@ -42497,6 +42480,301 @@ var HeaderAPI = exports.HeaderAPI = new Header();
 
 /***/ }),
 /* 434 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.slider = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _scrollAnim = __webpack_require__(39);
+
+var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
+
+var _gsap = __webpack_require__(21);
+
+var _slickCarousel = __webpack_require__(165);
+
+var _slickCarousel2 = _interopRequireDefault(_slickCarousel);
+
+var _helpers = __webpack_require__(12);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Slider = function () {
+	function Slider() {
+		_classCallCheck(this, Slider);
+
+		this.$slider = $('.slider');
+		this.$mobileSlider = $('.mobile-slider');
+		this.$mobSliderDouble = $('.mobile-slider_double');
+		this.$block3Sld = $('.block-3__items-list');
+		this.$block6Sld = $('.block-6__list');
+		this.$sliderAnimBlock = $('[data-anim="slider"]');
+
+		this.init();
+	}
+
+	_createClass(Slider, [{
+		key: 'init',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								this.createSlider();
+								this.createMobileSlider();
+								this.bindEvents();
+
+							case 3:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function init() {
+				return _ref.apply(this, arguments);
+			}
+
+			return init;
+		}()
+	}, {
+		key: 'bindEvents',
+		value: function bindEvents() {
+			this.prepareSliderAnim(this.$sliderAnimBlock);
+			this.animOnScroll(this.$sliderAnimBlock);
+		}
+	}, {
+		key: 'createMobileSlider',
+		value: function createMobileSlider() {
+			var _this = this;
+
+			var defaultOptions = {
+				dots: false,
+				infinite: false,
+				arrows: false,
+				speed: 400,
+				cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+				useTransform: true,
+				adaptiveHeight: true,
+				mobileFirst: true,
+				accessibility: false,
+				rows: 0
+			};
+
+			this.$mobSliderDouble.slick($.extend({}, defaultOptions, {
+				slidesToShow: 1.14,
+				slidesToScroll: 1,
+				responsive: [{
+					breakpoint: 1199,
+					settings: 'unslick'
+				}, {
+					breakpoint: 767,
+					settings: {
+						slidesToShow: 1.26
+					}
+				}]
+			}));
+
+			this.$block3Sld.slick($.extend({}, defaultOptions, {
+				slidesToShow: 1.14,
+				slidesToScroll: 1,
+				responsive: [{
+					breakpoint: 767,
+					settings: 'unslick'
+				}]
+			}));
+
+			this.$block6Sld.slick($.extend({}, defaultOptions, {
+				slidesToShow: 1.14,
+				slidesToScroll: 1,
+				responsive: [{
+					breakpoint: 1199,
+					settings: 'unslick'
+				}, {
+					breakpoint: 767,
+					settings: {
+						slidesToScroll: 1.13,
+						slidesToShow: 1.87
+					}
+				}]
+			}));
+
+			this.$mobileSlider.each(function (i, slider) {
+				var $slider = $(slider);
+
+				if (!_helpers.Resp.isDesk) _this.detectShadowedSld($slider);
+
+				$slider.on('afterChange', function () {
+					var $lastSlide = $(this).find('.slick-slide').last();
+					$lastSlide.is('.slick-active') ? $slider.addClass('is-last-slide') : $slider.removeClass('is-last-slide');
+				});
+			});
+		}
+	}, {
+		key: 'createSlider',
+		value: function createSlider() {
+			var _this = this;
+			var arrLeft = '<svg class="icon icon-arr-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="1.14 22.38 20.98 42.5 23.75 39.69 7.56 23.26 93.06 23.26 93.06 19.21 7.57 19.21 23.79 2.82 21 0 0 21.23 1.14 22.38"/>\n</svg>';
+			var arrRight = '<svg class="icon icon-arr-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"/>\n</svg>';
+
+			this.$slider.each(function () {
+				var $slider = $(this).find('.slider__body');
+
+				$slider.slick({
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					dots: false,
+					infinite: true,
+					arrows: true,
+					speed: 800,
+					cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+					useTransform: true,
+					adaptiveHeight: false,
+					accessibility: false,
+					swipe: true,
+					rows: 0,
+					prevArrow: '<button type="button" class="slider__btn slider-btn_prev">' + arrLeft + '</button>',
+					nextArrow: '<button type="button" class="slider__btn slider-btn_next">' + arrRight + '</button>',
+					appendArrows: $('.slider__buttons', this),
+					onInit: bindEvents()
+				});
+
+				function bindEvents() {
+					$slider.on('init afterChange reInit', function (event, slick, currentSlide) {
+						var $currentCount = $slider.siblings('.slider__controls').find('.slider__count-current');
+						var $allCount = $slider.siblings('.slider__controls').find('.slider__count-all');
+						var i = (currentSlide ? currentSlide : 0) + 1;
+
+						// count slides
+						$currentCount.text('0' + i);
+						$allCount.text('0' + slick.slideCount);
+
+						_this.playVideo($slider);
+					});
+				}
+
+				$slider.on('beforeChange', function () {
+					var $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
+					var animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
+
+					$countDecor.addClass(_helpers.css.hasAnim).one(animEnd, function () {
+						$(this).removeClass(_helpers.css.hasAnim);
+					});
+
+					_this.playVideo($slider, true);
+				});
+			});
+		}
+	}, {
+		key: 'playVideo',
+		value: function playVideo($slider) {
+			var pauseOnChange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+			var $item = $slider.find('.slider__item').not('.slick-cloned');
+			var $btn = $item.find('.play-btn');
+			var $video = $item.find('video');
+
+			$video.each(function () {
+				var $this = $(this);
+				var $autoplay = $this.is('[autoplay]');
+				var $video = $this[0];
+
+				if ($autoplay) {
+					$video.play();
+				}
+				if (pauseOnChange && !$autoplay) {
+					$video.pause();
+					$btn.removeClass(_helpers.css.hide);
+				}
+			});
+
+			$btn.on('click', function () {
+				var $this = $(this);
+				var $video = (0, _helpers.detectIE)() ? $this.next().find('video')[0] : $this.next()[0];
+
+				$this.addClass(_helpers.css.hide);
+				$video.play();
+
+				$this.next().on('click', function () {
+					$video.pause();
+					$btn.removeClass(_helpers.css.hide);
+				});
+			});
+		}
+	}, {
+		key: 'detectShadowedSld',
+		value: function detectShadowedSld($slider) {
+			var _this = this;
+			new _scrollAnim2.default({
+				el: $slider[0],
+				onEnter: function onEnter() {
+					_this.addShadowOnScroll($slider);
+				}
+			});
+		}
+	}, {
+		key: 'addShadowOnScroll',
+		value: function addShadowOnScroll($slider) {
+			_gsap.TweenMax.set($slider, { delay: 1, className: '+=' + 'is-shadowed' });
+		}
+	}, {
+		key: 'animOnScroll',
+		value: function animOnScroll($animBlock) {
+			var _this = this;
+
+			$animBlock.each(function (i, el) {
+				new _scrollAnim2.default({
+					el: $(el)[0],
+					onEnter: function onEnter() {
+						_this.startSliderAnim($animBlock);
+					}
+				});
+			});
+		}
+	}, {
+		key: 'prepareSliderAnim',
+		value: function prepareSliderAnim($animBlock) {
+			var tl = new _gsap.TimelineMax();
+			var $item = $animBlock.find('.slider__item.slick-active');
+			var $controls = $animBlock.next('.slider__controls');
+			var $text = $item.find('.slider__text').children();
+			var $media = $item.find('.slider__media');
+
+			tl.set($text, { autoAlpha: 0, x: -80 }).set($media, { autoAlpha: 0, x: -80 }).set($controls, { autoAlpha: 0, x: -80 });
+		}
+	}, {
+		key: 'startSliderAnim',
+		value: function startSliderAnim($animBlock) {
+			var tl = new _gsap.TimelineMax();
+			var $item = $animBlock.find('.slider__item.slick-active');
+			var $controls = $animBlock.next('.slider__controls');
+			var $text = $item.find('.slider__text').children();
+			var $media = $item.find('.slider__media');
+
+			tl.staggerTo($text, .7, { autoAlpha: 1, x: 0 }, 0.3).to($media, .7, { autoAlpha: 1, x: 0 }, 'all-=0.3').to($controls, .7, { autoAlpha: 1, x: 0 }, 'all-=0.3');
+		}
+	}]);
+
+	return Slider;
+}();
+
+var slider = exports.slider = new Slider();
+
+/***/ }),
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -45285,301 +45563,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 }));
 
 /***/ }),
-/* 435 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.slider = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _scrollAnim = __webpack_require__(36);
-
-var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
-
-var _gsap = __webpack_require__(21);
-
-var _slickCarousel = __webpack_require__(165);
-
-var _slickCarousel2 = _interopRequireDefault(_slickCarousel);
-
-var _helpers = __webpack_require__(12);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Slider = function () {
-	function Slider() {
-		_classCallCheck(this, Slider);
-
-		this.$slider = $('.slider');
-		this.$mobileSlider = $('.mobile-slider');
-		this.$mobSliderDouble = $('.mobile-slider_double');
-		this.$block3Sld = $('.block-3__items-list');
-		this.$block6Sld = $('.block-6__list');
-		this.$sliderAnimBlock = $('[data-anim="slider"]');
-
-		this.init();
-	}
-
-	_createClass(Slider, [{
-		key: 'init',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								this.createSlider();
-								this.createMobileSlider();
-								this.bindEvents();
-
-							case 3:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function init() {
-				return _ref.apply(this, arguments);
-			}
-
-			return init;
-		}()
-	}, {
-		key: 'bindEvents',
-		value: function bindEvents() {
-			this.prepareSliderAnim(this.$sliderAnimBlock);
-			this.animOnScroll(this.$sliderAnimBlock);
-		}
-	}, {
-		key: 'createMobileSlider',
-		value: function createMobileSlider() {
-			var _this = this;
-
-			var defaultOptions = {
-				dots: false,
-				infinite: false,
-				arrows: false,
-				speed: 400,
-				cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-				useTransform: true,
-				adaptiveHeight: true,
-				mobileFirst: true,
-				accessibility: false,
-				rows: 0
-			};
-
-			this.$mobSliderDouble.slick($.extend({}, defaultOptions, {
-				slidesToShow: 1.14,
-				slidesToScroll: 1,
-				responsive: [{
-					breakpoint: 1199,
-					settings: 'unslick'
-				}, {
-					breakpoint: 767,
-					settings: {
-						slidesToShow: 1.26
-					}
-				}]
-			}));
-
-			this.$block3Sld.slick($.extend({}, defaultOptions, {
-				slidesToShow: 1.14,
-				slidesToScroll: 1,
-				responsive: [{
-					breakpoint: 767,
-					settings: 'unslick'
-				}]
-			}));
-
-			this.$block6Sld.slick($.extend({}, defaultOptions, {
-				slidesToShow: 1.14,
-				slidesToScroll: 1,
-				responsive: [{
-					breakpoint: 1199,
-					settings: 'unslick'
-				}, {
-					breakpoint: 767,
-					settings: {
-						slidesToScroll: 1.13,
-						slidesToShow: 1.87
-					}
-				}]
-			}));
-
-			this.$mobileSlider.each(function (i, slider) {
-				var $slider = $(slider);
-
-				if (!_helpers.Resp.isDesk) _this.detectShadowedSld($slider);
-
-				$slider.on('afterChange', function () {
-					var $lastSlide = $(this).find('.slick-slide').last();
-					$lastSlide.is('.slick-active') ? $slider.addClass('is-last-slide') : $slider.removeClass('is-last-slide');
-				});
-			});
-		}
-	}, {
-		key: 'createSlider',
-		value: function createSlider() {
-			var _this = this;
-			var arrLeft = '<svg class="icon icon-arr-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="1.14 22.38 20.98 42.5 23.75 39.69 7.56 23.26 93.06 23.26 93.06 19.21 7.57 19.21 23.79 2.82 21 0 0 21.23 1.14 22.38"/>\n</svg>';
-			var arrRight = '<svg class="icon icon-arr-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"/>\n</svg>';
-
-			this.$slider.each(function () {
-				var $slider = $(this).find('.slider__body');
-
-				$slider.slick({
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					dots: false,
-					infinite: true,
-					arrows: true,
-					speed: 800,
-					cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-					useTransform: true,
-					adaptiveHeight: false,
-					accessibility: false,
-					swipe: true,
-					rows: 0,
-					prevArrow: '<button type="button" class="slider__btn slider-btn_prev">' + arrLeft + '</button>',
-					nextArrow: '<button type="button" class="slider__btn slider-btn_next">' + arrRight + '</button>',
-					appendArrows: $('.slider__buttons', this),
-					onInit: bindEvents()
-				});
-
-				function bindEvents() {
-					$slider.on('init afterChange reInit', function (event, slick, currentSlide) {
-						var $currentCount = $slider.siblings('.slider__controls').find('.slider__count-current');
-						var $allCount = $slider.siblings('.slider__controls').find('.slider__count-all');
-						var i = (currentSlide ? currentSlide : 0) + 1;
-
-						// count slides
-						$currentCount.text('0' + i);
-						$allCount.text('0' + slick.slideCount);
-
-						_this.playVideo($slider);
-					});
-				}
-
-				$slider.on('beforeChange', function () {
-					var $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
-					var animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
-
-					$countDecor.addClass(_helpers.css.hasAnim).one(animEnd, function () {
-						$(this).removeClass(_helpers.css.hasAnim);
-					});
-
-					_this.playVideo($slider, true);
-				});
-			});
-		}
-	}, {
-		key: 'playVideo',
-		value: function playVideo($slider) {
-			var pauseOnChange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-			var $item = $slider.find('.slider__item').not('.slick-cloned');
-			var $btn = $item.find('.play-btn');
-			var $video = $item.find('video');
-
-			$video.each(function () {
-				var $this = $(this);
-				var $autoplay = $this.is('[autoplay]');
-				var $video = $this[0];
-
-				if ($autoplay) {
-					$video.play();
-				}
-				if (pauseOnChange && !$autoplay) {
-					$video.pause();
-					$btn.removeClass(_helpers.css.hide);
-				}
-			});
-
-			$btn.on('click', function () {
-				var $this = $(this);
-				var $video = (0, _helpers.detectIE)() ? $this.next().find('video')[0] : $this.next()[0];
-
-				$this.addClass(_helpers.css.hide);
-				$video.play();
-
-				$this.next().on('click', function () {
-					$video.pause();
-					$btn.removeClass(_helpers.css.hide);
-				});
-			});
-		}
-	}, {
-		key: 'detectShadowedSld',
-		value: function detectShadowedSld($slider) {
-			var _this = this;
-			new _scrollAnim2.default({
-				el: $slider[0],
-				onEnter: function onEnter() {
-					_this.addShadowOnScroll($slider);
-				}
-			});
-		}
-	}, {
-		key: 'addShadowOnScroll',
-		value: function addShadowOnScroll($slider) {
-			_gsap.TweenMax.set($slider, { delay: 1, className: '+=' + 'is-shadowed' });
-		}
-	}, {
-		key: 'animOnScroll',
-		value: function animOnScroll($animBlock) {
-			var _this = this;
-
-			$animBlock.each(function (i, el) {
-				new _scrollAnim2.default({
-					el: $(el)[0],
-					onEnter: function onEnter() {
-						_this.startSliderAnim($animBlock);
-					}
-				});
-			});
-		}
-	}, {
-		key: 'prepareSliderAnim',
-		value: function prepareSliderAnim($animBlock) {
-			var tl = new _gsap.TimelineMax();
-			var $item = $animBlock.find('.slider__item.slick-active');
-			var $controls = $animBlock.next('.slider__controls');
-			var $text = $item.find('.slider__text').children();
-			var $media = $item.find('.slider__media');
-
-			tl.set($text, { autoAlpha: 0, x: -80 }).set($media, { autoAlpha: 0, x: -80 }).set($controls, { autoAlpha: 0, x: -80 });
-		}
-	}, {
-		key: 'startSliderAnim',
-		value: function startSliderAnim($animBlock) {
-			var tl = new _gsap.TimelineMax();
-			var $item = $animBlock.find('.slider__item.slick-active');
-			var $controls = $animBlock.next('.slider__controls');
-			var $text = $item.find('.slider__text').children();
-			var $media = $item.find('.slider__media');
-
-			tl.staggerTo($text, .7, { autoAlpha: 1, x: 0 }, 0.3).to($media, .7, { autoAlpha: 1, x: 0 }, 'all-=0.3').to($controls, .7, { autoAlpha: 1, x: 0 }, 'all-=0.3');
-		}
-	}]);
-
-	return Slider;
-}();
-
-var slider = exports.slider = new Slider();
-
-/***/ }),
 /* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45691,7 +45674,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
-var _scrollAnim = __webpack_require__(36);
+var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -45818,7 +45801,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
-var _scrollAnim = __webpack_require__(36);
+var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -45930,7 +45913,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
-var _scrollAnim = __webpack_require__(36);
+var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -46183,7 +46166,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
-var _scrollAnim = __webpack_require__(36);
+var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -46335,7 +46318,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
-var _scrollAnim = __webpack_require__(36);
+var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -46818,7 +46801,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
-var _scrollAnim = __webpack_require__(36);
+var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -46926,7 +46909,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
-var _scrollAnim = __webpack_require__(36);
+var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -53682,7 +53665,7 @@ var _Shader = __webpack_require__(68);
 
 var _Shader2 = _interopRequireDefault(_Shader);
 
-var _path = __webpack_require__(37);
+var _path = __webpack_require__(36);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60336,7 +60319,7 @@ var core = _interopRequireWildcard(_core);
 
 var _const = __webpack_require__(4);
 
-var _path = __webpack_require__(37);
+var _path = __webpack_require__(36);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -61669,7 +61652,7 @@ var _core = __webpack_require__(3);
 
 var core = _interopRequireWildcard(_core);
 
-var _path = __webpack_require__(37);
+var _path = __webpack_require__(36);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -61730,7 +61713,7 @@ var _core = __webpack_require__(3);
 
 var core = _interopRequireWildcard(_core);
 
-var _path = __webpack_require__(37);
+var _path = __webpack_require__(36);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -61832,7 +61815,7 @@ var _core = __webpack_require__(3);
 
 var core = _interopRequireWildcard(_core);
 
-var _path = __webpack_require__(37);
+var _path = __webpack_require__(36);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -62124,7 +62107,7 @@ var _core = __webpack_require__(3);
 
 var core = _interopRequireWildcard(_core);
 
-var _path = __webpack_require__(37);
+var _path = __webpack_require__(36);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -62680,7 +62663,7 @@ var _core = __webpack_require__(3);
 
 var core = _interopRequireWildcard(_core);
 
-var _path = __webpack_require__(37);
+var _path = __webpack_require__(36);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -65734,7 +65717,7 @@ var _Mesh = __webpack_require__(70);
 
 var _Mesh2 = _interopRequireDefault(_Mesh);
 
-var _path = __webpack_require__(37);
+var _path = __webpack_require__(36);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
