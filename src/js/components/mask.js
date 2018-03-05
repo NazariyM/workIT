@@ -14,7 +14,7 @@ class ScreenMask {
 
   init() {
     this.createApp();
-    this.isVideoLoaded();
+    // this.isVideoLoaded();
     // this.checkDeviceType();
     this.bindEvents();
 
@@ -113,75 +113,75 @@ class ScreenMask {
 
   }
 
-  video() {
-    const video = new PIXI.Texture.fromVideo(this.videoSrc);
-    const videoSprite = new PIXI.Sprite(video);
-    const videoSpriteBlur = new PIXI.Sprite(video);
-
-    video.baseTexture.source.loop = true;
-    video.baseTexture.source.muted = true;
-
-    if (detectIE()) {
-      this.image();
-    } else {
-      this.maskEl = new PIXI.SVG(this.block.querySelector('.mask__el'));
-
-      this.maskEl.width = this.width;
-      this.maskEl.height = this.height;
-      this.maskEl.position.x = 260;
-      this.maskEl.position.y = 0;
-
-      videoSprite.mask = this.maskEl;
-      videoSpriteBlur.filters = [this.blurFilter];
-
-      this.app.stage.addChild(videoSpriteBlur, videoSprite, this.maskEl);
-    }
-
-    if (Resp.isDesk) {
-      videoSprite.x = -this.blurSize * 2;
-      videoSprite.y = -this.blurSize * 2;
-      videoSpriteBlur.x = -this.blurSize * 2;
-      videoSpriteBlur.y = -this.blurSize * 2;
-
-      videoSprite.width = this.width + this.blurSize * 4;
-      videoSprite.height = this.height + this.blurSize * 4;
-      videoSpriteBlur.width = this.width + this.blurSize * 4;
-      videoSpriteBlur.height = this.height + this.blurSize * 4;
-    }
-
-    if (Resp.isTablet) {
-      this.maskEl.width = this.width + 1080;
-      this.maskEl.position.x = 30;
-
-      videoSprite.x = -this.blurSize - 450;
-      videoSprite.y = -this.blurSize;
-      videoSpriteBlur.x = -this.blurSize - 450;
-      videoSpriteBlur.y = -this.blurSize;
-      videoSpriteBlur.filters = [this.blurFilter];
-
-      videoSprite.width = this.width + 1000;
-      videoSprite.height = this.height + this.blurSize * 3;
-      videoSpriteBlur.width = this.width + 1000;
-      videoSpriteBlur.height = this.height + this.blurSize * 3;
-    }
-
-    if (Resp.isMobile) {
-      this.maskEl.width = this.width + 750;
-      this.maskEl.position.x = -50;
-
-      videoSprite.x = -this.blurSize - 300;
-      videoSprite.y = -this.blurSize;
-      videoSpriteBlur.x = -this.blurSize - 300;
-      videoSpriteBlur.y = -this.blurSize;
-      videoSpriteBlur.filters = [this.blurFilter];
-
-      videoSprite.width = this.width + 800;
-      videoSprite.height = this.height + this.blurSize * 3;
-      videoSpriteBlur.width = this.width + 800;
-      videoSpriteBlur.height = this.height + this.blurSize * 3;
-    }
-
-  }
+  // video() {
+  //   const video = new PIXI.Texture.fromVideo(this.videoSrc);
+  //   const videoSprite = new PIXI.Sprite(video);
+  //   const videoSpriteBlur = new PIXI.Sprite(video);
+  //
+  //   video.baseTexture.source.loop = true;
+  //   video.baseTexture.source.muted = true;
+  //
+  //   if (detectIE()) {
+  //     this.image();
+  //   } else {
+  //     this.maskEl = new PIXI.SVG(this.block.querySelector('.mask__el'));
+  //
+  //     this.maskEl.width = this.width;
+  //     this.maskEl.height = this.height;
+  //     this.maskEl.position.x = 260;
+  //     this.maskEl.position.y = 0;
+  //
+  //     videoSprite.mask = this.maskEl;
+  //     videoSpriteBlur.filters = [this.blurFilter];
+  //
+  //     this.app.stage.addChild(videoSpriteBlur, videoSprite, this.maskEl);
+  //   }
+  //
+  //   if (Resp.isDesk) {
+  //     videoSprite.x = -this.blurSize * 2;
+  //     videoSprite.y = -this.blurSize * 2;
+  //     videoSpriteBlur.x = -this.blurSize * 2;
+  //     videoSpriteBlur.y = -this.blurSize * 2;
+  //
+  //     videoSprite.width = this.width + this.blurSize * 4;
+  //     videoSprite.height = this.height + this.blurSize * 4;
+  //     videoSpriteBlur.width = this.width + this.blurSize * 4;
+  //     videoSpriteBlur.height = this.height + this.blurSize * 4;
+  //   }
+  //
+  //   if (Resp.isTablet) {
+  //     this.maskEl.width = this.width + 1080;
+  //     this.maskEl.position.x = 30;
+  //
+  //     videoSprite.x = -this.blurSize - 450;
+  //     videoSprite.y = -this.blurSize;
+  //     videoSpriteBlur.x = -this.blurSize - 450;
+  //     videoSpriteBlur.y = -this.blurSize;
+  //     videoSpriteBlur.filters = [this.blurFilter];
+  //
+  //     videoSprite.width = this.width + 1000;
+  //     videoSprite.height = this.height + this.blurSize * 3;
+  //     videoSpriteBlur.width = this.width + 1000;
+  //     videoSpriteBlur.height = this.height + this.blurSize * 3;
+  //   }
+  //
+  //   if (Resp.isMobile) {
+  //     this.maskEl.width = this.width + 750;
+  //     this.maskEl.position.x = -50;
+  //
+  //     videoSprite.x = -this.blurSize - 300;
+  //     videoSprite.y = -this.blurSize;
+  //     videoSpriteBlur.x = -this.blurSize - 300;
+  //     videoSpriteBlur.y = -this.blurSize;
+  //     videoSpriteBlur.filters = [this.blurFilter];
+  //
+  //     videoSprite.width = this.width + 800;
+  //     videoSprite.height = this.height + this.blurSize * 3;
+  //     videoSpriteBlur.width = this.width + 800;
+  //     videoSpriteBlur.height = this.height + this.blurSize * 3;
+  //   }
+  //
+  // }
 
   checkDeviceType() {
     (Resp.isMobile) ? this.image() : this.video();
@@ -199,38 +199,38 @@ class ScreenMask {
     this.app.renderer.view.style.height = `${h}px`;
   }
 
-  addBtnForVideo() {
-    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-      const button = new PIXI.Graphics()
-        .beginFill(0x0, 0.5)
-        .drawRoundedRect(0, 0, 100, 100, 10)
-        .endFill()
-        .beginFill(0xffffff)
-        .moveTo(36, 30)
-        .lineTo(36, 70)
-        .lineTo(70, 50);
-
-      button.x = 100;
-      button.y = 100;
-
-      // button.x = (this.app.screen.width - button.width) / 2;
-      // button.y = (this.app.screen.height - button.height) / 2;
-
-      button.interactive = true;
-      button.buttonMode = true;
-
-      button.on('pointertap', onPlayVideo);
-
-      function onPlayVideo() {
-
-        button.destroy();
-
-        video.baseTexture.source.play();
-      }
-
-      this.app.stage.addChild(button);
-    }
-  }
+  // addBtnForVideo() {
+  //   if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+  //     const button = new PIXI.Graphics()
+  //       .beginFill(0x0, 0.5)
+  //       .drawRoundedRect(0, 0, 100, 100, 10)
+  //       .endFill()
+  //       .beginFill(0xffffff)
+  //       .moveTo(36, 30)
+  //       .lineTo(36, 70)
+  //       .lineTo(70, 50);
+  //
+  //     button.x = 100;
+  //     button.y = 100;
+  //
+  //     // button.x = (this.app.screen.width - button.width) / 2;
+  //     // button.y = (this.app.screen.height - button.height) / 2;
+  //
+  //     button.interactive = true;
+  //     button.buttonMode = true;
+  //
+  //     button.on('pointertap', onPlayVideo);
+  //
+  //     function onPlayVideo() {
+  //
+  //       button.destroy();
+  //
+  //       video.baseTexture.source.play();
+  //     }
+  //
+  //     this.app.stage.addChild(button);
+  //   }
+  // }
 }
 
 export const screenMaskAPI = new ScreenMask();
