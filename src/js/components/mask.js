@@ -15,11 +15,11 @@ class ScreenMask {
   init() {
     this.createApp();
     this.isVideoLoaded();
-    this.checkDeviceType();
+    // this.checkDeviceType();
     this.bindEvents();
 
     // this.video();
-    // this.image();
+    this.image();
   }
 
   bindEvents() {
