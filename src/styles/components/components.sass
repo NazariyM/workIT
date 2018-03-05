@@ -66,7 +66,8 @@
   &__btn
     transform: translateX(-50px)
     opacity: 0
-    
+    +xs
+      letter-spacing: 0.1em
 .tel-block
   a
     +f('rob-700')
@@ -161,7 +162,13 @@
     +xs
       width: 42px
       height: 42px
-      
-  &_white
-  &_black
   
+.mask
+  overflow: hidden
+  &__el
+    display: none
+  &__play-btn
+    display: none
+  canvas
+    position: relative
+    z-index: -1

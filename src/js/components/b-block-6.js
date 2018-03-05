@@ -1,8 +1,8 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
-import Dot from './dot';
 import { preloader } from './preloader';
 import { css, Resp } from '../modules/dev/_helpers';
+import Dot from './dot';
 
 class Block6 {
   constructor() {
@@ -13,6 +13,8 @@ class Block6 {
     this.$offerPic = this.$offer.find('.block-6__offer-pic');
     this.$list = this.$container.find('.block-6__list');
     this.$itemMask = this.$list.find('.block-6__item-mask');
+    this.$dotTarget1 = $('.block-6__item-title h4');
+    this.$dotTarget2 = $('.block-6__item-text p');
 
     if (this.$container.length) this.init();
   }
@@ -20,7 +22,7 @@ class Block6 {
   async init() {
     await preloader.wait();
     await this.scrollAnim();
-    // await this.dot();
+    this.dot();
   }
 
   scrollAnim() {
@@ -87,9 +89,10 @@ class Block6 {
     .staggerTo(this.$itemMask, 1, { width: '0' }, .5, '-=.3');
   }
 
-  // dot() {
-  // 	new Dot(this.$descr);
-  // }
+  dot() {
+    new Dot(this.$dotTarget1);
+    new Dot(this.$dotTarget2);
+  }
 }
 
 export const Block6API = new Block6();

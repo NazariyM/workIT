@@ -1,4 +1,4 @@
-import dotdotdot from 'jquery.dotdotdot';
+import 'dotdotdot';
 import { $window, throttle } from '../modules/dev/_helpers';
 
 export default class Dot {
@@ -33,3 +33,4 @@ export default class Dot {
     this.$el.trigger('destroy');
   }
 }
+

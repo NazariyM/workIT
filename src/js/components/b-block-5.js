@@ -2,12 +2,14 @@ import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import { css, Resp } from '../modules/dev/_helpers';
 import { preloader } from './preloader';
+import Dot from './dot';
 
 class Block5 {
   constructor() {
     this.$container = $('.block-5');
     this.$item = this.$container.find('.block-5__item');
     this.$list = this.$container.find('.block-5__list');
+    this.$dotTarget = $('.block-5__item-descr p');
 
     if (this.$container.length) this.init();
   }
@@ -15,6 +17,7 @@ class Block5 {
   async init() {
     await preloader.wait();
     await this.scrollAnim();
+    this.dot();
   }
 
   scrollAnim() {
@@ -53,6 +56,10 @@ class Block5 {
        .staggerTo($items, .5, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, 0.25, '-=.2');
     }
 
+  }
+
+  dot() {
+    new Dot(this.$dotTarget);
   }
 }
 

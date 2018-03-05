@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "dotdotdot": "^1.7.0",
     "element-closest": "^2.0.2",
     "gsap": "^1.20.3",
     "jquery": "^3.0.0",
@@ -22,7 +23,8 @@
     "scale-to-window-pixi": "^1.2.0",
     "scrollmagic": "^2.0.5",
     "slick-carousel": "^1.8.1",
-    "vintage-popup": "^0.1.8"
+    "vintage-popup": "^0.1.8",
+    "webfontloader": "^1.6.28"
   },
   "author": "N. Mokrii",
   "devDependencies": {

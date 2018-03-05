@@ -32,7 +32,7 @@ if block2.title ? block2.title : block2.title = ''
 				+e.body
 					+e.item
 						+e.media
-							+e.VIDEO(autoplay loop volume='0' onloadedmetadata='this.muted = true')
+							+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' data-mobile-autoplay="true")
 								+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
 							+e.media-img._video(style='background-image: url(static/img/block-2_1.jpg)')
 

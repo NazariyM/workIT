@@ -1,7 +1,7 @@
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import { TweenMax, TimelineMax } from 'gsap';
 import slick from 'slick-carousel';
-import {css, Resp, detectIE, $window} from '../modules/dev/_helpers';
+import {css, Resp, detectIE } from '../modules/dev/_helpers';
 
 class Slider {
 
