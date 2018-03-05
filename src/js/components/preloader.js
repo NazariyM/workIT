@@ -11,6 +11,8 @@ class Preloader {
   async init() {
     if (sessionStorage.getItem('resized') === 'false') {
       this.animPreloader();
+    } else {
+      this.resolve = new Promise(resolve => { resolve(this.animPreloader()); });
     }
     sessionStorage.setItem('resized', false);
   }

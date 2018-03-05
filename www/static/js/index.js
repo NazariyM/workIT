@@ -11252,12 +11252,18 @@ var Preloader = function () {
     key: 'init',
     value: function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var _this = this;
+
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 if (sessionStorage.getItem('resized') === 'false') {
                   this.animPreloader();
+                } else {
+                  this.resolve = new Promise(function (resolve) {
+                    resolve(_this.animPreloader());
+                  });
                 }
                 sessionStorage.setItem('resized', false);
 
@@ -11283,7 +11289,7 @@ var Preloader = function () {
   }, {
     key: 'animPreloader',
     value: function animPreloader() {
-      var _this = this;
+      var _this2 = this;
 
       this.resolve = new Promise(function (resolve) {
         var tl = new _gsap.TimelineMax({
@@ -11294,7 +11300,7 @@ var Preloader = function () {
 
         // resolve();
 
-        tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
+        tl.to(_this2.$img, 1, { autoAlpha: 1 }).to(_this2.$preloader, .5, { autoAlpha: 0 }, '+=.3');
       });
     }
   }]);
