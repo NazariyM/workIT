@@ -19,8 +19,10 @@ class ScreenMask {
   init() {
     this.createApp();
     this.isVideoLoaded();
-    this.video();
+    this.checkDeviceType();
     this.bindEvents();
+
+    // this.video();
     // this.image();
   }
 
@@ -206,6 +208,10 @@ class ScreenMask {
       videoSpriteBlur.height = this.height + this.blurSize * 3;
     }
 
+  }
+
+  checkDeviceType() {
+    (Resp.isMobile) ? this.image() : this.video();
   }
 
   removeVideoOnMobile() {

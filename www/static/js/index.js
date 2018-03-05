@@ -11292,7 +11292,7 @@ var Preloader = function () {
           }
         });
 
-        resolve();
+        // resolve();
 
         tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
       });
@@ -47156,8 +47156,10 @@ var ScreenMask = function () {
     value: function init() {
       this.createApp();
       this.isVideoLoaded();
-      this.video();
+      this.checkDeviceType();
       this.bindEvents();
+
+      // this.video();
       // this.image();
     }
   }, {
@@ -47341,6 +47343,11 @@ var ScreenMask = function () {
         videoSpriteBlur.width = this.width + 800;
         videoSpriteBlur.height = this.height + this.blurSize * 3;
       }
+    }
+  }, {
+    key: 'checkDeviceType',
+    value: function checkDeviceType() {
+      _helpers.Resp.isMobile ? this.image() : this.video();
     }
   }, {
     key: 'removeVideoOnMobile',
