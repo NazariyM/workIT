@@ -1,17 +1,28 @@
 import * as PIXI from 'pixi.js';
-import 'pixi-svg';
-import { Resp, detectIE } from '../modules/dev/_helpers';
+// import 'pixi-svg';
+// var SVGGraphics = require('pixi-vector-graphics');
+import SVGGraphics from 'pixi-svg-graphics';
+import { Resp } from '../modules/dev/_helpers';
 
 class ScreenMask {
   constructor() {
     this.block = document.querySelector('.screen-mask');
     this.imgSrc = this.block.getAttribute('data-img-src');
     this.videoSrc = this.block.getAttribute('data-video-src');
-    this.blurSize = 5;
+    this.blurSize = 10;
     this.blurFilter = new PIXI.filters.BlurFilter(this.blurSize);
+    // this.maskEl = new PIXI.SVG(this.block.querySelector('.screen-mask__el'));
+    var svg = document.querySelector('svg#MySVGTag');
+    this.maskEl = new PIXI.Graphics();
+    SVGGraphics.drawSVG(this.maskEl, svg);
 
     this.width = window.innerWidth;
     this.height = window.innerHeight;
+
+    this.maskEl.width = this.width;
+    this.maskEl.height = this.height;
+    this.maskEl.position.x = 260;
+    this.maskEl.position.y = 0;
 
     this.init();
   }
@@ -35,24 +46,16 @@ class ScreenMask {
   }
 
   image() {
+    // const SVGGraphics = require('pixi-svg-graphics');
+
+    // var svg = document.querySelector('svg#MySVGTag')
+
+    // var graphics = new SVGGraphics(svg);
+
     const imgBlured = PIXI.Sprite.fromImage(this.imgSrc);
     const img = PIXI.Sprite.fromImage(this.imgSrc);
 
-    if (detectIE()) {
-      this.maskEl = null;
-      this.app.stage.addChild(img, imgBlured);
-    } else {
-      this.maskEl = new PIXI.SVG(this.block.querySelector('.screen-mask__el'));
-
-      this.maskEl.width = this.width;
-      this.maskEl.height = this.height;
-      this.maskEl.position.x = 260;
-      this.maskEl.position.y = 0;
-
-      img.mask = this.maskEl;
-
-      this.app.stage.addChild(imgBlured, img, this.maskEl);
-    }
+    img.mask = this.maskEl;
 
     if (Resp.isDesk) {
       img.x = -this.blurSize;
@@ -99,7 +102,7 @@ class ScreenMask {
       imgBlured.height = this.height + this.blurSize * 3;
     }
 
-    // this.app.stage.addChild(imgBlured, img, this.maskEl);
+    this.app.stage.addChild(imgBlured, img, this.maskEl);
 
   }
 

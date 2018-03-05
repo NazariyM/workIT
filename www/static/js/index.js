@@ -10447,92 +10447,6 @@ module.exports = function (TYPE, $create) {
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.preloader = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _gsap = __webpack_require__(21);
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Preloader = function () {
-  function Preloader() {
-    _classCallCheck(this, Preloader);
-
-    this.$preloader = $('.preloader');
-    this.$img = this.$preloader.find('.preloader__img');
-
-    this.init();
-  }
-
-  _createClass(Preloader, [{
-    key: 'init',
-    value: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                if (sessionStorage.getItem('resized') === 'false') {
-                  this.animPreloader();
-                }
-                sessionStorage.setItem('resized', false);
-
-              case 2:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function init() {
-        return _ref.apply(this, arguments);
-      }
-
-      return init;
-    }()
-  }, {
-    key: 'wait',
-    value: function wait() {
-      return this.resolve;
-    }
-  }, {
-    key: 'animPreloader',
-    value: function animPreloader() {
-      var _this = this;
-
-      this.resolve = new Promise(function (resolve) {
-        var tl = new _gsap.TimelineMax({
-          onComplete: function onComplete() {
-            resolve();
-          }
-        });
-
-        resolve();
-
-        tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
-      });
-    }
-  }]);
-
-  return Preloader;
-}();
-
-var preloader = exports.preloader = new Preloader();
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -10761,7 +10675,7 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(486)))
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11248,7 +11162,7 @@ if (__webpack_require__(9)) {
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Map = __webpack_require__(152);
@@ -11305,6 +11219,92 @@ module.exports = {
 
 
 /***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.preloader = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _gsap = __webpack_require__(21);
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Preloader = function () {
+  function Preloader() {
+    _classCallCheck(this, Preloader);
+
+    this.$preloader = $('.preloader');
+    this.$img = this.$preloader.find('.preloader__img');
+
+    this.init();
+  }
+
+  _createClass(Preloader, [{
+    key: 'init',
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (sessionStorage.getItem('resized') === 'false') {
+                  this.animPreloader();
+                }
+                sessionStorage.setItem('resized', false);
+
+              case 2:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function init() {
+        return _ref.apply(this, arguments);
+      }
+
+      return init;
+    }()
+  }, {
+    key: 'wait',
+    value: function wait() {
+      return this.resolve;
+    }
+  }, {
+    key: 'animPreloader',
+    value: function animPreloader() {
+      var _this = this;
+
+      this.resolve = new Promise(function (resolve) {
+        var tl = new _gsap.TimelineMax({
+          onComplete: function onComplete() {
+            resolve();
+          }
+        });
+
+        resolve();
+
+        tl.to(_this.$img, 1, { autoAlpha: 1 }).to(_this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
+      });
+    }
+  }]);
+
+  return Preloader;
+}();
+
+var preloader = exports.preloader = new Preloader();
+
+/***/ }),
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11321,7 +11321,7 @@ var _Scrollmagic = __webpack_require__(435);
 
 var _Scrollmagic2 = _interopRequireDefault(_Scrollmagic);
 
-var _preloader = __webpack_require__(35);
+var _preloader = __webpack_require__(38);
 
 var _helpers = __webpack_require__(12);
 
@@ -26552,7 +26552,7 @@ var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
-var _preloader = __webpack_require__(35);
+var _preloader = __webpack_require__(38);
 
 var _helpers = __webpack_require__(12);
 
@@ -31036,7 +31036,7 @@ var _Filter3 = _interopRequireDefault(_Filter2);
 
 var _math = __webpack_require__(15);
 
-var _path = __webpack_require__(36);
+var _path = __webpack_require__(35);
 
 var _TextureMatrix = __webpack_require__(191);
 
@@ -35162,7 +35162,7 @@ exports.default = function () {
     };
 };
 
-var _path = __webpack_require__(36);
+var _path = __webpack_require__(35);
 
 var path = _interopRequireWildcard(_path);
 
@@ -38937,7 +38937,7 @@ $export($export.G + $export.W + $export.F * !__webpack_require__(81).ABV, {
 /* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(37)('Int8', 1, function (init) {
+__webpack_require__(36)('Int8', 1, function (init) {
   return function Int8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38948,7 +38948,7 @@ __webpack_require__(37)('Int8', 1, function (init) {
 /* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(37)('Uint8', 1, function (init) {
+__webpack_require__(36)('Uint8', 1, function (init) {
   return function Uint8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38959,7 +38959,7 @@ __webpack_require__(37)('Uint8', 1, function (init) {
 /* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(37)('Uint8', 1, function (init) {
+__webpack_require__(36)('Uint8', 1, function (init) {
   return function Uint8ClampedArray(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38970,7 +38970,7 @@ __webpack_require__(37)('Uint8', 1, function (init) {
 /* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(37)('Int16', 2, function (init) {
+__webpack_require__(36)('Int16', 2, function (init) {
   return function Int16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38981,7 +38981,7 @@ __webpack_require__(37)('Int16', 2, function (init) {
 /* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(37)('Uint16', 2, function (init) {
+__webpack_require__(36)('Uint16', 2, function (init) {
   return function Uint16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -38992,7 +38992,7 @@ __webpack_require__(37)('Uint16', 2, function (init) {
 /* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(37)('Int32', 4, function (init) {
+__webpack_require__(36)('Int32', 4, function (init) {
   return function Int32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -39003,7 +39003,7 @@ __webpack_require__(37)('Int32', 4, function (init) {
 /* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(37)('Uint32', 4, function (init) {
+__webpack_require__(36)('Uint32', 4, function (init) {
   return function Uint32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -39014,7 +39014,7 @@ __webpack_require__(37)('Uint32', 4, function (init) {
 /* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(37)('Float32', 4, function (init) {
+__webpack_require__(36)('Float32', 4, function (init) {
   return function Float32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -39025,7 +39025,7 @@ __webpack_require__(37)('Float32', 4, function (init) {
 /* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(37)('Float64', 8, function (init) {
+__webpack_require__(36)('Float64', 8, function (init) {
   return function Float64Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -40072,7 +40072,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 /* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(38);
+var metadata = __webpack_require__(37);
 var anObject = __webpack_require__(1);
 var toMetaKey = metadata.key;
 var ordinaryDefineOwnMetadata = metadata.set;
@@ -40086,7 +40086,7 @@ metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValu
 /* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(38);
+var metadata = __webpack_require__(37);
 var anObject = __webpack_require__(1);
 var toMetaKey = metadata.key;
 var getOrCreateMetadataMap = metadata.map;
@@ -40107,7 +40107,7 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /* , 
 /* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(38);
+var metadata = __webpack_require__(37);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(24);
 var ordinaryHasOwnMetadata = metadata.has;
@@ -40132,7 +40132,7 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , target
 
 var Set = __webpack_require__(154);
 var from = __webpack_require__(163);
-var metadata = __webpack_require__(38);
+var metadata = __webpack_require__(37);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(24);
 var ordinaryOwnMetadataKeys = metadata.keys;
@@ -40155,7 +40155,7 @@ metadata.exp({ getMetadataKeys: function getMetadataKeys(target /* , targetKey *
 /* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(38);
+var metadata = __webpack_require__(37);
 var anObject = __webpack_require__(1);
 var ordinaryGetOwnMetadata = metadata.get;
 var toMetaKey = metadata.key;
@@ -40170,7 +40170,7 @@ metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /* , 
 /* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(38);
+var metadata = __webpack_require__(37);
 var anObject = __webpack_require__(1);
 var ordinaryOwnMetadataKeys = metadata.keys;
 var toMetaKey = metadata.key;
@@ -40184,7 +40184,7 @@ metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targe
 /* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(38);
+var metadata = __webpack_require__(37);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(24);
 var ordinaryHasOwnMetadata = metadata.has;
@@ -40206,7 +40206,7 @@ metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /* , target
 /* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(38);
+var metadata = __webpack_require__(37);
 var anObject = __webpack_require__(1);
 var ordinaryHasOwnMetadata = metadata.has;
 var toMetaKey = metadata.key;
@@ -40221,7 +40221,7 @@ metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , 
 /* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $metadata = __webpack_require__(38);
+var $metadata = __webpack_require__(37);
 var anObject = __webpack_require__(1);
 var aFunction = __webpack_require__(16);
 var toMetaKey = $metadata.key;
@@ -41435,11 +41435,11 @@ __webpack_require__(166);
 
 __webpack_require__(446);
 
-__webpack_require__(35);
+__webpack_require__(38);
 
 __webpack_require__(447);
 
-__webpack_require__(558);
+__webpack_require__(449);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42331,7 +42331,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
-var _preloader = __webpack_require__(35);
+var _preloader = __webpack_require__(38);
 
 var _helpers = __webpack_require__(12);
 
@@ -45615,7 +45615,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(21);
 
-var _preloader = __webpack_require__(35);
+var _preloader = __webpack_require__(38);
 
 var _helpers = __webpack_require__(12);
 
@@ -45844,7 +45844,7 @@ var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
 var _helpers = __webpack_require__(12);
 
-var _preloader = __webpack_require__(35);
+var _preloader = __webpack_require__(38);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45958,7 +45958,7 @@ var _dot = __webpack_require__(440);
 
 var _dot2 = _interopRequireDefault(_dot);
 
-var _preloader = __webpack_require__(35);
+var _preloader = __webpack_require__(38);
 
 var _helpers = __webpack_require__(12);
 
@@ -46207,7 +46207,7 @@ var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
-var _preloader = __webpack_require__(35);
+var _preloader = __webpack_require__(38);
 
 var _helpers = __webpack_require__(12);
 
@@ -46950,7 +46950,7 @@ var _scrollAnim = __webpack_require__(39);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
-var _preloader = __webpack_require__(35);
+var _preloader = __webpack_require__(38);
 
 var _helpers = __webpack_require__(12);
 
@@ -47110,7 +47110,204 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!function(){function t(p,i){return void 0===th
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):window.Popup=t,r($)}();
 
 /***/ }),
-/* 449 */,
+/* 449 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.screenMaskAPI = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _pixi = __webpack_require__(450);
+
+var PIXI = _interopRequireWildcard(_pixi);
+
+__webpack_require__(552);
+
+var _helpers = __webpack_require__(12);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ScreenMask = function () {
+  function ScreenMask() {
+    _classCallCheck(this, ScreenMask);
+
+    this.block = document.querySelector('.screen-mask');
+    this.imgSrc = this.block.getAttribute('data-img-src');
+    this.videoSrc = this.block.getAttribute('data-video-src');
+    this.blurSize = 5;
+    this.blurFilter = new PIXI.filters.BlurFilter(this.blurSize);
+
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+
+    this.init();
+  }
+
+  _createClass(ScreenMask, [{
+    key: 'init',
+    value: function init() {
+      this.createApp();
+      this.bindEvents();
+      // this.video();
+      this.image();
+    }
+  }, {
+    key: 'bindEvents',
+    value: function bindEvents() {
+      var _this2 = this;
+
+      window.addEventListener('resize', function () {
+        _this2.onResize();
+      });
+    }
+  }, {
+    key: 'createApp',
+    value: function createApp() {
+      this.app = new PIXI.Application(this.width, this.height, { transparent: true, autoResize: true });
+      this.block.appendChild(this.app.view);
+    }
+  }, {
+    key: 'image',
+    value: function image() {
+      var imgBlured = PIXI.Sprite.fromImage(this.imgSrc);
+      var img = PIXI.Sprite.fromImage(this.imgSrc);
+
+      if ((0, _helpers.detectIE)()) {
+        this.maskEl = null;
+        this.app.stage.addChild(img, imgBlured);
+      } else {
+        this.maskEl = new PIXI.SVG(this.block.querySelector('.screen-mask__el'));
+
+        this.maskEl.width = this.width;
+        this.maskEl.height = this.height;
+        this.maskEl.position.x = 260;
+        this.maskEl.position.y = 0;
+
+        img.mask = this.maskEl;
+
+        this.app.stage.addChild(imgBlured, img, this.maskEl);
+      }
+
+      if (_helpers.Resp.isDesk) {
+        img.x = -this.blurSize;
+        img.y = -this.blurSize;
+        imgBlured.x = -this.blurSize;
+        imgBlured.y = -this.blurSize;
+        imgBlured.filters = [this.blurFilter];
+
+        img.width = this.width + this.blurSize * 3;
+        img.height = this.height + this.blurSize * 3;
+        imgBlured.width = this.width + this.blurSize * 3;
+        imgBlured.height = this.height + this.blurSize * 3;
+      }
+
+      if (_helpers.Resp.isTablet) {
+        this.maskEl.width = this.width + 1080;
+        this.maskEl.position.x = 30;
+
+        img.x = -this.blurSize - 450;
+        img.y = -this.blurSize;
+        imgBlured.x = -this.blurSize - 450;
+        imgBlured.y = -this.blurSize;
+        imgBlured.filters = [this.blurFilter];
+
+        img.width = this.width + 1000;
+        img.height = this.height + this.blurSize * 3;
+        imgBlured.width = this.width + 1000;
+        imgBlured.height = this.height + this.blurSize * 3;
+      }
+
+      if (_helpers.Resp.isMobile) {
+        this.maskEl.width = this.width + 750;
+        this.maskEl.position.x = -50;
+
+        img.x = -this.blurSize - 300;
+        img.y = -this.blurSize;
+        imgBlured.x = -this.blurSize - 300;
+        imgBlured.y = -this.blurSize;
+        imgBlured.filters = [this.blurFilter];
+
+        img.width = this.width + 800;
+        img.height = this.height + this.blurSize * 3;
+        imgBlured.width = this.width + 800;
+        imgBlured.height = this.height + this.blurSize * 3;
+      }
+
+      // this.app.stage.addChild(imgBlured, img, this.maskEl);
+    }
+  }, {
+    key: 'video',
+    value: function video() {
+      var _this = this;
+
+      var video = new PIXI.Texture.fromVideo(this.videoSrc);
+      var videoSprite = new PIXI.Sprite(video);
+      var videoSpriteBlur = new PIXI.Sprite(video);
+
+      video.baseTexture.source.loop = true;
+      video.baseTexture.source.muted = true;
+
+      videoSprite.x = -this.blurSize * 2;
+      videoSprite.y = -this.blurSize * 2;
+      videoSpriteBlur.x = -this.blurSize * 2;
+      videoSpriteBlur.y = -this.blurSize * 2;
+
+      videoSprite.width = _this.width + this.blurSize * 4;
+      videoSprite.height = _this.height + this.blurSize * 4;
+      videoSpriteBlur.width = _this.width + this.blurSize * 4;
+      videoSpriteBlur.height = _this.height + this.blurSize * 4;
+
+      videoSpriteBlur.filters = [_this.blurFilter];
+      videoSprite.mask = this.maskEl;
+
+      _this.app.stage.addChild(videoSpriteBlur, videoSprite, _this.maskEl);
+
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        var onPlayVideo = function onPlayVideo() {
+
+          button.destroy();
+
+          video.baseTexture.source.play();
+        };
+
+        var button = new PIXI.Graphics().beginFill(0x0, 0.5).drawRoundedRect(0, 0, 100, 100, 10).endFill().beginFill(0xffffff).moveTo(36, 30).lineTo(36, 70).lineTo(70, 50);
+
+        button.x = (this.app.screen.width - button.width) / 2;
+        button.y = (this.app.screen.height - button.height) / 2;
+
+        button.interactive = true;
+        button.buttonMode = true;
+
+        button.on('pointertap', onPlayVideo);
+
+        _this.app.stage.addChild(button);
+      }
+    }
+  }, {
+    key: 'onResize',
+    value: function onResize() {
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+
+      this.app.renderer.view.style.width = w + 'px';
+      this.app.renderer.view.style.height = h + 'px';
+    }
+  }]);
+
+  return ScreenMask;
+}();
+
+var screenMaskAPI = exports.screenMaskAPI = new ScreenMask();
+
+/***/ }),
 /* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -53539,7 +53736,7 @@ var _Shader = __webpack_require__(68);
 
 var _Shader2 = _interopRequireDefault(_Shader);
 
-var _path = __webpack_require__(36);
+var _path = __webpack_require__(35);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60193,7 +60390,7 @@ var core = _interopRequireWildcard(_core);
 
 var _const = __webpack_require__(4);
 
-var _path = __webpack_require__(36);
+var _path = __webpack_require__(35);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -61526,7 +61723,7 @@ var _core = __webpack_require__(3);
 
 var core = _interopRequireWildcard(_core);
 
-var _path = __webpack_require__(36);
+var _path = __webpack_require__(35);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -61587,7 +61784,7 @@ var _core = __webpack_require__(3);
 
 var core = _interopRequireWildcard(_core);
 
-var _path = __webpack_require__(36);
+var _path = __webpack_require__(35);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -61689,7 +61886,7 @@ var _core = __webpack_require__(3);
 
 var core = _interopRequireWildcard(_core);
 
-var _path = __webpack_require__(36);
+var _path = __webpack_require__(35);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -61981,7 +62178,7 @@ var _core = __webpack_require__(3);
 
 var core = _interopRequireWildcard(_core);
 
-var _path = __webpack_require__(36);
+var _path = __webpack_require__(35);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -62537,7 +62734,7 @@ var _core = __webpack_require__(3);
 
 var core = _interopRequireWildcard(_core);
 
-var _path = __webpack_require__(36);
+var _path = __webpack_require__(35);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -65591,7 +65788,7 @@ var _Mesh = __webpack_require__(70);
 
 var _Mesh2 = _interopRequireDefault(_Mesh);
 
-var _path = __webpack_require__(36);
+var _path = __webpack_require__(35);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68877,197 +69074,6 @@ var Home = function () {
 }();
 
 exports.default = Home;
-
-/***/ }),
-/* 556 */,
-/* 557 */,
-/* 558 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.screenMaskAPI = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _pixi = __webpack_require__(450);
-
-var PIXI = _interopRequireWildcard(_pixi);
-
-__webpack_require__(552);
-
-var _helpers = __webpack_require__(12);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ScreenMask = function () {
-  function ScreenMask() {
-    _classCallCheck(this, ScreenMask);
-
-    this.block = document.querySelector('.screen-mask');
-    this.imgSrc = this.block.getAttribute('data-img-src');
-    this.videoSrc = this.block.getAttribute('data-video-src');
-    this.blurSize = 10;
-    this.blurFilter = new PIXI.filters.BlurFilter(this.blurSize);
-    this.maskEl = new PIXI.SVG(this.block.querySelector('.screen-mask__el'));
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-
-    this.maskEl.width = this.width;
-    this.maskEl.height = this.height;
-    this.maskEl.position.x = 260;
-    this.maskEl.position.y = 0;
-
-    this.init();
-  }
-
-  _createClass(ScreenMask, [{
-    key: 'init',
-    value: function init() {
-      this.createApp();
-      this.bindEvents();
-      // this.video();
-      this.image();
-    }
-  }, {
-    key: 'bindEvents',
-    value: function bindEvents() {
-      var _this2 = this;
-
-      window.addEventListener('resize', function () {
-        _this2.onResize();
-      });
-    }
-  }, {
-    key: 'createApp',
-    value: function createApp() {
-      this.app = new PIXI.Application(this.width, this.height, { transparent: true, autoResize: true });
-      this.block.appendChild(this.app.view);
-    }
-  }, {
-    key: 'image',
-    value: function image() {
-      var imgBlured = PIXI.Sprite.fromImage(this.imgSrc);
-      var img = PIXI.Sprite.fromImage(this.imgSrc);
-
-      img.mask = this.maskEl;
-
-      if (_helpers.Resp.isDesk) {
-        img.x = -this.blurSize;
-        img.y = -this.blurSize;
-        imgBlured.x = -this.blurSize;
-        imgBlured.y = -this.blurSize;
-        imgBlured.filters = [this.blurFilter];
-
-        img.width = this.width + this.blurSize * 3;
-        img.height = this.height + this.blurSize * 3;
-        imgBlured.width = this.width + this.blurSize * 3;
-        imgBlured.height = this.height + this.blurSize * 3;
-      }
-
-      if (_helpers.Resp.isTablet) {
-        this.maskEl.width = this.width + 1080;
-        this.maskEl.position.x = 30;
-
-        img.x = -this.blurSize - 450;
-        img.y = -this.blurSize;
-        imgBlured.x = -this.blurSize - 450;
-        imgBlured.y = -this.blurSize;
-        imgBlured.filters = [this.blurFilter];
-
-        img.width = this.width + 1000;
-        img.height = this.height + this.blurSize * 3;
-        imgBlured.width = this.width + 1000;
-        imgBlured.height = this.height + this.blurSize * 3;
-      }
-
-      if (_helpers.Resp.isMobile) {
-        this.maskEl.width = this.width + 750;
-        this.maskEl.position.x = -50;
-
-        img.x = -this.blurSize - 300;
-        img.y = -this.blurSize;
-        imgBlured.x = -this.blurSize - 300;
-        imgBlured.y = -this.blurSize;
-        imgBlured.filters = [this.blurFilter];
-
-        img.width = this.width + 800;
-        img.height = this.height + this.blurSize * 3;
-        imgBlured.width = this.width + 800;
-        imgBlured.height = this.height + this.blurSize * 3;
-      }
-
-      this.app.stage.addChild(imgBlured, img, this.maskEl);
-    }
-  }, {
-    key: 'video',
-    value: function video() {
-      var _this = this;
-
-      var video = new PIXI.Texture.fromVideo(this.videoSrc);
-      var videoSprite = new PIXI.Sprite(video);
-      var videoSpriteBlur = new PIXI.Sprite(video);
-
-      video.baseTexture.source.loop = true;
-      video.baseTexture.source.muted = true;
-
-      videoSprite.x = -this.blurSize * 2;
-      videoSprite.y = -this.blurSize * 2;
-      videoSpriteBlur.x = -this.blurSize * 2;
-      videoSpriteBlur.y = -this.blurSize * 2;
-
-      videoSprite.width = _this.width + this.blurSize * 4;
-      videoSprite.height = _this.height + this.blurSize * 4;
-      videoSpriteBlur.width = _this.width + this.blurSize * 4;
-      videoSpriteBlur.height = _this.height + this.blurSize * 4;
-
-      videoSpriteBlur.filters = [_this.blurFilter];
-      videoSprite.mask = this.maskEl;
-
-      _this.app.stage.addChild(videoSpriteBlur, videoSprite, _this.maskEl);
-
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        var onPlayVideo = function onPlayVideo() {
-
-          button.destroy();
-
-          video.baseTexture.source.play();
-        };
-
-        var button = new PIXI.Graphics().beginFill(0x0, 0.5).drawRoundedRect(0, 0, 100, 100, 10).endFill().beginFill(0xffffff).moveTo(36, 30).lineTo(36, 70).lineTo(70, 50);
-
-        button.x = (this.app.screen.width - button.width) / 2;
-        button.y = (this.app.screen.height - button.height) / 2;
-
-        button.interactive = true;
-        button.buttonMode = true;
-
-        button.on('pointertap', onPlayVideo);
-
-        _this.app.stage.addChild(button);
-      }
-    }
-  }, {
-    key: 'onResize',
-    value: function onResize() {
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-
-      this.app.renderer.view.style.width = w + 'px';
-      this.app.renderer.view.style.height = h + 'px';
-    }
-  }]);
-
-  return ScreenMask;
-}();
-
-var screenMaskAPI = exports.screenMaskAPI = new ScreenMask();
 
 /***/ })
 ],[219]);

@@ -6,9 +6,11 @@
     align-items: flex-start
   &__inner
     position: absolute
+    top: 50%
     left: 0
     right: 0
     z-index: 1
+    transform: translateY(-50%)
     +md
       padding: 170px 0 0
     +xs
@@ -52,8 +54,8 @@
     right: 60px
     bottom: 100px
     transform: translateY(200%)
+    height: 135px
     cursor: pointer
-    padding-bottom: 20px
     +md
       right: 30px
       bottom: 155px
