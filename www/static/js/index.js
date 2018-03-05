@@ -47142,7 +47142,7 @@ var ScreenMask = function () {
     this.block = document.querySelector('.screen-mask');
     this.imgSrc = this.block.getAttribute('data-img-src');
     this.videoSrc = this.block.getAttribute('data-video-src');
-    this.blurSize = 5;
+    this.blurSize = 10;
     this.blurFilter = new PIXI.filters.BlurFilter(this.blurSize);
 
     this.width = window.innerWidth;
@@ -47155,18 +47155,25 @@ var ScreenMask = function () {
     key: 'init',
     value: function init() {
       this.createApp();
+      this.isVideoLoaded();
+      this.video();
       this.bindEvents();
-      // this.video();
-      this.image();
+      // this.image();
     }
   }, {
     key: 'bindEvents',
     value: function bindEvents() {
-      var _this2 = this;
+      var _this = this;
 
       window.addEventListener('resize', function () {
-        _this2.onResize();
+        _this.onResize();
+        _this.removeVideoOnMobile();
       });
+    }
+  }, {
+    key: 'isVideoLoaded',
+    value: function isVideoLoaded() {
+      this.videoSrc ? this.video() : this.image();
     }
   }, {
     key: 'createApp',
@@ -47180,8 +47187,11 @@ var ScreenMask = function () {
       var imgBlured = PIXI.Sprite.fromImage(this.imgSrc);
       var img = PIXI.Sprite.fromImage(this.imgSrc);
 
+      imgBlured.filters = [this.blurFilter];
+
       if ((0, _helpers.detectIE)()) {
-        this.maskEl = null;
+        var ieBlur = new PIXI.filters.BlurFilter(5);
+        imgBlured.filters = [ieBlur];
         this.app.stage.addChild(img, imgBlured);
       } else {
         this.maskEl = new PIXI.SVG(this.block.querySelector('.screen-mask__el'));
@@ -47201,7 +47211,6 @@ var ScreenMask = function () {
         img.y = -this.blurSize;
         imgBlured.x = -this.blurSize;
         imgBlured.y = -this.blurSize;
-        imgBlured.filters = [this.blurFilter];
 
         img.width = this.width + this.blurSize * 3;
         img.height = this.height + this.blurSize * 3;
@@ -47217,7 +47226,6 @@ var ScreenMask = function () {
         img.y = -this.blurSize;
         imgBlured.x = -this.blurSize - 450;
         imgBlured.y = -this.blurSize;
-        imgBlured.filters = [this.blurFilter];
 
         img.width = this.width + 1000;
         img.height = this.height + this.blurSize * 3;
@@ -47233,21 +47241,16 @@ var ScreenMask = function () {
         img.y = -this.blurSize;
         imgBlured.x = -this.blurSize - 300;
         imgBlured.y = -this.blurSize;
-        imgBlured.filters = [this.blurFilter];
 
         img.width = this.width + 800;
         img.height = this.height + this.blurSize * 3;
         imgBlured.width = this.width + 800;
         imgBlured.height = this.height + this.blurSize * 3;
       }
-
-      // this.app.stage.addChild(imgBlured, img, this.maskEl);
     }
   }, {
     key: 'video',
     value: function video() {
-      var _this = this;
-
       var video = new PIXI.Texture.fromVideo(this.videoSrc);
       var videoSprite = new PIXI.Sprite(video);
       var videoSpriteBlur = new PIXI.Sprite(video);
@@ -47255,41 +47258,94 @@ var ScreenMask = function () {
       video.baseTexture.source.loop = true;
       video.baseTexture.source.muted = true;
 
-      videoSprite.x = -this.blurSize * 2;
-      videoSprite.y = -this.blurSize * 2;
-      videoSpriteBlur.x = -this.blurSize * 2;
-      videoSpriteBlur.y = -this.blurSize * 2;
+      if ((0, _helpers.detectIE)()) {
+        this.image();
+      } else {
+        this.maskEl = new PIXI.SVG(this.block.querySelector('.screen-mask__el'));
 
-      videoSprite.width = _this.width + this.blurSize * 4;
-      videoSprite.height = _this.height + this.blurSize * 4;
-      videoSpriteBlur.width = _this.width + this.blurSize * 4;
-      videoSpriteBlur.height = _this.height + this.blurSize * 4;
+        this.maskEl.width = this.width;
+        this.maskEl.height = this.height;
+        this.maskEl.position.x = 260;
+        this.maskEl.position.y = 0;
 
-      videoSpriteBlur.filters = [_this.blurFilter];
-      videoSprite.mask = this.maskEl;
+        videoSprite.mask = this.maskEl;
+        videoSpriteBlur.filters = [this.blurFilter];
 
-      _this.app.stage.addChild(videoSpriteBlur, videoSprite, _this.maskEl);
+        this.app.stage.addChild(videoSpriteBlur, videoSprite, this.maskEl);
 
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        var onPlayVideo = function onPlayVideo() {
+        if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+          var onPlayVideo = function onPlayVideo() {
 
-          button.destroy();
+            button.destroy();
 
-          video.baseTexture.source.play();
-        };
+            video.baseTexture.source.play();
+          };
 
-        var button = new PIXI.Graphics().beginFill(0x0, 0.5).drawRoundedRect(0, 0, 100, 100, 10).endFill().beginFill(0xffffff).moveTo(36, 30).lineTo(36, 70).lineTo(70, 50);
+          var button = new PIXI.Graphics().beginFill(0x0, 0.5).drawRoundedRect(0, 0, 100, 100, 10).endFill().beginFill(0xffffff).moveTo(36, 30).lineTo(36, 70).lineTo(70, 50);
 
-        button.x = (this.app.screen.width - button.width) / 2;
-        button.y = (this.app.screen.height - button.height) / 2;
+          button.x = 100;
+          button.y = 100;
 
-        button.interactive = true;
-        button.buttonMode = true;
+          // button.x = (this.app.screen.width - button.width) / 2;
+          // button.y = (this.app.screen.height - button.height) / 2;
 
-        button.on('pointertap', onPlayVideo);
+          button.interactive = true;
+          button.buttonMode = true;
 
-        _this.app.stage.addChild(button);
+          button.on('pointertap', onPlayVideo);
+
+          this.app.stage.addChild(button);
+        }
       }
+
+      if (_helpers.Resp.isDesk) {
+        videoSprite.x = -this.blurSize * 2;
+        videoSprite.y = -this.blurSize * 2;
+        videoSpriteBlur.x = -this.blurSize * 2;
+        videoSpriteBlur.y = -this.blurSize * 2;
+
+        videoSprite.width = this.width + this.blurSize * 4;
+        videoSprite.height = this.height + this.blurSize * 4;
+        videoSpriteBlur.width = this.width + this.blurSize * 4;
+        videoSpriteBlur.height = this.height + this.blurSize * 4;
+      }
+
+      if (_helpers.Resp.isTablet) {
+        this.maskEl.width = this.width + 1080;
+        this.maskEl.position.x = 30;
+
+        videoSprite.x = -this.blurSize - 450;
+        videoSprite.y = -this.blurSize;
+        videoSpriteBlur.x = -this.blurSize - 450;
+        videoSpriteBlur.y = -this.blurSize;
+        videoSpriteBlur.filters = [this.blurFilter];
+
+        videoSprite.width = this.width + 1000;
+        videoSprite.height = this.height + this.blurSize * 3;
+        videoSpriteBlur.width = this.width + 1000;
+        videoSpriteBlur.height = this.height + this.blurSize * 3;
+      }
+
+      if (_helpers.Resp.isMobile) {
+        this.maskEl.width = this.width + 750;
+        this.maskEl.position.x = -50;
+
+        videoSprite.x = -this.blurSize - 300;
+        videoSprite.y = -this.blurSize;
+        videoSpriteBlur.x = -this.blurSize - 300;
+        videoSpriteBlur.y = -this.blurSize;
+        videoSpriteBlur.filters = [this.blurFilter];
+
+        videoSprite.width = this.width + 800;
+        videoSprite.height = this.height + this.blurSize * 3;
+        videoSpriteBlur.width = this.width + 800;
+        videoSpriteBlur.height = this.height + this.blurSize * 3;
+      }
+    }
+  }, {
+    key: 'removeVideoOnMobile',
+    value: function removeVideoOnMobile() {
+      if (_helpers.Resp.isMobile) this.image();
     }
   }, {
     key: 'onResize',
