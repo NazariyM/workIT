@@ -13,9 +13,17 @@ if screen.subTitle ? screen.subTitle : screen.subTitle = 'Место, где р�
       +e.BUTTON.btn.btn._green(data-popup-target='comePopup' type='button')
         span.btn__text хочу в гости
 
-  +b.mask.js-screen-mask(data-img-src='static/img/screen_bg.jpg' data-video-src='static/video/video-sample.mp4')
-    +e.SVG.el(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 1219.68 681')
-      polygon(points='846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89')
+  // mask
+  svg.mask(version='1.1', xmlns='http://www.w3.org/2000/svg' preserveAspectRatio="none")
+    defs
+      clipPath#mask-clip
+        polygon.mask__el(points='846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89')
+      filter#mask-blur
+        fegaussianblur(in='SourceGraphic', stddeviation='10')
+
+    image(xlink:href='static/img/screen_bg.jpg', x='0', y='0' filter='url(#mask-blur)' preserveAspectRatio='xMidYMid slice' width='1920' height='1080')
+    image(xlink:href='static/img/screen_bg.jpg', x='0', y='0' clip-path='url(#mask-clip)' preserveAspectRatio='xMidYMid slice' width='1920' height='1080')
+
 
   +e.more
     +e.SPAN.more-text.h6 узнать больше
