@@ -2,7 +2,7 @@ import { TweenMax } from 'gsap';
 import { Resp } from '../modules/dev/_helpers';
 
 class Mask {
-  constructor() {
+  constructor(block, fullscreen) {
     this.block = document.querySelector('.mask');
 
     if (this.block) this.init();
@@ -22,18 +22,18 @@ class Mask {
 
   detectType() {
     this.maskType = this.block.getAttribute('data-mask-type');
-    // this.video = this.block.querySelector('video');
-    this.maskEl = this.block.querySelector('.mask__el');
     this.rects = this.block.querySelectorAll('rect');
+    this.clipPathTag = this.block.querySelector('clipPath');
+    this.maskTag = this.block.querySelector('mask');
 
     switch (this.maskType) {
-      case 'image':
-        this.maskTag = this.block.querySelector('mask');
-        this.initImage();
-        break;
       case 'video':
-        this.clipPathTag = this.block.querySelector('clipPath');
+        this.maskEl = this.maskTag.querySelector('.mask__el');
         this.initVideo();
+        break;
+      case 'image':
+        this.maskEl = this.clipPathTag.querySelector('.mask__el');
+        this.initImage();
         break;
       default:
         this.initVideo();
@@ -41,18 +41,21 @@ class Mask {
   }
 
   initImage() {
+    // height
+
+
     this.images = this.block.querySelectorAll('image');
 
-    // this.maskTag.remove();
-    // this.rects.forEach(x => {x.remove(); });
+    this.maskTag.remove();
+    this.rects.forEach(x => {x.remove(); });
   }
 
   initVideo() {
-
+    this.clipPathTag.remove();
   }
 
-  setRatio() {
-    // maskType = this.maskType;
+  setRatio(maskType) {
+    maskType = this.maskType;
 
     this.maskWidth = 1219;
     this.maskHeight = 681;
@@ -60,13 +63,12 @@ class Mask {
     const winWidth = window.innerWidth;
     const winHeight = window.innerHeight;
 
+    maskType === 'video' ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+
     const widthTransform = winWidth / this.maskWidth;
     const heightTransform = winHeight / this.maskHeight;
-    const value = heightTransform < widthTransform ? widthTransform : heightTransform;
     const offsetX = 310;
-
-    this.imageFix(winWidth, winHeight);
-    this.videoFix(winWidth, winHeight);
+    const value = heightTransform < widthTransform ? widthTransform : heightTransform;
 
     TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${offsetX}px)` });
 

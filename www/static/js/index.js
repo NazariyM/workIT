@@ -28225,7 +28225,7 @@ var _helpers = __webpack_require__(9);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Mask = function () {
-  function Mask() {
+  function Mask(block, fullscreen) {
     _classCallCheck(this, Mask);
 
     this.block = document.querySelector('.mask');
@@ -28253,18 +28253,18 @@ var Mask = function () {
     key: 'detectType',
     value: function detectType() {
       this.maskType = this.block.getAttribute('data-mask-type');
-      // this.video = this.block.querySelector('video');
-      this.maskEl = this.block.querySelector('.mask__el');
       this.rects = this.block.querySelectorAll('rect');
+      this.clipPathTag = this.block.querySelector('clipPath');
+      this.maskTag = this.block.querySelector('mask');
 
       switch (this.maskType) {
-        case 'image':
-          this.maskTag = this.block.querySelector('mask');
-          this.initImage();
-          break;
         case 'video':
-          this.clipPathTag = this.block.querySelector('clipPath');
+          this.maskEl = this.maskTag.querySelector('.mask__el');
           this.initVideo();
+          break;
+        case 'image':
+          this.maskEl = this.clipPathTag.querySelector('.mask__el');
+          this.initImage();
           break;
         default:
           this.initVideo();
@@ -28273,18 +28273,25 @@ var Mask = function () {
   }, {
     key: 'initImage',
     value: function initImage() {
+      // height
+
+
       this.images = this.block.querySelectorAll('image');
 
-      // this.maskTag.remove();
-      // this.rects.forEach(x => {x.remove(); });
+      this.maskTag.remove();
+      this.rects.forEach(function (x) {
+        x.remove();
+      });
     }
   }, {
     key: 'initVideo',
-    value: function initVideo() {}
+    value: function initVideo() {
+      this.clipPathTag.remove();
+    }
   }, {
     key: 'setRatio',
-    value: function setRatio() {
-      // maskType = this.maskType;
+    value: function setRatio(maskType) {
+      maskType = this.maskType;
 
       this.maskWidth = 1219;
       this.maskHeight = 681;
@@ -28292,13 +28299,12 @@ var Mask = function () {
       var winWidth = window.innerWidth;
       var winHeight = window.innerHeight;
 
+      maskType === 'video' ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+
       var widthTransform = winWidth / this.maskWidth;
       var heightTransform = winHeight / this.maskHeight;
-      var value = heightTransform < widthTransform ? widthTransform : heightTransform;
       var offsetX = 310;
-
-      this.imageFix(winWidth, winHeight);
-      this.videoFix(winWidth, winHeight);
+      var value = heightTransform < widthTransform ? widthTransform : heightTransform;
 
       _gsap.TweenMax.set(this.maskEl, { transform: 'scale(' + value + ', ' + value + ') translateX(' + offsetX + 'px)' });
     }
