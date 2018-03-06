@@ -27289,6 +27289,8 @@ exports.MaskAPI = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _gsap = __webpack_require__(16);
+
 var _helpers = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27322,20 +27324,13 @@ var Mask = function () {
   }, {
     key: 'setRatio',
     value: function setRatio() {
-      // const box = this.maskEl.getBBox();
-      // const elW = box.width;
-      // const elH = box.height;
+      var elWidth = 1219;
+      var elHeight = 681;
 
-      var elW = 1220;
-      var elH = 681;
+      var winWidth = window.innerWidth;
+      var winHeight = window.innerHeight;
 
-      var width = window.innerWidth;
-      var height = window.innerHeight;
-
-      // this.svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-
-      // console.log(this.image);
-
+      // fix for IE, FF etc.
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -27344,13 +27339,9 @@ var Mask = function () {
         for (var _iterator = this.image[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var img = _step.value;
 
-          img.setAttribute('width', '' + (width + 30));
-          img.setAttribute('height', '' + (height + 30));
+          img.setAttribute('width', '' + (winWidth + 30));
+          img.setAttribute('height', '' + (winHeight + 30));
         }
-
-        // this.maskElRatio = elW / elH;
-
-        // this.ratio = width / height;
       } catch (err) {
         _didIteratorError = true;
         _iteratorError = err;
@@ -27366,15 +27357,11 @@ var Mask = function () {
         }
       }
 
-      this.ratio1 = width / elW;
-      this.ratio2 = height / elH;
+      var widthTransform = winWidth / elWidth;
+      var heightTransform = winHeight / elHeight;
+      var value = heightTransform < widthTransform ? widthTransform : heightTransform;
 
-      this.maskEl.style.transform = 'scale(' + this.ratio2 + ', ' + this.ratio1 + ') translate(310px, 20px)';
-
-      // this.maskEl.style.transform = `scale(${this.ratio2}, ${this.ratio1}) translateX(310px)`;
-
-      // this.maskEl.style.transform = `scale(${this.maskElRatio}, ${this.ratio}) translate(100px, 0px)`;
-      // this.maskEl.style.transform = `scale(${this.ratio1 * this.ratio2}) translate(100px, 0px)`;
+      _gsap.TweenMax.set(this.maskEl, { transform: 'scale(' + value + ', ' + value + ') translateX(310px)' });
     }
   }, {
     key: 'onResize',

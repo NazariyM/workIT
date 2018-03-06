@@ -1,4 +1,5 @@
-import { Resp, detectIE } from '../modules/dev/_helpers';
+import { TweenMax } from 'gsap';
+import { Resp } from '../modules/dev/_helpers';
 
 class Mask {
   constructor() {
@@ -22,38 +23,23 @@ class Mask {
   }
 
   setRatio() {
-    // const box = this.maskEl.getBBox();
-    // const elW = box.width;
-    // const elH = box.height;
+    const elWidth = 1219;
+    const elHeight = 681;
 
-    const elW = 1220;
-    const elH = 681;
+    const winWidth = window.innerWidth;
+    const winHeight = window.innerHeight;
 
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    // this.svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-
-    // console.log(this.image);
-
+    // fix for IE, FF etc.
     for (let img of this.image) {
-      img.setAttribute('width', `${width + 30}`);
-      img.setAttribute('height', `${height + 30}`);
+      img.setAttribute('width', `${winWidth + 30}`);
+      img.setAttribute('height', `${winHeight + 30}`);
     }
 
-    // this.maskElRatio = elW / elH;
+    const widthTransform = winWidth / elWidth;
+    const heightTransform = winHeight / elHeight;
+    const value = heightTransform < widthTransform ? widthTransform : heightTransform;
 
-    // this.ratio = width / height;
-
-    this.ratio1 = width / elW;
-    this.ratio2 = height / elH;
-
-    this.maskEl.style.transform = `scale(${this.ratio2}, ${this.ratio1}) translate(310px, 20px)`;
-
-    // this.maskEl.style.transform = `scale(${this.ratio2}, ${this.ratio1}) translateX(310px)`;
-
-    // this.maskEl.style.transform = `scale(${this.maskElRatio}, ${this.ratio}) translate(100px, 0px)`;
-    // this.maskEl.style.transform = `scale(${this.ratio1 * this.ratio2}) translate(100px, 0px)`;
+    TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(310px)` });
   }
 
   onResize() {
