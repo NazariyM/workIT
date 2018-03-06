@@ -48,10 +48,6 @@ class Mask {
     this.ratio1 = width / elW;
     this.ratio2 = height / elH;
 
-    // if (!Resp.isDesk) {
-    //   this.ratio = this.height / this.width;
-    // }
-
     this.maskEl.style.transform = `scale(${this.ratio2}, ${this.ratio1}) translate(310px, 20px)`;
 
     // this.maskEl.style.transform = `scale(${this.ratio2}, ${this.ratio1}) translateX(310px)`;

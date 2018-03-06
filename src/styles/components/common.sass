@@ -247,7 +247,6 @@ label.btn
   &_green
     b::after
       background: $color1
-    &.is-selected b::after
       width: calc(100% + 17px)
       +xs
         bottom: 2px
@@ -256,8 +255,7 @@ label.btn
     b
       color: $white
     b::after
-      background: $black
-    &.is-selected b::after
+      background: $color2
       width: calc(100% + 20px)
       +xs
         width: calc(100% + 9px)
@@ -270,13 +268,16 @@ label.btn
       left: -10px
       top: 8px
       bottom: 1px
-      right: 0
-      width: 0
+      transform: scaleX(0)
       content: ''
       z-index: -1
-      transition: width 1.3s 1s ease
+      transform-origin: 0 0
+      transition: transform 1.3s 1s ease
       +xs
         top: 6px
         left: -5px
         width: calc(100% + 9px)
         transition: none
+        
+  &.is-selected b::after
+    transform: scaleX(1)
