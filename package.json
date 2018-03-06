@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "dom4": "^2.0.1",
     "dotdotdot": "^1.7.0",
     "element-closest": "^2.0.2",
     "gsap": "^1.20.3",

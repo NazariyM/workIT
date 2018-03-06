@@ -383,18 +383,26 @@
             </button>
           </div>
         </div>
-        <svg class="mask" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <defs>
-            <clipPath id="mask-clip">
-              <polygon class="mask__el" points="846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89"></polygon>
-            </clipPath>
-            <filter id="mask-blur">
-              <fegaussianblur in="SourceGraphic" stddeviation="10"></fegaussianblur>
-            </filter>
-          </defs>
-          <image xlink:href="static/img/screen_bg.jpg" x="0" y="0" filter="url(#mask-blur)" preserveAspectRatio="xMidYMid slice" width="1920" height="1080"></image>
-          <image xlink:href="static/img/screen_bg.jpg" x="0" y="0" clip-path="url(#mask-clip)" preserveAspectRatio="xMidYMid slice" width="1920" height="1080"></image>
-        </svg>
+        <div class="mask" data-mask-type="image">
+          <svg class="mask__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <defs>
+              <clipPath id="screen-img-clip">
+                <polygon class="mask__el" points="846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89"></polygon>
+              </clipPath>
+              <filter id="screen-mask-blur">
+                <fegaussianblur in="SourceGraphic" stddeviation="10"></fegaussianblur>
+              </filter>
+              <!--mask#sreen-video-cliprect(x='0' y='0')
+polygon.mask__el(points='846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89')
+-->
+            </defs>
+            <!--rect(x='0' y='0' width="1920" height="1080" mask='url(#sreen-video-clip)')-->
+            <image xlink:href="static/img/screen_bg.jpg" x="0" y="0" filter="url(#screen-mask-blur)" preserveAspectRatio="xMidYMid slice" width="1920" height="1080"></image>
+            <image xlink:href="static/img/screen_bg.jpg" x="0" y="0" clip-path="url(#screen-img-clip)" preserveAspectRatio="xMidYMid slice" width="1920" height="1080"></image>
+          </svg>
+          <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true')+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
+-->
+        </div>
         <div class="screen__more">
           <span class="screen__more-text h6">узнать больше</span>
           <svg class="screen__more-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 93.06 42.5">
@@ -408,10 +416,13 @@
       <!--include ../components/block-3-->
       <!---->
       <!--include ../components/block-4-->
+      <!---->
       <!--include ../components/block-5-->
       <!---->
       <!--include ../components/block-6-->
+      <!---->
       <!--include ../components/come-->
+      <!---->
       <!--include ../components/block-8-->
       <!---->
       <!--include ../components/block-9-->

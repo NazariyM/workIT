@@ -8,7 +8,7 @@
 
 /** Import initialized-by-default modules/libs */
 import 'babel-polyfill';
-import 'element-closest';
+import 'dom4';
 import './components/Common';
 
 /** Import page controllers */
