@@ -134,9 +134,9 @@
     
 .play-btn
   position: absolute
-  display: flex
-  align-items: center
-  justify-content: center
+  //display: flex
+  //align-items: center
+  //justify-content: center
   margin-top: -75px
   margin-left: -75px
   width: 150px
@@ -146,6 +146,7 @@
   cursor: pointer
   +gpu
   transition: .5s ease
+  +vertical
   +xs
     width: 60px
     height: 60px
@@ -158,6 +159,8 @@
     opacity: 0
     visibility: hidden
   svg
+    display: inline-block
+    vertical-align: middle
     +xs
       width: 42px
       height: 42px
