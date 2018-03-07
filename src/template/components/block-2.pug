@@ -31,8 +31,8 @@ if block2.title ? block2.title : block2.title = ''
 			+b.slider.block-2__slider
 				+e.body
 					+e.item
-						+e.media
-							+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' data-mobile-autoplay="true")
+						+e.media.img-hover
+							+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' data-mobile-disable)
 								+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
 							+e.media-img._video(style='background-image: url(static/img/block-2_1.jpg)')
 

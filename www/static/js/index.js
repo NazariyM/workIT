@@ -9472,8 +9472,6 @@ var Preloader = function () {
           }
         });
 
-        resolve();
-
         tl.to(_this2.$img, 1, { autoAlpha: 1 }).to(_this2.$preloader, .5, { autoAlpha: 0 }, '+=.3');
       });
     }
@@ -21884,6 +21882,8 @@ var _pageResize = __webpack_require__(345);
 
 var _pageResize2 = _interopRequireDefault(_pageResize);
 
+__webpack_require__(562);
+
 __webpack_require__(96);
 
 __webpack_require__(348);
@@ -26863,6 +26863,7 @@ var Block3 = function () {
     this.$container = $('.block-3');
     this.$lines = this.$container.find('.block-3__line');
     this.$items = this.$container.find('.block-3__item');
+    this.$video = this.$items.find('video');
 
     if (this.$container.length) this.init();
   }
@@ -26942,6 +26943,10 @@ var Block3 = function () {
       var $elements = $itemInner.children();
 
       tl.staggerTo($elements, 1.5, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, .3).to($count, 1, { autoAlpha: 1.3, y: 0, ease: Power2.easeOut }, '-=1').set($countEl, { className: '+=' + _helpers.css.hasAnim }, '-=1.1');
+
+      if (this.$video.length) this.$video.each(function () {
+        $(this)[0].play();
+      });
     }
   }, {
     key: 'startLinesAnim',
@@ -28512,6 +28517,251 @@ var Come = function () {
 }();
 
 var comeAPI = exports.comeAPI = new Come();
+
+/***/ }),
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */,
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */,
+/* 393 */,
+/* 394 */,
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */,
+/* 500 */,
+/* 501 */,
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */,
+/* 513 */,
+/* 514 */,
+/* 515 */,
+/* 516 */,
+/* 517 */,
+/* 518 */,
+/* 519 */,
+/* 520 */,
+/* 521 */,
+/* 522 */,
+/* 523 */,
+/* 524 */,
+/* 525 */,
+/* 526 */,
+/* 527 */,
+/* 528 */,
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */,
+/* 535 */,
+/* 536 */,
+/* 537 */,
+/* 538 */,
+/* 539 */,
+/* 540 */,
+/* 541 */,
+/* 542 */,
+/* 543 */,
+/* 544 */,
+/* 545 */,
+/* 546 */,
+/* 547 */,
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */,
+/* 552 */,
+/* 553 */,
+/* 554 */,
+/* 555 */,
+/* 556 */,
+/* 557 */,
+/* 558 */,
+/* 559 */,
+/* 560 */,
+/* 561 */,
+/* 562 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.disableVideo = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _helpers = __webpack_require__(9);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DisableMobVideo = function () {
+  function DisableMobVideo() {
+    _classCallCheck(this, DisableMobVideo);
+
+    this.$videos = $('video[data-mobile-disable]');
+
+    if (!_helpers.Resp.isDesk && this.$videos.length) this.init();
+  }
+
+  _createClass(DisableMobVideo, [{
+    key: 'init',
+    value: function init() {
+      this.disableVideos();
+    }
+  }, {
+    key: 'disableVideos',
+    value: function disableVideos() {
+      this.$videos.each(function () {
+        $(this).remove();
+      });
+    }
+  }, {
+    key: 'onResize',
+    value: function onResize() {
+      _helpers.$window.on('resize', this.disableVideos());
+    }
+  }]);
+
+  return DisableMobVideo;
+}();
+
+var disableVideo = exports.disableVideo = new DisableMobVideo();
 
 /***/ })
 ],[133]);

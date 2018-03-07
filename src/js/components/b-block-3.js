@@ -7,6 +7,7 @@ class Block3 {
     this.$container = $('.block-3');
     this.$lines = this.$container.find('.block-3__line');
     this.$items = this.$container.find('.block-3__item');
+    this.$video = this.$items.find('video');
 
     if (this.$container.length) this.init();
   }
@@ -44,6 +45,10 @@ class Block3 {
       .staggerTo($elements, 1.5, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, .3)
       .to($count, 1, { autoAlpha: 1.3, y: 0, ease: Power2.easeOut }, '-=1')
       .set($countEl, { className: `+=${css.hasAnim}` }, '-=1.1');
+
+    if (this.$video.length) this.$video.each(function () {
+      $(this)[0].play();
+    });
   }
 
   startLinesAnim() {

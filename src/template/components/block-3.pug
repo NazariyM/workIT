@@ -18,8 +18,9 @@ if block3 ? block3 : block3 = []
 				+e.ARTICLE.item-inner
 					+e.item-media.img-hover
 						+e.item-img.img-hover__item(style='background-image: url(static/img/block-3_1.jpg)')
-						//+e.VIDEO.item-video(autoplay loop muted)
-						//	source(src=static/video/block-3_sample.mp4" type='video/mp4')
+
+						//+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)
+						//	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
 
 					+e.item-text
 						+e.H3 фонд workit
