@@ -368,7 +368,51 @@
     <!--end header-->
     <!-- Main content-->
     <main class="content" data-page="home">
-      <!--include ../components/screen-->
+      <!--begin screen-->
+      <section class="screen">
+        <div class="screen__inner">
+          <div class="screen__container container container_md">
+            <div class="screen__title">
+              <h1>Намного больше, чем пространство</h1>
+            </div>
+            <div class="screen__sub-title">
+              <h5>Место, где рождаются идеи</h5>
+            </div>
+            <button class="screen__btn btn btn_green" data-popup-target="comePopup" type="button">
+              <span class="btn__text">хочу в гости</span>
+            </button>
+          </div>
+        </div>
+        <div class="mask mask_screen" data-mask-type="video">
+          <svg class="mask__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <defs>
+              <clipPath id="screen-img-clip">
+                <polygon class="mask__el" points="846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89"></polygon>
+              </clipPath>
+              <filter id="screen-mask-blur">
+                <fegaussianblur in="SourceGraphic" stddeviation="10"></fegaussianblur>
+              </filter>
+              <mask id="sreen-video-clip">
+                <rect x="0" y="0"></rect>
+                <polygon class="mask__el" points="846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89"></polygon>
+              </mask>
+            </defs>
+            <rect x="0" y="0" width="1920" height="1080" mask="url(#sreen-video-clip)"></rect>
+            <image xlink:href="static/img/screen_bg.jpg" x="0" y="0" filter="url(#screen-mask-blur)" preserveAspectRatio="xMidYMid slice" width="1920" height="1080"></image>
+            <image xlink:href="static/img/screen_bg.jpg" x="0" y="0" clip-path="url(#screen-img-clip)" preserveAspectRatio="xMidYMid slice" width="1920" height="1080"></image>
+          </svg>
+          <video playsinline="playsinline" autoplay="autoplay" loop="loop" volume="0" onloadedmetadata="this.muted = true">
+            <source src="static/video/video-sample.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="screen__more">
+          <span class="screen__more-text h6">узнать больше</span>
+          <svg class="screen__more-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 93.06 42.5">
+            <polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"></polygon>
+          </svg>
+        </div>
+      </section>
+      <!--end screen-->
       <!--include ../components/block-2-->
       <!---->
       <!--include ../components/block-3-->
@@ -389,29 +433,33 @@
             </button>
           </div>
         </div>
-        <div class="mask" data-mask-type="image">
+        <div class="mask mask_come" data-mask-type="image">
           <svg class="mask__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <defs>
               <clipPath id="come-img-clip">
-                <path d="M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z"></path>
-                <path d="M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z"></path>
-                <path d="M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z"></path>
-                <path d="M 583.05,130.46 625.1,72 h -54.15 l -35.42,56.16 V 0 h -43.2 v 201.6 h 43.2 v -61.92 l 40.32,61.92 h 55.3 z"></path>
+                <path class="mask__el" d="M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z"></path>
+                <path class="mask__el" d="M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z"></path>
+                <path class="mask__el" d="M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z"></path>
+                <path class="mask__el" d="M 583.05,130.46 625.1,72 h -54.15 l -35.42,56.16 V 0 h -43.2 v 201.6 h 43.2 v -61.92 l 40.32,61.92 h 55.3 z"></path>
               </clipPath>
               <filter id="come-mask-blur">
-                <fegaussianblur in="SourceGraphic" stddeviation="10"></fegaussianblur>
+                <fegaussianblur in="SourceGraphic" stddeviation="8"></fegaussianblur>
               </filter>
               <mask id="come-video-clip">
                 <rect x="0" y="0"></rect>
-                <polygon class="mask__el" points="846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89"></polygon>
+                <path class="mask__el" d="M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z"></path>
+                <path class="mask__el" d="M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z"></path>
+                <path class="mask__el" d="M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z"></path>
+                <path class="mask__el" d="M 583.05,130.46 625.1,72 h -54.15 l -35.42,56.16 V 0 h -43.2 v 201.6 h 43.2 v -61.92 l 40.32,61.92 h 55.3 z"></path>
               </mask>
             </defs>
-            <rect x="0" y="0" width="1920" height="1080" mask="url(#sreen-video-clip)"></rect>
-            <image xlink:href="static/img/come_bg.jpg" x="0" y="0" filter="url(#come-mask-blur)" preserveAspectRatio="xMidYMid slice" width="1920" height="1080"></image>
-            <image xlink:href="static/img/come_bg.jpg" x="0" y="0" clip-path="url(#come-img-clip)" preserveAspectRatio="xMidYMid slice" width="1920" height="1080"></image>
+            <rect x="0" y="0" width="1920" height="1080" mask="url(#come-video-clip)"></rect>
+            <image xlink:href="static/img/come_bg.jpg" x="0" y="0" filter="url(#come-mask-blur)" preserveAspectRatio="xMinYMax slice" width="1920" height="1080"></image>
+            <image xlink:href="static/img/come_bg.jpg" x="0" y="0" clip-path="url(#come-img-clip)" preserveAspectRatio="xMinYMax slice" width="1920" height="1080"></image>
           </svg>
-          <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true')-->
-          <!--  +e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
+          <video playsinline="playsinline" autoplay="autoplay" loop="loop" volume="0" onloadedmetadata="this.muted = true">
+            <source src="static/video/video-sample.mp4" type="video/mp4" />
+          </video>
         </div>
       </section>
       <!--end come-->

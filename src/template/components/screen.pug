@@ -13,7 +13,7 @@ if screen.subTitle ? screen.subTitle : screen.subTitle = 'Место, где р�
       +e.BUTTON.btn.btn._green(data-popup-target='comePopup' type='button')
         span.btn__text хочу в гости
 
-  +b.mask(data-mask-type='image')
+  +b.mask._screen(data-mask-type='video')
     +e.SVG.svg(version='1.1', xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none')
       defs
         clipPath#screen-img-clip
@@ -31,8 +31,8 @@ if screen.subTitle ? screen.subTitle : screen.subTitle = 'Место, где р�
       image(xlink:href='static/img/screen_bg.jpg', x='0', y='0' filter='url(#screen-mask-blur)' preserveAspectRatio='xMidYMid slice' width='1920' height='1080')
       image(xlink:href='static/img/screen_bg.jpg', x='0', y='0' clip-path='url(#screen-img-clip)' preserveAspectRatio='xMidYMid slice' width='1920' height='1080')
 
-    //+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true')
-    //  +e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
+    +e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true')
+      +e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
 
   +e.more
     +e.SPAN.more-text.h6 узнать больше

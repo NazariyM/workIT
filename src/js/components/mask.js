@@ -2,68 +2,60 @@ import { TweenMax } from 'gsap';
 import { Resp } from '../modules/dev/_helpers';
 
 class Mask {
-  constructor(block, fullscreen) {
-    this.block = document.querySelector('.mask');
-
+  constructor(block, fullscreen = true) {
+    this.block = document.querySelector(block);
+    this.fullscreen = fullscreen;
     if (this.block) this.init();
   }
 
   init() {
     this.detectType();
-    this.setRatio();
     this.bindEvents();
   }
 
   bindEvents() {
-    window.addEventListener('resize', () => {
-      this.onResize();
-    });
+    if (this.fullscreen) {
+      const fluid = window.addEventListener('resize', () => {
+        this.fluidRatio();
+      });
+
+    } else {
+      const fixed = window.addEventListener('resize', () => {
+        this.fixedRatio();
+      });
+    }
   }
 
   detectType() {
     this.maskType = this.block.getAttribute('data-mask-type');
     this.rects = this.block.querySelectorAll('rect');
-    this.clipPathTag = this.block.querySelector('clipPath');
     this.maskTag = this.block.querySelector('mask');
-
-    switch (this.maskType) {
-      case 'video':
-        this.maskEl = this.maskTag.querySelector('.mask__el');
-        this.initVideo();
-        break;
-      case 'image':
-        this.maskEl = this.clipPathTag.querySelector('.mask__el');
-        this.initImage();
-        break;
-      default:
-        this.initVideo();
-    }
+    this.clipPathTag = this.block.querySelector('clipPath');
+    this.maskType === 'video' ? this.initVideo() : this.initImage();
+    this.fullscreen ? this.fluidRatio() : this.fixedRatio();
   }
 
   initImage() {
-    // height
-
-
     this.images = this.block.querySelectorAll('image');
+    this.maskEl = this.clipPathTag.querySelectorAll('.mask__el');
 
     this.maskTag.remove();
     this.rects.forEach(x => {x.remove(); });
   }
 
   initVideo() {
+    this.maskEl = this.maskTag.querySelectorAll('.mask__el');
     this.clipPathTag.remove();
   }
 
-  setRatio(maskType) {
-    maskType = this.maskType;
-
+  fluidRatio() {
     this.maskWidth = 1219;
     this.maskHeight = 681;
 
     const winWidth = window.innerWidth;
     const winHeight = window.innerHeight;
 
-    maskType === 'video' ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+    this.maskType === 'video' ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
 
     const widthTransform = winWidth / this.maskWidth;
     const heightTransform = winHeight / this.maskHeight;
@@ -72,6 +64,18 @@ class Mask {
 
     TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${offsetX}px)` });
 
+  }
+
+  fixedRatio() {
+    const winWidth = window.innerWidth;
+    const winHeight = window.innerHeight;
+
+    this.maskType === 'video' ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+
+    const offsetX = 700;
+    const offsetY = 210;
+
+    TweenMax.set(this.maskEl, { transform: `translate(${offsetX}px, ${offsetY}px)` });
   }
 
   imageFix(winWidth, winHeight) {
@@ -83,15 +87,11 @@ class Mask {
 
   videoFix(winWidth, winHeight) {
     for (let rect of this.rects) {
-      rect.setAttribute('width', `${winWidth + 30}`);
-      rect.setAttribute('height', `${winHeight + 30}`);
+      rect.setAttribute('width', `${winWidth}`);
+      rect.setAttribute('height', `${winHeight}`);
     }
   }
-
-  onResize() {
-    this.setRatio();
-  }
-
 }
 
-export const MaskAPI = new Mask();
+const screenMask = new Mask('.mask_screen');
+const comeMask = new Mask('.mask_come', false);

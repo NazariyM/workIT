@@ -28211,11 +28211,6 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!function(){function t(p,i){return void 0===th
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MaskAPI = undefined;
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _gsap = __webpack_require__(12);
@@ -28225,11 +28220,13 @@ var _helpers = __webpack_require__(9);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Mask = function () {
-  function Mask(block, fullscreen) {
+  function Mask(block) {
+    var fullscreen = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
     _classCallCheck(this, Mask);
 
-    this.block = document.querySelector('.mask');
-
+    this.block = document.querySelector(block);
+    this.fullscreen = fullscreen;
     if (this.block) this.init();
   }
 
@@ -28237,7 +28234,6 @@ var Mask = function () {
     key: 'init',
     value: function init() {
       this.detectType();
-      this.setRatio();
       this.bindEvents();
     }
   }, {
@@ -28245,38 +28241,31 @@ var Mask = function () {
     value: function bindEvents() {
       var _this = this;
 
-      window.addEventListener('resize', function () {
-        _this.onResize();
-      });
+      if (this.fullscreen) {
+        var fluid = window.addEventListener('resize', function () {
+          _this.fluidRatio();
+        });
+      } else {
+        var fixed = window.addEventListener('resize', function () {
+          _this.fixedRatio();
+        });
+      }
     }
   }, {
     key: 'detectType',
     value: function detectType() {
       this.maskType = this.block.getAttribute('data-mask-type');
       this.rects = this.block.querySelectorAll('rect');
-      this.clipPathTag = this.block.querySelector('clipPath');
       this.maskTag = this.block.querySelector('mask');
-
-      switch (this.maskType) {
-        case 'video':
-          this.maskEl = this.maskTag.querySelector('.mask__el');
-          this.initVideo();
-          break;
-        case 'image':
-          this.maskEl = this.clipPathTag.querySelector('.mask__el');
-          this.initImage();
-          break;
-        default:
-          this.initVideo();
-      }
+      this.clipPathTag = this.block.querySelector('clipPath');
+      this.maskType === 'video' ? this.initVideo() : this.initImage();
+      this.fullscreen ? this.fluidRatio() : this.fixedRatio();
     }
   }, {
     key: 'initImage',
     value: function initImage() {
-      // height
-
-
       this.images = this.block.querySelectorAll('image');
+      this.maskEl = this.clipPathTag.querySelectorAll('.mask__el');
 
       this.maskTag.remove();
       this.rects.forEach(function (x) {
@@ -28286,20 +28275,19 @@ var Mask = function () {
   }, {
     key: 'initVideo',
     value: function initVideo() {
+      this.maskEl = this.maskTag.querySelectorAll('.mask__el');
       this.clipPathTag.remove();
     }
   }, {
-    key: 'setRatio',
-    value: function setRatio(maskType) {
-      maskType = this.maskType;
-
+    key: 'fluidRatio',
+    value: function fluidRatio() {
       this.maskWidth = 1219;
       this.maskHeight = 681;
 
       var winWidth = window.innerWidth;
       var winHeight = window.innerHeight;
 
-      maskType === 'video' ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+      this.maskType === 'video' ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
 
       var widthTransform = winWidth / this.maskWidth;
       var heightTransform = winHeight / this.maskHeight;
@@ -28307,6 +28295,19 @@ var Mask = function () {
       var value = heightTransform < widthTransform ? widthTransform : heightTransform;
 
       _gsap.TweenMax.set(this.maskEl, { transform: 'scale(' + value + ', ' + value + ') translateX(' + offsetX + 'px)' });
+    }
+  }, {
+    key: 'fixedRatio',
+    value: function fixedRatio() {
+      var winWidth = window.innerWidth;
+      var winHeight = window.innerHeight;
+
+      this.maskType === 'video' ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+
+      var offsetX = 700;
+      var offsetY = 210;
+
+      _gsap.TweenMax.set(this.maskEl, { transform: 'translate(' + offsetX + 'px, ' + offsetY + 'px)' });
     }
   }, {
     key: 'imageFix',
@@ -28348,8 +28349,8 @@ var Mask = function () {
         for (var _iterator2 = this.rects[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
           var rect = _step2.value;
 
-          rect.setAttribute('width', '' + (winWidth + 30));
-          rect.setAttribute('height', '' + (winHeight + 30));
+          rect.setAttribute('width', '' + winWidth);
+          rect.setAttribute('height', '' + winHeight);
         }
       } catch (err) {
         _didIteratorError2 = true;
@@ -28366,17 +28367,13 @@ var Mask = function () {
         }
       }
     }
-  }, {
-    key: 'onResize',
-    value: function onResize() {
-      this.setRatio();
-    }
   }]);
 
   return Mask;
 }();
 
-var MaskAPI = exports.MaskAPI = new Mask();
+var screenMask = new Mask('.mask_screen');
+var comeMask = new Mask('.mask_come', false);
 
 /***/ }),
 /* 364 */
