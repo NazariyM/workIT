@@ -28724,8 +28724,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.disableVideo = undefined;
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _helpers = __webpack_require__(9);
@@ -28746,7 +28744,7 @@ var DisableMobVideo = function () {
     key: 'init',
     value: function init() {
       this.disableVideos();
-      this.addControls();
+      // this.addControls();
     }
   }, {
     key: 'disableVideos',
@@ -28755,19 +28753,19 @@ var DisableMobVideo = function () {
         $(this).remove();
       });
     }
-  }, {
-    key: 'addControls',
-    value: function addControls() {
-      this.$enabledVideos.each(function () {
-        var $controlsAttr = $(this).attr('controls');
 
-        if ((typeof $controlsAttr === 'undefined' ? 'undefined' : _typeof($controlsAttr)) !== ( true ? 'undefined' : _typeof(undefined)) && $controlsAttr !== false) {
-          $(this).attr('conrols', 'true');
-        } else {
-          $(this).attr('conrols', 'true');
-        }
-      });
-    }
+    // addControls() {
+    //   this.$enabledVideos.each(function () {
+    //     const $controlsAttr = $(this).attr('controls');
+    //
+    //     if (typeof $controlsAttr !== typeof undefined && $controlsAttr !== false) {
+    //       $(this).attr('conrols', 'true');
+    //     } else {
+    //       $(this).attr('conrols', 'true');
+    //     }
+    //   });
+    // }
+
   }, {
     key: 'onResize',
     value: function onResize() {
