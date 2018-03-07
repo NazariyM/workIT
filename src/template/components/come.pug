@@ -2,37 +2,31 @@ if come ? come : come = []
 if come.title ? come.title : come.title = 'Хочешь увидеть всё своими глазами? Приходи в гости!'
 
 //begin come
-+b.SECTION.come(class= come.classMod ? come.classMod : '' data-no-anim='true')
++b.SECTION.come(class= come.classMod ? come.classMod : '')
   +e.inner
-    +b.container._md(data-anim='group')
+    .container.container_md
       +e.H3= come.title
 
       +e.BUTTON.btn.btn._green(data-popup-target='comePopup' type='button')
         span.btn__text записаться
 
-  +b.mask._come(data-mask-type='image')
+  +b.mask._come(data-mask-type='video')
     +e.SVG.svg(version='1.1', xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none')
       defs
         clipPath#come-img-clip
-          path.mask__el(d='M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z')
-          path.mask__el(d='M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z')
-          path.mask__el(d='M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z')
-          path.mask__el(d='M 583.05,130.46 625.1,72 h -54.15 l -35.42,56.16 V 0 h -43.2 v 201.6 h 43.2 v -61.92 l 40.32,61.92 h 55.3 z')
+          text.mask__el(y='480') WORK
 
         filter#come-mask-blur
-          fegaussianblur(in='SourceGraphic', stddeviation='8')
+          fegaussianblur(in='SourceGraphic', stddeviation='0')
 
         mask#come-video-clip
           rect(x='0' y='0')
-          path.mask__el(d='M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z')
-          path.mask__el(d='M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z')
-          path.mask__el(d='M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z')
-          path.mask__el(d='M 583.05,130.46 625.1,72 h -54.15 l -35.42,56.16 V 0 h -43.2 v 201.6 h 43.2 v -61.92 l 40.32,61.92 h 55.3 z')
+          text.mask__el(y='480') WORK
 
       rect(x='0' y='0' width="1920" height="1080" mask='url(#come-video-clip)')
 
-      image(xlink:href='static/img/come_bg.jpg', x='0', y='0' filter='url(#come-mask-blur)' preserveAspectRatio='xMinYMax slice' width='1920' height='1080')
-      image(xlink:href='static/img/come_bg.jpg', x='0', y='0' clip-path='url(#come-img-clip)' preserveAspectRatio='xMinYMax slice' width='1920' height='1080')
+      image(xlink:href='static/img/come_bg.jpg', x='0', y='0' filter='url(#come-mask-blur)' preserveAspectRatio='xMinYMax slice' width='1280' height='410')
+      image(xlink:href='static/img/come_bg.jpg', x='0', y='0' clip-path='url(#come-img-clip)' preserveAspectRatio='xMinYMax slice' width='1280' height='410')
 
     +e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true')
       +e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')

@@ -2,7 +2,6 @@ import objectFitImages from 'object-fit-images';
 import objectFitVideos from 'object-fit-videos';
 import Validate from './validate';
 import PageResize from './pageResize';
-import MobileVideo from './autoMobVideo';
 import './dot';
 import './noTouch';
 import './header';
@@ -11,6 +10,7 @@ import './b-screen';
 import './b-block-3';
 import './b-block-5';
 import './b-block-6';
+import './come';
 import './b-block-10';
 import './b-block-11';
 import './locations-map';
@@ -36,7 +36,6 @@ export class Common {
     objectFitVideos();
     Validate.init();
     PageResize.init();
-    MobileVideo.init();
     // Dot.init();
   }
 }

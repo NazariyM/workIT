@@ -1,7 +1,7 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import { css, Resp } from '../modules/dev/_helpers';
-import { preloader } from './preloader';
+// import { preloader } from './preloader';
 import Dot from './dot';
 
 class Block5 {
@@ -15,7 +15,7 @@ class Block5 {
   }
 
   async init() {
-    await preloader.wait();
+    // await preloader.wait();
     await this.scrollAnim();
     this.dot();
   }

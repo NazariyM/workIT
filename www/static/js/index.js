@@ -9472,7 +9472,6 @@ var Preloader = function () {
           }
         });
 
-        // remove!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         resolve();
 
         tl.to(_this2.$img, 1, { autoAlpha: 1 }).to(_this2.$preloader, .5, { autoAlpha: 0 }, '+=.3');
@@ -21885,10 +21884,6 @@ var _pageResize = __webpack_require__(345);
 
 var _pageResize2 = _interopRequireDefault(_pageResize);
 
-var _autoMobVideo = __webpack_require__(346);
-
-var _autoMobVideo2 = _interopRequireDefault(_autoMobVideo);
-
 __webpack_require__(96);
 
 __webpack_require__(348);
@@ -21904,6 +21899,8 @@ __webpack_require__(353);
 __webpack_require__(354);
 
 __webpack_require__(355);
+
+__webpack_require__(367);
 
 __webpack_require__(356);
 
@@ -21948,7 +21945,6 @@ var Common = exports.Common = function () {
       (0, _objectFitVideos2.default)();
       _validate2.default.init();
       _pageResize2.default.init();
-      _autoMobVideo2.default.init();
       // Dot.init();
     }
   }]);
@@ -22724,61 +22720,7 @@ var PageResize = exports.PageResize = function () {
 exports.default = new PageResize();
 
 /***/ }),
-/* 346 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MobileVideo = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _helpers = __webpack_require__(9);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var MobileVideo = exports.MobileVideo = function () {
-  function MobileVideo() {
-    _classCallCheck(this, MobileVideo);
-
-    this.$video = $('video[data-mobile-autoplay="true"]');
-  }
-
-  _createClass(MobileVideo, [{
-    key: 'bindEvents',
-    value: function bindEvents() {
-      var _this = this;
-
-      //only once
-      _helpers.$body.one('touchstart', function () {
-        _this.$video.each(function (index, el) {
-          //if not playing
-          if ($(el).get(0).paused) {
-            //play video
-            $(el).get(0).play();
-          }
-        });
-      });
-    }
-  }, {
-    key: 'init',
-    value: function init() {
-      if (!_helpers.Resp.isDesk) {
-        this.bindEvents();
-      }
-    }
-  }]);
-
-  return MobileVideo;
-}();
-
-exports.default = new MobileVideo();
-
-/***/ }),
+/* 346 */,
 /* 347 */
 /***/ (function(module, exports) {
 
@@ -26811,6 +26753,9 @@ var Screen = function () {
     this.$container = this.$block.find('.screen__container');
     this.$item = this.$container.children();
     this.$more = this.$block.find('.screen__more');
+    this.$mask = this.$block.find('.mask_screen');
+    this.$maskRect = this.$mask.find('rect');
+    this.$maskBlur = this.$mask.find('feGaussianBlur');
 
     if (this.$container.length) this.init();
   }
@@ -26851,13 +26796,21 @@ var Screen = function () {
     key: 'startAnim',
     value: function startAnim() {
       var _this = this;
-      var tl = new _gsap.TimelineMax();
+      var tl = new _gsap.TimelineMax({ delay: .2 });
 
-      tl.staggerTo(_this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3).to(_this.$more, .7, {
-        y: 0, onComplete: function onComplete() {
-          _this.$more.addClass(_helpers.css.hasAnim);
-        }
-      }, '+=.2');
+      if (_helpers.Resp.isDesk) {
+        tl.staggerTo(_this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3).to(_this.$more, .7, {
+          y: 0, onComplete: function onComplete() {
+            _this.$more.addClass(_helpers.css.hasAnim);
+          }
+        }).to(this.$maskRect, .5, { fillOpacity: .3 }, '-=.2');
+      } else {
+        tl.staggerTo(_this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3).to(_this.$more, .7, {
+          y: 0, onComplete: function onComplete() {
+            _this.$more.addClass(_helpers.css.hasAnim);
+          }
+        }).to(this.$maskBlur, .7, { attr: { stdDeviation: 10 } });
+      }
     }
   }, {
     key: 'scrollNext',
@@ -27015,6 +26968,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Block5API = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+// import { preloader } from './preloader';
+
 
 var _gsap = __webpack_require__(12);
 
@@ -27023,8 +26978,6 @@ var _scrollAnim = __webpack_require__(32);
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
 var _helpers = __webpack_require__(9);
-
-var _preloader = __webpack_require__(31);
 
 var _dot = __webpack_require__(96);
 
@@ -27057,16 +27010,12 @@ var Block5 = function () {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _preloader.preloader.wait();
-
-              case 2:
-                _context.next = 4;
                 return this.scrollAnim();
 
-              case 4:
+              case 2:
                 this.dot();
 
-              case 5:
+              case 3:
               case 'end':
                 return _context.stop();
             }
@@ -27140,14 +27089,14 @@ Object.defineProperty(exports, "__esModule", {
 exports.Block6API = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+// import { preloader } from './preloader';
+
 
 var _gsap = __webpack_require__(12);
 
 var _scrollAnim = __webpack_require__(32);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
-
-var _preloader = __webpack_require__(31);
 
 var _helpers = __webpack_require__(9);
 
@@ -27187,16 +27136,12 @@ var Block6 = function () {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _preloader.preloader.wait();
-
-              case 2:
-                _context.next = 4;
                 return this.scrollAnim();
 
-              case 4:
+              case 2:
                 this.dot();
 
-              case 5:
+              case 3:
               case 'end':
                 return _context.stop();
             }
@@ -27295,14 +27240,14 @@ Object.defineProperty(exports, "__esModule", {
 exports.Block10API = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+// import {preloader} from './preloader';
+
 
 var _gsap = __webpack_require__(12);
 
 var _scrollAnim = __webpack_require__(32);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
-
-var _preloader = __webpack_require__(31);
 
 var _helpers = __webpack_require__(9);
 
@@ -27338,16 +27283,12 @@ var Block10 = function () {
 						switch (_context.prev = _context.next) {
 							case 0:
 								_context.next = 2;
-								return _preloader.preloader.wait();
-
-							case 2:
-								_context.next = 4;
 								return this.scrollAnim();
 
-							case 4:
+							case 2:
 								this.initSlider();
 
-							case 5:
+							case 3:
 							case 'end':
 								return _context.stop();
 						}
@@ -28242,11 +28183,11 @@ var Mask = function () {
       var _this = this;
 
       if (this.fullscreen) {
-        var fluid = window.addEventListener('resize', function () {
+        window.addEventListener('resize', function () {
           _this.fluidRatio();
         });
       } else {
-        var fixed = window.addEventListener('resize', function () {
+        window.addEventListener('resize', function () {
           _this.fixedRatio();
         });
       }
@@ -28255,10 +28196,12 @@ var Mask = function () {
     key: 'detectType',
     value: function detectType() {
       this.maskType = this.block.getAttribute('data-mask-type');
+      this.video = this.block.querySelector('video');
       this.rects = this.block.querySelectorAll('rect');
       this.maskTag = this.block.querySelector('mask');
       this.clipPathTag = this.block.querySelector('clipPath');
-      this.maskType === 'video' ? this.initVideo() : this.initImage();
+      this.isVideo = this.maskType === 'video';
+      this.isVideo ? this.initVideo() : this.initImage();
       this.fullscreen ? this.fluidRatio() : this.fixedRatio();
     }
   }, {
@@ -28267,34 +28210,47 @@ var Mask = function () {
       this.images = this.block.querySelectorAll('image');
       this.maskEl = this.clipPathTag.querySelectorAll('.mask__el');
 
-      this.maskTag.remove();
-      this.rects.forEach(function (x) {
-        x.remove();
-      });
+      // this.maskTag.remove();
+      // this.rects.forEach(x => {x.remove(); });
     }
   }, {
     key: 'initVideo',
     value: function initVideo() {
       this.maskEl = this.maskTag.querySelectorAll('.mask__el');
-      this.clipPathTag.remove();
+
+      // this.clipPathTag.remove();
     }
   }, {
     key: 'fluidRatio',
     value: function fluidRatio() {
-      this.maskWidth = 1219;
-      this.maskHeight = 681;
+      var maskWidth = 1219;
+      var maskHeight = 681;
+      this.maskOffsetX = 280;
 
       var winWidth = window.innerWidth;
       var winHeight = window.innerHeight;
 
-      this.maskType === 'video' ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+      this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
 
-      var widthTransform = winWidth / this.maskWidth;
-      var heightTransform = winHeight / this.maskHeight;
-      var offsetX = 310;
+      var widthTransform = winWidth / maskWidth;
+      var heightTransform = winHeight / maskHeight;
+
       var value = heightTransform < widthTransform ? widthTransform : heightTransform;
 
-      _gsap.TweenMax.set(this.maskEl, { transform: 'scale(' + value + ', ' + value + ') translateX(' + offsetX + 'px)' });
+      if (_helpers.Resp.isTablet) {
+        this.maskTag.remove();
+        this.removeVideo();
+        this.initImage();
+        this.maskOffsetX = 25;
+      }
+      if (_helpers.Resp.isMobile) {
+        this.maskTag.remove();
+        this.removeVideo();
+        this.initImage();
+        this.maskOffsetX = -35;
+      }
+
+      _gsap.TweenMax.set(this.maskEl, { transform: 'scale(' + value + ', ' + value + ') translateX(' + this.maskOffsetX + 'px)' });
     }
   }, {
     key: 'fixedRatio',
@@ -28302,12 +28258,28 @@ var Mask = function () {
       var winWidth = window.innerWidth;
       var winHeight = window.innerHeight;
 
-      this.maskType === 'video' ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+      this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
 
-      var offsetX = 700;
-      var offsetY = 210;
+      this.fixedOffsetX = 600;
 
-      _gsap.TweenMax.set(this.maskEl, { transform: 'translate(' + offsetX + 'px, ' + offsetY + 'px)' });
+      if (_helpers.Resp.isTablet) {
+        this.fixedOffsetX = 100;
+        this.maskTag.remove();
+        this.removeVideo();
+        this.initImage();
+      }
+
+      if (_helpers.Resp.isMobile) {
+        this.maskTag.remove();
+        this.removeVideo();
+        this.initImage();
+        this.fixedOffsetX = -190;
+        this.fixedOffsetY = -175;
+      }
+
+      var ratioX = (winWidth - this.fixedOffsetX) / 2;
+
+      _gsap.TweenMax.set(this.maskEl, { x: ratioX, y: this.fixedOffsetY });
     }
   }, {
     key: 'imageFix',
@@ -28322,6 +28294,12 @@ var Mask = function () {
 
           img.setAttribute('width', '' + (winWidth + 30));
           img.setAttribute('height', '' + (winHeight + 30));
+
+          if (!this.fullscreen) {
+            img.setAttribute('width', '' + (winWidth + 20));
+            _helpers.Resp.isMobile ? img.setAttribute('height', 314) : img.setAttribute('height', 420);
+            _gsap.TweenMax.set(img, { x: -10, y: -10 });
+          }
         }
       } catch (err) {
         _didIteratorError = true;
@@ -28351,6 +28329,10 @@ var Mask = function () {
 
           rect.setAttribute('width', '' + winWidth);
           rect.setAttribute('height', '' + winHeight);
+
+          if (!this.fullscreen) {
+            rect.setAttribute('height', '' + 420);
+          }
         }
       } catch (err) {
         _didIteratorError2 = true;
@@ -28366,6 +28348,11 @@ var Mask = function () {
           }
         }
       }
+    }
+  }, {
+    key: 'removeVideo',
+    value: function removeVideo() {
+      if (this.video) this.video.remove();
     }
   }]);
 
@@ -28429,6 +28416,102 @@ var Home = function () {
 }();
 
 exports.default = Home;
+
+/***/ }),
+/* 365 */,
+/* 366 */,
+/* 367 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.comeAPI = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _gsap = __webpack_require__(12);
+
+var _scrollAnim = __webpack_require__(32);
+
+var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
+
+var _helpers = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Come = function () {
+  function Come() {
+    _classCallCheck(this, Come);
+
+    this.$block = $('.come');
+    this.$container = this.$block.find('.container');
+    this.$mask = this.$block.find('.mask_come');
+    this.$maskRect = this.$mask.find('rect');
+    this.$maskBlur = this.$mask.find('feGaussianBlur');
+
+    if (this.$block.length) this.init();
+  }
+
+  _createClass(Come, [{
+    key: 'init',
+    value: function init() {
+      var _this2 = this;
+
+      var _this = this;
+
+      new _scrollAnim2.default({
+        el: this.$block.get(0),
+        hook: .75,
+        onEnter: function () {
+          var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return _this.startAnim();
+
+                  case 2:
+                  case 'end':
+                    return _context.stop();
+                }
+              }
+            }, _callee, _this2);
+          }));
+
+          return function onEnter() {
+            return _ref.apply(this, arguments);
+          };
+        }()
+      });
+    }
+  }, {
+    key: 'startAnim',
+    value: function startAnim() {
+      var tl = new _gsap.TimelineMax();
+      var item = this.$container.children();
+
+      if (_helpers.Resp.isDesk) {
+        tl.to(this.$mask, .6, { autoAlpha: 1, x: 0 }).staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3').to(this.$maskRect, 1, { fillOpacity: .5 }, '-=.3');
+      } else {
+
+        tl.to(this.$mask, .6, { autoAlpha: 1, x: 0 }).staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3').to(this.$maskBlur, .7, { attr: { stdDeviation: 8 } });
+      }
+    }
+  }]);
+
+  return Come;
+}();
+
+var comeAPI = exports.comeAPI = new Come();
 
 /***/ })
 ],[133]);

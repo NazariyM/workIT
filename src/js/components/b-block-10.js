@@ -1,6 +1,6 @@
 import {TimelineMax, TweenMax} from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
-import {preloader} from './preloader';
+// import {preloader} from './preloader';
 import {$window, Resp} from '../modules/dev/_helpers';
 import slick from 'slick-carousel';
 
@@ -16,7 +16,7 @@ class Block10 {
 	}
 
 	async init() {
-		await preloader.wait();
+		// await preloader.wait();
 		await this.scrollAnim();
 		this.initSlider();
 	}
