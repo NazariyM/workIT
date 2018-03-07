@@ -342,3 +342,8 @@ input[type="submit"] {
   -webkit-appearance: none;
   border-radius: 0;
 }
+
+*::-webkit-media-controls-start-playback-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
