@@ -428,7 +428,7 @@
                       </g>
                     </svg>
                   </button>
-                  <video loop="loop" preload="auto">
+                  <video playsinline="playsinline" loop="loop" preload="auto">
                     <source src="static/video/video-sample.mp4" type="video/mp4" />
                     <!--poster='static/img/poster.png'-->
                   </video>
@@ -458,74 +458,34 @@
         </div>
       </section>
       <!--end block-9-->
-      <!--begin block-10-->
-      <section class="block-10">
-        <div class="container container_md">
-          <div class="block-10__top block-top">
-            <div class="block-10__label block-label">
-              <p>our residents</p>
-            </div>
-            <div class="block-10__title block-title has-selection has-selection_green">
-              <h2>Наши
-                <b>резиденты</b>
-              </h2>
-            </div>
+      <!--include ../components/block-10-->
+      <!--include ../components/block-11-->
+      <!--include ../components/locations-->
+      <!--begin subscription-->
+      <section class="subscr" data-no-anim="true">
+        <div class="container container_md" data-anim="group">
+          <div class="subscr__title">
+            <h3>Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!</h3>
           </div>
-          <div class="block-10__list mobile-slider mobile-slider_white-large">
-            <div class="block-10__item">
-              <div class="block-10__item-icon">
-                <a href="#!" target="_blank">
-                  <img src="static/img/ingenico.png" alt="image" title="" />
-                </a>
+          <div class="subscr__form-wrap">
+            <form class="form" action="#!">
+              <div class="form-group form-group_has-btn">
+                <div class="form-group">
+                  <input class="form-control" type="text" name="" autocomplete="off" data-validation="email required">
+                  <label class="control-label">
+                    <span>Ваш email</span>
+                  </label>
+                  <div class="help-block">Введите ваш Email</div>
+                </div>
+                <label class="form-btn btn btn_black">
+                  <input class="btn" type="submit" value="подписаться" />
+                </label>
               </div>
-              <div class="block-10__item-title h5">
-                <h5></h5>
-              </div>
-              <p>Стартап &quot;Бери и делай&quot; в сфере криптовалют, команда из 14 человек</p>
-            </div>
-            <div class="block-10__item">
-              <div class="block-10__item-icon">
-                <a href="#!" target="_blank">
-                  <img src="static/img/circle-media.png" alt="image" title="" />
-                </a>
-              </div>
-              <div class="block-10__item-title h5">
-                <h5></h5>
-              </div>
-              <p>Компания &quot;Валютники&quot; в сфере финтех. Команда из 9 человек</p>
-            </div>
-            <div class="block-10__item">
-              <div class="block-10__item-icon">
-                <a href="#!" target="_blank">
-                  <img src="static/img/bmc.png" alt="image" title="" />
-                </a>
-              </div>
-              <div class="block-10__item-title h5">
-                <h5></h5>
-              </div>
-              <p>Стартап &quot;Бери и делай&quot; в сфере криптовалют, команда из 14 человек</p>
-            </div>
-            <div class="block-10__item">
-              <div class="block-10__item-icon">
-                <a href="#!" target="_blank">
-                  <img src="static/img/bike-roar.png" alt="image" title="" />
-                </a>
-              </div>
-              <div class="block-10__item-title h5">
-                <h5></h5>
-              </div>
-              <p>Компания &quot;Валютники&quot; в сфере финтех. Команда из 9 человек</p>
-            </div>
+            </form>
           </div>
         </div>
-        <div class="block-10__decor-line"></div>
       </section>
-      <!--end block-10-->
-      <!--include ../components/block-11-->
-      <!---->
-      <!--include ../components/locations-->
-      <!---->
-      <!--include ../components/subscr-->
+      <!--end subscription-->
     </main>
     <div class="popup" data-popup-id="comePopup" tabindex="-1" role="dialog">
       <div class="popup__container">
