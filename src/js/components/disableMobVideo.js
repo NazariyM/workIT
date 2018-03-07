@@ -34,7 +34,8 @@ class DisableMobVideo {
   onResize() {
     $window.on('resize', () => {
       this.disableVideos();
-      this.addControls();
+
+      // this.addControls();
     });
   }
 }

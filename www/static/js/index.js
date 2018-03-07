@@ -28773,7 +28773,8 @@ var DisableMobVideo = function () {
 
       _helpers.$window.on('resize', function () {
         _this.disableVideos();
-        _this.addControls();
+
+        // this.addControls();
       });
     }
   }]);
