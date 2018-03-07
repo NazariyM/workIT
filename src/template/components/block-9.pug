@@ -35,8 +35,9 @@ if block9.title ? block9.title : block9.title = 'Хочешь увидеть в�
 									path#7621a(d='M194.5 2778a31.5 31.5 0 1 1 0 63 31.5 31.5 0 0 1 0-63zm-5.6 21.7v19.35l16.76-9.68z')
 								g
 									g(transform='translate(-162 -2776)')
-										use(fill='#fff', xlink:href='#7621a')
-						+e.VIDEO(playsinline loop preload='auto' width="100%" height="100%" data-mobile-play)
+										use(xlink:href='#7621a')
+
+						+e.VIDEO(playsinline loop preload='auto' width="100%" height="100%" controls='true')
 							+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4' poster='static/img/poster.png')
 							+e.SOURCE(src='static/video/sample-webm.webm' type='video/webm' poster='static/img/poster.png')
 
