@@ -40,19 +40,4 @@ if block10.title ? block10.title : block10.title = ''
 				+block10Item(item)
 
 	+e.decor-line
-
-	.container
-		+b.item-test
-			//+e.BUTTON.media-play-btn.play-btn(type='button')
-			//	+e.SVG(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='65', height='67', viewbox='0 0 65 67')
-			//		defs
-			//			path#7621a(d='M194.5 2778a31.5 31.5 0 1 1 0 63 31.5 31.5 0 0 1 0-63zm-5.6 21.7v19.35l16.76-9.68z')
-			//		g
-			//			g(transform='translate(-162 -2776)')
-			//				use(xlink:href='#7621a')
-
-			+e.VIDEO(loop preload='none' width="320px" height="320px" controls poster='static/img/poster.png')
-				+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
-				+e.SOURCE(src='static/video/sample-webm.webm' type='video/webm')
-
 //end block-10
