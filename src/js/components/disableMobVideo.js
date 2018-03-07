@@ -10,7 +10,7 @@ class DisableMobVideo {
 
   init() {
     this.disableVideos();
-    this.addControls();
+    // this.addControls();
   }
 
   disableVideos() {
@@ -19,17 +19,17 @@ class DisableMobVideo {
     });
   }
 
-  addControls() {
-    this.$enabledVideos.each(function () {
-      const $controlsAttr = $(this).attr('controls');
-
-      if (typeof $controlsAttr !== typeof undefined && $controlsAttr !== false) {
-        $(this).attr('conrols', 'true');
-      } else {
-        $(this).attr('conrols', 'true');
-      }
-    });
-  }
+  // addControls() {
+  //   this.$enabledVideos.each(function () {
+  //     const $controlsAttr = $(this).attr('controls');
+  //
+  //     if (typeof $controlsAttr !== typeof undefined && $controlsAttr !== false) {
+  //       $(this).attr('conrols', 'true');
+  //     } else {
+  //       $(this).attr('conrols', 'true');
+  //     }
+  //   });
+  // }
 
   onResize() {
     $window.on('resize', () => {
