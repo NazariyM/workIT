@@ -2,7 +2,7 @@ import objectFitImages from 'object-fit-images';
 import objectFitVideos from 'object-fit-videos';
 import Validate from './validate';
 import PageResize from './pageResize';
-import './disableMobVideo';
+import './MobVideo';
 import './dot';
 import './noTouch';
 import './header';

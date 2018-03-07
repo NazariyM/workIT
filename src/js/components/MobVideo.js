@@ -1,6 +1,6 @@
 import { Resp, $window } from '../modules/dev/_helpers';
 
-class DisableMobVideo {
+class MobVideo {
   constructor() {
     this.$disabledVideos = $('video[data-mobile-disable]');
     this.$enabledVideos = $('video[data-mobile-play]');
@@ -40,4 +40,4 @@ class DisableMobVideo {
   }
 }
 
-export const disableVideo = new DisableMobVideo();
+export const disableVideo = new MobVideo();
