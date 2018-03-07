@@ -347,3 +347,6 @@ input[type="submit"] {
   display: none!important;
   -webkit-appearance: none;
 }
+video::-webkit-media-controls {
+  display: none;
+}
