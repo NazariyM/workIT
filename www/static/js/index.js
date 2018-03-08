@@ -9899,6 +9899,7 @@ var Preloader = function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
         var _this = this;
 
+        var waitLoad;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -9906,9 +9907,13 @@ var Preloader = function () {
                 if (sessionStorage.getItem('resized') === 'false') {
                   this.animPreloader();
                 } else {
-                  this.resolve = new Promise(function (resolve) {
+                  waitLoad = new Promise(function (resolve) {
                     resolve(_this.animPreloader());
                   });
+
+                  // this.resolve = new Promise(resolve => {
+                  //   resolve(this.animPreloader());
+                  // });
                 }
                 sessionStorage.setItem('resized', false);
 

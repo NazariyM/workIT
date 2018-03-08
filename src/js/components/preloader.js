@@ -11,7 +11,13 @@ class Preloader {
     if (sessionStorage.getItem('resized') === 'false') {
       this.animPreloader();
     } else {
-      this.resolve = new Promise(resolve => { resolve(this.animPreloader()); });
+      const waitLoad = new Promise(resolve => {
+        resolve(this.animPreloader());
+      });
+
+      // this.resolve = new Promise(resolve => {
+      //   resolve(this.animPreloader());
+      // });
     }
     sessionStorage.setItem('resized', false);
   }
