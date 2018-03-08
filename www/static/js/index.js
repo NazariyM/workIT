@@ -27140,21 +27140,14 @@ var Screen = function () {
     key: 'startAnim',
     value: function startAnim() {
       var _this = this;
+
       var tl = new _gsap.TimelineMax({ delay: .2 });
 
-      if (_helpers.Resp.isDesk) {
-        tl.staggerTo(_this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3).to(_this.$more, .7, {
-          y: 0, onComplete: function onComplete() {
-            _this.$more.addClass(_helpers.css.hasAnim);
-          }
-        }).to(this.$maskRect, .5, { fillOpacity: .3 }, '-=.2');
-      } else {
-        tl.staggerTo(_this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3).to(_this.$more, .7, {
-          y: 0, onComplete: function onComplete() {
-            _this.$more.addClass(_helpers.css.hasAnim);
-          }
-        });
-      }
+      tl.staggerTo(this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3).to(this.$more, .7, {
+        y: 0, onComplete: function onComplete() {
+          _this.$more.addClass(_helpers.css.hasAnim);
+        }
+      });
     }
   }, {
     key: 'scrollNext',

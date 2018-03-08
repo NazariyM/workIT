@@ -1,6 +1,6 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import { preloader } from '../components/preloader';
-import {$scrolledElements, css, Resp} from '../modules/dev/_helpers';
+import { $scrolledElements, css, Resp } from '../modules/dev/_helpers';
 
 class Screen {
   constructor() {
@@ -21,27 +21,15 @@ class Screen {
   }
 
   startAnim() {
-    const _this = this;
     const tl = new TimelineMax({ delay: .2 });
 
-    if (Resp.isDesk) {
-      tl
-        .staggerTo(_this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3)
-        .to(_this.$more, .7, {
-          y: 0, onComplete: function () {
-            _this.$more.addClass(css.hasAnim);
-          }
-        })
-        .to(this.$maskRect, .5, { fillOpacity: .3 }, '-=.2');
-    } else {
-      tl
-        .staggerTo(_this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3)
-        .to(_this.$more, .7, {
-          y: 0, onComplete: function () {
-            _this.$more.addClass(css.hasAnim);
-          }
-        });
-    }
+    tl
+      .staggerTo(this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3)
+      .to(this.$more, .7, {
+        y: 0, onComplete: () => {
+          this.$more.addClass(css.hasAnim);
+        }
+      });
   }
 
   scrollNext() {
