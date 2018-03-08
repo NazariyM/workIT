@@ -11,16 +11,17 @@ import './b-screen';
 import './b-block-3';
 import './b-block-5';
 import './b-block-6';
-import './come';
 import './b-block-10';
 import './b-block-11';
 import './locations-map';
+import './come';
 import './footer';
-import './homeAnims';
+import './defaultAnims';
 import './expandList';
 import './preloader';
 import './popup';
 import './mask';
+import './DefaultAnims';
 
 export class Common {
   /**

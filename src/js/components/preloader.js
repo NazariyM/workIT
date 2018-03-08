@@ -3,7 +3,7 @@ import { TimelineMax, TweenMax } from 'gsap';
 class Preloader {
   constructor() {
     this.$preloader = $('.preloader');
-    this.$img = this.$preloader.find('.preloader__img');
+    // this.$img = this.$preloader.find('.preloader__img');
 
     this.init();
   }
@@ -23,6 +23,9 @@ class Preloader {
 
   animPreloader() {
     this.resolve = new Promise(resolve => {
+
+      // resolve();
+
       const tl = new TimelineMax({
         onComplete() {
           resolve();
@@ -30,7 +33,6 @@ class Preloader {
       });
 
       tl
-        .to(this.$img, 1, { autoAlpha: 1 })
         .to(this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
     });
   }

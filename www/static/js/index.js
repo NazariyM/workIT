@@ -9889,7 +9889,7 @@ var Preloader = function () {
     _classCallCheck(this, Preloader);
 
     this.$preloader = $('.preloader');
-    this.$img = this.$preloader.find('.preloader__img');
+    // this.$img = this.$preloader.find('.preloader__img');
 
     this.init();
   }
@@ -9938,13 +9938,16 @@ var Preloader = function () {
       var _this2 = this;
 
       this.resolve = new Promise(function (resolve) {
+
+        // resolve();
+
         var tl = new _gsap.TimelineMax({
           onComplete: function onComplete() {
             resolve();
           }
         });
 
-        tl.to(_this2.$img, 1, { autoAlpha: 1 }).to(_this2.$preloader, .5, { autoAlpha: 0 }, '+=.3');
+        tl.to(_this2.$preloader, .5, { autoAlpha: 0 }, '+=.3');
       });
     }
   }]);
@@ -15303,234 +15306,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 132 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _gsap = __webpack_require__(12);
-
-var _scrollAnim = __webpack_require__(29);
-
-var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
-
-var _preloader = __webpack_require__(49);
-
-var _helpers = __webpack_require__(9);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var HomeAnims = function () {
-  function HomeAnims() {
-    _classCallCheck(this, HomeAnims);
-
-    this.containers = [].concat(_toConsumableArray(document.querySelectorAll('.block-top')));
-    this.groups = [].concat(_toConsumableArray(document.querySelectorAll('[data-anim="group"]')));
-    this.titles = [].concat(_toConsumableArray(document.querySelectorAll('.block-title')));
-
-    this.init();
-  }
-
-  _createClass(HomeAnims, [{
-    key: 'init',
-    value: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _preloader.preloader.wait();
-
-              case 2:
-                _context.next = 4;
-                return this.scrollAnim();
-
-              case 4:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function init() {
-        return _ref.apply(this, arguments);
-      }
-
-      return init;
-    }()
-  }, {
-    key: 'scrollAnim',
-    value: function scrollAnim() {
-      var _this = this;
-
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        var _loop = function _loop() {
-          var container = _step.value;
-
-          var section = container.closest('section');
-
-          new _scrollAnim2.default({
-            el: section,
-            onStart: function onStart() {
-              _this.blockTopAnim(container);
-            }
-          });
-        };
-
-        for (var _iterator = this.containers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          _loop();
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
-
-      try {
-        var _loop2 = function _loop2() {
-          var group = _step2.value;
-
-          new _scrollAnim2.default({
-            el: group,
-            hook: .8,
-            onStart: function onStart() {
-              _this.groupAnim(group);
-            }
-          });
-        };
-
-        for (var _iterator2 = this.groups[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          _loop2();
-        }
-      } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-            _iterator2.return();
-          }
-        } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
-          }
-        }
-      }
-    }
-  }, {
-    key: 'blockTopAnim',
-    value: function blockTopAnim() {
-      var tl = new _gsap.TimelineMax();
-
-      for (var _len = arguments.length, container = Array(_len), _key = 0; _key < _len; _key++) {
-        container[_key] = arguments[_key];
-      }
-
-      var _iteratorNormalCompletion3 = true;
-      var _didIteratorError3 = false;
-      var _iteratorError3 = undefined;
-
-      try {
-        for (var _iterator3 = container[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var el = _step3.value;
-
-          var item = el.children;
-          var label = el.querySelector('.block-label');
-          var title = el.querySelector('.block-title');
-
-          tl.to(label, .5, { autoAlpha: 1, x: 0 }).to(title, .5, { autoAlpha: 1, x: 0 }).set(title, { className: '+=' + _helpers.css.selected }, '-=1').staggerTo(item, .5, { autoAlpha: 1, x: 0 }, '-=1');
-        }
-      } catch (err) {
-        _didIteratorError3 = true;
-        _iteratorError3 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion3 && _iterator3.return) {
-            _iterator3.return();
-          }
-        } finally {
-          if (_didIteratorError3) {
-            throw _iteratorError3;
-          }
-        }
-      }
-    }
-  }, {
-    key: 'groupAnim',
-    value: function groupAnim() {
-      var tl = new _gsap.TimelineMax();
-
-      for (var _len2 = arguments.length, group = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        group[_key2] = arguments[_key2];
-      }
-
-      var _iteratorNormalCompletion4 = true;
-      var _didIteratorError4 = false;
-      var _iteratorError4 = undefined;
-
-      try {
-        for (var _iterator4 = group[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-          var el = _step4.value;
-
-          var item = el.children;
-
-          tl.staggerTo(item, .7, { autoAlpha: 1, x: 0 }, 0.6);
-        }
-      } catch (err) {
-        _didIteratorError4 = true;
-        _iteratorError4 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion4 && _iterator4.return) {
-            _iterator4.return();
-          }
-        } finally {
-          if (_didIteratorError4) {
-            throw _iteratorError4;
-          }
-        }
-      }
-    }
-  }]);
-
-  return HomeAnims;
-}();
-
-exports.default = HomeAnims;
-
-/***/ }),
+/* 132 */,
 /* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21900,17 +21676,17 @@ __webpack_require__(354);
 
 __webpack_require__(355);
 
-__webpack_require__(356);
-
 __webpack_require__(357);
 
 __webpack_require__(358);
 
 __webpack_require__(359);
 
+__webpack_require__(356);
+
 __webpack_require__(360);
 
-__webpack_require__(132);
+__webpack_require__(368);
 
 __webpack_require__(361);
 
@@ -21919,6 +21695,8 @@ __webpack_require__(49);
 __webpack_require__(362);
 
 __webpack_require__(364);
+
+__webpack_require__(369);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26826,7 +26604,6 @@ var Screen = function () {
     this.$more = this.$block.find('.screen__more');
     this.$mask = this.$block.find('.mask_screen');
     this.$maskRect = this.$mask.find('rect');
-    this.$maskBlur = this.$mask.find('feGaussianBlur');
 
     if (this.$container.length) this.init();
   }
@@ -26880,14 +26657,14 @@ var Screen = function () {
           y: 0, onComplete: function onComplete() {
             _this.$more.addClass(_helpers.css.hasAnim);
           }
-        }).to(this.$maskBlur, .7, { attr: { stdDeviation: 10 } });
+        });
       }
     }
   }, {
     key: 'scrollNext',
     value: function scrollNext() {
       this.$more.on('click', function () {
-        var $section = $(this).closest('section').next().offset().top;
+        var $section = $(this).closest('section').next().offset().top - 60;
 
         _helpers.$scrolledElements.animate({ scrollTop: $section }, 700);
       });
@@ -27339,7 +27116,6 @@ var Come = function () {
     this.$container = this.$block.find('.container');
     this.$mask = this.$block.find('.mask_come');
     this.$maskRect = this.$mask.find('rect');
-    this.$maskBlur = this.$mask.find('feGaussianBlur');
 
     if (this.$block.length) this.init();
   }
@@ -27387,7 +27163,7 @@ var Come = function () {
         tl.to(this.$mask, .6, { autoAlpha: 1, x: 0 }).staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3').to(this.$maskRect, 1, { fillOpacity: .5 }, '-=.3');
       } else {
 
-        tl.to(this.$mask, .6, { autoAlpha: 1, x: 0 }).staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3').to(this.$maskBlur, .7, { attr: { stdDeviation: 8 } });
+        tl.to(this.$mask, .6, { autoAlpha: 1, x: 0 }).staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3');
       }
     }
   }]);
@@ -28543,21 +28319,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Home page scripts.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module Home
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
-
-var _helpers = __webpack_require__(9);
-
-var _homeAnims = __webpack_require__(132);
-
-var _homeAnims2 = _interopRequireDefault(_homeAnims);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Home page scripts.
+ *
+ * @module Home
+ */
+
+// import HomeAnims from '../components/homeAnims';
 
 var Home = function () {
   /**
@@ -28565,10 +28337,10 @@ var Home = function () {
    */
   function Home() {
     _classCallCheck(this, Home);
-
-    // initialize after construction
-    this.init();
   }
+  // initialize after construction
+  // this.init();
+
 
   /**
    * Initialize Home page scripts.
@@ -28576,9 +28348,9 @@ var Home = function () {
 
 
   _createClass(Home, [{
-    key: 'init',
+    key: "init",
     value: function init() {
-      new _homeAnims2.default();
+      // new HomeAnims;
     }
   }]);
 
@@ -28586,6 +28358,466 @@ var Home = function () {
 }();
 
 exports.default = Home;
+
+/***/ }),
+/* 366 */,
+/* 367 */,
+/* 368 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.defaultAnimsAPI = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _gsap = __webpack_require__(12);
+
+var _scrollAnim = __webpack_require__(29);
+
+var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
+
+var _preloader = __webpack_require__(49);
+
+var _helpers = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DefaultAnims = function () {
+  function DefaultAnims() {
+    _classCallCheck(this, DefaultAnims);
+
+    this.containers = [].concat(_toConsumableArray(document.querySelectorAll('.block-top')));
+    this.groups = [].concat(_toConsumableArray(document.querySelectorAll('[data-anim="group"]')));
+    this.titles = [].concat(_toConsumableArray(document.querySelectorAll('.block-title')));
+
+    this.init();
+  }
+
+  _createClass(DefaultAnims, [{
+    key: 'init',
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _preloader.preloader.wait();
+
+              case 2:
+                _context.next = 4;
+                return this.scrollAnim();
+
+              case 4:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function init() {
+        return _ref.apply(this, arguments);
+      }
+
+      return init;
+    }()
+  }, {
+    key: 'scrollAnim',
+    value: function scrollAnim() {
+      var _this = this;
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        var _loop = function _loop() {
+          var container = _step.value;
+
+          var section = container.closest('section');
+
+          new _scrollAnim2.default({
+            el: section,
+            onStart: function onStart() {
+              _this.blockTopAnim(container);
+            }
+          });
+        };
+
+        for (var _iterator = this.containers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          _loop();
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        var _loop2 = function _loop2() {
+          var group = _step2.value;
+
+          new _scrollAnim2.default({
+            el: group,
+            hook: .8,
+            onStart: function onStart() {
+              _this.groupAnim(group);
+            }
+          });
+        };
+
+        for (var _iterator2 = this.groups[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          _loop2();
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+    }
+  }, {
+    key: 'blockTopAnim',
+    value: function blockTopAnim() {
+      var tl = new _gsap.TimelineMax();
+
+      for (var _len = arguments.length, container = Array(_len), _key = 0; _key < _len; _key++) {
+        container[_key] = arguments[_key];
+      }
+
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
+
+      try {
+        for (var _iterator3 = container[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var el = _step3.value;
+
+          var item = el.children;
+          var label = el.querySelector('.block-label');
+          var title = el.querySelector('.block-title');
+
+          tl.to(label, .5, { autoAlpha: 1, x: 0 }).to(title, .5, { autoAlpha: 1, x: 0 }).set(title, { className: '+=' + _helpers.css.selected }, '-=1').staggerTo(item, .5, { autoAlpha: 1, x: 0 }, '-=1');
+        }
+      } catch (err) {
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
+          }
+        } finally {
+          if (_didIteratorError3) {
+            throw _iteratorError3;
+          }
+        }
+      }
+    }
+  }, {
+    key: 'groupAnim',
+    value: function groupAnim() {
+      var tl = new _gsap.TimelineMax();
+
+      for (var _len2 = arguments.length, group = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        group[_key2] = arguments[_key2];
+      }
+
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
+
+      try {
+        for (var _iterator4 = group[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var el = _step4.value;
+
+          var item = el.children;
+
+          tl.staggerTo(item, .7, { autoAlpha: 1, x: 0 }, 0.6);
+        }
+      } catch (err) {
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion4 && _iterator4.return) {
+            _iterator4.return();
+          }
+        } finally {
+          if (_didIteratorError4) {
+            throw _iteratorError4;
+          }
+        }
+      }
+    }
+  }]);
+
+  return DefaultAnims;
+}();
+
+var defaultAnimsAPI = exports.defaultAnimsAPI = new DefaultAnims();
+
+/***/ }),
+/* 369 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.defaultAnimsAPI = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _gsap = __webpack_require__(12);
+
+var _scrollAnim = __webpack_require__(29);
+
+var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
+
+var _preloader = __webpack_require__(49);
+
+var _helpers = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DefaultAnims = function () {
+  function DefaultAnims() {
+    _classCallCheck(this, DefaultAnims);
+
+    this.containers = [].concat(_toConsumableArray(document.querySelectorAll('.block-top')));
+    this.groups = [].concat(_toConsumableArray(document.querySelectorAll('[data-anim="group"]')));
+    this.titles = [].concat(_toConsumableArray(document.querySelectorAll('.block-title')));
+
+    this.init();
+  }
+
+  _createClass(DefaultAnims, [{
+    key: 'init',
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _preloader.preloader.wait();
+
+              case 2:
+                _context.next = 4;
+                return this.scrollAnim();
+
+              case 4:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function init() {
+        return _ref.apply(this, arguments);
+      }
+
+      return init;
+    }()
+  }, {
+    key: 'scrollAnim',
+    value: function scrollAnim() {
+      var _this = this;
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        var _loop = function _loop() {
+          var container = _step.value;
+
+          var section = container.closest('section');
+
+          new _scrollAnim2.default({
+            el: section,
+            onStart: function onStart() {
+              _this.blockTopAnim(container);
+            }
+          });
+        };
+
+        for (var _iterator = this.containers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          _loop();
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        var _loop2 = function _loop2() {
+          var group = _step2.value;
+
+          new _scrollAnim2.default({
+            el: group,
+            hook: .8,
+            onStart: function onStart() {
+              _this.groupAnim(group);
+            }
+          });
+        };
+
+        for (var _iterator2 = this.groups[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          _loop2();
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+    }
+  }, {
+    key: 'blockTopAnim',
+    value: function blockTopAnim() {
+      var tl = new _gsap.TimelineMax();
+
+      for (var _len = arguments.length, container = Array(_len), _key = 0; _key < _len; _key++) {
+        container[_key] = arguments[_key];
+      }
+
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
+
+      try {
+        for (var _iterator3 = container[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var el = _step3.value;
+
+          var item = el.children;
+          var label = el.querySelector('.block-label');
+          var title = el.querySelector('.block-title');
+
+          tl.to(label, .5, { autoAlpha: 1, x: 0 }).to(title, .5, { autoAlpha: 1, x: 0 }).set(title, { className: '+=' + _helpers.css.selected }, '-=1').staggerTo(item, .5, { autoAlpha: 1, x: 0 }, '-=1');
+        }
+      } catch (err) {
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
+          }
+        } finally {
+          if (_didIteratorError3) {
+            throw _iteratorError3;
+          }
+        }
+      }
+    }
+  }, {
+    key: 'groupAnim',
+    value: function groupAnim() {
+      var tl = new _gsap.TimelineMax();
+
+      for (var _len2 = arguments.length, group = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        group[_key2] = arguments[_key2];
+      }
+
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
+
+      try {
+        for (var _iterator4 = group[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var el = _step4.value;
+
+          var item = el.children;
+
+          tl.staggerTo(item, .7, { autoAlpha: 1, x: 0 }, 0.6);
+        }
+      } catch (err) {
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion4 && _iterator4.return) {
+            _iterator4.return();
+          }
+        } finally {
+          if (_didIteratorError4) {
+            throw _iteratorError4;
+          }
+        }
+      }
+    }
+  }]);
+
+  return DefaultAnims;
+}();
+
+var defaultAnimsAPI = exports.defaultAnimsAPI = new DefaultAnims();
 
 /***/ })
 ],[133]);

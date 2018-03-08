@@ -1,4 +1,5 @@
 .preloader
+  //display: none !important
   position: fixed
   z-index: 100
   top: 0
@@ -12,7 +13,6 @@
   background: $color1
   pointer-events: none
   &__img
-    opacity: 0
     width: 296px
     height: 110px
     +xs
@@ -207,5 +207,3 @@
       width: calc(100% + 15px)
       height: calc(100% + 10px)
       transform: translate(-10px, -10px)
-      
-.item-test

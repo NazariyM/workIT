@@ -1,0 +1,12 @@
+extends ../extend/default
+
+block variables
+	- var title = 'Events page';
+	- var locationMap = true;
+
+block main
+	main.content(data-page='events')
+
+		include ../components/block-11
+
+		include ../components/subscr

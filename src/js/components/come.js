@@ -8,7 +8,6 @@ class Come {
     this.$container = this.$block.find('.container');
     this.$mask = this.$block.find('.mask_come');
     this.$maskRect = this.$mask.find('rect');
-    this.$maskBlur = this.$mask.find('feGaussianBlur');
 
     if (this.$block.length) this.init();
   }
@@ -38,8 +37,7 @@ class Come {
 
       tl
         .to(this.$mask, .6, { autoAlpha: 1, x: 0 })
-        .staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3')
-        .to(this.$maskBlur, .7, { attr: { stdDeviation: 8 } });
+        .staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3');
     }
   }
 }

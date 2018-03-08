@@ -4,8 +4,7 @@
  * @module Home
  */
 
-import { Resp } from '../modules/dev/_helpers';
-import HomeAnims from '../components/homeAnims';
+// import HomeAnims from '../components/homeAnims';
 
 export default class Home {
   /**
@@ -13,13 +12,13 @@ export default class Home {
    */
   constructor() {
     // initialize after construction
-    this.init();
+    // this.init();
   }
 
   /**
    * Initialize Home page scripts.
    */
   init() {
-    new HomeAnims;
+    // new HomeAnims;
   }
 }

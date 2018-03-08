@@ -17,7 +17,7 @@ if come.title ? come.title : come.title = 'Хочешь увидеть всё с
           text.mask__el(y='480') WORK
 
         filter#come-mask-blur
-          fegaussianblur(in='SourceGraphic', stddeviation='0')
+          fegaussianblur(in='SourceGraphic', stddeviation='8')
 
         mask#come-video-clip
           rect(x='0' y='0')

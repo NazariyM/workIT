@@ -10,7 +10,6 @@ class Screen {
     this.$more = this.$block.find('.screen__more');
     this.$mask = this.$block.find('.mask_screen');
     this.$maskRect = this.$mask.find('rect');
-    this.$maskBlur = this.$mask.find('feGaussianBlur');
 
     if (this.$container.length) this.init();
   }
@@ -41,14 +40,13 @@ class Screen {
           y: 0, onComplete: function () {
             _this.$more.addClass(css.hasAnim);
           }
-        })
-        .to(this.$maskBlur, .7, { attr: { stdDeviation: 10 } });
+        });
     }
   }
 
   scrollNext() {
     this.$more.on('click', function () {
-      const $section = $(this).closest('section').next().offset().top;
+      const $section = $(this).closest('section').next().offset().top - 60;
 
       $scrolledElements.animate({ scrollTop: $section }, 700);
     });

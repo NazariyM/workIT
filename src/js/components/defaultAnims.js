@@ -3,7 +3,7 @@ import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import { preloader } from './preloader';
 import { css } from '../modules/dev/_helpers';
 
-export default class HomeAnims {
+class DefaultAnims {
   constructor() {
     this.containers = [...document.querySelectorAll('.block-top')];
     this.groups = [...document.querySelectorAll('[data-anim="group"]')];
@@ -68,3 +68,5 @@ export default class HomeAnims {
     }
   }
 }
+
+export const defaultAnimsAPI = new DefaultAnims();
