@@ -32,8 +32,6 @@
   .has-error .help-block
     opacity: 1
     transform: translateY(0)
-  .has-error .form-input-label span
-    opacity: 0
   .help-block.form-error
     display: none
   &-group
@@ -137,6 +135,7 @@
   .has-error .control-label
     span
       opacity: 0
+      transform: translateY(20px)
     &:after
       background-color: $color6
       transform: translateX(0)
