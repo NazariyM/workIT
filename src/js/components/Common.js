@@ -7,21 +7,20 @@ import './dot';
 import './noTouch';
 import './header';
 import './slider';
-import './b-screen';
-import './b-block-3';
-import './b-block-5';
-import './b-block-6';
-import './b-block-10';
-import './b-block-11';
-import './locations-map';
-import './come';
 import './footer';
 import './defaultAnims';
 import './expandList';
 import './preloader';
 import './popup';
-import './mask';
-import './DefaultAnims';
+import '../sections/b-screen';
+import '../sections/b-block-3';
+import '../sections/b-block-5';
+import '../sections/b-block-6';
+import '../sections/b-block-10';
+import '../sections/locations-map';
+import '../sections/come';
+import '../sections/mask';
+import '../sections/events';
 
 export class Common {
   /**

@@ -1,8 +1,8 @@
-if block11 ? block11 : block11 = []
-if block11.title ? block11.title : block11.title = ''
+if events ? events : events = []
+if events.title ? events.title : events.title = ''
 
-//begin block-11
-+b.SECTION.block-11(class= block11.classMod ? block11.classMod : '')
+//begin events
++b.SECTION.block-11(class= events.classMod ? events.classMod : '')
 	.container.container_md
 		+e.top.block-top
 			+e.label.block-label
@@ -14,15 +14,15 @@ if block11.title ? block11.title : block11.title = ''
 
 		+e.list.mobile-slider._double._green-large(data-anim='group')
 			-
-				block11List = [{
-					pic: 'block-11_1',
+				eventsList = [{
+					pic: 'events_1',
 					title: 'How To: Make a Good Presentation For Investors'
 				}, {
-					pic: 'block-11_2',
+					pic: 'events_2',
 					title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
 				}]
 
-			mixin block11Item(item)
+			mixin eventsItem(item)
 				+e.item
 					+e.item-pic
 						+b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
@@ -32,9 +32,9 @@ if block11.title ? block11.title : block11.title = ''
 					+e.item-title.h4
 						+e.A(href='#!')
 							+e.H4= item.title
-			each item in block11List
-				+block11Item(item)
+			each item in eventsList
+				+eventsItem(item)
 
 		+e.more
 			+e.A.more-btn.btn._line(href='#!') смотреть все
-//end block-11
+//end events

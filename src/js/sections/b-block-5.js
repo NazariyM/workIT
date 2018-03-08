@@ -2,7 +2,7 @@ import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import { css, Resp } from '../modules/dev/_helpers';
 // import { preloader } from './preloader';
-import Dot from './dot';
+import Dot from '../components/dot';
 
 class Block5 {
   constructor() {

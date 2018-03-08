@@ -5,7 +5,7 @@
   left: 0
   right: 0
   z-index: 99
-  &.is-fixed, &.menu-active
+  &.is-fixed, &.menu-active, &.header_white
     background-color: $white
     .nav
       li
@@ -42,7 +42,8 @@
     transition: background-color .4s ease
     transform: translateY(-100%)
     .is-fixed &,
-    .menu-active &
+    .menu-active &,
+    .header_white &
       background-color: $white
   &__container
     display: flex
@@ -118,7 +119,6 @@
       background-color: $color2
       transition: background-color .7s ease
       &:nth-child(1)
-        //top: 5px
         top: 4px
       &:nth-child(2)
         top: calc(50% - 1px)
@@ -164,6 +164,7 @@
         .is-fixed &,
         .menu-active &
           fill: $color3
+          
     &-inner
       overflow: auto
       height: 100%
@@ -377,12 +378,23 @@
         left: -7px
       +xs
         left: -2px
+  &__letter
     &-first
-      fill: $color1
       +trs
+      #{$parent}_header &
+        fill: $color1
+  
+      #{$parent}_footer &
+        fill: $color2
+        
     &-last
-      fill: $white
       +trs
+      #{$parent}_header &
+        fill: $white
+        
+      #{$parent}_footer &
+        fill: $color1
+    
   &_header
     flex: 0 0 204px
     height: 100%
@@ -391,7 +403,16 @@
       flex: 0 0 150px
     +xs
       flex: 0 0 112px
-    .no-touch &:hover #{$parent}__img-first
+    .no-touch &:hover #{$parent}__letter-first
       fill: $white
-    .no-touch &:hover #{$parent}__img-last
+    .no-touch &:hover #{$parent}__letter-last
       fill: $color1
+      
+  &_footer
+    transform: translateY(50px)
+    opacity: 0
+    .no-touch &:hover #{$parent}__letter-first
+      fill: $color1
+    .no-touch &:hover #{$parent}__letter-last
+      fill: $color2
+    

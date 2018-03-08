@@ -2,11 +2,11 @@ extends ../extend/default
 
 block variables
 	- var title = 'Events page';
-	- var locationMap = true;
+	- var header  = { classMod: '_white' }
 
 block main
 	main.content(data-page='events')
 
-		include ../components/block-11
+		include ../sections/events
 
-		include ../components/subscr
+		include ../sections/subscr

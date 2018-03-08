@@ -19,19 +19,6 @@ export class Validate {
 		this.removeError();
 	}
 
-	// initPopupThanks() {
-	// 	if ($(this.thanks).length) {
-	// 		let speed = 200;
-	// 		$(this.thanks).on('submit', function (e) {
-	// 			e.preventDefault();
-	// 			$(this).parent().siblings().andSelf().not(':last-child').fadeOut(speed);
-	// 			setTimeout(() => {
-	// 				$(this).parent().siblings().last().fadeIn(speed);
-	// 			}, speed);
-	// 		});
-	// 	}
-	// }
-
 	onFocusOut() {
 		$(this.$input).each(function () {
 			let $self = $(this);
@@ -80,13 +67,6 @@ export class Validate {
     this.$input.add(this.$textarea).on('click focus', (ev) => {
       $(ev.currentTarget).parent().removeClass(css.error);
     });
-
-    // this.$input.add(this.$textarea).on('keyup keydown', (ev) => {
-    // 	if (!ev.currentTarget.val()) {
-    //     console.log('false');
-    //   }
-    //   $(ev.currentTarget).parent().removeClass(css.error);
-    // });
   }
 
 	static initValidator() {

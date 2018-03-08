@@ -1,0 +1,84 @@
+.block-top
+  margin: 0 auto 62px
+  &_md
+    padding-left: 60px
+    padding-right: 60px
+    +md
+      padding-left: 30px
+      padding-right: 30px
+    +xs
+      padding: 0
+.block-title
+  +h2
+  transform: translateX(-70px)
+  opacity: 0
+  +xs
+    font-size: 30px
+    line-height: 32px
+
+.block-sub-title
+  +f('gil-300')
+  letter-spacing: 0.025em
+  font-size: 18px
+  line-height: 30px
+  transform: translateX(-70px)
+  opacity: 0
+  +xs
+    font-size: 14px
+    line-height: 22px
+    letter-spacing: 0.02em
+
+.block-label
+  display: inline-block
+  margin-bottom: 25px
+  padding-left: 2px
+  +f('rob-700', 16, 30)
+  text-transform: uppercase
+  transform: translateX(-70px)
+  opacity: 0
+  +xs
+    margin-bottom: 5px
+    padding-left: 0
+    font-size: 12px
+  +md
+    padding-left: 0
+
+
+.has-selection
+  &_green
+    b::after
+      background: $color1
+      width: calc(100% + 17px)
+      +xs
+        bottom: 2px
+        width: calc(100% + 7px)
+  &_black
+    b
+      color: $white
+    b::after
+      background: $color2
+      width: calc(100% + 20px)
+      +xs
+        width: calc(100% + 9px)
+  b
+    position: relative
+    z-index: 1
+    white-space: nowrap
+    &::after
+      position: absolute
+      left: -10px
+      top: 8px
+      bottom: 1px
+      transform: scaleX(0)
+      content: ''
+      z-index: -1
+      transform-origin: 0 0
+      transition: transform 1.3s 1s ease
+      +xs
+        top: 6px
+        left: -5px
+        width: calc(100% + 9px)
+        transition: none
+  
+  &.is-selected b::after
+    transform: scaleX(1)

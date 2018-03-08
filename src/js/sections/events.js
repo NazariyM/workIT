@@ -1,14 +1,14 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 
-class Block11 {
+class Events {
   constructor() {
-    this.$container = $('.block-11');
-    this.$list = this.$container.find('.block-11__list');
-    this.$items = this.$container.find('.block-11__item');
-    this.$more = this.$container.find('.block-11__more');
+    this.$block = $('.events');
+    this.$list = this.$block.find('.events__list');
+    this.$items = this.$block.find('.events__item');
+    this.$more = this.$block.find('.events__more');
 
-    if (this.$container.length) this.init();
+    if (this.$block.length) this.init();
   }
 
   async init() {
@@ -34,4 +34,4 @@ class Block11 {
   }
 }
 
-export const Block11API = new Block11();
+export const EventsAPI = new Events();

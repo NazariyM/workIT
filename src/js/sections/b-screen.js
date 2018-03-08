@@ -1,5 +1,5 @@
 import { TimelineMax, TweenMax } from 'gsap';
-import { preloader } from './preloader';
+import { preloader } from '../components/preloader';
 import {$scrolledElements, css, Resp} from '../modules/dev/_helpers';
 
 class Screen {
