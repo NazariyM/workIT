@@ -3,7 +3,6 @@ import { TimelineMax, TweenMax } from 'gsap';
 class Preloader {
   constructor() {
     this.$preloader = $('.preloader');
-    // this.$img = this.$preloader.find('.preloader__img');
 
     this.init();
   }
@@ -33,7 +32,7 @@ class Preloader {
       });
 
       tl
-        .to(this.$preloader, .5, { autoAlpha: 0 }, '+=.3');
+        .to(this.$preloader, .5, { autoAlpha: 0 }, '+=1');
     });
   }
 }

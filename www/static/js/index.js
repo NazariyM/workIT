@@ -9889,7 +9889,6 @@ var Preloader = function () {
     _classCallCheck(this, Preloader);
 
     this.$preloader = $('.preloader');
-    // this.$img = this.$preloader.find('.preloader__img');
 
     this.init();
   }
@@ -9947,7 +9946,7 @@ var Preloader = function () {
           }
         });
 
-        tl.to(_this2.$preloader, .5, { autoAlpha: 0 }, '+=.3');
+        tl.to(_this2.$preloader, .5, { autoAlpha: 0 }, '+=1');
       });
     }
   }]);
