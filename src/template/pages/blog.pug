@@ -1,0 +1,110 @@
+extends ../extend/default
+
+block variables
+  - var title = 'Blog page';
+
+block main
+  main.content(data-page='events')
+
+    //begin blog
+    +b.SECTION.block-1._blog(data-self-anim='false')
+      .container.container_md
+        +e.top.block-top
+          +e.label.block-label
+            +e.P blog
+
+          +e.title.block-title.has-selection._green
+            +e.H2
+              b Блог
+              = ' '
+              | workit
+
+          +b.SVG.hanging-decor._items(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='202', height='242', viewbox='0 0 202 242')
+            defs
+              path#16t4a(d='M1027 207V59h1v148z')
+              path#16t4b(d='M1108 283V59h1v224z')
+              path#16t4c(d='M1204 181V59h1v122z')
+              path#16t4d(d='M1204.06 177.38c5.22 0 9.6 3.62 10.78 8.5h-21.56a11.11 11.11 0 0 1 10.78-8.5z')
+              path#16t4e(d='M1202.72 177.81v-5.03h2.88v5.03z')
+              path#16t4f(d='M1099.33 271.4l3.47-2a1 1 0 0 1 1.37.36l12.5 21.65a1 1 0 0 1-.37 1.37l-3.47 2a1 1 0 0 1-1.36-.37l-12.5-21.65a1 1 0 0 1 .36-1.37z')
+              path#16t4g(d='M1117.07 298.1l-5.6-3.69 5.2-3z')
+              path#16t4h(d='M1103.8 271.13l.87-.5a1 1 0 0 1 1.36.36l5 8.66a1 1 0 0 1-.36 1.37l-.87.5a1 1 0 0 1-1.37-.37l-5-8.66a1 1 0 0 1 .37-1.36z')
+              path#16t4i(d='M1019 217v-23h17v23z')
+              path#16t4j(d='M1022.28 202.72v-1.69h10.44v1.69z')
+              path#16t4k(d='M1022.28 206.66v-1.69h10.44v1.69z')
+              path#16t4l(d='M1022.28 210.63v-1.72h10.44v1.72z')
+            g(transform='translate(-1017 -58)')
+              g(class='hanging-decor__wire' transform="matrix(1,0,0,1,0,-137)")
+                use(fill='#89a29e', xlink:href='#16t4a' opacity='.5')
+                use(fill='#00d88e', xlink:href='#16t4i')
+                use(fill='#fff', xlink:href='#16t4j')
+                use(fill='#fff', xlink:href='#16t4k')
+                use(fill='#fff', xlink:href='#16t4l')
+              g(class='hanging-decor__wire' transform="matrix(1,0,0,1,0,-211)")
+                use(fill='#89a29e', xlink:href='#16t4b' opacity='.5')
+                use(fill='#89a29e', xlink:href='#16t4f')
+                use(fill='#001011', xlink:href='#16t4g')
+                use(fill='#001011', xlink:href='#16t4h')
+              g(class='hanging-decor__wire' transform="matrix(1,0,0,1,0,-115)")
+                use(fill='#89a29e', xlink:href='#16t4c' opacity='0.5')
+                use(fill='#00d88e', xlink:href='#16t4d')
+                use(fill='#001011', xlink:href='#16t4e')
+
+
+        +e.list
+          -
+            blogList = [{
+              classMod: '_full',
+              picLink: true,
+              pic: 'block-1_full',
+              title: 'How To: Make a Good Presentation For Investors'
+            },
+            {
+              pic: 'block-1_1',
+              title: 'How To: Make a Good Presentation For Investors'
+            }, {
+              pic: 'block-1_2',
+              title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+            }, {
+              pic: 'block-1_3',
+              title: 'How To: Make a Good Presentation For Investors'
+            }, {
+              pic: 'block-1_4',
+              title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+            }, {
+              pic: 'block-1_5',
+              title: 'How To: Make a Good Presentation For Investors'
+            }, {
+              pic: 'block-1_6',
+              title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+            }, {
+              pic: 'block-1_1',
+              title: 'How To: Make a Good Presentation For Investors'
+            }, {
+              pic: 'block-1_7',
+              title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+            }]
+
+          mixin blogItem(item)
+            +e.item(class= item.classMod ? item.classMod : '' data-item-anim='fade-top')
+              if item.picLink
+                +e.A.item-pic(href='#!')
+                  +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
+              else
+                +e.item-pic
+                  +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
+              +e.item-date
+                +e.P 07.12.2017
+                +e.A(href='#!')
+              +e.item-title.h4
+                +e.A(href='#!')
+                  +e.H4= item.title
+          each item in blogList
+            +blogItem(item)
+
+      -paginationClass = '_default'
+      include ../components/pagination
+    //end blog
+
+    -subscrClass = '_default'
+    include ../sections/subscr

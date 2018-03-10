@@ -13,14 +13,14 @@ if screen.subTitle ? screen.subTitle : screen.subTitle = 'Место, где р�
       +e.BUTTON.btn.btn._green(data-popup-target='comePopup' type='button')
         span.btn__text хочу в гости
 
-  +b.mask._screen(data-mask-type='video')
+  +b.mask._screen(data-mask-type= screen.maskType)
     +e.SVG.svg(version='1.1', xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none')
       defs
         clipPath#screen-img-clip
           polygon.mask__el(points='846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89')
 
         filter#screen-mask-blur
-          fegaussianblur(in='SourceGraphic', stddeviation='10')
+          fegaussianblur(in='SourceGraphic', stddeviation= screen.maskBlur ? screen.maskBlur : '10')
 
         mask#sreen-video-clip
           rect(x='0' y='0')
@@ -28,11 +28,12 @@ if screen.subTitle ? screen.subTitle : screen.subTitle = 'Место, где р�
 
       rect(x='0' y='0' width="1920" height="1080" mask='url(#sreen-video-clip)')
 
-      image(xlink:href='static/img/screen_bg.jpg', x='0', y='0' filter='url(#screen-mask-blur)' preserveAspectRatio='xMidYMid slice' width='1920' height='1080')
-      image(xlink:href='static/img/screen_bg.jpg', x='0', y='0' clip-path='url(#screen-img-clip)' preserveAspectRatio='xMidYMid slice' width='1920' height='1080')
+      image(xlink:href=`static/img/screen_${screen.maskImg}.jpg`, x='0', y='0' filter='url(#screen-mask-blur)' preserveAspectRatio='xMidYMin slice' width='1920' height='1080' opacity= screen.maskImgOpacity ? screen.maskImgOpacity : '1')
+      image(xlink:href=`static/img/screen_${screen.maskImg}.jpg`, x='0', y='0' clip-path='url(#screen-img-clip)' preserveAspectRatio='xMidYMin slice' width='1920' height='1080')
 
-    +e.VIDEO(autoplay loop volume='0' onloadedmetadata='this.muted = true')
-      +e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
+    if screen.maskVideo
+      +e.VIDEO(autoplay loop volume='0' onloadedmetadata='this.muted = true')
+        +e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
 
   +e.more
     +e.SPAN.more-text.h6 узнать больше

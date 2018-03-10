@@ -1,34 +1,51 @@
 extends ../extend/default
 
 block variables
-	- var title = 'Home page';
-	- var locationMap = true;
+  - var title = 'Home page';
+  - var locationMap = true;
 
 block main
-	main.content(data-page='home')
+  main.content(data-page='home')
 
-		include ../sections/screen
+    -
+      screen = {
+        classMod: '_home',
+        maskType: 'video',
+        maskImg: '1',
+        maskVideo: true
+      }
+    include ../sections/screen
 
-		include ../sections/block-2
+    include ../sections/block-2
 
-		include ../sections/block-3
+    include ../sections/block-3
 
-		include ../sections/block-4
+    include ../sections/block-4
 
-		include ../sections/block-5
+    include ../sections/block-5
 
-		include ../sections/block-6
+    include ../sections/block-6
 
-		include ../sections/come
+    include ../sections/come
 
-		include ../sections/block-8
+    include ../sections/block-8
 
-		include ../sections/block-9
+    include ../sections/block-9
 
-		include ../sections/block-10
+    include ../sections/block-10
 
-		include ../sections/events
+    -block1 = { titleSelected: 'Мероприятия', titleClasses: '_black is-selected', listClasses: 'mobile-slider _double _green-large' }
+    -
+      block1List = [{
+        pic: 'block-1_1',
+        title: 'How To: Make a Good Presentation For Investors'
+      }, {
+        pic: 'block-1_2',
+        title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+      }]
+    include ../sections/b-block-1
 
-		include ../sections/locations
+    include ../sections/locations
 
-		include ../sections/subscr
+    -subscrClass = '_home'
+    include ../sections/subscr

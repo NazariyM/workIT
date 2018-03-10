@@ -9943,6 +9943,7 @@ var Preloader = function () {
 
       this.resolve = new Promise(function (resolve) {
 
+        // delete it
         // resolve();
 
         var tl = new _gsap.TimelineMax({
@@ -21724,7 +21725,6 @@ var Common = exports.Common = function () {
       (0, _objectFitVideos2.default)();
       _validate2.default.init();
       _pageResize2.default.init();
-      // Dot.init();
     }
   }]);
 
@@ -23304,7 +23304,7 @@ var Header = function () {
 		this.mob = this.header.querySelector('.header__mob');
 		this.mobCol2 = this.mob.querySelectorAll('.header__mob-col')[1].children;
 		this.navMob = this.mob.querySelector('.nav_mob ul');
-		this.langMob = this.mob.querySelector('.lang_mob ul');
+		this.langMob = this.mob.querySelector('.dropdown_lang-mob ul');
 		this.navMobLinks = [].concat(_toConsumableArray(this.navMob.children));
 		this.langMobLinks = [].concat(_toConsumableArray(this.langMob.children));
 		this.scrollTop = 0;
@@ -26694,9 +26694,11 @@ var DefaultAnims = function () {
   function DefaultAnims() {
     _classCallCheck(this, DefaultAnims);
 
-    this.containers = [].concat(_toConsumableArray(document.querySelectorAll('.block-top')));
+    this.blocks = [].concat(_toConsumableArray(document.querySelectorAll('.block-top')));
     this.groups = [].concat(_toConsumableArray(document.querySelectorAll('[data-anim="group"]')));
     this.titles = [].concat(_toConsumableArray(document.querySelectorAll('.block-title')));
+    this.fadeTopItems = [].concat(_toConsumableArray(document.querySelectorAll('[data-item-anim="fade-top"]')));
+    this.hangingDecors = [].concat(_toConsumableArray(document.querySelectorAll('.hanging-decor')));
 
     this.init();
   }
@@ -26753,7 +26755,7 @@ var DefaultAnims = function () {
           });
         };
 
-        for (var _iterator = this.containers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        for (var _iterator = this.blocks[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           _loop();
         }
       } catch (err) {
@@ -26777,18 +26779,19 @@ var DefaultAnims = function () {
 
       try {
         var _loop2 = function _loop2() {
-          var group = _step2.value;
+          var decor = _step2.value;
+
+          var section = decor.closest('section');
 
           new _scrollAnim2.default({
-            el: group,
-            hook: .8,
+            el: section,
             onStart: function onStart() {
-              _this.groupAnim(group);
+              _this.hangingDecorAnim(decor);
             }
           });
         };
 
-        for (var _iterator2 = this.groups[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        for (var _iterator2 = this.hangingDecors[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
           _loop2();
         }
       } catch (err) {
@@ -26805,29 +26808,26 @@ var DefaultAnims = function () {
           }
         }
       }
-    }
-  }, {
-    key: 'blockTopAnim',
-    value: function blockTopAnim() {
-      var tl = new _gsap.TimelineMax();
-
-      for (var _len = arguments.length, container = Array(_len), _key = 0; _key < _len; _key++) {
-        container[_key] = arguments[_key];
-      }
 
       var _iteratorNormalCompletion3 = true;
       var _didIteratorError3 = false;
       var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator3 = container[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var el = _step3.value;
+        var _loop3 = function _loop3() {
+          var group = _step3.value;
 
-          var item = el.children;
-          var label = el.querySelector('.block-label');
-          var title = el.querySelector('.block-title');
+          new _scrollAnim2.default({
+            el: group,
+            hook: .8,
+            onStart: function onStart() {
+              _this.groupAnim(group);
+            }
+          });
+        };
 
-          tl.to(label, .5, { autoAlpha: 1, x: 0 }).to(title, .5, { autoAlpha: 1, x: 0 }).set(title, { className: '+=' + _helpers.css.selected }, '-=1').staggerTo(item, .5, { autoAlpha: 1, x: 0 }, '-=1');
+        for (var _iterator3 = this.groups[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          _loop3();
         }
       } catch (err) {
         _didIteratorError3 = true;
@@ -26843,27 +26843,25 @@ var DefaultAnims = function () {
           }
         }
       }
-    }
-  }, {
-    key: 'groupAnim',
-    value: function groupAnim() {
-      var tl = new _gsap.TimelineMax();
-
-      for (var _len2 = arguments.length, group = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        group[_key2] = arguments[_key2];
-      }
 
       var _iteratorNormalCompletion4 = true;
       var _didIteratorError4 = false;
       var _iteratorError4 = undefined;
 
       try {
-        for (var _iterator4 = group[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-          var el = _step4.value;
+        var _loop4 = function _loop4() {
+          var item = _step4.value;
 
-          var item = el.children;
+          new _scrollAnim2.default({
+            el: item,
+            onStart: function onStart() {
+              _this.fadeTopItemsAnim(item);
+            }
+          });
+        };
 
-          tl.staggerTo(item, .7, { autoAlpha: 1, x: 0 }, 0.6);
+        for (var _iterator4 = this.fadeTopItems[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          _loop4();
         }
       } catch (err) {
         _didIteratorError4 = true;
@@ -26879,6 +26877,54 @@ var DefaultAnims = function () {
           }
         }
       }
+    }
+  }, {
+    key: 'blockTopAnim',
+    value: function blockTopAnim(container) {
+      var tl = new _gsap.TimelineMax();
+
+      var item = container.children;
+      var label = container.querySelector('.block-label');
+      var title = container.querySelector('.block-title');
+
+      tl.to(label, .5, { autoAlpha: 1, x: 0 }).to(title, .5, { autoAlpha: 1, x: 0 }).set(title, { className: '+=' + _helpers.css.selected }, '-=1').staggerTo(item, .5, { autoAlpha: 1, x: 0 }, '-=1');
+    }
+  }, {
+    key: 'groupAnim',
+    value: function groupAnim(group) {
+      var tl = new _gsap.TimelineMax();
+
+      var item = group.children;
+
+      tl.staggerTo(item, .7, { autoAlpha: 1, x: 0 }, 0.6);
+    }
+  }, {
+    key: 'hangingDecorAnim',
+    value: function hangingDecorAnim(decor) {
+      var decorWires = decor.querySelectorAll('.hanging-decor__wire');
+
+      _gsap.TweenMax.to(decorWires, 2, { y: 0 });
+
+      if (decor.classList.contains('hanging-decor_lamps') && _helpers.Resp.isTablet) {
+        var tl = new _gsap.TimelineMax();
+        var $wire1 = decorWires[0];
+        var $wire2 = decorWires[2];
+        var $wire3 = decorWires[1];
+
+        tl.to($wire1, 2, { y: -217 }, 'all').to($wire2, 2, { y: -218 }, 'all').to($wire3, 2, { y: -158 }, 'all');
+      }
+
+      // if (decor.classList.contains('hanging-decor_items')) {
+      //
+      // }
+    }
+  }, {
+    key: 'fadeTopItemsAnim',
+    value: function fadeTopItemsAnim(item) {
+      var tl = new _gsap.TimelineMax();
+      var animItems = item.children;
+
+      tl.staggerTo(animItems, .5, { autoAlpha: 1, y: 0 }, 0.3);
     }
   }]);
 
@@ -27143,7 +27189,7 @@ var Screen = function () {
 
       var tl = new _gsap.TimelineMax({ delay: .2 });
 
-      tl.staggerTo(this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3).to(this.$more, .7, {
+      tl.staggerTo(this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3).to(this.$maskRect, .7, { fillOpacity: '0.4' }).to(this.$more, .7, {
         y: 0, onComplete: function onComplete() {
           _this.$more.addClass(_helpers.css.hasAnim);
         }
@@ -27431,8 +27477,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.Block6API = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-// import { preloader } from './preloader';
-
 
 var _gsap = __webpack_require__(12);
 
@@ -27448,8 +27492,6 @@ var _dot2 = _interopRequireDefault(_dot);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Block6 = function () {
@@ -27457,7 +27499,6 @@ var Block6 = function () {
     _classCallCheck(this, Block6);
 
     this.$container = $('.block-6');
-    this.$lampsWires = this.$container.find('.block-6__lamps-wire');
     this.$offer = this.$container.find('.block-6__offer');
     this.$offerText = this.$offer.find('.block-6__offer-text').children();
     this.$offerPic = this.$offer.find('.block-6__offer-pic');
@@ -27471,76 +27512,28 @@ var Block6 = function () {
 
   _createClass(Block6, [{
     key: 'init',
-    value: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return this.scrollAnim();
-
-              case 2:
-                this.dot();
-
-              case 3:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function init() {
-        return _ref.apply(this, arguments);
-      }
-
-      return init;
-    }()
+    value: function init() {
+      this.scrollAnim();
+      this.dot();
+    }
   }, {
     key: 'scrollAnim',
     value: function scrollAnim() {
       var _this = this;
 
       new _scrollAnim2.default({
-        el: _this.$container.get(0),
-        onStart: function onStart() {
-          _this.lampsAnim();
-        }
-      });
-
-      new _scrollAnim2.default({
         el: _this.$offer.get(0),
-        hook: .9,
         onStart: function onStart() {
           _this.offerAnim();
         }
       });
 
-      new _scrollAnim2.default({
+      if (this.$list.length) new _scrollAnim2.default({
         el: _this.$list.get(0),
-        hook: .9,
         onStart: function onStart() {
           _this.listAnim();
         }
       });
-    }
-  }, {
-    key: 'lampsAnim',
-    value: function lampsAnim() {
-      var _this = this;
-
-      if (_helpers.Resp.isDesk) {
-        _gsap.TweenMax.to(this.$lampsWires, 2, { y: 0 });
-      } else if (_helpers.Resp.isTablet) {
-
-        var tl = new _gsap.TimelineMax();
-        var $wire1 = _this.$lampsWires[0];
-        var $wire2 = _this.$lampsWires[2];
-        var $wire3 = _this.$lampsWires[1];
-
-        tl.to($wire1, 2, { y: -217 }, 'all').to($wire2, 2, { y: -218 }, 'all').to($wire3, 2, { y: -158 }, 'all');
-      }
     }
   }, {
     key: 'offerAnim',
@@ -28412,7 +28405,7 @@ var comeMask = new Mask('.mask_come', false);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.EventsAPI = undefined;
+exports.Block1API = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -28428,87 +28421,73 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Events = function () {
-  function Events() {
-    _classCallCheck(this, Events);
+var Block1 = function () {
+  function Block1() {
+    _classCallCheck(this, Block1);
 
-    this.$block = $('.events');
-    this.$list = this.$block.find('.events__list');
-    this.$items = this.$block.find('.events__item');
-    this.$more = this.$block.find('.events__more');
+    this.$block = $('.block-1');
 
     if (this.$block.length) this.init();
   }
 
-  _createClass(Events, [{
+  _createClass(Block1, [{
     key: 'init',
-    value: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-        var _this2 = this;
+    value: function init() {
+      this.scrollAnim();
+    }
+  }, {
+    key: 'scrollAnim',
+    value: function scrollAnim() {
+      var _this2 = this;
 
-        var _this;
+      var _this = this;
 
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _this = this;
+      this.$block.each(function (i, block) {
+        var $animatedBlock = $(block).filter('[data-self-anim="true"]');
+        var $list = $animatedBlock.find('.block-1__list');
 
+        new _scrollAnim2.default({
+          el: $list[0],
+          onEnter: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      _context.next = 2;
+                      return _this.startAnim(block);
 
-                new _scrollAnim2.default({
-                  el: this.$list.get(0),
-                  onEnter: function () {
-                    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                      return regeneratorRuntime.wrap(function _callee$(_context) {
-                        while (1) {
-                          switch (_context.prev = _context.next) {
-                            case 0:
-                              _context.next = 2;
-                              return _this.startAnim();
+                    case 2:
+                    case 'end':
+                      return _context.stop();
+                  }
+                }
+              }, _callee, _this2);
+            }));
 
-                            case 2:
-                            case 'end':
-                              return _context.stop();
-                          }
-                        }
-                      }, _callee, _this2);
-                    }));
-
-                    return function onEnter() {
-                      return _ref2.apply(this, arguments);
-                    };
-                  }()
-                });
-
-              case 2:
-              case 'end':
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this);
-      }));
-
-      function init() {
-        return _ref.apply(this, arguments);
-      }
-
-      return init;
-    }()
+            return function onEnter() {
+              return _ref.apply(this, arguments);
+            };
+          }()
+        });
+      });
+    }
   }, {
     key: 'startAnim',
-    value: function startAnim() {
-      var _this = this;
+    value: function startAnim(block) {
       var tl = new _gsap.TimelineMax();
-      var $item = this.$items.children();
 
-      tl.staggerTo($item, .7, { autoAlpha: 1, x: 0 }, 0.3).to(_this.$more, .7, { autoAlpha: 1, x: 0 });
+      this.$items = $(block).find('.block-1__item').children();
+      this.$more = $(block).find('.block-1__more');
+
+      tl.staggerTo(this.$items, .7, { autoAlpha: 1, x: 0 }, 0.15).to(this.$more, .7, { autoAlpha: 1, x: 0 });
     }
   }]);
 
-  return Events;
+  return Block1;
 }();
 
-var EventsAPI = exports.EventsAPI = new Events();
+var Block1API = exports.Block1API = new Block1();
 
 /***/ }),
 /* 365 */

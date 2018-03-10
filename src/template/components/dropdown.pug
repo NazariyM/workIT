@@ -1,0 +1,19 @@
+if dropdown ? dropdown : dropdown = []
+
++b.DIV.dropdown(class= dropdownClass ? dropdownClass : '')
+  ul
+    li
+      a(href='#!') Технологии
+        svg(class='dropdown__icon' xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='24', height='16', viewbox='0 0 24 16')
+          defs
+            path#u13ea(d='M1198 262.63l1.4-1.38 10.5 10.38-1.4 1.38z')
+            path#u13eb(d='M1208.51 272.72l-1.39-1.37 10.5-10.35 1.39 1.37z')
+          g
+            g(transform='translate(-1197 -259)')
+              use(fill='#001011', xlink:href='#u13ea')
+            g(transform='translate(-1197 -259)')
+              use(fill='#001011', xlink:href='#u13eb')
+      ul
+        li: a(href='#!') Развлечения
+        li: a(href='#!') Новости
+        li: a(href='#!') Технологии

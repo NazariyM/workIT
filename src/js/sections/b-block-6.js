@@ -1,13 +1,11 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
-// import { preloader } from './preloader';
 import { css, Resp } from '../modules/dev/_helpers';
 import Dot from '../components/dot';
 
 class Block6 {
   constructor() {
     this.$container = $('.block-6');
-    this.$lampsWires = this.$container.find('.block-6__lamps-wire');
     this.$offer = this.$container.find('.block-6__offer');
     this.$offerText = this.$offer.find('.block-6__offer-text').children();
     this.$offerPic = this.$offer.find('.block-6__offer-pic');
@@ -19,9 +17,8 @@ class Block6 {
     if (this.$container.length) this.init();
   }
 
-  async init() {
-    // await preloader.wait();
-    await this.scrollAnim();
+  init() {
+    this.scrollAnim();
     this.dot();
   }
 
@@ -29,48 +26,19 @@ class Block6 {
     const _this = this;
 
     new ScrollAnim({
-      el: _this.$container.get(0),
-      onStart() {
-        _this.lampsAnim();
-      }
-    });
-
-    new ScrollAnim({
       el: _this.$offer.get(0),
-      hook: .9,
       onStart() {
         _this.offerAnim();
       }
     });
 
-    new ScrollAnim({
-      el: _this.$list.get(0),
-      hook: .9,
-      onStart() {
-        _this.listAnim();
-      }
-    });
-  }
-
-  lampsAnim() {
-    const _this = this;
-
-    if (Resp.isDesk) {
-      TweenMax
-       .to(this.$lampsWires, 2, { y: 0 });
-
-    } else if (Resp.isTablet) {
-
-      const tl = new TimelineMax();
-      const $wire1 = _this.$lampsWires[0];
-      const $wire2 = _this.$lampsWires[2];
-      const $wire3 = _this.$lampsWires[1];
-
-      tl
-       .to($wire1, 2, { y: -217 }, 'all')
-       .to($wire2, 2, { y: -218 }, 'all')
-       .to($wire3, 2, { y: -158 }, 'all');
-    }
+    if (this.$list.length)
+      new ScrollAnim({
+        el: _this.$list.get(0),
+        onStart() {
+          _this.listAnim();
+        }
+      });
   }
 
   offerAnim() {

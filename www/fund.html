@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events page</title>
+    <title>Fund page</title>
     <link href="static/css/index.css" rel="stylesheet">
     <link rel="icon" href="static/favicon.png">
   </head>
@@ -42,7 +42,7 @@
     </script>
     <!-- Header-->
     <!--begin header-->
-    <header class="header header_white">
+    <header class="header">
       <div class="header__inner">
         <div class="header__container">
           <a class="logo logo_header" href="#!">
@@ -295,316 +295,104 @@
     </header>
     <!--end header-->
     <!-- Main content-->
-    <main class="content" data-page="events">
-      <!--begin block-1-->
-      <section class="block-1 block-1_default" data-self-anim="true">
-        <div class="container container_md">
-          <div class="block-1__top block-top">
-            <div class="block-1__label block-label">
-              <p>events</p>
-            </div>
-            <div class="block-1__title block-title has-selection has-selection_black block-title block-title_has-dropdown">
-              <h2>Ближайшие
-                <b>мероприятия</b>
-              </h2>
-              <div class="dropdown dropdown_themes">
-                <ul>
-                  <li>
-                    <a href="#!">Технологии
-                      <svg class="dropdown__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="16" viewbox="0 0 24 16">
-                        <defs>
-                          <path id="u13ea" d="M1198 262.63l1.4-1.38 10.5 10.38-1.4 1.38z"></path>
-                          <path id="u13eb" d="M1208.51 272.72l-1.39-1.37 10.5-10.35 1.39 1.37z"></path>
-                        </defs>
-                        <g>
-                          <g transform="translate(-1197 -259)">
-                            <use fill="#001011" xlink:href="#u13ea"></use>
-                          </g>
-                          <g transform="translate(-1197 -259)">
-                            <use fill="#001011" xlink:href="#u13eb"></use>
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                    <ul>
-                      <li>
-                        <a href="#!">Развлечения</a>
-                      </li>
-                      <li>
-                        <a href="#!">Новости</a>
-                      </li>
-                      <li>
-                        <a href="#!">Технологии</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
+    <main class="content" data-page="events"></main>
+    <!--begin screen-->
+    <section class="screen screen_default">
+      <div class="screen__inner">
+        <div class="screen__container container container_md">
+          <div class="screen__title">
+            <h1>Мы создали Workit Seed Fund потому что</h1>
           </div>
-          <div class="block-1__list">
-            <div class="block-1__item block-1__item_full">
-              <a class="block-1__item-pic" href="#!">
-                <img src="static/img/block-1_full.jpg" alt="image" title="" />
-              </a>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>How To: Make a Good Presentation For Investors</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_1.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>How To: Make a Good Presentation For Investors</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_2.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
-                </a>
-              </div>
-            </div>
+          <div class="screen__sub-title">
+            <h5>хотели иметь в Киеве инновационное пространство, которое объединяет людей, вдохновляет и помогает реализовать идеи, позитивно влияющие на мир.</h5>
           </div>
-          <div class="block-1__more">
-            <a class="block-1__more-btn btn btn_line" href="#!">смотреть все</a>
+          <button class="screen__btn btn btn_green" data-popup-target="comePopup" type="button">
+            <span class="btn__text">хочу в гости</span>
+          </button>
+        </div>
+      </div>
+      <div class="mask mask_screen" data-mask-type="image">
+        <svg class="mask__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <clipPath id="screen-img-clip">
+              <polygon class="mask__el" points="846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89"></polygon>
+            </clipPath>
+            <filter id="screen-mask-blur">
+              <fegaussianblur in="SourceGraphic" stddeviation="7"></fegaussianblur>
+            </filter>
+            <mask id="sreen-video-clip">
+              <rect x="0" y="0"></rect>
+              <polygon class="mask__el" points="846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89"></polygon>
+            </mask>
+          </defs>
+          <rect x="0" y="0" width="1920" height="1080" mask="url(#sreen-video-clip)"></rect>
+          <image xlink:href="static/img/screen_2.jpg" x="0" y="0" filter="url(#screen-mask-blur)" preserveAspectRatio="xMidYMin slice" width="1920" height="1080" opacity="0.75"></image>
+          <image xlink:href="static/img/screen_2.jpg" x="0" y="0" clip-path="url(#screen-img-clip)" preserveAspectRatio="xMidYMin slice" width="1920" height="1080"></image>
+        </svg>
+      </div>
+      <div class="screen__more">
+        <span class="screen__more-text h6">узнать больше</span>
+        <svg class="screen__more-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 93.06 42.5">
+          <polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"></polygon>
+        </svg>
+      </div>
+    </section>
+    <!--end screen-->
+    <!--begin block-2-->
+    <section class="block-2 gray-bg">
+      <div class="block-2__container container">
+        <div class="block-2__top block-top block-top block-top_md">
+          <div class="block-label">
+            <p>ABOUT US</p>
+          </div>
+          <div class="block-2__title block-title has-selection has-selection_green">
+            <h2>Спроектирован на основе
+              <b>human-centered</b> design от Google</h2>
           </div>
         </div>
-      </section>
-      <!--end block-1-->
-      <!--begin archive-->
-      <section class="block-1 block-1_archieve">
-        <div class="container container_md">
-          <div class="block-1__top block-top">
-            <div class="block-1__label block-label">
-              <p>archive</p>
-            </div>
-            <div class="block-1__title block-title block-title_has-dropdown has-selection has-selection_green">
-              <h2>
-                <b>Архив</b> мероприятий</h2>
-              <div class="dropdown dropdown_themes dropdown_green">
-                <ul>
-                  <li>
-                    <a href="#!">Технологии
-                      <svg class="dropdown__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="16" viewbox="0 0 24 16">
-                        <defs>
-                          <path id="u13ea" d="M1198 262.63l1.4-1.38 10.5 10.38-1.4 1.38z"></path>
-                          <path id="u13eb" d="M1208.51 272.72l-1.39-1.37 10.5-10.35 1.39 1.37z"></path>
-                        </defs>
-                        <g>
-                          <g transform="translate(-1197 -259)">
-                            <use fill="#001011" xlink:href="#u13ea"></use>
-                          </g>
-                          <g transform="translate(-1197 -259)">
-                            <use fill="#001011" xlink:href="#u13eb"></use>
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                    <ul>
-                      <li>
-                        <a href="#!">Развлечения</a>
-                      </li>
-                      <li>
-                        <a href="#!">Новости</a>
-                      </li>
-                      <li>
-                        <a href="#!">Технологии</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
+        <div class="block-2__content" data-anim="group">
+          <div class="block-2__text">
+            <p>Когда мы устали искать место, в котором нам было бы комфортно работать, мы решили создать его сами. Нас восхищали коворкинги
+              <b>Амстердама</b> и
+              <b>Бостона,</b> но особенно впечатлил офис Google в
+              <b>Майнтин Вью.</b> Именно тогда родилась идея создать что-то подобное и в Украине - так появился
+              <b>Work IT</b>
+            </p>
           </div>
-          <div class="block-1__list">
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_1.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>How To: Make a Good Presentation For Investors</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_2.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_3.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>How To: Make a Good Presentation For Investors</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_4.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_5.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>How To: Make a Good Presentation For Investors</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_6.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_1.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>How To: Make a Good Presentation For Investors</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_2.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--begin pagination-->
-        <ul class="pagination pagination_default">
-          <li class="prev hidden">
-            <a href="!#">prev page</a>
-          </li>
-          <li class="active">
-            <a href="!#">1</a>
-          </li>
-          <li>
-            <a href="!#">2</a>
-          </li>
-          <li>
-            <a href="!#">3</a>
-          </li>
-          <li>
-            <a href="!#">...</a>
-          </li>
-          <li>
-            <a href="!#">15</a>
-          </li>
-          <li class="next">
-            <a href="!#">next page</a>
-          </li>
-        </ul>
-        <!--end pagination-->
-      </section>
-      <!--end archive-->
-      <!--begin subscription-->
-      <section class="subscr subscr_default">
-        <div class="subscr__container container container_md" data-anim="group">
-          <div class="subscr__title">
-            <h3>Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!</h3>
-          </div>
-          <div class="subscr__form-wrap">
-            <form class="form" action="#!">
-              <div class="form-group form-group_has-btn">
-                <div class="form-group">
-                  <input class="form-control" type="text" name="" autocomplete="off" data-validation="email required">
-                  <label class="control-label">
-                    <span>Ваш email</span>
-                  </label>
-                  <div class="help-block">Введите ваш Email</div>
+          <div class="slider block-2__slider">
+            <div class="slider__body">
+              <div class="slider__item">
+                <div class="slider__media img-hover">
+                  <video playsinline="playsinline" autoplay="autoplay" loop="loop" volume="0" onloadedmetadata="this.muted = true" data-mobile-disable="data-mobile-disable">
+                    <source src="static/video/video-sample.mp4" type="video/mp4" />
+                  </video>
+                  <div class="slider__media-img slider__media-img_video" style="background-image: url(static/img/block-2_1.jpg);"></div>
                 </div>
-                <label class="form-btn btn btn_black">
-                  <input class="btn" type="submit" value="подписаться" />
-                </label>
               </div>
-            </form>
+              <div class="slider__item">
+                <div class="slider__media img-hover">
+                  <div class="slider__media-img img-hover__item" style="background-image: url(static/img/block-2_1.jpg);"></div>
+                </div>
+              </div>
+              <div class="slider__item">
+                <div class="slider__media img-hover">
+                  <div class="slider__media-img img-hover__item" style="background-image: url(static/img/block-2_1.jpg);"></div>
+                </div>
+              </div>
+            </div>
+            <div class="slider__controls">
+              <div class="slider__buttons"></div>
+              <div class="slider__count">
+                <span class="slider__count-current"></span>
+                <div class="slider__count-decor"></div>
+                <span class="slider__count-all"></span>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-      <!--end subscription-->
-    </main>
+      </div>
+    </section>
+    <!--end block-2-->
     <div class="popup" data-popup-id="comePopup" tabindex="-1" role="dialog">
       <div class="popup__container">
         <button class="popup__close js-popup-close" type="button">

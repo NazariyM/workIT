@@ -12,81 +12,9 @@
   </head>
   <body>
     <!-- SVG-->
-    <div class="svg-container" style="position: absolute; width: 0; height: 0; overflow: hidden;">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-          <path id="a" d="M1007.5 4506l-30.5-35h61z" />
-          <path id="b" d="M1007 4525v-20h2v20z" />
-          <path id="c" d="M998 4527v-2h20v2z" />
-          <clipPath id="d">
-            <use xlink:href="#a" />
-          </clipPath>
-          <clipPath id="e">
-            <use xlink:href="#b" />
-          </clipPath>
-          <clipPath id="f">
-            <use xlink:href="#c" />
-          </clipPath>
-          <path id="a" d="M721.88 4472c14.98 0 27.12 12.31 27.12 27.5s-12.14 27.5-27.12 27.5c-14.99 0-27.13-12.31-27.13-27.5s12.14-27.5 27.13-27.5z" />
-          <path id="b" d="M697.12 4472c14.99 0 27.13 12.31 27.13 27.5s-12.14 27.5-27.13 27.5c-14.98 0-27.12-12.31-27.12-27.5s12.14-27.5 27.12-27.5z" />
-          <clipPath id="c">
-            <use xlink:href="#a" />
-          </clipPath>
-          <clipPath id="d">
-            <use xlink:href="#b" />
-          </clipPath>
-          <path id="a" d="M135 4492.5l-19 33.5H78l-19-33.5 19-33.5h38z" />
-          <path id="b" d="M80 4509v-34h34v34z" />
-          <clipPath id="c">
-            <use xlink:href="#a" />
-          </clipPath>
-          <clipPath id="d">
-            <use xlink:href="#b" />
-          </clipPath>
-          <path id="a" d="M364 4527v-65h65v65z" />
-          <path id="b" d="M397 4477a18 18 0 1 1 0 36 18 18 0 0 1 0-36z" />
-          <clipPath id="c">
-            <use xlink:href="#a" />
-          </clipPath>
-          <clipPath id="d">
-            <use xlink:href="#b" />
-          </clipPath>
-        </defs>
-        <symbol id="icon-aviation" viewBox="0 0 41.29 40.61">
-          <title>Aviation</title>
-          <g data-name="Layer 2">
-            <g data-name="Layer 5">
-              <path d="M41.29 37.95L29.58 30.7V19.04l11.71 7.25v11.66z" />
-              <path d="M0 36.97l11.71-6.27V19.04L0 25.3v11.67z" />
-              <path d="M26.56 8.24C26.36 3.64 23.79 0 20.65 0s-5.71 3.64-5.92 8.24v32.37h11.85V8.26z" />
-            </g>
-          </g>
-        </symbol>
-        <symbol id="icon-cocktail" viewBox="0 0 65 59">
-          <g transform="translate(-975 -4469)">
-            <use xlink:href="#a" />
-            <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#d&quot;)" xlink:href="#a" />
-          </g>
-          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#e&quot;)" xlink:href="#b" transform="translate(-975 -4469)" />
-          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#f&quot;)" xlink:href="#c" transform="translate(-975 -4469)" />
-        </symbol>
-        <symbol id="icon-double-circles" viewBox="0 0 81 58">
-          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#c&quot;)" xlink:href="#a" transform="translate(-669 -4470)" />
-          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#d&quot;)" xlink:href="#b" transform="translate(-669 -4470)" />
-        </symbol>
-        <symbol id="icon-hex-square" viewBox="0 0 78 71">
-          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#c&quot;)" xlink:href="#a" transform="translate(-58 -4457)" />
-          <g transform="translate(-58 -4457)">
-            <use xlink:href="#b" />
-            <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#d&quot;)" xlink:href="#b" />
-          </g>
-        </symbol>
-        <symbol id="icon-square-circle" viewBox="0 0 68 68">
-          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#c&quot;)" xlink:href="#a" transform="translate(-362 -4460)" />
-          <use fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#d&quot;)" xlink:href="#b" transform="translate(-362 -4460)" />
-        </symbol>
-      </svg>
-    </div>
+    <!--block svg-->
+    <!--  div.svg-container(style="position: absolute; width: 0; height: 0; overflow: hidden;")-->
+    <!--    include ../partials/_sprite.svg-->
     <!--begin preloader-->
     <div class="preloader">
       <svg class="preloader__img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 807.02 205.05">
@@ -210,7 +138,7 @@
               <div class="header__menu-burger-line"></div>
             </div>
           </button>
-          <div class="header__lang lang">
+          <div class="dropdown dropdown_lang">
             <ul>
               <li>
                 <a href="#!">ru</a>
@@ -255,7 +183,7 @@
           </button>
           <div class="header__mob-inner">
             <div class="header__mob-scroll">
-              <div class="lang lang_mob">
+              <div class="dropdown dropdown_lang-mob">
                 <ul>
                   <li class="is-active">
                     <a href="#!">ru</a>
@@ -369,7 +297,7 @@
     <!-- Main content-->
     <main class="content" data-page="home">
       <!--begin screen-->
-      <section class="screen">
+      <section class="screen screen_home">
         <div class="screen__inner">
           <div class="screen__container container container_md">
             <div class="screen__title">
@@ -398,8 +326,8 @@
               </mask>
             </defs>
             <rect x="0" y="0" width="1920" height="1080" mask="url(#sreen-video-clip)"></rect>
-            <image xlink:href="static/img/screen_bg.jpg" x="0" y="0" filter="url(#screen-mask-blur)" preserveAspectRatio="xMidYMid slice" width="1920" height="1080"></image>
-            <image xlink:href="static/img/screen_bg.jpg" x="0" y="0" clip-path="url(#screen-img-clip)" preserveAspectRatio="xMidYMid slice" width="1920" height="1080"></image>
+            <image xlink:href="static/img/screen_1.jpg" x="0" y="0" filter="url(#screen-mask-blur)" preserveAspectRatio="xMidYMin slice" width="1920" height="1080" opacity="1"></image>
+            <image xlink:href="static/img/screen_1.jpg" x="0" y="0" clip-path="url(#screen-img-clip)" preserveAspectRatio="xMidYMin slice" width="1920" height="1080"></image>
           </svg>
           <video autoplay="autoplay" loop="loop" volume="0" onloadedmetadata="this.muted = true">
             <source src="static/video/video-sample.mp4" type="video/mp4" />
@@ -696,7 +624,7 @@
       <!--begin block-6-->
       <section class="block-6">
         <div class="container container_md">
-          <div class="block-6__top block-top">
+          <div class="block-6__top block-top block-top_has-hanging">
             <div class="block-6__label block-label">
               <p>prices</p>
             </div>
@@ -709,6 +637,23 @@
                 <b>Организация рабочего пространства</b> — это зона нашей ответственности. Мы
                 <b>точно найдем</b> что вам предложить.</h5>
             </div>
+            <svg class="hanging-decor hanging-decor_lamps" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 188.65 330.56" width="189" height="331">
+              <g class="hanging-decor__wire" transform="matrix(1,0,0,1,0,-254)">
+                <path fill="#c4d0ce" d="M10.33,0h1V265.56h-1Z"></path>
+                <path fill="#001011" d="M9.39,253.66h2.88v5H9.39Z"></path>
+                <path fill="#00d88e" d="M21.53,266.75a11.07,11.07,0,0,0-21.53,0Z"></path>
+              </g>
+              <g class="hanging-decor__wire" transform="matrix(1,0,0,1,0,-206)">
+                <path fill="#c4d0ce" d="M177.48,0h1V217.28h-1Z"></path>
+                <path fill="#001011" d="M176.55,205.78h2.88v5h-2.87Z"></path>
+                <path fill="#00d88e" d="M188.65,218.87a11.07,11.07,0,0,0-21.53,0Z"></path>
+              </g>
+              <g class="hanging-decor__wire" transform="matrix(1,0,0,1,0,-317)">
+                <path fill="#c4d0ce" d="M82,0h1V325H82Z"></path>
+                <path fill="#001011" d="M81,317.5h2.84v5H81Z"></path>
+                <path fill="#00d88e" d="M93.15,330.56a11.06,11.06,0,0,0-21.52,0Z"></path>
+              </g>
+            </svg>
           </div>
           <div class="block-6__offer">
             <div class="block-6__offer-text">
@@ -791,23 +736,6 @@
               </div>
             </div>
           </div>
-          <svg class="block-6__lamps" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 188.65 330.56" width="189" height="331">
-            <g class="block-6__lamps-wire" transform="matrix(1,0,0,1,0,-254)">
-              <path fill="#c4d0ce" d="M10.33,0h1V265.56h-1Z"></path>
-              <path fill="#001011" d="M9.39,253.66h2.88v5H9.39Z"></path>
-              <path fill="#00d88e" d="M21.53,266.75a11.07,11.07,0,0,0-21.53,0Z"></path>
-            </g>
-            <g class="block-6__lamps-wire" transform="matrix(1,0,0,1,0,-206)">
-              <path fill="#c4d0ce" d="M177.48,0h1V217.28h-1Z"></path>
-              <path fill="#001011" d="M176.55,205.78h2.88v5h-2.87Z"></path>
-              <path fill="#00d88e" d="M188.65,218.87a11.07,11.07,0,0,0-21.53,0Z"></path>
-            </g>
-            <g class="block-6__lamps-wire" transform="matrix(1,0,0,1,0,-317)">
-              <path fill="#c4d0ce" d="M82,0h1V325H82Z"></path>
-              <path fill="#001011" d="M81,317.5h2.84v5H81Z"></path>
-              <path fill="#00d88e" d="M93.15,330.56a11.06,11.06,0,0,0-21.52,0Z"></path>
-            </g>
-          </svg>
         </div>
       </section>
       <!--end block-6-->
@@ -1068,55 +996,55 @@
         <div class="block-10__decor-line"></div>
       </section>
       <!--end block-10-->
-      <!--begin events-->
-      <section class="events">
+      <!--begin block-1-->
+      <section class="block-1" data-self-anim="true">
         <div class="container container_md">
-          <div class="events__top block-top">
-            <div class="events__label block-label">
+          <div class="block-1__top block-top">
+            <div class="block-1__label block-label">
               <p>events</p>
             </div>
-            <div class="events__title block-title has-selection has-selection_black is-selected">
+            <div class="block-1__title block-title has-selection has-selection_black is-selected">
               <h2>
                 <b>Мероприятия</b>
               </h2>
             </div>
           </div>
-          <div class="events__list mobile-slider mobile-slider_double mobile-slider_green-large" data-anim="group">
-            <div class="events__item">
-              <div class="events__item-pic">
-                <img src="static/img/events_1.jpg" alt="image" title="" />
+          <div class="block-1__list mobile-slider mobile-slider_double mobile-slider_green-large">
+            <div class="block-1__item">
+              <div class="block-1__item-pic">
+                <img src="static/img/block-1_1.jpg" alt="image" title="" />
               </div>
-              <div class="events__item-date">
+              <div class="block-1__item-date">
                 <p>07.12.2017</p>
                 <a href="#!"></a>
               </div>
-              <div class="events__item-title h4">
+              <div class="block-1__item-title h4">
                 <a href="#!">
                   <h4>How To: Make a Good Presentation For Investors</h4>
                 </a>
               </div>
             </div>
-            <div class="events__item">
-              <div class="events__item-pic">
-                <img src="static/img/events_2.jpg" alt="image" title="" />
+            <div class="block-1__item">
+              <div class="block-1__item-pic">
+                <img src="static/img/block-1_2.jpg" alt="image" title="" />
               </div>
-              <div class="events__item-date">
+              <div class="block-1__item-date">
                 <p>07.12.2017</p>
                 <a href="#!"></a>
               </div>
-              <div class="events__item-title h4">
+              <div class="block-1__item-title h4">
                 <a href="#!">
                   <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
                 </a>
               </div>
             </div>
           </div>
-          <div class="events__more">
-            <a class="events__more-btn btn btn_line" href="#!">смотреть все</a>
+          <div class="block-1__more">
+            <a class="block-1__more-btn btn btn_line" href="#!">смотреть все</a>
           </div>
         </div>
       </section>
-      <!--end events-->
+      <!--end block-1-->
       <!--begin locations-->
       <section class="locations">
         <div class="container">
@@ -1174,8 +1102,8 @@
       </section>
       <!--end locations-->
       <!--begin subscription-->
-      <section class="subscr" data-no-anim="true">
-        <div class="container container_md" data-anim="group">
+      <section class="subscr subscr_home">
+        <div class="subscr__container container container_md" data-anim="group">
           <div class="subscr__title">
             <h3>Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!</h3>
           </div>

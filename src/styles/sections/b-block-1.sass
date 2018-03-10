@@ -1,9 +1,23 @@
-.events
+.block-1
   padding: 110px 0 113px
   background: $color1
   +xs
     padding: 52px 0 53px
+  &_archieve
+    padding: 110px 0 0
+    background: $white
+  &_archieve &__item
+    padding: 0 30px 58px
+  &_blog
+    padding: 110px 0 0
+    background: $white
+  &_blog &__item
+    padding: 0 30px 58px
+    &_full
+      padding-bottom: 0
   &__top
+    position: relative
+    z-index: 1
     margin-bottom: 63px
     text-align: left
     +xs
@@ -19,8 +33,15 @@
     flex: 0 1 50%
     max-width: 610px
     padding: 0 30px
+    &_full
+      flex: 1 1 auto
+      margin-bottom: 80px
+      max-width: none
+    &_full &-pic
+      height: 450px
     &-pic
-      opacity: 0
+      display: block
+      opacity: 03
       transform: translateX(-50px)
       height: 300px
       margin-bottom: 30px

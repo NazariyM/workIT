@@ -1,8 +1,16 @@
 .subscr
-  padding: 130px 0 120px
   background: $color1
-  +xs
-    padding: 55px 0 60px
+  &_default
+    padding: 20px 0 40px
+  &_home
+    padding: 50px 0 40px
+    +xs
+      padding: 55px 0 60px
+  &__container
+    padding: 80px 60px
+    +md
+      padding: 80px 30px
+  
   &__title
     margin: 0 0 58px
     max-width: 900px

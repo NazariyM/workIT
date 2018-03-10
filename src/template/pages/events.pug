@@ -1,12 +1,86 @@
 extends ../extend/default
 
 block variables
-	- var title = 'Events page';
-	- var header  = { classMod: '_white' }
+  - var title = 'Events page';
+  - var header  = { classMod: '_white' }
 
 block main
-	main.content(data-page='events')
+  main.content(data-page='events')
 
-		include ../sections/events
+    -block1 = { classMod: '_default', title: 'Ближайшие', titleSelected: 'мероприятия', titleClasses: '_black block-title_has-dropdown', themes: true }
+    -
+      block1List = [{
+        classMod: '_full',
+        picLink: true,
+        pic: 'block-1_full',
+        title: 'How To: Make a Good Presentation For Investors'
+      },{
+        pic: 'block-1_1',
+        title: 'How To: Make a Good Presentation For Investors'
+      }, {
+        pic: 'block-1_2',
+        title: 'Гонка за очками дополненной реальности стартует прямо сейчас'}]
+    include ../sections/b-block-1
 
-		include ../sections/subscr
+    //begin archive
+    +b.SECTION.block-1._archieve
+      .container.container_md
+        +e.top.block-top
+          +e.label.block-label
+            +e.P archive
+
+          +e.title.block-title._has-dropdown.has-selection._green
+            +e.H2
+              b Архив
+              = ' '
+              | мероприятий
+
+            -dropdownClass = '_themes _green'
+            include ../components/dropdown
+
+        +e.list
+          -
+            archieveList = [{
+            pic: 'block-1_1',
+            title: 'How To: Make a Good Presentation For Investors'
+            }, {
+            pic: 'block-1_2',
+            title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+            }, {
+            pic: 'block-1_3',
+            title: 'How To: Make a Good Presentation For Investors'
+            }, {
+            pic: 'block-1_4',
+            title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+            }, {
+            pic: 'block-1_5',
+            title: 'How To: Make a Good Presentation For Investors'
+            }, {
+            pic: 'block-1_6',
+            title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+            }, {
+            pic: 'block-1_1',
+            title: 'How To: Make a Good Presentation For Investors'
+            }, {
+            pic: 'block-1_2',
+            title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+            }]
+
+          mixin archieveItem(item)
+            +e.item(class= item.classMod ? item.classMod : '')
+              +e.item-pic
+                +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
+              +e.item-date
+                +e.P 07.12.2017
+                +e.A(href='#!')
+              +e.item-title.h4
+                +e.A(href='#!')
+                  +e.H4= item.title
+          each item in archieveList
+            +archieveItem(item)
+      -paginationClass = '_default'
+      include ../components/pagination
+    //end archive
+
+    -subscrClass = '_default'
+    include ../sections/subscr

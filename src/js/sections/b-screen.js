@@ -25,6 +25,7 @@ class Screen {
 
     tl
       .staggerTo(this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3)
+      .to(this.$maskRect, .7, { fillOpacity: '0.4' })
       .to(this.$more, .7, {
         y: 0, onComplete: () => {
           this.$more.addClass(css.hasAnim);

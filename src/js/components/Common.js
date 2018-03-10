@@ -20,7 +20,7 @@ import '../sections/b-block-10';
 import '../sections/locations-map';
 import '../sections/come';
 import '../sections/mask';
-import '../sections/events';
+import '../sections/b-block-1';
 
 export class Common {
   /**
@@ -37,7 +37,6 @@ export class Common {
     objectFitVideos();
     Validate.init();
     PageResize.init();
-    // Dot.init();
   }
 }
 

@@ -1,0 +1,12 @@
+if pagination ? pagination : pagination = []
+
+//begin pagination
++b.UL.pagination(class= paginationClass ? paginationClass : '')
+	li.prev.hidden: a(href='!#') prev page
+	li.active: a(href='!#') 1
+	li: a(href='!#') 2
+	li: a(href='!#') 3
+	li: a(href='!#') ...
+	li: a(href='!#') 15
+	li.next: a(href='!#') next page
+//end pagination

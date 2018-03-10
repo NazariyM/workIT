@@ -18,7 +18,7 @@ class Header {
 		this.mob = this.header.querySelector('.header__mob');
 		this.mobCol2 = this.mob.querySelectorAll('.header__mob-col')[1].children;
 		this.navMob = this.mob.querySelector('.nav_mob ul');
-		this.langMob = this.mob.querySelector('.lang_mob ul');
+		this.langMob = this.mob.querySelector('.dropdown_lang-mob ul');
 		this.navMobLinks = [...this.navMob.children];
 		this.langMobLinks = [...this.langMob.children];
 		this.scrollTop = 0;

@@ -26,11 +26,11 @@
       stroke: $color2
     .icon-user__bot
       stroke: $color1
-    .lang > ul::before
+    .dropdown > ul::before
       background-color: $color1
-    .lang > ul ul
+    .dropdown > ul ul
       background: $color1
-    .lang a
+    .dropdown a
       .no-touch &:hover
         color: $white
     .header__btn,
@@ -76,10 +76,6 @@
     .btn__text
       letter-spacing: 0.1em
       line-height: 65px
-  &__lang
-    margin: 0 62px 0 30px
-    +md
-      display: none
   
   &__menu-btn
     display: none
@@ -101,7 +97,8 @@
       color: $white
       transition: opacity .4s ease
       .is-fixed &,
-      .menu-active &
+      .menu-active &,
+      .header_white &
         color: $color3
   
   &__menu-burger
@@ -124,7 +121,8 @@
         top: calc(50% - 1px)
         background-color: $white
         .is-fixed &,
-        .menu-active &
+        .menu-active &,
+        .header_white &
           background-color: $color1
       &:nth-child(3)
         bottom: 4px
@@ -140,7 +138,8 @@
     background: $color1
     transition: background-color .3s ease
     .is-fixed &,
-    .menu-active &
+    .menu-active &,
+    .header_white &
       background: $white
     +md
       display: block
@@ -162,7 +161,8 @@
         fill: $white
         transition: fill .3s ease
         .is-fixed &,
-        .menu-active &
+        .menu-active &,
+        .header_white &
           fill: $color3
           
     &-inner
@@ -199,7 +199,8 @@
       +xs
         margin-bottom: 58px
       .is-fixed &,
-      .menu-active &
+      .menu-active &,
+      .header_white &
         background-color: $color1
         &::after
           background-color: $color1
@@ -282,137 +283,3 @@
           padding: 0
           +xs
             padding: 0 0 11px
-
-.lang
-  flex: 0 0 50px
-  width: 50px
-  text-align: center
-  cursor: pointer
-  > ul
-    position: relative
-    &::before
-      position: absolute
-      top: 50%
-      right: 0
-      width: 5px
-      height: 5px
-      margin-top: -2px
-      background-color: $white
-      transition: .4s ease
-      content: ''
-    &:hover ul
-      pointer-events: auto
-      transform: scaleY(1)
-      opacity: 1
-    > li > a
-      position: relative
-      z-index: 1
-      pointer-events: none
-    li
-      a
-        display: block
-        height: 37px
-        line-height: 37px
-        +f('gil-800', 12)
-        color: $color2
-        text-transform: uppercase
-    ul
-      pointer-events: none
-      position: absolute
-      top: 0
-      left: 0
-      right: 0
-      transform-origin: 0 0
-      transform: scaleY(0)
-      opacity: 0
-      padding-top: 37px
-      background-color: $white
-      transition: opacity .65s ease, transform .4s ease
-      a
-        +trs
-        .no-touch &:hover
-          color: $color3
-  
-  &_mob
-    flex: 0 1 auto
-    width: auto
-    margin-bottom: 78px
-    +xs
-      margin-bottom: 35px
-    ul
-      display: flex
-      &::before
-        display: none
-      li
-        opacity: 0
-        transform: translateY(-20px)
-        &:not(:last-child)
-          margin-right: 49px
-          +xs
-            margin-right: 30px
-        &.is-active a
-          color: $color2
-        .is-fixed &.is-active a,
-        .menu-active &.is-active a
-          color: $color2
-        a
-          color: $white
-          letter-spacing: 0.09em
-          .is-fixed &,
-          .menu-active &
-            color: $color3
-
-.logo
-  $parent: &
-  display: flex
-  align-items: center
-  justify-content: center
-  flex-shrink: 0
-  &__img
-    width: 80px
-    height: 20px
-    #{$parent}_header &
-      position: relative
-      left: -2px
-      +md
-        left: -7px
-      +xs
-        left: -2px
-  &__letter
-    &-first
-      +trs
-      #{$parent}_header &
-        fill: $color1
-  
-      #{$parent}_footer &
-        fill: $color2
-        
-    &-last
-      +trs
-      #{$parent}_header &
-        fill: $white
-        
-      #{$parent}_footer &
-        fill: $color1
-    
-  &_header
-    flex: 0 0 204px
-    height: 100%
-    background: $color2
-    +md
-      flex: 0 0 150px
-    +xs
-      flex: 0 0 112px
-    .no-touch &:hover #{$parent}__letter-first
-      fill: $white
-    .no-touch &:hover #{$parent}__letter-last
-      fill: $color1
-      
-  &_footer
-    transform: translateY(50px)
-    opacity: 0
-    .no-touch &:hover #{$parent}__letter-first
-      fill: $color1
-    .no-touch &:hover #{$parent}__letter-last
-      fill: $color2
-    

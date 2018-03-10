@@ -1,4 +1,4 @@
-// begin preloader //
+// begin preloader
 .preloader
   //display: none !important
   position: fixed
@@ -23,9 +23,9 @@
       &-dot
         animation: smallBounce 200ms cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate
         animation-delay: 0s
-// end preloader //
+// end preloader
 
-// begin expand-list //
+// begin expand-list
 .expand-list
   text-align: center
   &__inner
@@ -71,9 +71,9 @@
     +xs
       letter-spacing: 0.1em
       
-// end expand-list //
+// end expand-list
 
-// begin tel-block //
+// begin tel-block
 .tel-block
   a
     +f('rob-700')
@@ -88,9 +88,9 @@
       top: 3px
       left: 3px
       
-// end tel-block //
+// end tel-block
 
-// begin contact-block //
+// begin contact-block
 .contact-block
   font-size: 0
   p
@@ -122,18 +122,20 @@
     margin: 2px 0 20px
     +xs
       display: none
-    .is-fixed & p
+    .is-fixed & p,
+    .header_white & p
       color: $color3
     p
       color: $white
   &_mob &__mail
     background: $white
-    .is-fixed &
+    .is-fixed &,
+    .header_white &
       background-color: $color1
 
-// end contact-block //
+// end contact-block
 
-// begin mask //
+// begin mask
 .mask
   +coverdiv
   z-index: -1
@@ -174,4 +176,211 @@
       width: calc(100% + 15px)
       height: calc(100% + 10px)
       transform: translate(-10px, -10px)
-// end mask //
+// end mask
+
+// begin dropdown
+.dropdown
+  $parent: &
+  position: relative
+  text-align: center
+  cursor: default
+  > ul
+    position: relative
+    &::before
+      position: absolute
+      top: 50%
+      right: 0
+      width: 5px
+      height: 5px
+      margin-top: -2px
+      background-color: $white
+      transition: .4s ease
+      content: ''
+    &:hover ul
+      pointer-events: auto
+      transform: scaleY(1)
+      opacity: 1
+    &:hover #{$parent}__icon
+      animation: smallMoving .2s .3s ease
+    > li > a
+      position: relative
+      z-index: 1
+      pointer-events: none
+    li
+      a
+        display: block
+        height: 37px
+        line-height: 37px
+        +f('gil-800', 12)
+        color: $color2
+        text-transform: uppercase
+        cursor: pointer
+    ul
+      pointer-events: none
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      transform-origin: 0 0
+      transform: scaleY(0)
+      opacity: 0
+      padding-top: 37px
+      background-color: $white
+      transition: opacity .65s ease, transform .4s ease
+      a
+        +trs
+        .no-touch &:hover
+          color: $color3
+          
+  &__icon
+    position: absolute
+    top: 50%
+    margin-top: -8px
+    right: 0
+    +trs
+  &_lang
+    flex: 0 0 50px
+    width: 50px
+    margin: 0 62px 0 30px
+    +md
+      display: none
+  &_lang-mob
+    flex: 0 1 auto
+    width: auto
+    margin-bottom: 78px
+    +xs
+      margin-bottom: 35px
+    ul
+      display: flex
+      &::before
+        display: none
+      li
+        opacity: 0
+        transform: translateY(-20px)
+        &:not(:last-child)
+          margin-right: 49px
+          +xs
+            margin-right: 30px
+        &.is-active a
+          color: $color2
+        .is-fixed &.is-active a,
+        .menu-active &.is-active a,
+        .header_white &.is-active a
+          color: $color2
+        a
+          color: $white
+          letter-spacing: 0.09em
+          .is-fixed &,
+          .menu-active &,
+          .header_white &
+            color: $color3
+            
+  &_themes
+    flex: 0 0 170px
+    width: 170px
+    > ul
+      &::before
+        display: none
+      ul
+        &::after
+          position: absolute
+          z-index: -1
+          top: -10px
+          left: -10px
+          right: -10px
+          bottom: -10px
+          background: $white
+          content: ''
+      li
+        a
+          display: flex
+          align-items: center
+          font-size: 18px
+          padding: 0 25px 0 20px
+          text-transform: none
+          
+  &_green
+    > ul
+      ul
+        &::after
+          background: $color1
+        
+        a
+          .no-touch &:hover
+            color: $white
+  
+// end dropdown
+
+// begin logo
+.logo
+  $parent: &
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-shrink: 0
+  &__img
+    width: 80px
+    height: 20px
+    #{$parent}_header &
+      position: relative
+      left: -2px
+      +md
+        left: -7px
+      +xs
+        left: -2px
+  &__letter
+    &-first
+      +trs
+      #{$parent}_header &
+        fill: $color1
+      
+      #{$parent}_footer &
+        fill: $color2
+    
+    &-last
+      +trs
+      #{$parent}_header &
+        fill: $white
+      
+      #{$parent}_footer &
+        fill: $color1
+  
+  &_header
+    flex: 0 0 204px
+    height: 100%
+    background: $color2
+    +md
+      flex: 0 0 150px
+    +xs
+      flex: 0 0 112px
+    .no-touch &:hover #{$parent}__letter-first
+      fill: $white
+    .no-touch &:hover #{$parent}__letter-last
+      fill: $color1
+  
+  &_footer
+    transform: translateY(50px)
+    opacity: 0
+    .no-touch &:hover #{$parent}__letter-first
+      fill: $color1
+    .no-touch &:hover #{$parent}__letter-last
+      fill: $color2
+// end logo
+
+// begin hanging
+.hanging-decor
+  position: absolute
+  //pointer-events: none
+  &_items
+    top: -110px
+    right: 0
+    
+  &_lamps
+    top: -102px
+    right: 60px
+    +md
+      top: -110px
+      margin-left: 162px
+    +xs
+      display: none
+// end hanging

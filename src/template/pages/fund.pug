@@ -1,0 +1,21 @@
+extends ../extend/default
+
+block variables
+  - var title = 'Fund page';
+
+block main
+  main.content(data-page='events')
+
+  -
+    screen = {
+      classMod: '_default',
+      title: 'Мы создали Workit Seed Fund потому что',
+      subTitle: 'хотели иметь в Киеве инновационное пространство, которое объединяет людей, вдохновляет и помогает реализовать идеи, позитивно влияющие на мир.',
+      maskType: 'image',
+      maskImg: '2',
+      maskBlur: '7',
+      maskImgOpacity: '0.75'
+    }
+  include ../sections/screen
+
+  include ../sections/block-2

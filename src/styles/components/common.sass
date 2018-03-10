@@ -29,6 +29,9 @@ body
     padding: 0 60px
     +md
       padding: 0 30px
+      
+.content
+  margin-top: 60px
 
 // typography
 
@@ -36,7 +39,8 @@ h1, h2, h3, h4, h5, h6
   b
     +f('gil-800')
 
-p b
+p b,
+p strong
   +f('rob-700')
   
 // begin links //
@@ -109,7 +113,7 @@ p b
       background: $black
   
   &_white
-    background: $white
+    background: $color5
     color: $color2
     &::after
       top: -5px
@@ -117,7 +121,7 @@ p b
       right: -16px
       bottom: -5px
       transform: scale(0.82)
-      background-color: $white
+      background-color: $color5
   
   &_line
     height: auto
@@ -209,4 +213,4 @@ label.btn
   background: url("../img/gray-bg.jpg")
 
 .black-bg
-  background: url("../img/bg.png")
+  background: url("../img/black-bg.jpg")
