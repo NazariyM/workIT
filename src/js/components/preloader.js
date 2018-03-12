@@ -26,7 +26,7 @@ class Preloader {
     this.resolve = new Promise(resolve => {
 
       // delete it
-      // resolve();
+      resolve();
 
       const tl = new TimelineMax({
         onComplete() {

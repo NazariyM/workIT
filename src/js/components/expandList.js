@@ -23,19 +23,28 @@ class ExpandList {
   scrollAnim() {
     const _this = this;
 
+    this.$visibleItem.each((i, item) => {
+      new ScrollAnim({
+        el: item,
+        onStart() {
+          _this.itemsAnim(i, item);
+        }
+      });
+    });
+
     new ScrollAnim({
-      el: _this.$list[0],
+      el: _this.$btn[0],
       onStart() {
-        _this.startAnim();
+        _this.btnAnim();
       }
     });
   }
 
-  startAnim() {
+  itemsAnim(i, item) {
+    const delay = i * 0.3;
 
     this.tl
-      .staggerTo(this.$visibleItem, 1, { x: 0, autoAlpha: 1 }, .3)
-      .to(this.$btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+      .to($(item), .8, { x: 0, autoAlpha: 1 }, delay);
 
     // else {
     //   const $mobHiddenItems = $listInner.children().eq(1).nextAll();
@@ -48,6 +57,10 @@ class ExpandList {
     //    .staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3)
     //    .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
     // }
+  }
+
+  btnAnim() {
+    TweenMax.to(this.$btn, 1, { x: 0, autoAlpha: 1 });
   }
 
   showMore() {
