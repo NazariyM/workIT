@@ -1,48 +1,70 @@
 .pagination
-	background: $color2
-	&_default
-		margin-top: 69px
-	ul
-		display: flex
-		max-width: 575px
-		margin: 0 auto
-		padding: 0 15px
-		align-items: center
-		height: 90px
-		li
-			white-space: nowrap
-			width: 30px
-			height: 30px
-			margin: 0 14px
-			letter-spacing: 0.075em
-			&:nth-child(5)
-				margin: 0 20px
-			&.hidden
-				pointer-events: none
-			&.prev
-				display: block
-				position: relative
-				width: auto
-				margin-right: 66px
-				margin-left: 0
-			&.next
-				display: block
-				position: relative
-				width: auto
-				margin-left: 55px
-				margin-right: 0
-			a
-				display: flex
-				align-items: center
-				justify-content: center
-				height: 100%
-				+f('gil-800', 12, 12)
-				text-transform: uppercase
-				color: $white
-				+trs
-				&:hover
-					color: $color1
-			&.active a
-				pointer-events: none
-				color: $color1
-				
+  background: $color2
+  &_default
+    margin-top: 69px
+    +md
+      margin-top: 38px
+    +xs
+      margin-top: 53px
+  &_blog
+    margin-top: 59px
+    +md
+      margin-top: 37px
+  ul
+    display: flex
+    max-width: 575px
+    margin: 0 auto
+    padding: 0 15px
+    align-items: center
+    height: 90px
+    li
+      white-space: nowrap
+      width: 30px
+      height: 30px
+      margin: 0 14px
+      letter-spacing: 0.075em
+      +xs
+        margin: 0 4px
+      &:nth-child(4)
+        +xs
+          display: none
+      &:nth-child(5)
+        margin: 0 20px
+        +xs
+          margin: 0 13px
+      &.hidden
+        pointer-events: none
+      &.prev
+        display: block
+        position: relative
+        width: auto
+        margin-right: 66px
+        margin-left: 0
+        +xs
+          margin-right: 23px
+      &.next
+        display: block
+        position: relative
+        width: auto
+        margin-left: 55px
+        margin-right: 0
+        +xs
+          margin-left: 31px
+      a
+        display: flex
+        align-items: center
+        justify-content: center
+        height: 100%
+        +f('gil-800', 12, 12)
+        text-transform: uppercase
+        color: $white
+        +trs
+        &:hover
+          color: $color1
+        span
+          margin-left: 4px
+          +xs
+            display: none
+      &.active a
+        pointer-events: none
+        color: $color1

@@ -1,4 +1,5 @@
 .companies
+  $parent: &
   position: relative
   padding: 111px 0 113px
   +xs
@@ -16,10 +17,12 @@
   &__list_slider &__item
     padding-bottom: 0
   &__item
+    position: relative
+    z-index: 1
     display: inline-block
     vertical-align: top
     width: 25%
-    padding: 0 30px 80px
+    padding: 0 30px 66px
     opacity: 0
     transform: translateX(-50px)
     +md
@@ -62,7 +65,7 @@
     right: 0
     width: 0
     margin-top: 48px
-    z-index: -1
+    z-index: 0
     height: 1px
     background: rgba(#89a29e, .2)
     +md
@@ -73,4 +76,29 @@
   &_fund
     background: $color5
   &_has-pagination
-    padding: 120px 0 0
+    padding: 110px 0 0
+    +xs
+      padding: 50px 0 0
+    .container
+      margin-bottom: 45px
+      +md
+        margin-bottom: 48px
+      +xs
+        margin-bottom: 19px
+  &_has-pagination &__item
+    +md
+      width: 50%
+      padding: 0 20px 62px
+    +xs
+      width: 100%
+      padding: 0 15px 34px
+    &-icon
+      margin-bottom: 27px
+      +xs
+        margin-bottom: 18px
+      img
+        +xs
+          height: 20px
+  &_has-pagination &__list
+    +xs
+      margin: 0 -15px

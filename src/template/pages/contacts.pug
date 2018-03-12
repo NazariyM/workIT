@@ -2,7 +2,7 @@ extends ../extend/default
 
 block variables
   - var title = 'Contacts page';
-  - var headerClassMod = '_white';
+  - var header  = { classMod: '_white' }
   - var locationMap = true;
 
 block main
@@ -15,8 +15,9 @@ block main
         +e.label.block-label
           +e.P contacts
         +e.title.block-title.has-selection._green
-          +e.H2 Контакты
-            b workit
+          +e.H2
+            b Контакты
+            | &nbsp;Workit
         +e.sub-title.block-sub-title
           +e.H5 Workit не просто пространство, а целая
             b сеть.
@@ -58,5 +59,5 @@ block main
 
   include ../sections/locations
 
-  -subscrClass = '_default'
+  -subscrClass = '_contacts'
   include ../sections/subscr

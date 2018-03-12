@@ -15,7 +15,7 @@ if team ? team : team = []
 
     +e.inner
       mixin teamMember(member)
-        +e.member
+        +e.member(data-items-anim='fade-left')
           +e.member-pic
             +e.IMG(src=`static/img/${member.pic}.jpg` alt='image')
           +e.member-name.h4

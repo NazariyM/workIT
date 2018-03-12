@@ -28,8 +28,9 @@ if events.titleSelected ? events.titleSelected : events.titleSelected = 'Мер�
 						+e.item-pic
 							+b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
 
-					+e.item-date
-						+e.P 07.12.2017
+					+e.item-info
+						+e.item-date
+							+e.P 07.12.2017
 						+e.A(href='#!')
 					+e.item-title.h4
 						+e.A(href='#!')
@@ -38,5 +39,5 @@ if events.titleSelected ? events.titleSelected : events.titleSelected = 'Мер�
 				+eventsItem(item)
 
 		+e.more(data-items-anim='fade-left')
-			+e.A.more-btn.btn._line(href='#!') смотреть все
+			+e.A.more-btn.btn._line._line-white(href='#!') смотреть все
 //end events

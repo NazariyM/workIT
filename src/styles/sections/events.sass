@@ -3,20 +3,81 @@
   background: $color1
   +xs
     padding: 52px 0 53px
-  &_archieve
+  &_archieve, &_blog
     padding: 110px 0 0
     background: $white
+    +xs
+      padding: 52px 0 0
+    .dropdown_themes
+      +md
+        margin-top: -9px
+      +xs
+        margin-top: 20px
+  
+  &_archieve &__top
+    +md
+      margin-bottom: 58px
+    +xs
+      margin-bottom: 28px
+  &_archieve &__list,
+  &_blog &__list
+    +xs
+      margin: 0
   &_archieve &__item
     padding: 0 30px 50px
-  &_archieve &__item-date a::after
+    +md
+      padding: 0 30px 73px
+    +xs
+      padding: 0 0 38px
+  &_archieve &__item-pic,
+  &_blog &__item-pic
+    +md
+      height: 386px
+    +xs
+      height: 190px
+  &_archieve &__item-title,
+  &_blog &__item-title
+    +md
+      font-size: 48px
+      line-height: 52px
+    +xs
+      font-size: 24px
+      line-height: 28px
+  &_archieve &__item-info a::after
     background: $color1
-  &_blog
-    padding: 110px 0 0
-    background: $white
+  &_archieve &__more
+    display: none
+    +xs
+      margin-top: -18px
+      display: block
+    &-btn
+      margin-left: -6px
+      letter-spacing: 0.075em
+  &_blog &__item-info
+    margin-bottom: 10px
+    +md
+      margin-bottom: 13px
+  &_blog &__top
+    +xs
+      margin-bottom: 25px
   &_blog &__item
-    padding: 0 30px 58px
+    padding: 0 30px 51px
+    +md
+      padding: 0 30px 71px
+    +xs
+      padding: 0 0 33px
     &_full
-      padding-bottom: 0
+      padding: 0 30px 70px
+  &_blog &__item-date
+    p
+      margin: 3px 0 0 3px
+      +xs
+        margin: 0
+  &_blog &__item-pic
+    +xs
+      margin-bottom: 23px
+  &_blog &__item-author
+    margin-right: 4px
   &__top
     position: relative
     z-index: 1
@@ -27,9 +88,31 @@
   &__label
     margin-bottom: 32px
   &__expand-list &__item
-    padding-bottom: 40px
+    padding-bottom: 70px
+    +md
+      padding: 0 20px 74px
+    +xs
+      padding: 0 0 37px
+  &__expand-list &__item-pic
+    +md
+      height: 386px
+    +xs
+      height: 190px
+  &__expand-list &__item-title
+    +md
+      font-size: 48px
+      line-height: 52px
+    +xs
+      font-size: 24px
+      line-height: 28px
   &__expand-list &__more
-    margin-top: -20px
+    margin-top: -50px
+    +xs
+      margin-top: -19px
+    &-btn
+      +xs
+        margin-left: -8px
+        letter-spacing: 0.075em
   &__list
     margin: 0 -30px
     text-align: left
@@ -41,12 +124,14 @@
     width: 50%
     padding: 0 30px
     letter-spacing: 0.025em
+    +md
+      width: 100%
     &.is-hidden
       display: none
     &_full
       width: 100%
-      margin-bottom: 30px
       max-width: none
+    
     &_full &-pic
       height: 450px
     &_full &-title
@@ -60,9 +145,10 @@
       +xs
         height: 166px
         margin-bottom: 23px
-    &-date
+    &-info
       position: relative
-      padding-right: 60px
+      display: flex
+      justify-content: space-between
       margin-bottom: 13px
       +xs
         margin-bottom: 9px
@@ -75,7 +161,6 @@
         margin-top: - 4px
         +xs
           height: 7px
-          right: -3px
         .no-touch &:hover::after
           transform: translateX(17px)
         &::after
@@ -95,6 +180,9 @@
       font-size: 16px
       +xs
         font-size: 12px
+    &-author
+      color: $color1
+      +f('rob-700')
   &__more
     flex: 1 0 auto
     margin-top: 20px
@@ -104,6 +192,5 @@
   &__more-btn
     &::after
       left: calc(100% + 22px)
-      background: #fff
     +md
       margin-left: -11px

@@ -23,9 +23,19 @@
     display: flex
     align-items: center
     justify-content: space-between
+    +md
+      align-items: flex-start
+    +xs
+      flex-direction: column
+      
     h2
       flex: 0 1 850px
-    
+      +md
+        line-height: 65px
+      +xs
+        line-height: 32px
+        flex: 0 1 auto
+
 .block-sub-title
   +f('gil-300')
   letter-spacing: 0.025em

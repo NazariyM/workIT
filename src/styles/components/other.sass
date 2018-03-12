@@ -41,6 +41,9 @@
     +xs
       margin-left: -10px
       margin-right: -10px
+    &_events
+      +xs
+        margin: 0
   &__item
     display: inline-block
     vertical-align: top
@@ -71,7 +74,7 @@
     opacity: 0
     +xs
       letter-spacing: 0.1em
-      
+
 // end expand-list
 
 // begin tel-block
@@ -88,7 +91,7 @@
       fill: currentColor
       top: 3px
       left: 3px
-      
+
 // end tel-block
 
 // begin contact-block
@@ -169,7 +172,7 @@
     width: 100%
     z-index: -1
     +cover-video
-    
+  
   &_come
     transform: translateX(-100px)
     opacity: 0
@@ -232,13 +235,17 @@
         +trs
         .no-touch &:hover
           color: $color3
-          
+  
   &__icon
     position: absolute
     top: 50%
     margin-top: -8px
     right: 0
     +trs
+    +xs
+      width: 15px
+      height: 9px
+      margin-top: -4px
   &_lang
     flex: 0 0 50px
     width: 50px
@@ -275,11 +282,17 @@
           .menu-active &,
           .header_white &
             color: $color3
-            
+  
   &_themes
     flex: 0 0 170px
     width: 170px
     margin-top: 8px
+    +md
+      margin-top: -4px
+    +xs
+      flex: 0 1 auto
+      margin-top: 20px
+      width: 128px
     > ul
       &::before
         display: none
@@ -293,6 +306,9 @@
           bottom: -10px
           background: $white
           content: ''
+          +xs
+            top: -5px
+            bottom: -5px
       li
         a
           display: flex
@@ -301,6 +317,8 @@
           padding: 0 25px 0 26px
           text-transform: none
           letter-spacing: 0.03em
+          +xs
+            padding: 0 18px 0 0
   
   &_green
     > ul
@@ -311,7 +329,12 @@
         a
           .no-touch &:hover
             color: $white
-  
+            
+  &_mob-only
+    display: none
+    +xs
+      display: block
+
 // end dropdown
 
 // begin logo
@@ -373,33 +396,45 @@
 // begin hanging
 .hanging-decor
   position: absolute
-  //pointer-events: none
-  &_items
+  pointer-events: none
+  +xs
+    display: none
+  &_office
     top: -110px
     right: 0
-    
+    +md
+      right: -5px
   &_lamps
     top: -102px
     right: 79px
     +md
       top: -110px
       right: 34px
-    +xs
-      display: none
 // end hanging
 
 // begin values //
 .values
-  padding: 100px 0
+  padding: 118px 0 114px
+  &__top
+    margin: 0 auto 67px
   &__title
     max-width: 850px
   &__item
+    padding: 0 30px 30px
     &-img
       height: 183px
-      margin-bottom: 40px
+      margin-bottom: 35px
       +cover-img
     h5
       margin-bottom: 20px
+      letter-spacing: 0
+    p
+      height: 140px
+  .expand-list__inner
+    margin-bottom: -8px
+  .expand-list__btn
+    margin-left: -7px
+    letter-spacing: 0.11em
 // end values //
 
 // begin video-block //
@@ -412,7 +447,6 @@
     height: 100%
     object-fit: fill
     font-family: 'object-fit: fill;'
-  
   &__play-btn
     position: absolute
     top: 50%
@@ -449,7 +483,7 @@
       +xs
         width: 42px
         height: 42px
-        
+  
   &_darken
     &::after
       +coverdiv
@@ -457,6 +491,6 @@
       background-color: rgba(#020202, .35)
       pointer-events: none
       content: ''
-    
+
 // end video-block //
 

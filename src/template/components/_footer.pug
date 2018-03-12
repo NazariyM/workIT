@@ -1,5 +1,7 @@
+if footer ? footer : footer = []
+
 //begin footer
-+b.FOOTER.footer
++b.FOOTER.footer(class= footer.classMod ? footer.classMod : '')
   +e.container.container.container_md
     a(href='#!').logo.logo_footer
       svg.logo__img(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 807.02 205.05')

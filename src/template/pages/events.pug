@@ -3,6 +3,7 @@ extends ../extend/default
 block variables
   - var title = 'Events page';
   - var header  = { classMod: '_white' }
+  - var footer  = { classMod: '_entry' }
 
 block main
   main.content(data-page='events')
@@ -22,7 +23,7 @@ block main
             include ../components/dropdown
 
         +e.expand-list.expand-list.js-expand-list
-          .expand-list__inner
+          .expand-list__inner.expand-list__inner_events
             -
               eventsList = [{
               classMod: '_full expand-list__item',
@@ -40,23 +41,24 @@ block main
               }, {
               classMod: 'is-hidden expand-list__item',
               pic: 'events_1',
-              title: 'How To: Make a Good Presentation For Investors'
+              title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
               }, {
               classMod: 'is-hidden expand-list__item',
               pic: 'events_2',
-              title: 'Гонка за очками дополненной реальности стартует прямо сейчас'}]
+              title: 'How To: Make a Good Presentation For Investors'}]
 
             mixin eventsItem(item)
               +e.item(class= item.classMod ? item.classMod : '')
                 if item.picLink
-                  +e.A.item-pic(href='#!')
+                  +e.A.item-pic.img-hover(href='#!')
                     +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
                 else
-                  +e.item-pic
+                  +e.item-pic.img-hover
                     +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
 
-                +e.item-date
-                  +e.P 07.12.2017
+                +e.item-info
+                  +e.item-date
+                    +e.P 07.12.2017
                   +e.A(href='#!')
                 +e.item-title.h4
                   +e.A(href='#!')
@@ -65,7 +67,7 @@ block main
               +eventsItem(item)
 
           +e.more(data-items-anim='fade-left')
-            +e.A.more-btn.btn._line.expand-list__btn(href='#!') смотреть все
+            +e.A.more-btn.btn._line._line-white.expand-list__btn(href='#!') смотреть все
     //end events
 
     //begin archive
@@ -84,40 +86,45 @@ block main
             -dropdownClass = '_themes _green'
             include ../components/dropdown
 
-        +e.list
-          -
-            archieveList = [{
-            pic: 'events_3',
-            title: 'How To: Make a Good Presentation For Investors'
-            }, {
-            pic: 'events_4',
-            title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
-            }, {
-            pic: 'events_5',
-            title: 'How To: Make a Good Presentation For Investors'
-            }, {
-            pic: 'events_6',
-            title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
-            }, {
-            pic: 'events_1',
-            title: 'How To: Make a Good Presentation For Investors'
-            }, {
-            pic: 'events_2',
-            title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
-            }]
+        .js-expand-list
+          .expand-list__inner.expand-list__inner_events
+            -
+              archieveList = [{
+              pic: 'events_3',
+              title: 'How To: Make a Good Presentation For Investors'
+              }, {
+              pic: 'events_4',
+              title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+              }, {
+              pic: 'events_5',
+              title: 'How To: Make a Good Presentation For Investors'
+              }, {
+              pic: 'events_6',
+              title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+              }, {
+              pic: 'events_1',
+              title: 'How To: Make a Good Presentation For Investors'
+              }, {
+              pic: 'events_2',
+              title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+              }]
 
-          mixin archieveItem(item)
-            +e.item(class= item.classMod ? item.classMod : '' data-items-anim='fade-top')
-              +e.item-pic
-                +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
-              +e.item-date
-                +e.P 07.12.2017
-                +e.A(href='#!')
-              +e.item-title.h4
-                +e.A(href='#!')
-                  +e.H4= item.title
-          each item in archieveList
-            +archieveItem(item)
+            mixin archieveItem(item)
+              +e.item(class= item.classMod ? item.classMod : '' data-items-anim='fade-top')
+                +e.item-pic.img-hover
+                  +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
+                +e.item-info
+                  +e.item-date
+                    +e.P 07.12.2017
+                  +e.A(href='#!')
+                +e.item-title.h4
+                  +e.A(href='#!')
+                    +e.H4= item.title
+            each item in archieveList
+              +archieveItem(item)
+
+          +e.more(data-items-anim='fade-left')
+            +e.A.more-btn.btn._line._line-green.expand-list__btn(href='#!') смотреть все
 
       -paginationClass = '_default'
       include ../components/pagination

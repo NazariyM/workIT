@@ -19,11 +19,11 @@ block main
   include ../sections/screen
 
   //begin block-2
-  +b.SECTION.block-2
+  +b.SECTION.block-2._medium
     +e.container.container
       +e.top.block-top.block-top_md
         +b.block-label
-          +e.P ABOUT US
+          +e.P ABOUT
         +e.title.block-title.has-selection._green
           +e.H2
             b Миссия и цели
@@ -45,9 +45,8 @@ block main
             | Именно тогда родилась идея создать что-то подобное и в Украине - так появился
             b Work IT
 
-
         +e.img-wrap.img-hover
-          +e.img.img-hover__item(style='background-image: url(static/img/block-2_2.jpg)')
+          +e.img(style='background-image: url(static/img/block-2_2.jpg)')
   //end block-2
 
   //begin values
@@ -65,13 +64,13 @@ block main
 
           .values__item.expand-list__item
             .values__item-img.img-hover
-              img.img-hover__item(src=`static/img/values_1.jpg` alt='image')
+              img(src=`static/img/values_1.jpg` alt='image')
             h5 Сonnections
             p Это все об обществе. Наше сообщество определяет пространство.
 
           .values__item.expand-list__item
             .values__item-img.img-hover
-              img.img-hover__item(src=`static/img/values_2.jpg` alt='image')
+              img(src=`static/img/values_2.jpg` alt='image')
             h5 Advice
             p Мы создаем условия для каждого, чтобы
               b максимизировать
@@ -83,51 +82,56 @@ block main
 
           .values__item.expand-list__item
             .values__item-img.img-hover
-              img.img-hover__item(src=`static/img/values_3.jpg` alt='image')
+              img(src=`static/img/values_3.jpg` alt='image')
             h5 Support
             p Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни
 
           .values__item.expand-list__item
             .values__item-img.img-hover
-              img.img-hover__item(src=`static/img/values_4.jpg` alt='image')
+              img(src=`static/img/values_4.jpg` alt='image')
             h5 Money
-            p
-              b Размер рабочего пространства
-              = ' '
-              | имеет значение.
+            .js-dot
+              p
+                b Размер рабочего пространства
+                = ' '
+                | имеет значение.
 
           .values__item.expand-list__item.is-hidden
             .values__item-img.img-hover
-              img.img-hover__item(src=`static/img/values_1.jpg` alt='image')
+              img(src=`static/img/values_1.jpg` alt='image')
             h5 Сonnections
-            p Это все об обществе. Наше сообщество определяет пространство.
+            .js-dot
+              p Это все об обществе. Наше сообщество определяет пространство.
 
           .values__item.expand-list__item.is-hidden
             .values__item-img.img-hover
-              img.img-hover__item(src=`static/img/values_2.jpg` alt='image')
+              img(src=`static/img/values_2.jpg` alt='image')
             h5 Advice
-            p Мы создаем условия для каждого, чтобы
-              b максимизировать
-              = ' '
-              | их
-              b производительность
-              = ' '
-              | и эффективность.
+            .js-dot
+              p Мы создаем условия для каждого, чтобы
+                b максимизировать
+                = ' '
+                | их
+                b производительность
+                = ' '
+                | и эффективность.
 
           .values__item.expand-list__item.is-hidden
             .values__item-img.img-hover
-              img.img-hover__item(src=`static/img/values_3.jpg` alt='image')
+              img(src=`static/img/values_3.jpg` alt='image')
             h5 Support
+            .js-dot
             p Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни
 
           .values__item.expand-list__item.is-hidden
             .values__item-img.img-hover
-              img.img-hover__item(src=`static/img/values_4.jpg` alt='image')
+              img(src=`static/img/values_4.jpg` alt='image')
             h5 Money
-            p
-              b Размер рабочего пространства
-              = ' '
-              | имеет значение.
+            .js-dot
+              p
+                b Размер рабочего пространства
+                = ' '
+                | имеет значение.
 
         +e.BUTTON.btn.btn._line(type='button') хочу еще
 

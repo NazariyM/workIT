@@ -2,12 +2,23 @@
   background: $color1
   &_default
     padding: 20px 0 52px
+    +md
+      padding: 20px 0 34px
+    +xs
+      padding: 20px 0 27px
   &_default &__container
     padding: 70px 60px
-  &_home
+    +md
+      padding: 70px 30px
+    +xs
+      padding: 35px 15px
+  &_contacts
     padding: 50px 0 40px
     +xs
       padding: 55px 0 60px
+  &_desk-only
+    +md
+      display: none
   &__container
     padding: 80px 60px
     +md

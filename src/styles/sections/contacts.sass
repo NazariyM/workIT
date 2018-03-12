@@ -1,19 +1,48 @@
 // begin contacts //
 .contacts
-  padding: 120px 0 90px
+  padding: 112px 0 61px
   background: url("../img/gray-bg.jpg")
+  +md
+    padding: 112px 0 91px
+  +xs
+    padding: 50px 0 30px
+  &__top
+    margin: 0 auto 65px
+    +xs
+      margin: 0 auto 31px
+  &__title
+    margin-bottom: 57px
+    +xs
+      margin-bottom: 25px
+  &__sub-title
+    max-width: 830px
   &__content
     display: flex
     flex-wrap: wrap
     margin: 0 -30px
+    +xs
+      margin: 0 -15px
   &__info
     max-width: 305px
     flex: 0 1 25%
-    padding: 0 30px 30px
+    padding: 0 30px 50px
+    +md
+      flex: 0 1 50%
+    +xs
+      padding: 0 15px 25px
+    &:nth-child(2n)
+      +md
+        padding: 0 30px 50px 96px
+      +xs
+        padding: 0 15px 28px 11px
     h6
-      margin-bottom: 20px
+      margin-bottom: 15px
       +f('rob-700', 16, 30)
       text-transform: uppercase
+      +xs
+        margin-bottom: 11px
+        font-size: 12px
+        line-height: 20px
 // end contacts //
 
 .locations

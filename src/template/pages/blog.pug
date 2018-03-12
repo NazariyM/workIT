@@ -2,6 +2,7 @@ extends ../extend/default
 
 block variables
   - var title = 'Blog page';
+  - var footer  = { classMod: '_entry' }
 
 block main
   main.content(data-page='events')
@@ -19,7 +20,10 @@ block main
               = ' '
               | workit
 
-          +b.SVG.hanging-decor._items(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='202', height='242', viewbox='0 0 202 242')
+            -dropdownClass = '_themes _mob-only'
+            include ../components/dropdown
+
+          +b.SVG.hanging-decor._office(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='202', height='242', viewbox='0 0 202 242')
             defs
               path#16t4a(d='M1027 207V59h1v148z')
               path#16t4b(d='M1108 283V59h1v224z')
@@ -50,13 +54,12 @@ block main
                 use(fill='#00d88e', xlink:href='#16t4d')
                 use(fill='#001011', xlink:href='#16t4e')
 
-
         +e.list
           -
             blogList = [{
               classMod: '_full',
               picLink: true,
-              pic: 'events_full',
+              pic: 'events_full-2',
               title: 'How To: Make a Good Presentation For Investors'
             },
             {
@@ -75,12 +78,6 @@ block main
               pic: 'events_5',
               title: 'How To: Make a Good Presentation For Investors'
             }, {
-              pic: 'events_6',
-              title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
-            }, {
-              pic: 'events_1',
-              title: 'How To: Make a Good Presentation For Investors'
-            }, {
               pic: 'events_7',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
             }]
@@ -88,21 +85,23 @@ block main
           mixin blogItem(item)
             +e.item(class= item.classMod ? item.classMod : '' data-items-anim='fade-top')
               if item.picLink
-                +e.A.item-pic(href='#!')
+                +e.A.item-pic.img-hover(href='#!')
                   +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
               else
-                +e.item-pic
+                +e.item-pic.img-hover
                   +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
-              +e.item-date
-                +e.P 07.12.2017
-                +e.A(href='#!')
+              +e.item-info
+                +e.item-date
+                  +e.P 07.12.2017
+                +e.item-author
+                  +e.P By Alyona Petrenko
               +e.item-title.h4
                 +e.A(href='#!')
                   +e.H4= item.title
           each item in blogList
             +blogItem(item)
 
-      -paginationClass = '_default'
+      -paginationClass = '_blog'
       include ../components/pagination
     //end blog
 
