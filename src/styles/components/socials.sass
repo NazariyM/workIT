@@ -6,7 +6,7 @@
   padding: 26px 32px 26px 39px
   background: $color1
   line-height: 1
-  p
+  h6
     margin-right: 30px
     +f('rob-400')
   &__links
@@ -30,3 +30,17 @@
     transform: translateY(-20px)
     padding: 0
     background: transparent
+    
+  &_contacts
+    flex-direction: column
+    align-items: flex-start
+    flex: 0 0 auto
+    background: transparent
+    padding: 0
+    h6
+      margin-right: 0
+      +f('rob-700', 16, 30)
+      text-transform: uppercase
+    a
+      .no-touch &:hover .icon
+        fill: $color1

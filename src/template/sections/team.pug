@@ -1,0 +1,31 @@
+if team ? team : team = []
+
+//begin team
++b.SECTION.team(class= team.classMod ? team.classMod : '')
+  .container.container_md
+    +e.top.block-top
+      +e.label.block-label
+        +e.P our team
+
+      +e.title.block-title.has-selection._black
+        +e.H2
+          b Команда
+          = ' '
+          | &nbsp;workit
+
+    +e.inner
+      mixin teamMember(member)
+        +e.member
+          +e.member-pic
+            +e.IMG(src=`static/img/${member.pic}.jpg` alt='image')
+          +e.member-name.h4
+            +e.H4= member.name
+          +e.member-pos.h5
+            +e.H5= member.position
+          +e.member-descr
+            +e.P= member.description
+
+      each member in membersList
+        +teamMember(member)
+
+//end team

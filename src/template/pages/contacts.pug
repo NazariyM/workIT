@@ -1,0 +1,62 @@
+extends ../extend/default
+
+block variables
+  - var title = 'Contacts page';
+  - var headerClassMod = '_white';
+  - var locationMap = true;
+
+block main
+  main.content(data-page='events')
+
+  //begin contacts
+  +b.SECTION.contacts
+    .container.container_md
+      +e.top.block-top
+        +e.label.block-label
+          +e.P contacts
+        +e.title.block-title.has-selection._green
+          +e.H2 Контакты
+            b workit
+        +e.sub-title.block-sub-title
+          +e.H5 Workit не просто пространство, а целая
+            b сеть.
+            = ' '
+            | Сейчас
+            b в Киеве открыты 2 наши локации:
+            = ' '
+            | первая находится в
+            b центре
+            = ' '
+            | на улице Владимирская 16-а, вторая локация расположена на
+            b Нивках
+            = ' '
+            | по адрусу улица Щербакова 2.
+
+      +e.content
+        +e.info(data-items-anim='fade-left')
+          +e.H6 центр
+          +e.P ул. Владимирская 85
+          +b.P.tel-block тел:
+            +e.A(href='tel:0975678900') 097 567 89 00
+
+        +e.info(data-items-anim='fade-left')
+          +e.H6 Нивки
+          +e.P ул. Щербакова 2
+          +b.P.tel-block тел:
+            +e.A(href='tel:0975678900') 097 567 89 00
+
+        +e.info(data-items-anim='fade-left')
+          +e.H6 Партнерство
+          +b.A.link-green(href='mailto:info@workit.space') info@workit.space
+          +b.P.tel-block тел:
+            +e.A(href='tel:0975678900') 097 567 89 00
+
+        -socials = {classMod: '_contacts contacts__info', title: 'Подписаться', itemsAnim: 'fade-left'}
+        include ../components/socials
+
+  //end contacts
+
+  include ../sections/locations
+
+  -subscrClass = '_default'
+  include ../sections/subscr

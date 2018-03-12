@@ -157,7 +157,7 @@ class Slider {
 
 	playVideo($slider, pauseOnChange = false) {
 		const $item = $slider.find('.slider__item').not('.slick-cloned');
-		const $btn = $item.find('.play-btn');
+		const $btn = $item.find('.video-block__play-btn');
 		const $video = $item.find('video');
 
 		$video.each(function () {
@@ -172,19 +172,6 @@ class Slider {
 				$video.pause();
 				$btn.removeClass(css.hide);
 			}
-		});
-
-		$btn.on('click', function () {
-			const $this = $(this);
-			const $video = detectIE() ? $this.next().find('video')[0] : $this.next()[0];
-
-			$this.addClass(css.hide);
-			$video.play();
-
-			$this.next().on('click', () => {
-				$video.pause();
-				$btn.removeClass(css.hide);
-			});
 		});
 
 	}

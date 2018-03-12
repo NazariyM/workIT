@@ -7,7 +7,7 @@ block main
   main.content(data-page='events')
 
     //begin blog
-    +b.SECTION.block-1._blog(data-self-anim='false')
+    +b.SECTION.events._blog
       .container.container_md
         +e.top.block-top
           +e.label.block-label
@@ -56,37 +56,37 @@ block main
             blogList = [{
               classMod: '_full',
               picLink: true,
-              pic: 'block-1_full',
+              pic: 'events_full',
               title: 'How To: Make a Good Presentation For Investors'
             },
             {
-              pic: 'block-1_1',
+              pic: 'events_1',
               title: 'How To: Make a Good Presentation For Investors'
             }, {
-              pic: 'block-1_2',
+              pic: 'events_2',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
             }, {
-              pic: 'block-1_3',
+              pic: 'events_3',
               title: 'How To: Make a Good Presentation For Investors'
             }, {
-              pic: 'block-1_4',
+              pic: 'events_4',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
             }, {
-              pic: 'block-1_5',
+              pic: 'events_5',
               title: 'How To: Make a Good Presentation For Investors'
             }, {
-              pic: 'block-1_6',
+              pic: 'events_6',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
             }, {
-              pic: 'block-1_1',
+              pic: 'events_1',
               title: 'How To: Make a Good Presentation For Investors'
             }, {
-              pic: 'block-1_7',
+              pic: 'events_7',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
             }]
 
           mixin blogItem(item)
-            +e.item(class= item.classMod ? item.classMod : '' data-item-anim='fade-top')
+            +e.item(class= item.classMod ? item.classMod : '' data-items-anim='fade-top')
               if item.picLink
                 +e.A.item-pic(href='#!')
                   +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')

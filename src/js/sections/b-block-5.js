@@ -1,7 +1,6 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import { css, Resp } from '../modules/dev/_helpers';
-// import { preloader } from './preloader';
 import Dot from '../components/dot';
 
 class Block5 {
@@ -9,14 +8,13 @@ class Block5 {
     this.$container = $('.block-5');
     this.$item = this.$container.find('.block-5__item');
     this.$list = this.$container.find('.block-5__list');
-    this.$dotTarget = $('.block-5__item-descr p');
+    this.$dotTarget = this.$item.find('p');
 
     if (this.$container.length) this.init();
   }
 
-  async init() {
-    // await preloader.wait();
-    await this.scrollAnim();
+  init() {
+    this.scrollAnim();
     this.dot();
   }
 

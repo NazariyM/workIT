@@ -18,4 +18,186 @@ block main
     }
   include ../sections/screen
 
-  include ../sections/block-2
+  //begin block-2
+  +b.SECTION.block-2
+    +e.container.container
+      +e.top.block-top.block-top_md
+        +b.block-label
+          +e.P ABOUT US
+        +e.title.block-title.has-selection._green
+          +e.H2
+            b Миссия и цели
+            = ' '
+            | фонда
+
+      +e.content(data-anim='group')
+        +e.text
+          +e.P Когда мы устали искать место, в котором нам было бы комфортно работать, мы решили создать его сами. Нас восхищали коворкинги
+            b Амстердама
+            = ' '
+            | и
+            b Бостона,
+            = ' '
+            | но особенно впечатлил офис Google в
+            = ' '
+            b Майнтин Вью.
+            = ' '
+            | Именно тогда родилась идея создать что-то подобное и в Украине - так появился
+            b Work IT
+
+
+        +e.img-wrap.img-hover
+          +e.img.img-hover__item(style='background-image: url(static/img/block-2_2.jpg)')
+  //end block-2
+
+  //begin values
+  +b.SECTION.values
+    .container.container_md
+      +e.top.block-top
+        +b.block-label
+          +e.P VALUES
+        +e.title.block-title.has-selection._green
+          +e.H2 Причины, почему основатели выбирают
+            b Workit Seed Fund
+
+      +b.expand-list.js-expand-list
+        +e.inner
+
+          .values__item.expand-list__item
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_1.jpg` alt='image')
+            h5 Сonnections
+            p Это все об обществе. Наше сообщество определяет пространство.
+
+          .values__item.expand-list__item
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_2.jpg` alt='image')
+            h5 Advice
+            p Мы создаем условия для каждого, чтобы
+              b максимизировать
+              = ' '
+              | их
+              b производительность
+              = ' '
+              | и эффективность.
+
+          .values__item.expand-list__item
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_3.jpg` alt='image')
+            h5 Support
+            p Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни
+
+          .values__item.expand-list__item
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_4.jpg` alt='image')
+            h5 Money
+            p
+              b Размер рабочего пространства
+              = ' '
+              | имеет значение.
+
+          .values__item.expand-list__item.is-hidden
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_1.jpg` alt='image')
+            h5 Сonnections
+            p Это все об обществе. Наше сообщество определяет пространство.
+
+          .values__item.expand-list__item.is-hidden
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_2.jpg` alt='image')
+            h5 Advice
+            p Мы создаем условия для каждого, чтобы
+              b максимизировать
+              = ' '
+              | их
+              b производительность
+              = ' '
+              | и эффективность.
+
+          .values__item.expand-list__item.is-hidden
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_3.jpg` alt='image')
+            h5 Support
+            p Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни
+
+          .values__item.expand-list__item.is-hidden
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_4.jpg` alt='image')
+            h5 Money
+            p
+              b Размер рабочего пространства
+              = ' '
+              | имеет значение.
+
+        +e.BUTTON.btn.btn._line(type='button') хочу еще
+
+  //end values
+
+  //begin companies
+  +b.SECTION.companies._fund
+    .container.container_md
+      +e.top.block-top
+        +e.label.block-label
+          +e.P our residents
+
+        +e.title.block-title.has-selection._green
+          +e.H2
+            b Компании
+            = ' '
+            | в фонде
+
+      +e.list._slider.mobile-slider._white-large
+        -
+          companiesList = [{
+          img: 'ingenico',
+          descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
+          }, {
+          img: 'circle-media',
+          descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
+          }, {
+          img: 'bmc',
+          descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
+          }, {
+          img: 'bike-roar',
+          descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
+          }]
+
+        mixin companiesItem(item)
+          +e.item
+            +e.item-icon
+              +e.A(href='#!' target='_blank')
+                +e.IMG(src=`static/img/${item.img}.png` alt='image')
+            +e.item-descr
+              p= item.descr
+        each item in companiesList
+          +companiesItem(item)
+
+    +e.decor-line
+  //end companies
+
+  -
+    membersList = [{
+    pic: 'team_1',
+    name: 'Иван Иванов',
+    position: 'CEO Workit',
+    description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
+    }, {
+    pic: 'team_2',
+    name: 'Анна Градил',
+    position: 'CEO Workit',
+    description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
+    }, {
+    pic: 'team_3',
+    name: 'Мирослава Захарчук',
+    position: 'CEO Workit',
+    description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
+    }, {
+    pic: 'team_4',
+    name: 'Мария Касс',
+    position: 'CEO Workit',
+    description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
+    }]
+  include ../sections/team
+
+  -come = {maskType: 'image', maskVideo: false}
+  include ../sections/come

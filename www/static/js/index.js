@@ -8854,148 +8854,6 @@ module.exports = function (TYPE, $create) {
 
 "use strict";
 
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Scrollmagic = __webpack_require__(350);
-
-var _Scrollmagic2 = _interopRequireDefault(_Scrollmagic);
-
-var _preloader = __webpack_require__(49);
-
-var _helpers = __webpack_require__(9);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var scrollController = new _Scrollmagic2.default.Controller();
-
-var ScrollAnim = function () {
-	function ScrollAnim() {
-		var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-		var el = _ref.el,
-		    _ref$hook = _ref.hook,
-		    hook = _ref$hook === undefined ? 0.9 : _ref$hook,
-		    _ref$reverse = _ref.reverse,
-		    reverse = _ref$reverse === undefined ? false : _ref$reverse,
-		    opts = _objectWithoutProperties(_ref, ['el', 'hook', 'reverse']);
-
-		_classCallCheck(this, ScrollAnim);
-
-		this.triggerElement = el;
-		this.triggerHook = hook;
-		this.reverse = reverse;
-		this.duration = opts.duration || 0;
-		this.onStart = opts.onStart;
-		this.onEnd = opts.onEnd;
-		this.onEnter = opts.onEnter;
-		this.onLeave = opts.onLeave;
-		this.inView = opts.inView || false;
-		this.secondEnter = opts.secondEnter || false;
-		this.indicators = opts.indicators || false;
-
-		if (!this.triggerElement) return;
-		this.options();
-		this.createScene();
-	}
-
-	_createClass(ScrollAnim, [{
-		key: 'options',
-		value: function options() {
-			this.secondEnterVal = 0;
-
-			if (this.inView) {
-				this.reverse = true;
-				this.duration = _helpers.$window.height() + $(this.triggerElement).height();
-				this.triggerHook = 1;
-			}
-		}
-	}, {
-		key: 'createScene',
-		value: function () {
-			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				var _this, scene;
-
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_this = this;
-								_context.next = 3;
-								return _preloader.preloader.wait();
-
-							case 3:
-								scene = new _Scrollmagic2.default.Scene({
-									triggerElement: _this.triggerElement,
-									triggerHook: _this.triggerHook,
-									duration: _this.duration,
-									reverse: _this.reverse
-								}).on('start', function () {
-									if (typeof _this.onStart !== 'function') return;
-									_this.onStart();
-								}).on('end', function () {
-									if (typeof _this.onEnd !== 'function') return;
-									_this.onEnd();
-								}).on('enter', function () {
-									if (_this.secondEnterHandler) {
-										_this.secondEnterHandler = false;
-										return;
-									}
-									if (typeof _this.onEnter !== 'function') return;
-									_this.onEnter();
-								}).on('leave', function () {
-									if (typeof _this.onLeave !== 'function') return;
-									_this.onLeave();
-								}).addTo(scrollController);
-
-
-								if (this.indicators) scene.addIndicators();
-
-							case 5:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function createScene() {
-				return _ref2.apply(this, arguments);
-			}
-
-			return createScene;
-		}()
-	}, {
-		key: 'secondEnterHandler',
-		set: function set(val) {
-			return this.secondEnter = val;
-		},
-		get: function get() {
-			return this.secondEnter;
-		}
-	}]);
-
-	return ScrollAnim;
-}();
-
-exports.default = ScrollAnim;
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 if (__webpack_require__(6)) {
   var LIBRARY = __webpack_require__(36);
   var global = __webpack_require__(2);
@@ -9478,7 +9336,7 @@ if (__webpack_require__(6)) {
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Map = __webpack_require__(118);
@@ -9533,6 +9391,148 @@ module.exports = {
   exp: exp
 };
 
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Scrollmagic = __webpack_require__(350);
+
+var _Scrollmagic2 = _interopRequireDefault(_Scrollmagic);
+
+var _preloader = __webpack_require__(49);
+
+var _helpers = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var scrollController = new _Scrollmagic2.default.Controller();
+
+var ScrollAnim = function () {
+	function ScrollAnim() {
+		var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+		var el = _ref.el,
+		    _ref$hook = _ref.hook,
+		    hook = _ref$hook === undefined ? 0.9 : _ref$hook,
+		    _ref$reverse = _ref.reverse,
+		    reverse = _ref$reverse === undefined ? false : _ref$reverse,
+		    opts = _objectWithoutProperties(_ref, ['el', 'hook', 'reverse']);
+
+		_classCallCheck(this, ScrollAnim);
+
+		this.triggerElement = el;
+		this.triggerHook = hook;
+		this.reverse = reverse;
+		this.duration = opts.duration || 0;
+		this.onStart = opts.onStart;
+		this.onEnd = opts.onEnd;
+		this.onEnter = opts.onEnter;
+		this.onLeave = opts.onLeave;
+		this.inView = opts.inView || false;
+		this.secondEnter = opts.secondEnter || false;
+		this.indicators = opts.indicators || false;
+
+		if (!this.triggerElement) return;
+		this.options();
+		this.createScene();
+	}
+
+	_createClass(ScrollAnim, [{
+		key: 'options',
+		value: function options() {
+			this.secondEnterVal = 0;
+
+			if (this.inView) {
+				this.reverse = true;
+				this.duration = _helpers.$window.height() + $(this.triggerElement).height();
+				this.triggerHook = 1;
+			}
+		}
+	}, {
+		key: 'createScene',
+		value: function () {
+			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+				var _this, scene;
+
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_this = this;
+								_context.next = 3;
+								return _preloader.preloader.wait();
+
+							case 3:
+								scene = new _Scrollmagic2.default.Scene({
+									triggerElement: _this.triggerElement,
+									triggerHook: _this.triggerHook,
+									duration: _this.duration,
+									reverse: _this.reverse
+								}).on('start', function () {
+									if (typeof _this.onStart !== 'function') return;
+									_this.onStart();
+								}).on('end', function () {
+									if (typeof _this.onEnd !== 'function') return;
+									_this.onEnd();
+								}).on('enter', function () {
+									if (_this.secondEnterHandler) {
+										_this.secondEnterHandler = false;
+										return;
+									}
+									if (typeof _this.onEnter !== 'function') return;
+									_this.onEnter();
+								}).on('leave', function () {
+									if (typeof _this.onLeave !== 'function') return;
+									_this.onLeave();
+								}).addTo(scrollController);
+
+
+								if (this.indicators) scene.addIndicators();
+
+							case 5:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function createScene() {
+				return _ref2.apply(this, arguments);
+			}
+
+			return createScene;
+		}()
+	}, {
+		key: 'secondEnterHandler',
+		set: function set(val) {
+			return this.secondEnter = val;
+		},
+		get: function get() {
+			return this.secondEnter;
+		}
+	}]);
+
+	return ScrollAnim;
+}();
+
+exports.default = ScrollAnim;
 
 /***/ }),
 /* 32 */
@@ -9910,10 +9910,6 @@ var Preloader = function () {
                   waitLoad = new Promise(function (resolve) {
                     resolve(_this.animPreloader());
                   });
-
-                  // this.resolve = new Promise(resolve => {
-                  //   resolve(this.animPreloader());
-                  // });
                 }
                 sessionStorage.setItem('resized', false);
 
@@ -11354,6 +11350,11 @@ var Dot = function () {
 }();
 
 exports.default = Dot;
+
+
+$('.js-dot').find('*').each(function (i, el) {
+  new Dot(el);
+});
 
 /***/ }),
 /* 97 */
@@ -15331,7 +15332,7 @@ __webpack_require__(335);
 
 __webpack_require__(336);
 
-var _Home = __webpack_require__(365);
+var _Home = __webpack_require__(364);
 
 var _Home2 = _interopRequireDefault(_Home);
 
@@ -18258,7 +18259,7 @@ $export($export.G + $export.W + $export.F * !__webpack_require__(64).ABV, {
 /* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(30)('Int8', 1, function (init) {
+__webpack_require__(29)('Int8', 1, function (init) {
   return function Int8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -18269,7 +18270,7 @@ __webpack_require__(30)('Int8', 1, function (init) {
 /* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(30)('Uint8', 1, function (init) {
+__webpack_require__(29)('Uint8', 1, function (init) {
   return function Uint8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -18280,7 +18281,7 @@ __webpack_require__(30)('Uint8', 1, function (init) {
 /* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(30)('Uint8', 1, function (init) {
+__webpack_require__(29)('Uint8', 1, function (init) {
   return function Uint8ClampedArray(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -18291,7 +18292,7 @@ __webpack_require__(30)('Uint8', 1, function (init) {
 /* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(30)('Int16', 2, function (init) {
+__webpack_require__(29)('Int16', 2, function (init) {
   return function Int16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -18302,7 +18303,7 @@ __webpack_require__(30)('Int16', 2, function (init) {
 /* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(30)('Uint16', 2, function (init) {
+__webpack_require__(29)('Uint16', 2, function (init) {
   return function Uint16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -18313,7 +18314,7 @@ __webpack_require__(30)('Uint16', 2, function (init) {
 /* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(30)('Int32', 4, function (init) {
+__webpack_require__(29)('Int32', 4, function (init) {
   return function Int32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -18324,7 +18325,7 @@ __webpack_require__(30)('Int32', 4, function (init) {
 /* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(30)('Uint32', 4, function (init) {
+__webpack_require__(29)('Uint32', 4, function (init) {
   return function Uint32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -18335,7 +18336,7 @@ __webpack_require__(30)('Uint32', 4, function (init) {
 /* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(30)('Float32', 4, function (init) {
+__webpack_require__(29)('Float32', 4, function (init) {
   return function Float32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -18346,7 +18347,7 @@ __webpack_require__(30)('Float32', 4, function (init) {
 /* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(30)('Float64', 8, function (init) {
+__webpack_require__(29)('Float64', 8, function (init) {
   return function Float64Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -19393,7 +19394,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 /* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(31);
+var metadata = __webpack_require__(30);
 var anObject = __webpack_require__(1);
 var toMetaKey = metadata.key;
 var ordinaryDefineOwnMetadata = metadata.set;
@@ -19407,7 +19408,7 @@ metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValu
 /* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(31);
+var metadata = __webpack_require__(30);
 var anObject = __webpack_require__(1);
 var toMetaKey = metadata.key;
 var getOrCreateMetadataMap = metadata.map;
@@ -19428,7 +19429,7 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /* , 
 /* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(31);
+var metadata = __webpack_require__(30);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(19);
 var ordinaryHasOwnMetadata = metadata.has;
@@ -19453,7 +19454,7 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , target
 
 var Set = __webpack_require__(120);
 var from = __webpack_require__(129);
-var metadata = __webpack_require__(31);
+var metadata = __webpack_require__(30);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(19);
 var ordinaryOwnMetadataKeys = metadata.keys;
@@ -19476,7 +19477,7 @@ metadata.exp({ getMetadataKeys: function getMetadataKeys(target /* , targetKey *
 /* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(31);
+var metadata = __webpack_require__(30);
 var anObject = __webpack_require__(1);
 var ordinaryGetOwnMetadata = metadata.get;
 var toMetaKey = metadata.key;
@@ -19491,7 +19492,7 @@ metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /* , 
 /* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(31);
+var metadata = __webpack_require__(30);
 var anObject = __webpack_require__(1);
 var ordinaryOwnMetadataKeys = metadata.keys;
 var toMetaKey = metadata.key;
@@ -19505,7 +19506,7 @@ metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targe
 /* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(31);
+var metadata = __webpack_require__(30);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(19);
 var ordinaryHasOwnMetadata = metadata.has;
@@ -19527,7 +19528,7 @@ metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /* , target
 /* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(31);
+var metadata = __webpack_require__(30);
 var anObject = __webpack_require__(1);
 var ordinaryHasOwnMetadata = metadata.has;
 var toMetaKey = metadata.key;
@@ -19542,7 +19543,7 @@ metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , 
 /* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $metadata = __webpack_require__(31);
+var $metadata = __webpack_require__(30);
 var anObject = __webpack_require__(1);
 var aFunction = __webpack_require__(11);
 var toMetaKey = $metadata.key;
@@ -21698,8 +21699,6 @@ __webpack_require__(362);
 
 __webpack_require__(363);
 
-__webpack_require__(364);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22487,7 +22486,7 @@ exports.default = new PageResize();
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.disableVideo = undefined;
+exports.VideoBlockAPI = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -22495,59 +22494,56 @@ var _helpers = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var MobVideo = function () {
-  function MobVideo() {
-    _classCallCheck(this, MobVideo);
+var VideoBlock = function () {
+  function VideoBlock() {
+    _classCallCheck(this, VideoBlock);
 
-    this.$disabledVideos = $('video[data-mobile-disable]');
-    this.$enabledVideos = $('video[data-mobile-play]');
+    this.$blocks = $('.video-block');
+    this.$disabledVideos = $('video[data-mobile-disable="true"]');
 
-    if (!_helpers.Resp.isDesk) this.init();
+    this.init();
   }
 
-  _createClass(MobVideo, [{
+  _createClass(VideoBlock, [{
     key: 'init',
     value: function init() {
-      this.disableVideos();
-      // this.addControls();
+      this.play();
+
+      if (!_helpers.Resp.isDesk) this.disableOnMob();
     }
   }, {
-    key: 'disableVideos',
-    value: function disableVideos() {
+    key: 'play',
+    value: function play() {
+      this.$blocks.each(function (i, $block) {
+        var $btn = $($block).find('button');
+        var $video = $($block).find('video');
+
+        $btn.on('click', function () {
+          var $this = $(this);
+
+          $this.addClass(_helpers.css.hide);
+          $video[0].play();
+
+          $video.on('click', function () {
+            $video[0].pause();
+            $btn.removeClass(_helpers.css.hide);
+          });
+        });
+      });
+    }
+  }, {
+    key: 'disableOnMob',
+    value: function disableOnMob() {
       this.$disabledVideos.each(function () {
         $(this).remove();
       });
     }
-
-    // addControls() {
-    //   this.$enabledVideos.each(function () {
-    //     const $controlsAttr = $(this).attr('controls');
-    //
-    //     if (typeof $controlsAttr !== typeof undefined && $controlsAttr !== false) {
-    //       $(this).attr('conrols', 'true');
-    //     } else {
-    //       $(this).attr('conrols', 'true');
-    //     }
-    //   });
-    // }
-
-  }, {
-    key: 'onResize',
-    value: function onResize() {
-      var _this = this;
-
-      _helpers.$window.on('resize', function () {
-        _this.disableVideos();
-
-        // this.addControls();
-      });
-    }
   }]);
 
-  return MobVideo;
+  return VideoBlock;
 }();
 
-var disableVideo = exports.disableVideo = new MobVideo();
+var VideoBlockAPI = exports.VideoBlockAPI = new VideoBlock();
 
 /***/ }),
 /* 346 */
@@ -23480,7 +23476,7 @@ exports.slider = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _scrollAnim = __webpack_require__(29);
+var _scrollAnim = __webpack_require__(31);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -23672,7 +23668,7 @@ var Slider = function () {
 			var pauseOnChange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
 			var $item = $slider.find('.slider__item').not('.slick-cloned');
-			var $btn = $item.find('.play-btn');
+			var $btn = $item.find('.video-block__play-btn');
 			var $video = $item.find('video');
 
 			$video.each(function () {
@@ -23687,19 +23683,6 @@ var Slider = function () {
 					$video.pause();
 					$btn.removeClass(_helpers.css.hide);
 				}
-			});
-
-			$btn.on('click', function () {
-				var $this = $(this);
-				var $video = (0, _helpers.detectIE)() ? $this.next().find('video')[0] : $this.next()[0];
-
-				$this.addClass(_helpers.css.hide);
-				$video.play();
-
-				$this.next().on('click', function () {
-					$video.pause();
-					$btn.removeClass(_helpers.css.hide);
-				});
 			});
 		}
 	}, {
@@ -26566,7 +26549,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(12);
 
-var _scrollAnim = __webpack_require__(29);
+var _scrollAnim = __webpack_require__(31);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -26674,7 +26657,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(12);
 
-var _scrollAnim = __webpack_require__(29);
+var _scrollAnim = __webpack_require__(31);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -26697,7 +26680,10 @@ var DefaultAnims = function () {
     this.blocks = [].concat(_toConsumableArray(document.querySelectorAll('.block-top')));
     this.groups = [].concat(_toConsumableArray(document.querySelectorAll('[data-anim="group"]')));
     this.titles = [].concat(_toConsumableArray(document.querySelectorAll('.block-title')));
-    this.fadeTopItems = [].concat(_toConsumableArray(document.querySelectorAll('[data-item-anim="fade-top"]')));
+    this.fadeTop = [].concat(_toConsumableArray(document.querySelectorAll('[data-anim="fade-top"]')));
+    this.fadeLeft = [].concat(_toConsumableArray(document.querySelectorAll('[data-anim="fade-left"]')));
+    this.fadeTopItems = [].concat(_toConsumableArray(document.querySelectorAll('[data-items-anim="fade-top"]')));
+    this.fadeLeftItems = [].concat(_toConsumableArray(document.querySelectorAll('[data-items-anim="fade-left"]')));
     this.hangingDecors = [].concat(_toConsumableArray(document.querySelectorAll('.hanging-decor')));
 
     this.init();
@@ -26854,6 +26840,7 @@ var DefaultAnims = function () {
 
           new _scrollAnim2.default({
             el: item,
+            hook: .8,
             onStart: function onStart() {
               _this.fadeTopItemsAnim(item);
             }
@@ -26874,6 +26861,109 @@ var DefaultAnims = function () {
         } finally {
           if (_didIteratorError4) {
             throw _iteratorError4;
+          }
+        }
+      }
+
+      var _iteratorNormalCompletion5 = true;
+      var _didIteratorError5 = false;
+      var _iteratorError5 = undefined;
+
+      try {
+        var _loop5 = function _loop5() {
+          var item = _step5.value;
+
+          new _scrollAnim2.default({
+            el: item,
+            hook: .8,
+            onStart: function onStart() {
+              _this.fadeLeftItemsAnim(item);
+            }
+          });
+        };
+
+        for (var _iterator5 = this.fadeLeftItems[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+          _loop5();
+        }
+      } catch (err) {
+        _didIteratorError5 = true;
+        _iteratorError5 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion5 && _iterator5.return) {
+            _iterator5.return();
+          }
+        } finally {
+          if (_didIteratorError5) {
+            throw _iteratorError5;
+          }
+        }
+      }
+
+      var _iteratorNormalCompletion6 = true;
+      var _didIteratorError6 = false;
+      var _iteratorError6 = undefined;
+
+      try {
+        var _loop6 = function _loop6() {
+          var item = _step6.value;
+
+          new _scrollAnim2.default({
+            el: item,
+            onStart: function onStart() {
+              _this.fadeLeftAnim(item);
+            }
+          });
+        };
+
+        for (var _iterator6 = this.fadeLeft[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+          _loop6();
+        }
+      } catch (err) {
+        _didIteratorError6 = true;
+        _iteratorError6 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion6 && _iterator6.return) {
+            _iterator6.return();
+          }
+        } finally {
+          if (_didIteratorError6) {
+            throw _iteratorError6;
+          }
+        }
+      }
+
+      var _iteratorNormalCompletion7 = true;
+      var _didIteratorError7 = false;
+      var _iteratorError7 = undefined;
+
+      try {
+        var _loop7 = function _loop7() {
+          var item = _step7.value;
+
+          new _scrollAnim2.default({
+            el: item,
+            onStart: function onStart() {
+              _this.fadeTopAnim(item);
+            }
+          });
+        };
+
+        for (var _iterator7 = this.fadeTop[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+          _loop7();
+        }
+      } catch (err) {
+        _didIteratorError7 = true;
+        _iteratorError7 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion7 && _iterator7.return) {
+            _iterator7.return();
+          }
+        } finally {
+          if (_didIteratorError7) {
+            throw _iteratorError7;
           }
         }
       }
@@ -26919,12 +27009,38 @@ var DefaultAnims = function () {
       // }
     }
   }, {
+    key: 'fadeLeftAnim',
+    value: function fadeLeftAnim(item) {
+      var duration = item.getAttribute('data-anim-duration') || 0.5;
+
+      _gsap.TweenMax.to(item, duration, { autoAlpha: 1, x: 0, ease: Power2.easeOut });
+    }
+  }, {
+    key: 'fadeTopAnim',
+    value: function fadeTopAnim(item) {
+      var duration = item.getAttribute('data-anim-duration') || 0.5;
+
+      _gsap.TweenMax.to(item, duration, { autoAlpha: 1, y: 0, ease: Power2.easeOut });
+    }
+  }, {
     key: 'fadeTopItemsAnim',
     value: function fadeTopItemsAnim(item) {
       var tl = new _gsap.TimelineMax();
       var animItems = item.children;
+      var duration = item.getAttribute('data-anim-duration') || 0.5;
+      var staggerDur = item.getAttribute('data-stagger-duration') || 0.3;
 
-      tl.staggerTo(animItems, .5, { autoAlpha: 1, y: 0 }, 0.3);
+      tl.staggerTo(animItems, duration, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, staggerDur);
+    }
+  }, {
+    key: 'fadeLeftItemsAnim',
+    value: function fadeLeftItemsAnim(item) {
+      var tl = new _gsap.TimelineMax();
+      var animItems = item.children;
+      var duration = item.getAttribute('data-anim-duration') || 0.5;
+      var staggerDur = item.getAttribute('data-stagger-duration') || 0.3;
+
+      tl.staggerTo(animItems, duration, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, staggerDur);
     }
   }]);
 
@@ -26940,16 +27056,11 @@ var defaultAnimsAPI = exports.defaultAnimsAPI = new DefaultAnims();
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ExpandListAPI = undefined;
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _gsap = __webpack_require__(12);
 
-var _scrollAnim = __webpack_require__(29);
+var _scrollAnim = __webpack_require__(31);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -26959,73 +27070,45 @@ var _helpers = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ExpandList = function () {
-  function ExpandList() {
+  function ExpandList(el) {
     _classCallCheck(this, ExpandList);
 
-    this.$list = $('.js-expand-list');
+    this.$list = $(el);
+    this.$btn = this.$list.find('.expand-list__btn');
+    this.$listInner = this.$list.find('.expand-list__inner');
+    this.$hiddenItem = this.$listInner.children('.is-hidden');
+    this.$visibleItem = this.$listInner.children().not('.is-hidden');
+    this.tl = new _gsap.TimelineMax();
 
     if (this.$list.length) this.init();
   }
 
   _createClass(ExpandList, [{
     key: 'init',
-    value: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _preloader.preloader.wait();
-
-              case 2:
-                this.scrollAnim();
-
-              case 3:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function init() {
-        return _ref.apply(this, arguments);
-      }
-
-      return init;
-    }()
+    value: function init() {
+      this.scrollAnim();
+      this.showMore();
+    }
   }, {
     key: 'scrollAnim',
     value: function scrollAnim() {
       var _this = this;
 
-      this.$list.each(function (i, $el) {
-        new _scrollAnim2.default({
-          el: $el,
-          onStart: function onStart() {
-            _this.startAnim($el);
-          }
-        });
+      new _scrollAnim2.default({
+        el: _this.$list[0],
+        onStart: function onStart() {
+          _this.startAnim();
+        }
       });
     }
   }, {
     key: 'startAnim',
-    value: function startAnim($el) {
-      var tl = new _gsap.TimelineMax();
+    value: function startAnim() {
 
-      var $listInner = $($el).find('.expand-list__inner');
-      var $visibleItem = $listInner.children().not('.is-hidden');
-      var $btn = $($el).find('.expand-list__btn');
-      var innerHeight = $listInner.innerHeight() * 2;
-      var $hiddenItem = $listInner.children('.is-hidden');
-
-      tl.staggerTo($visibleItem, 1, { x: 0, autoAlpha: 1 }, .3).to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+      this.tl.staggerTo(this.$visibleItem, 1, { x: 0, autoAlpha: 1 }, .3).to(this.$btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
 
       // else {
       //   const $mobHiddenItems = $listInner.children().eq(1).nextAll();
@@ -27038,10 +27121,16 @@ var ExpandList = function () {
       //    .staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3)
       //    .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
       // }
+    }
+  }, {
+    key: 'showMore',
+    value: function showMore() {
+      var _this2 = this;
 
-      $btn.on('click tap', function () {
+      this.$btn.on('click tap', function (e) {
+        e.preventDefault();
 
-        tl.to($listInner, .4, { height: innerHeight }, 'start').to($btn, .4, { autoAlpha: 0, x: -50 }).set($hiddenItem, { className: '-=' + _helpers.css.hidden }, 'start -=.4').staggerTo($hiddenItem, .5, { x: 0, autoAlpha: 1 }, .2, 'start -=.4');
+        _this2.tl.to(_this2.$btn, .4, { autoAlpha: 0, x: -50 }).set(_this2.$hiddenItem, { className: '-=' + _helpers.css.hidden }).to(_this2.$listInner, .4, { height: 'auto' }).staggerTo(_this2.$hiddenItem, .5, { x: 0, autoAlpha: 1 }, .2);
       });
     }
   }]);
@@ -27049,7 +27138,9 @@ var ExpandList = function () {
   return ExpandList;
 }();
 
-var ExpandListAPI = exports.ExpandListAPI = new ExpandList();
+$('.js-expand-list').each(function (i, el) {
+  new ExpandList(el);
+});
 
 /***/ }),
 /* 354 */
@@ -27227,7 +27318,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(12);
 
-var _scrollAnim = __webpack_require__(29);
+var _scrollAnim = __webpack_require__(31);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -27356,12 +27447,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.Block5API = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-// import { preloader } from './preloader';
-
 
 var _gsap = __webpack_require__(12);
 
-var _scrollAnim = __webpack_require__(29);
+var _scrollAnim = __webpack_require__(31);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -27373,8 +27462,6 @@ var _dot2 = _interopRequireDefault(_dot);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Block5 = function () {
@@ -27384,39 +27471,17 @@ var Block5 = function () {
     this.$container = $('.block-5');
     this.$item = this.$container.find('.block-5__item');
     this.$list = this.$container.find('.block-5__list');
-    this.$dotTarget = $('.block-5__item-descr p');
+    this.$dotTarget = this.$item.find('p');
 
     if (this.$container.length) this.init();
   }
 
   _createClass(Block5, [{
     key: 'init',
-    value: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return this.scrollAnim();
-
-              case 2:
-                this.dot();
-
-              case 3:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function init() {
-        return _ref.apply(this, arguments);
-      }
-
-      return init;
-    }()
+    value: function init() {
+      this.scrollAnim();
+      this.dot();
+    }
   }, {
     key: 'scrollAnim',
     value: function scrollAnim() {
@@ -27480,7 +27545,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(12);
 
-var _scrollAnim = __webpack_require__(29);
+var _scrollAnim = __webpack_require__(31);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -27504,8 +27569,11 @@ var Block6 = function () {
     this.$offerPic = this.$offer.find('.block-6__offer-pic');
     this.$list = this.$container.find('.block-6__list');
     this.$itemMask = this.$list.find('.block-6__item-mask');
-    this.$dotTarget1 = $('.block-6__item-title h4');
-    this.$dotTarget2 = $('.block-6__item-text p');
+    this.$dotOfferTarget1 = this.$offer.find('.block-6__offer-title').find('h4');
+    this.$dotOfferTarget2 = this.$offer.find('.block-6__offer-descr').find('p')[0];
+    this.$dotOfferTarget3 = this.$offer.find('.block-6__offer-descr').find('p')[1];
+    this.$dotItemTarget1 = $('.block-6__item-title h4');
+    this.$dotItemTarget2 = $('.block-6__item-text p');
 
     if (this.$container.length) this.init();
   }
@@ -27552,8 +27620,11 @@ var Block6 = function () {
   }, {
     key: 'dot',
     value: function dot() {
-      new _dot2.default(this.$dotTarget1);
-      new _dot2.default(this.$dotTarget2);
+      new _dot2.default(this.$dotOfferTarget1);
+      new _dot2.default(this.$dotOfferTarget2);
+      new _dot2.default(this.$dotOfferTarget3);
+      new _dot2.default(this.$dotItemTarget1);
+      new _dot2.default(this.$dotItemTarget2);
     }
   }]);
 
@@ -27572,7 +27643,7 @@ var Block6API = exports.Block6API = new Block6();
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.Block10API = undefined;
+exports.companiesAPI = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 // import {preloader} from './preloader';
@@ -27580,7 +27651,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(12);
 
-var _scrollAnim = __webpack_require__(29);
+var _scrollAnim = __webpack_require__(31);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -27590,53 +27661,36 @@ var _slickCarousel = __webpack_require__(131);
 
 var _slickCarousel2 = _interopRequireDefault(_slickCarousel);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _dot = __webpack_require__(96);
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+var _dot2 = _interopRequireDefault(_dot);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Block10 = function () {
-	function Block10() {
-		_classCallCheck(this, Block10);
+var companies = function () {
+	function companies() {
+		_classCallCheck(this, companies);
 
-		this.$block = $('.block-10');
+		this.$block = $('.companies');
 		this.$container = this.$block.find('.container');
-		this.$list = this.$block.find('.block-10__list');
-		this.$item = this.$block.find('.block-10__item').not('.slick-cloned');
-		this.$line = this.$block.find('.block-10__decor-line');
+		this.$list = this.$block.find('.companies__list_slider');
+		this.$item = this.$block.find('.companies__item').not('.slick-cloned');
+		this.$line = this.$block.find('.companies__decor-line');
+		this.$line = this.$block.find('.companies__decor-line');
+		this.$dotTarget1 = this.$item.find('p');
 
 		if (this.$block.length) this.init();
 	}
 
-	_createClass(Block10, [{
+	_createClass(companies, [{
 		key: 'init',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return this.scrollAnim();
-
-							case 2:
-								this.initSlider();
-
-							case 3:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function init() {
-				return _ref.apply(this, arguments);
-			}
-
-			return init;
-		}()
+		value: function init() {
+			this.scrollAnim();
+			this.initSlider();
+			this.dot();
+		}
 	}, {
 		key: 'scrollAnim',
 		value: function scrollAnim() {
@@ -27660,7 +27714,6 @@ var Block10 = function () {
 	}, {
 		key: 'initSlider',
 		value: function initSlider() {
-			var _this = this;
 			var $itemCount = this.$list.children().length;
 			var defaultOptions = {
 				slidesToShow: 4,
@@ -27703,12 +27756,17 @@ var Block10 = function () {
 				}));
 			}
 		}
+	}, {
+		key: 'dot',
+		value: function dot() {
+			new _dot2.default(this.$dotTarget1);
+		}
 	}]);
 
-	return Block10;
+	return companies;
 }();
 
-var Block10API = exports.Block10API = new Block10();
+var companiesAPI = exports.companiesAPI = new companies();
 
 /***/ }),
 /* 361 */
@@ -28101,7 +28159,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _gsap = __webpack_require__(12);
 
-var _scrollAnim = __webpack_require__(29);
+var _scrollAnim = __webpack_require__(31);
 
 var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
 
@@ -28134,7 +28192,7 @@ var Come = function () {
 
       new _scrollAnim2.default({
         el: this.$block.get(0),
-        hook: .75,
+        hook: .7,
         onEnter: function () {
           var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -28164,12 +28222,7 @@ var Come = function () {
       var tl = new _gsap.TimelineMax();
       var item = this.$container.children();
 
-      if (_helpers.Resp.isDesk) {
-        tl.to(this.$mask, .6, { autoAlpha: 1, x: 0 }).staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3').to(this.$maskRect, 1, { fillOpacity: .5 }, '-=.3');
-      } else {
-
-        tl.to(this.$mask, .6, { autoAlpha: 1, x: 0 }).staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3');
-      }
+      tl.to(this.$mask, .6, { autoAlpha: 1, x: 0 }).staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3').to(this.$maskRect, 1, { fillOpacity: .5 }, '-=.3');
     }
   }]);
 
@@ -28242,16 +28295,11 @@ var Mask = function () {
     value: function initImage() {
       this.images = this.block.querySelectorAll('image');
       this.maskEl = this.clipPathTag.querySelectorAll('.mask__el');
-
-      // this.maskTag.remove();
-      // this.rects.forEach(x => {x.remove(); });
     }
   }, {
     key: 'initVideo',
     value: function initVideo() {
       this.maskEl = this.maskTag.querySelectorAll('.mask__el');
-
-      // this.clipPathTag.remove();
     }
   }, {
     key: 'fluidRatio',
@@ -28397,100 +28445,6 @@ var comeMask = new Mask('.mask_come', false);
 
 /***/ }),
 /* 364 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Block1API = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _gsap = __webpack_require__(12);
-
-var _scrollAnim = __webpack_require__(29);
-
-var _scrollAnim2 = _interopRequireDefault(_scrollAnim);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Block1 = function () {
-  function Block1() {
-    _classCallCheck(this, Block1);
-
-    this.$block = $('.block-1');
-
-    if (this.$block.length) this.init();
-  }
-
-  _createClass(Block1, [{
-    key: 'init',
-    value: function init() {
-      this.scrollAnim();
-    }
-  }, {
-    key: 'scrollAnim',
-    value: function scrollAnim() {
-      var _this2 = this;
-
-      var _this = this;
-
-      this.$block.each(function (i, block) {
-        var $animatedBlock = $(block).filter('[data-self-anim="true"]');
-        var $list = $animatedBlock.find('.block-1__list');
-
-        new _scrollAnim2.default({
-          el: $list[0],
-          onEnter: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              return regeneratorRuntime.wrap(function _callee$(_context) {
-                while (1) {
-                  switch (_context.prev = _context.next) {
-                    case 0:
-                      _context.next = 2;
-                      return _this.startAnim(block);
-
-                    case 2:
-                    case 'end':
-                      return _context.stop();
-                  }
-                }
-              }, _callee, _this2);
-            }));
-
-            return function onEnter() {
-              return _ref.apply(this, arguments);
-            };
-          }()
-        });
-      });
-    }
-  }, {
-    key: 'startAnim',
-    value: function startAnim(block) {
-      var tl = new _gsap.TimelineMax();
-
-      this.$items = $(block).find('.block-1__item').children();
-      this.$more = $(block).find('.block-1__more');
-
-      tl.staggerTo(this.$items, .7, { autoAlpha: 1, x: 0 }, 0.15).to(this.$more, .7, { autoAlpha: 1, x: 0 });
-    }
-  }]);
-
-  return Block1;
-}();
-
-var Block1API = exports.Block1API = new Block1();
-
-/***/ }),
-/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

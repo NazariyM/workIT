@@ -2,7 +2,7 @@ import objectFitImages from 'object-fit-images';
 import objectFitVideos from 'object-fit-videos';
 import Validate from './validate';
 import PageResize from './pageResize';
-import './MobVideo';
+import './videoBlock';
 import './dot';
 import './noTouch';
 import './header';
@@ -16,11 +16,10 @@ import '../sections/b-screen';
 import '../sections/b-block-3';
 import '../sections/b-block-5';
 import '../sections/b-block-6';
-import '../sections/b-block-10';
+import '../sections/companies';
 import '../sections/locations-map';
 import '../sections/come';
 import '../sections/mask';
-import '../sections/b-block-1';
 
 export class Common {
   /**

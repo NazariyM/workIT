@@ -4,42 +4,38 @@ import { preloader } from './preloader';
 import { css, $window, Resp } from '../modules/dev/_helpers';
 
 class ExpandList {
-  constructor() {
-    this.$list = $('.js-expand-list');
+  constructor(el) {
+    this.$list = $(el);
+    this.$btn = this.$list.find('.expand-list__btn');
+    this.$listInner = this.$list.find('.expand-list__inner');
+    this.$hiddenItem = this.$listInner.children('.is-hidden');
+    this.$visibleItem = this.$listInner.children().not('.is-hidden');
+    this.tl = new TimelineMax();
 
     if (this.$list.length) this.init();
   }
 
-  async init() {
-    await preloader.wait();
+  init() {
     this.scrollAnim();
+    this.showMore();
   }
 
   scrollAnim() {
     const _this = this;
 
-    this.$list.each(function (i, $el) {
-      new ScrollAnim({
-        el: $el,
-        onStart() {
-          _this.startAnim($el);
-        }
-      });
+    new ScrollAnim({
+      el: _this.$list[0],
+      onStart() {
+        _this.startAnim();
+      }
     });
   }
 
-  startAnim($el) {
-    const tl = new TimelineMax();
+  startAnim() {
 
-    const $listInner = $($el).find('.expand-list__inner');
-    const $visibleItem = $listInner.children().not('.is-hidden');
-    const $btn = $($el).find('.expand-list__btn');
-    const innerHeight = $listInner.innerHeight() * 2;
-    const $hiddenItem = $listInner.children('.is-hidden');
-
-    tl
-     .staggerTo($visibleItem, 1, { x: 0, autoAlpha: 1 }, .3)
-     .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
+    this.tl
+      .staggerTo(this.$visibleItem, 1, { x: 0, autoAlpha: 1 }, .3)
+      .to(this.$btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
 
     // else {
     //   const $mobHiddenItems = $listInner.children().eq(1).nextAll();
@@ -52,16 +48,21 @@ class ExpandList {
     //    .staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3)
     //    .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
     // }
+  }
 
-    $btn.on('click tap', () => {
+  showMore() {
+    this.$btn.on('click tap', (e) => {
+      e.preventDefault();
 
-      tl
-       .to($listInner, .4, { height: innerHeight }, 'start')
-       .to($btn, .4, { autoAlpha: 0, x: -50 })
-       .set($hiddenItem, { className: `-=${css.hidden}` }, 'start -=.4')
-       .staggerTo($hiddenItem, .5, { x: 0, autoAlpha: 1 }, .2, 'start -=.4');
+      this.tl
+        .to(this.$btn, .4, { autoAlpha: 0, x: -50 })
+        .set(this.$hiddenItem, { className: `-=${css.hidden}` })
+        .to(this.$listInner, .4, { height: 'auto' })
+        .staggerTo(this.$hiddenItem, .5, { x: 0, autoAlpha: 1 }, .2);
     });
   }
 }
 
-export const ExpandListAPI = new ExpandList();
+$('.js-expand-list').each((i, el) => {
+  new ExpandList(el);
+});

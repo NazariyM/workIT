@@ -1,4 +1,4 @@
-.block-1
+.events
   padding: 110px 0 113px
   background: $color1
   +xs
@@ -7,7 +7,7 @@
     padding: 110px 0 0
     background: $white
   &_archieve &__item
-    padding: 0 30px 58px
+    padding: 0 30px 50px
   &_blog
     padding: 110px 0 0
     background: $white
@@ -24,25 +24,34 @@
       margin-bottom: 30px
   &__label
     margin-bottom: 32px
+  &__expand-list &__item
+    padding-bottom: 40px
+  &__expand-list &__more
+    margin-top: -20px
   &__list
-    display: flex
-    flex-wrap: wrap
     margin: 0 -30px
     text-align: left
+    font-size: 0
+    letter-spacing: 0
   &__item
-    flex: 0 1 50%
-    max-width: 610px
+    display: inline-block
+    vertical-align: top
+    width: 50%
     padding: 0 30px
+    letter-spacing: 0.025em
+    &.is-hidden
+      display: none
     &_full
-      flex: 1 1 auto
-      margin-bottom: 80px
+      width: 100%
+      margin-bottom: 30px
       max-width: none
     &_full &-pic
       height: 450px
+    &_full &-title
+      font-size: 48px
+      line-height: 52px
     &-pic
       display: block
-      opacity: 03
-      transform: translateX(-50px)
       height: 300px
       margin-bottom: 30px
       +cover-img
@@ -50,8 +59,6 @@
         height: 166px
         margin-bottom: 23px
     &-date
-      opacity: 0
-      transform: translateX(-50px)
       position: relative
       padding-right: 60px
       margin-bottom: 13px
@@ -75,20 +82,21 @@
           content: ''
           +trs
     &-title
-      opacity: 0
-      transform: translateX(-50px)
       a
         display: inline
         text-decoration: none
         color: inherit
       h4
         display: inline
+    
+    p
+      font-size: 16px
+      +xs
+        font-size: 12px
   &__more
     flex: 1 0 auto
     margin-top: 20px
     text-align: center
-    opacity: 0
-    transform: translateX(-50px)
     +xs
       margin-top: 15px
   &__more-btn

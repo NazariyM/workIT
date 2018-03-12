@@ -1,0 +1,189 @@
+extends ../extend/default
+
+block variables
+  - var title = 'About page';
+
+block main
+  main.content(data-page='events')
+
+  -
+    screen = {
+      classMod: '_default',
+      title: 'Мы создали workit потому что',
+      subTitle: 'хотели иметь в Киеве инновационное пространство, которое объединяет людей, вдохновляет и помогает реализовать идеи, позитивно влияющие на мир.',
+      maskType: 'image',
+      maskImg: '4',
+      maskBlur: '7',
+      maskImgOpacity: '0.75'
+    }
+  include ../sections/screen
+
+  //begin block-2
+  +b.SECTION.block-2
+    +e.container.container
+      +e.top.block-top.block-top_md
+        +b.block-label
+          +e.P ABOUT US
+        +e.title.block-title.has-selection._green
+          +e.H2 Наша
+            b история
+
+      +e.content(data-anim='group')
+        +e.text
+          +e.P Когда мы устали искать место, в котором нам было бы комфортно работать, мы решили создать его сами. Нас восхищали коворкинги
+            b Амстердама
+            = ' '
+            | и
+            b Бостона,
+            = ' '
+            | но особенно впечатлил офис Google в
+            = ' '
+            b Майнтин Вью.
+            = ' '
+            | Именно тогда родилась идея создать что-то подобное и в Украине - так появился
+            b Work IT
+
+
+        +e.img-wrap.img-hover
+          +e.img.img-hover__item(style='background-image: url(static/img/block-2_3.jpg)')
+  //end block-2
+
+
+  //begin block-2
+  +b.SECTION.block-2._has-video
+    .container.container_md
+      +e.top.block-top.block-top_md
+        +b.block-label
+          +e.P ABOUT US
+        +e.title.block-title.has-selection._green
+          +e.H2 Окунитесь в
+            b атмосферу
+            = ' '
+            | Workit
+
+      +e.video.video-block._darken
+        +b.BUTTON.video-block__play-btn(type='button')
+          +e.SVG(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='65', height='67', viewbox='0 0 65 67')
+            defs
+              path#7621a(d='M194.5 2778a31.5 31.5 0 1 1 0 63 31.5 31.5 0 0 1 0-63zm-5.6 21.7v19.35l16.76-9.68z')
+            g
+              g(transform='translate(-162 -2776)')
+                use(xlink:href='#7621a')
+
+        +e.VIDEO(playsinline loop preload='auto' poster='static/img/block-2_video.png')
+          +e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
+    //end block-2
+
+    -
+      membersList = [{
+      pic: 'team_1',
+      name: 'Иван Иванов',
+      position: 'CEO Workit',
+      description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
+      }, {
+      pic: 'team_2',
+      name: 'Анна Градил',
+      position: 'CEO Workit',
+      description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
+      }, {
+      pic: 'team_3',
+      name: 'Мирослава Захарчук',
+      position: 'CEO Workit',
+      description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
+      }, {
+      pic: 'team_4',
+      name: 'Мария Касс',
+      position: 'CEO Workit',
+      description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
+      }, {
+      pic: 'team_3',
+      name: 'Иван Иванов',
+      position: 'CEO Workit',
+      description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
+      }, {
+      pic: 'team_2',
+      name: 'Анна Градил',
+      position: 'CEO Workit',
+      description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
+      }, {
+      pic: 'team_5',
+      name: 'Мирослава Захарчук',
+      position: 'CEO Workit',
+      description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
+      }, {
+      pic: 'team_6',
+      name: 'Мария Касс',
+      position: 'CEO Workit',
+      description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
+      }]
+
+  include ../sections/team
+
+  //begin values
+  +b.SECTION.values
+    .container.container_md
+      +e.top.block-top
+        +b.block-label
+          +e.P VALUES
+        +e.title.block-title.has-selection._green
+          +e.H2 Самые главные наши
+            b ценности
+
+      +b.expand-list.js-expand-list
+        +e.inner
+          .values__item.expand-list__item
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_1.jpg` alt='image')
+            h5 Сообщество
+            p Это все об обществе. Наше сообщество определяет пространство. Они
+              b принимают решение
+              = ' '
+              | о
+              b дизайне
+              = ' '
+              | офиса,
+              b расписании
+              = ' '
+              | мероприятий и даже
+              b тип кофе,
+              | который мы покупаем для пространства
+
+          .values__item.expand-list__item
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_2.jpg` alt='image')
+            h5 Эффективность
+            p Мы создаем условия для каждого, чтобы
+              b максимизировать
+              = ' '
+              | их
+              b производительность
+              = ' '
+              | и эффективность. Мы предлагаем дополнительные услуги и
+              b учебные семинары
+
+          .values__item.expand-list__item
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_3.jpg` alt='image')
+            h5 Здоровье
+            p Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни через
+              b сбалансированную диету
+              = ' '
+              | (выбор продуктов питания) и
+              b физическую активность
+              = ' '
+              | внутри и за пределами коворкинга
+
+          .values__item.expand-list__item
+            .values__item-img.img-hover
+              img.img-hover__item(src=`static/img/values_4.jpg` alt='image')
+            h5 Веселье
+            p
+              b Размер рабочего пространства
+              = ' '
+              | имеет значение. Поэтому мы позаботились о том, чтобы каждое рабочее место занимало как
+              b минимум 7 кв м.
+
+    //end values
+
+  -come = {maskType: 'image', maskVideo: false}
+  include ../sections/come

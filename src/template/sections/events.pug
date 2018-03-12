@@ -1,0 +1,42 @@
+if events ? events : events = []
+if events.label ? events.label : events.label = 'events'
+if events.title ? events.title : events.title = ''
+if events.titleSelected ? events.titleSelected : events.titleSelected = 'Мероприятия'
+
+//begin events
++b.SECTION.events(class= events.classMod ? events.classMod : '')
+	.container.container_md
+		+e.top.block-top
+			+e.label.block-label
+				+e.P= events.label
+
+			+e.title.block-title.has-selection(class= events.titleClasses ? events.titleClasses : '')
+				+e.H2= events.title
+					b= events.titleSelected
+
+				if events.themes
+					-dropdownClass = '_themes'
+					include ../components/dropdown
+
+		+e.list(class= events.listClasses ? events.listClasses : '')
+			mixin eventsItem(item)
+				+e.item(class= item.classMod ? item.classMod : '' data-items-anim='fade-left')
+					if item.picLink
+						+e.A.item-pic(href='#!')
+							+b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
+					else
+						+e.item-pic
+							+b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
+
+					+e.item-date
+						+e.P 07.12.2017
+						+e.A(href='#!')
+					+e.item-title.h4
+						+e.A(href='#!')
+							+e.H4= item.title
+			each item in eventsList
+				+eventsItem(item)
+
+		+e.more(data-items-anim='fade-left')
+			+e.A.more-btn.btn._line(href='#!') смотреть все
+//end events

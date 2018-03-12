@@ -11,8 +11,11 @@ class Block6 {
     this.$offerPic = this.$offer.find('.block-6__offer-pic');
     this.$list = this.$container.find('.block-6__list');
     this.$itemMask = this.$list.find('.block-6__item-mask');
-    this.$dotTarget1 = $('.block-6__item-title h4');
-    this.$dotTarget2 = $('.block-6__item-text p');
+    this.$dotOfferTarget1 = this.$offer.find('.block-6__offer-title').find('h4');
+    this.$dotOfferTarget2 = this.$offer.find('.block-6__offer-descr').find('p')[0];
+    this.$dotOfferTarget3 = this.$offer.find('.block-6__offer-descr').find('p')[1];
+    this.$dotItemTarget1 = $('.block-6__item-title h4');
+    this.$dotItemTarget2 = $('.block-6__item-text p');
 
     if (this.$container.length) this.init();
   }
@@ -58,8 +61,11 @@ class Block6 {
   }
 
   dot() {
-    new Dot(this.$dotTarget1);
-    new Dot(this.$dotTarget2);
+    new Dot(this.$dotOfferTarget1);
+    new Dot(this.$dotOfferTarget2);
+    new Dot(this.$dotOfferTarget3);
+    new Dot(this.$dotItemTarget1);
+    new Dot(this.$dotItemTarget2);
   }
 }
 

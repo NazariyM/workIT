@@ -1,39 +1,48 @@
 .pagination
-	display: flex
-	justify-content: center
-	align-items: center
-	height: 90px
 	background: $color2
 	&_default
-		margin-top: 70px
-	li
-		white-space: nowrap
-		width: 30px
-		height: 30px
-		+ li
-			margin-left: 48px
-		&.hidden
-			pointer-events: none
-		&.prev
-			display: block
-			position: relative
-			width: auto
-		&.next
-			display: block
-			position: relative
-			width: auto
-		a
-			display: flex
-			align-items: center
-			justify-content: center
-			height: 100%
-			+f('gil-800', 12, 12)
-			text-transform: uppercase
-			color: $white
-			+trs
-			&:hover
+		margin-top: 69px
+	ul
+		display: flex
+		max-width: 575px
+		margin: 0 auto
+		padding: 0 15px
+		align-items: center
+		height: 90px
+		li
+			white-space: nowrap
+			width: 30px
+			height: 30px
+			margin: 0 14px
+			letter-spacing: 0.075em
+			&:nth-child(5)
+				margin: 0 20px
+			&.hidden
+				pointer-events: none
+			&.prev
+				display: block
+				position: relative
+				width: auto
+				margin-right: 66px
+				margin-left: 0
+			&.next
+				display: block
+				position: relative
+				width: auto
+				margin-left: 55px
+				margin-right: 0
+			a
+				display: flex
+				align-items: center
+				justify-content: center
+				height: 100%
+				+f('gil-800', 12, 12)
+				text-transform: uppercase
+				color: $white
+				+trs
+				&:hover
+					color: $color1
+			&.active a
+				pointer-events: none
 				color: $color1
-		&.active a
-			pointer-events: none
-			color: $color1
-			
+				

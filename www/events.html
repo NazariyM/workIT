@@ -11,10 +11,6 @@
     <link rel="icon" href="static/favicon.png">
   </head>
   <body>
-    <!-- SVG-->
-    <!--block svg-->
-    <!--  div.svg-container(style="position: absolute; width: 0; height: 0; overflow: hidden;")-->
-    <!--    include ../partials/_sprite.svg-->
     <!--begin preloader-->
     <div class="preloader">
       <svg class="preloader__img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 807.02 205.05">
@@ -296,14 +292,14 @@
     <!--end header-->
     <!-- Main content-->
     <main class="content" data-page="events">
-      <!--begin block-1-->
-      <section class="block-1 block-1_default" data-self-anim="true">
+      <!--begin events-->
+      <section class="events">
         <div class="container container_md">
-          <div class="block-1__top block-top">
-            <div class="block-1__label block-label">
+          <div class="events__top block-top">
+            <div class="events__label block-label">
               <p>events</p>
             </div>
-            <div class="block-1__title block-title has-selection has-selection_black block-title block-title_has-dropdown">
+            <div class="events__title block-title block-title_has-dropdown has-selection has-selection_black">
               <h2>Ближайшие
                 <b>мероприятия</b>
               </h2>
@@ -342,64 +338,94 @@
               </div>
             </div>
           </div>
-          <div class="block-1__list">
-            <div class="block-1__item block-1__item_full">
-              <a class="block-1__item-pic" href="#!">
-                <img src="static/img/block-1_full.jpg" alt="image" title="" />
-              </a>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>How To: Make a Good Presentation For Investors</h4>
+          <div class="events__expand-list expand-list js-expand-list">
+            <div class="expand-list__inner">
+              <div class="events__item events__item_full expand-list__item">
+                <a class="events__item-pic" href="#!">
+                  <img src="static/img/events_full.jpg" alt="image" title="" />
                 </a>
+                <div class="events__item-date">
+                  <p>07.12.2017</p>
+                  <a href="#!"></a>
+                </div>
+                <div class="events__item-title h4">
+                  <a href="#!">
+                    <h4>How To: Make a Good Presentation For Investors</h4>
+                  </a>
+                </div>
+              </div>
+              <div class="events__item expand-list__item">
+                <div class="events__item-pic">
+                  <img src="static/img/events_1.jpg" alt="image" title="" />
+                </div>
+                <div class="events__item-date">
+                  <p>07.12.2017</p>
+                  <a href="#!"></a>
+                </div>
+                <div class="events__item-title h4">
+                  <a href="#!">
+                    <h4>How To: Make a Good Presentation For Investors</h4>
+                  </a>
+                </div>
+              </div>
+              <div class="events__item expand-list__item">
+                <div class="events__item-pic">
+                  <img src="static/img/events_2.jpg" alt="image" title="" />
+                </div>
+                <div class="events__item-date">
+                  <p>07.12.2017</p>
+                  <a href="#!"></a>
+                </div>
+                <div class="events__item-title h4">
+                  <a href="#!">
+                    <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
+                  </a>
+                </div>
+              </div>
+              <div class="events__item is-hidden expand-list__item">
+                <div class="events__item-pic">
+                  <img src="static/img/events_1.jpg" alt="image" title="" />
+                </div>
+                <div class="events__item-date">
+                  <p>07.12.2017</p>
+                  <a href="#!"></a>
+                </div>
+                <div class="events__item-title h4">
+                  <a href="#!">
+                    <h4>How To: Make a Good Presentation For Investors</h4>
+                  </a>
+                </div>
+              </div>
+              <div class="events__item is-hidden expand-list__item">
+                <div class="events__item-pic">
+                  <img src="static/img/events_2.jpg" alt="image" title="" />
+                </div>
+                <div class="events__item-date">
+                  <p>07.12.2017</p>
+                  <a href="#!"></a>
+                </div>
+                <div class="events__item-title h4">
+                  <a href="#!">
+                    <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
+                  </a>
+                </div>
               </div>
             </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_1.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>How To: Make a Good Presentation For Investors</h4>
-                </a>
-              </div>
+            <div class="events__more" data-items-anim="fade-left">
+              <a class="events__more-btn btn btn_line expand-list__btn" href="#!">смотреть все</a>
             </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_2.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="block-1__more">
-            <a class="block-1__more-btn btn btn_line" href="#!">смотреть все</a>
           </div>
         </div>
       </section>
-      <!--end block-1-->
+      <!--end events-->
       <!--begin archive-->
-      <section class="block-1 block-1_archieve">
+      <section class="events events_archieve">
         <div class="container container_md">
-          <div class="block-1__top block-top">
-            <div class="block-1__label block-label">
+          <div class="events__top block-top">
+            <div class="events__label block-label">
               <p>archive</p>
             </div>
-            <div class="block-1__title block-title block-title_has-dropdown has-selection has-selection_green">
+            <div class="events__title block-title block-title_has-dropdown has-selection has-selection_green">
               <h2>
                 <b>Архив</b> мероприятий</h2>
               <div class="dropdown dropdown_themes dropdown_green">
@@ -437,114 +463,86 @@
               </div>
             </div>
           </div>
-          <div class="block-1__list">
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_1.jpg" alt="image" title="" />
+          <div class="events__list">
+            <div class="events__item" data-items-anim="fade-top">
+              <div class="events__item-pic">
+                <img src="static/img/events_3.jpg" alt="image" title="" />
               </div>
-              <div class="block-1__item-date">
+              <div class="events__item-date">
                 <p>07.12.2017</p>
                 <a href="#!"></a>
               </div>
-              <div class="block-1__item-title h4">
+              <div class="events__item-title h4">
                 <a href="#!">
                   <h4>How To: Make a Good Presentation For Investors</h4>
                 </a>
               </div>
             </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_2.jpg" alt="image" title="" />
+            <div class="events__item" data-items-anim="fade-top">
+              <div class="events__item-pic">
+                <img src="static/img/events_4.jpg" alt="image" title="" />
               </div>
-              <div class="block-1__item-date">
+              <div class="events__item-date">
                 <p>07.12.2017</p>
                 <a href="#!"></a>
               </div>
-              <div class="block-1__item-title h4">
+              <div class="events__item-title h4">
                 <a href="#!">
                   <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
                 </a>
               </div>
             </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_3.jpg" alt="image" title="" />
+            <div class="events__item" data-items-anim="fade-top">
+              <div class="events__item-pic">
+                <img src="static/img/events_5.jpg" alt="image" title="" />
               </div>
-              <div class="block-1__item-date">
+              <div class="events__item-date">
                 <p>07.12.2017</p>
                 <a href="#!"></a>
               </div>
-              <div class="block-1__item-title h4">
+              <div class="events__item-title h4">
                 <a href="#!">
                   <h4>How To: Make a Good Presentation For Investors</h4>
                 </a>
               </div>
             </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_4.jpg" alt="image" title="" />
+            <div class="events__item" data-items-anim="fade-top">
+              <div class="events__item-pic">
+                <img src="static/img/events_6.jpg" alt="image" title="" />
               </div>
-              <div class="block-1__item-date">
+              <div class="events__item-date">
                 <p>07.12.2017</p>
                 <a href="#!"></a>
               </div>
-              <div class="block-1__item-title h4">
+              <div class="events__item-title h4">
                 <a href="#!">
                   <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
                 </a>
               </div>
             </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_5.jpg" alt="image" title="" />
+            <div class="events__item" data-items-anim="fade-top">
+              <div class="events__item-pic">
+                <img src="static/img/events_1.jpg" alt="image" title="" />
               </div>
-              <div class="block-1__item-date">
+              <div class="events__item-date">
                 <p>07.12.2017</p>
                 <a href="#!"></a>
               </div>
-              <div class="block-1__item-title h4">
+              <div class="events__item-title h4">
                 <a href="#!">
                   <h4>How To: Make a Good Presentation For Investors</h4>
                 </a>
               </div>
             </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_6.jpg" alt="image" title="" />
+            <div class="events__item" data-items-anim="fade-top">
+              <div class="events__item-pic">
+                <img src="static/img/events_2.jpg" alt="image" title="" />
               </div>
-              <div class="block-1__item-date">
+              <div class="events__item-date">
                 <p>07.12.2017</p>
                 <a href="#!"></a>
               </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_1.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
-                <a href="#!">
-                  <h4>How To: Make a Good Presentation For Investors</h4>
-                </a>
-              </div>
-            </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_2.jpg" alt="image" title="" />
-              </div>
-              <div class="block-1__item-date">
-                <p>07.12.2017</p>
-                <a href="#!"></a>
-              </div>
-              <div class="block-1__item-title h4">
+              <div class="events__item-title h4">
                 <a href="#!">
                   <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
                 </a>
@@ -553,34 +551,36 @@
           </div>
         </div>
         <!--begin pagination-->
-        <ul class="pagination pagination_default">
-          <li class="prev hidden">
-            <a href="!#">prev page</a>
-          </li>
-          <li class="active">
-            <a href="!#">1</a>
-          </li>
-          <li>
-            <a href="!#">2</a>
-          </li>
-          <li>
-            <a href="!#">3</a>
-          </li>
-          <li>
-            <a href="!#">...</a>
-          </li>
-          <li>
-            <a href="!#">15</a>
-          </li>
-          <li class="next">
-            <a href="!#">next page</a>
-          </li>
-        </ul>
+        <div class="pagination pagination_default" data-anim="fade-left">
+          <ul data-items-anim="fade-left" data-anim-duration="0.3" data-stagger-duration="0.15">
+            <li class="prev hidden">
+              <a href="!#">prev page</a>
+            </li>
+            <li class="active">
+              <a href="!#">1</a>
+            </li>
+            <li>
+              <a href="!#">2</a>
+            </li>
+            <li>
+              <a href="!#">3</a>
+            </li>
+            <li>
+              <a href="!#">...</a>
+            </li>
+            <li>
+              <a href="!#">15</a>
+            </li>
+            <li class="next">
+              <a href="!#">next page</a>
+            </li>
+          </ul>
+        </div>
         <!--end pagination-->
       </section>
       <!--end archive-->
       <!--begin subscription-->
-      <section class="subscr subscr_default">
+      <section class="subscr subscr_default" data-anim="fade-left">
         <div class="subscr__container container container_md" data-anim="group">
           <div class="subscr__title">
             <h3>Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!</h3>
@@ -811,7 +811,7 @@
           </p>
         </div>
         <div class="socials footer__socials">
-          <p>Подписаться</p>
+          <h6>Подписаться</h6>
           <div class="socials__links">
             <a href="#!" target="_blank">
               <svg class="icon icon-fb" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 8 16" style="enable-background:new 0 0 8 16;" xml:space="preserve">
@@ -833,7 +833,7 @@
       </div>
       <div class="footer__addition container container container_md">
         <p>Copyright@2017</p>
-        <a class="dev-link footer__dev-link" href="vintage.agency" target="_blank">made by
+        <a class="dev-link footer__dev-link" href="#!" target="_blank">made by
           <svg class="icon icon-vintage" viewbox="0 0 26.8 36.7" width="100%" height="100%">
             <path d="M20.1 0l-9.4 36.7h6.7L26.8 0zM6.9 0H0l1.6 6.3h6.9z"></path>
           </svg>

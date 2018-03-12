@@ -17,7 +17,7 @@ class Come {
 
     new ScrollAnim({
       el: this.$block.get(0),
-      hook: .75,
+      hook: .7,
       onEnter: async () => {
         await _this.startAnim();
       }
@@ -28,17 +28,10 @@ class Come {
     const tl = new TimelineMax();
     const item = this.$container.children();
 
-    if (Resp.isDesk) {
-      tl
-        .to(this.$mask, .6, { autoAlpha: 1, x: 0 })
-        .staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3')
-        .to(this.$maskRect, 1, { fillOpacity: .5 }, '-=.3');
-    } else {
-
-      tl
-        .to(this.$mask, .6, { autoAlpha: 1, x: 0 })
-        .staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3');
-    }
+    tl
+      .to(this.$mask, .6, { autoAlpha: 1, x: 0 })
+      .staggerTo(item, .6, { autoAlpha: 1, x: 0 }, .25, '-=.3')
+      .to(this.$maskRect, 1, { fillOpacity: .5 }, '-=.3');
   }
 }
 

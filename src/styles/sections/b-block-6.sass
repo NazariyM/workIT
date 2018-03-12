@@ -3,7 +3,7 @@
   +md
     padding: 111px 0 140px
   +xs
-    padding: 53px 0 70px
+    padding: 53px 0 60px
   &__top
     margin: 0 0 70px
     +md
@@ -58,11 +58,11 @@
         padding: 25px 10px 0
         margin-top: 0
     h4
+      height: 42px
       margin-bottom: 25px
       +h4
-      transform: translateX(-50px)
-      opacity: 0
       +xs
+        height: 30px
         margin-bottom: 14px
         font-size: 24px
         line-height: 1.2
@@ -77,19 +77,31 @@
         +ratio(709, 509)
       +xs
         +ratio(290, 215)
+    &-title
+      transform: translateX(-50px)
+      opacity: 0
       
+    &-descr
+      transform: translateX(-50px)
+      opacity: 0
+      p
+        &:nth-of-type(1)
+          height: 168px
+          margin-bottom: 14px
+          +md
+            height: auto
+          +xs
+            margin-bottom: 12px
+        &:nth-of-type(2)
+          height: 84px
+          +md
+            height: auto
+          
     &-btn
       transform: translateX(-50px)
       opacity: 0
       +md
         margin-bottom: -26px
-    p
-      transform: translateX(-50px)
-      opacity: 0
-      &:not(:last-of-type)
-        margin-bottom: 14px
-        +xs
-          margin-bottom: 12px
   &__price
     &_offer
       margin: 27px 0 32px

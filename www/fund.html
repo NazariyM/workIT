@@ -11,10 +11,6 @@
     <link rel="icon" href="static/favicon.png">
   </head>
   <body>
-    <!-- SVG-->
-    <!--block svg-->
-    <!--  div.svg-container(style="position: absolute; width: 0; height: 0; overflow: hidden;")-->
-    <!--    include ../partials/_sprite.svg-->
     <!--begin preloader-->
     <div class="preloader">
       <svg class="preloader__img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 807.02 205.05">
@@ -339,15 +335,15 @@
     </section>
     <!--end screen-->
     <!--begin block-2-->
-    <section class="block-2 gray-bg">
+    <section class="block-2">
       <div class="block-2__container container">
         <div class="block-2__top block-top block-top block-top_md">
           <div class="block-label">
             <p>ABOUT US</p>
           </div>
           <div class="block-2__title block-title has-selection has-selection_green">
-            <h2>Спроектирован на основе
-              <b>human-centered</b> design от Google</h2>
+            <h2>
+              <b>Миссия и цели</b> фонда</h2>
           </div>
         </div>
         <div class="block-2__content" data-anim="group">
@@ -359,40 +355,258 @@
               <b>Work IT</b>
             </p>
           </div>
-          <div class="slider block-2__slider">
-            <div class="slider__body">
-              <div class="slider__item">
-                <div class="slider__media img-hover">
-                  <video playsinline="playsinline" autoplay="autoplay" loop="loop" volume="0" onloadedmetadata="this.muted = true" data-mobile-disable="data-mobile-disable">
-                    <source src="static/video/video-sample.mp4" type="video/mp4" />
-                  </video>
-                  <div class="slider__media-img slider__media-img_video" style="background-image: url(static/img/block-2_1.jpg);"></div>
-                </div>
-              </div>
-              <div class="slider__item">
-                <div class="slider__media img-hover">
-                  <div class="slider__media-img img-hover__item" style="background-image: url(static/img/block-2_1.jpg);"></div>
-                </div>
-              </div>
-              <div class="slider__item">
-                <div class="slider__media img-hover">
-                  <div class="slider__media-img img-hover__item" style="background-image: url(static/img/block-2_1.jpg);"></div>
-                </div>
-              </div>
-            </div>
-            <div class="slider__controls">
-              <div class="slider__buttons"></div>
-              <div class="slider__count">
-                <span class="slider__count-current"></span>
-                <div class="slider__count-decor"></div>
-                <span class="slider__count-all"></span>
-              </div>
-            </div>
+          <div class="block-2__img-wrap img-hover">
+            <div class="block-2__img img-hover__item" style="background-image: url(static/img/block-2_2.jpg);"></div>
           </div>
         </div>
       </div>
     </section>
     <!--end block-2-->
+    <!--begin values-->
+    <section class="values">
+      <div class="container container_md">
+        <div class="values__top block-top">
+          <div class="block-label">
+            <p>VALUES</p>
+          </div>
+          <div class="values__title block-title has-selection has-selection_green">
+            <h2>Причины, почему основатели выбирают
+              <b>Workit Seed Fund</b>
+            </h2>
+          </div>
+        </div>
+        <div class="expand-list js-expand-list">
+          <div class="expand-list__inner">
+            <div class="values__item expand-list__item">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_1.jpg" alt="image">
+              </div>
+              <h5>Сonnections</h5>
+              <p>Это все об обществе. Наше сообщество определяет пространство.</p>
+            </div>
+            <div class="values__item expand-list__item">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_2.jpg" alt="image">
+              </div>
+              <h5>Advice</h5>
+              <p>Мы создаем условия для каждого, чтобы
+                <b>максимизировать</b> их
+                <b>производительность</b> и эффективность.</p>
+            </div>
+            <div class="values__item expand-list__item">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_3.jpg" alt="image">
+              </div>
+              <h5>Support</h5>
+              <p>Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни</p>
+            </div>
+            <div class="values__item expand-list__item">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_4.jpg" alt="image">
+              </div>
+              <h5>Money</h5>
+              <p>
+                <b>Размер рабочего пространства</b> имеет значение.</p>
+            </div>
+            <div class="values__item expand-list__item is-hidden">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_1.jpg" alt="image">
+              </div>
+              <h5>Сonnections</h5>
+              <p>Это все об обществе. Наше сообщество определяет пространство.</p>
+            </div>
+            <div class="values__item expand-list__item is-hidden">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_2.jpg" alt="image">
+              </div>
+              <h5>Advice</h5>
+              <p>Мы создаем условия для каждого, чтобы
+                <b>максимизировать</b> их
+                <b>производительность</b> и эффективность.</p>
+            </div>
+            <div class="values__item expand-list__item is-hidden">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_3.jpg" alt="image">
+              </div>
+              <h5>Support</h5>
+              <p>Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни</p>
+            </div>
+            <div class="values__item expand-list__item is-hidden">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_4.jpg" alt="image">
+              </div>
+              <h5>Money</h5>
+              <p>
+                <b>Размер рабочего пространства</b> имеет значение.</p>
+            </div>
+          </div>
+          <button class="expand-list__btn btn btn_line" type="button">хочу еще</button>
+        </div>
+      </div>
+    </section>
+    <!--end values-->
+    <!--begin companies-->
+    <section class="companies companies_fund">
+      <div class="container container_md">
+        <div class="companies__top block-top">
+          <div class="companies__label block-label">
+            <p>our residents</p>
+          </div>
+          <div class="companies__title block-title has-selection has-selection_green">
+            <h2>
+              <b>Компании</b> в фонде</h2>
+          </div>
+        </div>
+        <div class="companies__list companies__list_slider mobile-slider mobile-slider_white-large">
+          <div class="companies__item">
+            <div class="companies__item-icon">
+              <a href="#!" target="_blank">
+                <img src="static/img/ingenico.png" alt="image" title="" />
+              </a>
+            </div>
+            <div class="companies__item-descr">
+              <p>Стартап &quot;Бери и делай&quot; в сфере криптовалют, команда из 14 человек</p>
+            </div>
+          </div>
+          <div class="companies__item">
+            <div class="companies__item-icon">
+              <a href="#!" target="_blank">
+                <img src="static/img/circle-media.png" alt="image" title="" />
+              </a>
+            </div>
+            <div class="companies__item-descr">
+              <p>Компания &quot;Валютники&quot; в сфере финтех. Команда из 9 человек</p>
+            </div>
+          </div>
+          <div class="companies__item">
+            <div class="companies__item-icon">
+              <a href="#!" target="_blank">
+                <img src="static/img/bmc.png" alt="image" title="" />
+              </a>
+            </div>
+            <div class="companies__item-descr">
+              <p>Стартап &quot;Бери и делай&quot; в сфере криптовалют, команда из 14 человек</p>
+            </div>
+          </div>
+          <div class="companies__item">
+            <div class="companies__item-icon">
+              <a href="#!" target="_blank">
+                <img src="static/img/bike-roar.png" alt="image" title="" />
+              </a>
+            </div>
+            <div class="companies__item-descr">
+              <p>Компания &quot;Валютники&quot; в сфере финтех. Команда из 9 человек</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="companies__decor-line"></div>
+    </section>
+    <!--end companies-->
+    <!--begin team-->
+    <section class="team">
+      <div class="container container_md">
+        <div class="team__top block-top">
+          <div class="team__label block-label">
+            <p>our team</p>
+          </div>
+          <div class="team__title block-title has-selection has-selection_black">
+            <h2>
+              <b>Команда</b> &nbsp;workit</h2>
+          </div>
+        </div>
+        <div class="team__inner">
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_1.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Иван Иванов</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+            </div>
+          </div>
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_2.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Анна Градил</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
+            </div>
+          </div>
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_3.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Мирослава Захарчук</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+            </div>
+          </div>
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_4.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Мария Касс</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--end team-->
+    <!--begin come-->
+    <section class="come">
+      <div class="come__inner">
+        <div class="container container_md">
+          <h3>Хочешь увидеть всё своими глазами? Приходи в гости!</h3>
+          <button class="come__btn btn btn_green" data-popup-target="comePopup" type="button">
+            <span class="btn__text">записаться</span>
+          </button>
+        </div>
+      </div>
+      <div class="mask mask_come" data-mask-type="image">
+        <svg class="mask__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <clipPath id="come-img-clip">
+              <text class="mask__el" y="480">WORK</text>
+            </clipPath>
+            <filter id="come-mask-blur">
+              <fegaussianblur in="SourceGraphic" stddeviation="8"></fegaussianblur>
+            </filter>
+            <mask id="come-video-clip">
+              <rect x="0" y="0"></rect>
+              <text class="mask__el" y="480">WORK</text>
+            </mask>
+          </defs>
+          <rect x="0" y="0" width="1920" height="1080" mask="url(#come-video-clip)"></rect>
+          <image xlink:href="static/img/come_bg.jpg" x="0" y="0" filter="url(#come-mask-blur)" preserveAspectRatio="xMinYMax slice" width="1280" height="410"></image>
+          <image xlink:href="static/img/come_bg.jpg" x="0" y="0" clip-path="url(#come-img-clip)" preserveAspectRatio="xMinYMax slice" width="1280" height="410"></image>
+        </svg>
+      </div>
+    </section>
+    <!--end come-->
     <div class="popup" data-popup-id="comePopup" tabindex="-1" role="dialog">
       <div class="popup__container">
         <button class="popup__close js-popup-close" type="button">
@@ -599,7 +813,7 @@
           </p>
         </div>
         <div class="socials footer__socials">
-          <p>Подписаться</p>
+          <h6>Подписаться</h6>
           <div class="socials__links">
             <a href="#!" target="_blank">
               <svg class="icon icon-fb" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 8 16" style="enable-background:new 0 0 8 16;" xml:space="preserve">
@@ -621,7 +835,7 @@
       </div>
       <div class="footer__addition container container container_md">
         <p>Copyright@2017</p>
-        <a class="dev-link footer__dev-link" href="vintage.agency" target="_blank">made by
+        <a class="dev-link footer__dev-link" href="#!" target="_blank">made by
           <svg class="icon icon-vintage" viewbox="0 0 26.8 36.7" width="100%" height="100%">
             <path d="M20.1 0l-9.4 36.7h6.7L26.8 0zM6.9 0H0l1.6 6.3h6.9z"></path>
           </svg>

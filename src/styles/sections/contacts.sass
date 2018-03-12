@@ -1,4 +1,24 @@
+// begin contacts //
+.contacts
+  padding: 120px 0 90px
+  background: url("../img/gray-bg.jpg")
+  &__content
+    display: flex
+    flex-wrap: wrap
+    margin: 0 -30px
+  &__info
+    max-width: 305px
+    flex: 0 1 25%
+    padding: 0 30px 30px
+    h6
+      margin-bottom: 20px
+      +f('rob-700', 16, 30)
+      text-transform: uppercase
+// end contacts //
+
 .locations
+  position: relative
+  z-index: 1
   padding: 110px 0 0
   +xs
     padding: 50px 0 57px
@@ -56,9 +76,7 @@
   &__contact-block
     margin-top: 22px
     +xs
-      margin-top: 0
-      margin-left: auto
-      margin-right: 3px
+      margin: -2px 6px 0 auto
     p
       +xs
         font-size: 12px

@@ -8,7 +8,10 @@ class DefaultAnims {
     this.blocks = [...document.querySelectorAll('.block-top')];
     this.groups = [...document.querySelectorAll('[data-anim="group"]')];
     this.titles = [...document.querySelectorAll('.block-title')];
-    this.fadeTopItems = [...document.querySelectorAll('[data-item-anim="fade-top"]')];
+    this.fadeTop = [...document.querySelectorAll('[data-anim="fade-top"]')];
+    this.fadeLeft = [...document.querySelectorAll('[data-anim="fade-left"]')];
+    this.fadeTopItems = [...document.querySelectorAll('[data-items-anim="fade-top"]')];
+    this.fadeLeftItems = [...document.querySelectorAll('[data-items-anim="fade-left"]')];
     this.hangingDecors = [...document.querySelectorAll('.hanging-decor')];
 
     this.init();
@@ -57,8 +60,37 @@ class DefaultAnims {
     for (const item of this.fadeTopItems) {
       new ScrollAnim({
         el: item,
+        hook: .8,
         onStart() {
           _this.fadeTopItemsAnim(item);
+        }
+      });
+    }
+
+    for (const item of this.fadeLeftItems) {
+      new ScrollAnim({
+        el: item,
+        hook: .8,
+        onStart() {
+          _this.fadeLeftItemsAnim(item);
+        }
+      });
+    }
+
+    for (const item of this.fadeLeft) {
+      new ScrollAnim({
+        el: item,
+        onStart() {
+          _this.fadeLeftAnim(item);
+        }
+      });
+    }
+
+    for (const item of this.fadeTop) {
+      new ScrollAnim({
+        el: item,
+        onStart() {
+          _this.fadeTopAnim(item);
         }
       });
     }
@@ -110,12 +142,36 @@ class DefaultAnims {
 
   }
 
+  fadeLeftAnim(item) {
+    const duration = item.getAttribute('data-anim-duration') || 0.5;
+
+    TweenMax.to(item, duration, { autoAlpha: 1, x: 0, ease: Power2.easeOut });
+  }
+
+  fadeTopAnim(item) {
+    const duration = item.getAttribute('data-anim-duration') || 0.5;
+
+    TweenMax.to(item, duration, { autoAlpha: 1, y: 0, ease: Power2.easeOut });
+  }
+
   fadeTopItemsAnim(item) {
     const tl = new TimelineMax();
     const animItems = item.children;
+    const duration = item.getAttribute('data-anim-duration') || 0.5;
+    const staggerDur = item.getAttribute('data-stagger-duration') || 0.3;
 
-    tl.staggerTo(animItems, .5, { autoAlpha: 1, y: 0 }, 0.3);
+    tl.staggerTo(animItems, duration, { autoAlpha: 1, y: 0, ease: Power2.easeOut }, staggerDur);
   }
+
+  fadeLeftItemsAnim(item) {
+    const tl = new TimelineMax();
+    const animItems = item.children;
+    const duration = item.getAttribute('data-anim-duration') || 0.5;
+    const staggerDur = item.getAttribute('data-stagger-duration') || 0.3;
+
+    tl.staggerTo(animItems, duration, { autoAlpha: 1, x: 0, ease: Power2.easeOut }, staggerDur);
+  }
+
 }
 
 export const defaultAnimsAPI = new DefaultAnims();

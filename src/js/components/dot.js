@@ -34,3 +34,6 @@ export default class Dot {
   }
 }
 
+$('.js-dot').find('*').each((i, el) => {
+  new Dot(el);
+});

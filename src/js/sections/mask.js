@@ -41,14 +41,11 @@ class Mask {
     this.images = this.block.querySelectorAll('image');
     this.maskEl = this.clipPathTag.querySelectorAll('.mask__el');
 
-    // this.maskTag.remove();
-    // this.rects.forEach(x => {x.remove(); });
   }
 
   initVideo() {
     this.maskEl = this.maskTag.querySelectorAll('.mask__el');
 
-    // this.clipPathTag.remove();
   }
 
   fluidRatio() {

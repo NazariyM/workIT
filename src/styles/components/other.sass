@@ -27,6 +27,7 @@
 
 // begin expand-list
 .expand-list
+  $parent: &
   text-align: center
   &__inner
     margin-left: -30px
@@ -201,7 +202,7 @@
       transform: scaleY(1)
       opacity: 1
     &:hover #{$parent}__icon
-      animation: smallMoving .2s .3s ease
+      animation: smallMoving .5s ease
     > li > a
       position: relative
       z-index: 1
@@ -278,6 +279,7 @@
   &_themes
     flex: 0 0 170px
     width: 170px
+    margin-top: 8px
     > ul
       &::before
         display: none
@@ -296,9 +298,10 @@
           display: flex
           align-items: center
           font-size: 18px
-          padding: 0 25px 0 20px
+          padding: 0 25px 0 26px
           text-transform: none
-          
+          letter-spacing: 0.03em
+  
   &_green
     > ul
       ul
@@ -377,10 +380,83 @@
     
   &_lamps
     top: -102px
-    right: 60px
+    right: 79px
     +md
       top: -110px
-      margin-left: 162px
+      right: 34px
     +xs
       display: none
 // end hanging
+
+// begin values //
+.values
+  padding: 100px 0
+  &__title
+    max-width: 850px
+  &__item
+    &-img
+      height: 183px
+      margin-bottom: 40px
+      +cover-img
+    h5
+      margin-bottom: 20px
+// end values //
+
+// begin video-block //
+.video-block
+  position: relative
+  video
+    +coverdiv
+    z-index: 1
+    width: 100%
+    height: 100%
+    object-fit: fill
+    font-family: 'object-fit: fill;'
+  
+  &__play-btn
+    position: absolute
+    top: 50%
+    left: 50%
+    margin-top: -75px
+    margin-left: -75px
+    z-index: 2
+    width: 150px
+    height: 150px
+    border-radius: 50%
+    border: 2px solid $color1
+    cursor: pointer
+    +gpu
+    transition: .5s ease
+    +vertical
+    +xs
+      width: 60px
+      height: 60px
+      margin-top: -30px
+      margin-left: -30px
+    .no-touch &:hover
+      transform: scale(.85)
+      svg
+        fill: $color1
+    &.is-hide
+      transform: scale(.5)
+      opacity: 0
+      visibility: hidden
+    svg
+      display: inline-block
+      vertical-align: middle
+      fill: $white
+      transition: fill .5s ease
+      +xs
+        width: 42px
+        height: 42px
+        
+  &_darken
+    &::after
+      +coverdiv
+      z-index: 1
+      background-color: rgba(#020202, .35)
+      pointer-events: none
+      content: ''
+    
+// end video-block //
+

@@ -11,10 +11,6 @@
     <link rel="icon" href="static/favicon.png">
   </head>
   <body>
-    <!-- SVG-->
-    <!--block svg-->
-    <!--  div.svg-container(style="position: absolute; width: 0; height: 0; overflow: hidden;")-->
-    <!--    include ../partials/_sprite.svg-->
     <!--begin preloader-->
     <div class="preloader">
       <svg class="preloader__img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 807.02 205.05">
@@ -354,7 +350,7 @@
             </div>
           </div>
           <div class="block-2__content" data-anim="group">
-            <div class="block-2__text">
+            <div class="block-2__text js-dot">
               <p>Когда мы устали искать место, в котором нам было бы комфортно работать, мы решили создать его сами. Нас восхищали коворкинги
                 <b>Амстердама</b> и
                 <b>Бостона,</b> но особенно впечатлил офис Google в
@@ -365,8 +361,8 @@
             <div class="slider block-2__slider">
               <div class="slider__body">
                 <div class="slider__item">
-                  <div class="slider__media img-hover">
-                    <video playsinline="playsinline" autoplay="autoplay" loop="loop" volume="0" onloadedmetadata="this.muted = true" data-mobile-disable="data-mobile-disable">
+                  <div class="slider__media img-hover video-block">
+                    <video playsinline="playsinline" autoplay="autoplay" loop="loop" volume="0" onloadedmetadata="this.muted = true" data-mobile-disable="true">
                       <source src="static/video/video-sample.mp4" type="video/mp4" />
                     </video>
                     <div class="slider__media-img slider__media-img_video" style="background-image: url(static/img/block-2_1.jpg);"></div>
@@ -439,6 +435,8 @@
                 </div>
                 <div class="block-3__item-media img-hover">
                   <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_2.jpg);"></div>
+                  <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)-->
+                  <!--	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
                 </div>
               </article>
               <div class="block-3__item-count">
@@ -449,8 +447,8 @@
               <article class="block-3__item-inner">
                 <div class="block-3__item-media img-hover">
                   <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_3.jpg);"></div>
-                  <!--+e.VIDEO.item-video(autoplay loop muted)-->
-                  <!--	source(src='static/video/block-3_sample.mp4" type='video/mp4')-->
+                  <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)-->
+                  <!--	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
                 </div>
                 <div class="block-3__item-text">
                   <h3>комьюнити</h3>
@@ -476,6 +474,8 @@
                 </div>
                 <div class="block-3__item-media img-hover">
                   <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_4.jpg);"></div>
+                  <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)-->
+                  <!--	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
                 </div>
               </article>
               <div class="block-3__item-count">
@@ -516,56 +516,72 @@
                   <img src="static/img/icon-hex-square.svg" alt="image">
                 </div>
                 <h5>Эргономика и продуктивность</h5>
-                <p>Мы создадим пространство для вашей команды - оборудуем, перекрасим, передвинем, купим нужную мебель и забрендируем.</p>
+                <div class="js-dot">
+                  <p>Мы создадим пространство для вашей команды - оборудуем, перекрасим, передвинем, купим нужную мебель и забрендируем.</p>
+                </div>
               </div>
               <div class="block-4__item expand-list__item">
                 <div class="block-4__item-icon">
                   <img src="static/img/icon-square-circle.svg" alt="image">
                 </div>
                 <h5>Креативность</h5>
-                <p>Уютное, тихое место для работы. &nbsp; Много пространства и воздуха.</p>
+                <div class="js-dot">
+                  <p>Уютное, тихое место для работы. &nbsp; Много пространства и воздуха.</p>
+                </div>
               </div>
               <div class="block-4__item expand-list__item">
                 <div class="block-4__item-icon">
                   <img src="static/img/icon-double-circles.svg" alt="image">
                 </div>
                 <h5>Отельные комнаты</h5>
-                <p>Комнаты для переговоров, собраний, обустроены большими экранами и проэкторами.</p>
+                <div class="js-dot">
+                  <p>Комнаты для переговоров, собраний, обустроены большими экранами и проэкторами.</p>
+                </div>
               </div>
               <div class="block-4__item expand-list__item">
                 <div class="block-4__item-icon">
                   <img src="static/img/icon-cocktail.svg" alt="image">
                 </div>
                 <h5>Отдых и здоровье</h5>
-                <p>Очень щепетилен в выборе зерен и технологии приготовления, настоящий фанат кофе.</p>
+                <div class="js-dot">
+                  <p>Очень щепетилен в выборе зерен и технологии приготовления, настоящий фанат кофе.</p>
+                </div>
               </div>
               <div class="block-4__item expand-list__item is-hidden">
                 <div class="block-4__item-icon">
                   <img src="static/img/icon-hex-square.svg" alt="image">
                 </div>
                 <h5>Эргономика и продуктивность</h5>
-                <p>Мы создадим пространство для вашей команды - оборудуем, перекрасим, передвинем, купим нужную мебель и забрендируем.</p>
+                <div class="js-dot">
+                  <p>Мы создадим пространство для вашей команды - оборудуем, перекрасим, передвинем, купим нужную мебель и забрендируем.</p>
+                </div>
               </div>
               <div class="block-4__item expand-list__item is-hidden">
                 <div class="block-4__item-icon">
                   <img src="static/img/icon-square-circle.svg" alt="image">
                 </div>
                 <h5>Креативность</h5>
-                <p>Уютное, тихое место для работы. Много пространства и воздуха.</p>
+                <div class="js-dot">
+                  <p>Уютное, тихое место для работы. Много пространства и воздуха.</p>
+                </div>
               </div>
               <div class="block-4__item expand-list__item is-hidden">
                 <div class="block-4__item-icon">
                   <img src="static/img/icon-double-circles.svg" alt="image">
                 </div>
                 <h5>Отельные комнаты</h5>
-                <p>Комнаты для переговоров, собраний, обустроены большими экранами и проэкторами.</p>
+                <div class="js-dot">
+                  <p>Комнаты для переговоров, собраний, обустроены большими экранами и проэкторами.</p>
+                </div>
               </div>
               <div class="block-4__item expand-list__item is-hidden">
                 <div class="block-4__item-icon">
                   <img src="static/img/icon-cocktail.svg" alt="image">
                 </div>
                 <h5>Отдых и здоровье</h5>
-                <p>Очень щепетилен в выборе зерен и технологии приготовления, настоящий фанат кофе.</p>
+                <div class="js-dot">
+                  <p>Очень щепетилен в выборе зерен и технологии приготовления, настоящий фанат кофе.</p>
+                </div>
               </div>
             </div>
             <button class="expand-list__btn btn btn_line btn_line-white" type="button">хочу еще</button>
@@ -574,7 +590,7 @@
       </section>
       <!--end block-4-->
       <!--begin block-5-->
-      <section class="block-5 black-bg">
+      <section class="block-5">
         <div class="container container_md">
           <div class="block-5__top block-top">
             <div class="block-5__label block-label">
@@ -657,10 +673,14 @@
           </div>
           <div class="block-6__offer">
             <div class="block-6__offer-text">
-              <h4>Офис мечты</h4>
-              <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере. Кроме
-                того, можно расширить пространство по мере роста вашей команды.</p>
-              <p>Идеально подойдет для небольших компаний. Если вы хотите иметь крутой, стильный офис, просто приходи к нам. А мы поможем организовать ваш переезд.</p>
+              <div class="block-6__offer-title">
+                <h4>Офис мечты</h4>
+              </div>
+              <div class="block-6__offer-descr">
+                <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере. Кроме
+                  того, можно расширить пространство по мере роста вашей команды.</p>
+                <p>Идеально подойдет для небольших компаний. Если вы хотите иметь крутой, стильный офис, просто приходи к нам. А мы поможем организовать ваш переезд.</p>
+              </div>
               <div class="block-6__price block-6__price_offer">
                 <h5>Стоимость от:
                   <span>200$</span>
@@ -800,58 +820,74 @@
                   <img src="static/img/icon-man.svg" alt="image">
                 </div>
                 <h5>Услуги HR</h5>
-                <p>Наши HR специалисты
-                  <br>помогут подобрать идельных сотрудников</p>
+                <div class="js-dot">
+                  <p>Наши HR специалисты
+                    <br>помогут подобрать идельных сотрудников</p>
+                </div>
               </div>
               <div class="block-8__item expand-list__item">
                 <div class="block-8__item-icon">
                   <img src="static/img/icon-hammer.svg" alt="image">
                 </div>
                 <h5>Услуги юриста</h5>
-                <p>Решайте все юредические вопросы на месте</p>
+                <div class="js-dot">
+                  <p>Решайте все юредические вопросы на месте</p>
+                </div>
               </div>
               <div class="block-8__item expand-list__item">
                 <div class="block-8__item-icon">
                   <img src="static/img/icon-dialogue.svg" alt="image">
                 </div>
                 <h5>Услуги Consulting</h5>
-                <p>Команда
-                  <br>бизнес-консультантов дадут советы по развитию бизнеса</p>
+                <div class="js-dot">
+                  <p>Команда
+                    <br>бизнес-консультантов дадут советы по развитию бизнеса</p>
+                </div>
               </div>
               <div class="block-8__item expand-list__item">
                 <div class="block-8__item-icon">
                   <img src="static/img/icon-percent.svg" alt="image">
                 </div>
                 <h5>Услуги бухгалтера</h5>
-                <p>Помогут вести счета, документацию и налоговою отчетность</p>
+                <div class="js-dot">
+                  <p>Помогут вести счета, документацию и налоговою отчетность</p>
+                </div>
               </div>
               <div class="block-8__item expand-list__item is-hidden">
                 <div class="block-8__item-icon">
                   <img src="static/img/icon-man.svg" alt="image">
                 </div>
                 <h5>Услуги HR</h5>
-                <p>Наши HR специалисты помогут подобрать идельных сотрудников</p>
+                <div class="js-dot">
+                  <p>Наши HR специалисты помогут подобрать идельных сотрудников</p>
+                </div>
               </div>
               <div class="block-8__item expand-list__item is-hidden">
                 <div class="block-8__item-icon">
                   <img src="static/img/icon-hammer.svg" alt="image">
                 </div>
                 <h5>Услуги юриста</h5>
-                <p>Решайте все юредические вопросы на месте</p>
+                <div class="js-dot">
+                  <p>Решайте все юредические вопросы на месте</p>
+                </div>
               </div>
               <div class="block-8__item expand-list__item is-hidden">
                 <div class="block-8__item-icon">
                   <img src="static/img/icon-dialogue.svg" alt="image">
                 </div>
                 <h5>Услуги Consulting</h5>
-                <p>Команда бизнес-консультантов дадут советы по развитию бизнеса</p>
+                <div class="js-dot">
+                  <p>Команда бизнес-консультантов дадут советы по развитию бизнеса</p>
+                </div>
               </div>
               <div class="block-8__item expand-list__item is-hidden">
                 <div class="block-8__item-icon">
                   <img src="static/img/icon-percent.svg" alt="image">
                 </div>
                 <h5>Услуги бухгалтера</h5>
-                <p>Помогут вести счета, документацию и налоговою отчетность</p>
+                <div class="js-dot">
+                  <p>Помогут вести счета, документацию и налоговою отчетность</p>
+                </div>
               </div>
             </div>
             <button class="expand-list__btn btn btn_line" type="button">еще услуги</button>
@@ -860,7 +896,7 @@
       </section>
       <!--end block-8-->
       <!--begin block-9-->
-      <section class="block-9 gray-bg">
+      <section class="block-9">
         <div class="block-9__container container">
           <div class="block-9__top block-top block-top block-top_md">
             <div class="block-9__label block-label">
@@ -877,8 +913,10 @@
                 <div class="slider__text">
                   <h4>Макс Фрай</h4>
                   <h5>CEO Koin</h5>
-                  <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере.
-                    Кроме того, можно расширить пространство по мере роста вашей команды.</p>
+                  <div class="slider__text-descr js-dot">
+                    <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере.
+                      Кроме того, можно расширить пространство по мере роста вашей команды.</p>
+                  </div>
                 </div>
                 <div class="slider__media">
                   <div class="slider__media-img" style="background-image: url(static/img/block-9_1.jpg);"></div>
@@ -888,11 +926,13 @@
                 <div class="slider__text">
                   <h4>Макс Фрай</h4>
                   <h5>CEO Koin</h5>
-                  <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере.
-                    Кроме того, можно расширить пространство по мере роста вашей команды.</p>
+                  <div class="slider__text-descr js-dot">
+                    <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере.
+                      Кроме того, можно расширить пространство по мере роста вашей команды.</p>
+                  </div>
                 </div>
-                <div class="slider__media">
-                  <button class="slider__media-play-btn play-btn" type="button">
+                <div class="slider__media video-block">
+                  <button class="video-block__play-btn" type="button">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="65" height="67" viewbox="0 0 65 67">
                       <defs>
                         <path id="7621a" d="M194.5 2778a31.5 31.5 0 1 1 0 63 31.5 31.5 0 0 1 0-63zm-5.6 21.7v19.35l16.76-9.68z"></path>
@@ -913,8 +953,10 @@
                 <div class="slider__text">
                   <h4>Макс Фрай</h4>
                   <h5>CEO Koin</h5>
-                  <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере.
-                    Кроме того, можно расширить пространство по мере роста вашей команды.</p>
+                  <div class="slider__text-descr js-dot">
+                    <p>Кастомизация офисного пространства. Мы создадим офис специально для вашей команды. Подберем и закупим необходимую мебель, перекрасим стены, организуем ваш переезд, создадим брендированную канцелярию и распечатаем лого на 3D принтере.
+                      Кроме того, можно расширить пространство по мере роста вашей команды.</p>
+                  </div>
                 </div>
                 <div class="slider__media">
                   <div class="slider__media-img" style="background-image: url(static/img/block-9_1.jpg);"></div>
@@ -933,118 +975,106 @@
         </div>
       </section>
       <!--end block-9-->
-      <!--begin block-10-->
-      <section class="block-10">
+      <!--begin companies-->
+      <section class="companies">
         <div class="container container_md">
-          <div class="block-10__top block-top">
-            <div class="block-10__label block-label">
+          <div class="companies__top block-top">
+            <div class="companies__label block-label">
               <p>our residents</p>
             </div>
-            <div class="block-10__title block-title has-selection has-selection_green">
+            <div class="companies__title block-title has-selection has-selection_green">
               <h2>Наши
                 <b>резиденты</b>
               </h2>
             </div>
           </div>
-          <div class="block-10__list mobile-slider mobile-slider_white-large">
-            <div class="block-10__item">
-              <div class="block-10__item-icon">
+          <div class="companies__list companies__list_slider mobile-slider mobile-slider_white-large">
+            <div class="companies__item">
+              <div class="companies__item-icon">
                 <a href="#!" target="_blank">
                   <img src="static/img/ingenico.png" alt="image" title="" />
                 </a>
               </div>
-              <div class="block-10__item-title h5">
-                <h5></h5>
-              </div>
               <p>Стартап &quot;Бери и делай&quot; в сфере криптовалют, команда из 14 человек</p>
             </div>
-            <div class="block-10__item">
-              <div class="block-10__item-icon">
+            <div class="companies__item">
+              <div class="companies__item-icon">
                 <a href="#!" target="_blank">
                   <img src="static/img/circle-media.png" alt="image" title="" />
                 </a>
               </div>
-              <div class="block-10__item-title h5">
-                <h5></h5>
-              </div>
               <p>Компания &quot;Валютники&quot; в сфере финтех. Команда из 9 человек</p>
             </div>
-            <div class="block-10__item">
-              <div class="block-10__item-icon">
+            <div class="companies__item">
+              <div class="companies__item-icon">
                 <a href="#!" target="_blank">
                   <img src="static/img/bmc.png" alt="image" title="" />
                 </a>
               </div>
-              <div class="block-10__item-title h5">
-                <h5></h5>
-              </div>
               <p>Стартап &quot;Бери и делай&quot; в сфере криптовалют, команда из 14 человек</p>
             </div>
-            <div class="block-10__item">
-              <div class="block-10__item-icon">
+            <div class="companies__item">
+              <div class="companies__item-icon">
                 <a href="#!" target="_blank">
                   <img src="static/img/bike-roar.png" alt="image" title="" />
                 </a>
-              </div>
-              <div class="block-10__item-title h5">
-                <h5></h5>
               </div>
               <p>Компания &quot;Валютники&quot; в сфере финтех. Команда из 9 человек</p>
             </div>
           </div>
         </div>
-        <div class="block-10__decor-line"></div>
+        <div class="companies__decor-line"></div>
       </section>
-      <!--end block-10-->
-      <!--begin block-1-->
-      <section class="block-1" data-self-anim="true">
+      <!--end companies-->
+      <!--begin events-->
+      <section class="events">
         <div class="container container_md">
-          <div class="block-1__top block-top">
-            <div class="block-1__label block-label">
+          <div class="events__top block-top">
+            <div class="events__label block-label">
               <p>events</p>
             </div>
-            <div class="block-1__title block-title has-selection has-selection_black is-selected">
+            <div class="events__title block-title has-selection has-selection_black is-selected">
               <h2>
                 <b>Мероприятия</b>
               </h2>
             </div>
           </div>
-          <div class="block-1__list mobile-slider mobile-slider_double mobile-slider_green-large">
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_1.jpg" alt="image" title="" />
+          <div class="events__list mobile-slider mobile-slider_double mobile-slider_green-large">
+            <div class="events__item" data-items-anim="fade-left">
+              <div class="events__item-pic">
+                <img src="static/img/events_1.jpg" alt="image" title="" />
               </div>
-              <div class="block-1__item-date">
+              <div class="events__item-date">
                 <p>07.12.2017</p>
                 <a href="#!"></a>
               </div>
-              <div class="block-1__item-title h4">
+              <div class="events__item-title h4">
                 <a href="#!">
                   <h4>How To: Make a Good Presentation For Investors</h4>
                 </a>
               </div>
             </div>
-            <div class="block-1__item">
-              <div class="block-1__item-pic">
-                <img src="static/img/block-1_2.jpg" alt="image" title="" />
+            <div class="events__item" data-items-anim="fade-left">
+              <div class="events__item-pic">
+                <img src="static/img/events_2.jpg" alt="image" title="" />
               </div>
-              <div class="block-1__item-date">
+              <div class="events__item-date">
                 <p>07.12.2017</p>
                 <a href="#!"></a>
               </div>
-              <div class="block-1__item-title h4">
+              <div class="events__item-title h4">
                 <a href="#!">
                   <h4>Гонка за очками дополненной реальности стартует прямо сейчас</h4>
                 </a>
               </div>
             </div>
           </div>
-          <div class="block-1__more">
-            <a class="block-1__more-btn btn btn_line" href="#!">смотреть все</a>
+          <div class="events__more" data-items-anim="fade-left">
+            <a class="events__more-btn btn btn_line" href="#!">смотреть все</a>
           </div>
         </div>
       </section>
-      <!--end block-1-->
+      <!--end events-->
       <!--begin locations-->
       <section class="locations">
         <div class="container">
@@ -1102,7 +1132,7 @@
       </section>
       <!--end locations-->
       <!--begin subscription-->
-      <section class="subscr subscr_home">
+      <section class="subscr subscr_home" data-anim="fade-left">
         <div class="subscr__container container container_md" data-anim="group">
           <div class="subscr__title">
             <h3>Подпишись и получай новости о событиях и лекциях в Work IT&nbsp; первым!</h3>
@@ -1333,7 +1363,7 @@
           </p>
         </div>
         <div class="socials footer__socials">
-          <p>Подписаться</p>
+          <h6>Подписаться</h6>
           <div class="socials__links">
             <a href="#!" target="_blank">
               <svg class="icon icon-fb" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 8 16" style="enable-background:new 0 0 8 16;" xml:space="preserve">
@@ -1355,7 +1385,7 @@
       </div>
       <div class="footer__addition container container container_md">
         <p>Copyright@2017</p>
-        <a class="dev-link footer__dev-link" href="vintage.agency" target="_blank">made by
+        <a class="dev-link footer__dev-link" href="#!" target="_blank">made by
           <svg class="icon icon-vintage" viewbox="0 0 26.8 36.7" width="100%" height="100%">
             <path d="M20.1 0l-9.4 36.7h6.7L26.8 0zM6.9 0H0l1.6 6.3h6.9z"></path>
           </svg>

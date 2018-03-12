@@ -1,7 +1,8 @@
 .block-2
-  padding: 104px 0 120px
+  padding: 109px 0 120px
+  background: url("../img/gray-bg.jpg")
   +xs
-    padding: 52px 0 57px
+    padding: 47px 0 57px
   &__container
     +clr
   &__title
@@ -39,7 +40,12 @@
     +xs
       width: auto
       margin: 0 0 25px
-  &__slider
+    p
+      height: 168px
+      +md
+        height: auto
+  &__slider,
+  &__img-wrap
     opacity: 0
     transform: translateX(-50px)
     float: left
@@ -51,3 +57,18 @@
       width: 100%
       position: static
       left: auto
+      
+  &__img
+    overflow: hidden
+    +ratio(611, 339)
+    +cover
+    +md
+      +ratio(619, 339)
+    +xs
+      +ratio(290, 165)
+      
+  &__video
+    +ratio(1160, 620)
+    
+  &_has-video
+    background: $white

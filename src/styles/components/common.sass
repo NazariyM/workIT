@@ -78,6 +78,7 @@ p strong
   text-align: center
   color: inherit
   cursor: pointer
+  letter-spacing: 0.1em
   .no-touch &:hover::after
     transform: scale(1)
   &::after
@@ -92,7 +93,6 @@ p strong
   
   &_green
     background: $color1
-    letter-spacing: 0.1em
     &::after
       top: -5px
       left: -15px
@@ -135,7 +135,7 @@ p strong
     &::after
       pointer-events: none
       top: 50%
-      left: calc(100% + 16px)
+      left: calc(100% + 21px)
       right: auto
       bottom: auto
       z-index: 0
@@ -143,8 +143,6 @@ p strong
       width: 65px
       height: 8px
       background: $color1
-      +xs
-        left: calc(100% + 21px)
   &_line-white::after
     background: $white
 
@@ -160,57 +158,35 @@ label.btn
     padding: 0
     min-width: 0
     text-align: center
-
-.play-btn
-  position: absolute
-  margin-top: -75px
-  margin-left: -75px
-  width: 150px
-  height: 150px
-  border-radius: 50%
-  border: 2px solid $color1
-  cursor: pointer
-  +gpu
-  transition: .5s ease
-  +vertical
-  +xs
-    width: 60px
-    height: 60px
-    margin-top: -30px
-    margin-left: -30px
-  .no-touch &:hover
-    transform: scale(.85)
-    svg
-      fill: $color1
-  &.is-hide
-    transform: scale(.5)
-    opacity: 0
-    visibility: hidden
-  svg
-    display: inline-block
-    vertical-align: middle
-    fill: $white
-    transition: fill .5s ease
-    +xs
-      width: 42px
-      height: 42px
 // end buttons //
 
 // images effects
 .img-hover
   display: block
   overflow: hidden
-  +gpu
   .no-touch &:hover .img-hover__item,
   .no-touch &:hover img
-    transform: scale(1.1)
+    transform: scale(1.1) translate3d(0, 0, 0)
   &__item
     transition: .3s ease-in-out
   img
     transition: .3s ease-in-out
 
-.gray-bg
-  background: url("../img/gray-bg.jpg")
-
-.black-bg
-  background: url("../img/black-bg.jpg")
+// animation
+[data-items-anim="fade-top"]
+  > *
+    opacity: 0
+    transform: translateY(50px)
+    
+[data-items-anim="fade-left"]
+  > *
+    opacity: 0
+    transform: translateX(-50px)
+    
+[data-anim='fade-top']
+  opacity: 0
+  transform: translateY(60px)
+  
+[data-anim='fade-left']
+  opacity: 0
+  transform: translateX(-100px)

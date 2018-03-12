@@ -1,7 +1,7 @@
 .block-8
   padding: 112px 0
   +xs
-    padding: 43px 0 60px
+    padding: 49px 0 60px
   &__top
     max-width: 860px
     margin: 0 0 50px
@@ -11,6 +11,8 @@
       margin: 0 0 33px
   &__label
     margin-bottom: 21px
+    +md
+      margin-bottom: 18px
   &__title
     max-width: 500px
     margin-bottom: 56px
@@ -29,7 +31,7 @@
         margin-bottom: -14px
   &__item
     +md
-      padding: 0 20px 55px
+      padding: 0 20px 56px
     +xs
       padding: 0 10px 35px
     &-icon
@@ -52,5 +54,11 @@
         margin-bottom: 0
 
     p
+      height: 84px
+      +md
+        height: 55px
       +xs
         display: none
+      br
+        +md
+          display: none

@@ -1,4 +1,4 @@
-.block-10
+.companies
   position: relative
   padding: 111px 0 113px
   +xs
@@ -9,13 +9,17 @@
       margin-bottom: 40px
   &__list
     margin: 0 -30px
-    +clr
+    font-size: 0
+    letter-spacing: 0
     +md
       margin: 0 -20px
+  &__list_slider &__item
+    padding-bottom: 0
   &__item
-    float: left
+    display: inline-block
+    vertical-align: top
     width: 25%
-    padding: 0 30px
+    padding: 0 30px 80px
     opacity: 0
     transform: translateX(-50px)
     +md
@@ -41,6 +45,15 @@
         +gpu
         +xs
           height: 23px
+    p
+      height: 84px
+      font-size: 16px
+      letter-spacing: 0.025em
+      +md
+        height: 57px
+      +xs
+        height: 41px
+        font-size: 12px
         
   &__decor-line
     position: absolute
@@ -56,3 +69,8 @@
       margin-top: 64px
     +xs
       margin-top: 18px
+      
+  &_fund
+    background: $color5
+  &_has-pagination
+    padding: 120px 0 0

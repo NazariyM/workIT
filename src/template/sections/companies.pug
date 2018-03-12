@@ -1,8 +1,9 @@
-if block10 ? block10 : block10 = []
-if block10.title ? block10.title : block10.title = ''
+if companies ? companies : companies = []
+if companies.title ? companies.title : companies.title = ''
+if companies.title ? companies.title : companies.title = ''
 
-//begin block-10
-+b.SECTION.block-10(class= block10.classMod ? block10.classMod : '')
+//begin companies
++b.SECTION.companies(class= companies.classMod ? companies.classMod : '')
 	.container.container_md
 		+e.top.block-top
 			+e.label.block-label
@@ -12,9 +13,9 @@ if block10.title ? block10.title : block10.title = ''
 				+e.H2 Наши
 					b резиденты
 
-		+e.list.mobile-slider._white-large
+		+e.list._slider.mobile-slider._white-large
 			-
-				block10List = [{
+				companiesList = [{
 				img: 'ingenico',
 				descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
 				}, {
@@ -28,16 +29,14 @@ if block10.title ? block10.title : block10.title = ''
 				descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
 				}]
 
-			mixin block10Item(item)
+			mixin companiesItem(item)
 				+e.item
 					+e.item-icon
 						+e.A(href='#!' target='_blank')
 							+e.IMG(src=`static/img/${item.img}.png` alt='image')
-					+e.item-title.h5
-						+e.H5= item.title
 					p= item.descr
-			each item in block10List
-				+block10Item(item)
+			each item in companiesList
+				+companiesItem(item)
 
 	+e.decor-line
-//end block-10
+//end companies

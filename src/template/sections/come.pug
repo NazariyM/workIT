@@ -10,7 +10,7 @@ if come.title ? come.title : come.title = 'Хочешь увидеть всё с
       +e.BUTTON.btn.btn._green(data-popup-target='comePopup' type='button')
         span.btn__text записаться
 
-  +b.mask._come(data-mask-type='video')
+  +b.mask._come(data-mask-type= come.maskType)
     +e.SVG.svg(version='1.1', xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none')
       defs
         clipPath#come-img-clip
@@ -28,7 +28,7 @@ if come.title ? come.title : come.title = 'Хочешь увидеть всё с
       image(xlink:href='static/img/come_bg.jpg', x='0', y='0' filter='url(#come-mask-blur)' preserveAspectRatio='xMinYMax slice' width='1280' height='410')
       image(xlink:href='static/img/come_bg.jpg', x='0', y='0' clip-path='url(#come-img-clip)' preserveAspectRatio='xMinYMax slice' width='1280' height='410')
 
-    +e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true')
-      +e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
-
+    if come.maskVideo
+      +e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true')
+        +e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')
 //end come

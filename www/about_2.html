@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#00d88e">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About page</title>
+    <link href="static/css/index.css" rel="stylesheet">
+    <link rel="icon" href="static/favicon.png">
+  </head>
+  <body>
+    <!--begin preloader-->
+    <div class="preloader">
+      <svg class="preloader__img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 807.02 205.05">
+        <path class="preloader__img-letter" fill="#041718" d="M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z"></path>
+        <path class="preloader__img-letter" fill="#041718" d="M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z"></path>
+        <path class="preloader__img-letter" fill="#041718" d="M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z"></path>
+        <polygon class="preloader__img-letter" fill="#041718" points="583.05 130.46 625.1 72 570.95 72 535.53 128.16 535.53 0 492.33 0 492.33 201.6 535.53 201.6 535.53 139.68 575.85 201.6 631.15 201.6 583.05 130.46"></polygon>
+        <g class="preloader__img-letter">
+          <path class="preloader__img-letter-dot" fill="#fff" d="M671.78,2.88c-14.11,0-26.21,9.22-26.21,24.48,0,17,12.1,26.21,26.21,26.21,12.38,0,24.48-9.22,24.48-26.21C696.26,12.1,684.16,2.88,671.78,2.88Z"></path>
+          <rect fill="#fff" x="649.32" y="72" width="43.2" height="129.6"></rect>
+        </g>
+        <path class="preloader__img-letter" fill="#fff" d="M794.06,157.25c-4.61,3.46-10.08,7.49-19.3,7.49-5.76,0-8.35-6.62-8.35-14.4v-38h36V72h-36V36h-43.2V152.35c0,33.12,10.94,52.7,40.32,52.7,19.29,0,34.85-7.2,43.49-14.69Z"></path>
+      </svg>
+    </div>
+    <!--end preloader-->
+    <script type="text/javascript">
+      if (sessionStorage.getItem('resized') === 'true')
+      {
+        document.querySelector('.preloader').style.display = 'none';
+      }
+    </script>
+    <!-- picture element HTML5 shiv-->
+    <script>
+      document.createElement('picture');
+    </script>
+    <!-- Header-->
+    <!--begin header-->
+    <header class="header">
+      <div class="header__inner">
+        <div class="header__container">
+          <a class="logo logo_header" href="#!">
+            <svg class="logo__img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 807.02 205.05">
+              <path class="logo__letter-first" d="M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z"></path>
+              <path class="logo__letter-first" d="M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z"></path>
+              <path class="logo__letter-first" d="M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z"></path>
+              <polygon class="logo__letter-first" points="583.05 130.46 625.1 72 570.95 72 535.53 128.16 535.53 0 492.33 0 492.33 201.6 535.53 201.6 535.53 139.68 575.85 201.6 631.15 201.6 583.05 130.46"></polygon>
+              <path class="logo__letter-last" d="M671.78,2.88c-14.11,0-26.21,9.22-26.21,24.48,0,17,12.1,26.21,26.21,26.21,12.38,0,24.48-9.22,24.48-26.21C696.26,12.1,684.16,2.88,671.78,2.88Z"></path>
+              <rect class="logo__letter-last" x="649.32" y="72" width="43.2" height="129.6"></rect>
+              <path class="logo__letter-last" d="M794.06,157.25c-4.61,3.46-10.08,7.49-19.3,7.49-5.76,0-8.35-6.62-8.35-14.4v-38h36V72h-36V36h-43.2V152.35c0,33.12,10.94,52.7,40.32,52.7,19.29,0,34.85-7.2,43.49-14.69Z"></path>
+            </svg>
+          </a>
+          <div class="header__nav nav">
+            <ul>
+              <li>
+                <a href="#!">
+                  <h6>о нас</h6>
+                </a>
+                <ul>
+                  <li>
+                    <a href="#!">
+                      <h6>блог</h6>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                      <h6>резиденты</h6>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                      <h6>фонд</h6>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#!">
+                  <h6>локации</h6>
+                </a>
+              </li>
+              <li>
+                <a href="#!">
+                  <h6>Тарифы</h6>
+                </a>
+              </li>
+              <li>
+                <a href="#!">
+                  <h6>мероприятия</h6>
+                </a>
+              </li>
+              <li>
+                <a href="#!">
+                  <h6>контакты</h6>
+                </a>
+              </li>
+              <li>
+                <a href="#!">
+                  <svg class="icon-user" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="13" height="19" viewbox="0 0 13 19">
+                    <defs>
+                      <path id="myi1a" d="M835 3780a5 5 0 0 1 5-5h1a5 5 0 0 1 5 5v6h-11z"></path>
+                      <path id="myi1b" d="M840.52 3769a4.93 4.93 0 0 1 4.85 5c0 2.76-2.17 5-4.85 5a4.93 4.93 0 0 1-4.86-5c0-2.76 2.17-5 4.86-5z"></path>
+                      <clippath id="myi1c">
+                        <use fill="#fff" xlink:href="#myi1a"></use>
+                      </clippath>
+                      <clippath id="myi1d">
+                        <use fill="#fff" xlink:href="#myi1b"></use>
+                      </clippath>
+                    </defs>
+                    <g>
+                      <g transform="translate(-834 -3768)">
+                        <g>
+                          <use class="icon-user__bot" fill="#fff" fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#myi1c&quot;)" xlink:href="#myi1a"></use>
+                        </g>
+                        <g>
+                          <use class="icon-user__top" fill="#fff" fill-opacity="0" stroke-miterlimit="50" stroke-width="4" clip-path="url(&quot;#myi1d&quot;)" xlink:href="#myi1b"></use>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>войти</a>
+              </li>
+            </ul>
+          </div>
+          <button class="header__btn btn btn_white" type="button" data-popup-target="comePopup">
+            <h6 class="btn__text">ПРИЙТИ В ГОСТИ</h6>
+          </button>
+          <button class="header__menu-btn" type="button">
+            <span class="header__menu-btn-text">menu</span>
+            <div class="header__menu-burger">
+              <div class="header__menu-burger-line"></div>
+              <div class="header__menu-burger-line"></div>
+              <div class="header__menu-burger-line"></div>
+            </div>
+          </button>
+          <div class="dropdown dropdown_lang">
+            <ul>
+              <li>
+                <a href="#!">ru</a>
+                <ul>
+                  <li>
+                    <a href="#!">ukr</a>
+                  </li>
+                  <li>
+                    <a href="#!">en</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="header__mob">
+          <button class="header__mob-close-btn" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 25 25">
+              <defs>
+                <path id="gpkza" d="M338.63 5743l-1.38-1.4 10.38-10.5 1.38 1.4z"></path>
+                <path id="gpkzb" d="M348.72 5732.49l-1.37 1.39-10.35-10.5 1.37-1.4z"></path>
+                <path id="gpkzc" d="M356.37 5722l1.38 1.4-10.38 10.5-1.38-1.4z"></path>
+                <path id="gpkzd" d="M346.28 5732.51l1.37-1.4 10.35 10.5-1.37 1.4z"></path>
+              </defs>
+              <g>
+                <g transform="translate(-335 -5720)">
+                  <g>
+                    <use xlink:href="#gpkza"></use>
+                  </g>
+                  <g>
+                    <use xlink:href="#gpkzb"></use>
+                  </g>
+                  <g>
+                    <use xlink:href="#gpkzc"></use>
+                  </g>
+                  <g>
+                    <use xlink:href="#gpkzd"></use>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </button>
+          <div class="header__mob-inner">
+            <div class="header__mob-scroll">
+              <div class="dropdown dropdown_lang-mob">
+                <ul>
+                  <li class="is-active">
+                    <a href="#!">ru</a>
+                  </li>
+                  <li>
+                    <a href="#!">ukr</a>
+                  </li>
+                  <li>
+                    <a href="#!">en</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="header__mob-row">
+                <div class="header__mob-col">
+                  <div class="nav nav_mob">
+                    <ul>
+                      <li>
+                        <a href="#!">
+                          <h6>о нас</h6>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <h6>локации</h6>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <h6>Тарифы</h6>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <h6>мероприятия</h6>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <h6>резиденты</h6>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <h6>блог</h6>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <h6>фонд</h6>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <h6>контакты</h6>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="header__mob-col">
+                  <div class="contact-block contact-block_mob">
+                    <p>Связаться с нами:</p>
+                    <a href="#!">
+                      <svg class="icon icon-messenger" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                        <g>
+                          <g>
+                            <path d="M256,0C114.624,0,0,106.112,0,237.024c0,74.592,37.216,141.12,95.392,184.576V512l87.168-47.84																c23.264,6.432,47.904,9.92,73.44,9.92c141.376,0,256-106.112,256-237.024S397.376,0,256,0z M281.44,319.2l-65.184-69.536																L89.056,319.2l139.936-148.544l66.784,69.536l125.6-69.536L281.44,319.2z"></path>
+                          </g>
+                        </g>
+                      </svg>
+                    </a>
+                    <a href="#!">
+                      <svg class="icon icon-telegram" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
+                        <g>
+                          <path d="M5.299,144.645l69.126,25.8l26.756,86.047c1.712,5.511,8.451,7.548,12.924,3.891l38.532-31.412																					c4.039-3.291,9.792-3.455,14.013-0.391l69.498,50.457c4.785,3.478,11.564,0.856,12.764-4.926L299.823,29.22																					c1.31-6.316-4.896-11.585-10.91-9.259L5.218,129.402C-1.783,132.102-1.722,142.014,5.299,144.645z M96.869,156.711l135.098-83.207																					c2.428-1.491,4.926,1.792,2.841,3.726L123.313,180.87c-3.919,3.648-6.447,8.53-7.163,13.829l-3.798,28.146																					c-0.503,3.758-5.782,4.131-6.819,0.494l-14.607-51.325C89.253,166.16,91.691,159.907,96.869,156.711z"></path>
+                        </g>
+                      </svg>
+                    </a>
+                    <a class="contact-block__mail" href="mailto:info@workit.space"></a>
+                  </div>
+                  <button class="header__mob-btn btn btn_white" type="button" data-popup-target="comePopup">
+                    <h6 class="btn__text">ПРИЙТИ В ГОСТИ</h6>
+                  </button>
+                  <div class="socials socials_mob">
+                    <div class="socials__links">
+                      <a href="#!" target="_blank">
+                        <svg class="icon icon-fb" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 8 16" style="enable-background:new 0 0 8 16;" xml:space="preserve">
+                          <path d="M1.9,3.3C1.9,3.7,2,5,2,5H0v3h2v8h3l0-8h2l1-3H5c0,0,0-1.1,0-1.4C5,3.4,5.3,3,5.6,3c0.3,0,1,0,1.7,0c0-0.4,0-1.6,0-2.8        c-0.9,0-1.8,0-2.3,0C1.8,0.2,1.9,2.9,1.9,3.3z"></path>
+                        </svg>
+                      </a>
+                      <a href="#!" target="_blank">
+                        <svg class="icon icon-inst" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 81 81">
+                          <path d="M0,11V70A11,11,0,0,0,11,81H70A11,11,0,0,0,81,70V11A11,11,0,0,0,70,0H11A11,11,0,0,0,0,11ZM55.22,57.24c-23,15.38-47.84-9.43-32.46-32.46a10.93,10.93,0,0,1,3-3c23-15.38,47.84,9.43,32.46,32.46A10.93,10.93,0,0,1,55.22,57.24Z"></path>
+                        </svg>
+                      </a>
+                      <a href="#!" target="_blank">
+                        <svg class="icon icon-yt" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 15 11" style="enable-background:new 0 0 15 11;" xml:space="preserve">
+                          <path d="M15,2.3C15,1.1,14,0,12.8,0H2.2C1,0,0,1.1,0,2.3v6.3C0,9.9,1,11,2.2,11h10.5C14,11,15,9.9,15,8.7V2.3z M6,8.2V2.2l4.3,3        L6,8.2z"></path>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!--end header-->
+    <!-- Main content-->
+    <main class="content" data-page="events"></main>
+    <!--begin screen-->
+    <section class="screen screen_default">
+      <div class="screen__inner">
+        <div class="screen__container container container_md">
+          <div class="screen__title">
+            <h1>Мы создали workit потому что</h1>
+          </div>
+          <div class="screen__sub-title">
+            <h5>хотели иметь в Киеве инновационное пространство, которое объединяет людей, вдохновляет и помогает реализовать идеи, позитивно влияющие на мир.</h5>
+          </div>
+          <button class="screen__btn btn btn_green" data-popup-target="comePopup" type="button">
+            <span class="btn__text">хочу в гости</span>
+          </button>
+        </div>
+      </div>
+      <div class="mask mask_screen" data-mask-type="image">
+        <svg class="mask__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <clipPath id="screen-img-clip">
+              <polygon class="mask__el" points="846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89"></polygon>
+            </clipPath>
+            <filter id="screen-mask-blur">
+              <fegaussianblur in="SourceGraphic" stddeviation="7"></fegaussianblur>
+            </filter>
+            <mask id="sreen-video-clip">
+              <rect x="0" y="0"></rect>
+              <polygon class="mask__el" points="846.94 470.89 725.63 0 494.05 0 372.74 470.89 236 0 0 0 239.32 681 506.37 681 609.84 277.9 713.32 681 980.36 681 1219.68 0 983.69 0 846.94 470.89"></polygon>
+            </mask>
+          </defs>
+          <rect x="0" y="0" width="1920" height="1080" mask="url(#sreen-video-clip)"></rect>
+          <image xlink:href="static/img/screen_5.jpg" x="0" y="0" filter="url(#screen-mask-blur)" preserveAspectRatio="xMidYMin slice" width="1920" height="1080" opacity="0.75"></image>
+          <image xlink:href="static/img/screen_5.jpg" x="0" y="0" clip-path="url(#screen-img-clip)" preserveAspectRatio="xMidYMin slice" width="1920" height="1080"></image>
+        </svg>
+      </div>
+      <div class="screen__more">
+        <span class="screen__more-text h6">узнать больше</span>
+        <svg class="screen__more-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 93.06 42.5">
+          <polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"></polygon>
+        </svg>
+      </div>
+    </section>
+    <!--end screen-->
+    <!--begin block-3-->
+    <section class="block-3">
+      <div class="block-3__container container">
+        <div class="block-3__top block-top block-top block-top_md">
+          <div class="block-3__label block-label">
+            <p>VALUES</p>
+          </div>
+          <div class="block-3__title block-title has-selection has-selection_green">
+            <h2>Самые главные наши
+              <b>ценности</b>
+            </h2>
+          </div>
+        </div>
+        <div class="block-3__items-list mobile-slider mobile-slider_white">
+          <div class="block-3__item block-3__item_left">
+            <article class="block-3__item-inner">
+              <div class="block-3__item-media img-hover">
+                <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_5.jpg);"></div>
+                <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)-->
+                <!--	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
+              </div>
+              <div class="block-3__item-text">
+                <h3>сообщество</h3>
+                <p>Это все об обществе. Наше сообщество определяет пространство. Они
+                  <b>принимают решение</b> о
+                  <b>дизайне</b> офиса,
+                  <b>расписании</b> мероприятий и даже
+                  <b>тип кофе,</b>который мы покупаем для пространства</p>
+              </div>
+            </article>
+            <div class="block-3__item-count">
+              <div class="block-3__item-count-el block-3__item-count-el_1"></div>
+            </div>
+          </div>
+          <div class="block-3__item block-3__item_right">
+            <article class="block-3__item-inner">
+              <div class="block-3__item-text">
+                <h3>эффективность</h3>
+                <p>Мы создаем условия для каждого, чтобы
+                  <b>максимизировать</b> их
+                  <b>производительность</b> и эффективность. Мы предлагаем дополнительные услуги и
+                  <b>учебные семинары,</b> чтобы позволить нашим резидентам сосредоточиться на том, что они делают лучше всего -
+                  <b>построении своего продукта</b> и
+                  <b>бизнеса</b>
+                </p>
+              </div>
+              <div class="block-3__item-media img-hover">
+                <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_6.jpg);"></div>
+                <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)-->
+                <!--	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
+              </div>
+            </article>
+            <div class="block-3__item-count">
+              <div class="block-3__item-count-el block-3__item-count-el_2"></div>
+            </div>
+          </div>
+          <div class="block-3__item block-3__item_left">
+            <article class="block-3__item-inner">
+              <div class="block-3__item-media img-hover">
+                <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_7.jpg);"></div>
+                <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)-->
+                <!--	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
+              </div>
+              <div class="block-3__item-text">
+                <h3>здоровье</h3>
+                <p>Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни через
+                  <b>сбалансированную диету</b> (выбор продуктов питания) и
+                  <b>физическую активность</b> внутри и за пределами коворкинга, услуги массажиста и многое другие услуги.</p>
+              </div>
+            </article>
+            <div class="block-3__item-count">
+              <div class="block-3__item-count-el block-3__item-count-el_3"></div>
+            </div>
+          </div>
+          <div class="block-3__item block-3__item_right">
+            <article class="block-3__item-inner">
+              <div class="block-3__item-text">
+                <h3>веселье</h3>
+                <p>
+                  <b>Размер рабочего пространства</b> имеет значение. Поэтому мы позаботились о том, чтобы каждое рабочее место занимало как
+                  <b>минимум 7 кв м.</b> Поставили большие столы и удобные стулья, спроектировали высокие потолки. Уделили особое внимание освещению и
+                  <b>“умному” зонированию</b> пространства.</p>
+              </div>
+              <div class="block-3__item-media img-hover">
+                <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_8.jpg);"></div>
+                <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)-->
+                <!--	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
+              </div>
+            </article>
+            <div class="block-3__item-count">
+              <div class="block-3__item-count-el block-3__item-count-el_4"></div>
+            </div>
+          </div>
+        </div>
+        <div class="block-3__lines">
+          <div class="block-3__line block-3__line_left"></div>
+          <div class="block-3__line block-3__line_right"></div>
+        </div>
+      </div>
+    </section>
+    <!--end block-3-->
+    <!--begin team-->
+    <section class="team">
+      <div class="container container_md">
+        <div class="team__top block-top">
+          <div class="team__label block-label">
+            <p>our team</p>
+          </div>
+          <div class="team__title block-title has-selection has-selection_black">
+            <h2>
+              <b>Команда</b> &nbsp;workit</h2>
+          </div>
+        </div>
+        <div class="team__inner">
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_1.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Иван Иванов</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+            </div>
+          </div>
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_2.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Анна Градил</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
+            </div>
+          </div>
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_3.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Мирослава Захарчук</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+            </div>
+          </div>
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_4.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Мария Касс</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
+            </div>
+          </div>
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_3.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Иван Иванов</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+            </div>
+          </div>
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_2.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Анна Градил</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
+            </div>
+          </div>
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_5.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Мирослава Захарчук</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+            </div>
+          </div>
+          <div class="team__member">
+            <div class="team__member-pic">
+              <img src="static/img/team_6.jpg" alt="image" title="" />
+            </div>
+            <div class="team__member-name h4">
+              <h4>Мария Касс</h4>
+            </div>
+            <div class="team__member-pos h5">
+              <h5>CEO Workit</h5>
+            </div>
+            <div class="team__member-descr">
+              <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--end team-->
+    <!--begin values-->
+    <section class="values">
+      <div class="container container_md">
+        <div class="values__top block-top">
+          <div class="block-label">
+            <p>VALUES</p>
+          </div>
+          <div class="values__title block-title has-selection has-selection_green">
+            <h2>Самые главные наши
+              <b>ценности</b>
+            </h2>
+          </div>
+        </div>
+        <div class="expand-list js-expand-list">
+          <div class="expand-list__inner">
+            <div class="values__item expand-list__item">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_1.jpg" alt="image">
+              </div>
+              <h5>Сообщество</h5>
+              <p>Это все об обществе. Наше сообщество определяет пространство. Они
+                <b>принимают решение</b> о
+                <b>дизайне</b> офиса,
+                <b>расписании</b> мероприятий и даже
+                <b>тип кофе,</b>который мы покупаем для пространства</p>
+            </div>
+            <div class="values__item expand-list__item">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_2.jpg" alt="image">
+              </div>
+              <h5>Эффективность</h5>
+              <p>Мы создаем условия для каждого, чтобы
+                <b>максимизировать</b> их
+                <b>производительность</b> и эффективность. Мы предлагаем дополнительные услуги и
+                <b>учебные семинары</b>
+              </p>
+            </div>
+            <div class="values__item expand-list__item">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_3.jpg" alt="image">
+              </div>
+              <h5>Здоровье</h5>
+              <p>Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни через
+                <b>сбалансированную диету</b> (выбор продуктов питания) и
+                <b>физическую активность</b> внутри и за пределами коворкинга</p>
+            </div>
+            <div class="values__item expand-list__item">
+              <div class="values__item-img img-hover">
+                <img class="img-hover__item" src="static/img/values_4.jpg" alt="image">
+              </div>
+              <h5>Веселье</h5>
+              <p>
+                <b>Размер рабочего пространства</b> имеет значение. Поэтому мы позаботились о том, чтобы каждое рабочее место занимало как
+                <b>минимум 7 кв м.</b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end values-->
+    </section>
+    <!--begin come-->
+    <section class="come">
+      <div class="come__inner">
+        <div class="container container_md">
+          <h3>Хочешь увидеть всё своими глазами? Приходи в гости!</h3>
+          <button class="come__btn btn btn_green" data-popup-target="comePopup" type="button">
+            <span class="btn__text">записаться</span>
+          </button>
+        </div>
+      </div>
+      <div class="mask mask_come" data-mask-type="image">
+        <svg class="mask__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <clipPath id="come-img-clip">
+              <text class="mask__el" y="480">WORK</text>
+            </clipPath>
+            <filter id="come-mask-blur">
+              <fegaussianblur in="SourceGraphic" stddeviation="8"></fegaussianblur>
+            </filter>
+            <mask id="come-video-clip">
+              <rect x="0" y="0"></rect>
+              <text class="mask__el" y="480">WORK</text>
+            </mask>
+          </defs>
+          <rect x="0" y="0" width="1920" height="1080" mask="url(#come-video-clip)"></rect>
+          <image xlink:href="static/img/come_bg.jpg" x="0" y="0" filter="url(#come-mask-blur)" preserveAspectRatio="xMinYMax slice" width="1280" height="410"></image>
+          <image xlink:href="static/img/come_bg.jpg" x="0" y="0" clip-path="url(#come-img-clip)" preserveAspectRatio="xMinYMax slice" width="1280" height="410"></image>
+        </svg>
+      </div>
+    </section>
+    <!--end come-->
+    <div class="popup" data-popup-id="comePopup" tabindex="-1" role="dialog">
+      <div class="popup__container">
+        <button class="popup__close js-popup-close" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 25 25">
+            <defs>
+              <path id="bpq2a" d="M1220.63 158l-1.38-1.4 10.38-10.5 1.38 1.4z"></path>
+              <path id="bpq2b" d="M1230.72 147.49l-1.37 1.39-10.35-10.5 1.37-1.4z"></path>
+              <path id="bpq2c" d="M1238.37 137l1.38 1.4-10.38 10.5-1.38-1.4z"></path>
+              <path id="bpq2d" d="M1228.28 147.51l1.37-1.4 10.35 10.5-1.37 1.4z"></path>
+            </defs>
+            <g>
+              <g transform="translate(-1217 -135)">
+                <g>
+                  <use xlink:href="#bpq2a"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2b"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2c"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2d"></use>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <div class="popup__title">
+          <h2>Оставьте ваши контакты, и мы обязательно перезвоним!</h2>
+        </div>
+        <form class="form" action="#!">
+          <div class="form-group form-group_popup">
+            <div class="form-group">
+              <div class="form-group">
+                <input class="form-control" type="text" name="" autocomplete="off" data-validation="custom" data-validation-regexp="^([A-z]+)$" />
+                <label class="control-label">
+                  <span>Имя*</span>
+                </label>
+                <div class="help-block">Введите Имя</div>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="" autocomplete="off" data-validation="custom" data-validation-regexp="^([A-z]+)$" />
+                <label class="control-label">
+                  <span>Номер мобильного*</span>
+                </label>
+                <div class="help-block">Введите номер телефона: +380(ХХ) ХХХ ХХ ХХ</div>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="" autocomplete="off" data-validation="email required" />
+                <label class="control-label">
+                  <span>Email*</span>
+                </label>
+                <div class="help-block">Введите ваш Email</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-group">
+                <input class="form-control" type="text" name="" autocomplete="off" data-validation="email required" />
+                <label class="control-label">
+                  <span>Компания</span>
+                </label>
+                <div class="help-block">Введите название компании</div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-textarea" name="" autocomplete="off"></textarea>
+                <label class="form-textarea-label">
+                  <span>Комментарий</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="popup__form-btn btn btn_black">
+                <input class="btn" type="submit" value="отправить запрос" />
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="popup" data-popup-id="enrollPopup" tabindex="-1" role="dialog">
+      <div class="popup__container">
+        <button class="popup__close js-popup-close" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 25 25">
+            <defs>
+              <path id="bpq2a" d="M1220.63 158l-1.38-1.4 10.38-10.5 1.38 1.4z"></path>
+              <path id="bpq2b" d="M1230.72 147.49l-1.37 1.39-10.35-10.5 1.37-1.4z"></path>
+              <path id="bpq2c" d="M1238.37 137l1.38 1.4-10.38 10.5-1.38-1.4z"></path>
+              <path id="bpq2d" d="M1228.28 147.51l1.37-1.4 10.35 10.5-1.37 1.4z"></path>
+            </defs>
+            <g>
+              <g transform="translate(-1217 -135)">
+                <g>
+                  <use xlink:href="#bpq2a"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2b"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2c"></use>
+                </g>
+                <g>
+                  <use xlink:href="#bpq2d"></use>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <div class="popup__title popup__title_lg has-selection has-selection_black is-selected">
+          <h2>Для бронирования
+            <b>&laquo;Офис мечты&raquo;</b> оставьте свои контакты&nbsp; и мы обязательно перезвоним!</h2>
+        </div>
+        <form class="form" action="#!">
+          <div class="form-group form-group_popup form-group_double">
+            <div class="form-group">
+              <div class="form-group">
+                <input class="form-control" type="text" name="" autocomplete="off" data-validation="custom" data-validation-regexp="^([A-z]+)$" />
+                <label class="control-label">
+                  <span>Имя*</span>
+                </label>
+                <div class="help-block">Введите Имя</div>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="" autocomplete="off" data-validation="custom" data-validation-regexp="^([A-z]+)$" />
+                <label class="control-label">
+                  <span>Номер мобильного*</span>
+                </label>
+                <div class="help-block">Введите номер телефона: +380(ХХ) ХХХ ХХ ХХ</div>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="" autocomplete="off" data-validation="email required" />
+                <label class="control-label">
+                  <span>Email*</span>
+                </label>
+                <div class="help-block">Введите ваш Email</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-textarea form-textarea_lg" name="" autocomplete="off"></textarea>
+              <label class="form-textarea-label">
+                <span>Комментарий</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="popup__form-btn btn btn_black">
+                <input class="btn" type="submit" value="отправить запрос" />
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Footer-->
+    <!--begin footer-->
+    <footer class="footer">
+      <div class="footer__container container container container_md">
+        <a class="logo logo_footer" href="#!">
+          <svg class="logo__img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 807.02 205.05">
+            <path class="logo__letter-first" d="M154.37,130.46c-1.44,5.76-2.3,11.81-3.17,17.57-1.15-5.76-2-11.52-4-17L127,72H88.41L68.83,131.33c-2.59,7.49-2.88,11.23-3.74,16.42-.86-5.76-1.15-10.37-2.88-16.42L46.37,72H0L41.47,201.6H78.62l23-59.33a62.5,62.5,0,0,0,4-15.26c1.15,4.9,1.73,10.08,3.74,14.69l23,59.9h39.46L212,72H168.48Z"></path>
+            <path class="logo__letter-first" d="M289.93,68.54c-44.35,0-72,29.38-72,68.25s27.65,68.25,72,68.25,72-29.37,72-68.25S334.28,68.54,289.93,68.54Zm0,96.19c-14.69,0-25.92-11.52-25.92-27.94,0-17.57,12.1-27.94,25.92-27.94,14.4,0,25.92,11.23,25.92,27.94C315.84,154.37,304.61,164.73,289.93,164.73Z"></path>
+            <path class="logo__letter-first" d="M429.09,82.37V72h-43.2V201.6h43.2V119.23C432,114,436.29,110,444.93,110c6,0,9.5,1.15,15.84,4.9L476,74.59c-4.32-3.17-9.5-4.9-20.16-4.9C441.18,69.69,434.27,74.88,429.09,82.37Z"></path>
+            <polygon class="logo__letter-first" points="583.05 130.46 625.1 72 570.95 72 535.53 128.16 535.53 0 492.33 0 492.33 201.6 535.53 201.6 535.53 139.68 575.85 201.6 631.15 201.6 583.05 130.46"></polygon>
+            <path class="logo__letter-last" d="M671.78,2.88c-14.11,0-26.21,9.22-26.21,24.48,0,17,12.1,26.21,26.21,26.21,12.38,0,24.48-9.22,24.48-26.21C696.26,12.1,684.16,2.88,671.78,2.88Z"></path>
+            <rect class="logo__letter-last" x="649.32" y="72" width="43.2" height="129.6"></rect>
+            <path class="logo__letter-last" d="M794.06,157.25c-4.61,3.46-10.08,7.49-19.3,7.49-5.76,0-8.35-6.62-8.35-14.4v-38h36V72h-36V36h-43.2V152.35c0,33.12,10.94,52.7,40.32,52.7,19.29,0,34.85-7.2,43.49-14.69Z"></path>
+          </svg>
+        </a>
+        <div class="footer__nav-list">
+          <ul>
+            <li>
+              <a href="#!">о нас</a>
+            </li>
+            <li>
+              <a href="#!">локации</a>
+            </li>
+            <li>
+              <a href="#!">Тарифы и услуги</a>
+            </li>
+            <li>
+              <a href="#!">Фонд</a>
+            </li>
+            <li>
+              <a href="#!">мероприятия</a>
+            </li>
+            <li>
+              <a href="#!">резиденты</a>
+            </li>
+            <li>
+              <a href="#!">контакты</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <p>Партнерство:</p>
+          <a class="link-green" href="mailto:info@workit.space">info@workit.space</a>
+          <p class="tel-block">тел:
+            <a href="tel:0975678900">097 567 89 00
+              <svg class="icon icon-tel" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 301.001 301.001" style="enable-background:new 0 0 301.001 301.001;" xml:space="preserve">
+                <g>
+                  <path d="M182.784,151.696c-7.794,9.143-14.811,15.833-14.745,15.773c0.065-0.054-6.086,7.435-14.637,15.877                                c-6.875,6.783-14.517,13.478-22.985,19.836c-9.605,7.218-24.623,8.153-32.776,3.176c-8.159-4.971-23.845-15.055-35.582-12.483                                c-9.861,2.159-22.953,9.393-38.704,27.984c-37.138,43.85-3.867,57.54,19.189,75.222c23.078,17.672,99.209-26.102,168.932-97.419                                c69.729-71.312,95.989-145.087,76.685-166.805c-19.309-21.718-35.403-53.901-76.43-13.679                                c-17.394,17.057-23.654,30.644-25.09,40.635c-1.713,11.895,9.48,26.809,15.034,34.582c5.553,7.778,5.711,22.822-0.789,32.928                                C195.163,136.238,189.05,144.348,182.784,151.696z"></path>
+                </g>
+              </svg>
+            </a>
+          </p>
+        </div>
+        <div class="socials footer__socials">
+          <h6>Подписаться</h6>
+          <div class="socials__links">
+            <a href="#!" target="_blank">
+              <svg class="icon icon-fb" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 8 16" style="enable-background:new 0 0 8 16;" xml:space="preserve">
+                <path d="M1.9,3.3C1.9,3.7,2,5,2,5H0v3h2v8h3l0-8h2l1-3H5c0,0,0-1.1,0-1.4C5,3.4,5.3,3,5.6,3c0.3,0,1,0,1.7,0c0-0.4,0-1.6,0-2.8        c-0.9,0-1.8,0-2.3,0C1.8,0.2,1.9,2.9,1.9,3.3z"></path>
+              </svg>
+            </a>
+            <a href="#!" target="_blank">
+              <svg class="icon icon-inst" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 81 81">
+                <path d="M0,11V70A11,11,0,0,0,11,81H70A11,11,0,0,0,81,70V11A11,11,0,0,0,70,0H11A11,11,0,0,0,0,11ZM55.22,57.24c-23,15.38-47.84-9.43-32.46-32.46a10.93,10.93,0,0,1,3-3c23-15.38,47.84,9.43,32.46,32.46A10.93,10.93,0,0,1,55.22,57.24Z"></path>
+              </svg>
+            </a>
+            <a href="#!" target="_blank">
+              <svg class="icon icon-yt" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 15 11" style="enable-background:new 0 0 15 11;" xml:space="preserve">
+                <path d="M15,2.3C15,1.1,14,0,12.8,0H2.2C1,0,0,1.1,0,2.3v6.3C0,9.9,1,11,2.2,11h10.5C14,11,15,9.9,15,8.7V2.3z M6,8.2V2.2l4.3,3        L6,8.2z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__addition container container container_md">
+        <p>Copyright@2017</p>
+        <a class="dev-link footer__dev-link" href="#!" target="_blank">made by
+          <svg class="icon icon-vintage" viewbox="0 0 26.8 36.7" width="100%" height="100%">
+            <path d="M20.1 0l-9.4 36.7h6.7L26.8 0zM6.9 0H0l1.6 6.3h6.9z"></path>
+          </svg>
+        </a>
+      </div>
+    </footer>
+    <!--end footer-->
+    <!-- Scripts-->
+    <script src="static/js/index.jquery.js"></script>
+    <script src="static/js/index.js"></script>
+  </body>
+</html>

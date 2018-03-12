@@ -1,24 +1,27 @@
 import {TimelineMax, TweenMax} from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 // import {preloader} from './preloader';
-import {$window, Resp} from '../modules/dev/_helpers';
+import {Resp} from '../modules/dev/_helpers';
 import slick from 'slick-carousel';
+import Dot from '../components/dot';
 
-class Block10 {
+class companies {
 	constructor() {
-		this.$block = $('.block-10');
+		this.$block = $('.companies');
 		this.$container = this.$block.find('.container');
-		this.$list = this.$block.find('.block-10__list');
-		this.$item = this.$block.find('.block-10__item').not('.slick-cloned');
-		this.$line = this.$block.find('.block-10__decor-line');
+		this.$list = this.$block.find('.companies__list_slider');
+		this.$item = this.$block.find('.companies__item').not('.slick-cloned');
+		this.$line = this.$block.find('.companies__decor-line');
+		this.$line = this.$block.find('.companies__decor-line');
+    this.$dotTarget1 = this.$item.find('p');
 
 		if (this.$block.length) this.init();
 	}
 
-	async init() {
-		// await preloader.wait();
-		await this.scrollAnim();
+	init() {
+		this.scrollAnim();
 		this.initSlider();
+		this.dot();
 	}
 
 	scrollAnim() {
@@ -42,7 +45,6 @@ class Block10 {
 	}
 
 	initSlider() {
-		const _this = this;
 		const $itemCount = this.$list.children().length;
 		const defaultOptions = {
 			slidesToShow: 4,
@@ -85,6 +87,10 @@ class Block10 {
 			}));
 		}
 	}
+
+  dot() {
+    new Dot(this.$dotTarget1);
+  }
 }
 
-export const Block10API = new Block10();
+export const companiesAPI = new companies();

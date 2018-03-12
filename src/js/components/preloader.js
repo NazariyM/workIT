@@ -14,10 +14,6 @@ class Preloader {
       const waitLoad = new Promise(resolve => {
         resolve(this.animPreloader());
       });
-
-      // this.resolve = new Promise(resolve => {
-      //   resolve(this.animPreloader());
-      // });
     }
     sessionStorage.setItem('resized', false);
   }

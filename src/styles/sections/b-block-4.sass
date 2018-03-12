@@ -1,9 +1,10 @@
 .block-4
   padding: 111px 0 113px
   background-color: $color1
+  +md
+    padding: 111px 0 116px
   +xs
     padding: 52px 0 57px
-  &__container
   &__top
     margin: 0 auto 56px
     +md
@@ -15,27 +16,28 @@
   &__title
     margin-bottom: 55px
     +md
-      margin-bottom: 41px
+      margin-bottom: 44px
     +xs
       margin: 0 70px 19px 0
   &__sub-title
     max-width: 870px
+    +md
+      margin: 0 -1px
     +xs
       display: none
   &__expand-list
     .expand-list__inner
       margin-bottom: 3px
       +md
-        margin-bottom: -15px
+        margin-bottom: -45px
       +xs
-        margin-bottom: -3px
+        margin-bottom: -40px
   &__item
     +md
       padding: 0 20px 40px
       text-align: left
     +xs
-      padding: 0 10px 19px
-      width: 49.9%
+      padding: 0 10px 38px
     &:nth-child(3) img
       top: 10px
     &:nth-child(4) img
@@ -43,6 +45,8 @@
     &-icon
       margin-bottom: 20px
       height: 80px
+      +md
+        margin-bottom: 18px
       +xs
         height: 39px
       img
@@ -58,3 +62,7 @@
       color: $white
       +xs
         margin-bottom: 13px
+    p
+      height: 140px
+      +md
+        height: 114px
