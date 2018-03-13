@@ -6,74 +6,74 @@ block variables
 block main
   main.content(data-page='events')
 
-  -
-    screen = {
-    classMod: '_default',
-    title: 'Команды, которые выбрали workit для работы',
-    subTitle: 'Мы не просто сообщество, а большая и уютная семья',
-    maskType: 'image',
-    maskImg: '3',
-    maskBlur: '7',
-    maskImgOpacity: '0.75'
-    }
-  include ../sections/screen
+    -
+      screen = {
+      classMod: '_default',
+      title: 'Команды, которые выбрали workit для работы',
+      subTitle: 'Мы не просто сообщество, а большая и уютная семья',
+      maskType: 'image',
+      maskImg: '3',
+      maskBlur: '7',
+      maskImgOpacity: '0.75'
+      }
+    include ../sections/screen
 
-  //begin companies
-  +b.SECTION.companies._has-pagination
-    .container.container_md
-      +e.top.block-top
-        +e.label.block-label
-          +e.P our residents
+    //begin companies
+    +b.SECTION.companies._has-pagination
+      .container.container_md
+        +e.top.block-top
+          +e.label.block-label
+            +e.P our residents
 
-        +e.title.block-title.has-selection._green
-          +e.H2 Наши
-            b резиденты
+          +e.title.block-title.has-selection._green
+            +e.H2 Наши
+              b резиденты
 
-      +e.list
-        -
-          companiesList = [{
-          img: 'ingenico',
-          descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
-          }, {
-          img: 'circle-media',
-          descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
-          }, {
-          img: 'bmc',
-          descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
-          }, {
-          img: 'bike-roar',
-          descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
-          }, {
-          img: 'ingenico',
-          descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
-          }, {
-          img: 'circle-media',
-          descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
-          }, {
-          img: 'bmc',
-          descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
-          }, {
-          img: 'bike-roar',
-          descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
-          }]
+        +e.list
+          -
+            companiesList = [{
+            img: 'ingenico',
+            descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
+            }, {
+            img: 'circle-media',
+            descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
+            }, {
+            img: 'bmc',
+            descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
+            }, {
+            img: 'bike-roar',
+            descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
+            }, {
+            img: 'ingenico',
+            descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
+            }, {
+            img: 'circle-media',
+            descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
+            }, {
+            img: 'bmc',
+            descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
+            }, {
+            img: 'bike-roar',
+            descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
+            }]
 
-        mixin companiesItem(item)
-          +e.item
-            +e.item-icon
-              +e.A(href='#!' target='_blank')
-                +e.IMG(src=`static/img/${item.img}.png` alt='image')
-            +e.item-descr
-              p= item.descr
-        each item in companiesList
-          +companiesItem(item)
+          mixin companiesItem(item)
+            +e.item
+              +e.item-icon
+                +e.A(href='#!' target='_blank')
+                  +e.IMG(src=`static/img/${item.img}.png` alt='image')
+              +e.item-descr
+                p= item.descr
+          each item in companiesList
+            +companiesItem(item)
 
-    include ../components/pagination
-  //end companies
+      include ../components/pagination
+    //end companies
 
-  include ../sections/block-9
+    include ../sections/block-9
 
-  -come = {classMod: '_mob-only', maskType: 'image', maskVideo: false}
-  include ../sections/come
+    -come = {classMod: '_mob-only', maskType: 'image', maskVideo: false}
+    include ../sections/come
 
-  -subscrClass = '_default _desk-only'
-  include ../sections/subscr
+    -subscrClass = '_default _desk-only'
+    include ../sections/subscr
