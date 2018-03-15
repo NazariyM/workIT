@@ -2,6 +2,7 @@ extends ../extend/default
 
 block variables
   - var title = 'Fund page';
+  - var footer = {classMod: '_entry'};
 
 block main
   main.content(data-page='events')
@@ -60,7 +61,7 @@ block main
               b Workit Seed Fund
 
         +b.expand-list.js-expand-list
-          +e.inner
+          +e.inner.values__mob-slider.mobile-slider._white
 
             .values__item.expand-list__item
               .values__item-img.img-hover
@@ -90,31 +91,28 @@ block main
               .values__item-img.img-hover
                 img(src=`static/img/values_4.jpg` alt='image')
               h5 Money
-              .js-dot
-                p
-                  b Размер рабочего пространства
-                  = ' '
-                  | имеет значение.
+              p
+                b Размер рабочего пространства
+                = ' '
+                | имеет значение.
 
             .values__item.expand-list__item.is-hidden
               .values__item-img.img-hover
                 img(src=`static/img/values_1.jpg` alt='image')
               h5 Сonnections
-              .js-dot
-                p Это все об обществе. Наше сообщество определяет пространство.
+              p Это все об обществе. Наше сообщество определяет пространство.
 
             .values__item.expand-list__item.is-hidden
               .values__item-img.img-hover
                 img(src=`static/img/values_2.jpg` alt='image')
               h5 Advice
-              .js-dot
-                p Мы создаем условия для каждого, чтобы
-                  b максимизировать
-                  = ' '
-                  | их
-                  b производительность
-                  = ' '
-                  | и эффективность.
+              p Мы создаем условия для каждого, чтобы
+                b максимизировать
+                = ' '
+                | их
+                b производительность
+                = ' '
+                | и эффективность.
 
             .values__item.expand-list__item.is-hidden
               .values__item-img.img-hover
@@ -127,57 +125,17 @@ block main
               .values__item-img.img-hover
                 img(src=`static/img/values_4.jpg` alt='image')
               h5 Money
-              .js-dot
-                p
-                  b Размер рабочего пространства
-                  = ' '
-                  | имеет значение.
+              p
+                b Размер рабочего пространства
+                = ' '
+                | имеет значение.
 
           +e.BUTTON.btn.btn._line(type='button') хочу еще
 
     //end values
 
-    //begin companies
-    +b.SECTION.companies._fund
-      .container.container_md
-        +e.top.block-top
-          +e.label.block-label
-            +e.P our residents
-
-          +e.title.block-title.has-selection._green
-            +e.H2
-              b Компании
-              = ' '
-              | в фонде
-
-        +e.list._slider.mobile-slider._white-large
-          -
-            companiesList = [{
-            img: 'ingenico',
-            descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
-            }, {
-            img: 'circle-media',
-            descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
-            }, {
-            img: 'bmc',
-            descr: 'Стартап "Бери и делай" в сфере криптовалют, команда из 14 человек'
-            }, {
-            img: 'bike-roar',
-            descr: 'Компания "Валютники" в сфере финтех. Команда из 9 человек'
-            }]
-
-          mixin companiesItem(item)
-            +e.item
-              +e.item-icon
-                +e.A(href='#!' target='_blank')
-                  +e.IMG(src=`static/img/${item.img}.png` alt='image')
-              +e.item-descr
-                p= item.descr
-          each item in companiesList
-            +companiesItem(item)
-
-      +e.decor-line
-    //end companies
+    -companies = {classMod: '_bg-color'}
+    include ../sections/companies
 
     -
       membersList = [{
@@ -187,7 +145,7 @@ block main
       description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
       }, {
       pic: 'team_2',
-      name: 'Анна Градил',
+      name: 'Анна Градиль',
       position: 'CEO Workit',
       description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
       }, {
@@ -201,6 +159,8 @@ block main
       position: 'CEO Workit',
       description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
       }]
+
+    -team = {innerClass: '_slider mobile-slider _green-large'};
     include ../sections/team
 
     -come = {maskType: 'image', maskVideo: false}

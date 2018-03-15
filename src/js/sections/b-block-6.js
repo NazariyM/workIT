@@ -10,7 +10,7 @@ class Block6 {
     this.$offerText = this.$offer.find('.block-6__offer-text').children();
     this.$offerPic = this.$offer.find('.block-6__offer-pic');
     this.$list = this.$container.find('.block-6__list');
-    this.$itemMask = this.$list.find('.block-6__item-mask');
+    this.$item = this.$list.find('.block-6__item');
     this.$dotOfferTarget1 = this.$offer.find('.block-6__offer-title').find('h4');
     this.$dotOfferTarget2 = this.$offer.find('.block-6__offer-descr').find('p')[0];
     this.$dotOfferTarget3 = this.$offer.find('.block-6__offer-descr').find('p')[1];
@@ -35,13 +35,17 @@ class Block6 {
       }
     });
 
-    if (this.$list.length)
-      new ScrollAnim({
-        el: _this.$list.get(0),
-        onStart() {
-          _this.listAnim();
-        }
+    if (this.$list.length) {
+      this.$item.each((i, item) => {
+        new ScrollAnim({
+          el: item,
+          hook: 1,
+          onStart() {
+            _this.itemsAnim(i, item);
+          }
+        });
       });
+    }
   }
 
   offerAnim() {
@@ -53,11 +57,13 @@ class Block6 {
     .staggerTo(this.$offerText, 1, { x: 0,  autoAlpha: 1, ease: Power2.easeOut }, 0.2, '-=.5');
   }
 
-  listAnim() {
+  itemsAnim(i, item) {
     const tl = new TimelineMax();
+    const $itemMask = $(item).find('.block-6__item-mask');
+    const delay = i * 0.4;
 
     tl
-    .staggerTo(this.$itemMask, 1, { width: '0' }, .5, '-=.3');
+      .to($itemMask, 1, { width: '0' }, delay);
   }
 
   dot() {

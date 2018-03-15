@@ -73,8 +73,12 @@
     +xs
       margin-top: 18px
       
-  &_fund
+  &_bg-color
     background: $color5
+    .mobile-slider_white-large::after
+      background-image: linear-gradient(to left, #f5f7fa 0%, rgba(245, 247, 250, 0) 100%)
+    .mobile-slider_white-large::before
+      background-image: linear-gradient(to right, #f5f7fa 0%, rgba(245, 247, 250, 0) 100%)
   &_has-pagination
     padding: 110px 0 0
     +xs

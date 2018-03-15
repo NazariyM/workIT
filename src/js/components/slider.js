@@ -8,9 +8,12 @@ class Slider {
 	constructor() {
 		this.$slider = $('.slider');
 		this.$mobileSlider = $('.mobile-slider');
-		this.$mobSliderDouble = $('.mobile-slider_double');
-		this.$block3Sld = $('.block-3__items-list');
-		this.$block6Sld = $('.block-6__list');
+    this.$sliderHasProgress = $('.mobile-slider_has-progress');
+    this.$mobSliderDouble = $('.mobile-slider_double');
+    this.$block3Sld = $('.block-3__items-list.mobile-slider');
+    this.$block6Sld = $('.block-6__list');
+    this.$valuesMobSld = $('.values__mob-slider');
+    this.$teamSld = $('.team__inner_slider');
 		this.$sliderAnimBlock = $('[data-anim="slider"]');
 
 		this.init();
@@ -83,6 +86,81 @@ class Slider {
 			}]
 		}));
 
+    this.$valuesMobSld.slick($.extend({}, defaultOptions, {
+      slidesToShow: 1.14,
+      slidesToScroll: 1,
+      responsive: [{
+        breakpoint: 1199,
+        settings: 'unslick'
+      },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToScroll: 2,
+            slidesToShow: 2.52
+          }
+        }, {
+          breakpoint: 319,
+          settings: 'unslick'
+        }]
+    }));
+
+    this.$teamSld.slick($.extend({}, defaultOptions, {
+      slidesToShow: 1.14,
+      slidesToScroll: 1,
+      responsive: [{
+        breakpoint: 1199,
+        settings: 'unslick'
+      },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToScroll: 1,
+            slidesToShow: 2.46
+          }
+        }, {
+          breakpoint: 319,
+          settings: 'unslick'
+        }]
+    }));
+
+    this.$sliderHasProgress.slick($.extend({}, defaultOptions, {
+      slidesToShow: 1.14,
+      slidesToScroll: 1,
+	    dots: true,
+	    dotsClass: 'team__inner-progress',
+      onInit: setProgress('.team__inner-progress'),
+      responsive: [{
+        breakpoint: 1199,
+        settings: 'unslick'
+      },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToScroll: 1,
+            slidesToShow: 2.46
+          }
+        }, {
+          breakpoint: 319,
+          settings: 'unslick'
+        }]
+    }));
+
+    function setProgress(progressClass) {
+
+      _this.$sliderHasProgress.each((i, slider) => {
+
+        $(slider).on('init afterChange reInit', (event, slick, currentSlide) => {
+        	const progressDot = $(progressClass).find('li');
+          const slideCount = slick.slideCount - 2;
+
+          const dotLength = 80 / slideCount;
+
+          progressDot.css('width', `${dotLength}px`)
+        });
+      });
+    }
+
 		this.$mobileSlider.each(function (i, slider) {
 			const $slider = $(slider);
 
@@ -104,27 +182,75 @@ class Slider {
 		<polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"/>
 </svg>`;
 
-		this.$slider.each(function () {
-			const $slider = $(this).find('.slider__body');
+		const defaultOptions = {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: false,
+      infinite: true,
+      arrows: true,
+      speed: 800,
+      cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+      useTransform: true,
+      adaptiveHeight: false,
+      accessibility: false,
+      swipe: true,
+      rows: 0,
+      prevArrow: `<button type="button" class="slider__btn slider-btn_prev">${arrLeft}</button>`,
+      nextArrow: `<button type="button" class="slider__btn slider-btn_next">${arrRight}</button>`
+		};
 
-			$slider.slick({
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				dots: false,
-				infinite: true,
-				arrows: true,
-				speed: 800,
-				cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-				useTransform: true,
-				adaptiveHeight: false,
-				accessibility: false,
-				swipe: true,
-				rows: 0,
-				prevArrow: `<button type="button" class="slider__btn slider-btn_prev">${arrLeft}</button>`,
-				nextArrow: `<button type="button" class="slider__btn slider-btn_next">${arrRight}</button>`,
-				appendArrows: $('.slider__buttons', this),
-				onInit: bindEvents()
-			});
+		this.$slider.each(function (i, slider) {
+			const $slider = $(slider).find('.slider__body');
+			const $sliderHasNav = $(slider).hasClass('slider_has-nav');
+
+      if (!$sliderHasNav) {
+        $slider.slick($.extend({}, defaultOptions, {
+          appendArrows: $('.slider__buttons', this),
+          onInit: bindEvents()
+        }));
+      } else {
+        const $viewSlider = $(this).find('.slider__body');
+        const $sliderNav = $(this).find('.slider__nav');
+
+        $viewSlider.slick($.extend({}, defaultOptions, {
+          appendArrows: $('.slider__buttons', this),
+          onInit: bindEvents(),
+          asNavFor: '.slider__nav',
+          speed: 800,
+          cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)'
+        }));
+
+        $sliderNav.slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          speed: 800,
+          asNavFor: '.slider__body',
+          dots: false,
+          arrows: false,
+          focusOnSelect: true,
+          cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+	        rows: 0
+        });
+      }
+
+			// $slider.slick({
+			// 	slidesToShow: 1,
+			// 	slidesToScroll: 1,
+			// 	dots: false,
+			// 	infinite: true,
+			// 	arrows: true,
+			// 	speed: 800,
+			// 	cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+			// 	useTransform: true,
+			// 	adaptiveHeight: false,
+			// 	accessibility: false,
+			// 	swipe: true,
+			// 	rows: 0,
+			// 	prevArrow: `<button type="button" class="slider__btn slider-btn_prev">${arrLeft}</button>`,
+			// 	nextArrow: `<button type="button" class="slider__btn slider-btn_next">${arrRight}</button>`,
+			// 	appendArrows: $('.slider__buttons', this),
+			// 	onInit: bindEvents()
+			// });
 
 			function bindEvents() {
 				$slider.on('init afterChange reInit', (event, slick, currentSlide) => {
@@ -201,7 +327,6 @@ class Slider {
 				}
 			});
 		});
-
 	}
 
 	prepareSliderAnim($animBlock) {

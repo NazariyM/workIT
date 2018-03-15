@@ -136,10 +136,6 @@ class DefaultAnims {
         .to($wire3, 2, { y: -158 }, 'all');
     }
 
-    // if (decor.classList.contains('hanging-decor_items')) {
-    //
-    // }
-
   }
 
   fadeLeftAnim(item) {

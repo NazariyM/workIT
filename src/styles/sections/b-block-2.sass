@@ -70,11 +70,50 @@
   &__video
     +ratio(1160, 620)
     
+  &_medium
+    +md
+      padding: 163px 0 120px
+  &_medium &__top
+    +md
+      margin: 0 auto 50px
+    +xs
+      margin: 0 auto 25px
+  &_medium &__text
+    +md
+      margin: 0 58px 44px
+    +xs
+      margin: 0 auto 26px
   &_medium &__slider,
   &_medium &__img-wrap
     width: percentage(550 / 1160)
+    +md
+      width: percentage(550 / 738)
+      margin-right: 93px
+    +xs
+      margin-right: 0
+      width: 100%
   &_medium &__img
     +ratio(550, 300)
+    +xs
+      +ratio(290, 165)
     
   &_has-video
+    padding: 112px 0 120px
     background: $white
+  &_has-video  &__top
+    margin: 0 auto 54px
+    +md
+      margin: 0 auto 40px
+  &_has-video  &__title
+    max-width: none
+    
+  &_tablet-big-pic &__img-wrap
+    +md
+      margin-right: 0
+      width: percentage(619 / 738)
+  &_tablet-big-pic &__img
+    +md
+      +ratio(619, 339)
+  &_tablet-big-pic &__text
+    +md
+      margin: 0 58px 53px

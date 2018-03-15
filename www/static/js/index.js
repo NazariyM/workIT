@@ -23500,9 +23500,12 @@ var Slider = function () {
 
 		this.$slider = $('.slider');
 		this.$mobileSlider = $('.mobile-slider');
+		this.$sliderHasProgress = $('.mobile-slider_has-progress');
 		this.$mobSliderDouble = $('.mobile-slider_double');
-		this.$block3Sld = $('.block-3__items-list');
+		this.$block3Sld = $('.block-3__items-list.mobile-slider');
 		this.$block6Sld = $('.block-6__list');
+		this.$valuesMobSld = $('.values__mob-slider');
+		this.$teamSld = $('.team__inner_slider');
 		this.$sliderAnimBlock = $('[data-anim="slider"]');
 
 		this.init();
@@ -23596,6 +23599,78 @@ var Slider = function () {
 				}]
 			}));
 
+			this.$valuesMobSld.slick($.extend({}, defaultOptions, {
+				slidesToShow: 1.14,
+				slidesToScroll: 1,
+				responsive: [{
+					breakpoint: 1199,
+					settings: 'unslick'
+				}, {
+					breakpoint: 767,
+					settings: {
+						slidesToScroll: 2,
+						slidesToShow: 2.52
+					}
+				}, {
+					breakpoint: 319,
+					settings: 'unslick'
+				}]
+			}));
+
+			this.$teamSld.slick($.extend({}, defaultOptions, {
+				slidesToShow: 1.14,
+				slidesToScroll: 1,
+				responsive: [{
+					breakpoint: 1199,
+					settings: 'unslick'
+				}, {
+					breakpoint: 767,
+					settings: {
+						slidesToScroll: 1,
+						slidesToShow: 2.46
+					}
+				}, {
+					breakpoint: 319,
+					settings: 'unslick'
+				}]
+			}));
+
+			this.$sliderHasProgress.slick($.extend({}, defaultOptions, {
+				slidesToShow: 1.14,
+				slidesToScroll: 1,
+				dots: true,
+				dotsClass: 'team__inner-progress',
+				onInit: setProgress('.team__inner-progress'),
+				responsive: [{
+					breakpoint: 1199,
+					settings: 'unslick'
+				}, {
+					breakpoint: 767,
+					settings: {
+						slidesToScroll: 1,
+						slidesToShow: 2.46
+					}
+				}, {
+					breakpoint: 319,
+					settings: 'unslick'
+				}]
+			}));
+
+			function setProgress(progressClass) {
+
+				_this.$sliderHasProgress.each(function (i, slider) {
+
+					$(slider).on('init afterChange reInit', function (event, slick, currentSlide) {
+						var progressDot = $(progressClass).find('li');
+						var slideCount = slick.slideCount - 2;
+
+						var dotLength = 80 / slideCount;
+
+						progressDot.css('width', dotLength + 'px');
+					});
+				});
+			}
+
 			this.$mobileSlider.each(function (i, slider) {
 				var $slider = $(slider);
 
@@ -23614,27 +23689,75 @@ var Slider = function () {
 			var arrLeft = '<svg class="icon icon-arr-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="1.14 22.38 20.98 42.5 23.75 39.69 7.56 23.26 93.06 23.26 93.06 19.21 7.57 19.21 23.79 2.82 21 0 0 21.23 1.14 22.38"/>\n</svg>';
 			var arrRight = '<svg class="icon icon-arr-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93.06 42.5">\n\t\t<polygon points="91.92 20.12 72.08 0 69.31 2.82 85.5 19.24 0 19.24 0 23.29 85.49 23.29 69.27 39.68 72.06 42.5 93.06 21.27 91.92 20.12"/>\n</svg>';
 
-			this.$slider.each(function () {
-				var $slider = $(this).find('.slider__body');
+			var defaultOptions = {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				dots: false,
+				infinite: true,
+				arrows: true,
+				speed: 800,
+				cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+				useTransform: true,
+				adaptiveHeight: false,
+				accessibility: false,
+				swipe: true,
+				rows: 0,
+				prevArrow: '<button type="button" class="slider__btn slider-btn_prev">' + arrLeft + '</button>',
+				nextArrow: '<button type="button" class="slider__btn slider-btn_next">' + arrRight + '</button>'
+			};
 
-				$slider.slick({
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					dots: false,
-					infinite: true,
-					arrows: true,
-					speed: 800,
-					cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-					useTransform: true,
-					adaptiveHeight: false,
-					accessibility: false,
-					swipe: true,
-					rows: 0,
-					prevArrow: '<button type="button" class="slider__btn slider-btn_prev">' + arrLeft + '</button>',
-					nextArrow: '<button type="button" class="slider__btn slider-btn_next">' + arrRight + '</button>',
-					appendArrows: $('.slider__buttons', this),
-					onInit: bindEvents()
-				});
+			this.$slider.each(function (i, slider) {
+				var $slider = $(slider).find('.slider__body');
+				var $sliderHasNav = $(slider).hasClass('slider_has-nav');
+
+				if (!$sliderHasNav) {
+					$slider.slick($.extend({}, defaultOptions, {
+						appendArrows: $('.slider__buttons', this),
+						onInit: bindEvents()
+					}));
+				} else {
+					var $viewSlider = $(this).find('.slider__body');
+					var $sliderNav = $(this).find('.slider__nav');
+
+					$viewSlider.slick($.extend({}, defaultOptions, {
+						appendArrows: $('.slider__buttons', this),
+						onInit: bindEvents(),
+						asNavFor: '.slider__nav',
+						speed: 800,
+						cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)'
+					}));
+
+					$sliderNav.slick({
+						slidesToShow: 3,
+						slidesToScroll: 1,
+						speed: 800,
+						asNavFor: '.slider__body',
+						dots: false,
+						arrows: false,
+						focusOnSelect: true,
+						cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+						rows: 0
+					});
+				}
+
+				// $slider.slick({
+				// 	slidesToShow: 1,
+				// 	slidesToScroll: 1,
+				// 	dots: false,
+				// 	infinite: true,
+				// 	arrows: true,
+				// 	speed: 800,
+				// 	cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+				// 	useTransform: true,
+				// 	adaptiveHeight: false,
+				// 	accessibility: false,
+				// 	swipe: true,
+				// 	rows: 0,
+				// 	prevArrow: `<button type="button" class="slider__btn slider-btn_prev">${arrLeft}</button>`,
+				// 	nextArrow: `<button type="button" class="slider__btn slider-btn_next">${arrRight}</button>`,
+				// 	appendArrows: $('.slider__buttons', this),
+				// 	onInit: bindEvents()
+				// });
 
 				function bindEvents() {
 					$slider.on('init afterChange reInit', function (event, slick, currentSlide) {
@@ -27003,10 +27126,6 @@ var DefaultAnims = function () {
 
         tl.to($wire1, 2, { y: -217 }, 'all').to($wire2, 2, { y: -218 }, 'all').to($wire3, 2, { y: -158 }, 'all');
       }
-
-      // if (decor.classList.contains('hanging-decor_items')) {
-      //
-      // }
     }
   }, {
     key: 'fadeLeftAnim',
@@ -27079,8 +27198,7 @@ var ExpandList = function () {
     this.$list = $(el);
     this.$btn = this.$list.find('.expand-list__btn');
     this.$listInner = this.$list.find('.expand-list__inner');
-    this.$hiddenItem = this.$listInner.children('.is-hidden');
-    this.$visibleItem = this.$listInner.children().not('.is-hidden');
+    this.$visibleItem = this.$listInner.find('.expand-list__item').not('.is-hidden');
     this.tl = new _gsap.TimelineMax();
 
     if (this.$list.length) this.init();
@@ -27119,18 +27237,6 @@ var ExpandList = function () {
       var delay = i * 0.3;
 
       this.tl.to($(item), .8, { x: 0, autoAlpha: 1 }, delay);
-
-      // else {
-      //   const $mobHiddenItems = $listInner.children().eq(1).nextAll();
-      //
-      //   $mobHiddenItems.addClass(css.hidden);
-      //
-      //   const $mobVisibleItems = $listInner.children().not('.is-hidden');
-      //
-      //   tl
-      //    .staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3)
-      //    .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
-      // }
     }
   }, {
     key: 'btnAnim',
@@ -27144,6 +27250,7 @@ var ExpandList = function () {
 
       this.$btn.on('click tap', function (e) {
         e.preventDefault();
+        _this2.$hiddenItem = _this2.$listInner.find('.expand-list__item.is-hidden');
 
         _this2.tl.to(_this2.$btn, .4, { autoAlpha: 0, x: -50 }).set(_this2.$hiddenItem, { className: '-=' + _helpers.css.hidden }).to(_this2.$listInner, .4, { height: 'auto' }).staggerTo(_this2.$hiddenItem, .5, { x: 0, autoAlpha: 1 }, .2);
       });
@@ -27583,7 +27690,7 @@ var Block6 = function () {
     this.$offerText = this.$offer.find('.block-6__offer-text').children();
     this.$offerPic = this.$offer.find('.block-6__offer-pic');
     this.$list = this.$container.find('.block-6__list');
-    this.$itemMask = this.$list.find('.block-6__item-mask');
+    this.$item = this.$list.find('.block-6__item');
     this.$dotOfferTarget1 = this.$offer.find('.block-6__offer-title').find('h4');
     this.$dotOfferTarget2 = this.$offer.find('.block-6__offer-descr').find('p')[0];
     this.$dotOfferTarget3 = this.$offer.find('.block-6__offer-descr').find('p')[1];
@@ -27611,12 +27718,17 @@ var Block6 = function () {
         }
       });
 
-      if (this.$list.length) new _scrollAnim2.default({
-        el: _this.$list.get(0),
-        onStart: function onStart() {
-          _this.listAnim();
-        }
-      });
+      if (this.$list.length) {
+        this.$item.each(function (i, item) {
+          new _scrollAnim2.default({
+            el: item,
+            hook: 1,
+            onStart: function onStart() {
+              _this.itemsAnim(i, item);
+            }
+          });
+        });
+      }
     }
   }, {
     key: 'offerAnim',
@@ -27626,11 +27738,13 @@ var Block6 = function () {
       tl.to(this.$offer, 1, { className: '+=' + _helpers.css.visible }, '-=1').to(this.$offerPic, 1, { x: 0, autoAlpha: 1, ease: Power2.easeOut }, '+=.2').staggerTo(this.$offerText, 1, { x: 0, autoAlpha: 1, ease: Power2.easeOut }, 0.2, '-=.5');
     }
   }, {
-    key: 'listAnim',
-    value: function listAnim() {
+    key: 'itemsAnim',
+    value: function itemsAnim(i, item) {
       var tl = new _gsap.TimelineMax();
+      var $itemMask = $(item).find('.block-6__item-mask');
+      var delay = i * 0.4;
 
-      tl.staggerTo(this.$itemMask, 1, { width: '0' }, .5, '-=.3');
+      tl.to($itemMask, 1, { width: '0' }, delay);
     }
   }, {
     key: 'dot',
@@ -28207,7 +28321,7 @@ var Come = function () {
 
       new _scrollAnim2.default({
         el: this.$block.get(0),
-        hook: .7,
+        hook: .8,
         onEnter: function () {
           var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             return regeneratorRuntime.wrap(function _callee$(_context) {

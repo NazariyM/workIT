@@ -8,8 +8,7 @@ class ExpandList {
     this.$list = $(el);
     this.$btn = this.$list.find('.expand-list__btn');
     this.$listInner = this.$list.find('.expand-list__inner');
-    this.$hiddenItem = this.$listInner.children('.is-hidden');
-    this.$visibleItem = this.$listInner.children().not('.is-hidden');
+    this.$visibleItem = this.$listInner.find('.expand-list__item').not('.is-hidden');
     this.tl = new TimelineMax();
 
     if (this.$list.length) this.init();
@@ -45,18 +44,6 @@ class ExpandList {
 
     this.tl
       .to($(item), .8, { x: 0, autoAlpha: 1 }, delay);
-
-    // else {
-    //   const $mobHiddenItems = $listInner.children().eq(1).nextAll();
-    //
-    //   $mobHiddenItems.addClass(css.hidden);
-    //
-    //   const $mobVisibleItems = $listInner.children().not('.is-hidden');
-    //
-    //   tl
-    //    .staggerTo($mobVisibleItems, 1, { x: 0, autoAlpha: 1 }, .3)
-    //    .to($btn, .5, { x: 0, autoAlpha: 1 }, '-=.5');
-    // }
   }
 
   btnAnim() {
@@ -66,6 +53,7 @@ class ExpandList {
   showMore() {
     this.$btn.on('click tap', (e) => {
       e.preventDefault();
+      this.$hiddenItem = this.$listInner.find('.expand-list__item.is-hidden');
 
       this.tl
         .to(this.$btn, .4, { autoAlpha: 0, x: -50 })

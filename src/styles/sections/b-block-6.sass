@@ -57,19 +57,32 @@
       +xs
         padding: 25px 10px 0
         margin-top: 0
+    &-title
+      transform: translateX(-50px)
+      opacity: 0
+      margin-bottom: 25px
+      +xs
+        margin-bottom: 14px
     h4
       height: 42px
-      margin-bottom: 25px
       +h4
       +xs
         height: 30px
-        margin-bottom: 14px
         font-size: 24px
         line-height: 1.2
+    &-sub-title
+      transform: translateX(-50px)
+      opacity: 0
+      margin-bottom: 20px
+      text-transform: none
     &-pic
       flex: 1 1 auto
       transform: translateX(-100px)
       opacity: 0
+    &-slider
+      flex: 0 1 percentage(550/1099)
+      max-width: 550px
+      padding-bottom: 90px
     &-img
       +cover
       +ratio(549, 395)
@@ -77,9 +90,6 @@
         +ratio(709, 509)
       +xs
         +ratio(290, 215)
-    &-title
-      transform: translateX(-50px)
-      opacity: 0
       
     &-descr
       transform: translateX(-50px)
@@ -130,6 +140,9 @@
     .slick-track
       +md
         padding-bottom: 20px
+  &__list_more-items &__item
+      padding: 0 20px 83px
+  
   &__item
     position: relative
     float: left
@@ -158,6 +171,8 @@
       +cover-img
       +xs
         height: 200px
+    &-list
+      margin-top: 20px
     &-btn
       margin-bottom: -25px
       +xs

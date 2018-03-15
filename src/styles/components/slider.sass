@@ -6,7 +6,6 @@
     &.slick-initialized
       display: block
   &__item
-    //+gpu
     h4
       margin-bottom: 18px
       +h4
@@ -25,6 +24,7 @@
       padding-left: 60px
       +md
         padding-left: 0
+        
   &__text
     #{$parent}_full &
       float: left
@@ -106,9 +106,6 @@
         margin: 34px 0 0 120px
       +xs
         margin: 26px 0 0
-    //&.has-anim
-      opacity: 0
-      transform: translateX(-50px)
   &__buttons
     display: flex
     align-items: flex-end
@@ -168,6 +165,32 @@
       letter-spacing: 1.2px
       color: $color3
       
+  &__nav
+    display: none
+    &.slick-initialized
+      display: block
+    .slick-list
+      margin: 0 -9px
+    &-item
+      margin: 0 9px
+      +cover-img
+      height: 130px
+      cursor: pointer
+      &.slick-current
+        pointer-events: none
+        cursor: default
+  
+  &_has-nav
+    overflow: hidden
+  &_has-nav &__body
+    margin-bottom: 20px
+  &_has-nav &__item
+    height: 395px
+    +cover-img
+  &_has-nav &__controls
+    left: 0
+    bottom: 25px
+    
 .mobile-slider
   +md
     display: none

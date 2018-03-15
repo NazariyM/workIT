@@ -17,7 +17,7 @@ class Come {
 
     new ScrollAnim({
       el: this.$block.get(0),
-      hook: .7,
+      hook: .8,
       onEnter: async () => {
         await _this.startAnim();
       }

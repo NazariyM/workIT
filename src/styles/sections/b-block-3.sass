@@ -36,6 +36,41 @@
       display: none!important
       +xs
         display: block!important
+  &__items-list_no-slider &__item + &__item
+    margin-top: 10px
+  &__items-list_no-slider &__item h3
+    +xs
+      height: auto
+      margin-bottom: 23px
+      letter-spacing: 0.05em
+      max-width: none
+  &__items-list_no-slider &__item p
+    +xs
+      height: auto
+  &__items-list_no-slider &__item_left &__item-text,
+  &__items-list_no-slider &__item_right &__item-text
+    +xs
+      margin: 0 0 27px!important
+  &__items-list_no-slider &__item_left &__item-media,
+  &__items-list_no-slider &__item_right &__item-media
+    +xs
+      +ratio(290, 165)
+  &__items-list_no-slider &__item_left &__item-count
+    +xs
+      top: -14px
+      left: 1px
+  &__items-list_no-slider &__item_right &__item-count
+    +xs
+      top: -7px
+      left: -2px
+  &__items-list_no-slider &__item:nth-child(3) &__item-count
+    +xs
+      top: -5px
+      left: 1px
+  &__items-list_no-slider &__item:nth-child(4) &__item-count
+    +xs
+      top: -2px
+      left: -1px
   &__item
     max-width: 1220px
     $parent: &
@@ -155,7 +190,6 @@
         +md
           flex: 0 1 percentage(618/768)
           margin-right: auto
-          //margin-left: -30px
           +ratio(618, 395)
         +xs
           flex: 1 0 auto
@@ -169,7 +203,6 @@
           flex: 0 1 percentage(494/768)
           +ratio(494, 390)
           margin-left: auto
-          //margin-right: -30px
         +xs
           flex: 1 0 auto
           margin: 0 auto

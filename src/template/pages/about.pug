@@ -2,6 +2,7 @@ extends ../extend/default
 
 block variables
   - var title = 'About page';
+  - var footer = {classMod: '_entry'};
 
 block main
   main.content(data-page='events')
@@ -19,7 +20,7 @@ block main
     include ../sections/screen
 
     //begin block-2
-    +b.SECTION.block-2
+    +b.SECTION.block-2._medium._tablet-big-pic
       +e.container.container
         +e.top.block-top.block-top_md
           +b.block-label
@@ -43,16 +44,14 @@ block main
               | Именно тогда родилась идея создать что-то подобное и в Украине - так появился
               b Work IT
 
-
           +e.img-wrap.img-hover
             +e.img.img-hover__item(style='background-image: url(static/img/block-2_3.jpg)')
     //end block-2
 
-
     //begin block-2
     +b.SECTION.block-2._has-video
       .container.container_md
-        +e.top.block-top.block-top_md
+        +e.top.block-top
           +b.block-label
             +e.P ABOUT US
           +e.title.block-title.has-selection._green
@@ -117,23 +116,30 @@ block main
         description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
         }]
 
+    -team = {innerClass: 'mobile-slider _has-progress _green-large'};
     include ../sections/team
 
     //begin values
-    +b.SECTION.values
+    +b.SECTION.values._about
       .container.container_md
         +e.top.block-top
           +b.block-label
             +e.P VALUES
+
           +e.title.block-title.has-selection._green
             +e.H2 Самые главные наши
               b ценности
 
+          +b.hanging-decor._fun
+            +e.wire
+            +e.wire
+            +e.wire
+
         +b.expand-list.js-expand-list
-          +e.inner
+          +e.inner.values__mob-slider.mobile-slider._white
             .values__item.expand-list__item
               .values__item-img.img-hover
-                img.img-hover__item(src=`static/img/values_1.jpg` alt='image')
+                img(src=`static/img/values_1.jpg` alt='image')
               h5 Сообщество
               p Это все об обществе. Наше сообщество определяет пространство. Они
                 b принимают решение
@@ -150,7 +156,7 @@ block main
 
             .values__item.expand-list__item
               .values__item-img.img-hover
-                img.img-hover__item(src=`static/img/values_2.jpg` alt='image')
+                img(src=`static/img/values_2.jpg` alt='image')
               h5 Эффективность
               p Мы создаем условия для каждого, чтобы
                 b максимизировать
@@ -163,7 +169,7 @@ block main
 
             .values__item.expand-list__item
               .values__item-img.img-hover
-                img.img-hover__item(src=`static/img/values_3.jpg` alt='image')
+                img(src=`static/img/values_3.jpg` alt='image')
               h5 Здоровье
               p Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни через
                 b сбалансированную диету
@@ -175,7 +181,7 @@ block main
 
             .values__item.expand-list__item
               .values__item-img.img-hover
-                img.img-hover__item(src=`static/img/values_4.jpg` alt='image')
+                img(src=`static/img/values_4.jpg` alt='image')
               h5 Веселье
               p
                 b Размер рабочего пространства

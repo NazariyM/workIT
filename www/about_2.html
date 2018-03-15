@@ -36,7 +36,6 @@
     <script>
       document.createElement('picture');
     </script>
-    <!-- Header-->
     <!--begin header-->
     <header class="header">
       <div class="header__inner">
@@ -347,7 +346,7 @@
               </h2>
             </div>
           </div>
-          <div class="block-3__items-list mobile-slider mobile-slider_white">
+          <div class="block-3__items-list block-3__items-list_no-slider">
             <div class="block-3__item block-3__item_left">
               <article class="block-3__item-inner">
                 <div class="block-3__item-media img-hover">
@@ -381,7 +380,7 @@
                   </p>
                 </div>
                 <div class="block-3__item-media img-hover">
-                  <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_6.jpg);"></div>
+                  <div class="block-3__item-img" style="background-image: url(static/img/block-3_6.jpg);"></div>
                   <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)-->
                   <!--	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
                 </div>
@@ -393,7 +392,7 @@
             <div class="block-3__item block-3__item_left">
               <article class="block-3__item-inner">
                 <div class="block-3__item-media img-hover">
-                  <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_7.jpg);"></div>
+                  <div class="block-3__item-img" style="background-image: url(static/img/block-3_7.jpg);"></div>
                   <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)-->
                   <!--	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
                 </div>
@@ -418,7 +417,7 @@
                     <b>“умному” зонированию</b> пространства.</p>
                 </div>
                 <div class="block-3__item-media img-hover">
-                  <div class="block-3__item-img img-hover__item" style="background-image: url(static/img/block-3_8.jpg);"></div>
+                  <div class="block-3__item-img" style="background-image: url(static/img/block-3_8.jpg);"></div>
                   <!--+e.VIDEO(playsinline autoplay loop volume='0' onloadedmetadata='this.muted = true' preload='none' data-mobile-disable)-->
                   <!--	+e.SOURCE(src='static/video/video-sample.mp4' type='video/mp4')-->
                 </div>
@@ -447,184 +446,126 @@
                 <b>Команда</b> &nbsp;workit</h2>
             </div>
           </div>
-          <div class="team__inner">
-            <div class="team__member" data-items-anim="fade-left">
-              <div class="team__member-pic">
-                <img src="static/img/team_1.jpg" alt="image" title="" />
+          <div class="team__expand-list js-expand-list">
+            <div class="team__inner mobile-slider mobile-slider_has-progress mobile-slider_green-large expand-list__inner">
+              <div class="team__member expand-list__item">
+                <div class="team__member-pic img-hover">
+                  <img src="static/img/team_1.jpg" alt="image" title="" />
+                </div>
+                <div class="team__member-name h4">
+                  <h4>Иван Иванов</h4>
+                </div>
+                <div class="team__member-pos h5">
+                  <h5>CEO Workit</h5>
+                </div>
+                <div class="team__member-descr">
+                  <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+                </div>
               </div>
-              <div class="team__member-name h4">
-                <h4>Иван Иванов</h4>
+              <div class="team__member expand-list__item">
+                <div class="team__member-pic img-hover">
+                  <img src="static/img/team_2.jpg" alt="image" title="" />
+                </div>
+                <div class="team__member-name h4">
+                  <h4>Анна Градиль</h4>
+                </div>
+                <div class="team__member-pos h5">
+                  <h5>CEO Workit</h5>
+                </div>
+                <div class="team__member-descr">
+                  <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
+                </div>
               </div>
-              <div class="team__member-pos h5">
-                <h5>CEO Workit</h5>
+              <div class="team__member expand-list__item">
+                <div class="team__member-pic img-hover">
+                  <img src="static/img/team_3.jpg" alt="image" title="" />
+                </div>
+                <div class="team__member-name h4">
+                  <h4>Мирослава Захарчук</h4>
+                </div>
+                <div class="team__member-pos h5">
+                  <h5>CEO Workit</h5>
+                </div>
+                <div class="team__member-descr">
+                  <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+                </div>
               </div>
-              <div class="team__member-descr">
-                <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+              <div class="team__member expand-list__item">
+                <div class="team__member-pic img-hover">
+                  <img src="static/img/team_4.jpg" alt="image" title="" />
+                </div>
+                <div class="team__member-name h4">
+                  <h4>Мария Касс</h4>
+                </div>
+                <div class="team__member-pos h5">
+                  <h5>CEO Workit</h5>
+                </div>
+                <div class="team__member-descr">
+                  <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
+                </div>
+              </div>
+              <div class="team__member expand-list__item">
+                <div class="team__member-pic img-hover">
+                  <img src="static/img/team_3.jpg" alt="image" title="" />
+                </div>
+                <div class="team__member-name h4">
+                  <h4>Иван Иванов</h4>
+                </div>
+                <div class="team__member-pos h5">
+                  <h5>CEO Workit</h5>
+                </div>
+                <div class="team__member-descr">
+                  <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+                </div>
+              </div>
+              <div class="team__member expand-list__item">
+                <div class="team__member-pic img-hover">
+                  <img src="static/img/team_2.jpg" alt="image" title="" />
+                </div>
+                <div class="team__member-name h4">
+                  <h4>Анна Градиль</h4>
+                </div>
+                <div class="team__member-pos h5">
+                  <h5>CEO Workit</h5>
+                </div>
+                <div class="team__member-descr">
+                  <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
+                </div>
+              </div>
+              <div class="team__member expand-list__item">
+                <div class="team__member-pic img-hover">
+                  <img src="static/img/team_5.jpg" alt="image" title="" />
+                </div>
+                <div class="team__member-name h4">
+                  <h4>Мирослава Захарчук</h4>
+                </div>
+                <div class="team__member-pos h5">
+                  <h5>CEO Workit</h5>
+                </div>
+                <div class="team__member-descr">
+                  <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
+                </div>
+              </div>
+              <div class="team__member expand-list__item">
+                <div class="team__member-pic img-hover">
+                  <img src="static/img/team_6.jpg" alt="image" title="" />
+                </div>
+                <div class="team__member-name h4">
+                  <h4>Мария Касс</h4>
+                </div>
+                <div class="team__member-pos h5">
+                  <h5>CEO Workit</h5>
+                </div>
+                <div class="team__member-descr">
+                  <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
+                </div>
               </div>
             </div>
-            <div class="team__member" data-items-anim="fade-left">
-              <div class="team__member-pic">
-                <img src="static/img/team_2.jpg" alt="image" title="" />
-              </div>
-              <div class="team__member-name h4">
-                <h4>Анна Градил</h4>
-              </div>
-              <div class="team__member-pos h5">
-                <h5>CEO Workit</h5>
-              </div>
-              <div class="team__member-descr">
-                <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
-              </div>
-            </div>
-            <div class="team__member" data-items-anim="fade-left">
-              <div class="team__member-pic">
-                <img src="static/img/team_3.jpg" alt="image" title="" />
-              </div>
-              <div class="team__member-name h4">
-                <h4>Мирослава Захарчук</h4>
-              </div>
-              <div class="team__member-pos h5">
-                <h5>CEO Workit</h5>
-              </div>
-              <div class="team__member-descr">
-                <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
-              </div>
-            </div>
-            <div class="team__member" data-items-anim="fade-left">
-              <div class="team__member-pic">
-                <img src="static/img/team_4.jpg" alt="image" title="" />
-              </div>
-              <div class="team__member-name h4">
-                <h4>Мария Касс</h4>
-              </div>
-              <div class="team__member-pos h5">
-                <h5>CEO Workit</h5>
-              </div>
-              <div class="team__member-descr">
-                <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
-              </div>
-            </div>
-            <div class="team__member" data-items-anim="fade-left">
-              <div class="team__member-pic">
-                <img src="static/img/team_3.jpg" alt="image" title="" />
-              </div>
-              <div class="team__member-name h4">
-                <h4>Иван Иванов</h4>
-              </div>
-              <div class="team__member-pos h5">
-                <h5>CEO Workit</h5>
-              </div>
-              <div class="team__member-descr">
-                <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
-              </div>
-            </div>
-            <div class="team__member" data-items-anim="fade-left">
-              <div class="team__member-pic">
-                <img src="static/img/team_2.jpg" alt="image" title="" />
-              </div>
-              <div class="team__member-name h4">
-                <h4>Анна Градил</h4>
-              </div>
-              <div class="team__member-pos h5">
-                <h5>CEO Workit</h5>
-              </div>
-              <div class="team__member-descr">
-                <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
-              </div>
-            </div>
-            <div class="team__member" data-items-anim="fade-left">
-              <div class="team__member-pic">
-                <img src="static/img/team_5.jpg" alt="image" title="" />
-              </div>
-              <div class="team__member-name h4">
-                <h4>Мирослава Захарчук</h4>
-              </div>
-              <div class="team__member-pos h5">
-                <h5>CEO Workit</h5>
-              </div>
-              <div class="team__member-descr">
-                <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.</p>
-              </div>
-            </div>
-            <div class="team__member" data-items-anim="fade-left">
-              <div class="team__member-pic">
-                <img src="static/img/team_6.jpg" alt="image" title="" />
-              </div>
-              <div class="team__member-name h4">
-                <h4>Мария Касс</h4>
-              </div>
-              <div class="team__member-pos h5">
-                <h5>CEO Workit</h5>
-              </div>
-              <div class="team__member-descr">
-                <p>Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.</p>
-              </div>
-            </div>
+            <button class="team__expand-btn expand-list__btn btn btn_line" type="button">хочу еще</button>
           </div>
         </div>
       </section>
       <!--end team-->
-      <!--begin values-->
-      <section class="values">
-        <div class="container container_md">
-          <div class="values__top block-top">
-            <div class="block-label">
-              <p>VALUES</p>
-            </div>
-            <div class="values__title block-title has-selection has-selection_green">
-              <h2>Самые главные наши
-                <b>ценности</b>
-              </h2>
-            </div>
-          </div>
-          <div class="expand-list js-expand-list">
-            <div class="expand-list__inner">
-              <div class="values__item expand-list__item">
-                <div class="values__item-img img-hover">
-                  <img class="img-hover__item" src="static/img/values_1.jpg" alt="image">
-                </div>
-                <h5>Сообщество</h5>
-                <p>Это все об обществе. Наше сообщество определяет пространство. Они
-                  <b>принимают решение</b> о
-                  <b>дизайне</b> офиса,
-                  <b>расписании</b> мероприятий и даже
-                  <b>тип кофе,</b>который мы покупаем для пространства</p>
-              </div>
-              <div class="values__item expand-list__item">
-                <div class="values__item-img img-hover">
-                  <img class="img-hover__item" src="static/img/values_2.jpg" alt="image">
-                </div>
-                <h5>Эффективность</h5>
-                <p>Мы создаем условия для каждого, чтобы
-                  <b>максимизировать</b> их
-                  <b>производительность</b> и эффективность. Мы предлагаем дополнительные услуги и
-                  <b>учебные семинары</b>
-                </p>
-              </div>
-              <div class="values__item expand-list__item">
-                <div class="values__item-img img-hover">
-                  <img class="img-hover__item" src="static/img/values_3.jpg" alt="image">
-                </div>
-                <h5>Здоровье</h5>
-                <p>Мы предлагаем нашим жителям возможность сохранить здоровый образ жизни через
-                  <b>сбалансированную диету</b> (выбор продуктов питания) и
-                  <b>физическую активность</b> внутри и за пределами коворкинга</p>
-              </div>
-              <div class="values__item expand-list__item">
-                <div class="values__item-img img-hover">
-                  <img class="img-hover__item" src="static/img/values_4.jpg" alt="image">
-                </div>
-                <h5>Веселье</h5>
-                <p>
-                  <b>Размер рабочего пространства</b> имеет значение. Поэтому мы позаботились о том, чтобы каждое рабочее место занимало как
-                  <b>минимум 7 кв м.</b>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end values-->
-      </section>
       <!--begin come-->
       <section class="come">
         <div class="come__inner">
@@ -809,7 +750,6 @@
         </form>
       </div>
     </div>
-    <!-- Footer-->
     <!--begin footer-->
     <footer class="footer">
       <div class="footer__container container container container_md">

@@ -13,19 +13,22 @@ if team ? team : team = []
           = ' '
           | &nbsp;workit
 
-    +e.inner
-      mixin teamMember(member)
-        +e.member(data-items-anim='fade-left')
-          +e.member-pic
-            +e.IMG(src=`static/img/${member.pic}.jpg` alt='image')
-          +e.member-name.h4
-            +e.H4= member.name
-          +e.member-pos.h5
-            +e.H5= member.position
-          +e.member-descr
-            +e.P= member.description
+    +e.expand-list.js-expand-list
+      +e.inner(class= team.innerClass ? team.innerClass : '').expand-list__inner
+        mixin teamMember(member)
+          +e.member.expand-list__item
+            +e.member-pic.img-hover
+              +e.IMG(src=`static/img/${member.pic}.jpg` alt='image')
+            +e.member-name.h4
+              +e.H4= member.name
+            +e.member-pos.h5
+              +e.H5= member.position
+            +e.member-descr
+              +e.P= member.description
 
-      each member in membersList
-        +teamMember(member)
+        each member in membersList
+          +teamMember(member)
+
+      +e.BUTTON.expand-btn.expand-list__btn.btn._line(type='button') хочу еще
 
 //end team
