@@ -1,8 +1,7 @@
 import {TimelineMax, TweenMax} from 'gsap';
-import ScrollAnim from '../modules/dev/animation/scrollAnim';
-// import {preloader} from './preloader';
-import {Resp} from '../modules/dev/_helpers';
 import slick from 'slick-carousel';
+import ScrollAnim from '../modules/dev/animation/scrollAnim';
+import {Resp} from '../modules/dev/_helpers';
 import Dot from '../components/dot';
 
 class companies {

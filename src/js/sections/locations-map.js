@@ -19,6 +19,8 @@ class LocationsMap {
     this.$activeMarker = this.$map.data('marker-active') - 1;
     this.$title = $('.locations__info-title');
     this.$street = $('.locations__info-street');
+    this.$tel = $('.locations__info-tel');
+    this.$telLink = this.$tel.find('a');
     this.markersCount = 10;
     const _this = this;
 
@@ -365,6 +367,7 @@ class LocationsMap {
       const lng = parseFloat(markersData[i][3]);
       const title = markersData[i][0];
       const street = markersData[i][1];
+      const tel = markersData[i][4].replace(/ /g,'');
       const position = new google.maps.LatLng(lat, lng);
       const icon = Resp.isMobile ? { url: _this.$markerImg, scaledSize: new google.maps.Size(32, 36) } : { url: _this.$markerImg, scaledSize: new google.maps.Size(42, 46) };
       const iconZoomed = Resp.isMobile ? { url: _this.$markerImg, scaledSize: new google.maps.Size(36, 40) } : { url: _this.$markerImg, scaledSize: new google.maps.Size(60, 64) };
@@ -386,9 +389,12 @@ class LocationsMap {
 
           TweenMax.fromTo(_this.$title, .7, { y: -25, autoAlpha: 0 }, { ease: Elastic.easeOut.config(1, 0.3), y: 0, autoAlpha: 1 });
           TweenMax.fromTo(_this.$street, .7, { y: -25, autoAlpha: 0 }, { ease: Elastic.easeOut.config(1, 0.3), y: 0, autoAlpha: 1 });
+          TweenMax.fromTo(_this.$tel, .7, { y: -25, autoAlpha: 0 }, { ease: Elastic.easeOut.config(1, 0.3), y: 0, autoAlpha: 1 });
 
           _this.$title.text(title);
           _this.$street.text(street);
+          _this.$telLink.text(tel.replace(/^(.{3})(.{3})(.{2})(.*)$/, "$1 $2 $3 $4"));
+          _this.$telLink.attr('href', `tel:${tel}`);
 
           this.setIcon(iconZoomed);
           this.setAnimation(google.maps.Animation.BOUNCE);

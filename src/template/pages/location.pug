@@ -1,0 +1,208 @@
+extends ../extend/default
+
+block variables
+  - var title = 'Location page';
+  - var locationMap = true;
+  - var footer = {classMod: '_entry'};
+
+block main
+  main.content(data-page='location')
+
+    -
+      screen = {
+      classMod: '_location',
+      title: 'Workit на Нивках',
+      subTitle: 'Невероятно уютное пространство по адресу улица Щербакова 2',
+      maskType: 'image',
+      maskImg: '7',
+      maskBlur: '8',
+      maskImgOpacity: '0.9'
+      }
+    include ../sections/screen
+
+    //begin block-3
+    +b.SECTION.block-3._photos
+      +e.container.container
+        +e.top.block-top.block-top_md
+          +e.label.block-label
+            +e.P networking
+          +e.title.block-title.has-selection._green
+            +e.H2 Workit
+              b это сеть
+              = ' '
+              | пространства для работы
+          +e.sub-title.block-sub-title
+            +e.H5
+              b Создавайте
+              = ' '
+              | у нас  фантастические продукты,
+              b знакомтесь
+              = ' '
+              | с новыми людьми, находите
+              b клиентов
+              = ' '
+              | и
+              b друзей,
+              = ' '
+              | мы предлагаем
+              b идеальное место
+              = ' '
+              | для совместной работы
+
+        +e.photos.mobile-slider._white
+          +e.photos-wrap._1.img-hover(data-anim='fade-left' data-anim-duration='1')
+            +e.photos-img.img-hover__item(style='background-image: url(static/img/block-3_photo-1.jpg)')
+          +e.photos-wrap._2.img-hover(data-anim='fade-right' data-anim-duration='1')
+            +e.photos-img.img-hover__item(style='background-image: url(static/img/block-3_photo-2.jpg)')
+
+          +e.photos-wrap._3.img-hover(data-anim='fade-left' data-anim-duration='1')
+            +e.photos-img.img-hover__item(style='background-image: url(static/img/block-3_photo-3.jpg)')
+          +e.photos-wrap._4.img-hover(data-anim='fade-right' data-anim-duration='1')
+            +e.photos-img.img-hover__item(style='background-image: url(static/img/block-3_photo-4.jpg)')
+
+          +e.photos-wrap._5.img-hover(data-anim='fade-left' data-anim-duration='1')
+            +e.photos-img.img-hover__item(style='background-image: url(static/img/block-3_photo-1.jpg)')
+          +e.photos-wrap._6.img-hover(data-anim='fade-right' data-anim-duration='1')
+            +e.photos-img.img-hover__item(style='background-image: url(static/img/block-3_photo-2.jpg)')
+
+        +e.lines
+          +e.line._left
+          +e.line._right
+    //end block-3
+
+    //begin benefits
+    +b.SECTION.benefits.desk-only
+      +e.container.container
+        +e.top.block-top
+          +e.label.block-label
+            +e.P consist of
+          +e.title.block-title.has-selection._black
+            +e.H2
+              b Преимущества
+              = ' '
+              | локации
+
+        +e.content.expand-list.js-expand-list
+          .expand-list__inner
+            -
+              benefitsList = [
+              'Отдых в парке',
+              'Кафе в здании',
+              'Гамаки и фрисби',
+              'Велопарковка'
+              ]
+            for benefitsItemText, index in benefitsList
+              +e.item.expand-list__item
+                +e.item-img.img-hover
+                  +e.IMG(src=`static/img/benefits_${index + 13}.jpg` alt='image')
+                +e.H5= benefitsItemText
+
+            //+e.item.expand-list__item.is-hidden
+            //  +e.item-img.img-hover
+            //    +e.IMG(src=`static/img/benefits_2.jpg` alt='image')
+            //  +e.H5 Зоны развлечений
+            //
+            //+e.item.expand-list__item.is-hidden
+            //  +e.item-img.img-hover
+            //    +e.IMG(src=`static/img/benefits_3.jpg` alt='image')
+            //  +e.H5 Уборка
+            //
+            //+e.item.expand-list__item.is-hidden
+            //  +e.item-img.img-hover
+            //    +e.IMG(src=`static/img/benefits_6.jpg` alt='image')
+            //  +e.H5 Использование оргтехники
+            //
+            //+e.item.expand-list__item.is-hidden
+            //  +e.item-img.img-hover
+            //    +e.IMG(src=`static/img/benefits_1.jpg` alt='image')
+            //  +e.H5 Kухня
+
+          //+b.BUTTON.expand-list__btn.btn._line._line-white(type='button') хочу еще
+        //end benefits
+
+    //begin block-6
+    +b.SECTION.block-6._location.desk-only
+      .container.container_md
+        +e.top.block-top._has-hanging
+          +e.label.block-label
+            +e.P prices
+          +e.title.block-title.has-selection._green
+            +e.H2
+              b Тарифы
+              = ' '
+              | локации
+
+        +e.list._more-items.mobile-slider._white
+          -
+            block6List = [{
+            title: 'Место в лаунж зоне',
+            img: 1,
+            descr: 'Свободное атмосферное место в зоне общего пользования.'
+            }, {
+            title: 'Hot desk',
+            img: 2,
+            descr: 'Свободное рабочее место в open space. Идеально подойдет для тех, кто не любит сидеть на одном месте.'
+            }, {
+            title: 'Desk priority',
+            img: 3,
+            descr: 'Персональное рабочее место в open space. Для тех, кто любит создавать свое рабочее место.'
+            }, {
+            title: 'Место в лаунж зоне',
+            img: 4,
+            descr: 'Свободное атмосферное место в зоне общего пользования.'
+            }, {
+            title: 'Бесплатный день',
+            img: 5,
+            descr: 'У нас есть пробный бесплатный день. Приходи и приятно удивись сам!'
+            }]
+          mixin block6Item(item)
+            +e.item
+              +e.item-mask
+              +e.item-img.img-hover
+                +e.IMG(src=`static/img/block-6_${item.img}.jpg` alt='image')
+              +e.item-text
+                +e.item-title.h4
+                  +e.H4= item.title
+                +e.P= item.descr
+                +e.price._item
+                  +e.H5 Стоимость от:
+                    span 200$
+                +e.BUTTON.item-btn.btn._green(type='button' data-popup-target='enrollPopup')
+                  span.btn__text забронировать
+          each item in block6List
+            +block6Item(item)
+        //end block-6
+
+      -
+        membersList = [{
+          pic: 'team_1',
+          name: 'Иван Иванов',
+          position: 'CEO Workit',
+          description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
+        }, {
+          pic: 'team_2',
+          name: 'Анна Градиль',
+          position: 'CEO Workit',
+          description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
+        }, {
+          pic: 'team_3',
+          name: 'Мирослава Захарчук',
+          position: 'CEO Workit',
+          description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
+        }, {
+          pic: 'team_4',
+          name: 'Мария Касс',
+          position: 'CEO Workit',
+          description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
+        }]
+    -team = {innerClass: '_slider mobile-slider _green-large'};
+    include ../sections/team
+
+    -come = {maskType: 'image', maskVideo: false}
+    include ../sections/come
+
+    -locations = {classMod: 'desk-only'}
+    include ../sections/locations
+
+    -subscrClass = '_contacts desk-only'
+    include ../sections/subscr

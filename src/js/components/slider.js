@@ -1,7 +1,8 @@
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import { TweenMax, TimelineMax } from 'gsap';
 import slick from 'slick-carousel';
-import {css, Resp, detectIE } from '../modules/dev/_helpers';
+import { css, Resp, detectIE } from '../modules/dev/_helpers';
+import { Block5API } from '../sections/b-block-5';
 
 class Slider {
 
@@ -11,6 +12,7 @@ class Slider {
     this.$sliderHasProgress = $('.mobile-slider_has-progress');
     this.$mobSliderDouble = $('.mobile-slider_double');
     this.$block3Sld = $('.block-3__items-list.mobile-slider');
+    this.$block3Photos = $('.block-3__photos');
     this.$block6Sld = $('.block-6__list');
     this.$valuesMobSld = $('.values__mob-slider');
     this.$teamSld = $('.team__inner_slider');
@@ -60,6 +62,24 @@ class Slider {
 					}
 				}]
 		}));
+
+    this.$block3Photos.slick($.extend({}, defaultOptions, {
+      slidesToShow: 1.14,
+      slidesToScroll: 1,
+      responsive: [{
+        breakpoint: 1199,
+        settings: 'unslick'
+      },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1.23
+          }
+        }, {
+          breakpoint: 319,
+          settings: 'unslick'
+	      }]
+    }));
 
 		this.$block3Sld.slick($.extend({}, defaultOptions, {
 			slidesToShow: 1.14,
@@ -206,15 +226,17 @@ class Slider {
       if (!$sliderHasNav) {
         $slider.slick($.extend({}, defaultOptions, {
           appendArrows: $('.slider__buttons', this),
-          onInit: bindEvents()
+          onInit: _this.countSlides($slider, true),
         }));
-      } else {
+      }
+
+      if ($sliderHasNav) {
         const $viewSlider = $(this).find('.slider__body');
         const $sliderNav = $(this).find('.slider__nav');
 
         $viewSlider.slick($.extend({}, defaultOptions, {
           appendArrows: $('.slider__buttons', this),
-          onInit: bindEvents(),
+          onInit: _this.countSlides($viewSlider, false),
           asNavFor: '.slider__nav',
           speed: 800,
           cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)'
@@ -233,52 +255,55 @@ class Slider {
         });
       }
 
-			// $slider.slick({
-			// 	slidesToShow: 1,
-			// 	slidesToScroll: 1,
-			// 	dots: false,
-			// 	infinite: true,
-			// 	arrows: true,
-			// 	speed: 800,
-			// 	cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-			// 	useTransform: true,
-			// 	adaptiveHeight: false,
-			// 	accessibility: false,
-			// 	swipe: true,
-			// 	rows: 0,
-			// 	prevArrow: `<button type="button" class="slider__btn slider-btn_prev">${arrLeft}</button>`,
-			// 	nextArrow: `<button type="button" class="slider__btn slider-btn_next">${arrRight}</button>`,
-			// 	appendArrows: $('.slider__buttons', this),
-			// 	onInit: bindEvents()
-			// });
+      Block5API.prepareSlider().then(() => {
+        const $preparedSld = $(this).find('.block-5__list-slider');
 
-			function bindEvents() {
-				$slider.on('init afterChange reInit', (event, slick, currentSlide) => {
-					const $currentCount = $slider.siblings('.slider__controls').find('.slider__count-current');
-					const $allCount = $slider.siblings('.slider__controls').find('.slider__count-all');
-					let i = (currentSlide ? currentSlide : 0) + 1;
+        $preparedSld.slick($.extend({}, defaultOptions, {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          appendArrows: $('.slider__buttons', this),
+          onInit: _this.countSlides($preparedSld, false),
+          responsive: [{
+            breakpoint: 1199,
+            settings: 'unslick'
+          }]
+        }));
 
-					// count slides
-					$currentCount.text(`0${i}`);
-					$allCount.text(`0${slick.slideCount}`);
+        _this.decorAnim($preparedSld);
+      });
 
-					_this.playVideo($slider);
+      _this.decorAnim($slider);
 
-				});
-			}
-
-			$slider.on('beforeChange', () => {
-				const $countDecor = $slider.siblings('.slider__controls').find('.slider__count-decor');
-				const animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
-
-				$countDecor.addClass(css.hasAnim).one(animEnd, function () {
-					$(this).removeClass(css.hasAnim);
-				});
-
-				_this.playVideo($slider, true);
-
-			});
 		});
+	}
+
+	countSlides(slider, video = true) {
+    slider.on('init afterChange reInit', (event, slick, currentSlide) => {
+      const $currentCount = slider.siblings('.slider__controls').find('.slider__count-current');
+      const $allCount = slider.siblings('.slider__controls').find('.slider__count-all');
+      let i = (currentSlide ? currentSlide : 0) + 1;
+
+      $currentCount.text(`0${i}`);
+      $allCount.text(`0${slick.slideCount}`);
+
+      if (video) this.playVideo(slider);
+
+    });
+	}
+
+	decorAnim(slider) {
+    slider.on('beforeChange', () => {
+      const $countDecor = slider.siblings('.slider__controls').find('.slider__count-decor');
+      const animEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend ananimationend';
+
+      $countDecor.addClass(css.hasAnim).one(animEnd, function () {
+        $(this).removeClass(css.hasAnim);
+      });
+
+      this.playVideo(slider, true);
+
+    });
 	}
 
 	playVideo($slider, pauseOnChange = false) {

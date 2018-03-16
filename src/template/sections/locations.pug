@@ -15,13 +15,13 @@ if locations ? locations : locations = []
 
     +e.inner(data-anim='group')
       +e.map-wrap
-        +e.map#locations-map(data-marker-1='Центр; ул. Владимирская 85; 50.436518; 30.509678' data-marker-2='Нивки; площа Перемоги, 3; 50.446179; 30.491991' data-marker-active='1' data-map-center='50.448434; 30.513833' data-map-zoom='13' data-marker-img='static/img/map-marker.png')
+        +e.map#locations-map(data-marker-1='Центр; ул. Владимирская 85; 50.436518; 30.509678; 0975678900' data-marker-2='Нивки; площа Перемоги, 3; 50.446179; 30.491991; 0975671122' data-marker-active='1' data-map-center='50.448434; 30.513833;' data-map-zoom='13' data-marker-img='static/img/map-marker.png')
       +e.info-wrap
         +e.info
           +e.H6.info-title
           +e.P.info-street
-          +b.P.tel-block тел:
-            +e.A(href='tel:0975678900') 097 567 89 00
+          +e.P.info-tel.tel-block тел:
+            +b.A(href='')
               svg.icon.icon-tel(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 301.001 301.001', style='enable-background:new 0 0 301.001 301.001;', xml:space='preserve')
                 g
                   path(d='M182.784,151.696c-7.794,9.143-14.811,15.833-14.745,15.773c0.065-0.054-6.086,7.435-14.637,15.877\
@@ -51,4 +51,5 @@ if locations ? locations : locations = []
                             c-0.503,3.758-5.782,4.131-6.819,0.494l-14.607-51.325C89.253,166.16,91.691,159.907,96.869,156.711z')
 
           +e.A.mail(href='mailto:info@workit.space')
+          //+e.DIV.green-decor.green-decor
 //end locations

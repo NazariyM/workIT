@@ -18,15 +18,12 @@
   &__list
     margin: 0 -30px
     +clr
+    &-slider
   &__item
     float: left
     width: 50%
     padding: 0 30px
     &-img-wrap
-      opacity: 0
-      transform: translateY(-50px)
-      +md
-        transform: translateX(-50px)
     &-img
       +ratio(550, 300)
       +cover
@@ -43,21 +40,15 @@
         padding-left: 0
         margin-top: -24px
     &-descr
-      opacity: 0
-      transform: translateY(-50px)
       margin-bottom: 22px
-      +md
-        transform: translateX(-50px)
       +xs
         margin-bottom: 19px
       p
-        height: 84px
+        max-height: 84px
         +xs
-          height: 100px
+          max-height: 100px
         
     &-title
-      opacity: 0
-      transform: translateY(-50px)
       pointer-events: auto
       display: inline-block
       vertical-align: top
@@ -75,9 +66,18 @@
         line-height: 32px
         padding: 0 18px
     &-more
-      opacity: 0
-      transform: translateY(-50px)
       pointer-events: auto
       letter-spacing: 0.07em
-      +md
-        transform: translateX(-50px)
+      
+        
+  &__item:not(.slick-cloned) &__item-img-wrap,
+  &__item:not(.slick-cloned) &__item-title,
+  &__item:not(.slick-cloned) &__item-descr,
+  &__item:not(.slick-cloned) &__item-more
+    opacity: 0
+    transform: translateY(-50px)
+    +md
+      transform: translateX(-50px)
+        
+  &_has-slider
+    padding: 120px 0 160px

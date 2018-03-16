@@ -394,3 +394,82 @@
         left: auto
         right: 10.6%
         margin-left: 0
+        
+  &__photos
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+    flex-wrap: wrap
+    overflow: hidden
+    +xs
+      display: block
+      margin: 0 -15px
+    &::after, &::before
+      +xs
+        display: none
+    .slick-list
+      margin: 0 -20px
+    &-img
+      +coverdiv
+      +cover
+    &-wrap
+      flex-grow: 0
+      flex-shrink: 1
+      +md
+        margin: 0 20px
+        flex-basis: auto
+        +ratio(620, 392)
+      +xs
+        margin: 0 15px
+      &:not(:last-child)
+        +xs
+          margin-bottom: 40px
+        
+      &_1
+        flex-basis: percentage(612/1280)
+        +ratio(612, 390)
+      &_2
+        flex-basis: percentage(490/1280)
+        margin-top: 102px
+        +ratio(490, 390)
+        +md
+          margin-top: 0
+      &_3
+        flex-basis: percentage(490/1280)
+        +ratio(490, 390)
+      &_4
+        flex-basis: percentage(612/1280)
+        margin-top: 98px
+        +ratio(612, 390)
+        +md
+          margin-top: 0
+      &_5
+        flex-basis: percentage(608/1280)
+        +ratio(608, 390)
+        margin-top: 5px
+        +md
+          margin-top: 0
+      &_6
+        flex-basis: percentage(494/1280)
+        margin-top: 106px
+        +ratio(494, 390)
+        +md
+          margin-top: 0
+  
+  &_photos
+    padding: 111px 0 121px
+  &_photos &__top
+    margin: 0 auto 75px
+    +md
+      margin: 0 auto 65px
+  &_photos &__title
+    max-width: 870px
+    margin-bottom: 51px
+    +md
+      margin-bottom: 0
+  &_photos &__sub-title
+    max-width: 780px
+    letter-spacing: 0.03em
+    +md
+      display: none
+    

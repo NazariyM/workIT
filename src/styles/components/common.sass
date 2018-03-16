@@ -17,9 +17,6 @@ body
     right: 0
     height: 100%
     
-.is-hidden
-  display: none
-
 .container
   position: relative
   max-width: 1280px
@@ -165,6 +162,12 @@ label.btn
     text-align: center
 // end buttons //
 
+// decors
+.green-decor
+  width: 41px
+  height: 9px
+  background-color: $color1
+
 // images effects
 .img-hover
   display: block
@@ -195,3 +198,7 @@ label.btn
 [data-anim='fade-left']
   opacity: 0
   transform: translateX(-100px)
+  
+[data-anim='fade-right']
+  opacity: 0
+  transform: translateX(100px)

@@ -47,10 +47,8 @@
         padding-left: 0
         max-width: none
       p
-        height: 224px
+        max-height: 224px
         letter-spacing: 0
-        +md
-          height: auto
   
   &__media
     overflow: hidden
@@ -189,7 +187,17 @@
     +cover-img
   &_has-nav &__controls
     left: 0
-    bottom: 25px
+    bottom: 20px
+    
+  &_prepared &__controls
+    left: auto
+    right: 30px
+    bottom: -65px
+    .icon
+      fill: $white
+  &_prepared &__count-current,
+  &_prepared &__count-all
+    color: $white
     
 .mobile-slider
   +md

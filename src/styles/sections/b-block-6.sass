@@ -1,188 +1,212 @@
 .block-6
-  padding: 102px 0 132px
-  +md
-    padding: 111px 0 140px
-  +xs
-    padding: 53px 0 60px
-  &__top
-    margin: 0 0 70px
-    +md
-      margin: 0 0 76px
-    +xs
-      margin: 0 0 33px
-  &__title
-    margin-bottom: 60px
-    +md
-      margin-bottom: 57px
-    +xs
-      margin-bottom: 19px
-  &__sub-title
-    letter-spacing: 0.027em
-  &__label
-    +md
-      margin-bottom: 18px
-      padding-left: 0
-  &__offer
-    position: relative
-    display: flex
-    align-items: flex-start
-    padding: 57px 0 0 61px
-    +md
-      flex-wrap: wrap
-      padding: 0
-    &.is-visible::after
-      width: 89.3%
+   padding: 102px 0 132px
+   +md
+      padding: 111px 0 140px
+   +xs
+      padding: 53px 0 60px
+   &__top
+      margin: 0 0 70px
       +md
-        width: 100%
-    &::after
-      position: absolute
-      top: 0
-      left: 0
-      width: 0
-      bottom: 5%
-      z-index: -1
-      background: $color5
-      content: ''
-      transition: width 1s ease
+         margin: 0 0 76px
+      +xs
+         margin: 0 0 33px
+   &__title
+      margin-bottom: 60px
       +md
-        height: 99%
-    &-text
-      flex: 0 1 percentage(549/1099)
-      margin-top: -6px
-      padding-right: 60px
+         margin-bottom: 57px
+      +xs
+         margin-bottom: 19px
+   &__sub-title
+      letter-spacing: 0.027em
+   &__label
       +md
-        flex: 1 1 auto
-        order: 1
-        padding: 53px 70px 0 57px
-      +xs
-        padding: 25px 10px 0
-        margin-top: 0
-    &-title
-      transform: translateX(-50px)
-      opacity: 0
-      margin-bottom: 25px
-      +xs
-        margin-bottom: 14px
-    h4
-      height: 42px
-      +h4
-      +xs
-        height: 30px
-        font-size: 24px
-        line-height: 1.2
-    &-sub-title
-      transform: translateX(-50px)
-      opacity: 0
-      margin-bottom: 20px
-      text-transform: none
-    &-pic
-      flex: 1 1 auto
-      transform: translateX(-100px)
-      opacity: 0
-    &-slider
-      flex: 0 1 percentage(550/1099)
-      max-width: 550px
-      padding-bottom: 90px
-    &-img
-      +cover
-      +ratio(549, 395)
+         margin-bottom: 18px
+         padding-left: 0
+   &__offer
+      position: relative
+      display: flex
+      align-items: flex-start
+      padding: 57px 0 0 61px
       +md
-        +ratio(709, 509)
-      +xs
-        +ratio(290, 215)
-      
-    &-descr
-      transform: translateX(-50px)
-      opacity: 0
-      p
-        &:nth-of-type(1)
-          height: 168px
-          margin-bottom: 14px
-          +md
-            height: auto
-          +xs
-            margin-bottom: 12px
-        &:nth-of-type(2)
-          height: 84px
-          +md
-            height: auto
-          
-    &-btn
-      transform: translateX(-50px)
-      opacity: 0
-      +md
-        margin-bottom: -26px
-  &__price
-    &_offer
-      margin: 27px 0 32px
-      transform: translateX(-50px)
-      opacity: 0
-      +md
-        margin: 25px 0 32px
-      +xs
-        margin: 15px 0 20px
-    &_item
-      margin: 22px 0 32px
-      +xs
-        margin: 15px 0 19px
-    h5
-      +h5
-      text-transform: none
-      +xs
-        font-size: 14px
-      span
-        +f('gil-300')
-  &__list
-    margin: 80px -20px 0
-    +clr
-    +xs
-      margin-top: 60px
-    .slick-track
-      +md
-        padding-bottom: 20px
-  &__list_more-items &__item
-      padding: 0 20px 83px
-  
-  &__item
-    position: relative
-    float: left
-    width: 33.333333%
-    padding: 0 20px
-    &-text
-      padding: 33px 30px 0
-      background: $color5
-      +xs
-        padding: 24px 14px 0 9px
-      p
-        height: 140px
-        +xs
-          height: 100px
-    &-title
-      margin-bottom: 15px
-      +xs
-        height: auto
-        margin-bottom: 10px
+         flex-wrap: wrap
+         padding: 0
+      &.is-visible::after
+         width: 89.3%
+         +md
+            width: 100%
+      &::after
+         position: absolute
+         top: 0
+         left: 0
+         width: 0
+         bottom: 5%
+         z-index: -1
+         background: $color5
+         content: ''
+         transition: width 1s ease
+         +md
+            height: 99%
+      &-text
+         flex: 0 1 percentage(549/1099)
+         margin-top: -6px
+         padding-right: 60px
+         +md
+            flex: 1 1 auto
+            order: 1
+            padding: 53px 70px 0 57px
+         +xs
+            padding: 25px 10px 0
+            margin-top: 0
+      &-title
+         transform: translateX(-50px)
+         opacity: 0
+         margin-bottom: 25px
+         +xs
+            margin-bottom: 14px
       h4
-        height: 84px
-        +xs
-          height: 29px
-    &-img
-      height: 275px
-      +cover-img
+         height: 42px
+         +h4
+         +xs
+            height: 30px
+            font-size: 24px
+            line-height: 1.2
+      &-sub-title
+         transform: translateX(-50px)
+         opacity: 0
+         margin-bottom: 15px
+         text-transform: none
+      &-pic
+         flex: 1 1 auto
+         transform: translateX(-100px)
+         opacity: 0
+      &-slider
+         flex: 0 1 percentage(550/1099)
+         max-width: 550px
+         padding-bottom: 90px
+      &-img
+         +cover
+         +ratio(549, 395)
+         +md
+            +ratio(709, 509)
+         +xs
+            +ratio(290, 215)
+      
+      &-descr
+         transform: translateX(-50px)
+         opacity: 0
+         p
+            &:nth-of-type(1)
+               max-height: 168px
+               margin-bottom: 14px
+               +md
+                  height: auto
+               +xs
+                  margin-bottom: 12px
+            &:nth-of-type(2)
+               max-height: 84px
+               +md
+                  height: auto
+      
+      &-list
+         padding-left: 2px
+      &-btn
+         transform: translateX(-50px)
+         opacity: 0
+         +md
+            margin-bottom: -26px
+   &__price
+      &_offer
+         margin: 27px 0 32px
+         transform: translateX(-50px)
+         opacity: 0
+         +md
+            margin: 25px 0 32px
+         +xs
+            margin: 15px 0 20px
+      &_item
+         margin: 22px 0 32px
+         +xs
+            margin: 15px 0 19px
+      h5
+         +h5
+         text-transform: none
+         +xs
+            font-size: 14px
+         span
+            +f('gil-300')
+   &__list
+      margin: 80px -20px 0
+      +clr
       +xs
-        height: 200px
-    &-list
-      margin-top: 20px
-    &-btn
-      margin-bottom: -25px
-      +xs
-        margin-left: 1px
-    &-mask
-      position: absolute
-      top: 0
-      left: auto
-      right: 0
-      bottom: -20px
-      z-index: 2
-      background-color: #fff
-      width: 100%
+         margin-top: 60px
+      .slick-track
+         +md
+            padding-bottom: 20px
+   &__list_more-items &__item
+      padding: 0 20px 75px
+   
+   &__item
+      position: relative
+      float: left
+      width: 33.333333%
+      padding: 0 20px
+      &-text
+         padding: 33px 30px 0
+         background: $color5
+         +xs
+            padding: 24px 14px 0 9px
+         p
+            height: 140px
+            +xs
+               height: 100px
+      &-title
+         margin-bottom: 15px
+         +xs
+            height: auto
+            margin-bottom: 10px
+         h4
+            height: 84px
+            +xs
+               height: 29px
+      &-img
+         height: 275px
+         +cover-img
+         +xs
+            height: 200px
+      &-list
+         margin-top: 20px
+      &-btn
+         margin-bottom: -25px
+         +xs
+            margin-left: 1px
+      &-mask
+         position: absolute
+         top: 0
+         left: auto
+         right: 0
+         bottom: -20px
+         z-index: 2
+         background-color: #fff
+         width: 100%
+   
+   &_location
+      padding: 110px 0 43px
+   &_location &__top
+      margin: 0 0 67px
+   &_location &__title
+      margin-bottom: 0
+   &_location &__list_more-items &__item
+      padding: 0 20px 95px
+   &_location &__list
+      margin: 0 -20px
+   &_location &__item p
+      height: 85px
+   
+   &_pricing
+      padding: 113px 0 62px
+      .hanging-decor_lamps
+         top: -114px
+   &_pricing &__offer::after
+      bottom: 3.5%
+   &_pricing &__price_offer
+      margin: 35px 0 55px

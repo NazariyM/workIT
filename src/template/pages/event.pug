@@ -1,16 +1,15 @@
 extends ../extend/default
 
 block variables
-  - var title = 'Pricing page';
-  - var footer = {classMod: '_entry'};
+  - var title = 'Event page';
 
 block main
-  main.content(data-page='pricing')
+  main.content(data-page='event')
 
     //begin block-6
-    +b.SECTION.block-6._pricing
+    +b.SECTION.block-6
       .container.container_md
-        +e.top.block-top._has-hanging
+        +e.top.block-top
           +e.label.block-label
             +e.P prices
           +e.title.block-title.has-selection._green
@@ -23,22 +22,6 @@ block main
               b 4 уникальных тарифных плана.
               = ' '
               | Вы фрилансер, стартам или большая компания, у нас вы точно найдете подходящий вариант
-
-          +b.SVG.hanging-decor._lamps(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 188.65 330.56' width='189' height='331')
-            g(class='hanging-decor__wire' transform="matrix(1,0,0,1,0,-254)")
-              path(fill='#c4d0ce', d='M10.33,0h1V265.56h-1Z')
-              path(fill='#001011', d='M9.39,253.66h2.88v5H9.39Z')
-              path(fill='#00d88e', d='M21.53,266.75a11.07,11.07,0,0,0-21.53,0Z')
-
-            g(class='hanging-decor__wire' transform="matrix(1,0,0,1,0,-206)")
-              path(fill='#c4d0ce', d='M177.48,0h1V217.28h-1Z')
-              path(fill='#001011', d='M176.55,205.78h2.88v5h-2.87Z')
-              path(fill='#00d88e', d='M188.65,218.87a11.07,11.07,0,0,0-21.53,0Z')
-
-            g(class='hanging-decor__wire' transform="matrix(1,0,0,1,0,-317)")
-              path(fill='#c4d0ce', d='M82,0h1V325H82Z')
-              path(fill='#001011', d='M81,317.5h2.84v5H81Z')
-              path(fill='#00d88e', d='M93.15,330.56a11.06,11.06,0,0,0-21.52,0Z')
 
         +e.offer
           +e.offer-text
@@ -59,7 +42,7 @@ block main
               +e.H5 Стоимость от:
                 span 200$
             +e.BUTTON.offer-btn.btn._green(type='button' data-popup-target='enrollPopup')
-              span.btn__text приехать в гости
+              span.btn__text забронировать
 
           +b.slider._has-nav.block-6__offer-slider
             +e.body(data-anim='slider')
@@ -71,7 +54,6 @@ block main
                 +e.IMG(src='static/img/block-3_7.jpg' alt='image')
               +e.item
                 +e.IMG(src='static/img/block-6_offer.jpg' alt='image')
-
             +e.controls
               +e.buttons
               +e.count
@@ -111,7 +93,7 @@ block main
             img: 4,
             descr: 'Свободное место в зоне общего пользования. Идеально подойдет для тех, кто любит работать не за столом, а в более расслабленной обстановке.'
             }, {
-            title: 'Hot desk',
+            title: 'Desk priority',
             img: 5,
             descr: 'Свободное рабочее место в open space. Идеально подойдет для тех, кто не любит сидеть на одном месте. Работать и при желании общаться с окружающими.'
             }]
@@ -142,128 +124,4 @@ block main
                   span.btn__text забронировать
           each item in block6List
             +block6Item(item)
-    //end block-6
-
-    //begin benefits
-    +b.SECTION.benefits._many-items
-      +e.container.container
-        +e.top.block-top
-          +e.label.block-label
-            +e.P included
-          +e.title.block-title.has-selection._black
-            +e.H2 Все тарифные планы
-              b включают
-
-        +e.content.expand-list.js-expand-list
-          +e.content-inner.expand-list__inner
-            -
-              benefitsList = [
-              'Kомнаты для переговоров с экранами',
-              'Использование проектора',
-              'Kухня',
-              'Зоны развлечений',
-              'Лаунж зоны',
-              'Все коммунальные платежи',
-              'Использование душа',
-              'Техподдержка',
-              'Интернет',
-              'Использование оргтехники',
-              'Чай, кофе, вода, полезные снеки',
-              'Уборка'
-              ]
-            for benefitsItemText, index in benefitsList
-              +e.item.expand-list__item
-                +e.item-img.img-hover
-                  +e.IMG(src=`static/img/benefits_${index + 1}.jpg` alt='image')
-                +e.H5= benefitsItemText
-
-            +e.item.expand-list__item.is-hidden
-              +e.item-img.img-hover
-                +e.IMG(src=`static/img/benefits_2.jpg` alt='image')
-              +e.H5 Зоны развлечений
-
-            +e.item.expand-list__item.is-hidden
-              +e.item-img.img-hover
-                +e.IMG(src=`static/img/benefits_3.jpg` alt='image')
-              +e.H5 Уборка
-
-            +e.item.expand-list__item.is-hidden
-              +e.item-img.img-hover
-                +e.IMG(src=`static/img/benefits_6.jpg` alt='image')
-              +e.H5 Использование оргтехники
-
-            +e.item.expand-list__item.is-hidden
-              +e.item-img.img-hover
-                +e.IMG(src=`static/img/benefits_1.jpg` alt='image')
-              +e.H5 Kухня
-
-          +b.BUTTON.expand-list__btn.btn._line._line-white(type='button') хочу еще
-    //end benefits
-
-    //begin block-8
-    +b.SECTION.block-8._many-items
-      .container.container_md
-        +e.top.block-top
-          +e.label.block-label
-            +e.P services
-
-          +e.title.block-title.has-selection._green
-            +e.H2 Дополнительные
-              b возможности
-
-          +e.sub-title.block-sub-title
-            +e.H5 Бывают ситуации, когда вам срочно нужна помощь
-              b юриста
-              = ' '
-              | или
-              b бухгалтера.
-              = ' '
-              | Мы это понимаем и поэтому
-              b даем возможность
-              = ' '
-              | нашим резидентам
-              b нанять
-              = ' '
-              | любого специалиста на несколько часов.
-
-        +b.expand-list.block-8__expand-list.js-expand-list
-          +e.inner
-
-            .block-8__item.expand-list__item
-              .block-8__item-icon
-                img(src=`static/img/icon-man.svg` alt='image')
-              h5 Услуги HR
-
-            .block-8__item.expand-list__item
-              .block-8__item-icon
-                img(src=`static/img/icon-hammer.svg` alt='image')
-              h5 Услуги юриста
-
-            .block-8__item.expand-list__item
-              .block-8__item-icon
-                img(src=`static/img/icon-dialogue.svg` alt='image')
-              h5 Услуги Consulting
-
-            .block-8__item.expand-list__item
-              .block-8__item-icon
-                img(src=`static/img/icon-percent.svg` alt='image')
-              h5 Услуги бухгалтера
-
-            .block-8__item.expand-list__item
-              .block-8__item-icon
-                img(src=`static/img/icon-figures.svg` alt='image')
-              h5 Технические специалисты
-
-            .block-8__item.expand-list__item
-              .block-8__item-icon
-                img(src=`static/img/icon-man.svg` alt='image')
-              h5 Офис-менеджер
-
-          //+e.BUTTON.btn.btn._line(type='button') еще услуги
-    //end block-8
-
-    -companies = {classMod: '_bg-color'}
-    include ../sections/companies
-
-    -come = {maskType: 'image', maskVideo: false}
-    include ../sections/come
+        //end block-6

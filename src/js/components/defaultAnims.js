@@ -10,6 +10,7 @@ class DefaultAnims {
     this.titles = [...document.querySelectorAll('.block-title')];
     this.fadeTop = [...document.querySelectorAll('[data-anim="fade-top"]')];
     this.fadeLeft = [...document.querySelectorAll('[data-anim="fade-left"]')];
+    this.fadeRight = [...document.querySelectorAll('[data-anim="fade-right"]')];
     this.fadeTopItems = [...document.querySelectorAll('[data-items-anim="fade-top"]')];
     this.fadeLeftItems = [...document.querySelectorAll('[data-items-anim="fade-left"]')];
     this.hangingDecors = [...document.querySelectorAll('.hanging-decor')];
@@ -86,6 +87,15 @@ class DefaultAnims {
       });
     }
 
+    for (const item of this.fadeRight) {
+      new ScrollAnim({
+        el: item,
+        onStart() {
+          _this.fadeRightAnim(item);
+        }
+      });
+    }
+
     for (const item of this.fadeTop) {
       new ScrollAnim({
         el: item,
@@ -142,6 +152,13 @@ class DefaultAnims {
     const duration = item.getAttribute('data-anim-duration') || 0.5;
 
     TweenMax.to(item, duration, { autoAlpha: 1, x: 0, ease: Power2.easeOut });
+  }
+
+  fadeRightAnim(item) {
+    const duration = item.getAttribute('data-anim-duration') || 0.5;
+    const delay = item.getAttribute('data-anim-delay') || 0;
+
+    TweenMax.to(item, duration, { autoAlpha: 1, x: 0, ease: Power2.easeOut, delay: delay });
   }
 
   fadeTopAnim(item) {
