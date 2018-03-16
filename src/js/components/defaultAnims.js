@@ -150,8 +150,9 @@ class DefaultAnims {
 
   fadeLeftAnim(item) {
     const duration = item.getAttribute('data-anim-duration') || 0.5;
+    const delay = item.getAttribute('data-anim-delay') || 0;
 
-    TweenMax.to(item, duration, { autoAlpha: 1, x: 0, ease: Power2.easeOut });
+    TweenMax.to(item, duration, { autoAlpha: 1, x: 0, ease: Power2.easeOut, delay: delay });
   }
 
   fadeRightAnim(item) {

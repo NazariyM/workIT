@@ -292,7 +292,7 @@
     <!-- Main content-->
     <main class="content" data-page="pricing">
       <!--begin block-6-->
-      <section class="block-6 block-6_pricing">
+      <section class="block-6 block-6_has-slider">
         <div class="container container_md">
           <div class="block-6__top block-top block-top_has-hanging">
             <div class="block-6__label block-label">
@@ -351,8 +351,8 @@
                 <span class="btn__text">приехать в гости</span>
               </button>
             </div>
-            <div class="slider slider_has-nav block-6__offer-slider">
-              <div class="slider__body" data-anim="slider">
+            <div class="slider slider_has-nav block-6__offer-slider" data-anim="fade-left" data-anim-duration="1" data-anim-delay=".5">
+              <div class="slider__body">
                 <div class="slider__item">
                   <img src="static/img/block-6_offer.jpg" alt="image" title="" />
                 </div>
@@ -366,7 +366,7 @@
                   <img src="static/img/block-6_offer.jpg" alt="image" title="" />
                 </div>
               </div>
-              <div class="slider__controls">
+              <div class="slider__controls" data-anim="fade-left">
                 <div class="slider__buttons"></div>
                 <div class="slider__count">
                   <span class="slider__count-current"></span>
@@ -374,7 +374,7 @@
                   <span class="slider__count-all"></span>
                 </div>
               </div>
-              <div class="slider__nav">
+              <div class="slider__nav" data-anim="fade-left">
                 <div class="slider__nav-item">
                   <img src="static/img/block-6_1-sm.jpg" alt="image" title="" />
                 </div>
@@ -389,8 +389,6 @@
                 </div>
               </div>
             </div>
-            <!--+e.offer-pic.img-hover+e.offer-img.img-hover__item(style='background-image: url(static/img/block-6_offer.jpg)')
--->
           </div>
           <div class="block-6__list block-6__list_more-items mobile-slider mobile-slider_white">
             <div class="block-6__item">
@@ -546,7 +544,7 @@
             </div>
           </div>
           <div class="benefits__content expand-list js-expand-list">
-            <div class="benefits__content-inner expand-list__inner">
+            <div class="benefits__content-inner expand-list__inner mobile-slider mobile-slider_green-large">
               <div class="benefits__item expand-list__item">
                 <div class="benefits__item-img img-hover">
                   <img src="static/img/benefits_1.jpg" alt="image" title="" />
@@ -644,7 +642,7 @@
                 <h5>Kухня</h5>
               </div>
             </div>
-            <button class="expand-list__btn btn btn_line btn_line-white" type="button">хочу еще</button>
+            <button class="benefits__content-btn expand-list__btn btn btn_line btn_line-white" type="button">хочу еще</button>
           </div>
         </div>
       </section>

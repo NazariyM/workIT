@@ -9,6 +9,7 @@ class Block6 {
     this.$offer = this.$container.find('.block-6__offer');
     this.$offerText = this.$offer.find('.block-6__offer-text').children();
     this.$offerPic = this.$offer.find('.block-6__offer-pic');
+    this.$offerList = this.$offer.find('.block-6__offer-list').find('ul');
     this.$list = this.$container.find('.block-6__list');
     this.$item = this.$list.find('.block-6__item');
     this.$dotOfferTarget1 = this.$offer.find('.block-6__offer-title').find('h4');
@@ -46,6 +47,15 @@ class Block6 {
         });
       });
     }
+
+    if (this.$offerList.length) {
+      new ScrollAnim({
+        el: _this.$offerList.get(0),
+        onStart() {
+          _this.offerListAnim();
+        }
+      });
+    }
   }
 
   offerAnim() {
@@ -55,6 +65,19 @@ class Block6 {
     .to(this.$offer, 1, { className: `+=${css.visible}` }, '-=1')
     .to(this.$offerPic, 1, { x: 0,  autoAlpha: 1, ease: Power2.easeOut }, '+=.2')
     .staggerTo(this.$offerText, 1, { x: 0,  autoAlpha: 1, ease: Power2.easeOut }, 0.2, '-=.5');
+  }
+
+  offerListAnim() {
+    const tl = new TimelineMax();
+    const $items = this.$offerList.children();
+    let delay;
+    if (Resp.isDesk) {
+      delay = 1;
+    } else {
+      delay = 0;
+    }
+
+    tl.staggerTo($items, 1, { x: 0,  autoAlpha: 1, ease: Power2.easeOut, delay: delay }, 0.2);
   }
 
   itemsAnim(i, item) {

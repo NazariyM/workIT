@@ -8,7 +8,7 @@ block main
   main.content(data-page='pricing')
 
     //begin block-6
-    +b.SECTION.block-6._pricing
+    +b.SECTION.block-6._has-slider
       .container.container_md
         +e.top.block-top._has-hanging
           +e.label.block-label
@@ -61,8 +61,8 @@ block main
             +e.BUTTON.offer-btn.btn._green(type='button' data-popup-target='enrollPopup')
               span.btn__text приехать в гости
 
-          +b.slider._has-nav.block-6__offer-slider
-            +e.body(data-anim='slider')
+          +b.slider._has-nav.block-6__offer-slider(data-anim='fade-left' data-anim-duration='1' data-anim-delay='.5')
+            +e.body
               +e.item
                 +e.IMG(src='static/img/block-6_offer.jpg' alt='image')
               +e.item
@@ -72,14 +72,14 @@ block main
               +e.item
                 +e.IMG(src='static/img/block-6_offer.jpg' alt='image')
 
-            +e.controls
+            +e.controls(data-anim='fade-left')
               +e.buttons
               +e.count
                 +e.SPAN.count-current
                 +e.count-decor
                 +e.SPAN.count-all
 
-            +e.nav
+            +e.nav(data-anim='fade-left')
               +e.nav-item
                 +e.IMG(src='static/img/block-6_1-sm.jpg' alt='image')
               +e.nav-item
@@ -88,9 +88,6 @@ block main
                 +e.IMG(src='static/img/block-6_3-sm.jpg' alt='image')
               +e.nav-item
                 +e.IMG(src='static/img/block-6_1-sm.jpg' alt='image')
-
-          //+e.offer-pic.img-hover
-            +e.offer-img.img-hover__item(style='background-image: url(static/img/block-6_offer.jpg)')
 
         +e.list._more-items.mobile-slider._white
           -
@@ -155,7 +152,7 @@ block main
               b включают
 
         +e.content.expand-list.js-expand-list
-          +e.content-inner.expand-list__inner
+          +e.content-inner.expand-list__inner.mobile-slider._green-large
             -
               benefitsList = [
               'Kомнаты для переговоров с экранами',
@@ -197,7 +194,7 @@ block main
                 +e.IMG(src=`static/img/benefits_1.jpg` alt='image')
               +e.H5 Kухня
 
-          +b.BUTTON.expand-list__btn.btn._line._line-white(type='button') хочу еще
+          +e.BUTTON.content-btn.expand-list__btn.btn._line._line-white(type='button') хочу еще
     //end benefits
 
     //begin block-8

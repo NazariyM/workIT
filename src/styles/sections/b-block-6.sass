@@ -75,6 +75,10 @@
          opacity: 0
          margin-bottom: 15px
          text-transform: none
+         +xs
+            margin-bottom: 19px
+            font-size: 14px
+            line-height: 22px
       &-pic
          flex: 1 1 auto
          transform: translateX(-100px)
@@ -83,6 +87,12 @@
          flex: 0 1 percentage(550/1099)
          max-width: 550px
          padding-bottom: 90px
+         +md
+            flex: 0 1 auto
+            max-width: 708px
+            padding-bottom: 20px
+         +xs
+            padding-bottom: 12px
       &-img
          +cover
          +ratio(549, 395)
@@ -109,6 +119,11 @@
       
       &-list
          padding-left: 2px
+         +xs
+            padding-left: 0
+         li
+            opacity: 0
+            transform: translateX(-50px)
       &-btn
          transform: translateX(-50px)
          opacity: 0
@@ -175,6 +190,9 @@
             height: 200px
       &-list
          margin-top: 20px
+         min-height: 142px
+         +xs
+            min-height: 100px
       &-btn
          margin-bottom: -25px
          +xs
@@ -202,11 +220,35 @@
    &_location &__item p
       height: 85px
    
-   &_pricing
+   &_has-slider
       padding: 113px 0 62px
+      +md
+         padding: 111px 0 42px
       .hanging-decor_lamps
          top: -114px
-   &_pricing &__offer::after
+   &_has-slider &__offer-title
+      +xs
+         margin-bottom: 11px
+   &_has-slider &__offer-text
+      +md
+         padding: 10px 70px 0 57px
+      +xs
+         padding: 10px 10px 0 15px
+      +xs
+         padding: 10px
+   &_has-slider &__offer::after
       bottom: 3.5%
-   &_pricing &__price_offer
+      +xs
+         height: 98.4%
+   &_has-slider &__price_offer
       margin: 35px 0 55px
+      +md
+         margin: 27px 0 33px
+      +xs
+         margin: 7px 0 30px
+   
+   &_has-slider &__list
+      +md
+         margin: 100px -20px 0
+      +xs
+         margin: 50px -10px 0

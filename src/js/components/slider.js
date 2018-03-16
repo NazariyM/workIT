@@ -16,6 +16,7 @@ class Slider {
     this.$block6Sld = $('.block-6__list');
     this.$valuesMobSld = $('.values__mob-slider');
     this.$teamSld = $('.team__inner_slider');
+    this.$benefitsSld = $('.benefits__content-inner.mobile-slider');
 		this.$sliderAnimBlock = $('[data-anim="slider"]');
 
 		this.init();
@@ -166,6 +167,24 @@ class Slider {
         }]
     }));
 
+    this.$benefitsSld.slick($.extend({}, defaultOptions, {
+      slidesToShow: 1.14,
+      slidesToScroll: 2,
+      responsive: [{
+        breakpoint: 1199,
+        settings: 'unslick'
+      },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2.5
+          }
+        }, {
+          breakpoint: 319,
+          settings: 'unslick'
+        }]
+    }));
+
     function setProgress(progressClass) {
 
       _this.$sliderHasProgress.each((i, slider) => {
@@ -239,7 +258,13 @@ class Slider {
           onInit: _this.countSlides($viewSlider, false),
           asNavFor: '.slider__nav',
           speed: 800,
-          cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)'
+          cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+          // responsive: [{
+          //   breakpoint: 1199,
+          //   settings: {
+          //     asNavFor:
+          //   }
+          // }]
         }));
 
         $sliderNav.slick({
@@ -251,7 +276,11 @@ class Slider {
           arrows: false,
           focusOnSelect: true,
           cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-	        rows: 0
+	        rows: 0,
+          responsive: [{
+            breakpoint: 1199,
+            settings: 'unslick'
+          }]
         });
       }
 

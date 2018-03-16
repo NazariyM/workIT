@@ -9940,7 +9940,7 @@ var Preloader = function () {
       this.resolve = new Promise(function (resolve) {
 
         // delete it
-        resolve();
+        // resolve();
 
         var tl = new _gsap.TimelineMax({
           onComplete: function onComplete() {
@@ -23509,6 +23509,7 @@ var Slider = function () {
     this.$block6Sld = $('.block-6__list');
     this.$valuesMobSld = $('.values__mob-slider');
     this.$teamSld = $('.team__inner_slider');
+    this.$benefitsSld = $('.benefits__content-inner.mobile-slider');
     this.$sliderAnimBlock = $('[data-anim="slider"]');
 
     this.init();
@@ -23676,6 +23677,23 @@ var Slider = function () {
         }]
       }));
 
+      this.$benefitsSld.slick($.extend({}, defaultOptions, {
+        slidesToShow: 1.14,
+        slidesToScroll: 2,
+        responsive: [{
+          breakpoint: 1199,
+          settings: 'unslick'
+        }, {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2.5
+          }
+        }, {
+          breakpoint: 319,
+          settings: 'unslick'
+        }]
+      }));
+
       function setProgress(progressClass) {
 
         _this.$sliderHasProgress.each(function (i, slider) {
@@ -23749,6 +23767,12 @@ var Slider = function () {
             asNavFor: '.slider__nav',
             speed: 800,
             cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)'
+            // responsive: [{
+            //   breakpoint: 1199,
+            //   settings: {
+            //     asNavFor:
+            //   }
+            // }]
           }));
 
           $sliderNav.slick({
@@ -23760,7 +23784,11 @@ var Slider = function () {
             arrows: false,
             focusOnSelect: true,
             cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-            rows: 0
+            rows: 0,
+            responsive: [{
+              breakpoint: 1199,
+              settings: 'unslick'
+            }]
           });
         }
 
@@ -27325,8 +27353,9 @@ var DefaultAnims = function () {
     key: 'fadeLeftAnim',
     value: function fadeLeftAnim(item) {
       var duration = item.getAttribute('data-anim-duration') || 0.5;
+      var delay = item.getAttribute('data-anim-delay') || 0;
 
-      _gsap.TweenMax.to(item, duration, { autoAlpha: 1, x: 0, ease: Power2.easeOut });
+      _gsap.TweenMax.to(item, duration, { autoAlpha: 1, x: 0, ease: Power2.easeOut, delay: delay });
     }
   }, {
     key: 'fadeRightAnim',
@@ -27796,6 +27825,7 @@ var Block6 = function () {
     this.$offer = this.$container.find('.block-6__offer');
     this.$offerText = this.$offer.find('.block-6__offer-text').children();
     this.$offerPic = this.$offer.find('.block-6__offer-pic');
+    this.$offerList = this.$offer.find('.block-6__offer-list').find('ul');
     this.$list = this.$container.find('.block-6__list');
     this.$item = this.$list.find('.block-6__item');
     this.$dotOfferTarget1 = this.$offer.find('.block-6__offer-title').find('h4');
@@ -27836,6 +27866,15 @@ var Block6 = function () {
           });
         });
       }
+
+      if (this.$offerList.length) {
+        new _scrollAnim2.default({
+          el: _this.$offerList.get(0),
+          onStart: function onStart() {
+            _this.offerListAnim();
+          }
+        });
+      }
     }
   }, {
     key: 'offerAnim',
@@ -27843,6 +27882,20 @@ var Block6 = function () {
       var tl = new _gsap.TimelineMax();
 
       tl.to(this.$offer, 1, { className: '+=' + _helpers.css.visible }, '-=1').to(this.$offerPic, 1, { x: 0, autoAlpha: 1, ease: Power2.easeOut }, '+=.2').staggerTo(this.$offerText, 1, { x: 0, autoAlpha: 1, ease: Power2.easeOut }, 0.2, '-=.5');
+    }
+  }, {
+    key: 'offerListAnim',
+    value: function offerListAnim() {
+      var tl = new _gsap.TimelineMax();
+      var $items = this.$offerList.children();
+      var delay = void 0;
+      if (_helpers.Resp.isDesk) {
+        delay = 1;
+      } else {
+        delay = 0;
+      }
+
+      tl.staggerTo($items, 1, { x: 0, autoAlpha: 1, ease: Power2.easeOut, delay: delay }, 0.2);
     }
   }, {
     key: 'itemsAnim',

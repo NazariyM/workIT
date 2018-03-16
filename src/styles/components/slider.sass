@@ -1,280 +1,291 @@
 .slider
-  $parent: &
-  position: relative
-  &__body
-    display: none
-    &.slick-initialized
-      display: block
-  &__item
-    h4
-      margin-bottom: 18px
-      +h4
-      +xs
-        margin-bottom: 11px
-        font-size: 24px
-        line-height: 26px
-    h5
-      margin-bottom: 14px
-      +h5
-      letter-spacing: 0.1em
-      text-transform: none
-      +xs
-        font-size: 14px
-    #{$parent}_full &
-      padding-left: 60px
-      +md
-        padding-left: 0
-        
-  &__text
-    #{$parent}_full &
+   $parent: &
+   position: relative
+   &__body
+      display: none
+      &.slick-initialized
+         display: block
+   &__item
+      h4
+         margin-bottom: 18px
+         +h4
+         +xs
+            margin-bottom: 11px
+            font-size: 24px
+            line-height: 26px
+      h5
+         margin-bottom: 14px
+         +h5
+         letter-spacing: 0.1em
+         text-transform: none
+         +xs
+            font-size: 14px
+      #{$parent}_full &
+         padding-left: 60px
+         +md
+            padding-left: 0
+   
+   &__text
+    #{$parent} _full &
       float: left
       width: 50%
       margin-top: -7px
       padding-right: 60px
       +md
-        float: none
-        width: auto
-        padding-right: 0
-        margin-bottom: 55px
+         float: none
+         width: auto
+         padding-right: 0
+         margin-bottom: 55px
       +xs
-        margin: 0 0 23px
-    &-descr
-      max-width: 440px
-      padding-left: 62px
+         margin: 0 0 23px
+      &-descr
+         max-width: 440px
+         padding-left: 62px
+         +md
+            max-width: 550px
+         +xs
+            padding-left: 0
+            max-width: none
+         p
+            max-height: 224px
+            letter-spacing: 0
+   
+   &__media
+      overflow: hidden
+      +ratio(611, 339)
       +md
-        max-width: 550px
+         +ratio(619, 339)
       +xs
-        padding-left: 0
-        max-width: none
-      p
-        max-height: 224px
-        letter-spacing: 0
-  
-  &__media
-    overflow: hidden
-    +ratio(611, 339)
-    +md
-      +ratio(619, 339)
-    +xs
-      +ratio(290, 165)
-    #{$parent}_full &
-      float: left
-      width: 50%
-      +ratio(610, 400)
-      +md
-        float: right
-        width: percentage(618/738)
-        +ratio(618, 339)
-      +xs
-        float: none
-        width: auto
-        +ratio(290, 165)
-        
-    &-img
-      +coverdiv
-      +cover
-      &_video
-        display: none
-        +md
-          display: block
+         +ratio(290, 165)
+      #{$parent}_full &
+         float: left
+         width: 50%
+         +ratio(610, 400)
+         +md
+            float: right
+            width: percentage(618/738)
+            +ratio(618, 339)
+         +xs
+            float: none
+            width: auto
+            +ratio(290, 165)
       
-  &__controls
-    position: absolute
-    left: -309px
-    bottom: -5px
-    display: flex
-    align-items: flex-end
-    +md
-      position: static
-      margin-top: 34px
-      left: auto
-      bottom: auto
-    +xs
-      margin-top: 27px
-    #{$parent}_full &
-      right: 50%
-      left: auto
-      bottom: -6px
-      margin-right: 30px
-      opacity: 0
-      transform: translateX(-120px)
-      +md
-        right: auto
-        bottom: auto
-        margin: 34px 0 0 120px
-      +xs
-        margin: 26px 0 0
-  &__buttons
-    display: flex
-    align-items: flex-end
-    margin-right: 22px
-    margin-bottom: 5px
-    font-size: 0
-    +xs
-      margin: 0 17px 0 0
-  &__btn
-    padding: 0
-    border: 0
-    &:not(:last-child)
-      margin-right: 24px
-      +xs
-        margin-right: 15px
-    .no-touch &:hover .icon
-      fill: $color1
-    .icon
-      transition: .4s ease
-      +xs
-        width: 27px
-        stroke-width: 2px
-        stroke: $color2
-  &__count
-    display: flex
-    align-items: center
-    position: relative
-    line-height: 1
-    &-decor
+      &-img
+         +coverdiv
+         +cover
+         &_video
+            display: none
+            +md
+               display: block
+   
+   &__controls
       position: absolute
-      top: 12px
-      left: 53px
-      width: 30px
-      height: 9px
-      transform: rotate(-30deg)
-      background: $color1
+      left: -309px
+      bottom: -5px
+      display: flex
+      align-items: flex-end
+      +md
+         position: static
+         margin-top: 34px
+         left: auto
+         bottom: auto
       +xs
-        top: 5px
-        left: 32px
-        width: 20px
-        height: 6px
-      &.has-anim
-        animation: sliderSwing .8s cubic-bezier(0.74, 0.1, 0.32, 0.98)
-      
-    &-current
-      width: 44px
-      margin-right: 47px
-      +f('gil-800', 36)
-      letter-spacing: 3.6px
+         margin-top: 27px
+      #{$parent}_full &
+         right: 50%
+         left: auto
+         bottom: -6px
+         margin-right: 30px
+         opacity: 0
+         transform: translateX(-120px)
+         +md
+            right: auto
+            bottom: auto
+            margin: 34px 0 0 120px
+         +xs
+            margin: 26px 0 0
+   &__buttons
+      display: flex
+      align-items: flex-end
+      margin-right: 22px
+      margin-bottom: 5px
+      font-size: 0
       +xs
-        width: 30px
-        margin-right: 30px
-        font-size: 18px
-    &-all
-      width: 15px
-      +f('gil-800', 12)
-      letter-spacing: 1.2px
-      color: $color3
+         margin: 0 17px 0 0
+   &__btn
+      padding: 0
+      border: 0
+      &:not(:last-child)
+         margin-right: 24px
+         +xs
+            margin-right: 15px
+      .no-touch &:hover .icon
+         fill: $color1
+      .icon
+         transition: .4s ease
+         +xs
+            width: 27px
+            stroke-width: 2px
+            stroke: $color2
+   &__count
+      display: flex
+      align-items: center
+      position: relative
+      line-height: 1
+      &-decor
+         position: absolute
+         top: 12px
+         left: 53px
+         width: 30px
+         height: 9px
+         transform: rotate(-30deg)
+         background: $color1
+         +xs
+            top: 5px
+            left: 32px
+            width: 20px
+            height: 6px
+         &.has-anim
+            animation: sliderSwing .8s cubic-bezier(0.74, 0.1, 0.32, 0.98)
       
-  &__nav
-    display: none
-    &.slick-initialized
-      display: block
-    .slick-list
-      margin: 0 -9px
-    &-item
-      margin: 0 9px
+      &-current
+         width: 44px
+         margin-right: 47px
+         +f('gil-800', 36)
+         letter-spacing: 3.6px
+         +xs
+            width: 30px
+            margin-right: 30px
+            font-size: 18px
+      &-all
+         width: 15px
+         +f('gil-800', 12)
+         letter-spacing: 1.2px
+         color: $color3
+   
+   &__nav
+      display: none
+      &.slick-initialized
+         display: block
+      .slick-list
+         margin: 0 -9px
+      &-item
+         margin: 0 9px
+         +cover-img
+         height: 130px
+         cursor: pointer
+         &.slick-current
+            pointer-events: none
+            cursor: default
+   
+   &_has-nav
+      overflow: hidden
+   &_has-nav &__body
+      margin-bottom: 20px
+      +md
+         margin-bottom: 0
+   &_has-nav &__item
+      height: 395px
       +cover-img
-      height: 130px
-      cursor: pointer
-      &.slick-current
-        pointer-events: none
-        cursor: default
-  
-  &_has-nav
-    overflow: hidden
-  &_has-nav &__body
-    margin-bottom: 20px
-  &_has-nav &__item
-    height: 395px
-    +cover-img
-  &_has-nav &__controls
-    left: 0
-    bottom: 20px
-    
-  &_prepared &__controls
-    left: auto
-    right: 30px
-    bottom: -65px
-    .icon
-      fill: $white
-  &_prepared &__count-current,
-  &_prepared &__count-all
-    color: $white
-    
-.mobile-slider
-  +md
-    display: none
-    overflow: hidden
-    &.slick-initialized
-      display: block
-    &.is-shadowed
-      &::after
-        opacity: 1
-    &.is-last-slide
-      &::before
-        opacity: 1
-      &::after
-        opacity: 0
-    &::before, &::after
-      pointer-events: none
-      position: absolute
-      top: -1px
-      bottom: -1px
-      width: 190px
-      z-index: 1
-      content: ''
-      transition: .35s ease-in-out
-    &::before
-      opacity: 0
-      left: -1px
-    &::after
-      opacity: 0
-      right: -1px
-      display: block
-      clear: none
-  +xs
-    margin-left: -10px
-    margin-right: -10px
-  &_black
-    &::before
-      background-image: linear-gradient(to right, #001011 0%, rgba(0, 16, 17, 0) 100%)
-    &::after
-      background-image: linear-gradient(to left, #001011 0%, rgba(0, 16, 17, 0) 100%)
-    +xs
-      &::after, &::before
-        width: 53px
-      &::after
-        right: -6px
-      &::before
-        left: -6px
-  &_white
-    &::before
-      background-image: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%)
-    &::after
-      background-image: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%)
-    +xs
-      &::after, &::before
-        width: 45px
-  .slick-slide
-    +xs
-      padding-left: 10px
-      padding-right: 10px
+      +md
+         height: 510px
+      +xs
+         height: 215px
+   &_has-nav &__controls
+      left: 0
+      bottom: 20px
+      +md
+         justify-content: flex-start
+         margin: 25px 0 0 30px
+      +xs
+         margin: 26px 0 0 10px
       
-  &_white-large
-    &::after, &::before
-      +md
-        width: 377px
+      &_prepared &__controls
+         left: auto
+         right: 30px
+         bottom: -65px
+         .icon
+            fill: $white
+   &_prepared &__count-current,
+   &_prepared &__count-all
+      color: $white
+
+.mobile-slider
+   +md
+      display: none
+      overflow: hidden
+      &.slick-initialized
+         display: block
+      &.is-shadowed
+         &::after
+            opacity: 1
+      &.is-last-slide
+         &::before
+            opacity: 1
+         &::after
+            opacity: 0
+      &::before, &::after
+         pointer-events: none
+         position: absolute
+         top: -1px
+         bottom: -1px
+         width: 190px
+         z-index: 1
+         content: ''
+         transition: .35s ease-in-out
+      &::before
+         opacity: 0
+         left: -1px
+      &::after
+         opacity: 0
+         right: -1px
+         display: block
+         clear: none
+   +xs
+      margin-left: -10px
+      margin-right: -10px
+   &_black
+      &::before
+         background-image: linear-gradient(to right, #001011 0%, rgba(0, 16, 17, 0) 100%)
+      &::after
+         background-image: linear-gradient(to left, #001011 0%, rgba(0, 16, 17, 0) 100%)
       +xs
-        width: 164px
-    &::before
-      background-image: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%)
-    &::after
-      background-image: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%)
-  &_green-large
-    &::after, &::before
-      +md
-        width: 189px
+         &::after, &::before
+            width: 53px
+         &::after
+            right: -6px
+         &::before
+            left: -6px
+   &_white
+      &::before
+         background-image: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%)
+      &::after
+         background-image: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%)
       +xs
-        width: 54px
-    &::before
-      background-image: linear-gradient(to right, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
-    &::after
-      background-image: linear-gradient(to left, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
+         &::after, &::before
+            width: 45px
+   .slick-slide
+      +xs
+         padding-left: 10px
+         padding-right: 10px
+   
+   &_white-large
+      &::after, &::before
+         +md
+            width: 377px
+         +xs
+            width: 164px
+      &::before
+         background-image: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%)
+      &::after
+         background-image: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%)
+   &_green-large
+      &::after, &::before
+         +md
+            width: 189px
+         +xs
+            width: 54px
+      &::before
+         background-image: linear-gradient(to right, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
+      &::after
+         background-image: linear-gradient(to left, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
