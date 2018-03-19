@@ -52,15 +52,15 @@ block main
 
       +e.container.container.container_md
         +e.ARTICLE.item
-          +e.item-pic.img-hover(data-anim='fade-top')
+          +e.item-pic.img-hover(data-anim='fade-left' data-anim-duration='1' data-anim-delay='.5')
             +b.IMG(src=`static/img/events_full-2.jpg` alt='image')
-          +e.item-info(data-anim='fade-top')
+          +e.item-info(data-anim='fade-left' data-anim-duration='1')
             +e.item-date
               +e.P 07.12.2017
             +e.item-author
               +e.P By Alyona Petrenko
 
-          +e.item-descr(data-items-anim='fade-top')
+          +e.item-descr(data-items-anim='fade-left' data-anim-duration='1' data-anim-delay='.5')
             +e.P Приблизительно год назад я убедил одного из своих наиболее близких друзей
               b Дрю Регги (Drew Reggie)
               = ' '
@@ -175,29 +175,51 @@ block main
     -
       events = {
       classMod: '_event',
-      title: 'Другие',
-      titleSelected: 'мероприятия',
       label: 'related',
-      titleClasses: '_green',
       listClasses: 'mobile-slider _double _white-large' }
 
     -
       eventsList = [{
-      pic: 'events_1',
-      title: 'How To: Make a Good Presentation For Investors'
+        pic: 'events_1',
+        title: 'How To: Make a Good Presentation For Investors'
       }, {
-      pic: 'events_2',
-      title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
-      }, {
-      classMod: 'is-hidden',
-      pic: 'events_1',
-      title: 'How To: Make a Good Presentation For Investors'
-      }, {
-      classMod: 'is-hidden',
-      pic: 'events_2',
-      title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+        pic: 'events_2',
+        title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
       }]
-    include ../sections/events
+
+    //begin events
+    +b.SECTION.events(class= events.classMod ? events.classMod : '')
+      .container.container_md
+        +e.top.block-top
+          +e.label.block-label
+            +e.P= events.label
+
+          +e.title.block-title.has-selection._green
+            +e.H2 Вам будет
+              b интересно
+              = ' '
+              | почитать
+
+        +e.list(class= events.listClasses ? events.listClasses : '')
+          mixin eventsItem(item)
+            +e.item(class= item.classMod ? item.classMod : '' data-items-anim='fade-left')
+              +e.item-pic.img-hover
+                +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
+
+              +e.item-info
+                +e.item-date
+                  +e.P 07.12.2017
+                +e.item-author
+                  +e.P By Alyona Petrenko
+              +e.item-title.h4
+                +e.A(href='#!')
+                  +e.H4= item.title
+          each item in eventsList
+            +eventsItem(item)
+
+        +e.more(data-items-anim='fade-left')
+          +e.A.more-btn.btn._line._line-white(href='#!') смотреть все
+    //end events
 
     -subscrClass = '_default'
     include ../sections/subscr

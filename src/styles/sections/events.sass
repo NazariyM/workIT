@@ -83,23 +83,59 @@
    &_event &__item-info > a::after,
    &_event &__more-btn::after
       background: $color1
+   &_event &__title
+      max-width: 620px
+   &_event .mobile-slider_white-large::after
+      background-image: linear-gradient(to left, $color5 0%, rgba(255, 255, 255, 0) 100%)
+   &_event .mobile-slider_white-large::before
+      background-image: linear-gradient(to right, $color5 0%, rgba(255, 255, 255, 0) 100%)
+      
    
    &_article
       padding: 40px 0 117px
       background: $white
+      +md
+         padding: 31px 0 117px
+      +xs
+         padding: 22px 0 58px
+         
+      .events__item-author
+         +xs
+            letter-spacing: 0
    &_article &__top
       max-width: 1220px
       padding: 0 30px
       margin: 0 auto 57px
+      +md
+         padding: 0 15px
+      +xs
+         margin: 0 auto 27px
    &_article &__title
       max-width: 975px
       margin: 110px auto 20px
+      +xs
+         margin: 51px auto 15px
    &_article &__item
       width: 100%
       max-width: none
       padding: 0
+   &_article &__item-info
+      +xs
+         margin-bottom: 33px
+   &_article &__item-descr
+      +xs
+         margin-bottom: 23px
+   &_article &__item-descr p
+      +xs
+         font-size: 14px
+         line-height: 22px
    &_article &__item-pic
       height: 450px
+      +md
+         height: 327px
+      +xs
+         height: 134px
+         margin-bottom: 15px
    &_article &__container
       max-width: 1095px
    &_article &__item-info
@@ -110,7 +146,9 @@
    &_article .hanging-decor_office-sm
       top: -113px
       right: 30px
-      pointer-events: auto
+      +md
+         top: -61px
+         right: 25px
    
    &__top
       position: relative
@@ -242,35 +280,78 @@
          margin-bottom: 48px
       &-title
          margin-bottom: 26px
+         +md
+            margin-bottom: 31px
+         +xs
+            margin-bottom: 15px
+      &-title h4
+         +xs
+            line-height: 26px
       &-video
          margin: 54px 0 53px
          +ratio(975, 450)
+         +xs
+            margin: 27px 0 25px
       &-list
          margin: 24px 0 30px
+         +md
+            margin: 24px 0 27px
+         +xs
+            margin: 20px 0 22px
          ul
             li
                padding-left: 60px
                &:not(:last-child)
                   margin-bottom: 16px
+                  +md
+                     margin-bottom: 17px
                &::before
                   top: 11px
                   left: 25px
+                  +xs
+                     left: 0
                &::after
                   left: 24px
+                  +xs
+                     left: -2px
+                     font-size: 14px
+      .custom-list_numbered
+         li:not(:last-child)
+            +md
+               margin-bottom: 14px
+            +xs
+               margin-bottom: 11px
    
       &-descr
          margin-bottom: 51px
+         +md
+            margin-bottom: 25px
+         +xs
+            margin-bottom: 21px
          &_marked
             padding: 36px 35px 54px
             background-color: #f5f7fa
+            +md
+               padding: 0
+               margin-bottom: 25px
+               background: transparent
+            +xs
+               display: none
+            + p
+               +xs
+                  display: none
          &_marked .events__lesson-descr-title
             margin-bottom: 16px
       &-descr-title
          margin-bottom: 18px
+         +xs
+            margin-bottom: 13px
          p
             b, strong
                +f('gil-800', 18)
                letter-spacing: 0.028em
+               +xs
+                  font-size: 14px
                
       blockquote
          position: relative
@@ -278,11 +359,23 @@
          padding: 20px 57px
          font-style: italic
          letter-spacing: 0.015em
+         +md
+            padding: 20px 0 20px 60px
+         +xs
+            margin: 21px 0 0
+            padding: 0 0 0 30px
          svg
             position: absolute
             top: 0
             left: 0
+         + p
+            +xs
+               display: none
             
       .social-share
          margin-top: 30px
          transform: translate(0, 60px)
+         +md
+            margin-top: 35px
+         +xs
+            margin-top: 16px

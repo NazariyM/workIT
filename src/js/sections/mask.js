@@ -49,69 +49,67 @@ class Mask {
   }
 
   fluidRatio() {
-    // const stubPage = this.block.classList.contains('mask_404');
+    const stubPage = this.block.classList.contains('mask_404');
 
-    // if (!stubPage) {
-    const maskWidth = 1219;
-    const maskHeight = 681;
-    this.maskOffsetX = 280;
+    if (!stubPage) {
+      const maskWidth = 1219;
+      const maskHeight = 681;
+      this.maskOffsetX = 280;
 
-    const winWidth = window.innerWidth;
-    const winHeight = window.innerHeight;
+      const winWidth = window.innerWidth;
+      const winHeight = window.innerHeight;
 
-    this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+      this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
 
-    const widthTransform = winWidth / maskWidth;
-    const heightTransform = winHeight / maskHeight;
+      const widthTransform = winWidth / maskWidth;
+      const heightTransform = winHeight / maskHeight;
 
-    const value = heightTransform < widthTransform ? widthTransform : heightTransform;
+      const value = heightTransform < widthTransform ? widthTransform : heightTransform;
 
-    if (Resp.isTablet) {
-      this.maskTag.remove();
-      this.removeVideo();
-      this.initImage();
-      this.maskOffsetX = 25;
+      if (Resp.isTablet) {
+        this.maskTag.remove();
+        this.removeVideo();
+        this.initImage();
+        this.maskOffsetX = 25;
+      }
+      if (Resp.isMobile) {
+        this.maskTag.remove();
+        this.removeVideo();
+        this.initImage();
+        this.maskOffsetX = -35;
+      }
+
+      TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${this.maskOffsetX}px)` });
+
+    } else {
+
+      const winWidth = window.innerWidth;
+      const winHeight = window.innerHeight;
+
+      this.imageFix(winWidth, winHeight);
+
+      TweenMax.set(this.maskEl, { x: '-50%' });
+
+      if (Resp.isTablet) {
+        TweenMax.set(this.maskEl, { x: '-31%' });
+        for (let img of this.images) {
+          if (img.hasAttribute('data-mob-ratio')) {
+            img.setAttribute('preserveAspectRatio', 'xMinYMid slice');
+          } else {
+            img.setAttribute('preserveAspectRatio', 'xMinYMax slice');
+          }
+        }
+      }
+
+      if (Resp.isMobile) {
+        TweenMax.set(this.maskEl, { x: '-28%' });
+        for (let img of this.images) {
+          if (img.hasAttribute('data-mob-ratio')) {
+            img.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+          }
+        }
+      }
     }
-    if (Resp.isMobile) {
-      this.maskTag.remove();
-      this.removeVideo();
-      this.initImage();
-      this.maskOffsetX = -35;
-    }
-
-    TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${this.maskOffsetX}px)` });
-
-    // }
-    // else {
-    //   const maskWidth = 1219;
-    //   const maskHeight = 681;
-    //   // this.maskOffsetX = -150;
-    //
-    //   const winWidth = window.innerWidth;
-    //   const winHeight = window.innerHeight;
-    //
-    //   this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
-    //
-    //   const widthTransform = winWidth / maskWidth;
-    //   const heightTransform = winHeight / maskHeight;
-    //
-    //   const value = heightTransform < widthTransform ? widthTransform : heightTransform;
-    //
-    //   if (Resp.isTablet) {
-    //     this.maskTag.remove();
-    //     this.removeVideo();
-    //     this.initImage();
-    //     this.maskOffsetX = 25;
-    //   }
-    //   if (Resp.isMobile) {
-    //     this.maskTag.remove();
-    //     this.removeVideo();
-    //     this.initImage();
-    //     this.maskOffsetX = -35;
-    //   }
-    //
-    //   TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value})` });
-    // }
   }
 
   fixedRatio() {

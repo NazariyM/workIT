@@ -213,9 +213,17 @@
    &_md &__item
       height: 395px
       +cover-img
+      +md
+         height: 509px
+      +xs
+         height: 215px
    &_md &__controls
       left: 0
       bottom: 25px
+      +md
+         padding-left: 60px
+      +xs
+         padding-left: 10px
 
 .mobile-slider
    +md
@@ -296,3 +304,14 @@
          background-image: linear-gradient(to right, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
       &::after
          background-image: linear-gradient(to left, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
+         
+   &_green
+      &::after, &::before
+         +md
+            width: 119px
+      &::before
+         background-image: linear-gradient(to right, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
+         content: ''
+      &::after
+         background-image: linear-gradient(to left, #00d88e 0%, rgba(0, 216, 142, 0) 100%)
+         content: ''

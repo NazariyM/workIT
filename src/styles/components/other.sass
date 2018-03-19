@@ -188,7 +188,8 @@
    
    &_404 &__svg text
       font-size: 138vh
-      
+      +sm
+         font-size: 132vh
 // end mask
 
 // begin dropdown
@@ -663,13 +664,35 @@
             display: none
    &__item
       &-img
+         height: 183px
          margin-bottom: 33px
+         +cover-img
          img
             +xs
                width: 100%
       h5
          line-height: 28px
          
+   &_default
+      +xs
+         padding: 52px 0 20px
+   &_default &__top
+      +xs
+         margin: 0 auto 41px
+   &_default &__item h5
+      +xs
+         letter-spacing: 0.06em
+   &_default &__item
+      +xs
+         padding: 0 10px 38px
+   &_default &__item-img
+      +xs
+         height: 102px
+         margin-bottom: 15px
+   &_default &__content-inner
+      +xs
+         margin: 0 -15px
+   
    &_many-items
       padding: 112px 0 115px
       +md
@@ -682,24 +705,31 @@
       padding: 20px 30px 35px
       +xs
          padding: 0 15px 20px
-
+      
+         
 // end benefits //
 
 // begin info-cards //
 .info-cards
-   display: flex
-   flex-wrap: wrap
+   font-size: 0
+   letter-spacing: 0
    &__item
-      display: flex
-      flex: 0 0 170px
+      display: inline-block
+      vertical-align: middle
+      width: calc(33.33333% - 20px)
       height: 170px
-      justify-content: center
-      align-items: center
       background-color: #e1e8e7
       margin: 10px
       padding: 0 20px
       text-align: center
+      +vertical
+      +xs
+         height: 155px
       p
+         display: inline-block
+         vertical-align: middle
          +f('gil-800', 18, 30)
          letter-spacing: 0
+         +xs
+            font-size: 14px
 // end info-cards //

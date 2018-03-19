@@ -23505,7 +23505,9 @@ var Slider = function () {
     this.$sliderHasProgress = $('.mobile-slider_has-progress');
     this.$mobSliderDouble = $('.mobile-slider_double');
     this.$block3Sld = $('.block-3__items-list.mobile-slider');
-    this.$block3Photos = $('.block-3__photos');
+    this.$block3PhotosTablet = $('.block-3__photos_slider-tablet');
+    this.$block3PhotosMob = $('.block-3__photos_slider-mob');
+    this.$block3Cards = $('.block-3__info-cards');
     this.$block6Sld = $('.block-6__list');
     this.$valuesMobSld = $('.values__mob-slider');
     this.$teamSld = $('.team__inner_slider');
@@ -23579,7 +23581,7 @@ var Slider = function () {
         }]
       }));
 
-      this.$block3Photos.slick($.extend({}, defaultOptions, {
+      this.$block3PhotosTablet.slick($.extend({}, defaultOptions, {
         slidesToShow: 1.14,
         slidesToScroll: 1,
         responsive: [{
@@ -23593,6 +23595,35 @@ var Slider = function () {
         }, {
           breakpoint: 319,
           settings: 'unslick'
+        }]
+      }));
+
+      this.$block3PhotosMob.slick($.extend({}, defaultOptions, {
+        slidesToShow: 1.2,
+        slidesToScroll: 1,
+        responsive: [{
+          breakpoint: 1199,
+          settings: 'unslick'
+        }, {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1.135
+          }
+        }]
+      }));
+
+      this.$block3Cards.slick($.extend({}, defaultOptions, {
+        slidesToShow: 1.78,
+        slidesToScroll: 1,
+        responsive: [{
+          breakpoint: 1199,
+          settings: 'unslick'
+        }, {
+          breakpoint: 767,
+          settings: {
+            slidesToScroll: 1,
+            slidesToShow: 3.84
+          }
         }]
       }));
 
@@ -23812,6 +23843,12 @@ var Slider = function () {
             vertical: true,
             responsive: [{
               breakpoint: 1199,
+              settings: {
+                vertical: false,
+                slidesToShow: 3
+              }
+            }, {
+              breakpoint: 767,
               settings: 'unslick'
             }]
           });
@@ -28631,69 +28668,108 @@ var Mask = function () {
   }, {
     key: 'fluidRatio',
     value: function fluidRatio() {
-      // const stubPage = this.block.classList.contains('mask_404');
+      var stubPage = this.block.classList.contains('mask_404');
 
-      // if (!stubPage) {
-      var maskWidth = 1219;
-      var maskHeight = 681;
-      this.maskOffsetX = 280;
+      if (!stubPage) {
+        var maskWidth = 1219;
+        var maskHeight = 681;
+        this.maskOffsetX = 280;
 
-      var winWidth = window.innerWidth;
-      var winHeight = window.innerHeight;
+        var winWidth = window.innerWidth;
+        var winHeight = window.innerHeight;
 
-      this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+        this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
 
-      var widthTransform = winWidth / maskWidth;
-      var heightTransform = winHeight / maskHeight;
+        var widthTransform = winWidth / maskWidth;
+        var heightTransform = winHeight / maskHeight;
 
-      var value = heightTransform < widthTransform ? widthTransform : heightTransform;
+        var value = heightTransform < widthTransform ? widthTransform : heightTransform;
 
-      if (_helpers.Resp.isTablet) {
-        this.maskTag.remove();
-        this.removeVideo();
-        this.initImage();
-        this.maskOffsetX = 25;
+        if (_helpers.Resp.isTablet) {
+          this.maskTag.remove();
+          this.removeVideo();
+          this.initImage();
+          this.maskOffsetX = 25;
+        }
+        if (_helpers.Resp.isMobile) {
+          this.maskTag.remove();
+          this.removeVideo();
+          this.initImage();
+          this.maskOffsetX = -35;
+        }
+
+        _gsap.TweenMax.set(this.maskEl, { transform: 'scale(' + value + ', ' + value + ') translateX(' + this.maskOffsetX + 'px)' });
+      } else {
+
+        var _winWidth = window.innerWidth;
+        var _winHeight = window.innerHeight;
+
+        this.imageFix(_winWidth, _winHeight);
+
+        _gsap.TweenMax.set(this.maskEl, { x: '-50%' });
+
+        if (_helpers.Resp.isTablet) {
+          _gsap.TweenMax.set(this.maskEl, { x: '-31%' });
+          var _iteratorNormalCompletion = true;
+          var _didIteratorError = false;
+          var _iteratorError = undefined;
+
+          try {
+            for (var _iterator = this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+              var img = _step.value;
+
+              if (img.hasAttribute('data-mob-ratio')) {
+                img.setAttribute('preserveAspectRatio', 'xMinYMid slice');
+              } else {
+                img.setAttribute('preserveAspectRatio', 'xMinYMax slice');
+              }
+            }
+          } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+              }
+            } finally {
+              if (_didIteratorError) {
+                throw _iteratorError;
+              }
+            }
+          }
+        }
+
+        if (_helpers.Resp.isMobile) {
+          _gsap.TweenMax.set(this.maskEl, { x: '-28%' });
+          var _iteratorNormalCompletion2 = true;
+          var _didIteratorError2 = false;
+          var _iteratorError2 = undefined;
+
+          try {
+            for (var _iterator2 = this.images[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+              var _img = _step2.value;
+
+              if (_img.hasAttribute('data-mob-ratio')) {
+                _img.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+              }
+            }
+          } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+              }
+            } finally {
+              if (_didIteratorError2) {
+                throw _iteratorError2;
+              }
+            }
+          }
+        }
       }
-      if (_helpers.Resp.isMobile) {
-        this.maskTag.remove();
-        this.removeVideo();
-        this.initImage();
-        this.maskOffsetX = -35;
-      }
-
-      _gsap.TweenMax.set(this.maskEl, { transform: 'scale(' + value + ', ' + value + ') translateX(' + this.maskOffsetX + 'px)' });
-
-      // }
-      // else {
-      //   const maskWidth = 1219;
-      //   const maskHeight = 681;
-      //   // this.maskOffsetX = -150;
-      //
-      //   const winWidth = window.innerWidth;
-      //   const winHeight = window.innerHeight;
-      //
-      //   this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
-      //
-      //   const widthTransform = winWidth / maskWidth;
-      //   const heightTransform = winHeight / maskHeight;
-      //
-      //   const value = heightTransform < widthTransform ? widthTransform : heightTransform;
-      //
-      //   if (Resp.isTablet) {
-      //     this.maskTag.remove();
-      //     this.removeVideo();
-      //     this.initImage();
-      //     this.maskOffsetX = 25;
-      //   }
-      //   if (Resp.isMobile) {
-      //     this.maskTag.remove();
-      //     this.removeVideo();
-      //     this.initImage();
-      //     this.maskOffsetX = -35;
-      //   }
-      //
-      //   TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value})` });
-      // }
     }
   }, {
     key: 'fixedRatio',
@@ -28727,13 +28803,13 @@ var Mask = function () {
   }, {
     key: 'imageFix',
     value: function imageFix(winWidth, winHeight) {
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator = this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var img = _step.value;
+        for (var _iterator3 = this.images[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var img = _step3.value;
 
           img.setAttribute('width', '' + (winWidth + 30));
           img.setAttribute('height', '' + (winHeight + 30));
@@ -28745,16 +28821,16 @@ var Mask = function () {
           }
         }
       } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
           }
         } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
+          if (_didIteratorError3) {
+            throw _iteratorError3;
           }
         }
       }
@@ -28762,13 +28838,13 @@ var Mask = function () {
   }, {
     key: 'videoFix',
     value: function videoFix(winWidth, winHeight) {
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
 
       try {
-        for (var _iterator2 = this.rects[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var rect = _step2.value;
+        for (var _iterator4 = this.rects[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var rect = _step4.value;
 
           rect.setAttribute('width', '' + winWidth);
           rect.setAttribute('height', '' + winHeight);
@@ -28778,16 +28854,16 @@ var Mask = function () {
           }
         }
       } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-            _iterator2.return();
+          if (!_iteratorNormalCompletion4 && _iterator4.return) {
+            _iterator4.return();
           }
         } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
+          if (_didIteratorError4) {
+            throw _iteratorError4;
           }
         }
       }

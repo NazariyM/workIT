@@ -8,7 +8,7 @@ block main
 
     -
       screen = {
-      classMod: '_default',
+      classMod: '_default _404',
       maskType: 'image',
       maskImg: '404_2',
       title: '404',
@@ -34,12 +34,11 @@ block main
         +e.SVG.svg(version='1.1', xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none')
           defs
             clipPath#screen-img-clip
-              text(y="103%" x='-12%') 404
+              text.mask__el(y="103%" x='50%') 404
 
             filter#screen-mask-blur
               fegaussianblur(in='SourceGraphic', stddeviation= screen.maskBlur ? screen.maskBlur : '10')
 
           image(xlink:href=`static/img/screen_${screen.maskImg}.jpg`, x='0', y='0' filter='url(#screen-mask-blur)' preserveAspectRatio='xMidYMin slice' width='1920' height='1080' opacity= screen.maskImgOpacity ? screen.maskImgOpacity : '1')
           image(xlink:href=`static/img/screen_${screen.maskImg}.jpg`, x='0', y='0' clip-path='url(#screen-img-clip)' preserveAspectRatio='xMidYMin slice' width='1920' height='1080')
-
     //end screen

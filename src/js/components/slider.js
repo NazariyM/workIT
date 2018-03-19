@@ -12,7 +12,9 @@ class Slider {
     this.$sliderHasProgress = $('.mobile-slider_has-progress');
     this.$mobSliderDouble = $('.mobile-slider_double');
     this.$block3Sld = $('.block-3__items-list.mobile-slider');
-    this.$block3Photos = $('.block-3__photos');
+    this.$block3PhotosTablet = $('.block-3__photos_slider-tablet');
+    this.$block3PhotosMob = $('.block-3__photos_slider-mob');
+    this.$block3Cards = $('.block-3__info-cards');
     this.$block6Sld = $('.block-6__list');
     this.$valuesMobSld = $('.values__mob-slider');
     this.$teamSld = $('.team__inner_slider');
@@ -64,7 +66,7 @@ class Slider {
 				}]
 		}));
 
-    this.$block3Photos.slick($.extend({}, defaultOptions, {
+    this.$block3PhotosTablet.slick($.extend({}, defaultOptions, {
       slidesToShow: 1.14,
       slidesToScroll: 1,
       responsive: [{
@@ -80,6 +82,36 @@ class Slider {
           breakpoint: 319,
           settings: 'unslick'
 	      }]
+    }));
+
+    this.$block3PhotosMob.slick($.extend({}, defaultOptions, {
+      slidesToShow: 1.2,
+      slidesToScroll: 1,
+      responsive: [{
+        breakpoint: 1199,
+        settings: 'unslick'
+      },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1.135
+          }
+        }]
+    }));
+
+    this.$block3Cards.slick($.extend({}, defaultOptions, {
+      slidesToShow: 1.78,
+      slidesToScroll: 1,
+      responsive: [{
+        breakpoint: 1199,
+        settings: 'unslick'
+      }, {
+        breakpoint: 767,
+        settings: {
+          slidesToScroll: 1,
+          slidesToShow: 3.84,
+        }
+      }]
     }));
 
 		this.$block3Sld.slick($.extend({}, defaultOptions, {
@@ -304,6 +336,12 @@ class Slider {
           vertical: true,
           responsive: [{
             breakpoint: 1199,
+            settings: {
+              vertical: false,
+              slidesToShow: 3
+            }
+          }, {
+            breakpoint: 767,
             settings: 'unslick'
           }]
         });

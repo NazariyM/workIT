@@ -50,7 +50,6 @@ block main
                   b идеальное место
                   = ' '
                   | для совместной работы
-                +e.H5
                   b Создавайте
                   = ' '
                   | у нас  фантастические продукты,
@@ -67,7 +66,7 @@ block main
                   = ' '
                   | для совместной работы
 
-            +b.info-cards.block-3__info-cards(data-items-anim='fade-left')
+            +b.info-cards.block-3__info-cards.mobile-slider._white(data-items-anim='fade-left')
               -
                 infoCardList = [
                   '2000 кв м',
@@ -105,26 +104,27 @@ block main
                     +e.A(href='#!') +38 (050) 687 48-90
                     +b.A.link-green(href='#!') info@workit.space
 
-              +e.person
-                +e.person-photo
-                  +e.IMG(src='static/img/person-1.jpg' alt='image')
-                +e.person-info
-                  +e.person-name.h5
-                    +e.H5 Марта Любимова
-                  +e.P Главный администратор
-              +e.person
-                +e.person-photo
-                  +e.IMG(src='static/img/person-2.jpg' alt='image')
-                +e.person-info
-                  +e.person-name.h5
-                    +e.H5 Евгения Булгакова
-                  +e.P Главный администратор
+              +e.persons-wrap
+                +e.person
+                  +e.person-photo
+                    +e.IMG(src='static/img/person-1.jpg' alt='image')
+                  +e.person-info
+                    +e.person-name.h5
+                      +e.H5 Марта Любимова
+                    +e.P Главный администратор
+                +e.person
+                  +e.person-photo
+                    +e.IMG(src='static/img/person-2.jpg' alt='image')
+                  +e.person-info
+                    +e.person-name.h5
+                      +e.H5 Евгения Булгакова
+                    +e.P Главный администратор
 
               +e.BUTTON.btn.btn._green(type='button' data-popup-target='comePopup')
                 span.btn__text Прийти в гости
 
 
-        +e.photos.mobile-slider._white
+        +e.photos._slider-mob.mobile-slider._white
           +e.photos-wrap._1.img-hover(data-anim='fade-left' data-anim-duration='1')
             +e.photos-img.img-hover__item(style='background-image: url(static/img/block-3_photo-1.jpg)')
           +e.photos-wrap._2.img-hover(data-anim='fade-right' data-anim-duration='1')
@@ -146,7 +146,7 @@ block main
     //end block-3
 
     //begin benefits
-    +b.SECTION.benefits
+    +b.SECTION.benefits._default
       +e.container.container
         +e.top.block-top
           +e.label.block-label
@@ -158,7 +158,7 @@ block main
               | локации
 
         +e.content.expand-list.js-expand-list
-          .expand-list__inner
+          .expand-list__inner.benefits__content-inner.mobile-slider.mobile-slider_green
             -
               benefitsList = [
               'Отдых в парке',
@@ -171,29 +171,6 @@ block main
                 +e.item-img.img-hover
                   +e.IMG(src=`static/img/benefits_${index + 13}.jpg` alt='image')
                 +e.H5= benefitsItemText
-
-            //+e.item.expand-list__item.is-hidden
-            //  +e.item-img.img-hover
-            //    +e.IMG(src=`static/img/benefits_2.jpg` alt='image')
-            //  +e.H5 Зоны развлечений
-            //
-            //+e.item.expand-list__item.is-hidden
-            //  +e.item-img.img-hover
-            //    +e.IMG(src=`static/img/benefits_3.jpg` alt='image')
-            //  +e.H5 Уборка
-            //
-            //+e.item.expand-list__item.is-hidden
-            //  +e.item-img.img-hover
-            //    +e.IMG(src=`static/img/benefits_6.jpg` alt='image')
-            //  +e.H5 Использование оргтехники
-            //
-            //+e.item.expand-list__item.is-hidden
-            //  +e.item-img.img-hover
-            //    +e.IMG(src=`static/img/benefits_1.jpg` alt='image')
-            //  +e.H5 Kухня
-
-          //+b.BUTTON.expand-list__btn.btn._line._line-white(type='button') хочу еще
-        //end benefits
 
     //begin block-6
     +b.SECTION.block-6._location-has-slider
@@ -248,7 +225,7 @@ block main
           each item in block6List
             +block6Item(item)
 
-        +b.slider._has-nav-vertical.block-6__slider(data-items-anim='fade-left' data-anim-duration='1' data-anim-delay='.5')
+        +b.slider._has-nav-vertical.block-6__slider(data-anim='fade-left' data-anim-duration='1' data-anim-delay='.5')
           +e.body
             +e.item.img-hover
               +e.IMG(src='static/img/block-6_sld-1.jpg' alt='image')
@@ -280,36 +257,11 @@ block main
             +e.nav-item
               +e.IMG(src='static/img/block-6_sld-2.jpg' alt='image')
         //end block-6
-      -
-        membersList = [{
-        pic: 'team_1',
-        name: 'Иван Иванов',
-        position: 'CEO Workit',
-        description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
-        }, {
-        pic: 'team_2',
-        name: 'Анна Градиль',
-        position: 'CEO Workit',
-        description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
-        }, {
-        pic: 'team_3',
-        name: 'Мирослава Захарчук',
-        position: 'CEO Workit',
-        description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая крутое пространство для совместной работы.'
-        }, {
-        pic: 'team_4',
-        name: 'Мария Касс',
-        position: 'CEO Workit',
-        description: 'Мы приглашаем техников-предпринимателей создавать фантастические продукты, предлагая всеохватывающее пространство для совместной работы. Мы приглашаем техников-предпринимателей создавать фантастические продукты.'
-        }]
-    -team = {innerClass: '_slider mobile-slider _green-large'};
-    include ../sections/team
 
     -come = {maskType: 'image', maskVideo: false}
     include ../sections/come
 
-    -locations = {classMod: 'desk-only'}
     include ../sections/locations
 
-    -subscrClass = '_contacts desk-only'
+    -subscrClass = '_contacts'
     include ../sections/subscr
