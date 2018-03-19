@@ -5,9 +5,11 @@ if pagination ? pagination : pagination = []
 	+b.UL(data-items-anim='fade-left' data-anim-duration='0.3' data-stagger-duration='0.15')
 		li.prev.hidden: a(href='!#') prev
 			span page
-		li.active: a(href='!#') 1
-		li: a(href='!#') 2
+		li: a(href='!#') 1
+		li: a(href='!#') ...
 		li: a(href='!#') 3
+		li.active: a(href='!#') 4
+		li: a(href='!#') 5
 		li: a(href='!#') ...
 		li: a(href='!#') 15
 		li.next: a(href='!#') next

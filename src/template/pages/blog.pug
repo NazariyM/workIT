@@ -20,9 +20,6 @@ block main
               = ' '
               | workit
 
-            -dropdownClass = '_themes _mob-only'
-            include ../components/dropdown
-
           +b.SVG.hanging-decor._office(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='202', height='242', viewbox='0 0 202 242')
             defs
               path#16t4a(d='M1027 207V59h1v148z')
@@ -62,22 +59,22 @@ block main
               pic: 'events_full-2',
               title: 'How To: Make a Good Presentation For Investors'
             },
-            {
+            { picLink: true,
               pic: 'events_1',
               title: 'How To: Make a Good Presentation For Investors'
-            }, {
+            }, {picLink: true,
               pic: 'events_2',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
-            }, {
+            }, {picLink: true,
               pic: 'events_3',
               title: 'How To: Make a Good Presentation For Investors'
-            }, {
+            }, {picLink: true,
               pic: 'events_4',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
-            }, {
+            }, {picLink: true,
               pic: 'events_5',
               title: 'How To: Make a Good Presentation For Investors'
-            }, {
+            }, {picLink: true,
               pic: 'events_7',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
             }]
@@ -94,7 +91,7 @@ block main
                 +e.item-date
                   +e.P 07.12.2017
                 +e.item-author
-                  +e.P By Alyona Petrenko
+                  +e.A(href='#!') By Alyona Petrenko
               +e.item-title.h4
                 +e.A(href='#!')
                   +e.H4= item.title

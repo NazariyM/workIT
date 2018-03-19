@@ -58,8 +58,6 @@
       +md
          margin-bottom: 13px
    &_blog &__top
-      +xs
-         margin-bottom: 25px
    &_blog &__item
       padding: 0 30px 51px
       +md
@@ -254,7 +252,12 @@
             font-size: 12px
       &-author
          color: $color1
-         +f('rob-700')
+         +f('rob-700', 16)
+         +trs
+         +xs
+            font-size: 12px
+         .no-touch &:hover
+            color: $color2
       &-descr
          margin-bottom: 45px
          p
