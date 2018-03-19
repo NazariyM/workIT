@@ -49,6 +49,9 @@ class Mask {
   }
 
   fluidRatio() {
+    // const stubPage = this.block.classList.contains('mask_404');
+
+    // if (!stubPage) {
     const maskWidth = 1219;
     const maskHeight = 681;
     this.maskOffsetX = 280;
@@ -78,6 +81,37 @@ class Mask {
 
     TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${this.maskOffsetX}px)` });
 
+    // }
+    // else {
+    //   const maskWidth = 1219;
+    //   const maskHeight = 681;
+    //   // this.maskOffsetX = -150;
+    //
+    //   const winWidth = window.innerWidth;
+    //   const winHeight = window.innerHeight;
+    //
+    //   this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+    //
+    //   const widthTransform = winWidth / maskWidth;
+    //   const heightTransform = winHeight / maskHeight;
+    //
+    //   const value = heightTransform < widthTransform ? widthTransform : heightTransform;
+    //
+    //   if (Resp.isTablet) {
+    //     this.maskTag.remove();
+    //     this.removeVideo();
+    //     this.initImage();
+    //     this.maskOffsetX = 25;
+    //   }
+    //   if (Resp.isMobile) {
+    //     this.maskTag.remove();
+    //     this.removeVideo();
+    //     this.initImage();
+    //     this.maskOffsetX = -35;
+    //   }
+    //
+    //   TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value})` });
+    // }
   }
 
   fixedRatio() {

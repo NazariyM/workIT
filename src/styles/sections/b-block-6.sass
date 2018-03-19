@@ -1,5 +1,5 @@
 .block-6
-   padding: 102px 0 132px
+   padding: 102px 0 137px
    +md
       padding: 111px 0 140px
    +xs
@@ -57,6 +57,17 @@
          +xs
             padding: 25px 10px 0
             margin-top: 0
+         > p
+            transform: translateX(-50px)
+            opacity: 0
+            +f('gil-300', 18)
+            letter-spacing: 0
+            b, strong
+               +f('gil-800', 18)
+            &:not(:last-of-type)
+               margin-bottom: 17px
+            &:last-of-type
+               margin-bottom: 31px
       &-title
          transform: translateX(-50px)
          opacity: 0
@@ -105,9 +116,10 @@
          transform: translateX(-50px)
          opacity: 0
          p
+            &:not(:last-of-type)
+               margin-bottom: 14px
             &:nth-of-type(1)
                max-height: 168px
-               margin-bottom: 14px
                +md
                   height: auto
                +xs
@@ -118,7 +130,10 @@
                   height: auto
       
       &-list
+         min-height: 411px
          padding-left: 2px
+         +md
+            min-height: 0
          +xs
             padding-left: 0
          li
@@ -129,6 +144,14 @@
          opacity: 0
          +md
             margin-bottom: -26px
+      &-links
+         display: flex
+         justify-content: space-between
+         transform: translateX(-50px)
+         opacity: 0
+         .block-6__offer-btn
+            opacity: 1
+            transform: none
    &__price
       &_offer
          margin: 27px 0 32px
@@ -150,6 +173,7 @@
          span
             +f('gil-300')
    &__list
+      overflow: hidden
       margin: 80px -20px 0
       +clr
       +xs
@@ -206,6 +230,31 @@
          z-index: 2
          background-color: #fff
          width: 100%
+   &__slider
+      +clr
+      .slider__body
+         float: left
+         width: calc(100% - 206px)
+         padding-right: 37px
+      .slider__item
+         height: 584px
+         +cover-img
+      
+      .slider__nav
+         float: left
+         width: 206px
+         &-item
+            height: 132px
+            width: 206px
+            margin: 0
+            &:not(:last-child)
+               margin-bottom: 19px
+         .slick-list
+            margin: 0
+      .slider__controls
+         left: auto
+         right: 243px
+         bottom: -50px
    
    &_location
       padding: 110px 0 43px
@@ -219,6 +268,8 @@
       margin: 0 -20px
    &_location &__item p
       height: 85px
+   &_location-has-slider
+      padding: 102px 0 164px
    
    &_has-slider
       padding: 113px 0 62px
@@ -252,3 +303,24 @@
          margin: 100px -20px 0
       +xs
          margin: 50px -10px 0
+         
+   &_event
+      padding: 29px 0 122px
+   &_event &__top
+      margin: 0 0 80px
+   &_event &__offer-title
+      margin-bottom: 30px
+   &_event &__offer-descr
+      margin-bottom: 29px
+   &_event &__offer-slider
+      margin-top: 74px
+   &_event &__price h5
+      letter-spacing: 0
+   &_event &__offer-btn.btn_green
+      min-width: 260px
+   &_event &__offer-btn.btn_black
+      min-width: 180px
+   &_event &__offer::after
+      bottom: 3%
+      
+   

@@ -31,6 +31,7 @@ class DefaultAnims {
 
       new ScrollAnim({
         el: section,
+        hook: .8,
         onStart() {
           _this.blockTopAnim(container);
         }
@@ -108,16 +109,13 @@ class DefaultAnims {
 
   blockTopAnim(container) {
     const tl = new TimelineMax();
-
-    const item = container.children;
-    const label = container.querySelector('.block-label');
-    const title = container.querySelector('.block-title');
+    const $this = $(container);
+    const $items = $this.children();
+    const title = $this.find('.block-title');
 
     tl
-     .to(label, .5, { autoAlpha: 1, x: 0 })
-     .to(title, .5, { autoAlpha: 1, x: 0 })
-     .set(title, { className: `+=${css.selected}` }, '-=1')
-     .staggerTo(item, .5, { autoAlpha: 1, x: 0 }, '-=1');
+      .staggerTo($items, .5, { autoAlpha: 1, x: 0 }, .3)
+      .set(title, { className: `+=${css.selected}` }, '-=1.5');
   }
 
   groupAnim(group) {
@@ -144,6 +142,18 @@ class DefaultAnims {
         .to($wire1, 2, { y: -217 }, 'all')
         .to($wire2, 2, { y: -218 }, 'all')
         .to($wire3, 2, { y: -158 }, 'all');
+    }
+
+    if (decor.classList.contains('hanging-decor_office-sm')) {
+      const tl = new TimelineMax();
+      const $wire1 = decorWires[0];
+      const $wire2 = decorWires[2];
+      const $wire3 = decorWires[1];
+
+      tl
+        .to($wire1, 2, { y: 0 }, 'all')
+        .to($wire2, 2, { y: 30 }, 'all')
+        .to($wire3, 2, { y: -30 }, 'all');
     }
 
   }

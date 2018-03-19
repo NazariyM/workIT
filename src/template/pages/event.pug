@@ -7,53 +7,67 @@ block main
   main.content(data-page='event')
 
     //begin block-6
-    +b.SECTION.block-6
+    +b.SECTION.block-6._event
       .container.container_md
-        +e.top.block-top
-          +e.label.block-label
-            +e.P prices
-          +e.title.block-title.has-selection._green
-            +e.H2
-              b Тарифы
-              = ' '
-              | для early birds
-          +e.sub-title.block-sub-title
-            +e.H5 Мы разработали
-              b 4 уникальных тарифных плана.
-              = ' '
-              | Вы фрилансер, стартам или большая компания, у нас вы точно найдете подходящий вариант
+        +e.top.block-top._event
+          +b.A.block-back-btn(href='#!')
+            svg.icon.icon-arr-left(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 93.06 42.5')
+              polygon(points='1.14 22.38 20.98 42.5 23.75 39.69 7.56 23.26 93.06 23.26 93.06 19.21 7.57 19.21 23.79 2.82 21 0 0 21.23 1.14 22.38')
+            span назад к мероприятиям
+          +e.title.block-title
+            +e.H3 Лекция Владимира Страшкова «UX чек-лист и современное искусство»
+
+          include ../components/social-share
 
         +e.offer
           +e.offer-text
             +e.offer-title
-              +e.H4 Офис мечты
-            +e.offer-sub-title.h5
-              +e.H5 Cоздавай пространство для своей команды сам
+              +e.H4 О мероприятии
+            +e.P
+              b Когда:
+              = ' '
+              | 20. 09. 2018 в 19. 00
+
+            +e.P
+              b Где:
+              = ' '
+              | пространство workit, Нивки, улица Щербакова 2
+
+            +e.P
+              b Спикеры:
+              = ' '
+              | Яна Левковская и Максим Гавриш
+
+            +e.offer-descr
+              +e.P
+                b Vladimir Strashkov
+                = ' '
+                | — product designer, UX consultant, art director. В прошлом UX дизайнер в студии самизнаетекого, сооснователь и бывший арт директор агентства Madcats Agency. Много кейсов в портфолио объединены приставкой «ре» — редизайн сайта Ощадбанка, ребрендинг для Планеты
+
             +e.offer-list.bullet-list
               ul
                 li Не нужно тратить деньги на ремонт. Мы сами воплотим любую вашу идею и задумку
                 li Не беспокойтесь о комунальных платежах , обслуживание офиса, уборку и всех мелочек, которые отнимают ваше время
                 li Если ваша команду увеличилась или уменьшилась, мы без проблем подстроим ваше офисное пространство под изменения
-                li Организуем ваш переезд
-                li Первый месяц бесплатно, при аренде от 6ти месяцев
-                li Идеально подойдет для небольших компаний. Если вы хотите иметь крутой, стильный офис, приходи к нам.
 
             +e.price._offer
-              +e.H5 Стоимость от:
-                span 200$
-            +e.BUTTON.offer-btn.btn._green(type='button' data-popup-target='enrollPopup')
-              span.btn__text забронировать
+              +e.H5 Стоимость:
+                span 200 грн.
+            +e.offer-links
+              +e.A.offer-btn.btn._green(href='#!' target='_blank')
+                span.btn__text подробности facebook
 
-          +b.slider._has-nav.block-6__offer-slider
+              +e.A.offer-btn.btn._black(href='#!' target='_blank')
+                span.btn__text купить билет
+
+          +b.slider._md.block-6__offer-slider(data-anim='fade-left' data-anim-duration='1' data-anim-delay='.5')
             +e.body(data-anim='slider')
-              +e.item
+              +e.item.img-hover
+                +e.IMG(src='static/img/block-3_2.jpg' alt='image')
+              +e.item.img-hover
                 +e.IMG(src='static/img/block-6_offer.jpg' alt='image')
-              +e.item
-                +e.IMG(src='static/img/block-3_4.jpg' alt='image')
-              +e.item
+              +e.item.img-hover
                 +e.IMG(src='static/img/block-3_7.jpg' alt='image')
-              +e.item
-                +e.IMG(src='static/img/block-6_offer.jpg' alt='image')
             +e.controls
               +e.buttons
               +e.count
@@ -61,67 +75,40 @@ block main
                 +e.count-decor
                 +e.SPAN.count-all
 
-            +e.nav
-              +e.nav-item
-                +e.IMG(src='static/img/block-6_1-sm.jpg' alt='image')
-              +e.nav-item
-                +e.IMG(src='static/img/block-6_2-sm.jpg' alt='image')
-              +e.nav-item
-                +e.IMG(src='static/img/block-6_3-sm.jpg' alt='image')
-              +e.nav-item
-                +e.IMG(src='static/img/block-6_1-sm.jpg' alt='image')
+          // если фото одно - тогда этот блок вместо слайдера
+          //<div class="block-6__offer-pic img-hover">
+          //  <div class="block-6__offer-img img-hover__item" style="background-image: url(static/img/block-6_offer.jpg);"></div>
+          //</div>
 
-          //+e.offer-pic.img-hover
-            +e.offer-img.img-hover__item(style='background-image: url(static/img/block-6_offer.jpg)')
-
-        +e.list._more-items.mobile-slider._white
-          -
-            block6List = [{
-            title: 'Место в лаунж зоне',
-            img: 1,
-            descr: 'Свободное место в зоне общего пользования. Идеально подойдет для тех, кто любит работать не за столом, а в более расслабленной обстановке.'
-            }, {
-            title: 'Hot desk',
-            img: 2,
-            descr: 'Свободное рабочее место в open space. Идеально подойдет для тех, кто не любит сидеть на одном месте. Работать и при желании общаться с окружающими.'
-            }, {
-            title: 'Desk priority',
-            img: 3,
-            descr: 'Персональное рабочее место в open space. Для тех, кто любит создавать свое рабочее место. Кто ценит свое личное пространство и свободу в его организации.'
-            }, {
-            title: 'Место в лаунж зоне',
-            img: 4,
-            descr: 'Свободное место в зоне общего пользования. Идеально подойдет для тех, кто любит работать не за столом, а в более расслабленной обстановке.'
-            }, {
-            title: 'Desk priority',
-            img: 5,
-            descr: 'Свободное рабочее место в open space. Идеально подойдет для тех, кто не любит сидеть на одном месте. Работать и при желании общаться с окружающими.'
-            }]
-          mixin block6Item(item)
-            +e.item
-              +e.item-mask
-              +e.item-img.img-hover
-                +e.IMG(src=`static/img/block-6_${item.img}.jpg` alt='image')
-              +e.item-text
-                +e.item-title.h4
-                  +e.H4= item.title
-                +e.P= item.descr
-                +e.item-list.bullet-list
-                  -
-                    block6ItemList = [
-                    'Организуем ваш переезд',
-                    'Первый месяц бесплатно, при аренде от 6ти месяцев',
-                    'Организуем ваш переезд'
-                    ]
-
-                  +e.UL
-                    for block6ItemText in block6ItemList
-                      li= block6ItemText
-                +e.price._item
-                  +e.H5 Стоимость от:
-                    span 200$
-                +e.BUTTON.item-btn.btn._green(type='button' data-popup-target='enrollPopup')
-                  span.btn__text забронировать
-          each item in block6List
-            +block6Item(item)
         //end block-6
+
+    //TODO: expand items
+    -
+      events = {
+        classMod: '_event',
+        title: 'Другие',
+        titleSelected: 'мероприятия',
+        label: 'related',
+        titleClasses: '_green',
+        listClasses: 'mobile-slider _double _white-large' }
+
+    -
+      eventsList = [{
+        pic: 'events_1',
+        title: 'How To: Make a Good Presentation For Investors'
+      }, {
+        pic: 'events_2',
+        title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+      }, {
+        classMod: 'is-hidden',
+        pic: 'events_1',
+        title: 'How To: Make a Good Presentation For Investors'
+      }, {
+        classMod: 'is-hidden',
+        pic: 'events_2',
+        title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
+      }]
+    include ../sections/events
+
+    -subscrClass = '_default'
+    include ../sections/subscr

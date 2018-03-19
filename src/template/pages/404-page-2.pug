@@ -1,0 +1,45 @@
+extends ../extend/default
+
+block variables
+  - var title = '404 page';
+
+block main
+  main.content
+
+    -
+      screen = {
+      classMod: '_default',
+      maskType: 'image',
+      maskImg: '404_2',
+      title: '404',
+      subTitle: 'Страница не найдена',
+      btnText: 'на главную',
+      maskImgOpacity: '0.9'
+      }
+
+    if screen ? screen : screen = []
+
+    //begin screen
+    +b.SECTION.screen(class= screen.classMod ? screen.classMod : '')
+      +e.inner
+        +e.container.container._md
+          +e.title
+            +e.H1= screen.title
+          +e.sub-title
+            +e.H5= screen.subTitle
+          +e.A.btn.btn._green(href='#!')
+            span.btn__text= screen.btnText
+
+      +b.mask._screen._404(data-mask-type= screen.maskType)
+        +e.SVG.svg(version='1.1', xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none')
+          defs
+            clipPath#screen-img-clip
+              text(y="103%" x='-12%') 404
+
+            filter#screen-mask-blur
+              fegaussianblur(in='SourceGraphic', stddeviation= screen.maskBlur ? screen.maskBlur : '10')
+
+          image(xlink:href=`static/img/screen_${screen.maskImg}.jpg`, x='0', y='0' filter='url(#screen-mask-blur)' preserveAspectRatio='xMidYMin slice' width='1920' height='1080' opacity= screen.maskImgOpacity ? screen.maskImgOpacity : '1')
+          image(xlink:href=`static/img/screen_${screen.maskImg}.jpg`, x='0', y='0' clip-path='url(#screen-img-clip)' preserveAspectRatio='xMidYMin slice' width='1920' height='1080')
+
+    //end screen

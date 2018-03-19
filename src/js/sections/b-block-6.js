@@ -72,7 +72,7 @@ class Block6 {
     const $items = this.$offerList.children();
     let delay;
     if (Resp.isDesk) {
-      delay = 1;
+      delay = 1.8;
     } else {
       delay = 0;
     }

@@ -48,3 +48,50 @@
     margin-top: 10px
     +xs
       margin-top: 5px
+      
+// begin socials-block //
+.social-share
+  display: flex
+  align-items: center
+  opacity: 0
+  transform: translateX(-50px)
+  a
+    position: relative
+    display: inline-flex
+    align-items: center
+    height: 18px
+    font-size: 0
+    .no-touch &:hover .icon
+      fill: $color1
+    .no-touch &:hover::after
+      transform: rotate(-180deg)
+    &:not(:last-child)
+      margin-right: 32px
+    &:nth-child(1)::after
+      left: 20px
+    &:nth-child(2)::after
+      left: 25px
+    &:nth-child(3)::after
+      left: 27px
+    &::after
+      position: absolute
+      width: 5px
+      top: 7px
+      height: 5px
+      background: $color1
+      content: ''
+      +gpu
+      +trs
+    .icon
+      transition: .4s ease
+      
+      &-fb
+        margin-right: 25px
+      &-tw
+        margin-right: 24px
+      &-mail
+        margin-right: 23px
+    span
+      +f('rob-400', 16)
+      line-height: 1
+// end socials-block //

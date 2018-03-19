@@ -241,8 +241,9 @@ class Slider {
 		this.$slider.each(function (i, slider) {
 			const $slider = $(slider).find('.slider__body');
 			const $sliderHasNav = $(slider).hasClass('slider_has-nav');
+			const $sliderHasNavVert = $(slider).hasClass('slider_has-nav-vertical');
 
-      if (!$sliderHasNav) {
+      if (!$sliderHasNav && !$sliderHasNavVert) {
         $slider.slick($.extend({}, defaultOptions, {
           appendArrows: $('.slider__buttons', this),
           onInit: _this.countSlides($slider, true),
@@ -258,13 +259,7 @@ class Slider {
           onInit: _this.countSlides($viewSlider, false),
           asNavFor: '.slider__nav',
           speed: 800,
-          cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
-          // responsive: [{
-          //   breakpoint: 1199,
-          //   settings: {
-          //     asNavFor:
-          //   }
-          // }]
+          cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)'
         }));
 
         $sliderNav.slick({
@@ -277,6 +272,36 @@ class Slider {
           focusOnSelect: true,
           cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
 	        rows: 0,
+          responsive: [{
+            breakpoint: 1199,
+            settings: 'unslick'
+          }]
+        });
+      }
+
+      if ($sliderHasNavVert) {
+        const $viewSlider = $(this).find('.slider__body');
+        const $sliderNav = $(this).find('.slider__nav');
+
+        $viewSlider.slick($.extend({}, defaultOptions, {
+          appendArrows: $('.slider__buttons', this),
+          onInit: _this.countSlides($viewSlider, false),
+          asNavFor: '.slider__nav',
+          speed: 800,
+          cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)'
+        }));
+
+        $sliderNav.slick({
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          speed: 800,
+          asNavFor: '.slider__body',
+          dots: false,
+          arrows: false,
+          focusOnSelect: true,
+          cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+          rows: 0,
+          vertical: true,
           responsive: [{
             breakpoint: 1199,
             settings: 'unslick'

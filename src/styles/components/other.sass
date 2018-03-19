@@ -1,6 +1,6 @@
 // begin preloader
 .preloader
-   //display: none !important
+   display: none !important
    position: fixed
    z-index: 100
    top: 0
@@ -185,6 +185,10 @@
          width: calc(100% + 15px)
          height: calc(100% + 10px)
          transform: translate(-10px, -10px)
+   
+   &_404 &__svg text
+      font-size: 138vh
+      
 // end mask
 
 // begin dropdown
@@ -594,8 +598,8 @@
 
 // end video-block //
 
-// begin bullet-list //
-.bullet-list
+// begin custom-list //
+.custom-list
    ul
       li
          position: relative
@@ -615,7 +619,23 @@
             margin-bottom: 15px
             +xs
                margin-bottom: 10px
-// end bullet-list //
+   &_numbered
+      ul
+         counter-reset: custom-list-counter
+      //li
+      li::before
+         display: none
+      li::after
+         position: absolute
+         top: 0
+         left: 0
+         counter-increment: custom-list-counter
+         content: counter(custom-list-counter, decimal-leading-zero)
+         +f('gil-800', 18)
+         letter-spacing: 0.1em
+         color: $color1
+
+// end custom-list //
 
 // begin benefits //
 .benefits
@@ -664,3 +684,22 @@
          padding: 0 15px 20px
 
 // end benefits //
+
+// begin info-cards //
+.info-cards
+   display: flex
+   flex-wrap: wrap
+   &__item
+      display: flex
+      flex: 0 0 170px
+      height: 170px
+      justify-content: center
+      align-items: center
+      background-color: #e1e8e7
+      margin: 10px
+      padding: 0 20px
+      text-align: center
+      p
+         +f('gil-800', 18, 30)
+         letter-spacing: 0
+// end info-cards //

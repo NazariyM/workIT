@@ -29,7 +29,7 @@ body
     padding: 0 60px
     +md
       padding: 0 30px
-      
+
 .content
   margin-top: 60px
 
@@ -49,11 +49,14 @@ p strong
   align-items: center
   color: $color4
   +f('rob-400')
+  transition: color .5s ease
+  .no-touch &:hover
+    color: $color2
   .no-touch &:hover .icon
     fill: $color1
   .icon
     margin-left: 11px
-    +trs
+    transition: .5s ease
 
 .link-green
   +f('rob-700')
@@ -61,6 +64,13 @@ p strong
   +trs
   .no-touch &:hover
     color: $color2
+  &_underlined
+    +f('rob-700')
+    color: $color1
+    border-bottom: 1px solid $color1
+    .no-touch &:hover
+      border-bottom-color: currentColor
+  
 // end links //
 
 // begin buttons //
@@ -102,7 +112,7 @@ p strong
       background: $color1
   
   &_black
-    background: $black
+    background: $color2
     color: $white
     &::after
       top: -5px
@@ -110,7 +120,7 @@ p strong
       right: -25px
       bottom: -5px
       transform: scale(0.7)
-      background: $black
+      background: $color2
   
   &_white
     background: $color5

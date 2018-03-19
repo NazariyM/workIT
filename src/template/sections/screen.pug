@@ -1,6 +1,7 @@
 if screen ? screen : screen = []
 if screen.title ? screen.title : screen.title = 'Намного больше, чем пространство'
 if screen.subTitle ? screen.subTitle : screen.subTitle = 'Место, где рождаются идеи'
+if screen.btnText ? screen.btnText : screen.btnText = 'хочу в гости'
 
 //begin screen
 +b.SECTION.screen(class= screen.classMod ? screen.classMod : '')
@@ -11,7 +12,7 @@ if screen.subTitle ? screen.subTitle : screen.subTitle = 'Место, где р�
       +e.sub-title
         +e.H5= screen.subTitle
       +e.BUTTON.btn.btn._green(data-popup-target='comePopup' type='button')
-        span.btn__text хочу в гости
+        span.btn__text= screen.btnText
 
   +b.mask._screen(data-mask-type= screen.maskType)
     +e.SVG.svg(version='1.1', xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none')

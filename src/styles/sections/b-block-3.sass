@@ -8,6 +8,10 @@
     padding: 48px 0 60px
   &__container
     position: static
+  &__inner
+    display: flex
+    margin-bottom: 104px
+    padding: 0 30px
   &__top
     margin: 0 auto 63px
     +md
@@ -37,7 +41,8 @@
       +xs
         display: block!important
   &__items-list_no-slider &__item + &__item
-    margin-top: 10px
+    +xs
+      margin-top: 10px
   &__items-list_no-slider &__item h3
     +xs
       height: auto
@@ -456,6 +461,14 @@
         +md
           margin-top: 0
   
+  &__col
+    flex: 0 1 50%
+    padding: 0 30px
+    &:nth-child(2)
+      margin-top: 60px
+  &__info-cards
+    margin: 0 -10px
+  
   &_photos
     padding: 111px 0 121px
   &_photos &__top
@@ -473,3 +486,67 @@
     +md
       display: none
     
+  &_location
+    padding: 111px 0 121px
+  &_location &__top
+    margin: 0 0 67px
+    padding: 0
+  &_location &__title
+    max-width: none
+    margin-bottom: 52px
+
+.offer
+  &__inner
+    padding: 32px 20px 5px 30px
+    background-color: #f5f7fa
+  &__title
+    margin-bottom: 20px
+    letter-spacing: 0.015em
+  &__pic
+    height: 390px
+    +cover-img
+  &__contacts
+    position: relative
+    display: flex
+    padding: 0 0 29px
+    margin: 19px -25px 40px
+    &::after
+      position: absolute
+      left: 25px
+      right: 35px
+      bottom: 0
+      height: 1px
+      background-color: #e1e8e7
+      content: ''
+    &-col
+      flex: 0 1 50%
+      padding: 0 25px
+    p
+      b, strong
+        display: block
+        
+    .socials
+      margin-top: 25px
+    
+  &__person
+    display: flex
+    &:not(:last-of-type)
+      margin-bottom: 30px
+    &:last-of-type
+      margin-bottom: 10px
+    &-photo
+      flex: 0 0 80px
+      height: 80px
+      margin-right: 33px
+      +cover-img
+    &-info
+      flex: 1 1 auto
+    &-name
+      margin-top: -3px
+      margin-bottom: 13px
+      text-transform: none
+      line-height: 1
+  
+  &__btn
+    position: relative
+    top: 30px

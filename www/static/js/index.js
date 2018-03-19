@@ -9940,7 +9940,7 @@ var Preloader = function () {
       this.resolve = new Promise(function (resolve) {
 
         // delete it
-        // resolve();
+        resolve();
 
         var tl = new _gsap.TimelineMax({
           onComplete: function onComplete() {
@@ -23749,8 +23749,9 @@ var Slider = function () {
 
         var $slider = $(slider).find('.slider__body');
         var $sliderHasNav = $(slider).hasClass('slider_has-nav');
+        var $sliderHasNavVert = $(slider).hasClass('slider_has-nav-vertical');
 
-        if (!$sliderHasNav) {
+        if (!$sliderHasNav && !$sliderHasNavVert) {
           $slider.slick($.extend({}, defaultOptions, {
             appendArrows: $('.slider__buttons', this),
             onInit: _this.countSlides($slider, true)
@@ -23767,12 +23768,6 @@ var Slider = function () {
             asNavFor: '.slider__nav',
             speed: 800,
             cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)'
-            // responsive: [{
-            //   breakpoint: 1199,
-            //   settings: {
-            //     asNavFor:
-            //   }
-            // }]
           }));
 
           $sliderNav.slick({
@@ -23785,6 +23780,36 @@ var Slider = function () {
             focusOnSelect: true,
             cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
             rows: 0,
+            responsive: [{
+              breakpoint: 1199,
+              settings: 'unslick'
+            }]
+          });
+        }
+
+        if ($sliderHasNavVert) {
+          var _$viewSlider = $(this).find('.slider__body');
+          var _$sliderNav = $(this).find('.slider__nav');
+
+          _$viewSlider.slick($.extend({}, defaultOptions, {
+            appendArrows: $('.slider__buttons', this),
+            onInit: _this.countSlides(_$viewSlider, false),
+            asNavFor: '.slider__nav',
+            speed: 800,
+            cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)'
+          }));
+
+          _$sliderNav.slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            speed: 800,
+            asNavFor: '.slider__body',
+            dots: false,
+            arrows: false,
+            focusOnSelect: true,
+            cssEase: 'cubic-bezier(0.74, 0.1, 0.32, 0.98)',
+            rows: 0,
+            vertical: true,
             responsive: [{
               breakpoint: 1199,
               settings: 'unslick'
@@ -27046,6 +27071,7 @@ var DefaultAnims = function () {
 
           new _scrollAnim2.default({
             el: section,
+            hook: .8,
             onStart: function onStart() {
               _this.blockTopAnim(container);
             }
@@ -27317,12 +27343,11 @@ var DefaultAnims = function () {
     key: 'blockTopAnim',
     value: function blockTopAnim(container) {
       var tl = new _gsap.TimelineMax();
+      var $this = $(container);
+      var $items = $this.children();
+      var title = $this.find('.block-title');
 
-      var item = container.children;
-      var label = container.querySelector('.block-label');
-      var title = container.querySelector('.block-title');
-
-      tl.to(label, .5, { autoAlpha: 1, x: 0 }).to(title, .5, { autoAlpha: 1, x: 0 }).set(title, { className: '+=' + _helpers.css.selected }, '-=1').staggerTo(item, .5, { autoAlpha: 1, x: 0 }, '-=1');
+      tl.staggerTo($items, .5, { autoAlpha: 1, x: 0 }, .3).set(title, { className: '+=' + _helpers.css.selected }, '-=1.5');
     }
   }, {
     key: 'groupAnim',
@@ -27347,6 +27372,15 @@ var DefaultAnims = function () {
         var $wire3 = decorWires[1];
 
         tl.to($wire1, 2, { y: -217 }, 'all').to($wire2, 2, { y: -218 }, 'all').to($wire3, 2, { y: -158 }, 'all');
+      }
+
+      if (decor.classList.contains('hanging-decor_office-sm')) {
+        var _tl = new _gsap.TimelineMax();
+        var _$wire = decorWires[0];
+        var _$wire2 = decorWires[2];
+        var _$wire3 = decorWires[1];
+
+        _tl.to(_$wire, 2, { y: 0 }, 'all').to(_$wire2, 2, { y: 30 }, 'all').to(_$wire3, 2, { y: -30 }, 'all');
       }
     }
   }, {
@@ -27890,7 +27924,7 @@ var Block6 = function () {
       var $items = this.$offerList.children();
       var delay = void 0;
       if (_helpers.Resp.isDesk) {
-        delay = 1;
+        delay = 1.8;
       } else {
         delay = 0;
       }
@@ -28597,6 +28631,9 @@ var Mask = function () {
   }, {
     key: 'fluidRatio',
     value: function fluidRatio() {
+      // const stubPage = this.block.classList.contains('mask_404');
+
+      // if (!stubPage) {
       var maskWidth = 1219;
       var maskHeight = 681;
       this.maskOffsetX = 280;
@@ -28625,6 +28662,38 @@ var Mask = function () {
       }
 
       _gsap.TweenMax.set(this.maskEl, { transform: 'scale(' + value + ', ' + value + ') translateX(' + this.maskOffsetX + 'px)' });
+
+      // }
+      // else {
+      //   const maskWidth = 1219;
+      //   const maskHeight = 681;
+      //   // this.maskOffsetX = -150;
+      //
+      //   const winWidth = window.innerWidth;
+      //   const winHeight = window.innerHeight;
+      //
+      //   this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
+      //
+      //   const widthTransform = winWidth / maskWidth;
+      //   const heightTransform = winHeight / maskHeight;
+      //
+      //   const value = heightTransform < widthTransform ? widthTransform : heightTransform;
+      //
+      //   if (Resp.isTablet) {
+      //     this.maskTag.remove();
+      //     this.removeVideo();
+      //     this.initImage();
+      //     this.maskOffsetX = 25;
+      //   }
+      //   if (Resp.isMobile) {
+      //     this.maskTag.remove();
+      //     this.removeVideo();
+      //     this.initImage();
+      //     this.maskOffsetX = -35;
+      //   }
+      //
+      //   TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value})` });
+      // }
     }
   }, {
     key: 'fixedRatio',
