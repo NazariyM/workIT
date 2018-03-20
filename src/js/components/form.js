@@ -5,15 +5,15 @@ class Form {
 		this.$form = $('.form');
 		this.$input = this.$form.find('.form-input');
 		this.$textarea = this.$form.find('.form-textarea');
-		
+
 		this.init();
 	}
-	
+
 	init() {
 		this.checkFill();
 		this.removeError();
 	}
-	
+
 	checkFill() {
     this.$input.add(this.$textarea).each(function () {
 			checkInput($(this));
@@ -21,7 +21,7 @@ class Form {
 		this.$input.add(this.$textarea).blur(function () {
 			checkInput($(this));
 		});
-		
+
 		function checkInput(el) {
 			if (el.val() !== '') {
 				el.addClass(css.fill);
@@ -30,7 +30,7 @@ class Form {
 			}
 		}
 	}
-	
+
 	removeError() {
 		this.$input.add(this.$textarea).on('click focus', (ev) => {
 			$(ev.currentTarget).parent().removeClass(css.error);
