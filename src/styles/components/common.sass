@@ -195,20 +195,30 @@ label.btn
   > *
     opacity: 0
     transform: translateY(50px)
+  .anims-disabled & > *
+    transform: none
+    opacity: 1
     
 [data-items-anim="fade-left"]
   > *
     opacity: 0
     transform: translateX(-50px)
+  .anims-disabled & > *
+    transform: none
+    opacity: 1
+      
     
 [data-anim='fade-top']
   opacity: 0
   transform: translateY(60px)
+  +disableAnims
   
 [data-anim='fade-left']
   opacity: 0
   transform: translateX(-100px)
+  +disableAnims
   
 [data-anim='fade-right']
   opacity: 0
   transform: translateX(100px)
+  +disableAnims

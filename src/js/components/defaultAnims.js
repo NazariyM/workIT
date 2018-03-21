@@ -1,7 +1,7 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import { preloader } from './preloader';
-import { css, Resp } from '../modules/dev/_helpers';
+import { css, Resp, $body } from '../modules/dev/_helpers';
 
 class DefaultAnims {
   constructor() {
@@ -33,7 +33,7 @@ class DefaultAnims {
         el: section,
         hook: .8,
         onStart() {
-          _this.blockTopAnim(container);
+          if (!$body.hasClass(css.animsDisabled)) _this.blockTopAnim(container);
         }
       });
     }
@@ -83,7 +83,7 @@ class DefaultAnims {
       new ScrollAnim({
         el: item,
         onStart() {
-          _this.fadeLeftAnim(item);
+          if (!$body.hasClass(css.animsDisabled)) _this.fadeLeftAnim(item);
         }
       });
     }
@@ -101,7 +101,7 @@ class DefaultAnims {
       new ScrollAnim({
         el: item,
         onStart() {
-          _this.fadeTopAnim(item);
+          if (!$body.hasClass(css.animsDisabled)) _this.fadeTopAnim(item);
         }
       });
     }

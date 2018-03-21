@@ -427,7 +427,8 @@ var css = exports.css = {
 	locked: 'is-locked',
 	error: 'has-error',
 	noTransition: 'no-transition',
-	menuActive: 'menu-active'
+	menuActive: 'menu-active',
+	animsDisabled: 'anims-disabled'
 };
 
 /**
@@ -15332,29 +15333,7 @@ __webpack_require__(335);
 
 __webpack_require__(336);
 
-var _Home = __webpack_require__(364);
-
-var _Home2 = _interopRequireDefault(_Home);
-
-var _helpers = __webpack_require__(9);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Run appropriate scripts for each page.
- **/
-
-
-/** Import page controllers */
-switch (_helpers.currentPage) {
-  /** Home page */
-  case 'home':
-    new _Home2.default();break;
-
-  /** No page found */
-  default:
-    console.warn('Undefined page');
-}
+__webpack_require__(367);
 
 /***/ }),
 /* 133 */
@@ -27110,7 +27089,7 @@ var DefaultAnims = function () {
             el: section,
             hook: .8,
             onStart: function onStart() {
-              _this.blockTopAnim(container);
+              if (!_helpers.$body.hasClass(_helpers.css.animsDisabled)) _this.blockTopAnim(container);
             }
           });
         };
@@ -27285,7 +27264,7 @@ var DefaultAnims = function () {
           new _scrollAnim2.default({
             el: item,
             onStart: function onStart() {
-              _this.fadeLeftAnim(item);
+              if (!_helpers.$body.hasClass(_helpers.css.animsDisabled)) _this.fadeLeftAnim(item);
             }
           });
         };
@@ -27353,7 +27332,7 @@ var DefaultAnims = function () {
           new _scrollAnim2.default({
             el: item,
             onStart: function onStart() {
-              _this.fadeTopAnim(item);
+              if (!_helpers.$body.hasClass(_helpers.css.animsDisabled)) _this.fadeTopAnim(item);
             }
           });
         };
@@ -27509,7 +27488,7 @@ var ExpandList = function () {
   _createClass(ExpandList, [{
     key: 'init',
     value: function init() {
-      this.scrollAnim();
+      if (!_helpers.$body.hasClass(_helpers.css.animsDisabled)) this.scrollAnim();
       this.showMore();
     }
   }, {
@@ -28045,7 +28024,7 @@ var companies = function () {
 	_createClass(companies, [{
 		key: 'init',
 		value: function init() {
-			this.scrollAnim();
+			if (!_helpers.$body.hasClass(_helpers.css.animsDisabled)) this.scrollAnim();
 			this.initSlider();
 			this.dot();
 		}
@@ -28882,7 +28861,10 @@ var screenMask = new Mask('.mask_screen');
 var comeMask = new Mask('.mask_come', false);
 
 /***/ }),
-/* 364 */
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28891,46 +28873,41 @@ var comeMask = new Mask('.mask_come', false);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.PublicAPI = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _helpers = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Home page scripts.
+ * Website's public API (example).
+ * Make some functions and methods accessible in global scope.
  *
- * @module Home
+ * @module PublicAPI
  */
 
-// import HomeAnims from '../components/homeAnims';
-
-var Home = function () {
-  /**
-   * Cache data, make preparations and initialize page scripts.
-   */
-  function Home() {
-    _classCallCheck(this, Home);
+var PublicAPI = exports.PublicAPI = function () {
+  function PublicAPI() {
+    _classCallCheck(this, PublicAPI);
   }
-  // initialize after construction
-  // this.init();
 
-
-  /**
-   * Initialize Home page scripts.
-   */
-
-
-  _createClass(Home, [{
-    key: "init",
-    value: function init() {
-      // new HomeAnims;
+  _createClass(PublicAPI, [{
+    key: 'disableAnim',
+    value: function disableAnim() {
+      _helpers.$body.addClass(_helpers.css.animsDisabled);
+      return this;
     }
   }]);
 
-  return Home;
+  return PublicAPI;
 }();
 
-exports.default = Home;
+/** Expose Public API */
+
+
+exports.default = window.PublicAPI = new PublicAPI();
 
 /***/ })
 ],[132]);

@@ -1,7 +1,7 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
 import { preloader } from './preloader';
-import { css, $window, Resp } from '../modules/dev/_helpers';
+import {$body, css} from '../modules/dev/_helpers';
 
 class ExpandList {
   constructor(el) {
@@ -15,7 +15,7 @@ class ExpandList {
   }
 
   init() {
-    this.scrollAnim();
+    if (!$body.hasClass(css.animsDisabled)) this.scrollAnim();
     this.showMore();
   }
 

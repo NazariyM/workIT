@@ -219,7 +219,8 @@ export const css = {
 	locked: 'is-locked',
 	error: 'has-error',
 	noTransition: 'no-transition',
-	menuActive: 'menu-active'
+	menuActive: 'menu-active',
+  animsDisabled: 'anims-disabled'
 };
 
 /**

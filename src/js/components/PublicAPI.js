@@ -1,3 +1,5 @@
+import { $body, css } from '../modules/dev/_helpers';
+
 /**
  * Website's public API (example).
  * Make some functions and methods accessible in global scope.
@@ -5,24 +7,12 @@
  * @module PublicAPI
  */
 
-import Timer from './Timer';
-
 export class PublicAPI {
-  /**
-   * Some of 'Timer' module public methods.
-   *
-   * PublicAPI.timer.init() - initialize timer
-   * PublicAPI.timer.stop() - stop timer
-   *
-   * @return {{init: Function, stop: Function}}
-   */
-  static get Timer() {
-    return {
-      init: ::Timer.startTimer,
-      stop: ::Timer.stopTimer
-    };
+  disableAnim() {
+    $body.addClass(css.animsDisabled);
+    return this;
   }
 }
 
 /** Expose Public API */
-export default window.PublicAPI = PublicAPI;
+export default window.PublicAPI = new PublicAPI;

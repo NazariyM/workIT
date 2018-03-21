@@ -1,7 +1,7 @@
 import {TimelineMax, TweenMax} from 'gsap';
 import slick from 'slick-carousel';
 import ScrollAnim from '../modules/dev/animation/scrollAnim';
-import {Resp} from '../modules/dev/_helpers';
+import {$body, css, Resp} from '../modules/dev/_helpers';
 import Dot from '../components/dot';
 
 class companies {
@@ -18,7 +18,7 @@ class companies {
 	}
 
 	init() {
-		this.scrollAnim();
+    if (!$body.hasClass(css.animsDisabled)) this.scrollAnim();
 		this.initSlider();
 		this.dot();
 	}
