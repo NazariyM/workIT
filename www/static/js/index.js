@@ -15333,7 +15333,7 @@ __webpack_require__(335);
 
 __webpack_require__(336);
 
-__webpack_require__(367);
+__webpack_require__(364);
 
 /***/ }),
 /* 133 */
@@ -28861,10 +28861,7 @@ var screenMask = new Mask('.mask_screen');
 var comeMask = new Mask('.mask_come', false);
 
 /***/ }),
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28908,6 +28905,8 @@ var PublicAPI = exports.PublicAPI = function () {
 
 
 exports.default = window.PublicAPI = new PublicAPI();
+
+// PublicAPI.disableAnim();
 
 /***/ })
 ],[132]);

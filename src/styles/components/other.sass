@@ -52,7 +52,9 @@
       transform: translateX(-50px)
       opacity: 0
       letter-spacing: 0.025em
-      +disableAnims
+      .anims-disabled & &:not(.is-hidden)
+         opacity: 1
+         transform: none
       +md
          width: 50%
       &.is-hidden
@@ -125,7 +127,7 @@
       display: inline-block
       vertical-align: middle
       margin: -2px 0 0 -8px
-      
+   
    &_mob
       opacity: 0
       transform: translateY(-20px)
@@ -248,15 +250,12 @@
                color: $color3
    
    &__icon
-      position: absolute
-      top: 50%
-      margin-top: -8px
-      right: 0
+      display: inline-block
+      vertical-align: middle
       +trs
       +xs
          width: 15px
          height: 9px
-         margin-top: -4px
    &_lang
       flex: 0 0 50px
       width: 50px
@@ -295,41 +294,55 @@
                   color: $color3
    
    &_themes
-      flex: 0 0 170px
-      width: 170px
+      justify-content: flex-end
+      flex: 0 0 280px
       margin-top: 8px
       +md
          margin-top: -4px
       +xs
-         flex: 0 1 auto
+         flex: 1 0 auto
+         width: 100%
          margin-top: 20px
-         width: 128px
+      ul
+         &::after
+            position: absolute
+            z-index: -1
+            top: -10px
+            left: -10px
+            right: -10px
+            bottom: -10px
+            background: $white
+            content: ''
+            +xs
+               top: -5px
+               bottom: -5px
+         
+      ul li a
+         display: flex
+         align-items: center
+         justify-content: flex-end
+         font-size: 18px
+         padding: 0 35px 0 10px
+         text-transform: none
+         letter-spacing: 0.03em
+         white-space: nowrap
+         overflow: hidden
+         +xs
+            padding: 0
+            justify-content: flex-start
+      
       > ul
          &::before
             display: none
-         ul
-            &::after
-               position: absolute
-               z-index: -1
-               top: -10px
-               left: -10px
-               right: -10px
-               bottom: -10px
-               background: $white
-               content: ''
-               +xs
-                  top: -5px
-                  bottom: -5px
-         li
-            a
-               display: flex
-               align-items: center
-               font-size: 18px
-               padding: 0 25px 0 26px
-               text-transform: none
-               letter-spacing: 0.03em
-               +xs
-                  padding: 0 18px 0 0
+         &::after
+            display: none
+         > li
+            > a
+               padding: 0
+               span
+                  display: inline-block
+                  vertical-align: middle
+                  margin-right: 17px
    
    &_green
       > ul
@@ -673,7 +686,7 @@
             margin-bottom: 15px
       h5
          line-height: 28px
-         
+   
    &_default
       +xs
          padding: 52px 0 20px
@@ -702,8 +715,7 @@
       padding: 20px 30px 35px
       +xs
          padding: 0 15px 20px
-      
-         
+
 // end benefits //
 
 // begin info-cards //

@@ -31,18 +31,22 @@ block main
               pic: 'events_full',
               title: 'How To: Make a Good Presentation For Investors'
               }, {
+              picLink: true,
               classMod: 'expand-list__item',
               pic: 'events_1',
               title: 'How To: Make a Good Presentation For Investors'
               }, {
+              picLink: true,
               classMod: 'expand-list__item',
               pic: 'events_2',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
               }, {
+              picLink: true,
               classMod: 'is-hidden expand-list__item',
               pic: 'events_1',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
               }, {
+              picLink: true,
               classMod: 'is-hidden expand-list__item',
               pic: 'events_2',
               title: 'How To: Make a Good Presentation For Investors'}]
@@ -90,29 +94,39 @@ block main
           .expand-list__inner.expand-list__inner_events
             -
               archieveList = [{
+              picLink: true,
               pic: 'events_3',
               title: 'How To: Make a Good Presentation For Investors'
               }, {
+              picLink: true,
               pic: 'events_4',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
               }, {
+              picLink: true,
               pic: 'events_5',
               title: 'How To: Make a Good Presentation For Investors'
               }, {
+              picLink: true,
               pic: 'events_6',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
               }, {
+              picLink: true,
               pic: 'events_1',
               title: 'How To: Make a Good Presentation For Investors'
               }, {
+              picLink: true,
               pic: 'events_2',
               title: 'Гонка за очками дополненной реальности стартует прямо сейчас'
               }]
 
             mixin archieveItem(item)
               +e.item(class= item.classMod ? item.classMod : '' data-items-anim='fade-top')
-                +e.item-pic.img-hover
-                  +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
+                if item.picLink
+                  +e.A.item-pic.img-hover(href='#!')
+                    +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
+                else
+                  +e.item-pic.img-hover
+                    +b.IMG(src=`static/img/${item.pic}.jpg` alt='image')
                 +e.item-info
                   +e.item-date
                     +e.P 07.12.2017
