@@ -9940,9 +9940,6 @@ var Preloader = function () {
 
       this.resolve = new Promise(function (resolve) {
 
-        // delete it
-        resolve();
-
         var tl = new _gsap.TimelineMax({
           onComplete: function onComplete() {
             resolve();
