@@ -48,8 +48,7 @@ class Screen {
       function calcVH() {
         const additionalHeight = 70;
         const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        document.querySelector('.screen').setAttribute('style', 'height:' + vH + additionalHeight + 'px;');
-        console.log(vH + additionalHeight);
+        document.querySelector('.screen').setAttribute('style', 'height:' + (vH + additionalHeight) + 'px;');
       }
 
       calcVH();
