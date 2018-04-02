@@ -114,9 +114,13 @@
 
 body.popup-opened
   overflow: hidden
-  @media only screen and (min-width: 767px) and (max-width: 1199px)
+  +md
     position: fixed
     height: 100%
+    
+  //@media only screen and (min-width: 767px) and (max-width: 1199px)
+  //  position: fixed
+  //  height: 100%
 
 .popup.opened .popup__container
   -webkit-transform: translate3d(0, 0, 0)

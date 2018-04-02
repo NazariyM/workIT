@@ -21622,8 +21622,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.Common = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-// import '../sections/b-block-5';
-
 
 var _objectFitImages = __webpack_require__(337);
 
@@ -23406,7 +23404,8 @@ var Header = function () {
 			}, 0, this);
 
 			function toggleHeader() {
-				if (window.scrollY > 0 && !_this.header.classList.contains(_helpers.css.menuActive)) {
+
+				if (window.pageYOffset > 0 && !_this.header.classList.contains(_helpers.css.menuActive)) {
 					_this.header.classList.add(_helpers.css.fixed);
 				} else {
 					_this.header.classList.remove(_helpers.css.fixed);
@@ -26797,7 +26796,6 @@ var Block5 = function () {
     this.$container = $('.block-5');
     this.$item = this.$container.find('.block-5__item');
     this.$list = this.$container.find('.block-5__list');
-    // this.$sldControls = this.$list.find('.slider__controls');
     this.$dotTarget = this.$item.find('p');
 
     if (this.$container.length) this.init();

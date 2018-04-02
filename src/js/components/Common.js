@@ -14,7 +14,6 @@ import './preloader';
 import './popup';
 import '../sections/b-screen';
 import '../sections/b-block-3';
-// import '../sections/b-block-5';
 import '../sections/b-block-6';
 import '../sections/companies';
 import '../sections/locations-map';

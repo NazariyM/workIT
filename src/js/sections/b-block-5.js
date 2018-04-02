@@ -9,7 +9,6 @@ class Block5 {
     this.$container = $('.block-5');
     this.$item = this.$container.find('.block-5__item');
     this.$list = this.$container.find('.block-5__list');
-    // this.$sldControls = this.$list.find('.slider__controls');
     this.$dotTarget = this.$item.find('p');
 
     if (this.$container.length) this.init();
