@@ -27637,6 +27637,20 @@ var Screen = function () {
     this.$maskRect = this.$mask.find('rect');
 
     if (this.$container.length) this.init();
+
+    if (!_helpers.Resp.isDesk) {
+      var calcVH = function calcVH() {
+        var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        document.querySelector('.screen').setAttribute('style', 'height' + vH + 'px;');
+      };
+
+      calcVH();
+      window.addEventListener('orientationchange', function () {
+        setTimeout(function () {
+          calcVH();
+        }, 500);
+      }, true);
+    }
   }
 
   _createClass(Screen, [{

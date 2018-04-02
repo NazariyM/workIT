@@ -12,6 +12,20 @@ class Screen {
     this.$maskRect = this.$mask.find('rect');
 
     if (this.$container.length) this.init();
+
+    if (!Resp.isDesk) {
+      function calcVH() {
+        const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        document.querySelector('.screen').setAttribute('style', 'height' + vH + 'px;');
+      }
+
+      calcVH();
+      window.addEventListener('orientationchange', () => {
+        setTimeout(() => {
+          calcVH();
+        }, 500);
+      }, true);
+    }
   }
 
   async init() {
@@ -40,6 +54,7 @@ class Screen {
       $scrolledElements.animate({ scrollTop: $section }, 700);
     });
   }
+
 }
 
 export const ScreenAPI = new Screen();
