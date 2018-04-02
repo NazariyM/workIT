@@ -27702,6 +27702,7 @@ var Screen = function () {
           var additionalHeight = 70;
           var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
           document.querySelector('.screen').setAttribute('style', 'height:' + vH + additionalHeight + 'px;');
+          console.log(vH + additionalHeight);
         };
 
         calcVH();
