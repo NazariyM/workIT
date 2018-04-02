@@ -17,9 +17,19 @@ class Mask {
     if (this.fullscreen) {
       this.fluidRatio();
 
-      window.addEventListener('resize', () => {
-        if (Resp.isDesk) this.fluidRatio();
-      });
+      if (!Resp.isDesk) {
+        window.addEventListener('orientationchange', () => {
+          setTimeout(() => {
+            this.fluidRatio();
+          }, 500);
+        }, true);
+      }
+
+      if (Resp.isDesk) {
+        window.addEventListener('resize', () => {
+          this.fluidRatio();
+        });
+      }
 
     } else {
       window.addEventListener('resize', () => {
