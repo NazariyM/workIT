@@ -13,6 +13,7 @@ class Screen {
 
     if (this.$container.length) this.init();
 
+    // calc
     if (!Resp.isDesk) {
       function calcVH() {
         const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
