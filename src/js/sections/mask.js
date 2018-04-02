@@ -21,6 +21,7 @@ class Mask {
         window.addEventListener('orientationchange', () => {
           setTimeout(() => {
             this.fluidRatio();
+            console.log('done');
           }, 500);
         }, true);
       }

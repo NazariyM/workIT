@@ -46,9 +46,9 @@ class Screen {
   setFixedHeight() {
     if (!Resp.isDesk) {
       function calcVH() {
-        const additionalHeight = 70;
+        // const additionalHeight = 70;
         const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        document.querySelector('.screen').setAttribute('style', 'height:' + (vH + additionalHeight) + 'px;');
+        document.querySelector('.screen').setAttribute('style', 'height:' + vH + 'px;');
       }
 
       calcVH();
