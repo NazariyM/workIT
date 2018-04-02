@@ -13,24 +13,11 @@ class Screen {
 
     if (this.$container.length) this.init();
 
-    // calc
-    if (!Resp.isDesk) {
-      function calcVH() {
-        const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        document.querySelector('.screen').setAttribute('style', 'height:' + vH + 'px;');
-      }
-
-      calcVH();
-      window.addEventListener('orientationchange', () => {
-        setTimeout(() => {
-          calcVH();
-        }, 500);
-      }, true);
-    }
   }
 
   async init() {
     await preloader.wait();
+    this.setFixedHeight();
     await this.startAnim();
     this.scrollNext();
   }
@@ -49,11 +36,28 @@ class Screen {
   }
 
   scrollNext() {
-    this.$more.on('click', function () {
+    this.$more.on('click tap', function () {
       const $section = $(this).closest('section').next().offset().top - 60;
 
       $scrolledElements.animate({ scrollTop: $section }, 700);
     });
+  }
+
+  setFixedHeight() {
+    if (!Resp.isDesk) {
+      function calcVH() {
+        const additionalHeight = 70;
+        const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        document.querySelector('.screen').setAttribute('style', 'height:' + vH + additionalHeight + 'px;');
+      }
+
+      calcVH();
+      window.addEventListener('orientationchange', () => {
+        setTimeout(() => {
+          calcVH();
+        }, 500);
+      }, true);
+    }
   }
 
 }

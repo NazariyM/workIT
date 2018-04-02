@@ -27637,21 +27637,6 @@ var Screen = function () {
     this.$maskRect = this.$mask.find('rect');
 
     if (this.$container.length) this.init();
-
-    // calc
-    if (!_helpers.Resp.isDesk) {
-      var calcVH = function calcVH() {
-        var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        document.querySelector('.screen').setAttribute('style', 'height:' + vH + 'px;');
-      };
-
-      calcVH();
-      window.addEventListener('orientationchange', function () {
-        setTimeout(function () {
-          calcVH();
-        }, 500);
-      }, true);
-    }
   }
 
   _createClass(Screen, [{
@@ -27666,13 +27651,14 @@ var Screen = function () {
                 return _preloader.preloader.wait();
 
               case 2:
-                _context.next = 4;
+                this.setFixedHeight();
+                _context.next = 5;
                 return this.startAnim();
 
-              case 4:
+              case 5:
                 this.scrollNext();
 
-              case 5:
+              case 6:
               case 'end':
                 return _context.stop();
             }
@@ -27702,11 +27688,29 @@ var Screen = function () {
   }, {
     key: 'scrollNext',
     value: function scrollNext() {
-      this.$more.on('click', function () {
+      this.$more.on('click tap', function () {
         var $section = $(this).closest('section').next().offset().top - 60;
 
         _helpers.$scrolledElements.animate({ scrollTop: $section }, 700);
       });
+    }
+  }, {
+    key: 'setFixedHeight',
+    value: function setFixedHeight() {
+      if (!_helpers.Resp.isDesk) {
+        var calcVH = function calcVH() {
+          var additionalHeight = 70;
+          var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+          document.querySelector('.screen').setAttribute('style', 'height:' + vH + additionalHeight + 'px;');
+        };
+
+        calcVH();
+        window.addEventListener('orientationchange', function () {
+          setTimeout(function () {
+            calcVH();
+          }, 500);
+        }, true);
+      }
     }
   }]);
 
@@ -28624,9 +28628,19 @@ var Mask = function () {
       if (this.fullscreen) {
         this.fluidRatio();
 
-        window.addEventListener('resize', function () {
-          if (_helpers.Resp.isDesk) _this.fluidRatio();
-        });
+        if (!_helpers.Resp.isDesk) {
+          window.addEventListener('orientationchange', function () {
+            setTimeout(function () {
+              _this.fluidRatio();
+            }, 500);
+          }, true);
+        }
+
+        if (_helpers.Resp.isDesk) {
+          window.addEventListener('resize', function () {
+            _this.fluidRatio();
+          });
+        }
       } else {
         window.addEventListener('resize', function () {
           _this.fixedRatio();
