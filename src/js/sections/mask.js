@@ -15,8 +15,10 @@ class Mask {
 
   bindEvents() {
     if (this.fullscreen) {
+      this.fluidRatio();
+
       window.addEventListener('resize', () => {
-        this.fluidRatio();
+        if (Resp.isDesk) this.fluidRatio();
       });
 
     } else {
@@ -45,7 +47,6 @@ class Mask {
 
   initVideo() {
     this.maskEl = this.maskTag.querySelectorAll('.mask__el');
-
   }
 
   fluidRatio() {

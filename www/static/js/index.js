@@ -28621,8 +28621,10 @@ var Mask = function () {
       var _this = this;
 
       if (this.fullscreen) {
+        this.fluidRatio();
+
         window.addEventListener('resize', function () {
-          _this.fluidRatio();
+          if (_helpers.Resp.isDesk) _this.fluidRatio();
         });
       } else {
         window.addEventListener('resize', function () {
