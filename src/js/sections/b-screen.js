@@ -16,7 +16,7 @@ class Screen {
     if (!Resp.isDesk) {
       function calcVH() {
         const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        document.querySelector('.screen').setAttribute('style', 'height' + vH + 'px;');
+        document.querySelector('.screen').setAttribute('style', 'height:' + vH + 'px;');
       }
 
       calcVH();

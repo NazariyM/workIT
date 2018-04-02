@@ -27641,7 +27641,7 @@ var Screen = function () {
     if (!_helpers.Resp.isDesk) {
       var calcVH = function calcVH() {
         var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        document.querySelector('.screen').setAttribute('style', 'height' + vH + 'px;');
+        document.querySelector('.screen').setAttribute('style', 'height:' + vH + 'px;');
       };
 
       calcVH();
@@ -28647,6 +28647,7 @@ var Mask = function () {
     value: function initImage() {
       this.images = this.block.querySelectorAll('image');
       this.maskEl = this.clipPathTag.querySelectorAll('.mask__el');
+      this.maskTag.remove();
     }
   }, {
     key: 'initVideo',
