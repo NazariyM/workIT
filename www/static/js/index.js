@@ -27699,9 +27699,9 @@ var Screen = function () {
     value: function setFixedHeight() {
       if (!_helpers.Resp.isDesk) {
         var calcVH = function calcVH() {
-          var additionalHeight = 70;
+          // const additionalHeight = 70;
           var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-          document.querySelector('.screen').setAttribute('style', 'height:' + (vH + additionalHeight) + 'px;');
+          document.querySelector('.screen').setAttribute('style', 'height:' + vH + 'px;');
         };
 
         calcVH();
@@ -28632,6 +28632,32 @@ var Mask = function () {
           window.addEventListener('orientationchange', function () {
             setTimeout(function () {
               _this.fluidRatio();
+              var winHeight = window.innerHeight;
+
+              var _iteratorNormalCompletion = true;
+              var _didIteratorError = false;
+              var _iteratorError = undefined;
+
+              try {
+                for (var _iterator = _this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                  var img = _step.value;
+
+                  img.setAttribute('style', 'height:' + (winHeight + 30 + 'px'));
+                }
+              } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+              } finally {
+                try {
+                  if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                  }
+                } finally {
+                  if (_didIteratorError) {
+                    throw _iteratorError;
+                  }
+                }
+              }
             }, 500);
           }, true);
         }
@@ -28716,48 +28742,18 @@ var Mask = function () {
 
         if (_helpers.Resp.isTablet) {
           _gsap.TweenMax.set(this.maskEl, { x: '-31%' });
-          var _iteratorNormalCompletion = true;
-          var _didIteratorError = false;
-          var _iteratorError = undefined;
-
-          try {
-            for (var _iterator = this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-              var img = _step.value;
-
-              if (img.hasAttribute('data-mob-ratio')) {
-                img.setAttribute('preserveAspectRatio', 'xMinYMid slice');
-              } else {
-                img.setAttribute('preserveAspectRatio', 'xMinYMax slice');
-              }
-            }
-          } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-          } finally {
-            try {
-              if (!_iteratorNormalCompletion && _iterator.return) {
-                _iterator.return();
-              }
-            } finally {
-              if (_didIteratorError) {
-                throw _iteratorError;
-              }
-            }
-          }
-        }
-
-        if (_helpers.Resp.isMobile) {
-          _gsap.TweenMax.set(this.maskEl, { x: '-28%' });
           var _iteratorNormalCompletion2 = true;
           var _didIteratorError2 = false;
           var _iteratorError2 = undefined;
 
           try {
             for (var _iterator2 = this.images[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-              var _img = _step2.value;
+              var img = _step2.value;
 
-              if (_img.hasAttribute('data-mob-ratio')) {
-                _img.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+              if (img.hasAttribute('data-mob-ratio')) {
+                img.setAttribute('preserveAspectRatio', 'xMinYMid slice');
+              } else {
+                img.setAttribute('preserveAspectRatio', 'xMinYMax slice');
               }
             }
           } catch (err) {
@@ -28771,6 +28767,36 @@ var Mask = function () {
             } finally {
               if (_didIteratorError2) {
                 throw _iteratorError2;
+              }
+            }
+          }
+        }
+
+        if (_helpers.Resp.isMobile) {
+          _gsap.TweenMax.set(this.maskEl, { x: '-28%' });
+          var _iteratorNormalCompletion3 = true;
+          var _didIteratorError3 = false;
+          var _iteratorError3 = undefined;
+
+          try {
+            for (var _iterator3 = this.images[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+              var _img = _step3.value;
+
+              if (_img.hasAttribute('data-mob-ratio')) {
+                _img.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+              }
+            }
+          } catch (err) {
+            _didIteratorError3 = true;
+            _iteratorError3 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                _iterator3.return();
+              }
+            } finally {
+              if (_didIteratorError3) {
+                throw _iteratorError3;
               }
             }
           }
@@ -28809,13 +28835,13 @@ var Mask = function () {
   }, {
     key: 'imageFix',
     value: function imageFix(winWidth, winHeight) {
-      var _iteratorNormalCompletion3 = true;
-      var _didIteratorError3 = false;
-      var _iteratorError3 = undefined;
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
 
       try {
-        for (var _iterator3 = this.images[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-          var img = _step3.value;
+        for (var _iterator4 = this.images[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var img = _step4.value;
 
           img.setAttribute('width', '' + (winWidth + 30));
           img.setAttribute('height', '' + (winHeight + 30));
@@ -28824,39 +28850,6 @@ var Mask = function () {
             img.setAttribute('width', '' + (winWidth + 20));
             _helpers.Resp.isMobile ? img.setAttribute('height', 314) : img.setAttribute('height', 420);
             _gsap.TweenMax.set(img, { x: -10, y: -10 });
-          }
-        }
-      } catch (err) {
-        _didIteratorError3 = true;
-        _iteratorError3 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion3 && _iterator3.return) {
-            _iterator3.return();
-          }
-        } finally {
-          if (_didIteratorError3) {
-            throw _iteratorError3;
-          }
-        }
-      }
-    }
-  }, {
-    key: 'videoFix',
-    value: function videoFix(winWidth, winHeight) {
-      var _iteratorNormalCompletion4 = true;
-      var _didIteratorError4 = false;
-      var _iteratorError4 = undefined;
-
-      try {
-        for (var _iterator4 = this.rects[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-          var rect = _step4.value;
-
-          rect.setAttribute('width', '' + winWidth);
-          rect.setAttribute('height', '' + winHeight);
-
-          if (!this.fullscreen) {
-            rect.setAttribute('height', '' + 420);
           }
         }
       } catch (err) {
@@ -28870,6 +28863,39 @@ var Mask = function () {
         } finally {
           if (_didIteratorError4) {
             throw _iteratorError4;
+          }
+        }
+      }
+    }
+  }, {
+    key: 'videoFix',
+    value: function videoFix(winWidth, winHeight) {
+      var _iteratorNormalCompletion5 = true;
+      var _didIteratorError5 = false;
+      var _iteratorError5 = undefined;
+
+      try {
+        for (var _iterator5 = this.rects[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+          var rect = _step5.value;
+
+          rect.setAttribute('width', '' + winWidth);
+          rect.setAttribute('height', '' + winHeight);
+
+          if (!this.fullscreen) {
+            rect.setAttribute('height', '' + 420);
+          }
+        }
+      } catch (err) {
+        _didIteratorError5 = true;
+        _iteratorError5 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion5 && _iterator5.return) {
+            _iterator5.return();
+          }
+        } finally {
+          if (_didIteratorError5) {
+            throw _iteratorError5;
           }
         }
       }

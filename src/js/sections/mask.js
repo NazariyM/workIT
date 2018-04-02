@@ -21,7 +21,11 @@ class Mask {
         window.addEventListener('orientationchange', () => {
           setTimeout(() => {
             this.fluidRatio();
-            console.log('done');
+            const winHeight = window.innerHeight;
+
+            for (let img of this.images) {
+              img.setAttribute('style', 'height:' + `${winHeight + 30}px`);
+            }
           }, 500);
         }, true);
       }
@@ -91,7 +95,7 @@ class Mask {
         this.maskOffsetX = -35;
       }
 
-      TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${this.maskOffsetX}px)` });
+      TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${this.maskOffsetX}px)`});
 
     } else {
 
