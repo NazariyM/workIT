@@ -27638,6 +27638,7 @@ var Screen = function () {
 
     if (this.$container.length) this.init();
 
+    // calc
     if (!_helpers.Resp.isDesk) {
       var calcVH = function calcVH() {
         var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
