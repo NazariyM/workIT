@@ -28631,8 +28631,11 @@ var Mask = function () {
         if (!_helpers.Resp.isDesk) {
           window.addEventListener('orientationchange', function () {
             setTimeout(function () {
+
               _this.fluidRatio();
               var winHeight = window.innerHeight;
+
+              _this.svg.setAttribute('style', 'height:' + (winHeight + 30 + 'px'));
 
               var _iteratorNormalCompletion = true;
               var _didIteratorError = false;
@@ -28681,6 +28684,7 @@ var Mask = function () {
       this.rects = this.block.querySelectorAll('rect');
       this.maskTag = this.block.querySelector('mask');
       this.clipPathTag = this.block.querySelector('clipPath');
+      this.svg = this.block.querySelector('.mask__svg');
       this.isVideo = this.maskType === 'video';
       this.isVideo ? this.initVideo() : this.initImage();
       this.fullscreen ? this.fluidRatio() : this.fixedRatio();

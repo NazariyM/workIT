@@ -20,8 +20,11 @@ class Mask {
       if (!Resp.isDesk) {
         window.addEventListener('orientationchange', () => {
           setTimeout(() => {
+
             this.fluidRatio();
             const winHeight = window.innerHeight;
+
+            this.svg.setAttribute('style', 'height:' + `${winHeight + 30}px`);
 
             for (let img of this.images) {
               img.setAttribute('style', 'height:' + `${winHeight + 30}px`);
@@ -49,6 +52,7 @@ class Mask {
     this.rects = this.block.querySelectorAll('rect');
     this.maskTag = this.block.querySelector('mask');
     this.clipPathTag = this.block.querySelector('clipPath');
+    this.svg = this.block.querySelector('.mask__svg');
     this.isVideo = this.maskType === 'video';
     this.isVideo ? this.initVideo() : this.initImage();
     this.fullscreen ? this.fluidRatio() : this.fixedRatio();
