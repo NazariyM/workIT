@@ -46,11 +46,23 @@ class Screen {
   setFixedHeight() {
     const _this = this;
 
-    if (!Resp.isDesk) window.addEventListener('orientationchange', () => {
-      setTimeout(() => {
-        calcVH('.screen', _this.$container);
-      }, 500);
-    }, true);
+    if (!Resp.isDesk) {
+      function calcVH() {
+        const landscape = window.matchMedia('(orientation: landscape)').matches;
+        const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        const containerH = _this.$container.innerHeight() / 2;
+        let newHeight;
+        landscape ? newHeight = (vH + containerH) : newHeight = vH;
+        document.querySelector('.screen').setAttribute('style', 'height' + newHeight + 'px;');
+      }
+
+      calcVH();
+      window.addEventListener('orientationchange', () => {
+        setTimeout(() => {
+          calcVH();
+        }, 500);
+      }, true);
+    }
   }
 
 }

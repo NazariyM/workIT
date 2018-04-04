@@ -552,25 +552,6 @@ var detectIE = exports.detectIE = function detectIE() {
 	return false;
 };
 
-/**
- * calcuclate vh custom function
- **/
-
-var calcVH = exports.calcVH = function calcVH(el, container) {
-	var $container = $(container);
-	var containerH = void 0;
-
-	$container.length ? containerH = $container.outerHeight() / 2 : containerH = 0;
-
-	var landscape = window.matchMedia('(orientation: landscape)').matches;
-	var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	var newHeight = void 0;
-
-	landscape ? newHeight = vH + containerH : newHeight = vH;
-
-	document.querySelector(el).setAttribute('style', 'height:' + newHeight + 'px;');
-};
-
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -27718,11 +27699,23 @@ var Screen = function () {
     value: function setFixedHeight() {
       var _this = this;
 
-      if (!_helpers.Resp.isDesk) window.addEventListener('orientationchange', function () {
-        setTimeout(function () {
-          (0, _helpers.calcVH)('.screen', _this.$container);
-        }, 500);
-      }, true);
+      if (!_helpers.Resp.isDesk) {
+        var _calcVH = function _calcVH() {
+          var landscape = window.matchMedia('(orientation: landscape)').matches;
+          var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+          var containerH = _this.$container.innerHeight() / 2;
+          var newHeight = void 0;
+          landscape ? newHeight = vH + containerH : newHeight = vH;
+          document.querySelector('.screen').setAttribute('style', 'height' + newHeight + 'px;');
+        };
+
+        _calcVH();
+        window.addEventListener('orientationchange', function () {
+          setTimeout(function () {
+            _calcVH();
+          }, 500);
+        }, true);
+      }
     }
   }]);
 
@@ -28641,50 +28634,12 @@ var Mask = function () {
         this.fluidRatio();
 
         if (!_helpers.Resp.isDesk) {
-          // const landscape = window.matchMedia('(orientation: landscape)').matches;
-
-          // if (landscape)
+          this.setFixedHeight();
 
           window.addEventListener('orientationchange', function () {
             setTimeout(function () {
-
-              var winHeight = window.innerHeight;
-              var screen = document.querySelector('.screen');
-              var screenHeight = screen.innerHeight;
-
-              _this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
-
-              _this.fluidRatio();
-
-              console.log(screen.innerHeight);
-              console.log(screen.offsetHeight);
-              console.log(parseInt(getComputedStyle(screen).height));
-
-              var _iteratorNormalCompletion = true;
-              var _didIteratorError = false;
-              var _iteratorError = undefined;
-
-              try {
-                for (var _iterator = _this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                  var img = _step.value;
-
-                  img.setAttribute('style', 'height:' + (screenHeight + 30) + 'px');
-                }
-              } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-              } finally {
-                try {
-                  if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
-                  }
-                } finally {
-                  if (_didIteratorError) {
-                    throw _iteratorError;
-                  }
-                }
-              }
-            }, 500);
+              _this.setFixedHeight();
+            }, 1000);
           }, true);
         }
 
@@ -28697,6 +28652,41 @@ var Mask = function () {
         window.addEventListener('resize', function () {
           _this.fixedRatio();
         });
+      }
+    }
+  }, {
+    key: 'setFixedHeight',
+    value: function setFixedHeight() {
+      var screen = document.querySelector('.screen');
+      var screenHeight = screen.offsetHeight;
+
+      this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
+
+      this.fluidRatio();
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var img = _step.value;
+
+          img.setAttribute('style', 'height:' + (screenHeight + 30) + 'px');
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
       }
     }
   }, {

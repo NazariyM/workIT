@@ -1,5 +1,5 @@
 import { TweenMax } from 'gsap';
-import { Resp, calcVH } from '../modules/dev/_helpers';
+import { Resp } from '../modules/dev/_helpers';
 
 class Mask {
   constructor(block, fullscreen = true) {
@@ -18,26 +18,12 @@ class Mask {
       this.fluidRatio();
 
       if (!Resp.isDesk) {
-        // const landscape = window.matchMedia('(orientation: landscape)').matches;
-
-        // if (landscape)
+        this.setFixedHeight();
 
         window.addEventListener('orientationchange', () => {
           setTimeout(() => {
-
-            const winHeight = window.innerHeight;
-            const screen = document.querySelector('.screen');
-            const screenHeight = screen.offsetHeight;
-
-            this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
-
-            this.fluidRatio();
-
-            for (let img of this.images) {
-              img.setAttribute('style', 'height:' + (screenHeight + 30) + 'px');
-            }
-
-          }, 600);
+            this.setFixedHeight();
+          }, 1000);
         }, true);
       }
 
@@ -51,6 +37,19 @@ class Mask {
       window.addEventListener('resize', () => {
         this.fixedRatio();
       });
+    }
+  }
+
+  setFixedHeight() {
+    const screen = document.querySelector('.screen');
+    const screenHeight = screen.offsetHeight;
+
+    this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
+
+    this.fluidRatio();
+
+    for (let img of this.images) {
+      img.setAttribute('style', 'height:' + (screenHeight + 30) + 'px');
     }
   }
 

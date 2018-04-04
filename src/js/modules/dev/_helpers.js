@@ -332,22 +332,3 @@ export const detectIE = () => {
 	// other browser
 	return false;
 };
-
-/**
- * calcuclate vh custom function
- **/
-
-export const calcVH = (el, container) => {
-  const $container = $(container);
-  let containerH;
-
-  $container.length ? containerH = $container.outerHeight() / 2 : containerH = 0;
-
-  const landscape = window.matchMedia('(orientation: landscape)').matches;
-  const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  let newHeight;
-
-  landscape ? newHeight = (vH + containerH) : newHeight = vH;
-
-  document.querySelector(el).setAttribute('style', 'height:' + newHeight + 'px;');
-};
