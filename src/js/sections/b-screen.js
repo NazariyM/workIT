@@ -1,6 +1,6 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import { preloader } from '../components/preloader';
-import { $scrolledElements, css, Resp } from '../modules/dev/_helpers';
+import { $scrolledElements, css, Resp, calcVH } from '../modules/dev/_helpers';
 
 class Screen {
   constructor() {
@@ -44,20 +44,9 @@ class Screen {
   }
 
   setFixedHeight() {
-    if (!Resp.isDesk) {
-      function calcVH() {
-        // const additionalHeight = 70;
-        const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        document.querySelector('.screen').setAttribute('style', 'height:' + vH + 'px;');
-      }
+    const _this = this;
 
-      calcVH();
-      window.addEventListener('orientationchange', () => {
-        setTimeout(() => {
-          calcVH();
-        }, 500);
-      }, true);
-    }
+    if (!Resp.isDesk) calcVH('.screen', _this.$container);
   }
 
 }

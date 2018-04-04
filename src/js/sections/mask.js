@@ -1,5 +1,5 @@
 import { TweenMax } from 'gsap';
-import { Resp } from '../modules/dev/_helpers';
+import { Resp, calcVH } from '../modules/dev/_helpers';
 
 class Mask {
   constructor(block, fullscreen = true) {
@@ -23,6 +23,8 @@ class Mask {
 
             this.fluidRatio();
             const winHeight = window.innerHeight;
+
+            calcVH('.mask__svg');
 
             this.svg.setAttribute('style', 'height:' + `${winHeight + 30}px`);
 

@@ -552,6 +552,31 @@ var detectIE = exports.detectIE = function detectIE() {
 	return false;
 };
 
+/**
+ * calcuclate vh custom function
+ **/
+
+var calcVH = exports.calcVH = function calcVH(el, container) {
+	var $container = $(container);
+	var containerH = void 0;
+
+	$container.length ? containerH = $container.outerHeight() / 2 : containerH = 0;
+
+	var landscape = window.matchMedia('(orientation: landscape)').matches;
+	var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+	var newHeight = void 0;
+
+	landscape ? newHeight = vH + containerH : newHeight = vH;
+
+	document.querySelector(el).setAttribute('style', 'height:' + newHeight + 'px;');
+
+	window.addEventListener('orientationchange', function () {
+		setTimeout(function () {
+			calcVH(el, container);
+		}, 500);
+	}, true);
+};
+
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -27675,13 +27700,13 @@ var Screen = function () {
   }, {
     key: 'startAnim',
     value: function startAnim() {
-      var _this = this;
+      var _this2 = this;
 
       var tl = new _gsap.TimelineMax({ delay: .2 });
 
       tl.staggerTo(this.$item, .5, { autoAlpha: 1, y: 0 }, 0.3).to(this.$maskRect, .7, { fillOpacity: '0.4' }).to(this.$more, .7, {
         y: 0, onComplete: function onComplete() {
-          _this.$more.addClass(_helpers.css.hasAnim);
+          _this2.$more.addClass(_helpers.css.hasAnim);
         }
       });
     }
@@ -27697,20 +27722,9 @@ var Screen = function () {
   }, {
     key: 'setFixedHeight',
     value: function setFixedHeight() {
-      if (!_helpers.Resp.isDesk) {
-        var calcVH = function calcVH() {
-          // const additionalHeight = 70;
-          var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-          document.querySelector('.screen').setAttribute('style', 'height:' + vH + 'px;');
-        };
+      var _this = this;
 
-        calcVH();
-        window.addEventListener('orientationchange', function () {
-          setTimeout(function () {
-            calcVH();
-          }, 500);
-        }, true);
-      }
+      if (!_helpers.Resp.isDesk) (0, _helpers.calcVH)('.screen', _this.$container);
     }
   }]);
 
@@ -28634,6 +28648,8 @@ var Mask = function () {
 
               _this.fluidRatio();
               var winHeight = window.innerHeight;
+
+              (0, _helpers.calcVH)('.mask__svg');
 
               _this.svg.setAttribute('style', 'height:' + (winHeight + 30 + 'px'));
 
