@@ -23,7 +23,7 @@ class Mask {
         window.addEventListener('orientationchange', () => {
           setTimeout(() => {
             this.setFixedHeight();
-          }, 1000);
+          }, 600);
         }, true);
       }
 
