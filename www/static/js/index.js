@@ -28650,12 +28650,15 @@ var Mask = function () {
 
               var winHeight = window.innerHeight;
               var screen = document.querySelector('.screen');
-              var screenHeight = screen.offsetHeight;
+              var screenHeight = screen.innerHeight;
 
               _this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
 
               _this.fluidRatio();
-              console.log('no');
+
+              console.log(screen.innerHeight);
+              console.log(screen.offsetHeight);
+              console.log(parseInt(getComputedStyle(screen).height));
 
               var _iteratorNormalCompletion = true;
               var _didIteratorError = false;
@@ -28665,7 +28668,7 @@ var Mask = function () {
                 for (var _iterator = _this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                   var img = _step.value;
 
-                  img.setAttribute('style', 'height:' + (screenHeight + 30 + 'px'));
+                  img.setAttribute('style', 'height:' + (screenHeight + 30) + 'px');
                 }
               } catch (err) {
                 _didIteratorError = true;

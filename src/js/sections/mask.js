@@ -32,10 +32,13 @@ class Mask {
             this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
 
             this.fluidRatio();
-            console.log('no');
+
+            console.log(screen.innerHeight);
+            console.log(screen.offsetHeight);
+            console.log(parseInt(getComputedStyle(screen).height));
 
             for (let img of this.images) {
-              img.setAttribute('style', 'height:' + `${(screenHeight + 30)}px`);
+              img.setAttribute('style', 'height:' + (screenHeight + 30) + 'px');
             }
 
           }, 500);
