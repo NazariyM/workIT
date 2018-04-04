@@ -27706,7 +27706,7 @@ var Screen = function () {
           var containerH = _this.$container.innerHeight() / 2;
           var newHeight = void 0;
           landscape ? newHeight = vH + containerH : newHeight = vH;
-          document.querySelector('.screen').setAttribute('style', 'height' + newHeight + 'px;');
+          document.querySelector('.screen').setAttribute('style', 'height:' + newHeight + 'px;');
         };
 
         _calcVH();
@@ -28639,7 +28639,7 @@ var Mask = function () {
           window.addEventListener('orientationchange', function () {
             setTimeout(function () {
               _this.setFixedHeight();
-            }, 1000);
+            }, 600);
           }, true);
         }
 

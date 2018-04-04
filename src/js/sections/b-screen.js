@@ -53,7 +53,7 @@ class Screen {
         const containerH = _this.$container.innerHeight() / 2;
         let newHeight;
         landscape ? newHeight = (vH + containerH) : newHeight = vH;
-        document.querySelector('.screen').setAttribute('style', 'height' + newHeight + 'px;');
+        document.querySelector('.screen').setAttribute('style', 'height:' + newHeight + 'px;');
       }
 
       calcVH();
