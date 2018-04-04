@@ -20,7 +20,7 @@ class Mask {
       if (!Resp.isDesk) {
         const landscape = window.matchMedia('(orientation: landscape)').matches;
 
-        if (landscape)
+        // if (landscape)
 
         window.addEventListener('orientationchange', () => {
           setTimeout(() => {
@@ -37,6 +37,7 @@ class Mask {
             for (let img of this.images) {
               img.setAttribute('style', 'height:' + `${screenHeight + 30}px`);
             }
+
           }, 500);
         }, true);
       }
