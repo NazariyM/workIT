@@ -27,21 +27,17 @@ class Mask {
 
             const winHeight = window.innerHeight;
             const screen = document.querySelector('.screen');
-            const screenHeight = screen.innerHeight;
+            const screenHeight = screen.offsetHeight;
 
             this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
 
             this.fluidRatio();
 
-            console.log(screen.innerHeight);
-            console.log(screen.offsetHeight);
-            console.log(parseInt(getComputedStyle(screen).height));
-
             for (let img of this.images) {
               img.setAttribute('style', 'height:' + (screenHeight + 30) + 'px');
             }
 
-          }, 500);
+          }, 600);
         }, true);
       }
 
