@@ -27,7 +27,7 @@ class Mask {
 
             const winHeight = window.innerHeight;
             const screen = document.querySelector('.screen');
-            const screenHeight = screen.offsetHeight;
+            const screenHeight = screen.innerHeight;
 
             this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
 
