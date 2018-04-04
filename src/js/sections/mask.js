@@ -18,7 +18,7 @@ class Mask {
       this.fluidRatio();
 
       if (!Resp.isDesk) {
-        const landscape = window.matchMedia('(orientation: landscape)').matches;
+        // const landscape = window.matchMedia('(orientation: landscape)').matches;
 
         // if (landscape)
 
@@ -35,7 +35,7 @@ class Mask {
             console.log('no');
 
             for (let img of this.images) {
-              img.setAttribute('style', 'height:' + `${screenHeight + 30}px`);
+              img.setAttribute('style', 'height:' + `${(screenHeight + 30)}px`);
             }
 
           }, 500);

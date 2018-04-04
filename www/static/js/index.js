@@ -28641,9 +28641,11 @@ var Mask = function () {
         this.fluidRatio();
 
         if (!_helpers.Resp.isDesk) {
-          var landscape = window.matchMedia('(orientation: landscape)').matches;
+          // const landscape = window.matchMedia('(orientation: landscape)').matches;
 
-          if (landscape) window.addEventListener('orientationchange', function () {
+          // if (landscape)
+
+          window.addEventListener('orientationchange', function () {
             setTimeout(function () {
 
               var winHeight = window.innerHeight;
