@@ -350,10 +350,4 @@ export const calcVH = (el, container) => {
   landscape ? newHeight = (vH + containerH) : newHeight = vH;
 
   document.querySelector(el).setAttribute('style', 'height:' + newHeight + 'px;');
-
-  window.addEventListener('orientationchange', () => {
-    setTimeout(() => {
-      calcVH(el, container);
-    }, 500);
-  }, true);
 };

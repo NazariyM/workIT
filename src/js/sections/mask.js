@@ -24,7 +24,11 @@ class Mask {
             this.fluidRatio();
             const winHeight = window.innerHeight;
 
-            calcVH('.mask__svg');
+            window.addEventListener('orientationchange', () => {
+              setTimeout(() => {
+                calcVH('.mask__svg');
+              }, 500);
+            }, true);
 
             for (let img of this.images) {
               img.setAttribute('style', 'height:' + `${winHeight + 30}px`);

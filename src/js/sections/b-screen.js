@@ -46,7 +46,11 @@ class Screen {
   setFixedHeight() {
     const _this = this;
 
-    if (!Resp.isDesk) calcVH('.screen', _this.$container);
+    if (!Resp.isDesk) window.addEventListener('orientationchange', () => {
+      setTimeout(() => {
+        calcVH('.screen', _this.$container);
+      }, 500);
+    }, true);
   }
 
 }

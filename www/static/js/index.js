@@ -569,12 +569,6 @@ var calcVH = exports.calcVH = function calcVH(el, container) {
 	landscape ? newHeight = vH + containerH : newHeight = vH;
 
 	document.querySelector(el).setAttribute('style', 'height:' + newHeight + 'px;');
-
-	window.addEventListener('orientationchange', function () {
-		setTimeout(function () {
-			calcVH(el, container);
-		}, 500);
-	}, true);
 };
 
 /***/ }),
@@ -27724,7 +27718,11 @@ var Screen = function () {
     value: function setFixedHeight() {
       var _this = this;
 
-      if (!_helpers.Resp.isDesk) (0, _helpers.calcVH)('.screen', _this.$container);
+      if (!_helpers.Resp.isDesk) window.addEventListener('orientationchange', function () {
+        setTimeout(function () {
+          (0, _helpers.calcVH)('.screen', _this.$container);
+        }, 500);
+      }, true);
     }
   }]);
 
@@ -28649,7 +28647,11 @@ var Mask = function () {
               _this.fluidRatio();
               var winHeight = window.innerHeight;
 
-              (0, _helpers.calcVH)('.mask__svg');
+              window.addEventListener('orientationchange', function () {
+                setTimeout(function () {
+                  (0, _helpers.calcVH)('.mask__svg');
+                }, 500);
+              }, true);
 
               var _iteratorNormalCompletion = true;
               var _didIteratorError = false;
