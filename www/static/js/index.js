@@ -28646,12 +28646,12 @@ var Mask = function () {
 
               _this.fluidRatio();
               var winHeight = window.innerHeight;
+              var screen = document.querySelector('.screen');
+              var screenHeight = screen.offsetHeight;
 
-              window.addEventListener('orientationchange', function () {
-                setTimeout(function () {
-                  (0, _helpers.calcVH)('.mask__svg');
-                }, 500);
-              }, true);
+              console.log(screenHeight);
+
+              _this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
 
               var _iteratorNormalCompletion = true;
               var _didIteratorError = false;

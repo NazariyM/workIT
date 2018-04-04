@@ -23,12 +23,12 @@ class Mask {
 
             this.fluidRatio();
             const winHeight = window.innerHeight;
+            const screen = document.querySelector('.screen');
+            const screenHeight = screen.offsetHeight;
 
-            window.addEventListener('orientationchange', () => {
-              setTimeout(() => {
-                calcVH('.mask__svg');
-              }, 500);
-            }, true);
+            console.log(screenHeight);
+
+            this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
 
             for (let img of this.images) {
               img.setAttribute('style', 'height:' + `${winHeight + 30}px`);
@@ -103,7 +103,7 @@ class Mask {
         this.maskOffsetX = -35;
       }
 
-      TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${this.maskOffsetX}px)`});
+      TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${this.maskOffsetX}px)` });
 
     } else {
 
