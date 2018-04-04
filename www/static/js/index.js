@@ -28644,12 +28644,9 @@ var Mask = function () {
           window.addEventListener('orientationchange', function () {
             setTimeout(function () {
 
-              _this.fluidRatio();
               var winHeight = window.innerHeight;
               var screen = document.querySelector('.screen');
               var screenHeight = screen.offsetHeight;
-
-              console.log(screenHeight);
 
               _this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
 
@@ -28677,6 +28674,9 @@ var Mask = function () {
                   }
                 }
               }
+
+              _this.fluidRatio();
+              console.log('yep');
             }, 500);
           }, true);
         }
