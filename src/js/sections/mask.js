@@ -18,6 +18,10 @@ class Mask {
       this.fluidRatio();
 
       if (!Resp.isDesk) {
+        const landscape = window.matchMedia('(orientation: landscape)').matches;
+
+        if (landscape)
+
         window.addEventListener('orientationchange', () => {
           setTimeout(() => {
 
@@ -27,11 +31,12 @@ class Mask {
 
             this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
 
-            for (let img of this.images) {
-              img.setAttribute('style', 'height:' + `${winHeight + 30}px`);
-            }
             this.fluidRatio();
-            console.log('yep');
+            console.log('no');
+
+            for (let img of this.images) {
+              img.setAttribute('style', 'height:' + `${screenHeight + 30}px`);
+            }
           }, 500);
         }, true);
       }

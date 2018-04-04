@@ -28641,7 +28641,9 @@ var Mask = function () {
         this.fluidRatio();
 
         if (!_helpers.Resp.isDesk) {
-          window.addEventListener('orientationchange', function () {
+          var landscape = window.matchMedia('(orientation: landscape)').matches;
+
+          if (landscape) window.addEventListener('orientationchange', function () {
             setTimeout(function () {
 
               var winHeight = window.innerHeight;
@@ -28649,6 +28651,9 @@ var Mask = function () {
               var screenHeight = screen.offsetHeight;
 
               _this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
+
+              _this.fluidRatio();
+              console.log('no');
 
               var _iteratorNormalCompletion = true;
               var _didIteratorError = false;
@@ -28658,7 +28663,7 @@ var Mask = function () {
                 for (var _iterator = _this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                   var img = _step.value;
 
-                  img.setAttribute('style', 'height:' + (winHeight + 30 + 'px'));
+                  img.setAttribute('style', 'height:' + (screenHeight + 30 + 'px'));
                 }
               } catch (err) {
                 _didIteratorError = true;
@@ -28674,9 +28679,6 @@ var Mask = function () {
                   }
                 }
               }
-
-              _this.fluidRatio();
-              console.log('yep');
             }, 500);
           }, true);
         }
