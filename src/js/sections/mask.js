@@ -26,8 +26,6 @@ class Mask {
 
             calcVH('.mask__svg');
 
-            this.svg.setAttribute('style', 'height:' + `${winHeight + 30}px`);
-
             for (let img of this.images) {
               img.setAttribute('style', 'height:' + `${winHeight + 30}px`);
             }

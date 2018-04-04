@@ -28651,8 +28651,6 @@ var Mask = function () {
 
               (0, _helpers.calcVH)('.mask__svg');
 
-              _this.svg.setAttribute('style', 'height:' + (winHeight + 30 + 'px'));
-
               var _iteratorNormalCompletion = true;
               var _didIteratorError = false;
               var _iteratorError = undefined;
