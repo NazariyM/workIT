@@ -10,6 +10,7 @@ class Screen {
     this.$more = this.$block.find('.screen__more');
     this.$mask = this.$block.find('.mask_screen');
     this.$maskRect = this.$mask.find('rect');
+    this.stubPage = this.$block.hasClass('screen_404');
 
     if (this.$container.length) this.init();
 
@@ -17,7 +18,7 @@ class Screen {
 
   async init() {
     await preloader.wait();
-    this.setFixedHeight();
+    if (!this.stubPage) this.setFixedHeight();
     await this.startAnim();
     this.scrollNext();
   }

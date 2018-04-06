@@ -27635,6 +27635,7 @@ var Screen = function () {
     this.$more = this.$block.find('.screen__more');
     this.$mask = this.$block.find('.mask_screen');
     this.$maskRect = this.$mask.find('rect');
+    this.stubPage = this.$block.hasClass('screen_404');
 
     if (this.$container.length) this.init();
   }
@@ -27651,7 +27652,7 @@ var Screen = function () {
                 return _preloader.preloader.wait();
 
               case 2:
-                this.setFixedHeight();
+                if (!this.stubPage) this.setFixedHeight();
                 _context.next = 5;
                 return this.startAnim();
 
@@ -28711,7 +28712,8 @@ var Mask = function () {
     value: function initImage() {
       this.images = this.block.querySelectorAll('image');
       this.maskEl = this.clipPathTag.querySelectorAll('.mask__el');
-      this.maskTag.remove();
+
+      if (this.maskTag) this.maskTag.remove();
     }
   }, {
     key: 'initVideo',

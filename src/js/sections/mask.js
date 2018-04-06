@@ -71,7 +71,8 @@ class Mask {
   initImage() {
     this.images = this.block.querySelectorAll('image');
     this.maskEl = this.clipPathTag.querySelectorAll('.mask__el');
-    this.maskTag.remove();
+
+    if (this.maskTag) this.maskTag.remove();
   }
 
   initVideo() {
