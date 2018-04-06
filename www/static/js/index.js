@@ -22484,6 +22484,7 @@ var VideoBlock = function () {
       this.play();
 
       if (!_helpers.Resp.isDesk) this.disableOnMob();
+      if ((0, _helpers.detectIE)()) this.posterFix();
     }
   }, {
     key: 'play',
@@ -22502,6 +22503,25 @@ var VideoBlock = function () {
             $video[0].pause();
             $btn.removeClass(_helpers.css.hide);
           });
+        });
+      });
+    }
+  }, {
+    key: 'posterFix',
+    value: function posterFix() {
+      this.$blocks.each(function (i, block) {
+        var $block = $(block);
+        var $video = $block.find('video');
+        var $poster = $video.attr('poster');
+        var $btn = $($block).find('button');
+        var $img = '<img class="video-block__poster-fix" src=\'' + $poster + '\'>';
+
+        $block.append($img);
+
+        $btn.on('click', function () {
+          var $posterImg = $(this).siblings('.video-block__poster-fix');
+
+          $posterImg.remove();
         });
       });
     }
