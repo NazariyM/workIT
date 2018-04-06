@@ -28635,7 +28635,7 @@ var Mask = function () {
       var _this = this;
 
       if (this.fullscreen) {
-        if (_helpers.Resp.isMobile) {
+        if (!_helpers.Resp.isDesk) {
 
           setTimeout(function () {
             _this.setFixedHeight();

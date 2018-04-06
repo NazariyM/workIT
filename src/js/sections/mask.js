@@ -15,7 +15,7 @@ class Mask {
 
   bindEvents() {
     if (this.fullscreen) {
-      if (Resp.isMobile) {
+      if (!Resp.isDesk) {
 
         setTimeout(() => {
           this.setFixedHeight();
