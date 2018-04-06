@@ -27703,12 +27703,10 @@ var Screen = function () {
 
       if (!_helpers.Resp.isDesk) {
         var _calcVH = function _calcVH() {
-          // (max-width: 767px) and
-          var landscape = window.matchMedia('(orientation: landscape)').matches;
+          var landscape = window.matchMedia('only screen and (max-width: 767px) and (orientation: landscape)').matches;
           var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
           var containerH = _this.$container.innerHeight() / 2;
-          var newHeight = void 0;
-          landscape ? newHeight = vH + containerH : newHeight = vH;
+          var newHeight = landscape ? vH + containerH : vH;
           document.querySelector('.screen').setAttribute('style', 'height:' + newHeight + 'px;');
         };
 

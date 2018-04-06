@@ -50,12 +50,10 @@ class Screen {
 
     if (!Resp.isDesk) {
       function calcVH() {
-        // (max-width: 767px) and
-        const landscape = window.matchMedia('(orientation: landscape)').matches;
+        const landscape = window.matchMedia('only screen and (max-width: 767px) and (orientation: landscape)').matches;
         const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         const containerH = _this.$container.innerHeight() / 2;
-        let newHeight;
-        landscape ? newHeight = (vH + containerH) : newHeight = vH;
+        const newHeight = landscape ? (vH + containerH) : vH;
         document.querySelector('.screen').setAttribute('style', 'height:' + newHeight + 'px;');
       }
 
