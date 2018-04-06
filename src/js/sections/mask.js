@@ -86,6 +86,7 @@ class Mask {
       const maskWidth = 1219;
       const maskHeight = 681;
       this.maskOffsetX = 280;
+      this.maskOffsetY = 0;
 
       const winHeight = Resp.isMobile ? this.screen.offsetHeight : window.innerHeight;
       const winWidth = window.innerWidth;
@@ -102,15 +103,17 @@ class Mask {
         this.removeVideo();
         this.initImage();
         this.maskOffsetX = 25;
+        this.maskOffsetY = 10;
       }
       if (Resp.isMobile) {
         this.maskTag.remove();
         this.removeVideo();
         this.initImage();
         this.maskOffsetX = -35;
+        this.maskOffsetY = 10;
       }
 
-      TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${this.maskOffsetX}px)` });
+      TweenMax.set(this.maskEl, { transform: `scale(${value}, ${value}) translateX(${this.maskOffsetX}px) translateY(${this.maskOffsetY}px)` });
 
     } else {
 

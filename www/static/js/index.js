@@ -28749,6 +28749,7 @@ var Mask = function () {
         var maskWidth = 1219;
         var maskHeight = 681;
         this.maskOffsetX = 280;
+        this.maskOffsetY = 0;
 
         var winHeight = _helpers.Resp.isMobile ? this.screen.offsetHeight : window.innerHeight;
         var winWidth = window.innerWidth;
@@ -28765,15 +28766,17 @@ var Mask = function () {
           this.removeVideo();
           this.initImage();
           this.maskOffsetX = 25;
+          this.maskOffsetY = 10;
         }
         if (_helpers.Resp.isMobile) {
           this.maskTag.remove();
           this.removeVideo();
           this.initImage();
           this.maskOffsetX = -35;
+          this.maskOffsetY = 10;
         }
 
-        _gsap.TweenMax.set(this.maskEl, { transform: 'scale(' + value + ', ' + value + ') translateX(' + this.maskOffsetX + 'px)' });
+        _gsap.TweenMax.set(this.maskEl, { transform: 'scale(' + value + ', ' + value + ') translateX(' + this.maskOffsetX + 'px) translateY(' + this.maskOffsetY + 'px)' });
       } else {
 
         var _winWidth = window.innerWidth;
