@@ -15,19 +15,20 @@ class Mask {
 
   bindEvents() {
     if (this.fullscreen) {
-      this.fluidRatio();
+      if (Resp.isMobile) {
 
-      if (!Resp.isDesk) {
-        this.setFixedHeight();
+        setTimeout(() => {
+          this.setFixedHeight();
+        }, 1500);
 
         window.addEventListener('orientationchange', () => {
           setTimeout(() => {
             this.setFixedHeight();
           }, 600);
         }, true);
-      }
+      } else {
+        this.fluidRatio();
 
-      if (Resp.isDesk) {
         window.addEventListener('resize', () => {
           this.fluidRatio();
         });
@@ -41,19 +42,21 @@ class Mask {
   }
 
   setFixedHeight() {
-    const screen = document.querySelector('.screen');
-    const screenHeight = screen.offsetHeight;
-
-    this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
+    const screenHeight = this.screen.offsetHeight;
 
     this.fluidRatio();
 
+    this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
+
     for (let img of this.images) {
       img.setAttribute('style', 'height:' + (screenHeight + 30) + 'px');
+      img.setAttribute('height', (screenHeight + 30) + 'px');
     }
+
   }
 
   detectType() {
+    this.screen = document.querySelector('.screen');
     this.maskType = this.block.getAttribute('data-mask-type');
     this.video = this.block.querySelector('video');
     this.rects = this.block.querySelectorAll('rect');
@@ -83,8 +86,8 @@ class Mask {
       const maskHeight = 681;
       this.maskOffsetX = 280;
 
+      const winHeight = Resp.isMobile ? this.screen.offsetHeight : window.innerHeight;
       const winWidth = window.innerWidth;
-      const winHeight = window.innerHeight;
 
       this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
 

@@ -27691,6 +27691,8 @@ var Screen = function () {
       this.$more.on('click tap', function () {
         var $section = $(this).closest('section').next().offset().top - 60;
 
+        console.log($section);
+
         _helpers.$scrolledElements.animate({ scrollTop: $section }, 700);
       });
     }
@@ -27701,6 +27703,7 @@ var Screen = function () {
 
       if (!_helpers.Resp.isDesk) {
         var _calcVH = function _calcVH() {
+          // (max-width: 767px) and
           var landscape = window.matchMedia('(orientation: landscape)').matches;
           var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
           var containerH = _this.$container.innerHeight() / 2;
@@ -27710,6 +27713,7 @@ var Screen = function () {
         };
 
         _calcVH();
+
         window.addEventListener('orientationchange', function () {
           setTimeout(function () {
             _calcVH();
@@ -28631,19 +28635,20 @@ var Mask = function () {
       var _this = this;
 
       if (this.fullscreen) {
-        this.fluidRatio();
+        if (_helpers.Resp.isMobile) {
 
-        if (!_helpers.Resp.isDesk) {
-          this.setFixedHeight();
+          setTimeout(function () {
+            _this.setFixedHeight();
+          }, 1500);
 
           window.addEventListener('orientationchange', function () {
             setTimeout(function () {
               _this.setFixedHeight();
             }, 600);
           }, true);
-        }
+        } else {
+          this.fluidRatio();
 
-        if (_helpers.Resp.isDesk) {
           window.addEventListener('resize', function () {
             _this.fluidRatio();
           });
@@ -28657,12 +28662,11 @@ var Mask = function () {
   }, {
     key: 'setFixedHeight',
     value: function setFixedHeight() {
-      var screen = document.querySelector('.screen');
-      var screenHeight = screen.offsetHeight;
-
-      this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
+      var screenHeight = this.screen.offsetHeight;
 
       this.fluidRatio();
+
+      this.svg.setAttribute('style', 'height:' + screenHeight + 'px;');
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -28673,6 +28677,7 @@ var Mask = function () {
           var img = _step.value;
 
           img.setAttribute('style', 'height:' + (screenHeight + 30) + 'px');
+          img.setAttribute('height', screenHeight + 30 + 'px');
         }
       } catch (err) {
         _didIteratorError = true;
@@ -28692,6 +28697,7 @@ var Mask = function () {
   }, {
     key: 'detectType',
     value: function detectType() {
+      this.screen = document.querySelector('.screen');
       this.maskType = this.block.getAttribute('data-mask-type');
       this.video = this.block.querySelector('video');
       this.rects = this.block.querySelectorAll('rect');
@@ -28724,8 +28730,8 @@ var Mask = function () {
         var maskHeight = 681;
         this.maskOffsetX = 280;
 
+        var winHeight = _helpers.Resp.isMobile ? this.screen.offsetHeight : window.innerHeight;
         var winWidth = window.innerWidth;
-        var winHeight = window.innerHeight;
 
         this.isVideo ? this.videoFix(winWidth, winHeight) : this.imageFix(winWidth, winHeight);
 

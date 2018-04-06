@@ -39,6 +39,8 @@ class Screen {
     this.$more.on('click tap', function () {
       const $section = $(this).closest('section').next().offset().top - 60;
 
+      console.log($section);
+
       $scrolledElements.animate({ scrollTop: $section }, 700);
     });
   }
@@ -48,6 +50,7 @@ class Screen {
 
     if (!Resp.isDesk) {
       function calcVH() {
+        // (max-width: 767px) and
         const landscape = window.matchMedia('(orientation: landscape)').matches;
         const vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         const containerH = _this.$container.innerHeight() / 2;
@@ -57,6 +60,7 @@ class Screen {
       }
 
       calcVH();
+
       window.addEventListener('orientationchange', () => {
         setTimeout(() => {
           calcVH();
